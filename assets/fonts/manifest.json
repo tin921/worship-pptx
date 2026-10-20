@@ -1,0 +1,20 @@
+[
+  {
+    "file": "NotoSansCJKhk-Regular.ttf",
+    "family": "Noto Sans CJK HK",
+    "source": "https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/Variable/TTF/NotoSansCJKhk-VF.ttf",
+    "sha256": "62f5745a1ab83ab9c5818f0e0603682092404e38b342b7eb0f5259434c3f2706",
+    "weight": 400,
+    "license": "Sans-OFL.txt",
+    "glyphs": 44810
+  },
+  {
+    "file": "NotoSerifCJKhk-Regular.ttf",
+    "family": "Noto Serif CJK HK",
+    "source": "https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Serif/Variable/TTF/NotoSerifCJKhk-VF.ttf",
+    "sha256": "6d709c4c805c2840d860577e5b50506c85ae40b498cf688ed401dba281b1f9b0",
+    "weight": 400,
+    "license": "Serif-OFL.txt",
+    "glyphs": 44777
+  }
+]

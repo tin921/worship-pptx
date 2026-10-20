@@ -1,0 +1,7 @@
+<Window x:Class="WorshipPptx.SettingsDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="設定" Width="560" Height="360" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+ <Grid Margin="28"><Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions><StackPanel>
+  <TextBlock Text="教會設定" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,24"/>
+  <TextBlock Text="教會 CCLI 授權編號（選填）" Style="{StaticResource Label}"/><TextBox x:Name="LicenseText"/><TextBlock Text="此編號會顯示於詩歌投影片；與個別詩歌編號不同。" Style="{StaticResource Caption}" Margin="0,6,0,22"/>
+  <TextBlock Text="字體已隨程式提供，毋須另行安裝。選用的香港黑體或宋體會完整嵌入 PowerPoint，方便在其他電腦播放及編輯。" Style="{StaticResource Caption}" Margin="0,10,0,0"/>
+ </StackPanel><StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right"><Button Content="取消" IsCancel="True" Margin="0,0,10,0"/><Button Content="儲存設定" Click="Save_Click" Style="{StaticResource Primary}"/></StackPanel></Grid>
+</Window>

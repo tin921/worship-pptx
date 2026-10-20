@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+ <Product Id="*" Name="Worship PPTX" Language="1033" Version="$(var.Version)" Manufacturer="worship-pptx contributors" UpgradeCode="09DE825F-D623-44B9-B5F8-A497768A3E8B">
+  <Package InstallerVersion="500" Compressed="yes" InstallScope="perUser" InstallPrivileges="limited" Description="Worship PPTX - Hong Kong Chinese worship slide creator"/>
+  <MajorUpgrade DowngradeErrorMessage="A newer version of Worship PPTX is already installed." Schedule="afterInstallInitialize"/>
+  <MediaTemplate EmbedCab="yes" CompressionLevel="high"/>
+  <PropertyRef Id="NETFRAMEWORK45"/>
+  <Property Id="WINDOWSBUILD"><RegistrySearch Id="WindowsBuild" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Name="CurrentBuildNumber" Type="raw"/></Property>
+  <Condition Message="Windows 10 (build 10240) or Windows 11 is required.">Installed OR WINDOWSBUILD &gt;= 10240</Condition>
+  <Condition Message="Microsoft .NET Framework 4.6.2 or later is required. Install it from https://dotnet.microsoft.com/download/dotnet-framework/net462, then run this installer again.">Installed OR NETFRAMEWORK45 &gt;= "#394802"</Condition>
+  <Property Id="ARPCOMMENTS" Value="Create Sunday worship PowerPoint slides in Hong Kong Traditional Chinese."/>
+  <Property Id="ARPURLINFOABOUT" Value="https://github.com/tin921/worship-pptx"/>
+  <Icon Id="AppIcon" SourceFile="$(var.ProjectRoot)\assets\app.ico"/>
+  <Property Id="ARPPRODUCTICON" Value="AppIcon"/>
+  <Directory Id="TARGETDIR" Name="SourceDir">
+   <Directory Id="LocalAppDataFolder"><Directory Id="ProgramsFolder" Name="Programs"><Directory Id="INSTALLFOLDER" Name="WorshipPptx"><Directory Id="FONTSFOLDER" Name="Fonts"/></Directory></Directory></Directory>
+   <Directory Id="ProgramMenuFolder"><Directory Id="MenuFolder" Name="Worship PPTX"/></Directory>
+  </Directory>
+  <DirectoryRef Id="MenuFolder"><Component Id="StartMenu" Guid="A9E673A4-53DE-47D7-B7A2-758E8AC38545">
+   <Shortcut Id="AppShortcut" Name="Worship PPTX" Description="Create Sunday worship slides" Target="[INSTALLFOLDER]WorshipPptx.exe" WorkingDirectory="INSTALLFOLDER"/>
+   <RemoveFolder Id="RemoveMenuFolder" On="uninstall"/>
+   <RemoveFolder Id="RemoveFonts" Directory="FONTSFOLDER" On="uninstall"/>
+   <RemoveFolder Id="RemoveInstallFolder" Directory="INSTALLFOLDER" On="uninstall"/>
+   <RemoveFolder Id="RemoveProgramsFolder" Directory="ProgramsFolder" On="uninstall"/>
+   <RegistryValue Root="HKCU" Key="Software\WorshipPptx" Name="Installed" Type="integer" Value="1" KeyPath="yes"/>
+  </Component></DirectoryRef>
+  <Feature Id="MainFeature" Title="Worship PPTX" Level="1"><ComponentGroupRef Id="AppFiles"/><ComponentRef Id="StartMenu"/></Feature>
+  <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectRoot)\installer\License.rtf"/>
+  <UIRef Id="WixUI_Minimal"/>
+ </Product>
+</Wix>

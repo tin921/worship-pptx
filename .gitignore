@@ -55,3 +55,12 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# Local tooling and release outputs
+.tools/
+dist/
+*.user
+.vs/
+packages/
+*.wixobj
+*.wixpdb
