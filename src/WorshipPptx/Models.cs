@@ -8,8 +8,8 @@ namespace WorshipPptx
     [DataContract] public class ServicePlan : INotifyPropertyChanged
     {
         [DataMember] public string Id { get; set; } = Guid.NewGuid().ToString("N");
-        private string title="主日崇拜";
-        [DataMember] public string Title { get=>title; set { if(title==value) return; title=value; PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(Title))); } }
+        [DataMember(Name="Title")] private string title="主日崇拜";
+        public string Title { get=>ChineseText.Content(title); set { if(Title==value) return; title=value; PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(Title))); } }
         [DataMember] public string FontName { get; set; } = FontCatalog.DefaultName;
         [DataMember] public double FontSize { get; set; } = 36;
         [DataMember] public string Alignment { get; set; } = "Center";
@@ -20,9 +20,10 @@ namespace WorshipPptx
         [DataMember] public List<ServiceItem> Items { get; set; } = new List<ServiceItem>();
         public string DisplayDate => Date.ToString("yyyy年M月d日");
         public bool IsPast => Date.Date<DateTime.Today;
-        public string TabNames => string.Join("\n",Items?.Select(i=>string.IsNullOrWhiteSpace(i.Title) ? "未命名" : i.Title) ?? Enumerable.Empty<string>());
+        public string TabNames => string.Join("\n",Items?.Select(i=>string.IsNullOrWhiteSpace(i.Title) ? ChineseText.Ui("未命名") : i.Title) ?? Enumerable.Empty<string>());
         private string lastTabNames;
         public void NotifyTabsChanged() { var names=TabNames; if(names==lastTabNames) return; lastTabNames=names; PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(TabNames))); }
+        public void NotifyLanguageChanged() { PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(Title))); NotifyTabsChanged(); }
         public event PropertyChangedEventHandler PropertyChanged;
         [OnDeserializing] private void SetDefaults(StreamingContext context) { FontName=FontCatalog.DefaultName; FontSize=36; Alignment="Center"; TextColor="#FFFFFF"; }
         [OnDeserialized] private void MigrateFormatting(StreamingContext context)
@@ -42,10 +43,13 @@ namespace WorshipPptx
     [DataContract] public class ServiceItem
     {
         [DataMember] public string Kind { get; set; } = "song";
-        [DataMember] public string Title { get; set; } = "新詩歌";
-        [DataMember] public string Lyrics { get; set; } = "[v1]\n\n[c]\n";
+        [DataMember(Name="Title")] private string title="新詩歌";
+        [DataMember(Name="Lyrics")] private string lyrics="[v1]\n\n[c]\n";
+        [DataMember(Name="Copyright")] private string copyright="";
+        public string Title { get=>ChineseText.Content(title); set { if(Title!=value) title=value; } }
+        public string Lyrics { get=>ChineseText.Content(lyrics); set { if(Lyrics!=value) lyrics=value; } }
         [DataMember] public string Order { get; set; } = "v1 c";
-        [DataMember] public string Copyright { get; set; } = "";
+        public string Copyright { get=>ChineseText.Content(copyright); set { if(Copyright!=value) copyright=value; } }
         [DataMember] public string SongId { get; set; } = "";
         [DataMember] public string Background { get; set; } = "";
         [DataMember] public SlideFormatting Formatting { get; set; } = new();
@@ -65,6 +69,8 @@ namespace WorshipPptx
     [DataContract] public class UserSettings
     {
         [DataMember] public string ChurchLicense { get; set; } = "";
+        [DataMember] public string Language { get; set; } = ChineseText.Traditional;
+        [OnDeserializing] private void SetDefaults(StreamingContext context) { Language=ChineseText.Traditional; }
     }
     public sealed class SlideData
     {

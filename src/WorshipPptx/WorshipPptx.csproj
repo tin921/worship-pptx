@@ -7,7 +7,7 @@
     <ApplicationIcon>../../assets/app.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
-    <Version>0.91.0</Version>
+    <Version>0.92.0</Version>
     <AssemblyName>WorshipPptx</AssemblyName>
     <RootNamespace>WorshipPptx</RootNamespace>
     <Title>Worship PPTX</Title>
@@ -22,6 +22,7 @@
     <OnnxRuntimeVersion Condition="'$(RuntimeIdentifier)' == 'osx-x64' Or ('$(RuntimeIdentifier)' == '' And '$(NETCoreSdkRuntimeIdentifier)' == 'osx-x64')">1.23.2</OnnxRuntimeVersion>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="OpenccNetLib" Version="1.7.0" ExcludeAssets="contentFiles" />
     <PackageReference Include="Avalonia.Desktop" Version="12.1.4" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.4" />
     <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="$(OnnxRuntimeVersion)">

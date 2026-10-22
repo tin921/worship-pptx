@@ -7,10 +7,11 @@ namespace WorshipPptx;
 
 public sealed class TextColorChoice
 {
-    public string Name { get; }
+    private readonly string name;
+    public string Name => ChineseText.Ui(name);
     public string Hex { get; }
     public IBrush Brush { get; }
-    public TextColorChoice(string name,string hex) { Name=name; Hex=hex; Brush=Avalonia.Media.Brush.Parse(hex); }
+    public TextColorChoice(string name,string hex) { this.name=name; Hex=hex; Brush=Avalonia.Media.Brush.Parse(hex); }
 }
 
 public static class TextColors

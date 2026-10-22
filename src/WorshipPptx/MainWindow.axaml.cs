@@ -40,8 +40,9 @@ namespace WorshipPptx
         private static readonly DataFormat<TabItem> TabDragFormat=DataFormat.CreateInProcessFormat<TabItem>("WorshipPptx.ServiceTab");
         public MainWindow(LocalStore store)
         {
-            loading=true; InitializeComponent(); this.store=store;
-            settings=store.LoadSettings(); FontPicker.ItemsSource=FontCatalog.All;
+            loading=true; this.store=store; settings=store.LoadSettings();
+            ChineseText.SetLanguage(settings.Language); InitializeComponent(); FontPicker.ItemsSource=FontCatalog.All;
+            UpdateLanguageButtons();
             BuildColorPalette();
             CompositionOptions.LayoutChanged+=Composition_Changed;
             FontSizePicker.ItemsSource=new double[]{18,20,24,28,32,36,40,44,48,54,60,64,72};
@@ -61,7 +62,7 @@ namespace WorshipPptx
             loading=true; ServiceTitle.Text=plan.Title; ServiceDate.SelectedDate=plan.Date;
             SongTabs.Items.Clear(); foreach(var item in plan.Items) SongTabs.Items.Add(new TabItem { Header=item.Title, Tag=item });
             addTab=new TabItem { Header="＋", Classes={"add-tab"} };
-            AutomationProperties.SetName(addTab,"新增詩歌分頁"); ToolTip.SetTip(addTab,"新增詩歌"); SongTabs.Items.Add(addTab);
+            AutomationProperties.SetName(addTab,ChineseText.Ui("新增詩歌分頁")); ToolTip.SetTip(addTab,ChineseText.Ui("新增詩歌")); SongTabs.Items.Add(addTab);
             var firstSong=plan.Items.FindIndex(i=>SlideLayout.HasSectionTags(i.Lyrics)); SongTabs.SelectedIndex=Math.Max(0,firstSong);
             selected=plan.Items[SongTabs.SelectedIndex]; FillEditor(); loading=false; page=0;
         }
@@ -110,11 +111,11 @@ namespace WorshipPptx
         {
             var song=SlideLayout.HasSectionTags(Lyrics.Text);
             var announcement=SlideLayout.HasAnnouncementTags(Lyrics.Text);
-            SongTitle.PlaceholderText=song ? "詩歌名稱" : "經文／公告名稱";
-            Lyrics.PlaceholderText="歌詞 [v1]、[c] · 公告 [1]、[2] · 經文直接輸入";
+            SongTitle.PlaceholderText=song ? ChineseText.Ui("詩歌名稱") : ChineseText.Ui("經文／公告名稱");
+            Lyrics.PlaceholderText=ChineseText.Ui("歌詞 [v1]、[c] · 公告 [1]、[2] · 經文直接輸入");
             OrderPanel.IsVisible=song; SongId.IsEnabled=song;
-            LyricsHint.Text=song ? "[v1]、[c] 標記段落；空行分頁；Tab 插入縮排。" : announcement ? "[1]、[2] 每項一頁；字號為上限，長文自動縮小；Tab 插入縮排。" : "經文自動分頁；公告用 [1]、[2] 每項一頁。保留空行及縮排；Tab 插入縮排。";
-            ToolTip.SetTip(FontSizePicker,announcement ? "本分頁公告的最大字號（pt）；長文自動縮小至一頁" : "本分頁字號（pt）");
+            LyricsHint.Text=song ? ChineseText.Ui("[v1]、[c] 標記段落；空行分頁；Tab 插入縮排。") : announcement ? ChineseText.Ui("[1]、[2] 每項一頁；字號為上限，長文自動縮小；Tab 插入縮排。") : ChineseText.Ui("經文自動分頁；公告用 [1]、[2] 每項一頁。保留空行及縮排；Tab 插入縮排。");
+            ToolTip.SetTip(FontSizePicker,announcement ? ChineseText.Ui("本分頁公告的最大字號（pt）；長文自動縮小至一頁") : ChineseText.Ui("本分頁字號（pt）"));
         }
         private void Capture()
         {
@@ -126,7 +127,7 @@ namespace WorshipPptx
         }
         private void Changed()
         {
-            if(loading) return; Capture(); dirty=true; StatusText.Text="正在儲存…"; debounce.Stop(); debounce.Start();
+            if(loading) return; Capture(); dirty=true; StatusText.Text=ChineseText.Ui("正在儲存…"); debounce.Stop(); debounce.Start();
         }
         private void Editor_Changed(object sender,TextChangedEventArgs e) { Changed(); if(!loading && sender==Lyrics) UpdateContentMode(); }
         private void Metadata_Changed(object sender,TextChangedEventArgs e) => Changed();
@@ -134,14 +135,14 @@ namespace WorshipPptx
         private void SaveDraft()
         {
             if(plan==null) return;
-            try { Capture(); store.Save(plan); dirty=false; StatusText.Text=plan.Items.Count+" 個項目 · "+plan.Items.Count(i=>SlideLayout.HasSectionTags(i.Lyrics))+" 首詩歌 · 已儲存 "+DateTime.Now.ToString("HH:mm"); }
-            catch(Exception ex) { dirty=true; StatusText.Text="未能儲存："+ex.Message; }
+            try { Capture(); store.Save(plan); dirty=false; StatusText.Text=plan.Items.Count+ChineseText.Ui(" 個項目 · ")+plan.Items.Count(i=>SlideLayout.HasSectionTags(i.Lyrics))+ChineseText.Ui(" 首詩歌 · 已儲存 ")+DateTime.Now.ToString("HH:mm"); }
+            catch(Exception ex) { dirty=true; StatusText.Text=ChineseText.Ui("未能儲存：")+ex.Message; }
         }
         private async void OnClosing(object sender,WindowClosingEventArgs e)
         {
-            if(exporting) { e.Cancel=true; StatusText.Text="正在製作 PowerPoint，完成後便可關閉。"; return; }
+            if(exporting) { e.Cancel=true; StatusText.Text=ChineseText.Ui("正在製作 PowerPoint，完成後便可關閉。"); return; }
             debounce.Stop(); SaveDraft();
-            if(dirty) { e.Cancel=true; await Dialogs.Show(this,"未能儲存本次修改。請先檢查磁碟空間或資料夾權限，再關閉程式。","儲存失敗"); }
+            if(dirty) { e.Cancel=true; await Dialogs.Show(this,ChineseText.Ui("未能儲存本次修改。請先檢查磁碟空間或資料夾權限，再關閉程式。"),ChineseText.Ui("儲存失敗")); }
         }
         private void RefreshHistory()
         {
@@ -229,8 +230,8 @@ namespace WorshipPptx
         }
         private async void RemoveItem_Click(object sender,RoutedEventArgs e)
         {
-            if(plan.Items.Count==1) { await Dialogs.Show(this,"崇拜安排至少需要一個項目。"); return; }
-            if(!await Dialogs.Show(this,"移除「"+selected.Title+"」？", "移除項目",true)) return;
+            if(plan.Items.Count==1) { await Dialogs.Show(this,ChineseText.Ui("崇拜安排至少需要一個項目。")); return; }
+            if(!await Dialogs.Show(this,ChineseText.Ui("移除「")+selected.Title+"」？", ChineseText.Ui("移除項目"),true)) return;
             plan.Items.Remove(selected); LoadPlan(); SaveDraft(); RefreshPreview();
         }
         private void RefreshPreview()
@@ -238,7 +239,7 @@ namespace WorshipPptx
             try
             {
                 Capture(); slides=SlideLayout.BuildItem(selected,settings); ValidationText.Text="";
-                if(slides.Any(s=>s.FontSize<selected.Formatting.FontSize)) ValidationText.Text="為保留文字空間，較長文字已按比例縮小。";
+                if(slides.Any(s=>s.FontSize<selected.Formatting.FontSize)) ValidationText.Text=ChineseText.Ui("為保留文字空間，較長文字已按比例縮小。");
                 BackgroundImage.Source=SlideVisual.Background(selected.Background);
                 updatingThumbnails=true; Thumbnails.Items.Clear();
                 for(var i=0;i<slides.Count;i++)
@@ -251,7 +252,7 @@ namespace WorshipPptx
                 }
                 updatingThumbnails=false; page=Math.Min(page,Math.Max(0,slides.Count-1)); ShowPage();
             }
-            catch(Exception ex) { updatingThumbnails=true; slides.Clear(); SlideHost.Child=null; Thumbnails.Items.Clear(); PreviewInfo.Text="請先完成內容"; ValidationText.Text=ex.Message; try { BackgroundImage.Source=SlideVisual.Background(selected.Background); } catch { BackgroundImage.Source=null; } }
+            catch(Exception ex) { updatingThumbnails=true; slides.Clear(); SlideHost.Child=null; Thumbnails.Items.Clear(); PreviewInfo.Text=ChineseText.Ui("請先完成內容"); ValidationText.Text=ex.Message; try { BackgroundImage.Source=SlideVisual.Background(selected.Background); } catch { BackgroundImage.Source=null; } }
             finally { updatingThumbnails=false; }
         }
         private void ShowPage()
@@ -298,12 +299,43 @@ namespace WorshipPptx
                 item.Background=path;
                 if(plan==targetPlan) { SaveDraft(); RefreshPreview(); } else store.Save(targetPlan);
             }
-            catch(Exception ex) { await Dialogs.Show(this,ex.Message,"圖片匯入失敗"); }
+            catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("圖片匯入失敗")); }
         }
         private async void Settings_Click(object sender,RoutedEventArgs e)
         {
             var dialog=new SettingsDialog(settings);
             if(await dialog.ShowDialog<bool>(this)) { settings=dialog.Settings; store.SaveSettings(settings); RefreshPreview(); }
+        }
+        private void UpdateLanguageButtons()
+        {
+            TraditionalButton.IsChecked=!ChineseText.IsSimplified;
+            SimplifiedButton.IsChecked=ChineseText.IsSimplified;
+        }
+        private async void Language_Click(object sender,RoutedEventArgs e)
+        {
+            if(loading || exporting || sender is not ToggleButton button) return;
+            var language=(string)button.Tag;
+            if(language==ChineseText.Current.Language) { UpdateLanguageButtons(); return; }
+            debounce.Stop(); SaveDraft();
+            if(dirty) { UpdateLanguageButtons(); return; }
+            try
+            {
+                // Commit the preference before changing the view. The source strings in
+                // every service stay untouched, including the currently edited draft.
+                var next=new UserSettings { ChurchLicense=settings.ChurchLicense,Language=language };
+                store.SaveSettings(next); settings=next;
+                loading=true;
+                ChineseText.SetLanguage(language); UpdateLanguageButtons();
+                plan.NotifyLanguageChanged(); ServiceTitle.Text=plan.Title;
+                foreach(var tab in SongTabs.Items.OfType<TabItem>()) if(tab.Tag is ServiceItem item) tab.Header=item.Title;
+                AutomationProperties.SetName(addTab,ChineseText.Ui("新增詩歌分頁")); ToolTip.SetTip(addTab,ChineseText.Ui("新增詩歌"));
+                FontPicker.ItemsSource=null; FontPicker.ItemsSource=FontCatalog.All;
+                ColorSwatches.Children.Clear(); BuildColorPalette(); CompositionOptions.RefreshLanguage();
+                FillEditor(); RefreshHistory();
+            }
+            catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("未能切換語言")); }
+            finally { loading=false; UpdateLanguageButtons(); }
+            RefreshPreview(); SaveDraft();
         }
         private void Typography_Changed(object sender,SelectionChangedEventArgs e)
         {
@@ -369,29 +401,29 @@ namespace WorshipPptx
         private void UpdateLayoutButtons()
         {
             CompositionOptions.Sync(selected.Preview);
-            LayoutModeLabel.Text=selected.Preview.TextArea switch { "Full"=>"16:9 · 全幅文字","Bottom"=>"16:9 · 下半部文字",_=>"16:9 · 上半部文字" };
+            LayoutModeLabel.Text=selected.Preview.TextArea switch { "Full"=>ChineseText.Ui("16:9 · 全幅文字"),"Bottom"=>ChineseText.Ui("16:9 · 下半部文字"),_=>ChineseText.Ui("16:9 · 上半部文字") };
         }
         private List<SlideData> ExportSlides() { Capture(); SaveDraft(); return SlideLayout.Build(plan,settings); }
         private async void Preview_Click(object sender,RoutedEventArgs e)
         {
             try { var all=ExportSlides(); await new PreviewWindow(all).ShowDialog(this); }
-            catch(Exception ex) { await Dialogs.Show(this,ex.Message,"請檢查內容"); }
+            catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("請檢查內容")); }
         }
         private string FileName()
         {
-            var name=string.Concat((plan.Title ?? "主日崇拜").Select(c=>Path.GetInvalidFileNameChars().Contains(c) ? '_' : c));
+            var name=string.Concat((plan.Title ?? ChineseText.Ui("主日崇拜")).Select(c=>Path.GetInvalidFileNameChars().Contains(c) ? '_' : c));
             if(name.Length>70) name=name.Substring(0,70); return plan.Date.ToString("yyyy-MM-dd")+" "+name+".pptx";
         }
         private async void Export_Click(object sender,RoutedEventArgs e)
         {
             if(exporting) return;
-            exporting=true; var button=sender as Button; if(button!=null) button.IsEnabled=false;
+            exporting=true; LanguagePanel.IsEnabled=false; var button=sender as Button; if(button!=null) button.IsEnabled=false;
             try
             {
                 var all=ExportSlides(); var title=plan.Title;
-                var file=await StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions { Title="製作 PowerPoint", SuggestedFileName=FileName(), DefaultExtension="pptx", ShowOverwritePrompt=true, FileTypeChoices=new[]{new FilePickerFileType("PowerPoint 簡報") { Patterns=new[]{"*.pptx"} }} });
+                var file=await StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions { Title=ChineseText.Ui("製作 PowerPoint"), SuggestedFileName=FileName(), DefaultExtension="pptx", ShowOverwritePrompt=true, FileTypeChoices=new[]{new FilePickerFileType(ChineseText.Ui("PowerPoint 簡報")) { Patterns=new[]{"*.pptx"} }} });
                 if(file==null) return;
-                StatusText.Text="正在製作 PowerPoint…";
+                StatusText.Text=ChineseText.Ui("正在製作 PowerPoint…");
                 var path=file.TryGetLocalPath();
                 if(path!=null) await Task.Run(()=>PptxWriter.Write(path,all,title));
                 else
@@ -400,10 +432,10 @@ namespace WorshipPptx
                     try { await Task.Run(()=>PptxWriter.Write(temp,all,title)); using var input=File.OpenRead(temp); using var output=await file.OpenWriteAsync(); await input.CopyToAsync(output); }
                     finally { if(File.Exists(temp)) File.Delete(temp); }
                 }
-                StatusText.Text="已製作 "+all.Count+" 張投影片："+file.Name; RefreshHistory();
+                StatusText.Text=ChineseText.Ui("已製作 ")+all.Count+ChineseText.Ui(" 張投影片：")+file.Name; RefreshHistory();
             }
-            catch(Exception ex) { await Dialogs.Show(this,ex.Message,"製作失敗"); }
-            finally { exporting=false; if(button!=null) button.IsEnabled=true; }
+            catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("製作失敗")); }
+            finally { exporting=false; LanguagePanel.IsEnabled=true; if(button!=null) button.IsEnabled=true; }
         }
     }
 }

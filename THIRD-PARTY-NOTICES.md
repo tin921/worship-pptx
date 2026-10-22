@@ -42,6 +42,18 @@ licence texts, including native-library dependencies, are bundled in
 - Themed media are original AI-generated assets. Generic graphics and their renderer are original project work. Prompts/provenance and runtime use are described in `docs/media-library.md`.
 - Historical animation experiments used FFmpeg as a developer-only tool. The app ships static images only, without MP4 files, animated WebP previews or FFmpeg binaries.
 
+## Offline Chinese script conversion
+
+- OpenccNetLib 1.7.0 (MIT), laisuk, https://github.com/laisuk/OpenccNet,
+  package source revision `01f23ccd4feda86e7607cc1dd92ba93a44252e61`.
+  Its embedded OpenCC dictionaries are Apache 2.0, BYVoid and contributors.
+- ZstdSharp.Port 0.8.8 (MIT), Oleg Stepanischev; managed dictionary decompression.
+- System.Formats.Cbor 8.0.0 (MIT), .NET Foundation and contributors.
+
+Conversion runs locally on Windows and macOS without an API, model download or
+native converter. Full licences are included in `THIRD-PARTY-LICENSES.txt`.
+Worship pronouns 祢 and 祂 are preserved in both scripts.
+
 ## Build and verification tools
 
 - Microsoft .NET 10 SDK: development only.

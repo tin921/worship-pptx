@@ -27,12 +27,12 @@ namespace WorshipPptx
         {
             var shape = Shape(id,"Text "+id,SlideLayout.TextX,y,SlideLayout.TextWidth,height,E(A+"noFill"),E(A+"ln",E(A+"noFill")));
             shape.Element(P+"nvSpPr").Element(P+"cNvSpPr").Add(At("txBox",1));
-            shape.Add(E(P+"txBody",E(A+"bodyPr",At("wrap","none"),At("lIns",0),At("rIns",0),At("tIns",0),At("bIns",0),At("anchor","t"),E(A+"noAutofit")),E(A+"lstStyle"),E(A+"p",E(A+"pPr",At("algn",alignment=="Left" ? "l" : alignment=="Right" ? "r" : "ctr"),E(A+"lnSpc",E(A+"spcPct",At("val",100000))),E(A+"spcBef",E(A+"spcPts",At("val",0))),E(A+"spcAft",E(A+"spcPts",At("val",0)))),E(A+"r",E(A+"rPr",At("lang","zh-HK"),At("sz",(int)Math.Round(size*75)),At("b",bold ? 1 : 0),At("dirty",0),Solid(color),E(A+"latin",At("typeface",fontName)),E(A+"ea",At("typeface",fontName)),E(A+"cs",At("typeface",fontName))),E(A+"t",new XAttribute(XNamespace.Xml+"space","preserve"),text ?? "")),E(A+"endParaRPr",At("lang","zh-HK")))));
+            shape.Add(E(P+"txBody",E(A+"bodyPr",At("wrap","none"),At("lIns",0),At("rIns",0),At("tIns",0),At("bIns",0),At("anchor","t"),E(A+"noAutofit")),E(A+"lstStyle"),E(A+"p",E(A+"pPr",At("algn",alignment=="Left" ? "l" : alignment=="Right" ? "r" : "ctr"),E(A+"lnSpc",E(A+"spcPct",At("val",100000))),E(A+"spcBef",E(A+"spcPts",At("val",0))),E(A+"spcAft",E(A+"spcPts",At("val",0)))),E(A+"r",E(A+"rPr",At("lang",ChineseText.CultureName),At("sz",(int)Math.Round(size*75)),At("b",bold ? 1 : 0),At("dirty",0),Solid(color),E(A+"latin",At("typeface",fontName)),E(A+"ea",At("typeface",fontName)),E(A+"cs",At("typeface",fontName))),E(A+"t",new XAttribute(XNamespace.Xml+"space","preserve"),text ?? "")),E(A+"endParaRPr",At("lang",ChineseText.CultureName)))));
             return shape;
         }
         public static void Write(string path,IList<SlideData> slides,string title)
         {
-            if (slides.Count == 0) throw new InvalidOperationException("沒有可匯出的投影片。");
+            if (slides.Count == 0) throw new InvalidOperationException(ChineseText.Ui("沒有可匯出的投影片。"));
             var temp=path+"."+Guid.NewGuid().ToString("N")+".tmp";
             try
             {

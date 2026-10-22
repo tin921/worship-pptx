@@ -19,7 +19,7 @@ namespace WorshipPptx
         public static bool HasAnnouncementTags(string text) => (text ?? "").Replace("\r","").Split('\n').Any(line=>AnnouncementTag.IsMatch(line.Trim()));
         public static List<SlideData> Build(ServicePlan plan, UserSettings settings)
         {
-            if (plan.Items == null || plan.Items.Count == 0) throw new FormatException("請先加入詩歌或經文。 ");
+            if (plan.Items == null || plan.Items.Count == 0) throw new FormatException(ChineseText.Ui("請先加入詩歌或經文。 "));
             return plan.Items.SelectMany(i => BuildItem(i, settings)).ToList();
         }
         public static List<SlideData> BuildItem(ServiceItem item, UserSettings settings)
@@ -33,14 +33,14 @@ namespace WorshipPptx
         }
         public static List<SlideData> BuildItem(ServiceItem item, UserSettings settings, string fontName, double fontSize = 36, string alignment = "Center",string textColor="#FFFFFF",bool bold=false,bool fullSlide=false,string textPosition="Top")
         {
-            if(double.IsNaN(fontSize) || double.IsInfinity(fontSize) || fontSize<18 || fontSize>72) throw new FormatException("字號須為 18 至 72 pt。");
-            if(alignment!="Left" && alignment!="Center" && alignment!="Right") throw new FormatException("請選擇靠左、置中或靠右。");
-            if(textPosition!="Top" && textPosition!="Middle" && textPosition!="Bottom") throw new FormatException("請選擇文字靠上、置中或靠下。");
-            if (string.IsNullOrWhiteSpace(item.Title)) throw new FormatException("請填寫詩歌或經文名稱。 ");
-            if (string.IsNullOrWhiteSpace(item.Lyrics)) throw new FormatException(item.Title + "：請輸入歌詞或經文。");
+            if(double.IsNaN(fontSize) || double.IsInfinity(fontSize) || fontSize<18 || fontSize>72) throw new FormatException(ChineseText.Ui("字號須為 18 至 72 pt。"));
+            if(alignment!="Left" && alignment!="Center" && alignment!="Right") throw new FormatException(ChineseText.Ui("請選擇靠左、置中或靠右。"));
+            if(textPosition!="Top" && textPosition!="Middle" && textPosition!="Bottom") throw new FormatException(ChineseText.Ui("請選擇文字靠上、置中或靠下。"));
+            if (string.IsNullOrWhiteSpace(item.Title)) throw new FormatException(ChineseText.Ui("請填寫詩歌或經文名稱。 "));
+            if (string.IsNullOrWhiteSpace(item.Lyrics)) throw new FormatException(item.Title + ChineseText.Ui("：請輸入歌詞或經文。"));
             var tagged=HasSectionTags(item.Lyrics);
             if(HasAnnouncementTags(item.Lyrics)) {
-                if(tagged) throw new FormatException(item.Title+"：公告請使用 [1]、[2]，不要與詩歌段落標記混用。");
+                if(tagged) throw new FormatException(item.Title+ChineseText.Ui("：公告請使用 [1]、[2]，不要與詩歌段落標記混用。"));
                 return BuildAnnouncements(item,settings,fontName,fontSize,alignment,textColor,bold,fullSlide,textPosition);
             }
             var requestedSize=fontSize;
@@ -48,7 +48,7 @@ namespace WorshipPptx
             var footer=tagged ? "" : titleCredits;
             while(TextCapacity(fontSize,fontName,footer,bold,fullSlide,tagged)<1 && fontSize>18) fontSize=Math.Max(18,fontSize-1);
             var maxLines=TextCapacity(fontSize,fontName,footer,bold,fullSlide,tagged);
-            if(maxLines<1) throw new FormatException(item.Title+"：版權資料太長，請縮短文字或減少字號。");
+            if(maxLines<1) throw new FormatException(item.Title+ChineseText.Ui("：版權資料太長，請縮短文字或減少字號。"));
             var sections = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
             var names = new List<string>();
             var current = "text";
@@ -59,24 +59,24 @@ namespace WorshipPptx
                 if (match.Success)
                 {
                     current = match.Groups[1].Value.ToLowerInvariant();
-                    if (sections.ContainsKey(current)) throw new FormatException(item.Title + "：段落 [" + current + "] 重複；重唱請在演唱次序填寫。");
+                    if (sections.ContainsKey(current)) throw new FormatException(item.Title + ChineseText.Ui("：段落 [") + current + ChineseText.Ui("] 重複；重唱請在演唱次序填寫。"));
                     sections[current] = new List<string>(); names.Add(current);
                 }
                 else
                 {
-                    if (tagged && (raw.TrimStart().StartsWith("[") || raw.TrimEnd().EndsWith("]"))) throw new FormatException(item.Title + "：段落標記格式不正確，請使用 [v1]、[c] 等。");
+                    if (tagged && (raw.TrimStart().StartsWith("[") || raw.TrimEnd().EndsWith("]"))) throw new FormatException(item.Title + ChineseText.Ui("：段落標記格式不正確，請使用 [v1]、[c] 等。"));
                     sections[current].Add(raw);
                 }
             }
-            if (tagged && sections["text"].Any(x => !string.IsNullOrWhiteSpace(x))) throw new FormatException(item.Title + "：第一行歌詞前請加上 [v1] 等段落標記。");
+            if (tagged && sections["text"].Any(x => !string.IsNullOrWhiteSpace(x))) throw new FormatException(item.Title + ChineseText.Ui("：第一行歌詞前請加上 [v1] 等段落標記。"));
             var order = tagged ? (string.IsNullOrWhiteSpace(item.Order) ? names : Regex.Split(item.Order.Trim().ToLowerInvariant(), @"[\s,，;；]+" ).ToList()) : new List<string> { "text" };
             var slides = new List<SlideData>();
             foreach (var key in order)
             {
-                if (!sections.ContainsKey(key)) throw new FormatException(item.Title + "：找不到 [" + key + "]，請檢查演唱次序。");
-                if (!sections[key].Any(x => !string.IsNullOrWhiteSpace(x))) throw new FormatException(item.Title + "：段落 [" + key + "] 沒有歌詞。");
+                if (!sections.ContainsKey(key)) throw new FormatException(item.Title + ChineseText.Ui("：找不到 [") + key + ChineseText.Ui("]，請檢查演唱次序。"));
+                if (!sections[key].Any(x => !string.IsNullOrWhiteSpace(x))) throw new FormatException(item.Title + ChineseText.Ui("：段落 [") + key + ChineseText.Ui("] 沒有歌詞。"));
                 var pending = new List<string>();
-                Action flush = () => { if (pending.Count == 0) return; slides.Add(new SlideData { Title = item.Title, FontName = FontCatalog.Get(fontName).Name, FontSize = fontSize, Alignment = alignment, Section = key == "text" ? "經文／公告" : key.ToUpperInvariant(), Lines = new List<string>(pending), Footer = footer, Background = item.Background, TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition }); pending.Clear(); };
+                Action flush = () => { if (pending.Count == 0) return; slides.Add(new SlideData { Title = item.Title, FontName = FontCatalog.Get(fontName).Name, FontSize = fontSize, Alignment = alignment, Section = key == "text" ? ChineseText.Ui("經文／公告") : key.ToUpperInvariant(), Lines = new List<string>(pending), Footer = footer, Background = item.Background, TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition }); pending.Clear(); };
                 foreach (var line in sections[key])
                 {
                     if (tagged && string.IsNullOrWhiteSpace(line)) { flush(); continue; }
@@ -95,8 +95,8 @@ namespace WorshipPptx
                     titleSize=Math.Max(18,titleSize-1);
                     titleLines=Wrap(titleText,fontName,titleSize,bold);
                 }
-                if(titleLines.Count>TextCapacity(titleSize,fontName,titleCredits,bold,fullSlide)) throw new FormatException("詩歌名稱或版權資料太長，請縮短文字。");
-                slides.Insert(0,new SlideData { IsTitle=true, Title=item.Title, Section="歌名", Lines=titleLines, FontName=FontCatalog.Get(fontName).Name, FontSize=titleSize, Alignment=alignment, Footer=titleCredits, Background=item.Background, TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition });
+                if(titleLines.Count>TextCapacity(titleSize,fontName,titleCredits,bold,fullSlide)) throw new FormatException(ChineseText.Ui("詩歌名稱或版權資料太長，請縮短文字。"));
+                slides.Insert(0,new SlideData { IsTitle=true, Title=item.Title, Section=ChineseText.Ui("歌名"), Lines=titleLines, FontName=FontCatalog.Get(fontName).Name, FontSize=titleSize, Alignment=alignment, Footer=titleCredits, Background=item.Background, TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition });
             }
             return slides;
         }
@@ -108,16 +108,16 @@ namespace WorshipPptx
                 var match=AnnouncementTag.Match(raw.Trim());
                 if(match.Success) {
                     var number=match.Groups[1].Value.TrimStart('0'); if(number.Length==0) number="0";
-                    if(!numbers.Add(number)) throw new FormatException(item.Title+"：公告 ["+number+"] 重複。");
+                    if(!numbers.Add(number)) throw new FormatException(item.Title+ChineseText.Ui("：公告 [")+number+ChineseText.Ui("] 重複。"));
                     items.Add((number,new List<string>()));
                 }
                 else if(items.Count>0) items[^1].Lines.Add(raw);
-                else if(!string.IsNullOrWhiteSpace(raw)) throw new FormatException(item.Title+"：請在第一項公告前加上 [1]。");
+                else if(!string.IsNullOrWhiteSpace(raw)) throw new FormatException(item.Title+ChineseText.Ui("：請在第一項公告前加上 [1]。"));
             }
             var slides=new List<SlideData>();
             foreach(var entry in items) {
-                if(!entry.Lines.Any(line=>!string.IsNullOrWhiteSpace(line))) throw new FormatException(item.Title+"：公告 ["+entry.Number+"] 沒有內容。");
-                var slide=new SlideData { Title=item.Title,Section="公告 "+entry.Number,FontName=FontCatalog.Get(fontName).Name,FontSize=maximumSize,Alignment=alignment,TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition,Footer=Footer(item,settings),Background=item.Background };
+                if(!entry.Lines.Any(line=>!string.IsNullOrWhiteSpace(line))) throw new FormatException(item.Title+ChineseText.Ui("：公告 [")+entry.Number+ChineseText.Ui("] 沒有內容。"));
+                var slide=new SlideData { Title=item.Title,Section=ChineseText.Ui("公告 ")+entry.Number,FontName=FontCatalog.Get(fontName).Name,FontSize=maximumSize,Alignment=alignment,TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition,Footer=Footer(item,settings),Background=item.Background };
                 bool Fit(double size) {
                     slide.FontSize=size;
                     slide.Lines=entry.Lines.SelectMany(line=>line.Length==0 ? new List<string>{""} : Wrap(line,slide.FontName,size,bold)).ToList();
@@ -130,7 +130,7 @@ namespace WorshipPptx
                         var middle=(low+high)/2;
                         if(Fit(middle)) { best=middle; low=middle+1; } else high=middle-1;
                     }
-                    if(best==0) throw new FormatException(item.Title+"：公告 ["+entry.Number+"] 內容太多，請縮短文字。");
+                    if(best==0) throw new FormatException(item.Title+ChineseText.Ui("：公告 [")+entry.Number+ChineseText.Ui("] 內容太多，請縮短文字。"));
                     Fit(best);
                 }
                 slides.Add(slide);

@@ -35,14 +35,14 @@ public static class MediaSearch
     public static async Task<IReadOnlyList<MediaAsset>> SearchAsync(string title,string lyrics,CancellationToken cancellation=default) => (await MatchAsync(title,lyrics,cancellation).ConfigureAwait(false)).Assets;
     public static Task<MediaMatch> MatchAsync(string title,string lyrics,CancellationToken cancellation=default,IProgress<MediaSearchProgress> progress=null) => Task.Run(async ()=>
     {
-        progress?.Report(new(null,"正在準備分析…"));
+        progress?.Report(new(null,ChineseText.Ui("正在準備分析…")));
         await gate.WaitAsync(cancellation);
         try
         {
             cancellation.ThrowIfCancellationRequested();
-            if(string.IsNullOrWhiteSpace(title+lyrics)) throw new ArgumentException("請先輸入詩歌名稱、歌詞或搜尋字詞。");
-            if((title?.Length ?? 0)+(lyrics?.Length ?? 0)>20000) throw new ArgumentException("搜尋內容請保持在 20,000 字以內。");
-            progress?.Report(new(null,IsModelLoaded ? "正在準備歌詞…" : "正在載入本機分析工具，首次開啟需稍候…"));
+            if(string.IsNullOrWhiteSpace(title+lyrics)) throw new ArgumentException(ChineseText.Ui("請先輸入詩歌名稱、歌詞或搜尋字詞。"));
+            if((title?.Length ?? 0)+(lyrics?.Length ?? 0)>20000) throw new ArgumentException(ChineseText.Ui("搜尋內容請保持在 20,000 字以內。"));
+            progress?.Report(new(null,IsModelLoaded ? ChineseText.Ui("正在準備歌詞…") : ChineseText.Ui("正在載入本機分析工具，首次開啟需稍候…")));
             var encoder=engine.Value;
             cancellation.ThrowIfCancellationRequested();
             var cleanTitle=encoder.Normalize(title ?? "");
@@ -53,18 +53,18 @@ public static class MediaSearch
             var total=lyricTokens.Count+(hasTitle ? 1 : 0)+2;
             var completed=0;
             void Report(string message) => progress?.Report(new((int)Math.Round(100.0*completed/total),message));
-            Report("正在擷取主題及關鍵字…");
+            Report(ChineseText.Ui("正在擷取主題及關鍵字…"));
             var chunks=new List<float[]>();
             foreach(var tokens in lyricTokens) {
                 cancellation.ThrowIfCancellationRequested(); chunks.Add(encoder.Encode(tokens)); completed++;
-                Report("正在擷取主題及關鍵字…");
+                Report(ChineseText.Ui("正在擷取主題及關鍵字…"));
             }
             var document=LocalEncoder.Unit(Enumerable.Range(0,384).Select(i=>chunks.Average(c=>c[i])).ToArray());
             if(hasTitle)
             {
                 cancellation.ThrowIfCancellationRequested();
                 var titleVector=encoder.Encode(encoder.ChunkTokens(cleanTitle)[0]); completed++;
-                Report("正在配對背景主題…");
+                Report(ChineseText.Ui("正在配對背景主題…"));
                 document=LocalEncoder.Unit(document.Select((v,i)=>.85f*v+.15f*titleVector[i]).ToArray());
             }
             var scenes=JsonSerializer.Deserialize<List<MediaScene>>(File.ReadAllText(Path.Combine(MediaLibrary.Root,"scenes.json")),MediaLibrary.JsonOptions);
@@ -80,9 +80,9 @@ public static class MediaSearch
             }
             cancellation.ThrowIfCancellationRequested();
             var first=chosen.First();
-            completed++; Report("正在整理圖片關鍵字…");
+            completed++; Report(ChineseText.Ui("正在整理圖片關鍵字…"));
             var result=new MediaMatch(first.Title,ImageKeywords.ForSong(first,title,lyrics),chosen.SelectMany(s=>MediaLibrary.All.Where(a=>a.Theme==s.Id)).ToList());
-            cancellation.ThrowIfCancellationRequested(); completed++; Report("主題及關鍵字已就緒");
+            cancellation.ThrowIfCancellationRequested(); completed++; Report(ChineseText.Ui("主題及關鍵字已就緒"));
             return result;
         }
         finally { gate.Release(); }

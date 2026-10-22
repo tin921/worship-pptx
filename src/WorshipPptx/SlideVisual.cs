@@ -62,7 +62,7 @@ namespace WorshipPptx
             }
             else
             {
-                using var bitmap=SKBitmap.Decode(path) ?? throw new IOException("找不到或未能讀取背景圖片。");
+                using var bitmap=SKBitmap.Decode(path) ?? throw new IOException(ChineseText.Ui("找不到或未能讀取背景圖片。"));
                 using var image=SKImage.FromBitmap(bitmap);
                 var scale=Math.Max(1280f/bitmap.Width,720f/bitmap.Height); var w=bitmap.Width*scale; var h=bitmap.Height*scale;
                 canvas.DrawImage(image,new SKRect((1280-w)/2,(720-h)/2,(1280+w)/2,(720+h)/2),new SKSamplingOptions(SKFilterMode.Linear,SKMipmapMode.Linear));

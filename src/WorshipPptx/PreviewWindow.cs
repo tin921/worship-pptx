@@ -15,11 +15,11 @@ namespace WorshipPptx
         private int index;
         public PreviewWindow(IList<SlideData> slides)
         {
-            this.slides=slides; Title="預覽整個崇拜 · 左右鍵翻頁，Esc 關閉"; Width=1100; Height=760; MinWidth=600; MinHeight=450; WindowStartupLocation=WindowStartupLocation.CenterOwner;
+            this.slides=slides; Title=ChineseText.Ui("預覽整個崇拜 · 左右鍵翻頁，Esc 關閉"); Width=1100; Height=760; MinWidth=600; MinHeight=450; WindowStartupLocation=WindowStartupLocation.CenterOwner;
             var dock=new DockPanel { Margin=new Thickness(22) }; Content=dock;
             var nav=new StackPanel { Orientation=Orientation.Horizontal,HorizontalAlignment=HorizontalAlignment.Center,Margin=new Thickness(0,18,0,0) }; DockPanel.SetDock(nav,Dock.Bottom); dock.Children.Add(nav);
-            var prev=new Button { Content="← 上一頁" }; prev.Click+=(s,e)=>Move(-1); nav.Children.Add(prev); nav.Children.Add(caption);
-            var next=new Button { Content="下一頁 →" }; next.Click+=(s,e)=>Move(1); nav.Children.Add(next); dock.Children.Add(screen);
+            var prev=new Button { Content=ChineseText.Ui("← 上一頁") }; prev.Click+=(s,e)=>Move(-1); nav.Children.Add(prev); nav.Children.Add(caption);
+            var next=new Button { Content=ChineseText.Ui("下一頁 →") }; next.Click+=(s,e)=>Move(1); nav.Children.Add(next); dock.Children.Add(screen);
             AddHandler(KeyDownEvent,(_,e)=>
             {
                 if(e.Key==Key.Right || e.Key==Key.Space) { Move(1); e.Handled=true; }

@@ -14,6 +14,6 @@ public static class ImageSearchLink
         var words="("+string.Join(" OR ",terms.Select(s=>"\""+s+"\""))+")";
         var background=Regex.IsMatch(words,@"[\u3400-\u9fff]") ? "背景" : "background";
         // Google has no exact 720p-minimum option. Its 2 MP minimum exceeds 720p's pixel count.
-        return new("https://www.google.com/search?tbm=isch&hl=zh-HK&q="+Uri.EscapeDataString(words+" "+background)+"&imgsz=2mp&imgar=w&tbs=isz:lt,islt:2mp,iar:w");
+        return new("https://www.google.com/search?tbm=isch&hl="+ChineseText.CultureName+"&q="+Uri.EscapeDataString(words+" "+background)+"&imgsz=2mp&imgar=w&tbs=isz:lt,islt:2mp,iar:w");
     }
 }

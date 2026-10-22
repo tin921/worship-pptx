@@ -35,6 +35,7 @@ namespace WorshipPptx.Tests
             AppBuilder.Configure<App>().UseSkia().UseHeadless(new AvaloniaHeadlessPlatformOptions { UseHeadlessDrawing=false }).SetupWithoutStarting();
             root=Path.GetFullPath(args.Length>0 ? args[0] : Path.Combine(Path.GetTempPath(),"WorshipPptx-tests-"+Guid.NewGuid().ToString("N")));
             Directory.CreateDirectory(root);
+            if(args.Contains("--language-only")) { LanguageTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             if(args.Contains("--composition-only")) { CompositionTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             var settings=new UserSettings { ChurchLicense="12345" };
             var demo=Demo.Create();
@@ -233,6 +234,7 @@ namespace WorshipPptx.Tests
                 var settingsDialog=new SettingsDialog(settings);
                 Check(settingsDialog.FindControl<TextBox>("LicenseText").Text==settings.ChurchLicense,"Settings did not load");
             });
+            LanguageTests.Run(Test,Check,root);
             FormattingTests.Run(Test,Check,root);
             CompositionTests.Run(Test,Check,root);
             ProseTests.Run(Test,Check,root);

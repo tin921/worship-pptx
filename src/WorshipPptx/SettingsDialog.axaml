@@ -1,7 +1,7 @@
-<Window x:Class="WorshipPptx.SettingsDialog" xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="設定" Width="560" Height="360" CanResize="False" WindowStartupLocation="CenterOwner">
+<Window x:Class="WorshipPptx.SettingsDialog" xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WorshipPptx" Title="{local:Tr '設定'}" Width="560" Height="360" CanResize="False" WindowStartupLocation="CenterOwner">
  <Grid Margin="28"><Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions><StackPanel>
-  <TextBlock Text="教會設定" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,24"/>
-  <TextBox x:Name="LicenseText" PlaceholderText="教會 CCLI 授權編號（選填）"/><TextBlock Text="此編號會顯示於詩歌投影片；與個別詩歌編號不同。" Classes="caption" Margin="0,6,0,22"/>
-  <TextBlock Text="隨附的香港黑體及宋體會完整嵌入 PowerPoint。亦可選用本機已安裝的常用中文字體；使用 本機字體時，播放電腦需備有相同字體。" Classes="caption" Margin="0,10,0,0"/>
- </StackPanel><StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right"><Button Content="取消" Click="Cancel_Click" Margin="0,0,10,0"/><Button Content="儲存設定" Click="Save_Click" Classes="primary"/></StackPanel></Grid>
+  <TextBlock Text="{local:Tr '教會設定'}" FontSize="23" FontWeight="SemiBold" Margin="0,0,0,24"/>
+  <TextBox x:Name="LicenseText" PlaceholderText="{local:Tr '教會 CCLI 授權編號（選填）'}"/><TextBlock Text="{local:Tr '此編號會顯示於詩歌投影片；與個別詩歌編號不同。'}" Classes="caption" Margin="0,6,0,22"/>
+  <TextBlock Text="{local:Tr '隨附的香港黑體及宋體會完整嵌入 PowerPoint。亦可選用本機已安裝的常用中文字體；使用 本機字體時，播放電腦需備有相同字體。'}" Classes="caption" Margin="0,10,0,0"/>
+ </StackPanel><StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right"><Button Content="{local:Tr '取消'}" Click="Cancel_Click" Margin="0,0,10,0"/><Button Content="{local:Tr '儲存設定'}" Click="Save_Click" Classes="primary"/></StackPanel></Grid>
 </Window>

@@ -1,7 +1,8 @@
 # Worship PPTX
 
-Create Sunday worship PowerPoint slides from song lyrics, Scripture readings, and announcements. Worship PPTX helps worship leaders spend less time formatting slides, with a Traditional Chinese interface and layouts that leave room for a camera view.
+Create Sunday worship PowerPoint slides from song lyrics, Scripture readings, and announcements. Worship PPTX helps worship leaders spend less time formatting slides, with Traditional and Simplified Chinese interfaces and layouts that leave room for a camera view.
 
+- Switch between Traditional and Simplified Chinese for the interface, presentation text, and PowerPoint export; original text is preserved.
 - Reorder song tabs, set verse/chorus repeats, and keep service history with automatic saving.
 - Automatically split lyrics into slides and fit each announcement onto one slide.
 - Customize fonts, colors, and alignment, with slide previews and adjustable camera picture-in-picture guides.

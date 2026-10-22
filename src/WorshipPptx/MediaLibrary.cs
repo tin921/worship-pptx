@@ -16,7 +16,7 @@ namespace WorshipPptx
         public bool Core { get; set; }
         public string Still { get; set; }
         public string Key => "media:"+Id;
-        public string StyleLabel => Style switch { "photo"=>"攝影", "illustration"=>"插畫", "abstract"=>"抽象", "generic"=>Lighting=="daylight" ? "通用 · 日光" : "通用 · 夜色", _=>"原有素材" };
+        public string StyleLabel => Style switch { "photo"=>ChineseText.Ui("攝影"), "illustration"=>ChineseText.Ui("插畫"), "abstract"=>ChineseText.Ui("抽象"), "generic"=>Lighting=="daylight" ? ChineseText.Ui("通用 · 日光") : ChineseText.Ui("通用 · 夜色"), _=>ChineseText.Ui("原有素材") };
     }
     public static class MediaLibrary
     {
@@ -34,13 +34,13 @@ namespace WorshipPptx
             if(string.IsNullOrWhiteSpace(relative)) return "";
             var root=Path.GetFullPath(Root)+Path.DirectorySeparatorChar;
             var path=Path.GetFullPath(Path.Combine(Root,relative.Replace('/',Path.DirectorySeparatorChar)));
-            if(!path.StartsWith(root,OperatingSystem.IsWindows()?StringComparison.OrdinalIgnoreCase:StringComparison.Ordinal)) throw new IOException("素材路徑不正確。");
+            if(!path.StartsWith(root,OperatingSystem.IsWindows()?StringComparison.OrdinalIgnoreCase:StringComparison.Ordinal)) throw new IOException(ChineseText.Ui("素材路徑不正確。"));
             return path;
         }
         public static string StillPath(string key)
         {
             if(key?.StartsWith("media:",StringComparison.Ordinal)!=true) return key ?? "";
-            var asset=Find(key) ?? throw new IOException("找不到已選的內置素材，請重新選擇背景。");
+            var asset=Find(key) ?? throw new IOException(ChineseText.Ui("找不到已選的內置素材，請重新選擇背景。"));
             return FilePath(asset.Still);
         }
         public static bool Daylight(string key) => Find(key)?.Lighting=="daylight";

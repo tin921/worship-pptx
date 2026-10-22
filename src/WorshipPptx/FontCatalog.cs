@@ -9,17 +9,18 @@ namespace WorshipPptx
     public sealed class FontChoice
     {
         public string Name { get; }
-        public string DisplayName { get; }
+        private readonly string displayName;
+        public string DisplayName => ChineseText.Ui(displayName);
         public string FilePath { get; }
         public FontFamily Family { get; }
         public bool IsBundled => !string.IsNullOrEmpty(FilePath);
         public FontChoice(string name,string label,string filename)
         {
-            Name=name; DisplayName=label;
+            Name=name; displayName=label;
             FilePath=Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Fonts",filename);
             Family=new FontFamily("avares://WorshipPptx/Fonts#"+name);
         }
-        public FontChoice(string name,string label,FontFamily family) { Name=name; DisplayName=label+" · "+name; Family=family; }
+        public FontChoice(string name,string label,FontFamily family) { Name=name; displayName=label+" · "+name; Family=family; }
     }
     public static class FontCatalog
     {

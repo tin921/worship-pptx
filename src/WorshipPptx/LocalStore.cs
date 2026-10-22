@@ -34,7 +34,7 @@ namespace WorshipPptx
                 {
                     try { var plan = Read<ServicePlan>(file + ".bak"); if (plan?.Items != null) list.Add(plan); }
                     catch { /* Keep damaged files intact for recovery. */ }
-                    RecoveryWarning = "部分紀錄未能讀取；原檔及備份已保留。";
+                    RecoveryWarning = ChineseText.Ui("部分紀錄未能讀取；原檔及備份已保留。");
                 }
             }
             return list.OrderByDescending(p => p.Updated).ToList();
@@ -44,7 +44,7 @@ namespace WorshipPptx
             var file = Path.Combine(Root, "settings.json");
             if (!File.Exists(file)) return new UserSettings();
             try { return Read<UserSettings>(file) ?? new UserSettings(); }
-            catch { RecoveryWarning = "設定未能讀取，原檔已保留。"; return new UserSettings(); }
+            catch { RecoveryWarning = ChineseText.Ui("設定未能讀取，原檔已保留。"); return new UserSettings(); }
         }
         public void SaveSettings(UserSettings settings) => Write(Path.Combine(Root, "settings.json"), settings);
     }

@@ -22,7 +22,7 @@ public static class SingerGuide
         art.Children.Add(new Image { Source=illustration.Value,Stretch=Stretch.UniformToFill });
         art.Children.Add(new Border {
             VerticalAlignment=VerticalAlignment.Bottom,Background=Brush.Parse("#ECFFFFFF"),Padding=new Thickness(0,4),
-            Child=new TextBlock { Text="攝影機位置示意 · 不會匯出",FontSize=16,Foreground=Brush.Parse("#52616B"),TextAlignment=TextAlignment.Center }
+            Child=new TrText("攝影機位置示意 · 不會匯出") { FontSize=16,Foreground=Brush.Parse("#52616B"),TextAlignment=TextAlignment.Center }
         });
         return new Border { Name="SingerGuide",Width=1280,Height=720,ClipToBounds=true,Child=art };
     }
