@@ -12,6 +12,8 @@ Create Sunday worship PowerPoint slides from song lyrics, Scripture readings, an
 
 ![Background picker with theme matching and image import options](docs/background-picker.png)
 
+[Watch the English tutorial (2:51 · 720p)](https://github.com/tin921/worship-pptx/releases/download/v0.91/worship-pptx-0.91-english-720p.mp4)
+
 [Download for Windows](https://github.com/tin921/worship-pptx/releases/latest)
 
 macOS version coming soon.
