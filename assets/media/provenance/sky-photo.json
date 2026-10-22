@@ -1,0 +1,9 @@
+{
+  "id": "sky-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-b1bfa90b-3587-4356-83db-973211377350.png",
+  "file": "assets/media/themes/sky/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "63dcf3f28f672c4fb1517c95e14b09bb99333f6b7aa849cbb00e72b2a58d08e0"
+}

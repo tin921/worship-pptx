@@ -1,0 +1,9 @@
+{
+  "id": "harp-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-1352622d-6425-43f6-94d8-a7c11e54c9d7.png",
+  "file": "assets/media/themes/harp/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "a8b4985fa36fcba38b1edd59ee96cd9c47a11b3ada7ff3844bf20ab8e635ebe2"
+}

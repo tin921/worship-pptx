@@ -1,8 +1,10 @@
 using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
+using Avalonia;
+using Avalonia.Layout;
+using Avalonia.Controls;
+using Avalonia.Input;
+using Avalonia.Interactivity;
+using Avalonia.Media;
 namespace WorshipPptx
 {
     public sealed class PreviewWindow : Window
@@ -18,9 +20,15 @@ namespace WorshipPptx
             var nav=new StackPanel { Orientation=Orientation.Horizontal,HorizontalAlignment=HorizontalAlignment.Center,Margin=new Thickness(0,18,0,0) }; DockPanel.SetDock(nav,Dock.Bottom); dock.Children.Add(nav);
             var prev=new Button { Content="← 上一頁" }; prev.Click+=(s,e)=>Move(-1); nav.Children.Add(prev); nav.Children.Add(caption);
             var next=new Button { Content="下一頁 →" }; next.Click+=(s,e)=>Move(1); nav.Children.Add(next); dock.Children.Add(screen);
-            KeyDown+=(s,e)=> { if(e.Key==Key.Right || e.Key==Key.Space) Move(1); if(e.Key==Key.Left) Move(-1); if(e.Key==Key.Escape) Close(); }; Show();
+            AddHandler(KeyDownEvent,(_,e)=>
+            {
+                if(e.Key==Key.Right || e.Key==Key.Space) { Move(1); e.Handled=true; }
+                else if(e.Key==Key.Left) { Move(-1); e.Handled=true; }
+                else if(e.Key==Key.Escape) { Close(); e.Handled=true; }
+            },RoutingStrategies.Tunnel,true);
+            ShowPage();
         }
-        private new void Show() { screen.Child=SlideVisual.Create(slides[index]); caption.Text=(index+1)+" / "+slides.Count+"  ·  "+slides[index].Title+"  ·  "+slides[index].Section; }
-        private void Move(int delta) { index=(index+delta+slides.Count)%slides.Count; Show(); }
+        private void ShowPage() { screen.Child=SlideVisual.Create(slides[index],true); caption.Text=(index+1)+" / "+slides.Count+"  ·  "+slides[index].Title+"  ·  "+slides[index].Section; }
+        private void Move(int delta) { index=(index+delta+slides.Count)%slides.Count; ShowPage(); }
     }
 }

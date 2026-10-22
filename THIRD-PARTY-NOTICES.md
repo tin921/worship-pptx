@@ -19,9 +19,32 @@ Font redistribution and document embedding are permitted by these licences.
 The application loads its own copies without installing fonts system-wide.
 The selected font is embedded in each presentation as a full EOT font part.
 
+## Desktop runtime
+
+The Avalonia build includes these open-source runtime components. Copyright and
+licence texts, including native-library dependencies, are bundled in
+`THIRD-PARTY-LICENSES.txt`.
+
+- Avalonia 12.1.4 and its desktop backends / Fluent theme (MIT), AvaloniaUI Project.
+- SkiaSharp 3.119.4 (MIT) and Skia native dependencies (their included licences), Microsoft / Google and contributors.
+- HarfBuzzSharp 8.3.1.3 (MIT) and HarfBuzz native dependencies (their included licences).
+- ANGLE native graphics (BSD-style), the ANGLE Project Authors.
+- MicroCom.Runtime 0.11.6 (MIT), Nikita Tsukanov.
+- Tmds.DBus.Protocol 0.94.1 (MIT), Tom Deseyn; Linux desktop dependency.
+- Microsoft .NET 10 runtime (MIT and the accompanying third-party notices), included in self-contained builds.
+- Windows builds also include the Microsoft Visual C++ v14 CRT DLLs from the build host's licensed Visual Studio redistributable folder, under Microsoft's terms (not the project's MIT licence). `VC-RUNTIME-MANIFEST.json` records versions and hashes. This application-local deployment supports portable/per-user use without installing a system runtime. These copies are serviced through application updates. See https://learn.microsoft.com/cpp/windows/redistributing-visual-cpp-files and https://learn.microsoft.com/cpp/windows/choosing-a-deployment-method.
+
+## Local background matching and generated media
+
+- Microsoft.ML.OnnxRuntime 1.31.0 (1.23.2 for Intel Mac) and Microsoft.ML.Tokenizers 2.0.1: MIT, Microsoft and contributors. Native runtime notices accompany the package. Intel Mac keeps the matching managed/native 1.23.2 pair because newer official packages omit its native library.
+- `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`: Apache 2.0, Sentence Transformers contributors. Pinned model/tokenizer sources and checksums are in `scripts/prepare-model.ps1`; the full Apache licence is included at `assets/models/LICENSE.txt` (installed at `Models/LICENSE.txt`).
+- The Traditional-to-Simplified character map is derived from OpenCC, Apache 2.0, BYVoid and contributors, https://github.com/BYVoid/OpenCC. The same included Apache licence applies to the derived normalization table.
+- Themed media are original AI-generated assets. Generic graphics and their renderer are original project work. Prompts/provenance and runtime use are described in `docs/media-library.md`.
+- Historical animation experiments used FFmpeg as a developer-only tool. The app ships static images only, without MP4 files, animated WebP previews or FFmpeg binaries.
+
 ## Build and verification tools
 
-- Microsoft .NET Framework reference assemblies: development only; NuGet packages.
+- Microsoft .NET 10 SDK: development only.
 - Microsoft Open XML SDK 3.3.0 (MIT): test-only schema validation; not shipped in the app.
 - WiX Toolset 3.14.1 (Microsoft Reciprocal License): MSI build tool; downloaded with
   a pinned SHA-256 hash. The WiX UI and standard actions are included in the MSI.

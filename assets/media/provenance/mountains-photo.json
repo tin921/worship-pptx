@@ -1,0 +1,9 @@
+{
+  "id": "mountains-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-d0022842-7a8d-4f81-ae6c-f71b93d30cd8.png",
+  "file": "assets/media/themes/mountains/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "186aa238e6fb6c9bdaf74e68d5539c467758ed863f46c8ca40ec34f3d21acace"
+}

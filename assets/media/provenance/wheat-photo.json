@@ -1,0 +1,9 @@
+{
+  "id": "wheat-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-cb7fba97-c6f8-46b0-9bf8-e3dceb417e35.png",
+  "file": "assets/media/themes/wheat/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "a8528fdcd1e3506053b5e35bdcebba4a2149f9db8f6cf4f023bc05dcc4b6d142"
+}

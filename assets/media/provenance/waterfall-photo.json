@@ -1,0 +1,9 @@
+{
+  "id": "waterfall-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-bd4b1a97-e722-4e24-85ed-80e4ab96beb6.png",
+  "file": "assets/media/themes/waterfall/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "c38ad13dc9aab5211460b24a2d3833efb705f4e06a9486ea78409544046c72a7"
+}

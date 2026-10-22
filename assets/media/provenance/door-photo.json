@@ -1,0 +1,9 @@
+{
+  "id": "door-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-be10faa3-f289-4a42-b78f-f4da326486ad.png",
+  "file": "assets/media/themes/door/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "dff21787c664a38a84f5760a867ef76901a1c8a3181dd89180f2b5f30689bb59"
+}

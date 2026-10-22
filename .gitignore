@@ -64,3 +64,12 @@ dist/
 packages/
 *.wixobj
 *.wixpdb
+
+# Local Python research bytecode
+__pycache__/
+*.pyc
+
+# Model weights are downloaded and hash-verified by scripts/prepare-model.ps1.
+assets/models/*.onnx
+assets/models/tokenizer.json
+assets/media/**/*.partial.*

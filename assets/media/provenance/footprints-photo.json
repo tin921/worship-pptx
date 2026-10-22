@@ -1,0 +1,9 @@
+{
+  "id": "footprints-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-e4b092bb-1248-4a52-89b6-33612596819e.png",
+  "file": "assets/media/themes/footprints/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "f1ebb12432a4a741ddf12e214d60148204e5d9eff2d31b6ccb03fba1f3a0a89f"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "sunset-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-3ef19407-f562-452f-b8fa-0fec658c0b7e.png",
+  "file": "assets/media/themes/sunset/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "15489ee860327d551213bdfeec3c5e0b9e48f9a13d46204577d120cae97cb908"
+}

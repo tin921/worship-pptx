@@ -1,73 +1,139 @@
 # Development
 
-## Build
+## Build and run
 
-Use Visual Studio Build Tools 2022 with MSBuild and .NET desktop build tools.
-The classic C# projects target `net462` / AnyCPU. NuGet restores the Framework
-reference assemblies, so an old targeting pack need not be installed globally.
+The desktop app uses **C#, Avalonia 12.1.4 and .NET 10**. Install the .NET 10 SDK;
+Visual Studio and the macOS .NET workload are not required. PowerShell scripts
+also find an SDK installed privately in `.tools/dotnet`.
 
 ```powershell
-.\scripts\build.ps1
-.\src\WorshipPptx\bin\Release\WorshipPptx.exe
-.\scripts\package.ps1 -Version 1.0.0
+./scripts/build.ps1
+./scripts/publish.ps1 -Runtime win-x64
+./scripts/run.ps1 -SkipBuild
+./scripts/package.ps1 -Version 0.91.0 -SkipBuild
 ```
 
-`dist` contains the MSI, portable ZIP and checksums. WiX 3.14.1 is downloaded to
-`.tools` and checked against its pinned SHA-256. The MSI installs per user, checks
-the Windows build and Framework release, adds a Start menu shortcut, supports
-major upgrades and uninstall, and leaves user data intact. It does not install
-fonts globally. A signing certificate is not included; artifacts are unsigned.
+`build.ps1` builds and runs the validation suite. `publish.ps1` creates a
+self-contained app, including the runtime and native graphics libraries.
+`package.ps1` creates an x64 per-user MSI and portable ZIP in `dist`; it includes
+all runtime DLLs, fonts and notices. No script pushes code or uploads a release.
+WiX 3.14.1 is downloaded with a pinned SHA-256 check if needed.
 
-## Structure
+On macOS:
 
-- `Models.cs`, `LocalStore.cs`: service data, settings, atomic JSON save and backup.
-- `SlideLayout.cs`: section parsing, repeat order, manual and automatic pagination.
-- `SlideVisual.cs`: WPF preview and original vector mountain illustration.
-- `PptxWriter.cs`: Open XML ZIP writer, editable native text, embedded PNGs and fonts.
-- `FontCatalog.cs`: application-private font loading and EOT font packaging.
-- `ImageStore.cs`, `BackgroundDialog`: validated file, URL, drop and clipboard imports.
-- `MainWindow.xaml`: narrow editor, raised tabs, background panel and vertical filmstrip.
-- `tests`: standalone .NET Framework test runner and Microsoft Open XML SDK validator.
+```sh
+dotnet run --project tests/WorshipPptx.Tests.csproj -c Release -- artifacts/verification
+bash scripts/package-macos.sh osx-arm64 0.91.0
+# Intel Mac: use osx-x64 instead.
+```
 
-The app has no third-party runtime assemblies and does not require Office.
-Images and full fonts are embedded. All native text shapes are bounded above
-the midpoint of the 1280 × 720 layout. Preview and PPTX share pagination,
-font metrics, line positions and image crop; viewer rendering can still differ.
+The Mac script produces an `.app`, ZIP and DMG with ad-hoc signatures for local
+testing. Public distribution needs Developer ID signing and notarization; those
+steps are intentionally not automated without signing credentials. The current
+Mac builds were cross-published from Windows, not executed on a Mac. The macOS
+CI job can exercise native fonts, rendering, storage and packaging when run.
 
-Fonts are checked in under `assets/fonts`. `scripts/prepare-fonts.py` reproduces
-static weight-400 fonts from a pinned upstream revision, using Python and
-`fonttools==4.60.1`. It is optional for normal builds. Font licenses and provenance
-travel with the application.
+Cross-build either Mac architecture from Windows:
 
-For isolated manual testing, set `WORSHIP_PPTX_DATA` to a temporary directory
-before launching the app. This environment variable is optional and is not
-written to user settings.
+```powershell
+./scripts/publish.ps1 -Runtime osx-arm64
+./scripts/publish.ps1 -Runtime osx-x64
+```
 
-## Validation
+## Compatibility
 
-Automated coverage includes parsing and error handling, repeats, Unicode and
-Traditional/Simplified Chinese wrapping, history and recovery, image imports
-through files/HTTP/clipboard/drop data, invalid and oversized images, native
-Open XML schema validation, embedded images, the upper-half text boundary,
-font selection persistence, bundled glyph coverage and full embedded fonts.
+- Windows x64: Windows 10 / 11. The installer's compatibility floor is Windows
+  10 1607, build 14393, based on .NET 10's listed LTSC/Enterprise baseline.
+  **That old Windows build has not been tested.** Use Windows 10 22H2 or Windows
+  11 for the Avalonia support tiers currently listed by its maintainers.
+- macOS: package baseline **14.0**, Apple Silicon and Intel. Both architectures
+  cross-compile; an actual Mac review is still required.
+- Tested locally: Windows 11 build 26200, x64. The old WPF build's Windows 10
+  1507 / .NET Framework 4.6.2 target does not apply to this branch.
+- Framework support and Microsoft's OS lifecycle are different from whether an
+  application can run. .NET's current Windows 10 support is limited to the listed
+  LTSC/Enterprise editions.
 
-The generated EOT bytes are also loaded and released through Windows'
-`TTLoadEmbeddedFont` / `TTDeleteEmbeddedFont` APIs using private, temporary,
-editable font loading. This checks the actual font payload beyond XML validation.
+Sources: [Avalonia platform support](https://docs.avaloniaui.net/docs/supported-platforms),
+[Microsoft .NET on Windows](https://learn.microsoft.com/en-us/dotnet/core/install/windows).
 
-Manual UI and installer verification results are recorded with the release.
-Windows 10 build 10240 is the compatibility target derived from the Framework
-4.6.2 APIs used. An actual Windows 10 1507 virtual machine has not been tested.
-PowerPoint is not installed on the build host, so schema/font validation is not
-a claim of visual verification inside PowerPoint. Verify a presentation on the
-church's projection PC before its first live use.
+## Structure and data
 
-## Design choices
+- `Models.cs`, `LocalStore.cs`: existing JSON format, atomic save and backups.
+- `SlideLayout.cs`: section parsing, repetitions, Unicode wrapping and pagination.
+- `SlideVisual.cs`: Avalonia previews and Skia 720p background rendering.
+- `PptxWriter.cs`: editable Open XML text, embedded still images and bundled fonts.
+- `FontCatalog.cs`: bundled HK fonts, detected Windows/Mac Chinese fonts and EOT.
+- `ImageStore.cs`, `BackgroundDialog`: bundled gallery, local files, direct URLs, drop and paste.
+- `MediaLibrary.cs`: portable paths for the 270 static background images.
+- `MediaSearch.cs`: lazy local ONNX matching when Edit Background opens or a new match is requested.
+- `ImageKeywords.cs`, `ImageSearchLink.cs`: song-language theme/terms and escaped Google Images links.
+- `TextColors.cs`, `SingerGuide.cs`: swatch palette and a preview-only camera placement illustration.
+- `PreviewLayout.cs`, `CompositionPreview.cs`, `CompositionControls.cs`: persisted per-tab preview sources/geometry, drag/resize editor, six presets and focused numeric wheel input. The camera PiP centre selects the opposite text half; slide PiP/full-screen selects the full text area.
+- `MainWindow.axaml`: three resizable panels, draggable tabs and placeholder fields.
+- `tests`: Avalonia headless UI checks with real Skia/font rendering and Open XML validation.
 
-- Only the two bundled OFL fonts are selectable. Arbitrary installed fonts may
-  prohibit redistribution or embedding, so they are not silently copied.
-- Fonts are embedded in full, rather than subset, so recipients can edit lyrics.
-- No image-search API, AI model, Drive upload, analytics, or account login.
-- Copyright and licence fields are acknowledgement text, not a rights-management service.
-- URLs are fetched only when the user requests an image, over HTTP(S), with a
-  size limit and timeout. Responses must decode as a supported image.
+Windows keeps `%LOCALAPPDATA%/WorshipPptx`; macOS uses
+`~/Library/Application Support/WorshipPptx`. `WORSHIP_PPTX_DATA` overrides the data
+folder for isolated tests. No production data is used by the automated suite.
+New tabs default to 36 pt, centered white text, normal weight, top vertical alignment and upper-half/PiP layout. Existing service-wide typography is copied into independent tab formatting objects during deserialization; explicitly saved tab settings take precedence. Obsolete animation flags are ignored. A pre-migration local
+backup was retained under ignored `.tools/migration-backup/2026-10-21`.
+
+Both bundled OFL fonts support Traditional and Simplified Chinese with Hong Kong
+glyph conventions, and are embedded in full. Installed system fonts are only
+referenced by name; they must also be available on the playback computer.
+The app uses platform file pickers and clipboard APIs, including Ctrl on Windows
+and Command on Mac. No WPF, WinForms, Office automation or WebView is required.
+
+## Validation and remaining review
+
+The suite covers parsing and repetitions,
+whitespace-preserving Unicode wrapping, automatic untagged scripture pagination, single-slide numbered announcements with per-item font fitting, Tab input, history and recovery, input validation, file/URL/drop/paste data,
+Chinese font coverage, embedded EOT validation through Windows' font loader,
+Open XML schema, image embedding, top-half text bounds, typography, tab ordering,
+legacy defaults, dialog initialization, column layout and immediate thumbnail
+keyboard selection and full-service preview navigation. It also checks the 270-item media manifest,
+lazy matching activation, tokenizer/vector parity, Traditional/Simplified matching, stage-based matching progress/cancellation, editable OR image-search links,
+the final add-tab, Sunday dates, per-tab formatting migration/persistence, live history naming, a scroll-free palette, bold/full-slide export, camera-guide exclusion, static-only export and 60% title credits.
+The two Windows-only EOT-loader checks are skipped on macOS.
+No app screenshots are taken by these tests.
+
+`--composition-only` runs the focused composition suite against an isolated store. It covers
+all eight resize handles through a scaled Viewbox, dragging/clamping, editable percentage
+fields and focused wheel input, source swapping, six inset/full-screen presets, per-tab
+save/reload, automatic text regions, bottom-half native PPTX text and credits, sidebar date
+ordering/live names/past-title styling, and minimum-window control bounds. Camera layouts
+remain preview-only; PPTX includes the slide background and native text in the derived region.
+
+The Windows review build opens with existing user data. Native tab dragging,
+clipboard interaction, file pickers and the visual layout still warrant user
+review. Mac execution and the Mac packaging script remain untested locally.
+PowerPoint is not installed on this host, so schema validation does not certify
+visual rendering in PowerPoint. Installer install/upgrade/uninstall testing has
+not been repeated for this migration; the release payload is verified by extraction and file hashes.
+The MSI/ZIP payload check compares all shipped files, including the complete `Media` and
+`Models` directory trees; installer harvesting preserves their relative paths. Both Mac
+architectures include the matching ONNX native runtime. Intel Mac uses 1.23.2 because
+newer official runtime packages omit Intel Mac. Its inference API/model compatibility
+was additionally exercised on Windows; that does not replace a native Mac run.
+Tokenizer fixture IDs must match exactly. Quantized vectors require cosine similarity
+above 0.995 to allow small native-kernel differences; the older runtime measured at least
+0.9979 against the seven reference fixtures. Search-result assertions are unchanged.
+Packaging and media validation evidence is saved locally under ignored `artifacts/`.
+
+The README now shows the current Avalonia interface using the user's supplied
+screenshots. Windows v0.91.0 is published with an MSI installer and portable ZIP;
+macOS distribution is still forthcoming.
+
+## Media defaults
+
+App backgrounds are static images at **1280 × 720**, 16:9. See
+[background asset guidelines](media-guidelines.md). Existing pilot assets are
+unchanged, with 720p application copies under `assets/media/legacy`.
+The app now bundles 240 themed choices, 20 day/night generic choices and 10 pilot choices.
+See [media library](media-library.md) for build scripts, model hashes, matching logic,
+static export behavior and the remaining native PowerPoint review.
+
+`scripts/build.ps1` and `scripts/publish.ps1` prepare the pinned, hash-verified local model.
+Builds need Internet only if these model files are missing. Installed applications include
+them and do not download them at startup or search time.

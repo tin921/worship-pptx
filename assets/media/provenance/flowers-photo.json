@@ -1,0 +1,9 @@
+{
+  "id": "flowers-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-a4f76d2c-ea48-4b0c-b6df-fc2d44c6a212.png",
+  "file": "assets/media/themes/flowers/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "a737fbc9c27305a6fc597c5e3630b0aa4c8b343511fe532ccadc933de14f6be5"
+}

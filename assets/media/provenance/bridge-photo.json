@@ -1,0 +1,9 @@
+{
+  "id": "bridge-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-fcf4c16f-a0b5-400d-a67f-4d54dd0c50bc.png",
+  "file": "assets/media/themes/bridge/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "cd5630f93bbb6fd296dc0953b536e92f2bf403d8cc533ceb8f7f174276a74498"
+}

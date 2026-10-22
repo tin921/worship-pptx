@@ -1,0 +1,11 @@
+{
+  "asset": "worship-leader-guitar.png",
+  "generator": "OpenAI built-in image generation",
+  "generated_date": "2026-10-22",
+  "reference": "User-provided illustration of the worship leader",
+  "final_edit": "Play acoustic guitar and sing into a stand microphone on a bright white stage; remove podium and orange lighting; preserve gold cross necklace",
+  "original_file": "exec-919b6a90-f2cf-4361-9495-542d104e383f.png",
+  "sha256": "c1a6b2454bfd0496cb99fc67cda5d287b6a3ddeca83081d8e501350716bcf5c2",
+  "prompt": "worship-leader-guitar.prompt.txt",
+  "usage": "Bundled preview-only PiP artwork, excluded from PowerPoint export"
+}

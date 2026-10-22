@@ -2,12 +2,23 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
  <Product Id="*" Name="Worship PPTX" Language="1033" Version="$(var.Version)" Manufacturer="worship-pptx contributors" UpgradeCode="09DE825F-D623-44B9-B5F8-A497768A3E8B">
   <Package InstallerVersion="500" Compressed="yes" InstallScope="perUser" InstallPrivileges="limited" Description="Worship PPTX - Hong Kong Chinese worship slide creator"/>
+  <?if $(var.Version) = "0.91.0" ?>
+  <!-- The preview was renumbered after the original 1.0.0 release. Replace that
+       exact legacy version while continuing to block genuinely newer builds. -->
+  <Upgrade Id="09DE825F-D623-44B9-B5F8-A497768A3E8B">
+   <UpgradeVersion Minimum="0.0.0" IncludeMinimum="yes" Maximum="$(var.Version)" IncludeMaximum="yes" OnlyDetect="no" Property="PREVIOUSPREVIEW"/>
+   <UpgradeVersion Minimum="1.0.0" IncludeMinimum="yes" Maximum="1.0.0" IncludeMaximum="yes" OnlyDetect="no" Property="LEGACYRELEASE"/>
+   <UpgradeVersion Minimum="$(var.Version)" IncludeMinimum="no" Maximum="1.0.0" IncludeMaximum="no" OnlyDetect="yes" Property="NEWERPREVIEW"/>
+   <UpgradeVersion Minimum="1.0.0" IncludeMinimum="no" OnlyDetect="yes" Property="NEWERRELEASE"/>
+  </Upgrade>
+  <Condition Message="A newer version of Worship PPTX is already installed.">Installed OR NOT (NEWERPREVIEW OR NEWERRELEASE)</Condition>
+  <InstallExecuteSequence><RemoveExistingProducts After="InstallInitialize"/></InstallExecuteSequence>
+  <?else?>
   <MajorUpgrade DowngradeErrorMessage="A newer version of Worship PPTX is already installed." Schedule="afterInstallInitialize"/>
+  <?endif?>
   <MediaTemplate EmbedCab="yes" CompressionLevel="high"/>
-  <PropertyRef Id="NETFRAMEWORK45"/>
   <Property Id="WINDOWSBUILD"><RegistrySearch Id="WindowsBuild" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Name="CurrentBuildNumber" Type="raw"/></Property>
-  <Condition Message="Windows 10 (build 10240) or Windows 11 is required.">Installed OR WINDOWSBUILD &gt;= 10240</Condition>
-  <Condition Message="Microsoft .NET Framework 4.6.2 or later is required. Install it from https://dotnet.microsoft.com/download/dotnet-framework/net462, then run this installer again.">Installed OR NETFRAMEWORK45 &gt;= "#394802"</Condition>
+  <Condition Message="64-bit Windows 10 (1607 / build 14393) or later is required. Windows 10 22H2 or Windows 11 is recommended.">Installed OR (VersionNT64 AND WINDOWSBUILD &gt;= 14393)</Condition>
   <Property Id="ARPCOMMENTS" Value="Create Sunday worship PowerPoint slides in Hong Kong Traditional Chinese."/>
   <Property Id="ARPURLINFOABOUT" Value="https://github.com/tin921/worship-pptx"/>
   <Icon Id="AppIcon" SourceFile="$(var.ProjectRoot)\assets\app.ico"/>
@@ -16,7 +27,7 @@
    <Directory Id="LocalAppDataFolder"><Directory Id="ProgramsFolder" Name="Programs"><Directory Id="INSTALLFOLDER" Name="WorshipPptx"><Directory Id="FONTSFOLDER" Name="Fonts"/></Directory></Directory></Directory>
    <Directory Id="ProgramMenuFolder"><Directory Id="MenuFolder" Name="Worship PPTX"/></Directory>
   </Directory>
-  <DirectoryRef Id="MenuFolder"><Component Id="StartMenu" Guid="A9E673A4-53DE-47D7-B7A2-758E8AC38545">
+  <DirectoryRef Id="MenuFolder"><Component Id="StartMenu" Guid="0A792864-51E9-4051-A405-394782512F7D" Win64="yes">
    <Shortcut Id="AppShortcut" Name="Worship PPTX" Description="Create Sunday worship slides" Target="[INSTALLFOLDER]WorshipPptx.exe" WorkingDirectory="INSTALLFOLDER"/>
    <RemoveFolder Id="RemoveMenuFolder" On="uninstall"/>
    <RemoveFolder Id="RemoveFonts" Directory="FONTSFOLDER" On="uninstall"/>

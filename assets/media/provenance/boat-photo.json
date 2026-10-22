@@ -1,0 +1,9 @@
+{
+  "id": "boat-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-ed59c90d-65da-4a9d-97b3-9f9d14353b76.png",
+  "file": "assets/media/themes/boat/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "cb7d38b7b1ddbb1c8b5c30b298b28c01d781ab7fa84b86da54ff88a696999d04"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "church-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-b222a311-6461-48a0-a11b-fb3417bedaa5.png",
+  "file": "assets/media/themes/church/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "5e4e0dccbb418ed48201ac168a18d546d1ca3ca152b3af1f3ad54748f3fcdbb1"
+}

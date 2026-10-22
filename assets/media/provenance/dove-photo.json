@@ -1,0 +1,9 @@
+{
+  "id": "dove-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-9d822e20-ee40-4929-a7b6-12bcdb4ab08d.png",
+  "file": "assets/media/themes/dove/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "54f4e386f46d18a89afc4199f6fb752c86ecdb1e1375d52db203ef77c655ba9c"
+}

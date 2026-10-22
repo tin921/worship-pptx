@@ -1,0 +1,38 @@
+<Window x:Class="WorshipPptx.BackgroundDialog" xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="選擇背景" Width="1080" Height="800" MinWidth="880" MinHeight="680" WindowStartupLocation="CenterOwner" DragDrop.AllowDrop="True" DragDrop.Drop="Image_Drop" DragDrop.DragOver="Image_DragOver" KeyDown="Window_KeyDown">
+ <Grid Margin="24" RowDefinitions="Auto,*,Auto,Auto">
+  <StackPanel Margin="0,0,0,16"><TextBlock Text="為詩歌選一張背景" FontSize="24" FontWeight="SemiBold"/><TextBlock Text="開啟時以歌名及歌詞配對主題；可修改關鍵字，再開啟 Google 圖片搜尋。" Classes="caption" Margin="0,7,0,0"/></StackPanel>
+  <Grid Grid.Row="1" ColumnDefinitions="*,24,300">
+   <Grid RowDefinitions="Auto,Auto,*,Auto">
+    <Grid ColumnDefinitions="*,10,Auto"><TextBox x:Name="SearchText" PlaceholderText="圖片關鍵字 · 配對後自動填入，可自行修改" MaxLength="300" TextChanged="Keywords_Changed"/><Button x:Name="SearchButton" Grid.Column="2" Content="重新配對" Click="Search_Click" Classes="primary"/></Grid>
+    <Grid Grid.Row="1" ColumnDefinitions="*,12,*" Margin="0,12,0,12">
+     <ComboBox x:Name="CollectionFilter" SelectedIndex="0" SelectionChanged="Filter_Changed" HorizontalAlignment="Stretch"><ComboBoxItem Content="全部素材"/><ComboBoxItem Content="60 個核心主題"/><ComboBoxItem Content="20 個延伸主題"/><ComboBoxItem Content="通用 · 日光"/><ComboBoxItem Content="通用 · 夜色"/><ComboBoxItem Content="最初示範素材"/></ComboBox>
+     <ComboBox x:Name="StyleFilter" Grid.Column="2" SelectedIndex="0" SelectionChanged="Filter_Changed" HorizontalAlignment="Stretch"><ComboBoxItem Content="全部風格"/><ComboBoxItem Content="攝影"/><ComboBoxItem Content="插畫"/><ComboBoxItem Content="抽象"/></ComboBox>
+    </Grid>
+    <ScrollViewer x:Name="GalleryScroll" Grid.Row="2" HorizontalScrollBarVisibility="Disabled"><WrapPanel x:Name="Gallery" Orientation="Horizontal"/></ScrollViewer>
+    <Border x:Name="MatchingStatus" Grid.Row="2" IsVisible="False" Background="#F4FFFFFF" CornerRadius="10" Padding="24">
+     <StackPanel VerticalAlignment="Center" Spacing="14">
+      <TextBlock Text="正在擷取主題及關鍵字…" FontSize="21" FontWeight="SemiBold" TextWrapping="Wrap"/>
+      <TextBlock x:Name="MatchProgressMessage" Text="正在準備分析…" TextWrapping="Wrap"/>
+      <ProgressBar x:Name="MatchProgressBar" Minimum="0" Maximum="100" Height="8" IsIndeterminate="True"/>
+      <TextBlock x:Name="MatchProgressPercent" Text="" FontSize="15" HorizontalAlignment="Right"/>
+     </StackPanel>
+    </Border>
+    <Grid Grid.Row="3" Margin="0,12,0,0"><TextBlock x:Name="GalleryInfo" Classes="caption" VerticalAlignment="Center"/><StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8"><Button x:Name="PreviousPage" Content="‹" Click="Previous_Click"/><Button x:Name="NextPage" Content="›" Click="Next_Click"/><Button x:Name="ShowAllButton" Content="顯示全部" Click="ShowAll_Click"/></StackPanel></Grid>
+   </Grid>
+   <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Disabled"><StackPanel Spacing="10">
+    <TextBlock x:Name="MatchedTheme" Text="正在準備圖片關鍵字…" FontWeight="SemiBold" TextWrapping="Wrap"/>
+    <HyperlinkButton x:Name="GoogleImageLink" Content="Google 圖片搜尋 ↗" Classes="link" IsEnabled="False" HorizontalAlignment="Left" ToolTip.Tip="以目前關鍵字在預設瀏覽器搜尋大型橫向圖片"/>
+    <TextBlock Text="以任一關鍵字（OR）搜尋橫向高清背景，建議 720p 或以上。找到圖片後，可貼上、拖放或輸入圖片網址。" Classes="caption"/>
+    <Border Height="169" Background="#E7EEE3" CornerRadius="8" ClipToBounds="True"><Image x:Name="ImagePreview" Stretch="UniformToFill"/></Border>
+    <TextBlock x:Name="SelectedTitle" Text="目前背景" FontWeight="SemiBold" TextWrapping="Wrap"/>
+    <TextBlock Text="或使用自己的圖片" FontSize="17" Margin="0,14,0,0"/>
+    <Grid ColumnDefinitions="*,8,*"><Button x:Name="BrowseButton" Content="本機檔案…" Click="Browse_Click" HorizontalAlignment="Stretch"/><Button x:Name="PasteButton" Grid.Column="2" Content="貼上圖片" ToolTip.Tip="Ctrl / ⌘ + V" Click="Paste_Click" HorizontalAlignment="Stretch"/></Grid>
+    <Grid ColumnDefinitions="*,8,Auto"><TextBox x:Name="UrlText" PlaceholderText="圖片網址 · https://…" ToolTip.Tip="直接連結圖片的 http(s) 網址"/><Button x:Name="UrlButton" Grid.Column="2" Content="載入" Click="Url_Click"/></Grid>
+    <Border BorderBrush="#CBD6CB" BorderThickness="1" CornerRadius="8" Padding="16"><TextBlock Text="也可以將圖片拖到此視窗&#x0a;PNG、JPEG、WebP、BMP、GIF · 最大 25 MB" Classes="caption" TextWrapping="Wrap"/></Border>
+    <TextBlock Text="圖片會裁切填滿 16:9，並嵌入 PowerPoint。" Classes="caption" TextWrapping="Wrap"/>
+   </StackPanel></ScrollViewer>
+  </Grid>
+  <TextBlock Grid.Row="2" x:Name="Message" Foreground="#426B54" FontSize="13" TextWrapping="Wrap" Margin="0,12,0,0"/>
+  <Grid Grid.Row="3" Margin="0,16,0,0"><Button Content="使用預設背景" Classes="link" HorizontalAlignment="Left" Click="Default_Click"/><StackPanel Orientation="Horizontal" HorizontalAlignment="Right"><Button Content="取消" Click="Cancel_Click" Margin="0,0,10,0"/><Button x:Name="ApplyButton" Content="套用背景" Click="Apply_Click" Classes="primary"/></StackPanel></Grid>
+ </Grid>
+</Window>

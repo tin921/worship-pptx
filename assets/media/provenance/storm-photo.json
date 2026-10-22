@@ -1,0 +1,9 @@
+{
+  "id": "storm-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-b4f0d793-6ddb-450a-9a4f-3262ee1315ff.png",
+  "file": "assets/media/themes/storm/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "e69b2fec71bb4fc64d25b16f140f1a269c548cbb41c49c51b43bee872f0572dd"
+}

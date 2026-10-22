@@ -1,0 +1,9 @@
+{
+  "id": "dew-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-aa012493-4ea7-44db-98bb-8ccf1f6cc060.png",
+  "file": "assets/media/themes/dew/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "deeb6f8f7617800d454a98e49df0ee60501c6890b07922e969317b02d1409d23"
+}

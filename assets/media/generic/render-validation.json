@@ -1,0 +1,69 @@
+{
+  "mode": "night",
+  "width": 1280,
+  "height": 720,
+  "source_loop_matches": true,
+  "rendered_videos": true,
+  "checks": [
+    {
+      "id": "01-soft-snow",
+      "phase0_sha256": "c99c888d7909775dc9c522709aea8dcb6a26434d1d05de9ec6a9b90592f69ee2",
+      "phase5_sha256": "c99c888d7909775dc9c522709aea8dcb6a26434d1d05de9ec6a9b90592f69ee2",
+      "phase2_5_sha256": "f76fc9ea8f56e1b50564a6bf706e8b3545b064d70879257b8205860179e1ba34"
+    },
+    {
+      "id": "02-gentle-rain",
+      "phase0_sha256": "f4354f73302bdefefa08cfb3ab222f063ea22a672c5a89ddcc166289e973da09",
+      "phase5_sha256": "f4354f73302bdefefa08cfb3ab222f063ea22a672c5a89ddcc166289e973da09",
+      "phase2_5_sha256": "0d5d1b13be8e2853bcd5bfd8242af0a8c1ad2666d734feba509bf3c52fc942d5"
+    },
+    {
+      "id": "03-golden-lights",
+      "phase0_sha256": "1c771bee398e5714763fe8c33af695e6740cbeb88c2297d36489e9d9f85b2b44",
+      "phase5_sha256": "1c771bee398e5714763fe8c33af695e6740cbeb88c2297d36489e9d9f85b2b44",
+      "phase2_5_sha256": "8c7a02da30c3ae883664b7f2ccf8da6bfc5fa5e14ed638f416afc345e07b653b"
+    },
+    {
+      "id": "04-paper-flight",
+      "phase0_sha256": "7e6deb0eb76c95c9bf8c27bca7848e20889daaf0b4217e9f1fbdc2edb78f3dcd",
+      "phase5_sha256": "7e6deb0eb76c95c9bf8c27bca7848e20889daaf0b4217e9f1fbdc2edb78f3dcd",
+      "phase2_5_sha256": "798b77056d37c82124b89cd0aa82cd07c544238d11b9b09441745a9316fa9c82"
+    },
+    {
+      "id": "05-petal-breeze",
+      "phase0_sha256": "6a56651df848d4a74628f2ea682301e12884fdbc1e6c7f4e5c6b83cbdb09f6ab",
+      "phase5_sha256": "6a56651df848d4a74628f2ea682301e12884fdbc1e6c7f4e5c6b83cbdb09f6ab",
+      "phase2_5_sha256": "d765eca160ce79141f7bb0439c6896e7383f9278bba2c0ac9486edc850f6d19d"
+    },
+    {
+      "id": "06-living-ribbons",
+      "phase0_sha256": "8fbea10264fff6d45aa79755e62d329059813f9ccd3628a65e70f35eb3f1188f",
+      "phase5_sha256": "8fbea10264fff6d45aa79755e62d329059813f9ccd3628a65e70f35eb3f1188f",
+      "phase2_5_sha256": "f6b07832e379b5f6bd36dd0a1473edaead99b06f97d68b2005d57d7e9d38698c"
+    },
+    {
+      "id": "07-drifting-clouds",
+      "phase0_sha256": "5b45c8e021ff6564b69039d10ed730707315c4206a980da12a9b779cd099c3c0",
+      "phase5_sha256": "5b45c8e021ff6564b69039d10ed730707315c4206a980da12a9b779cd099c3c0",
+      "phase2_5_sha256": "a9b4fedf83f256b5c8bfbc4e4cf4b6c34bb1c5667040a5870f82569cc2f2eb5e"
+    },
+    {
+      "id": "08-water-ripples",
+      "phase0_sha256": "acd83f76d4925e53a9008c980c4af764315b5e215d65da7234786a7ae1fa8f38",
+      "phase5_sha256": "acd83f76d4925e53a9008c980c4af764315b5e215d65da7234786a7ae1fa8f38",
+      "phase2_5_sha256": "4151d76811133922618fe638fefeb6f886f4f19c77c283f55199b0f023cd4771"
+    },
+    {
+      "id": "09-floating-lanterns",
+      "phase0_sha256": "959754bf337ea33188d420a4330e8a8d2f9d7336bc1166b67ef6b36859a461f9",
+      "phase5_sha256": "959754bf337ea33188d420a4330e8a8d2f9d7336bc1166b67ef6b36859a461f9",
+      "phase2_5_sha256": "351444690966b23a298161312b6bdf0da234a63fe93d18fba7f4d5fa80e5a992"
+    },
+    {
+      "id": "10-gentle-confetti",
+      "phase0_sha256": "8df6bac2877f12ee45fdbeb0c473961f4dc7b753e268035a580e30e402a2d170",
+      "phase5_sha256": "8df6bac2877f12ee45fdbeb0c473961f4dc7b753e268035a580e30e402a2d170",
+      "phase2_5_sha256": "0fa29251c7222f929d7c49f641c39cc718f4dd6dc46969ff884ef8c94c94d97e"
+    }
+  ]
+}

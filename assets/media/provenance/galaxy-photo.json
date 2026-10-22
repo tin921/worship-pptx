@@ -1,0 +1,9 @@
+{
+  "id": "galaxy-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-d6e8f604-4510-4571-8ede-1827300fb09c.png",
+  "file": "assets/media/themes/galaxy/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "08c1a96065fb40c82dd1360fe99914613125404c57c84a9656fc6a0bee67a2e0"
+}

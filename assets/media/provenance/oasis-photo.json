@@ -1,0 +1,9 @@
+{
+  "id": "oasis-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-ec2aba3f-1df5-406c-bd21-29188e17db11.png",
+  "file": "assets/media/themes/oasis/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "cbb1e44b60ee7021cc4b11608b490fc9cda00ebdd64a1bf92541c49fc1e15c5e"
+}

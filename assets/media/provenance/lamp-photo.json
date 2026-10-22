@@ -1,0 +1,9 @@
+{
+  "id": "lamp-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-6f40fe86-e1c3-40c8-983f-6fc1ee30e3f8.png",
+  "file": "assets/media/themes/lamp/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "e4b40c3bf3161f1f0475a2cc817cc1296ae336d349159fc6ae9d181dd900de03"
+}

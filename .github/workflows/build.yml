@@ -1,4 +1,4 @@
-name: Windows build and installer
+name: Desktop builds
 on:
   push:
     branches: [main]
@@ -7,10 +7,13 @@ on:
 permissions:
   contents: read
 jobs:
-  build:
+  windows:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
       - name: Build and test
         shell: pwsh
         run: ./scripts/build.ps1
@@ -24,3 +27,23 @@ jobs:
             dist/*.msi
             dist/*.zip
             dist/SHA256SUMS.txt
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build and test on macOS
+        shell: pwsh
+        run: ./scripts/build.ps1
+      - name: Create local-test Mac app and disk image
+        run: |
+          if [ "$(uname -m)" = arm64 ]; then RID=osx-arm64; else RID=osx-x64; fi
+          bash scripts/package-macos.sh "$RID"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: worship-pptx-macos-local-test
+          path: |
+            dist/*.dmg
+            dist/*.zip

@@ -1,0 +1,9 @@
+{
+  "id": "celebration-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-cfe73a77-d6c9-45ab-8fac-e2ae29852ca6.png",
+  "file": "assets/media/themes/celebration/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "2618703823faca2c28cabf67db1a924734493422bc77334ad8f9bc7a09e08451"
+}

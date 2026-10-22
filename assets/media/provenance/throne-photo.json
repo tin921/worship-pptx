@@ -1,0 +1,9 @@
+{
+  "id": "throne-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-a4f0b016-6874-4625-a016-d07e377d646f.png",
+  "file": "assets/media/themes/throne/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "fd336ecdd016f9378e550b0627269febb027b8dc57beff61661b6bc699587376"
+}

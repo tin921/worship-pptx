@@ -1,0 +1,9 @@
+{
+  "id": "stream-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-9a1fbfb6-86e2-450d-b1bb-2145f8cfb020.png",
+  "file": "assets/media/themes/stream/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "34db11baaf48a27f4a2d5b1367e95ba55b71d1e152cd0436b757001c170bea7c"
+}

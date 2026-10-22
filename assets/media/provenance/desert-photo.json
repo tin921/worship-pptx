@@ -1,0 +1,9 @@
+{
+  "id": "desert-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-4eb56f62-2875-49a7-93a8-7277631cb41c.png",
+  "file": "assets/media/themes/desert/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "d4bbea30b3b30db84c9eecb268c1a9281f3e33c4b113f2119083b34e8502d7c0"
+}

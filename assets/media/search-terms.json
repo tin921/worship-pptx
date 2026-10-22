@@ -1,0 +1,962 @@
+{
+  "mountain_path": {
+    "zh": [
+      "蜿蜒小徑",
+      "層疊山谷",
+      "柔和晨光"
+    ],
+    "en": [
+      "winding path",
+      "layered valleys",
+      "morning light"
+    ]
+  },
+  "forest_path": {
+    "zh": [
+      "林間小路",
+      "綠葉樹影",
+      "穿透陽光"
+    ],
+    "en": [
+      "woodland trail",
+      "leaf shadows",
+      "sunbeams"
+    ]
+  },
+  "mountains": {
+    "zh": [
+      "連綿山峰",
+      "翻湧雲海",
+      "遼闊天空"
+    ],
+    "en": [
+      "mountain peaks",
+      "cloud sea",
+      "open sky"
+    ]
+  },
+  "sunrise": {
+    "zh": [
+      "金色晨光",
+      "地平線",
+      "寧靜天空"
+    ],
+    "en": [
+      "golden light",
+      "horizon",
+      "peaceful sky"
+    ]
+  },
+  "sunset": {
+    "zh": [
+      "暖色晚霞",
+      "遠方山影",
+      "柔和天空"
+    ],
+    "en": [
+      "warm clouds",
+      "distant hills",
+      "soft sky"
+    ]
+  },
+  "stream": {
+    "zh": [
+      "清澈流水",
+      "溪邊石頭",
+      "斑駁陽光"
+    ],
+    "en": [
+      "clear water",
+      "river stones",
+      "dappled light"
+    ]
+  },
+  "waterfall": {
+    "zh": [
+      "飛瀉流水",
+      "水霧",
+      "青綠山林"
+    ],
+    "en": [
+      "falling water",
+      "mist",
+      "green forest"
+    ]
+  },
+  "spring_rain": {
+    "zh": [
+      "細雨",
+      "嫩綠葉片",
+      "清新晨光"
+    ],
+    "en": [
+      "gentle rain",
+      "fresh leaves",
+      "morning light"
+    ]
+  },
+  "snow": {
+    "zh": [
+      "飄落雪花",
+      "柔和光線",
+      "寧靜冬景"
+    ],
+    "en": [
+      "snowflakes",
+      "soft light",
+      "quiet winter"
+    ]
+  },
+  "sky": {
+    "zh": [
+      "藍天",
+      "柔軟白雲",
+      "開闊視野"
+    ],
+    "en": [
+      "blue sky",
+      "soft clouds",
+      "open space"
+    ]
+  },
+  "galaxy": {
+    "zh": [
+      "閃爍星光",
+      "銀河光帶",
+      "深藍夜空"
+    ],
+    "en": [
+      "starlight",
+      "milky way",
+      "deep blue sky"
+    ]
+  },
+  "ocean": {
+    "zh": [
+      "柔和海浪",
+      "遼闊海面",
+      "地平線"
+    ],
+    "en": [
+      "gentle waves",
+      "open sea",
+      "horizon"
+    ]
+  },
+  "calm_lake": {
+    "zh": [
+      "平靜湖面",
+      "群山倒影",
+      "晨間薄霧"
+    ],
+    "en": [
+      "still water",
+      "mountain reflections",
+      "morning mist"
+    ]
+  },
+  "storm": {
+    "zh": [
+      "雨後陽光",
+      "散開烏雲",
+      "希望曙光"
+    ],
+    "en": [
+      "sunbeams",
+      "clearing clouds",
+      "new dawn"
+    ]
+  },
+  "rainbow": {
+    "zh": [
+      "雨後天空",
+      "七色彩虹",
+      "柔和陽光"
+    ],
+    "en": [
+      "clearing sky",
+      "rainbow colours",
+      "soft sunshine"
+    ]
+  },
+  "eagle": {
+    "zh": [
+      "展翅高飛",
+      "遼闊天空",
+      "山峰"
+    ],
+    "en": [
+      "soaring wings",
+      "open sky",
+      "mountain peaks"
+    ]
+  },
+  "dove": {
+    "zh": [
+      "白色羽翼",
+      "柔和光線",
+      "平安氛圍"
+    ],
+    "en": [
+      "white wings",
+      "soft light",
+      "peaceful mood"
+    ]
+  },
+  "meadow": {
+    "zh": [
+      "青青牧草",
+      "野花",
+      "柔和陽光"
+    ],
+    "en": [
+      "green grass",
+      "wildflowers",
+      "soft sunshine"
+    ]
+  },
+  "sheep": {
+    "zh": [
+      "安靜羊群",
+      "綠色草地",
+      "山坡"
+    ],
+    "en": [
+      "quiet flock",
+      "green pasture",
+      "hillside"
+    ]
+  },
+  "oasis": {
+    "zh": [
+      "清澈泉水",
+      "沙漠綠洲",
+      "棕櫚樹"
+    ],
+    "en": [
+      "clear spring",
+      "desert oasis",
+      "palm trees"
+    ]
+  },
+  "lighthouse": {
+    "zh": [
+      "海岸燈光",
+      "遠方海面",
+      "夜空"
+    ],
+    "en": [
+      "guiding beam",
+      "distant sea",
+      "night sky"
+    ]
+  },
+  "rock": {
+    "zh": [
+      "堅固磐石",
+      "海岸浪花",
+      "遼闊天空"
+    ],
+    "en": [
+      "solid rock",
+      "coastal waves",
+      "open sky"
+    ]
+  },
+  "cross": {
+    "zh": [
+      "山丘剪影",
+      "十字架",
+      "清晨光芒"
+    ],
+    "en": [
+      "hill silhouette",
+      "wooden cross",
+      "dawn light"
+    ]
+  },
+  "church": {
+    "zh": [
+      "教堂窗光",
+      "木椅",
+      "寧靜空間"
+    ],
+    "en": [
+      "window light",
+      "wooden pews",
+      "quiet interior"
+    ]
+  },
+  "hands": {
+    "zh": [
+      "舉手剪影",
+      "柔和舞台光",
+      "敬拜人群"
+    ],
+    "en": [
+      "raised hands",
+      "soft stage light",
+      "worshippers"
+    ]
+  },
+  "music": {
+    "zh": [
+      "飄浮音符",
+      "柔和光線",
+      "簡潔留白"
+    ],
+    "en": [
+      "musical notes",
+      "soft light",
+      "open space"
+    ]
+  },
+  "celebration": {
+    "zh": [
+      "金色光點",
+      "溫暖光芒",
+      "喜樂氛圍"
+    ],
+    "en": [
+      "golden bokeh",
+      "warm glow",
+      "joyful mood"
+    ]
+  },
+  "gentle_light": {
+    "zh": [
+      "溫暖散景",
+      "柔和光束",
+      "簡潔留白"
+    ],
+    "en": [
+      "warm bokeh",
+      "gentle beams",
+      "open space"
+    ]
+  },
+  "open_hands": {
+    "zh": [
+      "攤開雙手",
+      "柔和光線",
+      "接納氛圍"
+    ],
+    "en": [
+      "open palms",
+      "soft light",
+      "welcoming mood"
+    ]
+  },
+  "fire": {
+    "zh": [
+      "溫暖火焰",
+      "柔和光芒",
+      "深色背景"
+    ],
+    "en": [
+      "warm flame",
+      "gentle glow",
+      "dark backdrop"
+    ]
+  },
+  "seeds": {
+    "zh": [
+      "嫩綠幼苗",
+      "肥沃泥土",
+      "清晨陽光"
+    ],
+    "en": [
+      "green seedling",
+      "rich soil",
+      "morning sunshine"
+    ]
+  },
+  "bible": {
+    "zh": [
+      "攤開書頁",
+      "柔和窗光",
+      "木桌"
+    ],
+    "en": [
+      "open pages",
+      "window light",
+      "wooden table"
+    ]
+  },
+  "communion": {
+    "zh": [
+      "餅與葡萄汁",
+      "聖餐杯",
+      "溫暖桌面"
+    ],
+    "en": [
+      "bread and wine",
+      "communion cup",
+      "warm table"
+    ]
+  },
+  "nativity": {
+    "zh": [
+      "馬槽",
+      "伯利恆星光",
+      "安靜夜景"
+    ],
+    "en": [
+      "manger",
+      "Bethlehem star",
+      "quiet night"
+    ]
+  },
+  "empty_tomb": {
+    "zh": [
+      "敞開石墓",
+      "清晨曙光",
+      "復活盼望"
+    ],
+    "en": [
+      "open stone tomb",
+      "dawn light",
+      "resurrection hope"
+    ]
+  },
+  "crown": {
+    "zh": [
+      "金色冠冕",
+      "柔和光芒",
+      "深色背景"
+    ],
+    "en": [
+      "golden crown",
+      "gentle glow",
+      "dark backdrop"
+    ]
+  },
+  "throne": {
+    "zh": [
+      "莊嚴寶座",
+      "榮耀光芒",
+      "金色氛圍"
+    ],
+    "en": [
+      "royal throne",
+      "radiant light",
+      "golden atmosphere"
+    ]
+  },
+  "altar": {
+    "zh": [
+      "石頭祭壇",
+      "溫暖光線",
+      "寧靜荒野"
+    ],
+    "en": [
+      "stone altar",
+      "warm light",
+      "quiet wilderness"
+    ]
+  },
+  "incense": {
+    "zh": [
+      "輕柔煙霧",
+      "香爐",
+      "柔和光線"
+    ],
+    "en": [
+      "gentle smoke",
+      "incense vessel",
+      "soft light"
+    ]
+  },
+  "trumpet": {
+    "zh": [
+      "金色號角",
+      "柔和光芒",
+      "遼闊天空"
+    ],
+    "en": [
+      "golden trumpet",
+      "soft glow",
+      "open sky"
+    ]
+  },
+  "harp": {
+    "zh": [
+      "琴弦",
+      "木質樂器",
+      "柔和窗光"
+    ],
+    "en": [
+      "harp strings",
+      "wooden instrument",
+      "window light"
+    ]
+  },
+  "banner": {
+    "zh": [
+      "飄揚旗幟",
+      "微風",
+      "藍天"
+    ],
+    "en": [
+      "flowing banner",
+      "gentle breeze",
+      "blue sky"
+    ]
+  },
+  "armor": {
+    "zh": [
+      "古代盔甲",
+      "寶劍盾牌",
+      "柔和金光"
+    ],
+    "en": [
+      "ancient armour",
+      "sword and shield",
+      "soft gold light"
+    ]
+  },
+  "shield": {
+    "zh": [
+      "堅固盾牌",
+      "保護象徵",
+      "柔和光芒"
+    ],
+    "en": [
+      "solid shield",
+      "protection",
+      "gentle glow"
+    ]
+  },
+  "broken_chains": {
+    "zh": [
+      "斷開鐵鏈",
+      "透入光芒",
+      "自由氛圍"
+    ],
+    "en": [
+      "broken links",
+      "emerging light",
+      "freedom"
+    ]
+  },
+  "refuge": {
+    "zh": [
+      "堅固城堡",
+      "遠山",
+      "安穩氛圍"
+    ],
+    "en": [
+      "strong fortress",
+      "distant mountains",
+      "sheltering mood"
+    ]
+  },
+  "tent": {
+    "zh": [
+      "曠野帳幕",
+      "柔和晨光",
+      "安靜沙地"
+    ],
+    "en": [
+      "wilderness tent",
+      "dawn light",
+      "quiet sand"
+    ]
+  },
+  "sheltering_wings": {
+    "zh": [
+      "展開羽翼",
+      "安穩鳥巢",
+      "柔和光線"
+    ],
+    "en": [
+      "sheltering wings",
+      "safe nest",
+      "soft light"
+    ]
+  },
+  "footprints": {
+    "zh": [
+      "沙灘腳印",
+      "柔和海浪",
+      "晨光"
+    ],
+    "en": [
+      "sand footprints",
+      "gentle surf",
+      "morning light"
+    ]
+  },
+  "door": {
+    "zh": [
+      "敞開木門",
+      "透入光線",
+      "前方道路"
+    ],
+    "en": [
+      "open wooden door",
+      "streaming light",
+      "path ahead"
+    ]
+  },
+  "bridge": {
+    "zh": [
+      "跨河橋樑",
+      "平靜流水",
+      "晨霧"
+    ],
+    "en": [
+      "river bridge",
+      "calm water",
+      "morning mist"
+    ]
+  },
+  "boat": {
+    "zh": [
+      "海上小船",
+      "柔和波浪",
+      "遠方地平線"
+    ],
+    "en": [
+      "small boat",
+      "gentle waves",
+      "distant horizon"
+    ]
+  },
+  "anchor": {
+    "zh": [
+      "船錨",
+      "平靜海面",
+      "穩固象徵"
+    ],
+    "en": [
+      "ship anchor",
+      "calm sea",
+      "steadfast hope"
+    ]
+  },
+  "harvest": {
+    "zh": [
+      "金黃麥田",
+      "成熟莊稼",
+      "暖色陽光"
+    ],
+    "en": [
+      "golden fields",
+      "ripe harvest",
+      "warm sunshine"
+    ]
+  },
+  "wheat": {
+    "zh": [
+      "飽滿麥穗",
+      "成熟麥粒",
+      "柔和陽光"
+    ],
+    "en": [
+      "wheat ears",
+      "ripe grain",
+      "soft sunshine"
+    ]
+  },
+  "grapevine": {
+    "zh": [
+      "葡萄枝葉",
+      "飽滿果實",
+      "陽光"
+    ],
+    "en": [
+      "vine branches",
+      "ripe grapes",
+      "sunshine"
+    ]
+  },
+  "olive_tree": {
+    "zh": [
+      "橄欖枝",
+      "綠色葉片",
+      "柔和陽光"
+    ],
+    "en": [
+      "olive branches",
+      "green leaves",
+      "soft sunshine"
+    ]
+  },
+  "tree": {
+    "zh": [
+      "溪邊大樹",
+      "穩固樹根",
+      "綠色枝葉"
+    ],
+    "en": [
+      "riverside tree",
+      "strong roots",
+      "green canopy"
+    ]
+  },
+  "garden": {
+    "zh": [
+      "花園小路",
+      "盛開花朵",
+      "晨光"
+    ],
+    "en": [
+      "garden path",
+      "blooming flowers",
+      "morning light"
+    ]
+  },
+  "flowers": {
+    "zh": [
+      "繽紛花朵",
+      "柔和陽光",
+      "清新氛圍"
+    ],
+    "en": [
+      "colourful blooms",
+      "soft sunshine",
+      "fresh mood"
+    ]
+  },
+  "lily": {
+    "zh": [
+      "潔白花瓣",
+      "山谷",
+      "柔和晨光"
+    ],
+    "en": [
+      "white petals",
+      "valley",
+      "gentle dawn"
+    ]
+  },
+  "pottery": {
+    "zh": [
+      "陶匠雙手",
+      "泥土陶器",
+      "溫暖光線"
+    ],
+    "en": [
+      "potter hands",
+      "clay vessel",
+      "warm light"
+    ]
+  },
+  "dew": {
+    "zh": [
+      "晶瑩露珠",
+      "嫩綠葉片",
+      "清晨光線"
+    ],
+    "en": [
+      "dewdrops",
+      "fresh leaves",
+      "morning light"
+    ]
+  },
+  "river": {
+    "zh": [
+      "寬闊河流",
+      "柔和水紋",
+      "遠山"
+    ],
+    "en": [
+      "wide river",
+      "gentle ripples",
+      "distant hills"
+    ]
+  },
+  "desert": {
+    "zh": [
+      "金色沙丘",
+      "曠野道路",
+      "遼闊天空"
+    ],
+    "en": [
+      "golden dunes",
+      "wilderness path",
+      "open sky"
+    ]
+  },
+  "sea_parting": {
+    "zh": [
+      "分開海水",
+      "乾地道路",
+      "遠方光芒"
+    ],
+    "en": [
+      "parted waters",
+      "dry path",
+      "distant light"
+    ]
+  },
+  "new_jerusalem": {
+    "zh": [
+      "金色城門",
+      "榮耀光芒",
+      "盼望氛圍"
+    ],
+    "en": [
+      "golden gates",
+      "radiant light",
+      "hopeful mood"
+    ]
+  },
+  "city": {
+    "zh": [
+      "城市天際線",
+      "溫暖家園",
+      "柔和晨光"
+    ],
+    "en": [
+      "city skyline",
+      "warm homes",
+      "gentle dawn"
+    ]
+  },
+  "nations": {
+    "zh": [
+      "世界人群",
+      "團結剪影",
+      "柔和光線"
+    ],
+    "en": [
+      "people of nations",
+      "united silhouettes",
+      "soft light"
+    ]
+  },
+  "family": {
+    "zh": [
+      "親子背影",
+      "溫暖光線",
+      "家園"
+    ],
+    "en": [
+      "parent and child",
+      "warm light",
+      "home"
+    ]
+  },
+  "embrace": {
+    "zh": [
+      "溫柔擁抱",
+      "家人剪影",
+      "暖色光線"
+    ],
+    "en": [
+      "gentle embrace",
+      "family silhouette",
+      "warm light"
+    ]
+  },
+  "helping_neighbor": {
+    "zh": [
+      "互助雙手",
+      "分享",
+      "溫暖光線"
+    ],
+    "en": [
+      "helping hands",
+      "sharing",
+      "warm light"
+    ]
+  },
+  "tears": {
+    "zh": [
+      "雨滴玻璃",
+      "窗邊柔光",
+      "安靜氛圍"
+    ],
+    "en": [
+      "raindrop glass",
+      "window light",
+      "quiet mood"
+    ]
+  },
+  "wedding": {
+    "zh": [
+      "婚戒",
+      "溫暖宴席",
+      "柔和光點"
+    ],
+    "en": [
+      "wedding rings",
+      "warm banquet",
+      "soft bokeh"
+    ]
+  },
+  "angels": {
+    "zh": [
+      "潔白羽翼",
+      "天上光芒",
+      "柔和雲層"
+    ],
+    "en": [
+      "white wings",
+      "heavenly light",
+      "soft clouds"
+    ]
+  },
+  "pillar_cloud_fire": {
+    "zh": [
+      "曠野雲柱",
+      "夜間火光",
+      "前方道路"
+    ],
+    "en": [
+      "cloud pillar",
+      "night firelight",
+      "path ahead"
+    ]
+  },
+  "lamp": {
+    "zh": [
+      "溫暖燈火",
+      "黑暗小徑",
+      "指引光線"
+    ],
+    "en": [
+      "warm lantern",
+      "dark path",
+      "guiding light"
+    ]
+  },
+  "treasure": {
+    "zh": [
+      "晶瑩珍珠",
+      "寶藏",
+      "柔和光芒"
+    ],
+    "en": [
+      "luminous pearl",
+      "treasure",
+      "gentle glow"
+    ]
+  },
+  "kneeling_prayer": {
+    "zh": [
+      "屈膝剪影",
+      "雙手合十",
+      "柔和晨光"
+    ],
+    "en": [
+      "kneeling silhouette",
+      "praying hands",
+      "soft dawn"
+    ]
+  },
+  "bread_provision": {
+    "zh": [
+      "新鮮麵包",
+      "木桌",
+      "溫暖晨光"
+    ],
+    "en": [
+      "fresh bread",
+      "wooden table",
+      "warm morning light"
+    ]
+  }
+}

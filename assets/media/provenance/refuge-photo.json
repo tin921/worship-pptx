@@ -1,0 +1,9 @@
+{
+  "id": "refuge-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-236c0902-65a2-4d36-a26c-72b59d1d2062.png",
+  "file": "assets/media/themes/refuge/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "c81617fbe668444feb5255be57f022a87a7289d14b36a1d2eb73a9b6888b310d"
+}

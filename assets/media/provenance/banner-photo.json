@@ -1,0 +1,9 @@
+{
+  "id": "banner-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-9b49cdc1-bd06-44ae-b95c-6325150e5e72.png",
+  "file": "assets/media/themes/banner/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "4348a6d4eb5adaa9018438e0a74be766654166529791a49a3552336bb64c86d9"
+}

@@ -15,5 +15,3 @@ Create Sunday worship PowerPoint slides from song lyrics, Scripture readings, an
 [Download for Windows](https://github.com/tin921/worship-pptx/releases/latest)
 
 macOS version coming soon.
-
-The current download is v1.0.0. Screenshots show the upcoming version.

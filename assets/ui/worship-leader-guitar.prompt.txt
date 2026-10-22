@@ -1,0 +1,13 @@
+Use case: style-transfer / precise-object-edit.
+Edit the provided worship-leader illustration for the app's picture-in-picture preview.
+Keep the same friendly adult East Asian male character, dark brown hair, blue jacket over a dark shirt, happy singing expression, rounded dark outlines and polished 2D cartoon illustration style. KEEP his gold necklace with a clearly visible Christian cross pendant on the chest.
+
+Make these requested changes:
+- Completely remove the wooden podium/lectern.
+- Have him actively PLAY AN ACOUSTIC GUITAR suspended by a shoulder strap: one hand naturally strumming the strings at the sound hole, the other hand fretting a chord on the neck. Both hands must be anatomically plausible and visibly touching the instrument in their appropriate positions. No raised waving hand.
+- Put the microphone on a slim microphone stand, positioned close to his mouth for singing; he does not hold the microphone. Place the stand/boom slightly to the side so it does not cover his face, necklace or guitar-playing hands.
+- Change the setting to a bright, airy WHITE church worship stage. Predominantly white and very pale cool-grey/soft-blue background, gentle white lighting and daylight, subtle green plants in light neutral pots. Remove the yellow/orange ambient colour cast and orange wall/floor. Natural wood colour on the acoustic guitar is fine.
+- Remove the spare guitar and unused microphone from the background, since he is now playing guitar into the stand microphone.
+
+Composition: 16:9 landscape, ideally 1280 x 720. A medium-close view from head to hips, leader prominent in the centre; show the complete guitar body and neck/headstock, both hands, head and necklace in frame. The gold cross pendant must remain clearly visible above the guitar against the dark shirt. Keep the bottom 8% free of essential necklace/face/hand details for the small app caption.
+No cross on the wall or elsewhere in the background; the necklace is the only cross. No podium, no sermon furniture. No text, logos, watermarks, UI or borders. Opaque background.

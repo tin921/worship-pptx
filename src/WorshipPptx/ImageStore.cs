@@ -4,7 +4,8 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
+using Avalonia.Media.Imaging;
+using SkiaSharp;
 namespace WorshipPptx
 {
     public sealed class ImageStore
@@ -22,34 +23,27 @@ namespace WorshipPptx
         public string ImportBytes(byte[] bytes)
         {
             if (bytes.Length == 0 || bytes.Length > MaxBytes) throw new IOException("請使用 25 MB 以下的圖片。");
-            try
-            {
-                using (var stream = new MemoryStream(bytes))
-                {
-                    var decoder = BitmapDecoder.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnDemand);
-                    var frame = decoder.Frames[0];
-                    if ((long)frame.PixelWidth * frame.PixelHeight > 40000000 || frame.PixelWidth > 20000 || frame.PixelHeight > 20000) throw new IOException("圖片尺寸太大，請縮小至 4,000 萬像素以下。");
-                    return SaveBitmap(frame);
-                }
-            }
-            catch (Exception ex) when (ex is NotSupportedException || ex is System.IO.FileFormatException || ex is ArgumentException)
-            { throw new IOException("未能讀取圖片。請使用 PNG、JPEG、BMP、GIF 或 TIFF；網頁網址必須直接連結圖片。", ex); }
+            using var stream=new MemoryStream(bytes);
+            using var codec=SKCodec.Create(stream);
+            if(codec==null) throw new IOException("未能讀取圖片。請使用 PNG、JPEG、WebP、BMP 或 GIF；網址必須直接連結圖片。");
+            var info=codec.Info;
+            if((long)info.Width*info.Height>40000000 || info.Width>20000 || info.Height>20000) throw new IOException("圖片尺寸太大，請縮小至 4,000 萬像素以下。");
+            using var decoded=SKBitmap.Decode(codec) ?? throw new IOException("圖片資料不完整。");
+            using var image=SKImage.FromBitmap(decoded);
+            using var png=image.Encode(SKEncodedImageFormat.Png,100);
+            return SaveBytes(png.ToArray());
         }
-        public string SaveBitmap(BitmapSource bitmap)
+        private string SaveBytes(byte[] bytes)
         {
-            if ((long)bitmap.PixelWidth * bitmap.PixelHeight > 40000000) throw new IOException("圖片尺寸太大。");
-            var encoder = new PngBitmapEncoder(); encoder.Frames.Add(BitmapFrame.Create(bitmap));
-            using (var stream = new MemoryStream())
-            {
-                encoder.Save(stream); var bytes = stream.ToArray();
-                using (var hash = SHA256.Create())
-                {
-                    var name = BitConverter.ToString(hash.ComputeHash(bytes)).Replace("-", "").ToLowerInvariant() + ".png";
-                    var path = Path.Combine(folder, name);
-                    if (!File.Exists(path)) File.WriteAllBytes(path, bytes);
-                    return path;
-                }
-            }
+            var name=Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant()+".png";
+            var path=Path.Combine(folder,name);
+            if(!File.Exists(path)) File.WriteAllBytes(path,bytes);
+            return path;
+        }
+        public string SaveBitmap(Bitmap bitmap)
+        {
+            if((long)bitmap.PixelSize.Width*bitmap.PixelSize.Height>40000000) throw new IOException("圖片尺寸太大。");
+            using var stream=new MemoryStream(); bitmap.Save(stream,PngBitmapEncoderOptions.Default); return ImportBytes(stream.ToArray());
         }
         public async Task<string> ImportUrlAsync(string url, CancellationToken cancellation = default(CancellationToken))
         {
@@ -58,26 +52,23 @@ namespace WorshipPptx
             using (var client = new HttpClient { Timeout = TimeSpan.FromSeconds(30) })
             {
                 client.DefaultRequestHeaders.UserAgent.ParseAdd("WorshipPptx/1.0");
-                using (var response = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead, cancellation))
+                using (var response = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead, cancellation).ConfigureAwait(false))
                 {
                     response.EnsureSuccessStatusCode();
                     if (response.Content.Headers.ContentLength > MaxBytes) throw new IOException("圖片不能超過 25 MB。");
                     using (var timeout = CancellationTokenSource.CreateLinkedTokenSource(cancellation))
-                    using (var input = await response.Content.ReadAsStreamAsync())
+                    using (var input = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
                     using (var output = new MemoryStream())
                     {
                         timeout.CancelAfter(TimeSpan.FromSeconds(30));
                         var buffer = new byte[81920]; int read;
-                        while ((read = await input.ReadAsync(buffer, 0, buffer.Length, timeout.Token)) > 0)
-                        { if (output.Length + read > MaxBytes) throw new IOException("圖片不能超過 25 MB。"); await output.WriteAsync(buffer, 0, read, timeout.Token); }
+                        while ((read = await input.ReadAsync(buffer, 0, buffer.Length, timeout.Token).ConfigureAwait(false)) > 0)
+                        { if (output.Length + read > MaxBytes) throw new IOException("圖片不能超過 25 MB。"); await output.WriteAsync(buffer, 0, read, timeout.Token).ConfigureAwait(false); }
                         return ImportBytes(output.ToArray());
                     }
                 }
             }
         }
-        public static BitmapSource Load(string path)
-        {
-            var bitmap = new BitmapImage(); bitmap.BeginInit(); bitmap.CacheOption = BitmapCacheOption.OnLoad; bitmap.UriSource = new Uri(path, UriKind.Absolute); bitmap.EndInit(); bitmap.Freeze(); return bitmap;
-        }
+        public static Bitmap Load(string path) => new Bitmap(path);
     }
 }

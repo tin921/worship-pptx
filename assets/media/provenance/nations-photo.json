@@ -1,0 +1,9 @@
+{
+  "id": "nations-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-fafc85dc-1dd2-4b4e-946a-629953deb50e.png",
+  "file": "assets/media/themes/nations/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "120a8b415468dbb55b3b01267921d1eb92023956b8fe83c70b853081f428bcac"
+}

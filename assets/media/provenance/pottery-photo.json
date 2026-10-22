@@ -1,0 +1,9 @@
+{
+  "id": "pottery-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-20681145-c64c-49fa-894e-6b47c68e40d4.png",
+  "file": "assets/media/themes/pottery/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "4843435756bc862d03c97518d7f223f24452bf8dc32e41f46306127acbbce2ab"
+}

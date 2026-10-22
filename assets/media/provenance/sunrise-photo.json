@@ -1,0 +1,9 @@
+{
+  "id": "sunrise-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-663fb0e4-0568-438e-aa29-3c75762fb3e8.png",
+  "file": "assets/media/themes/sunrise/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "9493da184b734b0cbaa0bf18c08394da80eafed93cb59c089b41b96ab2861601"
+}

@@ -1,56 +1,73 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Media;
+using Avalonia.Media.Imaging;
+using SkiaSharp;
+
 namespace WorshipPptx
 {
     public static class SlideVisual
     {
-        private static BitmapSource defaultImage;
-        public static BitmapSource DefaultImage
+        private static readonly Dictionary<string, WeakReference<Bitmap>> cache = new();
+        public static Bitmap DefaultImage => Background("");
+        public static Bitmap Background(string path)
         {
-            get
-            {
-                if (defaultImage != null) return defaultImage;
-                var visual = new DrawingVisual();
-                using (var d = visual.RenderOpen())
-                {
-                    d.DrawRectangle(new LinearGradientBrush(Color.FromRgb(194,211,195), Color.FromRgb(245,232,200), 90), null, new Rect(0,0,1280,720));
-                    d.DrawEllipse(new SolidColorBrush(Color.FromArgb(95,255,249,211)), null, new Point(900,235), 105,105);
-                    d.DrawGeometry(new SolidColorBrush(Color.FromRgb(158,181,164)), null, Geometry.Parse("M0,490 L170,300 340,440 600,245 850,465 1050,350 1280,470 1280,720 0,720 Z"));
-                    d.DrawGeometry(new SolidColorBrush(Color.FromRgb(105,145,124)), null, Geometry.Parse("M0,555 L230,415 440,555 660,400 850,555 1120,425 1280,540 1280,720 0,720 Z"));
-                    d.DrawGeometry(new SolidColorBrush(Color.FromRgb(63,107,87)), null, Geometry.Parse("M0,650 C260,480 430,725 690,590 S1100,650 1280,555 L1280,720 0,720 Z"));
-                }
-                var bmp = new RenderTargetBitmap(1280,720,96,96,PixelFormats.Pbgra32); bmp.Render(visual); bmp.Freeze(); defaultImage = bmp; return bmp;
-            }
+            var key=path ?? "";
+            if(cache.TryGetValue(key,out var reference) && reference.TryGetTarget(out var image)) return image;
+            using var stream=new MemoryStream(BackgroundPng(key));
+            var result=new Bitmap(stream); cache[key]=new WeakReference<Bitmap>(result); return result;
         }
-        public static BitmapSource Background(string path) => string.IsNullOrWhiteSpace(path) ? DefaultImage : ImageStore.Load(path);
-        public static Canvas Create(SlideData slide)
+        public static Control CreateBackground(string key) => new Image { Source=Background(key),Width=1280,Height=720,Stretch=Stretch.UniformToFill };
+        public static Canvas Create(SlideData slide,bool showCameraGuide=false)
         {
-            var canvas = new Canvas { Width=1280, Height=720, ClipToBounds=true, Background=Brushes.Black };
-            var image = new Image { Source=Background(slide.Background), Width=1280, Height=720, Stretch=Stretch.UniformToFill }; canvas.Children.Add(image);
-            canvas.Children.Add(new Rectangle { Width=1280, Height=360, Fill=new SolidColorBrush(Color.FromArgb(125,0,0,0)) });
-            for (var i=0; i<slide.Lines.Count; i++)
+            if(showCameraGuide) return new CompositionPreview(slide,slide.Preview ?? PreviewLayout.FromLegacy(slide.FullSlide),false);
+            var canvas=new Canvas { Width=1280, Height=720, ClipToBounds=true, Background=Brushes.Black };
+            canvas.Children.Add(CreateBackground(slide.Background));
+            var color=TextColors.Get(slide.TextColor).Brush;
+            var spacing=SlideLayout.LineSpacing(slide.FontSize,slide.FontName,slide.Bold);
+            var alignment=Enum.Parse<TextAlignment>(slide.Alignment);
+            for(var i=0;i<slide.Lines.Count;i++)
             {
-                var text = new TextBlock { Text=slide.Lines[i], Width=SlideLayout.TextWidth, Height=SlideLayout.LineHeight, FontFamily=FontCatalog.Get(slide.FontName).Family, FontSize=SlideLayout.FontSize, Foreground=Brushes.White, TextAlignment=TextAlignment.Center, TextWrapping=TextWrapping.NoWrap };
-                Canvas.SetLeft(text,SlideLayout.TextX); Canvas.SetTop(text,SlideLayout.TextY + i*SlideLayout.LineHeight); canvas.Children.Add(text);
+                var text=new TextBlock { Text=slide.Lines[i], Width=SlideLayout.TextWidth, Height=spacing, FontFamily=FontCatalog.Get(slide.FontName).Family, FontSize=SlideLayout.FontPixels(slide.FontSize), FontWeight=slide.Bold ? FontWeight.Bold : FontWeight.Normal, Foreground=color, TextAlignment=alignment, TextWrapping=TextWrapping.NoWrap };
+                Canvas.SetLeft(text,SlideLayout.TextX); Canvas.SetTop(text,SlideLayout.TextTop(slide)+i*spacing); canvas.Children.Add(text);
             }
-            var footer = new TextBlock { Text=slide.Footer, Width=SlideLayout.TextWidth, FontFamily=FontCatalog.Get(slide.FontName).Family, FontSize=SlideLayout.FooterSize(slide.Footer, slide.FontName), Foreground=new SolidColorBrush(Color.FromRgb(228,234,224)), TextAlignment=TextAlignment.Center, TextWrapping=TextWrapping.NoWrap };
-            Canvas.SetLeft(footer,SlideLayout.TextX); Canvas.SetTop(footer,330); canvas.Children.Add(footer); return canvas;
+            var credits=SlideLayout.FooterLines(slide);
+            for(var i=0;i<credits.Count;i++)
+            {
+                var footer=new TextBlock { Text=credits[i], Width=SlideLayout.TextWidth, Height=SlideLayout.FooterLineSpacing(slide), FontFamily=FontCatalog.Get(slide.FontName).Family, FontSize=SlideLayout.FooterSize(slide), FontWeight=slide.Bold ? FontWeight.Bold : FontWeight.Normal, Foreground=color, TextAlignment=alignment, TextWrapping=TextWrapping.NoWrap };
+                Canvas.SetLeft(footer,SlideLayout.TextX); Canvas.SetTop(footer,SlideLayout.FooterTop(slide)+i*SlideLayout.FooterLineSpacing(slide)); canvas.Children.Add(footer);
+            }
+            return canvas;
         }
+        // Rendering and PPTX export use the same 720p background on Windows and macOS.
         public static byte[] BackgroundPng(string path)
         {
-            var visual = new DrawingVisual();
-            var bitmap = Background(path);
-            var scale = Math.Max(1280.0/bitmap.PixelWidth,720.0/bitmap.PixelHeight);
-            var w=bitmap.PixelWidth*scale; var h=bitmap.PixelHeight*scale;
-            using (var d = visual.RenderOpen()) { d.PushClip(new RectangleGeometry(new Rect(0,0,1280,720))); d.DrawImage(bitmap,new Rect((1280-w)/2,(720-h)/2,w,h)); }
-            var render = new RenderTargetBitmap(1280,720,96,96,PixelFormats.Pbgra32); render.Render(visual);
-            var encoder = new PngBitmapEncoder(); encoder.Frames.Add(BitmapFrame.Create(render));
-            using (var stream = new MemoryStream()) { encoder.Save(stream); return stream.ToArray(); }
+            path=MediaLibrary.StillPath(path);
+            using var surface=SKSurface.Create(new SKImageInfo(1280,720));
+            var canvas=surface.Canvas;
+            if(string.IsNullOrWhiteSpace(path))
+            {
+                using var gradient=SKShader.CreateLinearGradient(new SKPoint(0,0),new SKPoint(0,720),new[]{new SKColor(194,211,195),new SKColor(245,232,200)},null,SKShaderTileMode.Clamp);
+                using var paint=new SKPaint { IsAntialias=true, Shader=gradient };
+                canvas.DrawRect(0,0,1280,720,paint); paint.Shader=null; paint.Color=new SKColor(255,249,211,95); canvas.DrawCircle(900,235,105,paint);
+                var shapes=new[] {
+                    ("M0,490 L170,300 340,440 600,245 850,465 1050,350 1280,470 1280,720 0,720 Z",new SKColor(158,181,164)),
+                    ("M0,555 L230,415 440,555 660,400 850,555 1120,425 1280,540 1280,720 0,720 Z",new SKColor(105,145,124)),
+                    ("M0,650 C260,480 430,725 690,590 S1100,650 1280,555 L1280,720 0,720 Z",new SKColor(63,107,87))
+                };
+                foreach(var shape in shapes) { using var geometry=SKPath.ParseSvgPathData(shape.Item1); paint.Color=shape.Item2; canvas.DrawPath(geometry,paint); }
+            }
+            else
+            {
+                using var bitmap=SKBitmap.Decode(path) ?? throw new IOException("找不到或未能讀取背景圖片。");
+                using var image=SKImage.FromBitmap(bitmap);
+                var scale=Math.Max(1280f/bitmap.Width,720f/bitmap.Height); var w=bitmap.Width*scale; var h=bitmap.Height*scale;
+                canvas.DrawImage(image,new SKRect((1280-w)/2,(720-h)/2,(1280+w)/2,(720+h)/2),new SKSamplingOptions(SKFilterMode.Linear,SKMipmapMode.Linear));
+            }
+            using var snapshot=surface.Snapshot(); using var data=snapshot.Encode(SKEncodedImageFormat.Png,100); return data.ToArray();
         }
     }
 }

@@ -1,0 +1,9 @@
+{
+  "id": "grapevine-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-29496065-1d2c-4720-bd44-863d45ee1658.png",
+  "file": "assets/media/themes/grapevine/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "374aa1f34db36f4643400140dd2d565c0104c86edaa6d6064ef01c28032c9e2a"
+}

@@ -3,37 +3,62 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Media;
+using Avalonia.Media;
 namespace WorshipPptx
 {
-    public sealed class BundledFont
+    public sealed class FontChoice
     {
         public string Name { get; }
         public string DisplayName { get; }
         public string FilePath { get; }
         public FontFamily Family { get; }
-        public BundledFont(string name,string label,string filename)
+        public bool IsBundled => !string.IsNullOrEmpty(FilePath);
+        public FontChoice(string name,string label,string filename)
         {
             Name=name; DisplayName=label;
             FilePath=Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Fonts",filename);
-            Family=new FontFamily(new Uri(Path.GetDirectoryName(FilePath)+Path.DirectorySeparatorChar),"./#"+name);
+            Family=new FontFamily("avares://WorshipPptx/Fonts#"+name);
         }
+        public FontChoice(string name,string label,FontFamily family) { Name=name; DisplayName=label+" · "+name; Family=family; }
     }
     public static class FontCatalog
     {
         public const string DefaultName="Noto Sans CJK HK";
-        public static readonly IReadOnlyList<BundledFont> All=new[] {
-            new BundledFont("Noto Sans CJK HK","香港黑體 · Noto Sans CJK HK","NotoSansCJKhk-Regular.ttf"),
-            new BundledFont("Noto Serif CJK HK","香港宋體 · Noto Serif CJK HK","NotoSerifCJKhk-Regular.ttf")
+        public static readonly IReadOnlyList<FontChoice> Bundled=new[] {
+            new FontChoice("Noto Sans CJK HK","香港黑體 · Noto Sans CJK HK","NotoSansCJKhk-Regular.ttf"),
+            new FontChoice("Noto Serif CJK HK","香港宋體 · Noto Serif CJK HK","NotoSerifCJKhk-Regular.ttf")
         };
-        public static BundledFont Get(string name) => All.FirstOrDefault(f=>f.Name==name) ?? All[0];
+        public static readonly IReadOnlyList<FontChoice> All=CreateCatalog();
+        private static IReadOnlyList<FontChoice> CreateCatalog()
+        {
+            var result=Bundled.ToList(); var installed=FontManager.Current.SystemFonts.ToList();
+            var common=new[,] {
+                {"Microsoft JhengHei","微軟正黑體"},{"Microsoft JhengHei UI","微軟正黑體 UI"},
+                {"Microsoft YaHei","微軟雅黑"},{"Microsoft YaHei UI","微軟雅黑 UI"},
+                {"MingLiU","細明體"},{"PMingLiU","新細明體"},{"MingLiU_HKSCS","香港增補細明體"},
+                {"DFKai-SB","標楷體"},{"SimSun","宋體"},{"NSimSun","新宋體"},{"SimHei","黑體"},
+                {"PingFang HK","蘋方－香港"},{"PingFang TC","蘋方－繁體"},{"PingFang SC","蘋方－簡體"},
+                {"Heiti TC","黑體－繁體"},{"Songti TC","宋體－繁體"},{"Kaiti TC","楷體－繁體"},{"Arial Unicode MS","Arial Unicode"},
+                {"KaiTi","楷體"},{"FangSong","仿宋"},{"DengXian","等線"}
+            };
+            for(var i=0;i<common.GetLength(0);i++)
+            {
+                var name=common[i,0];
+                var family=installed.FirstOrDefault(f=>string.Equals(f.Name,name,StringComparison.OrdinalIgnoreCase));
+                if(family!=null) result.Add(new FontChoice(name,common[i,1],family));
+            }
+            return result;
+        }
+        public static FontChoice Get(string name) => All.FirstOrDefault(f=>string.Equals(f.Name,name,StringComparison.OrdinalIgnoreCase)) ?? All[0];
 
         // EOT 2.1 wrapping, as used by PowerPoint's application/x-fontdata parts.
         // The full static TrueType face is preserved: the resulting deck remains editable.
         // Only our bundled OFL fonts enter here; arbitrary installed fonts are never redistributed.
         public static byte[] EmbeddedBytes(string name)
         {
-            var font=Get(name); var ttf=File.ReadAllBytes(font.FilePath);
+            var font=Get(name);
+            if(!font.IsBundled) throw new InvalidOperationException("Only the bundled fonts are embedded in PowerPoint files.");
+            var ttf=File.ReadAllBytes(font.FilePath);
             Func<int,ushort> u16=p=>(ushort)((ttf[p]<<8)|ttf[p+1]);
             Func<int,uint> u32=p=>((uint)ttf[p]<<24)|((uint)ttf[p+1]<<16)|((uint)ttf[p+2]<<8)|ttf[p+3];
             var tables=new Dictionary<string,int>();

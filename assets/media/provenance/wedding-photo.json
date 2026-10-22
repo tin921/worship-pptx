@@ -1,0 +1,9 @@
+{
+  "id": "wedding-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-54a90d1b-68d5-408c-9229-da4dfd59816f.png",
+  "file": "assets/media/themes/wedding/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "cf51d83cd342406c83af02f7eaa01eae6c174d3147aac0f175e1f43f580bee18"
+}

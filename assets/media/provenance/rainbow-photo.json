@@ -1,0 +1,9 @@
+{
+  "id": "rainbow-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-82a95959-999f-4d8e-855d-97383bf788e0.png",
+  "file": "assets/media/themes/rainbow/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "85da398a30c90aa8731f702b994679cfe5cb2472495f475bf71236120b5376cf"
+}

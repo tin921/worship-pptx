@@ -1,0 +1,9 @@
+{
+  "id": "nativity-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-8c5ac373-c346-41f3-8437-1ab1c7025095.png",
+  "file": "assets/media/themes/nativity/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "5b63ac7fa323ae1397b62cb959dcab7d988adbf1ae3d848613827ac355040595"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "tent-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-90747f12-96df-4585-a856-b89bc88c9b40.png",
+  "file": "assets/media/themes/tent/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "30157ad558379f54b0e267359eb174fa98b0edf01c1e5bd66fac48fd6611ba0b"
+}

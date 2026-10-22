@@ -1,0 +1,9 @@
+{
+  "id": "hands-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-1291b21c-f420-49d7-be80-147a6b61c832.png",
+  "file": "assets/media/themes/hands/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "a0d26cd55289e6dcfec4eb6ab09dfca91345946a6d8e8d121031d545b8913596"
+}

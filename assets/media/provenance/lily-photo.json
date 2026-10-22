@@ -1,0 +1,9 @@
+{
+  "id": "lily-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-b72b9c1e-fe3e-4245-9e24-8370b8e6c1dc.png",
+  "file": "assets/media/themes/lily/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "d74fcd890e3e309580a195f7e96c1356b10f8beccb331c16c8496f2fa1c60340"
+}

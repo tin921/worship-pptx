@@ -23,11 +23,11 @@ namespace WorshipPptx
         private static XElement Geometry() => E(A+"prstGeom",At("prst","rect"),E(A+"avLst"));
         private static XElement Solid(string rgb) => E(A+"solidFill",E(A+"srgbClr",At("val",rgb)));
         private static XElement Shape(uint id,string name,double x,double y,double w,double h,params object[] props) => E(P+"sp", E(P+"nvSpPr",E(P+"cNvPr",At("id",id),At("name",name)),E(P+"cNvSpPr"),E(P+"nvPr")),E(P+"spPr",Transform(x,y,w,h),Geometry(),props));
-        private static XElement Text(uint id,string text,double y,double size,string color,double height,string fontName)
+        private static XElement Text(uint id,string text,double y,double size,string color,double height,string fontName,string alignment="Center",bool bold=false)
         {
             var shape = Shape(id,"Text "+id,SlideLayout.TextX,y,SlideLayout.TextWidth,height,E(A+"noFill"),E(A+"ln",E(A+"noFill")));
             shape.Element(P+"nvSpPr").Element(P+"cNvSpPr").Add(At("txBox",1));
-            shape.Add(E(P+"txBody",E(A+"bodyPr",At("wrap","none"),At("lIns",0),At("rIns",0),At("tIns",0),At("bIns",0),At("anchor","t"),E(A+"noAutofit")),E(A+"lstStyle"),E(A+"p",E(A+"pPr",At("algn","ctr"),E(A+"lnSpc",E(A+"spcPct",At("val",100000))),E(A+"spcBef",E(A+"spcPts",At("val",0))),E(A+"spcAft",E(A+"spcPts",At("val",0)))),E(A+"r",E(A+"rPr",At("lang","zh-HK"),At("sz",(int)Math.Round(size*75)),At("dirty",0),Solid(color),E(A+"latin",At("typeface",fontName)),E(A+"ea",At("typeface",fontName)),E(A+"cs",At("typeface",fontName))),E(A+"t",text ?? "")),E(A+"endParaRPr",At("lang","zh-HK")))));
+            shape.Add(E(P+"txBody",E(A+"bodyPr",At("wrap","none"),At("lIns",0),At("rIns",0),At("tIns",0),At("bIns",0),At("anchor","t"),E(A+"noAutofit")),E(A+"lstStyle"),E(A+"p",E(A+"pPr",At("algn",alignment=="Left" ? "l" : alignment=="Right" ? "r" : "ctr"),E(A+"lnSpc",E(A+"spcPct",At("val",100000))),E(A+"spcBef",E(A+"spcPts",At("val",0))),E(A+"spcAft",E(A+"spcPts",At("val",0)))),E(A+"r",E(A+"rPr",At("lang","zh-HK"),At("sz",(int)Math.Round(size*75)),At("b",bold ? 1 : 0),At("dirty",0),Solid(color),E(A+"latin",At("typeface",fontName)),E(A+"ea",At("typeface",fontName)),E(A+"cs",At("typeface",fontName))),E(A+"t",new XAttribute(XNamespace.Xml+"space","preserve"),text ?? "")),E(A+"endParaRPr",At("lang","zh-HK")))));
             return shape;
         }
         public static void Write(string path,IList<SlideData> slides,string title)
@@ -51,29 +51,32 @@ namespace WorshipPptx
                         var n=i+1; var slide=slides[i]; var image=images[slide.Background ?? ""];
                         type("ppt/slides/slide"+n+".xml",content+"slide+xml"); ids.Add(E(P+"sldId",At("id",256+i),new XAttribute(R+"id","rId"+n))); relations.Add(Relation("rId"+n,"slide","slides/slide"+n+".xml"));
                         var tree=E(P+"spTree",Group(),GroupProps(),E(P+"pic",E(P+"nvPicPr",E(P+"cNvPr",At("id",2),At("name","Background")),E(P+"cNvPicPr",E(A+"picLocks",At("noChangeAspect",1))),E(P+"nvPr")),E(P+"blipFill",E(A+"blip",new XAttribute(R+"embed","rIdImage")),E(A+"stretch",E(A+"fillRect"))),E(P+"spPr",Transform(0,0,1280,720),Geometry())));
-                        tree.Add(Shape(3,"Upper-half contrast",0,0,1280,360,E(A+"solidFill",E(A+"srgbClr",At("val","000000"),E(A+"alpha",At("val",49020)))),E(A+"ln",E(A+"noFill"))));
-                        for(var line=0;line<slide.Lines.Count;line++) tree.Add(Text((uint)(4+line),slide.Lines[line],SlideLayout.TextY+line*SlideLayout.LineHeight,SlideLayout.FontSize,"FFFFFF",SlideLayout.LineHeight,slide.FontName));
-                        tree.Add(Text(20,slide.Footer,330,SlideLayout.FooterSize(slide.Footer,slide.FontName),"E4EAE0",22,slide.FontName));
+                        var color=TextColors.Get(slide.TextColor).Hex.TrimStart('#');
+                        var spacing=SlideLayout.LineSpacing(slide.FontSize,slide.FontName,slide.Bold);
+                        for(var line=0;line<slide.Lines.Count;line++) tree.Add(Text((uint)(4+line),slide.Lines[line],SlideLayout.TextTop(slide)+line*spacing,SlideLayout.FontPixels(slide.FontSize),color,spacing,slide.FontName,slide.Alignment,slide.Bold));
+                        var credits=SlideLayout.FooterLines(slide);
+                        for(var line=0;line<credits.Count;line++) tree.Add(Text((uint)(20+line),credits[line],SlideLayout.FooterTop(slide)+line*SlideLayout.FooterLineSpacing(slide),SlideLayout.FooterSize(slide),color,SlideLayout.FooterLineSpacing(slide),slide.FontName,slide.Alignment,slide.Bold));
                         Xml(zip,"ppt/slides/slide"+n+".xml",E(P+"sld",new XAttribute(XNamespace.Xmlns+"a",A),new XAttribute(XNamespace.Xmlns+"r",R),E(P+"cSld",At("name",slide.Title+" — "+slide.Section),tree),E(P+"clrMapOvr",E(A+"masterClrMapping"))));
-                        Xml(zip,"ppt/slides/_rels/slide"+n+".xml.rels",Relationships(Relation("rIdLayout","slideLayout","../slideLayouts/slideLayout1.xml"),Relation("rIdImage","image","../media/image"+image+".png")));
+                        var slideRelations=Relationships(Relation("rIdLayout","slideLayout","../slideLayouts/slideLayout1.xml"),Relation("rIdImage","image","../media/image"+image+".png"));
+                        Xml(zip,"ppt/slides/_rels/slide"+n+".xml.rels",slideRelations);
                     }
                     var embeddedFonts=E(P+"embeddedFontLst");
-                    types.Add(E(Ct+"Default",At("Extension","fntdata"),At("ContentType","application/x-fontdata")));
                     var fontIndex=0;
-                    foreach(var family in slides.Select(s=>FontCatalog.Get(s.FontName).Name).Distinct())
+                    foreach(var family in slides.Select(s=>FontCatalog.Get(s.FontName)).Where(f=>f.IsBundled).Select(f=>f.Name).Distinct())
                     {
                         var id="rIdFont"+(++fontIndex);
                         Bytes(zip,"ppt/fonts/font"+fontIndex+".fntdata",FontCatalog.EmbeddedBytes(family));
                         relations.Add(Relation(id,"font","fonts/font"+fontIndex+".fntdata"));
                         embeddedFonts.Add(E(P+"embeddedFont",E(P+"font",At("typeface",family)),E(P+"regular",new XAttribute(R+"id",id))));
                     }
+                    if(fontIndex>0) types.Add(E(Ct+"Default",At("Extension","fntdata"),At("ContentType","application/x-fontdata")));
                     Xml(zip,"[Content_Types].xml",types);
                     XNamespace cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties", dc="http://purl.org/dc/elements/1.1/";
                     Xml(zip,"docProps/core.xml",E(cp+"coreProperties",new XAttribute(XNamespace.Xmlns+"dc",dc),E(dc+"title",title),E(dc+"creator","Worship PPTX")));
                     XNamespace ep="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties";
                     Xml(zip,"docProps/app.xml",E(ep+"Properties",E(ep+"Application","Worship PPTX"),E(ep+"PresentationFormat","On-screen Show (16:9)"),E(ep+"Slides",slides.Count)));
                     Xml(zip,"_rels/.rels",Relationships(Relation("rId1","officeDocument","ppt/presentation.xml"),E(Rel+"Relationship",At("Id","rId2"),At("Type","http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties"),At("Target","docProps/core.xml")),Relation("rId3","extended-properties","docProps/app.xml")));
-                    Xml(zip,"ppt/presentation.xml",E(P+"presentation",At("embedTrueTypeFonts",1),At("saveSubsetFonts",0),new XAttribute(XNamespace.Xmlns+"a",A),new XAttribute(XNamespace.Xmlns+"r",R),E(P+"sldMasterIdLst",E(P+"sldMasterId",At("id",2147483648),new XAttribute(R+"id","rIdMaster"))),E(P+"sldIdLst",ids),E(P+"sldSz",At("cx",Emu(1280)),At("cy",Emu(720)),At("type","screen16x9")),E(P+"notesSz",At("cx",6858000),At("cy",9144000)),embeddedFonts,E(P+"defaultTextStyle")));
+                    Xml(zip,"ppt/presentation.xml",E(P+"presentation",At("embedTrueTypeFonts",fontIndex>0 ? 1 : 0),At("saveSubsetFonts",0),new XAttribute(XNamespace.Xmlns+"a",A),new XAttribute(XNamespace.Xmlns+"r",R),E(P+"sldMasterIdLst",E(P+"sldMasterId",At("id",2147483648),new XAttribute(R+"id","rIdMaster"))),E(P+"sldIdLst",ids),E(P+"sldSz",At("cx",Emu(1280)),At("cy",Emu(720)),At("type","screen16x9")),E(P+"notesSz",At("cx",6858000),At("cy",9144000)),fontIndex>0 ? embeddedFonts : null,E(P+"defaultTextStyle")));
                     Xml(zip,"ppt/_rels/presentation.xml.rels",Relationships(relations));
                     var colorMap=E(P+"clrMap",At("bg1","lt1"),At("tx1","dk1"),At("bg2","lt2"),At("tx2","dk2"),At("accent1","accent1"),At("accent2","accent2"),At("accent3","accent3"),At("accent4","accent4"),At("accent5","accent5"),At("accent6","accent6"),At("hlink","hlink"),At("folHlink","folHlink"));
                     Xml(zip,"ppt/slideMasters/slideMaster1.xml",E(P+"sldMaster",new XAttribute(XNamespace.Xmlns+"a",A),new XAttribute(XNamespace.Xmlns+"r",R),E(P+"cSld",E(P+"spTree",Group(),GroupProps())),colorMap,E(P+"sldLayoutIdLst",E(P+"sldLayoutId",At("id",2147483649),new XAttribute(R+"id","rIdLayout"))),E(P+"txStyles",E(P+"titleStyle"),E(P+"bodyStyle"),E(P+"otherStyle"))));

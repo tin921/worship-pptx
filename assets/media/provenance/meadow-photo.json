@@ -1,0 +1,9 @@
+{
+  "id": "meadow-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-68dd8ef9-57fe-48d1-b901-62018c0dcf06.png",
+  "file": "assets/media/themes/meadow/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "799356e1e1c3e17a09f0a5b04fb4b69d8f460905062f5fc6f61106ddf580e499"
+}

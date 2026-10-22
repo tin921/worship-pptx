@@ -1,0 +1,9 @@
+{
+  "id": "bible-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-052095ae-1116-45be-9c68-8df5aba35348.png",
+  "file": "assets/media/themes/bible/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "5249a2917dbf85a78d9566d199f20fc5abb42d494b6702bf3f1c919dc16137ef"
+}

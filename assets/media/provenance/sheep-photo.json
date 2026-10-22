@@ -1,0 +1,9 @@
+{
+  "id": "sheep-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-16a5c8be-1986-4297-afe3-0946fb0fd665.png",
+  "file": "assets/media/themes/sheep/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "81d6f7e131b2cd79816f40e2c9dab073a6be4d3243a680e4aedaf3c3dd03b7ae"
+}

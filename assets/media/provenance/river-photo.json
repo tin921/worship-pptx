@@ -1,0 +1,9 @@
+{
+  "id": "river-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-a5757954-133b-426a-bb01-1e949bc7c326.png",
+  "file": "assets/media/themes/river/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "b47c3acad7773e2352d3ae3214d305cbef555ef1446000fa98720a637dfb538b"
+}

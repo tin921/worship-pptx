@@ -1,0 +1,11 @@
+{
+  "asset": "worship-leader-warm.png",
+  "generator": "OpenAI built-in image generation",
+  "generated_date": "2026-10-22",
+  "reference": "User-provided warm illustrated church stage",
+  "final_edit": "Remove wall cross and zoom closer to the leader; preserve gold cross necklace",
+  "original_file": "exec-bb509c83-cf4b-4154-9439-0f0056fecfaa.png",
+  "sha256": "f6f79cfd31f0226fbaa1fb438f5d351262c98e02cb66cf9032824f672133bb64",
+  "prompt": "worship-leader-warm.prompt.txt",
+  "usage": "Bundled preview-only PiP artwork, excluded from PowerPoint export"
+}

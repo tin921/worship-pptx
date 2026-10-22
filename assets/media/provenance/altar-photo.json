@@ -1,0 +1,9 @@
+{
+  "id": "altar-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-96060893-08c2-4e65-a8b6-dd3512213ad2.png",
+  "file": "assets/media/themes/altar/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "93643556c1294b6fae41b39106abad17784005c7f5489b03e7460e7fd0de12dd"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "music-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-52e76225-545a-44aa-8f6f-8fe5d89072ce.png",
+  "file": "assets/media/themes/music/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "11f5e7ef057ed20b336bcfc1b67795fd593e1e5303eab20c461bae0fce9c30b2"
+}

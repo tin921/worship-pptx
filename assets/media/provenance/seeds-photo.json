@@ -1,0 +1,9 @@
+{
+  "id": "seeds-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-3ee45635-7fd1-4e82-942a-6d74363bff61.png",
+  "file": "assets/media/themes/seeds/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "68eb6ec719892871d777be683a636374c891b4a8558f02e59db132d237d03974"
+}

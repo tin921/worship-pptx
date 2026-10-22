@@ -1,0 +1,9 @@
+{
+  "id": "fire-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-7e62d7a2-57c9-4aa2-9532-41e73d39a384.png",
+  "file": "assets/media/themes/fire/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "755ea71f742dcb784feaa8cb357c528c25e20c679870e3c400a65573ad340b76"
+}

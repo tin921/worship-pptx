@@ -1,0 +1,9 @@
+{
+  "id": "city-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-eefc40af-28c1-492c-8f75-1c3d3f47ebb5.png",
+  "file": "assets/media/themes/city/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "92298630154a1d0f0339ace04d2a4db77e8aee502a08f3465ef3fa2feee95c05"
+}

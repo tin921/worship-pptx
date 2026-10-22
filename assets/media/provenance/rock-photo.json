@@ -1,0 +1,9 @@
+{
+  "id": "rock-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-a04d02cb-052f-4c1c-ad74-9fb2b9037989.png",
+  "file": "assets/media/themes/rock/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "ada03c10ec57358e55248bdf0964a7cfc33aec736091f123dbe72b44114de8f4"
+}

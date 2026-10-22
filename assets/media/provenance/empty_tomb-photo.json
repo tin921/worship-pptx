@@ -1,0 +1,9 @@
+{
+  "id": "empty_tomb-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-0c509ce4-afee-49e3-af3b-b2b988b557d4.png",
+  "file": "assets/media/themes/empty_tomb/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "0d492f42ecbfba7e1c99aff7830f1b4c9292031cc75c1ce890c3aa294f79ccc1"
+}

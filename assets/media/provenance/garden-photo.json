@@ -1,0 +1,9 @@
+{
+  "id": "garden-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-fe6f869e-d5e8-4c47-bec6-4a766f28b3c2.png",
+  "file": "assets/media/themes/garden/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "811394fd7e6dd3358cbd672607e135228889e83740b3499cdc55bfa4807d155a"
+}

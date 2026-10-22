@@ -1,0 +1,9 @@
+{
+  "id": "anchor-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-3f972a44-9eba-4911-8a88-8cae9f6fb91a.png",
+  "file": "assets/media/themes/anchor/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "f8f9d36ecd486b5fecaf2971ff8fa023fa7951dc437c8762e20ac5c505d98fb4"
+}

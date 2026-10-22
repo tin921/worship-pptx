@@ -1,0 +1,9 @@
+{
+  "id": "shield-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-a0b7674a-a5c5-4136-8512-bef2c86aa2c9.png",
+  "file": "assets/media/themes/shield/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "ff180e79c6d0edbbbf76bcd66028571c33cf398a5be97ba6b6135353537179e1"
+}

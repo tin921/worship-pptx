@@ -1,0 +1,9 @@
+{
+  "id": "harvest-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-4ce2437a-7234-4e6f-9a0c-809d3f86056e.png",
+  "file": "assets/media/themes/harvest/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "8d759e53e772bf66efb06df5429d3f0ec5890c44117ff7414a77e49f2793ff72"
+}

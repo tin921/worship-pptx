@@ -1,0 +1,9 @@
+{
+  "id": "snow-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-f240e45c-589f-4908-afea-57abce2bbb93.png",
+  "file": "assets/media/themes/snow/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "38aac9c04cdec8094c1ef6d5ff86b03623b70f91715a209f7d19caffe6461d1c"
+}

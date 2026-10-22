@@ -1,0 +1,9 @@
+{
+  "id": "treasure-photo",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-bee435bc-5b8a-4671-932c-c9d377dad9ee.png",
+  "file": "assets/media/themes/treasure/photo.jpg",
+  "width": 1280,
+  "height": 720,
+  "sha256": "eb0d43378b84e39cb973c9f53c3d3040de55280b4f862a523aa2f275ba396fe0"
+}
