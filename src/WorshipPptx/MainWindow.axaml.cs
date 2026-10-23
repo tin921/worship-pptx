@@ -72,19 +72,13 @@ namespace WorshipPptx
         {
             if(!e.WidthChanged) return;
             // Keep both alignment rows together when the splitter leaves too little room beside them.
-            var compact=e.NewSize.Width<198;
-            TextColorPicker.Width=compact ? 42 : 56;
-            TextColorPicker.Padding=new Thickness(compact ? 4 : 7);
-            TextColorPicker.Margin=new Thickness(0,0,compact ? 4 : 6,6);
-            FontSizePicker.Width=compact ? 60 : 64;
-            FontSizePicker.Margin=new Thickness(0,0,compact ? 4 : 6,6);
-            BoldToggle.Width=compact ? 32 : 36;
-            BoldToggle.Margin=new Thickness(0,0,compact ? 0 : 6,6);
+            var compact=e.NewSize.Width<254;
             Grid.SetColumnSpan(TypographyRow,compact ? 2 : 1);
             TypographyRow.Margin=new Thickness(0,0,compact ? 0 : 8,0);
             Grid.SetColumn(AlignmentControls,compact ? 0 : 1);
             Grid.SetColumnSpan(AlignmentControls,compact ? 2 : 1);
             Grid.SetRow(AlignmentControls,compact ? 1 : 0);
+            AlignmentControls.Margin=new Thickness(0,compact ? 8 : 0,0,0);
         }
         private void WorkArea_SizeChanged(object sender,SizeChangedEventArgs e)
         {

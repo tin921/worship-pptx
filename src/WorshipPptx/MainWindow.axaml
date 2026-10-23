@@ -6,7 +6,7 @@
     <StackPanel DockPanel.Dock="Top">
      <TextBlock x:Name="AppHeading" Text="{local:Tr '敬拜工坊'}" FontSize="23" FontWeight="Bold" Margin="0,0,0,3"/>
      <TextBlock x:Name="VersionLabel" FontSize="12" Foreground="#738077" Margin="0,0,0,10"/>
-     <Button x:Name="NewServiceButton" Content="{local:Tr '＋ 新增崇拜'}" Click="NewService_Click" Classes="primary" HorizontalAlignment="Stretch" Height="40" Padding="8,6" Margin="0,0,0,10"/>
+     <Button x:Name="NewServiceButton" Content="{local:Tr '＋ 新增崇拜'}" Click="NewService_Click" Classes="primary" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Padding="8,0" Margin="0,0,0,10"/>
     </StackPanel>
     <ListBox x:Name="HistoryList" Classes="history" Padding="0" Background="Transparent" BorderThickness="0" SelectionChanged="History_Changed" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
@@ -61,7 +61,7 @@
       <Grid x:Name="BackgroundToolbar" ColumnDefinitions="*,16,*" Margin="0,0,0,8">
        <StackPanel>
         <TextBlock Text="{local:Tr '背景圖片'}" Classes="label" Height="28" VerticalAlignment="Center" Margin="0,0,0,9"/>
-        <Border x:Name="BackgroundBox" Height="146" CornerRadius="9" ClipToBounds="True" Background="White" DragDrop.AllowDrop="True" DragDrop.Drop="Background_Drop" DragDrop.DragOver="Background_DragOver">
+        <Border x:Name="BackgroundBox" Height="146" CornerRadius="9" ClipToBounds="True" Background="White" BorderBrush="#D5DAD5" BorderThickness="1" DragDrop.AllowDrop="True" DragDrop.Drop="Background_Drop" DragDrop.DragOver="Background_DragOver">
          <Grid><Viewbox x:Name="BackgroundHost" Stretch="UniformToFill" ToolTip.Tip="{local:Tr '拖動平移 · 滾輪縮放'}"/>
           <Border x:Name="ImageControls" Margin="8" ToolTip.Tip="{local:Tr '拖動平移 · 滾輪縮放'}">
            <Grid>
@@ -105,14 +105,15 @@
         <TextBlock Text="{local:Tr '文字格式'}" Classes="label" Margin="0,0,0,9"/>
         <ComboBox x:Name="FontPicker" MinWidth="0" Height="40" FontSize="14" Padding="8,7" SelectionChanged="Typography_Changed" ToolTip.Tip="{local:Tr '本分頁字體'}" AutomationProperties.Name="{local:Tr '投影片字體'}"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding DisplayName}" FontFamily="{Binding Family}" TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding DisplayName}"/></DataTemplate></ComboBox.ItemTemplate></ComboBox>
         <Grid x:Name="FormattingControls" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" Margin="0,8,0,0" SizeChanged="FormattingControls_SizeChanged">
-        <WrapPanel x:Name="TypographyRow" Orientation="Horizontal" Margin="0,0,8,0">
-         <Button x:Name="TextColorPicker" Classes="palette" Width="56" Height="40" Padding="7" Margin="0,0,6,6" ToolTip.Tip="{local:Tr '文字顏色'}" AutomationProperties.Name="{local:Tr '文字顏色'}">
+        <Grid x:Name="TypographyRow" ColumnDefinitions="Auto,Auto" RowDefinitions="40,40" ColumnSpacing="6" RowSpacing="8" Margin="0,0,8,0" HorizontalAlignment="Left">
+         <ToggleButton x:Name="AutoFontSizeButton" Classes="alignment" Width="56" Height="40" CornerRadius="6" Content="{local:Tr '自動'}" Padding="4,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="AutoFontSize_Click" ToolTip.Tip="{local:Tr '按最長歌詞段落統一字號；持續自動調整，直至選擇固定字號'}" AutomationProperties.Name="{local:Tr '自動字號'}"/>
+         <ComboBox x:Name="FontSizePicker" Grid.Column="1" Width="64" MinWidth="0" Height="40" FontSize="15" Padding="5,7" SelectionChanged="Typography_Changed" ToolTip.Tip="{local:Tr '本分頁字號（pt）'}" AutomationProperties.Name="{local:Tr '投影片字號（pt）'}"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding}"/></DataTemplate></ComboBox.ItemTemplate></ComboBox>
+         <Button x:Name="TextColorPicker" Grid.Row="1" Classes="palette" Width="56" Height="40" Padding="7" ToolTip.Tip="{local:Tr '文字顏色'}" AutomationProperties.Name="{local:Tr '文字顏色'}">
           <Button.Flyout><Flyout Placement="Bottom"><UniformGrid x:Name="ColorSwatches" Columns="8" Rows="8" Margin="2"/></Flyout></Button.Flyout>
           <Grid ColumnDefinitions="18,4,8"><Border x:Name="SelectedColorSwatch" Width="18" Height="18" CornerRadius="2" BorderBrush="#94A197" BorderThickness="1"/><PathIcon Grid.Column="2" Width="8" Height="6" Data="M0,0 L5,5 L10,0"/></Grid>
          </Button>
-         <ComboBox x:Name="FontSizePicker" Width="64" MinWidth="0" Height="40" FontSize="15" Padding="5,7" Margin="0,0,6,6" SelectionChanged="Typography_Changed" ToolTip.Tip="{local:Tr '本分頁字號（pt）'}" AutomationProperties.Name="{local:Tr '投影片字號（pt）'}"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding}"/></DataTemplate></ComboBox.ItemTemplate></ComboBox>
-         <ToggleButton x:Name="BoldToggle" Classes="alignment" Width="36" Margin="0,0,6,6" CornerRadius="6" Content="B" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="FormatOption_Click" ToolTip.Tip="{local:Tr '粗體'}" AutomationProperties.Name="{local:Tr '粗體'}"/>
-        </WrapPanel>
+         <ToggleButton x:Name="BoldToggle" Grid.Row="1" Grid.Column="1" Classes="alignment" Width="64" CornerRadius="6" Content="B" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="FormatOption_Click" ToolTip.Tip="{local:Tr '粗體'}" AutomationProperties.Name="{local:Tr '粗體'}"/>
+        </Grid>
         <Grid x:Name="AlignmentControls" Grid.Column="1" ColumnDefinitions="Auto,Auto,Auto" RowDefinitions="Auto,Auto" RowSpacing="8" HorizontalAlignment="Right" VerticalAlignment="Top">
          <Grid.Styles><Style Selector="ToggleButton.alignment"><Setter Property="Width" Value="40"/><Setter Property="Height" Value="40"/></Style></Grid.Styles>
           <ToggleButton x:Name="AlignLeft" Classes="alignment" Tag="Left" CornerRadius="6,0,0,6" Click="Alignment_Click" ToolTip.Tip="{local:Tr '靠左'}" AutomationProperties.Name="{local:Tr '靠左'}"><PathIcon Width="18" Height="18" Data="M1,1 H19 V3 H1 Z M1,6 H13 V8 H1 Z M1,11 H19 V13 H1 Z M1,16 H13 V18 H1 Z"/></ToggleButton>
@@ -131,7 +132,7 @@
         <StackPanel Orientation="Horizontal" Spacing="10"><TextBlock Text="{local:Tr '畫面預覽'}" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/><TextBlock x:Name="PreviewInfo" Classes="caption" FontSize="14" VerticalAlignment="Center"/></StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal"><Button x:Name="PreviousPreview" Content="‹" Width="36" Height="30" MinHeight="0" Padding="0" Click="Previous_Click" FontSize="18"/><Button x:Name="NextPreview" Content="›" Width="36" Height="30" MinHeight="0" Padding="0" Margin="7,0,0,0" Click="Next_Click" FontSize="18"/></StackPanel>
        </Grid>
-       <Viewbox x:Name="SlideHost" Grid.Row="1" Stretch="Uniform" VerticalAlignment="Top"/>
+       <Border Grid.Row="1" BorderBrush="#D5DAD5" BorderThickness="1" VerticalAlignment="Top"><Viewbox x:Name="SlideHost" Stretch="Uniform" VerticalAlignment="Top"/></Border>
        <TextBlock Grid.Row="4" x:Name="ValidationText" Foreground="#A34F30" FontSize="13" Margin="0,6,0,0"/>
       </Grid>
      </Grid>

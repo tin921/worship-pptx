@@ -61,7 +61,24 @@ static class EditorInteractionTests
                 var tabs=window.FindControl<TabControl>("SongTabs"); tabs.SelectedIndex=2; Pump();
                 check(Item(window).Formatting.AutoFontSize && picker.SelectedItem is double,"Manual override leaked to another tab");
                 tabs.SelectedIndex=1; Pump(); check(picker.SelectedItem is double v && v==48,"Manual override lost after switching tabs");
+                var automatic=window.FindControl<ToggleButton>("AutoFontSizeButton");
+                check(automatic.IsChecked==false,"Manual size still shows Auto active");
+                automatic.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
+                slides=SlideLayout.BuildItem(item,store.LoadSettings());
+                check(item.Formatting.AutoFontSize && automatic.IsChecked==true && slides.Count==4 && slides.All(s=>s.FontSize==slides[1].FontSize) && picker.SelectedItem is double fitted && fitted==slides[1].FontSize,"Auto did not restore one shared fitted size");
+                check(store.LoadHistory().Single().Items[1].Formatting.AutoFontSize,"Restored Auto mode was not saved");
+                window.FindControl<TextBox>("SongOrder").Text="";
+                lyrics.Text+="\n[v2]\n"+string.Join("\n",Enumerable.Repeat("更長的新段落",12));
+                var before=slides[1].FontSize;
+                WaitFor(()=>picker.SelectedItem is double size && size<before && thumbs.ItemCount==4);
+                slides=SlideLayout.BuildItem(item,store.LoadSettings());
+                check(slides.All(s=>s.FontSize==slides[1].FontSize),"A new block did not update the shared size");
+                lyrics.Text="[v1]\n平安\n[c]\n恩典";
+                WaitFor(()=>picker.SelectedItem is double size && size==72);
+                automatic.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
+                check(item.Formatting.AutoFontSize && automatic.IsChecked==true,"Clicking active Auto disabled live sizing");
                 picker.SelectedItem=40.0; Pump();
+                check(!item.Formatting.AutoFontSize && automatic.IsChecked==false,"An explicit size did not leave Auto mode");
             } finally { window.Close(); }
             var saved=store.LoadHistory().Single().Items;
             check(!saved[1].Formatting.AutoFontSize && saved[1].Formatting.FontSize==40 && saved[2].Formatting.AutoFontSize,"Automatic/manual modes did not persist per tab");

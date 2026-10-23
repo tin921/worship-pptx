@@ -45,7 +45,7 @@ public partial class MainWindow
             Lyrics.SelectedText="\t"; e.Handled=true; return;
         }
         if(e.Key==Key.Tab && (e.KeyModifiers==KeyModifiers.None || e.KeyModifiers==KeyModifiers.Shift)) {
-            var fields=new Control[]{SongTitle,CopyrightText,SongId,SongOrder,Lyrics,ActiveServiceField<TextBox>("ServiceTitle"),ActiveServiceField<CalendarDatePicker>("ServiceDate"),FontPicker,TextColorPicker,FontSizePicker,BoldToggle,AlignLeft,AlignCenter,AlignRight,PositionTop,PositionMiddle,PositionBottom,BackgroundOpacity,FlipBackground};
+            var fields=new Control[]{SongTitle,CopyrightText,SongId,SongOrder,Lyrics,ActiveServiceField<TextBox>("ServiceTitle"),ActiveServiceField<CalendarDatePicker>("ServiceDate"),FontPicker,AutoFontSizeButton,FontSizePicker,TextColorPicker,BoldToggle,AlignLeft,AlignCenter,AlignRight,PositionTop,PositionMiddle,PositionBottom,BackgroundOpacity,FlipBackground};
             var visible=fields.Where(c=>c!=null && c.IsEffectivelyVisible && c.IsEffectivelyEnabled).ToArray();
             var index=Array.FindIndex(visible,c=>ReferenceEquals(c,focused) || (focused as Visual)?.GetVisualAncestors().Contains(c)==true);
             var step=e.KeyModifiers==KeyModifiers.Shift ? -1 : 1;

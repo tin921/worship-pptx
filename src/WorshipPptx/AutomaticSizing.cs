@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 
 namespace WorshipPptx;
 
@@ -15,6 +16,8 @@ public partial class MainWindow
         syncingFontSize=true;
         try {
             var automatic=selected.Formatting.AutoFontSize && SlideLayout.HasSectionTags(selected.Lyrics);
+            AutoFontSizeButton.IsChecked=automatic;
+            AutoFontSizeButton.IsEnabled=SlideLayout.HasSectionTags(selected.Lyrics);
             var size=automatic && actual.HasValue ? actual.Value : selected.Formatting.FontSize;
             var choices=presetFontSizes.Append(size).Distinct().OrderBy(value=>value).ToArray();
             // Automatic sizing is state, not a dropdown option. Keep one numeric
@@ -25,5 +28,14 @@ public partial class MainWindow
             FontSizePicker.SelectedItem=size;
             ToolTip.SetTip(FontSizePicker,automatic ? ChineseText.Ui("按最長段落統一字號；選擇數字可固定字號") : ChineseText.Ui("固定字號（pt）"));
         } finally { syncingFontSize=false; }
+    }
+    private void AutoFontSize_Click(object sender,RoutedEventArgs e)
+    {
+        if(loading || selected==null) return;
+        Capture();
+        selected.Formatting.AutoFontSize=true;
+        // Clicking the active button recalculates; only a numeric choice locks size.
+        AutoFontSizeButton.IsChecked=true;
+        UpdateContentMode(); RefreshPreview(); SaveDraft();
     }
 }

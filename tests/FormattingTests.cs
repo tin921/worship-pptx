@@ -63,7 +63,7 @@ static class FormattingTests
                 var order=window.FindControl<TextBox>("SongOrder"); var lyrics=window.FindControl<TextBox>("Lyrics");
                 var orderBottom=order.TranslatePoint(default,window).Value.Y+order.Bounds.Height;
                 check(Math.Abs(lyrics.TranslatePoint(default,window).Value.Y-orderBottom-12)<1,"Repeat order is not immediately above lyrics");
-                var toolbar=window.FindControl<WrapPanel>("TypographyRow");
+                var toolbar=window.FindControl<Grid>("TypographyRow");
                 foreach(var name in new[]{"PositionTop","PositionMiddle","PositionBottom"}) check(window.FindControl<ToggleButton>(name).Content is PathIcon,"Vertical alignment still uses a text label");
                 foreach(var width in new[]{144.0,295.0}) {
                     toolbar.Measure(new Size(width,double.PositiveInfinity)); toolbar.Arrange(new Rect(0,0,width,toolbar.DesiredSize.Height));
