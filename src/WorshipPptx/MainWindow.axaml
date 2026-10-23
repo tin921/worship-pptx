@@ -142,7 +142,16 @@
    <Border Grid.Row="2" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="22,13">
     <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
      <TextBlock x:Name="StatusText" Text="{local:Tr '已儲存'}" FontSize="13" VerticalAlignment="Center" Margin="0,0,12,0"/>
-     <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"><Button Content="{local:Tr '預覽整個崇拜'}" Click="Preview_Click" Margin="0,0,10,0"/><Button Content="{local:Tr '製作 PowerPoint'}" Click="Export_Click" Classes="primary"/><Button x:Name="UploadButton" Content="{local:Tr '上傳 Google Drive'}" Click="Upload_Click" Margin="10,0,0,0"/></StackPanel>
+     <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="10">
+      <StackPanel.Styles>
+       <Style Selector="Button"><Setter Property="Width" Value="84"/><Setter Property="Height" Value="40"/><Setter Property="Padding" Value="0"/><Setter Property="HorizontalContentAlignment" Value="Center"/><Setter Property="VerticalContentAlignment" Value="Center"/><Setter Property="Background" Value="#A7BBAC"/><Setter Property="BorderBrush" Value="#A7BBAC"/><Setter Property="Foreground" Value="#20362B"/></Style>
+       <Style Selector="Button:pointerover /template/ ContentPresenter"><Setter Property="Background" Value="#98AE9E"/><Setter Property="BorderBrush" Value="#98AE9E"/><Setter Property="Foreground" Value="#20362B"/></Style>
+       <Style Selector="Button:pressed /template/ ContentPresenter"><Setter Property="Background" Value="#8BA592"/><Setter Property="BorderBrush" Value="#8BA592"/><Setter Property="Foreground" Value="#20362B"/></Style>
+      </StackPanel.Styles>
+      <Button Content="{local:Tr '預覽'}" Click="Preview_Click" ToolTip.Tip="{local:Tr '預覽整個崇拜'}" AutomationProperties.Name="{local:Tr '預覽整個崇拜'}"/>
+      <Button Content="{local:Tr '製作'}" Click="Export_Click" ToolTip.Tip="{local:Tr '製作 PowerPoint'}" AutomationProperties.Name="{local:Tr '製作 PowerPoint'}"/>
+      <Button x:Name="UploadButton" Content="{local:Tr '上傳'}" Click="Upload_Click" ToolTip.Tip="{local:Tr '上傳 Google Drive'}" AutomationProperties.Name="{local:Tr '上傳 Google Drive'}"/>
+     </StackPanel>
     </Grid>
    </Border>
   </Grid>
