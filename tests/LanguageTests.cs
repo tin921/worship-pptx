@@ -97,7 +97,8 @@ static class LanguageTests
                     var pages=zip.Entries.Where(e=>e.FullName.StartsWith("ppt/slides/slide") && e.FullName.EndsWith(".xml")).Select(e=> { using var input=e.Open(); return XDocument.Load(input); }).ToList();
                     var text=string.Join("\n",pages.SelectMany(p=>p.Descendants(a+"t").Select(t=>t.Value)));
                     check(text.Contains(ChineseText.Content("願祢的愛充滿我心")) && text.Contains(ChineseText.Content("詩篇：耶和華是我的牧者")) && text.Contains(ChineseText.Content("歡迎參加禱告會")),"Export differs from preview language");
-                    check(text.Contains("CCLI Song #123") && text.Contains("CCLI Licence #456") && text.Contains(ChineseText.Content("版權所有")),"Credits lost");
+                    var joined=string.Concat(pages.SelectMany(p=>p.Descendants(a+"t").Select(t=>t.Value)));
+                    check(joined.Contains("CCLI Song #123") && joined.Contains("CCLI Licence #456") && joined.Contains(ChineseText.Content("版權所有")),"Credits lost");
                     check(pages.SelectMany(p=>p.Descendants(a+"rPr")).All(p=>(string)p.Attribute("lang")==ChineseText.CultureName),"PPTX proofing language incorrect");
                 }
             } finally { ChineseText.SetLanguage(ChineseText.Traditional); }

@@ -27,6 +27,45 @@ static class EditorInteractionTests
     private static void Press(Window window,Key key) { window.KeyPress(key,RawInputModifiers.None,PhysicalKey.None,null); window.KeyRelease(key,RawInputModifiers.None,PhysicalKey.None,null); Pump(); }
     public static void Run(Action<string,Action> test,Action<bool,string> check,string root)
     {
+        test("Typing and pasting fit the longest block with a shared centered font until a saved manual override",()=> {
+            var store=new LocalStore(Path.Combine(root,"auto-size-"+Guid.NewGuid().ToString("N")));
+            var plan=Demo.Create(); plan.Items[1].Lyrics="[v1]\n平安\n[c]\n恩典"; plan.Items[1].Order="v1 c v1"; store.Save(plan);
+            var window=new MainWindow(store); window.Show(); Pump();
+            try {
+                var item=Item(window); var picker=window.FindControl<ComboBox>("FontSizePicker"); var thumbs=window.FindControl<ListBox>("Thumbnails");
+                var lyrics=window.FindControl<TextBox>("Lyrics"); thumbs.SelectedIndex=1; Pump();
+                check(item.Formatting.AutoFontSize && picker.SelectedItem is string && picker.SelectedItem.ToString().EndsWith("72"),"New song does not start in automatic sizing");
+                void WaitFor(Func<bool> done) {
+                    var frame=new DispatcherFrame();
+                    using var timeout=new System.Threading.CancellationTokenSource(4000);
+                    using var registration=timeout.Token.Register(()=>Dispatcher.UIThread.Post(()=>frame.Continue=false));
+                    var poll=new DispatcherTimer { Interval=TimeSpan.FromMilliseconds(25) };
+                    poll.Tick+=(_,_)=> { if(done()) frame.Continue=false; };
+                    poll.Start(); try { Dispatcher.UIThread.PushFrame(frame); } finally { poll.Stop(); }
+                    check(done(),"Live preview did not finish reflowing: "+picker.SelectedItem+" / "+window.FindControl<TextBlock>("ValidationText").Text);
+                }
+                var longer=string.Join("\n",Enumerable.Repeat("  平安與恩典充滿心間",8));
+                lyrics.Text="[v1]\n"+longer+"\n[c]\n恩典";
+                WaitFor(()=>picker.SelectedItem is string text && !text.EndsWith("72"));
+                var slides=SlideLayout.BuildItem(item,store.LoadSettings());
+                check(slides.Count==4 && slides.All(s=>s.FontSize==slides[1].FontSize && s.Alignment=="Center" && s.TextPosition=="Middle") && slides[1].Text==longer,"Longest block does not set a shared centered font, or whitespace was lost");
+                lyrics.Text="[v1]\n平安\n[c]\n恩典";
+                WaitFor(()=>picker.SelectedItem is string text && text.EndsWith("72"));
+                picker.SelectedItem=48.0; Pump();
+                check(!item.Formatting.AutoFontSize && item.Formatting.FontSize==48,"Explicit size did not disable automatic sizing");
+                lyrics.Text="[v1]\n"+longer+"\n[c]\n恩典";
+                WaitFor(()=>thumbs.ItemCount>4);
+                slides=SlideLayout.BuildItem(item,store.LoadSettings());
+                check(slides.Where(s=>!s.IsTitle).All(s=>s.FontSize==48) && picker.SelectedItem is double n && n==48,"Typing overwrote the manual size");
+                var tabs=window.FindControl<TabControl>("SongTabs"); tabs.SelectedIndex=2; Pump();
+                check(Item(window).Formatting.AutoFontSize && picker.SelectedItem is string,"Manual override leaked to another tab");
+                tabs.SelectedIndex=1; Pump(); check(picker.SelectedItem is double v && v==48,"Manual override lost after switching tabs");
+                picker.SelectedIndex=0; Pump(); check(item.Formatting.AutoFontSize && thumbs.ItemCount==4,"Automatic sizing cannot be restored");
+                picker.SelectedItem=40.0; Pump();
+            } finally { window.Close(); }
+            var saved=store.LoadHistory().Single().Items;
+            check(!saved[1].Formatting.AutoFontSize && saved[1].Formatting.FontSize==40 && saved[2].Formatting.AutoFontSize,"Automatic/manual modes did not persist per tab");
+        });
         test("Escape leaves fields; Page keys change services, arrows change tabs/slides and Tab follows fields",()=> {
             var store=new LocalStore(Path.Combine(root,"editor-keys-"+Guid.NewGuid().ToString("N")));
             var first=Demo.Create(); store.Save(first); var second=Demo.Create(); second.Date=first.Date.AddDays(7); store.Save(second);

@@ -114,7 +114,7 @@ namespace WorshipPptx.Tests
                 Check(plan.MoveItem(moved,0) && plan.Items.First()==moved,"Move to start failed");
                 Check(!plan.MoveItem(moved,1),"Adjacent drop should not change order");
                 Check(plan.Items.Count==original.Length && original.All(plan.Items.Contains),"Item lost or duplicated");
-                foreach(var item in plan.Items) { item.Formatting.FontSize=48; item.Formatting.Alignment="Right"; }
+                foreach(var item in plan.Items) { item.Formatting.AutoFontSize=false; item.Formatting.FontSize=48; item.Formatting.Alignment="Right"; }
                 var path=Path.Combine(root,"reordered-service.json"); LocalStore.Write(path,plan); var read=LocalStore.Read<ServicePlan>(path);
                 Check(read.Items.Select(i=>i.Title).SequenceEqual(plan.Items.Select(i=>i.Title)),"Order did not persist");
                 var exported=SlideLayout.Build(read,settings);

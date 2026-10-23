@@ -46,7 +46,7 @@ static class FormattingTests
                 var swatches=window.FindControl<UniformGrid>("ColorSwatches");
                 swatches.Children.OfType<Button>().Single(b=>((TextColorChoice)b.Tag).Hex=="#B83D3D").RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 tabs.SelectedIndex=2; Dispatcher.UIThread.RunJobs();
-                check((double)window.FindControl<ComboBox>("FontSizePicker").SelectedItem==36 && bold.IsChecked==false && window.FindControl<ToggleButton>("AlignCenter").IsChecked==true && window.FindControl<ToggleButton>("PositionTop").IsChecked==true,"Formatting leaked into another song");
+                check(window.FindControl<ComboBox>("FontSizePicker").SelectedItem is string && bold.IsChecked==false && window.FindControl<ToggleButton>("AlignCenter").IsChecked==true && window.FindControl<ToggleButton>("PositionMiddle").IsChecked==true,"Formatting leaked into another song");
                 tabs.SelectedIndex=1; Dispatcher.UIThread.RunJobs();
                 check((double)window.FindControl<ComboBox>("FontSizePicker").SelectedItem==60 && bold.IsChecked==true && window.FindControl<ToggleButton>("AlignRight").IsChecked==true && window.FindControl<ToggleButton>("PositionBottom").IsChecked==true,"Switching tabs lost formatting");
                 var color=window.FindControl<Button>("TextColorPicker"); color.Flyout.ShowAt(color); Dispatcher.UIThread.RunJobs();
@@ -72,7 +72,7 @@ static class FormattingTests
                 }
             } finally { window.Close(); }
             var saved=store.LoadHistory().Single();
-            check(saved.Title=="asdf" && saved.Items[1].Formatting.Bold && !saved.Items[1].Formatting.FullSlide && saved.Items[1].Formatting.TextPosition=="Bottom" && saved.Items[2].Formatting.TextPosition=="Top" && saved.Items[1].Formatting.TextColor=="#B83D3D" && !saved.Items[2].Formatting.Bold,"Settings did not survive saving");
+            check(saved.Title=="asdf" && saved.Items[1].Formatting.Bold && !saved.Items[1].Formatting.FullSlide && saved.Items[1].Formatting.TextPosition=="Bottom" && saved.Items[2].Formatting.TextPosition=="Middle" && saved.Items[1].Formatting.TextColor=="#B83D3D" && !saved.Items[2].Formatting.Bold,"Settings did not survive saving");
         });
         test("Full-slide bold text exports while singer guide stays preview-only",()=> {
             var item=new ServiceItem { Title="全畫面測試",Lyrics="[v1]\n第一行\n第二行\n第三行\n第四行\n第五行\n第六行",Order="v1",Copyright="版權",SongId="123" };

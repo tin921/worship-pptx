@@ -46,7 +46,7 @@ namespace WorshipPptx
             UpdateLanguageButtons();
             BuildColorPalette();
             InitializeNavigation();
-            FontSizePicker.ItemsSource=new double[]{18,20,24,28,32,36,40,44,48,54,60,64,72};
+            FontSizePicker.ItemsSource=fontSizes;
             var history=store.LoadHistory(); plan=history.FirstOrDefault() ?? Demo.Create();
             debounce.Tick += (s,e) => { debounce.Stop(); SaveDraft(); RefreshPreview(); };
             LoadPlan(); RefreshHistory(); loading=false;
@@ -76,7 +76,7 @@ namespace WorshipPptx
             TextColorPicker.Width=compact ? 42 : 56;
             TextColorPicker.Padding=new Thickness(compact ? 4 : 7);
             TextColorPicker.Margin=new Thickness(0,0,compact ? 4 : 6,6);
-            FontSizePicker.Width=compact ? 60 : 64;
+            FontSizePicker.Width=104;
             FontSizePicker.Margin=new Thickness(0,0,compact ? 4 : 6,6);
             BoldToggle.Width=compact ? 32 : 36;
             BoldToggle.Margin=new Thickness(0,0,compact ? 0 : 6,6);
@@ -104,7 +104,7 @@ namespace WorshipPptx
             UpdateContentMode();
             selected.Formatting ??= new SlideFormatting();
             FontPicker.SelectedItem=FontCatalog.Get(selected.Formatting.FontName);
-            FontSizePicker.SelectedItem=selected.Formatting.FontSize;
+            SyncFontSizePicker();
             BoldToggle.IsChecked=selected.Formatting.Bold;
             selected.Preview ??= PreviewLayout.FromLegacy(selected.Formatting.FullSlide);
             UpdateAlignmentButtons(); UpdatePositionButtons(); UpdateColorSwatch(); UpdateLayoutButtons(); SyncBackgroundControls();
@@ -116,7 +116,7 @@ namespace WorshipPptx
             SongTitle.PlaceholderText=song ? ChineseText.Ui("詩歌名稱") : ChineseText.Ui("經文／公告名稱");
             Lyrics.PlaceholderText=ChineseText.Ui("歌詞 [v1]、[c] · 公告 [1]、[2] · 經文直接輸入");
             OrderPanel.IsVisible=song; SongId.IsEnabled=song;
-            LyricsHint.Text=song ? ChineseText.Ui("[v1]、[c] 每段一頁，自動調整字號；Ctrl+Tab 插入縮排。") : announcement ? ChineseText.Ui("[1]、[2] 每項一頁；字號為上限，長文自動縮小；Ctrl+Tab 插入縮排。") : ChineseText.Ui("經文自動分頁；公告用 [1]、[2] 每項一頁。保留空行及縮排；Ctrl+Tab 插入縮排。");
+            LyricsHint.Text=song ? ChineseText.Ui(selected.Formatting.AutoFontSize ? "[v1]、[c] 每段一頁，自動調整字號；Ctrl+Tab 插入縮排。" : "[v1]、[c] 標記段落；固定字號，自動分頁；Ctrl+Tab 插入縮排。") : announcement ? ChineseText.Ui("[1]、[2] 每項一頁；字號為上限，長文自動縮小；Ctrl+Tab 插入縮排。") : ChineseText.Ui("經文自動分頁；公告用 [1]、[2] 每項一頁。保留空行及縮排；Ctrl+Tab 插入縮排。");
             ToolTip.SetTip(FontSizePicker,song || announcement ? ChineseText.Ui("最大字號（pt）；每段文字自動縮小至一頁") : ChineseText.Ui("本分頁字號（pt）"));
         }
         private void Capture()
@@ -266,6 +266,7 @@ namespace WorshipPptx
             }
             PreviewInfo.Text=(page+1)+" / "+slides.Count+"  ·  "+slides[page].Section;
             if(SlideLayout.HasAnnouncementTags(selected.Lyrics) || SlideLayout.HasSectionTags(selected.Lyrics)) PreviewInfo.Text+="  ·  "+slides[page].FontSize+" pt";
+            SyncFontSizePicker(slides[page].FontSize);
             if(Thumbnails.SelectedIndex!=page) Thumbnails.SelectedIndex=page;
             Thumbnails.ScrollIntoView(Thumbnails.SelectedItem);
         }
@@ -332,8 +333,17 @@ namespace WorshipPptx
         }
         private void Typography_Changed(object sender,SelectionChangedEventArgs e)
         {
-            if(loading || selected==null || !(FontPicker.SelectedItem is FontChoice font) || !(FontSizePicker.SelectedItem is double size)) return;
-            selected.Formatting.FontName=font.Name; selected.Formatting.FontSize=size;
+            if(loading || syncingFontSize || selected==null || !(FontPicker.SelectedItem is FontChoice font)) return;
+            selected.Formatting.FontName=font.Name;
+            if(sender==FontSizePicker) {
+                if(FontSizePicker.SelectedItem is double size) { selected.Formatting.AutoFontSize=false; selected.Formatting.FontSize=size; }
+                else if(FontSizePicker.SelectedItem is string) {
+                    selected.Formatting.AutoFontSize=true; selected.Formatting.Alignment="Center"; selected.Formatting.TextPosition="Middle";
+                    UpdateAlignmentButtons(); UpdatePositionButtons();
+                }
+                else return;
+            }
+            UpdateContentMode();
             SaveDraft(); RefreshPreview();
         }
         private void Alignment_Click(object sender,RoutedEventArgs e)

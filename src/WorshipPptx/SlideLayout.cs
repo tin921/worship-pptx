@@ -27,11 +27,12 @@ namespace WorshipPptx
             var f=item.Formatting ?? new SlideFormatting();
             var layout=item.Preview ?? PreviewLayout.FromLegacy(f.FullSlide);
             layout.Normalize();
-            var result=BuildItem(item,settings,f.FontName,f.FontSize,f.Alignment,f.TextColor,f.Bold,layout.TextArea=="Full",f.TextPosition);
+            var automatic=f.AutoFontSize && HasSectionTags(item.Lyrics);
+            var result=BuildItem(item,settings,f.FontName,automatic ? 72 : f.FontSize,f.Alignment,f.TextColor,f.Bold,layout.TextArea=="Full",f.TextPosition,f.AutoFontSize);
             foreach(var slide in result) { slide.BottomHalf=layout.TextArea=="Bottom"; slide.Preview=layout; slide.BackgroundTransform=(item.BackgroundTransform ?? new()).Copy(); }
             return result;
         }
-        public static List<SlideData> BuildItem(ServiceItem item, UserSettings settings, string fontName, double fontSize = 36, string alignment = "Center",string textColor="#FFFFFF",bool bold=false,bool fullSlide=false,string textPosition="Top")
+        public static List<SlideData> BuildItem(ServiceItem item, UserSettings settings, string fontName, double fontSize = 36, string alignment = "Center",string textColor="#FFFFFF",bool bold=false,bool fullSlide=false,string textPosition="Top",bool autoFit=true)
         {
             if(double.IsNaN(fontSize) || double.IsInfinity(fontSize) || fontSize<18 || fontSize>72) throw new FormatException(ChineseText.Ui("字號須為 18 至 72 pt。"));
             if(alignment!="Left" && alignment!="Center" && alignment!="Right") throw new FormatException(ChineseText.Ui("請選擇靠左、置中或靠右。"));
@@ -75,7 +76,7 @@ namespace WorshipPptx
             {
                 if (!sections.ContainsKey(key)) throw new FormatException(item.Title + ChineseText.Ui("：找不到 [") + key + ChineseText.Ui("]，請檢查演唱次序。"));
                 if (!sections[key].Any(x => !string.IsNullOrWhiteSpace(x))) throw new FormatException(item.Title + ChineseText.Ui("：段落 [") + key + ChineseText.Ui("] 沒有歌詞。"));
-                if(tagged)
+                if(tagged && autoFit)
                 {
                     // A tag is one complete lyric block. Blank lines inside it are
                     // spacing; only the blank separator around the tag is omitted.
@@ -87,7 +88,8 @@ namespace WorshipPptx
                 }
                 var pending = new List<string>();
                 Action flush = () => { if (pending.Count == 0) return; slides.Add(new SlideData { Title = item.Title, FontName = FontCatalog.Get(fontName).Name, FontSize = fontSize, Alignment = alignment, Section = key == "text" ? ChineseText.Ui("經文／公告") : key.ToUpperInvariant(), Lines = new List<string>(pending), Footer = footer, Background = item.Background, TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition }); pending.Clear(); };
-                foreach (var line in sections[key])
+                var content=tagged ? sections[key].SkipWhile(string.IsNullOrWhiteSpace).Reverse().SkipWhile(string.IsNullOrWhiteSpace).Reverse() : sections[key];
+                foreach (var line in content)
                 {
                     if(line.Length==0) { pending.Add(""); if(pending.Count==maxLines) flush(); continue; }
                     foreach (var wrapped in Wrap(line, fontName, fontSize,bold)) { pending.Add(wrapped); if (pending.Count == maxLines) flush(); }
@@ -106,6 +108,16 @@ namespace WorshipPptx
                 }
                 if(titleLines.Count>TextCapacity(titleSize,fontName,titleCredits,bold,fullSlide)) throw new FormatException(ChineseText.Ui("詩歌名稱或版權資料太長，請縮短文字。"));
                 slides.Insert(0,new SlideData { IsTitle=true, Title=item.Title, Section=ChineseText.Ui("歌名"), Lines=titleLines, FontName=FontCatalog.Get(fontName).Name, FontSize=titleSize, Alignment=alignment, Footer=titleCredits, Background=item.Background, TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition });
+                if(autoFit) {
+                    // One size for the song, determined by the block that needs
+                    // the most room. Include the title/credits to prevent overlap.
+                    var commonSize=slides.Min(s=>s.FontSize);
+                    foreach(var slide in slides) {
+                        slide.FontSize=commonSize;
+                        var source=slide.IsTitle ? new[]{titleText} : sections[slide.Section].SkipWhile(string.IsNullOrWhiteSpace).Reverse().SkipWhile(string.IsNullOrWhiteSpace).Reverse();
+                        slide.Lines=source.SelectMany(line=>line.Length==0 ? new List<string>{""} : Wrap(line,slide.FontName,commonSize,bold)).ToList();
+                    }
+                }
             }
             return slides;
         }
