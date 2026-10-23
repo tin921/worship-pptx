@@ -70,7 +70,7 @@ namespace WorshipPptx.Tests
             Test("Duplicate tags rejected",()=>Reject(()=>SlideLayout.BuildItem(new ServiceItem { Lyrics="[v1]\n甲\n[v1]\n乙",Order="v1" },settings)));
             Test("Missing and empty tagged lyrics rejected",()=>Reject(()=>SlideLayout.BuildItem(new ServiceItem { Lyrics="[v1]\n",Order="v1" },settings)));
             Test("Lyrics before first tag rejected",()=>Reject(()=>SlideLayout.BuildItem(new ServiceItem { Lyrics="前言\n[v1]\n甲",Order="v1" },settings)));
-            Test("Blank lines and 3-line limit paginate",()=> { var result=SlideLayout.BuildItem(new ServiceItem { Lyrics="[v1]\n甲\n乙\n丙\n丁\n\n戊",Order="v1" },settings).Where(s=>!s.IsTitle).ToList(); Check(result.Count==3 && result[0].Lines.Count==3 && result[1].Text=="丁" && result[2].Text=="戊","Wrong page breaks"); });
+            Test("A complete lyric block fits one slide and preserves internal blank lines",()=> { var result=SlideLayout.BuildItem(new ServiceItem { Lyrics="[v1]\n甲\n乙\n丙\n丁\n\n戊\n\n",Order="v1" },settings).Where(s=>!s.IsTitle).ToList(); Check(result.Count==1 && result[0].Text=="甲\n乙\n丙\n丁\n\n戊" && result[0].FontSize<36,"Lyric block was split or spacing lost"); });
             Test("Traditional and Simplified Chinese retained when wrapping",()=> { foreach(var text in new[]{string.Concat(Enumerable.Repeat("祢的恩典與慈愛永遠長存",10)),string.Concat(Enumerable.Repeat("你的恩典与慈爱永远长存",10))}) { var lines=SlideLayout.Wrap(text); Check(string.Concat(lines)==text,"Text lost"); Check(lines.All(l=>SlideLayout.Measure(l,SlideLayout.FontSize)<=SlideLayout.TextWidth),"Overflow"); } });
             Test("Unicode supplementary characters retained",()=> { var text=string.Concat(Enumerable.Repeat("恩典🌅",40)); Check(string.Concat(SlideLayout.Wrap(text))==text,"Unicode split"); });
             Test("Scripture ignores song order",()=>Check(SlideLayout.BuildItem(demo.Items[3],settings).Count==4,"Wrong scripture pagination"));
@@ -121,10 +121,11 @@ namespace WorshipPptx.Tests
                 Check(exported.Select(s=>s.Title).Distinct().SequenceEqual(read.Items.Select(i=>i.Title)),"Export order differs from tabs");
                 Check(exported.All(s=>s.FontSize==48 && s.Alignment=="Right"),"Typography did not persist");
             });
-            Test("Large Chinese text wraps and paginates above the copyright area",()=> {
+            Test("Large Chinese lyric blocks shrink to one slide within the text area",()=> {
                 var text=string.Concat(Enumerable.Repeat("祢的恩典與慈愛永遠長存",12));
                 foreach(var font in FontCatalog.All) foreach(var size in new[]{18.0,36,72}) {
                     var result=SlideLayout.BuildItem(new ServiceItem { Lyrics="[v1]\n"+text,Order="v1" },settings,font.Name,size,"Left").Where(s=>!s.IsTitle).ToList();
+                    Check(result.Count==1 && result[0].FontSize<=size,"Lyric block split or exceeds selected maximum");
                     Check(string.Concat(result.SelectMany(s=>s.Lines))==text,"Text lost when resizing: "+font.Name);
                     foreach(var slide in result) {
                     Check(slide.Lines.All(l=>SlideLayout.Measure(l,SlideLayout.FontPixels(slide.FontSize),font.Name)<=SlideLayout.TextWidth),"Horizontal overflow: "+font.Name);

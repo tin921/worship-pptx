@@ -80,7 +80,7 @@ static class FormattingTests
             var top=SlideLayout.BuildItem(item,settings);
             item.Formatting.FullSlide=true; item.Formatting.Bold=true;
             var full=SlideLayout.BuildItem(item,settings);
-            check(full.Count<top.Count && full[1].Lines.Count==6,"Full-slide mode did not use extra space");
+            check(full.Count==2 && top.Count==2 && full[1].Lines.Count==6 && full[1].FontSize>top[1].FontSize,"Blocks do not fit one slide or full-slide space is unused");
             check(full.Skip(1).All(s=>s.Footer==""),"Credits appeared after title");
             var topPreview=SlideVisual.Create(top[1],true); var guide=topPreview.Children.OfType<Border>().Single(b=>b.Name=="PipFrame");
             check(guide.Width==512 && guide.Height==288 && Math.Abs(Canvas.GetLeft(guide)+guide.Width-1254.4)<.01 && Math.Abs(Canvas.GetTop(guide)+guide.Height-705.6)<.01 && guide.CornerRadius==new CornerRadius(0) && guide.BorderThickness==new Thickness(2),"Singer guide is not 40%, inset 2%, with square white borders");

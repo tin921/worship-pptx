@@ -48,7 +48,7 @@
        <StackPanel x:Name="OrderPanel"><TextBox x:Name="SongOrder" AutomationProperties.Name="{local:Tr '演唱次序'}" PlaceholderText="{local:Tr '演唱次序，例如 v1 c v2 c c'}" FontSize="16" TextChanged="Editor_Changed" Margin="0,0,0,12"/></StackPanel>
       </StackPanel>
       <TextBox x:Name="Lyrics" Grid.Row="1" AutomationProperties.Name="{local:Tr '歌詞或經文'}" PlaceholderText="{local:Tr '歌詞 · 使用 [v1]、[c] 標記段落'}" MinHeight="260" AcceptsReturn="True" AcceptsTab="False" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Auto" FontSize="16" TextWrapping="Wrap" TextChanged="Editor_Changed"/>
-      <TextBlock x:Name="LyricsHint" Grid.Row="2" Text="{local:Tr '[v1]、[c] 標記段落；空行分頁。'}" Classes="caption" Margin="0,7,0,0"/>
+      <TextBlock x:Name="LyricsHint" Grid.Row="2" Text="{local:Tr '[v1]、[c] 每段一頁，自動調整字號。'}" Classes="caption" Margin="0,7,0,0"/>
      </Grid>
     </Border>
     <GridSplitter Grid.Column="1" Classes="panelsplitter" AutomationProperties.Name="{local:Tr '調整欄位與預覽寬度'}" ToolTip.Tip="{local:Tr '拖動以調整欄位與預覽寬度'}"/>

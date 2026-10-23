@@ -46,8 +46,8 @@ namespace WorshipPptx
             var requestedSize=fontSize;
             var titleCredits=Footer(item,settings);
             var footer=tagged ? "" : titleCredits;
-            while(TextCapacity(fontSize,fontName,footer,bold,fullSlide,tagged)<1 && fontSize>18) fontSize=Math.Max(18,fontSize-1);
-            var maxLines=TextCapacity(fontSize,fontName,footer,bold,fullSlide,tagged);
+            while(TextCapacity(fontSize,fontName,footer,bold,fullSlide,false)<1 && fontSize>18) fontSize=Math.Max(18,fontSize-1);
+            var maxLines=TextCapacity(fontSize,fontName,footer,bold,fullSlide,false);
             if(maxLines<1) throw new FormatException(item.Title+ChineseText.Ui("：版權資料太長，請縮短文字或減少字號。"));
             var sections = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
             var names = new List<string>();
@@ -75,11 +75,20 @@ namespace WorshipPptx
             {
                 if (!sections.ContainsKey(key)) throw new FormatException(item.Title + ChineseText.Ui("：找不到 [") + key + ChineseText.Ui("]，請檢查演唱次序。"));
                 if (!sections[key].Any(x => !string.IsNullOrWhiteSpace(x))) throw new FormatException(item.Title + ChineseText.Ui("：段落 [") + key + ChineseText.Ui("] 沒有歌詞。"));
+                if(tagged)
+                {
+                    // A tag is one complete lyric block. Blank lines inside it are
+                    // spacing; only the blank separator around the tag is omitted.
+                    var source=sections[key].SkipWhile(string.IsNullOrWhiteSpace).Reverse().SkipWhile(string.IsNullOrWhiteSpace).Reverse().ToList();
+                    var slide=new SlideData { Title=item.Title,FontName=FontCatalog.Get(fontName).Name,FontSize=requestedSize,Alignment=alignment,Section=key.ToUpperInvariant(),Footer="",Background=item.Background,TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition };
+                    FitBlock(slide,source,requestedSize,item.Title+ChineseText.Ui("：段落 [")+key+ChineseText.Ui("] 內容太多，請拆分段落。"));
+                    slides.Add(slide);
+                    continue;
+                }
                 var pending = new List<string>();
                 Action flush = () => { if (pending.Count == 0) return; slides.Add(new SlideData { Title = item.Title, FontName = FontCatalog.Get(fontName).Name, FontSize = fontSize, Alignment = alignment, Section = key == "text" ? ChineseText.Ui("經文／公告") : key.ToUpperInvariant(), Lines = new List<string>(pending), Footer = footer, Background = item.Background, TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition }); pending.Clear(); };
                 foreach (var line in sections[key])
                 {
-                    if (tagged && string.IsNullOrWhiteSpace(line)) { flush(); continue; }
                     if(line.Length==0) { pending.Add(""); if(pending.Count==maxLines) flush(); continue; }
                     foreach (var wrapped in Wrap(line, fontName, fontSize,bold)) { pending.Add(wrapped); if (pending.Count == maxLines) flush(); }
                 }
@@ -118,24 +127,28 @@ namespace WorshipPptx
             foreach(var entry in items) {
                 if(!entry.Lines.Any(line=>!string.IsNullOrWhiteSpace(line))) throw new FormatException(item.Title+ChineseText.Ui("：公告 [")+entry.Number+ChineseText.Ui("] 沒有內容。"));
                 var slide=new SlideData { Title=item.Title,Section=ChineseText.Ui("公告 ")+entry.Number,FontName=FontCatalog.Get(fontName).Name,FontSize=maximumSize,Alignment=alignment,TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition,Footer=Footer(item,settings),Background=item.Background };
-                bool Fit(double size) {
-                    slide.FontSize=size;
-                    slide.Lines=entry.Lines.SelectMany(line=>line.Length==0 ? new List<string>{""} : Wrap(line,slide.FontName,size,bold)).ToList();
-                    return slide.Lines.Count<=TextCapacity(size,slide.FontName,slide.Footer,bold,fullSlide,false);
-                }
-                if(!Fit(maximumSize)) {
-                    // Find the largest whole-point size that fits this item on one slide.
-                    var low=1; var high=(int)Math.Floor(maximumSize); var best=0;
-                    while(low<=high) {
-                        var middle=(low+high)/2;
-                        if(Fit(middle)) { best=middle; low=middle+1; } else high=middle-1;
-                    }
-                    if(best==0) throw new FormatException(item.Title+ChineseText.Ui("：公告 [")+entry.Number+ChineseText.Ui("] 內容太多，請縮短文字。"));
-                    Fit(best);
-                }
+                FitBlock(slide,entry.Lines,maximumSize,item.Title+ChineseText.Ui("：公告 [")+entry.Number+ChineseText.Ui("] 內容太多，請縮短文字。"));
                 slides.Add(slide);
             }
             return slides;
+        }
+        private static void FitBlock(SlideData slide,List<string> source,double maximumSize,string error)
+        {
+            bool Fit(double size) {
+                slide.FontSize=size;
+                slide.Lines=source.SelectMany(line=>line.Length==0 ? new List<string>{""} : Wrap(line,slide.FontName,size,slide.Bold)).ToList();
+                return slide.Lines.Count<=TextCapacity(size,slide.FontName,slide.Footer,slide.Bold,slide.FullSlide,false);
+            }
+            if(Fit(maximumSize)) return;
+            // Measure the selected face, weight, wrapping and usable text area.
+            // The user's font size is a maximum, independently for each block.
+            var low=1; var high=(int)Math.Floor(maximumSize); var best=0;
+            while(low<=high) {
+                var middle=(low+high)/2;
+                if(Fit(middle)) { best=middle; low=middle+1; } else high=middle-1;
+            }
+            if(best==0) throw new FormatException(error);
+            Fit(best);
         }
         public static string Footer(ServiceItem item, UserSettings settings)
         {

@@ -116,8 +116,8 @@ namespace WorshipPptx
             SongTitle.PlaceholderText=song ? ChineseText.Ui("詩歌名稱") : ChineseText.Ui("經文／公告名稱");
             Lyrics.PlaceholderText=ChineseText.Ui("歌詞 [v1]、[c] · 公告 [1]、[2] · 經文直接輸入");
             OrderPanel.IsVisible=song; SongId.IsEnabled=song;
-            LyricsHint.Text=song ? ChineseText.Ui("[v1]、[c] 標記段落；空行分頁；Ctrl+Tab 插入縮排。") : announcement ? ChineseText.Ui("[1]、[2] 每項一頁；字號為上限，長文自動縮小；Ctrl+Tab 插入縮排。") : ChineseText.Ui("經文自動分頁；公告用 [1]、[2] 每項一頁。保留空行及縮排；Ctrl+Tab 插入縮排。");
-            ToolTip.SetTip(FontSizePicker,announcement ? ChineseText.Ui("本分頁公告的最大字號（pt）；長文自動縮小至一頁") : ChineseText.Ui("本分頁字號（pt）"));
+            LyricsHint.Text=song ? ChineseText.Ui("[v1]、[c] 每段一頁，自動調整字號；Ctrl+Tab 插入縮排。") : announcement ? ChineseText.Ui("[1]、[2] 每項一頁；字號為上限，長文自動縮小；Ctrl+Tab 插入縮排。") : ChineseText.Ui("經文自動分頁；公告用 [1]、[2] 每項一頁。保留空行及縮排；Ctrl+Tab 插入縮排。");
+            ToolTip.SetTip(FontSizePicker,song || announcement ? ChineseText.Ui("最大字號（pt）；每段文字自動縮小至一頁") : ChineseText.Ui("本分頁字號（pt）"));
         }
         private void Capture()
         {
@@ -241,7 +241,6 @@ namespace WorshipPptx
             try
             {
                 Capture(); SyncBackgroundControls(); slides=SlideLayout.BuildItem(selected,settings); ValidationText.Text="";
-                if(slides.Any(s=>s.FontSize<selected.Formatting.FontSize)) ValidationText.Text=ChineseText.Ui("為保留文字空間，較長文字已按比例縮小。");
                 BackgroundImage.Source=SlideVisual.Background(selected.Background);
                 updatingThumbnails=true; Thumbnails.Items.Clear();
                 for(var i=0;i<slides.Count;i++)
@@ -268,7 +267,7 @@ namespace WorshipPptx
                 SlideHost.Child=preview;
             }
             PreviewInfo.Text=(page+1)+" / "+slides.Count+"  ·  "+slides[page].Section;
-            if(SlideLayout.HasAnnouncementTags(selected.Lyrics)) PreviewInfo.Text+="  ·  "+slides[page].FontSize+" pt";
+            if(SlideLayout.HasAnnouncementTags(selected.Lyrics) || SlideLayout.HasSectionTags(selected.Lyrics)) PreviewInfo.Text+="  ·  "+slides[page].FontSize+" pt";
             if(Thumbnails.SelectedIndex!=page) Thumbnails.SelectedIndex=page;
             Thumbnails.ScrollIntoView(Thumbnails.SelectedItem);
         }
