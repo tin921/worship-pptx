@@ -173,7 +173,7 @@ public partial class BackgroundDialog
             Grid.SetColumn(style,1); caption.Children.Add(style);
             var expand=new Button { Name="Expand_"+asset.Id,Content="⛶",Width=24,Height=24,Padding=new Thickness(0),Background=Brushes.Transparent,BorderThickness=new Thickness(0),HorizontalContentAlignment=HorizontalAlignment.Center,VerticalContentAlignment=VerticalAlignment.Center,FontSize=18 };
             Grid.SetColumn(expand,2); caption.Children.Add(expand);
-            ToolTip.SetTip(expand,ChineseText.Ui("全螢幕檢視 · Esc 關閉"));
+            ToolTip.SetTip(expand,ChineseText.Ui("全螢幕檢視 · 雙擊圖片或 Esc 關閉"));
             AutomationProperties.SetName(expand,ChineseText.Ui("全螢幕檢視：")+ChineseText.Ui(asset.Title));
             expand.Click+=async (_,e)=> { e.Handled=true; await ShowGalleryImage(asset); };
             var strip=new Border { Background=Brush.Parse("#F0F1EF"),Child=caption }; Grid.SetRow(strip,1); content.Children.Add(strip);

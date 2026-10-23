@@ -76,14 +76,27 @@ static class MediaTests
             check(minimumCosine>.995,$"Model mismatch: minimum reference cosine {minimumCosine:F6}");
             check(encoder.Normalize("祢的恩典與慈愛") == encoder.Normalize("你的恩典与慈爱"),"Chinese normalization differs");
         });
-        test("Opening Edit Background matches the song and creates an editable Google Images link",()=> {
+        test("Background preload is shared with the picker and cancellation preserves it",()=> {
             var picker=new BackgroundDialog(images,"","恩典之路","[v1]\n前路穿過高山低谷\n每一步都被引領");
-            check(!MediaSearch.IsModelLoaded,"Constructing an unopened picker initialized the model"); picker.Show();
+            check(!MediaSearch.IsModelLoaded,"Constructing an unopened picker initialized the model");
+            var inferenceBefore=MediaSearch.InferenceCount;
+            var loading=MediaSearch.PreloadAsync();
+            check(ReferenceEquals(loading,MediaSearch.PreloadAsync()),"Concurrent preload calls created separate loads");
+            using(var cancellation=new CancellationTokenSource()) {
+                var cancelled=false;
+                var progress=new InlineProgress(value=> { if(value.Message.Contains("載入本機") || value.Message.Contains("準備歌詞")) cancellation.Cancel(); });
+                try { MediaSearch.MatchTermsAsync("preload cancellation",cancellation.Token,progress).GetAwaiter().GetResult(); }
+                catch(OperationCanceledException) { cancelled=true; }
+                check(cancelled && !loading.IsCanceled && ReferenceEquals(loading,MediaSearch.PreloadAsync()),"Cancelling a waiting search discarded shared model loading");
+            }
+            check(MediaSearch.InferenceCount==inferenceBefore,"Preloading or cancelled waiting ran inference");
+            picker.Show();
             check(picker.FindControl<Border>("MatchingStatus").IsVisible && picker.FindControl<ProgressBar>("MatchProgressBar").IsIndeterminate,"First match has no visible loading explanation");
             var button=picker.FindControl<Button>("SearchButton");
             var timer=Stopwatch.StartNew();
             while(!button.IsEnabled && timer.Elapsed.TotalSeconds<40) { Dispatcher.UIThread.RunJobs(); Thread.Sleep(10); }
             check(button.IsEnabled && MediaSearch.IsModelLoaded,"Search did not finish");
+            check(loading.IsCompletedSuccessfully && ReferenceEquals(loading,MediaSearch.PreloadAsync()),"Picker failed to reuse the preloaded model");
             check(!picker.FindControl<Border>("MatchingStatus").IsVisible && picker.FindControl<ProgressBar>("MatchProgressBar").Value==100,"Completed progress overlay remained visible");
             check(!picker.FindControl<TextBlock>("Message").IsVisible,"Successful match still shows the removed status line");
             check(picker.FindControl<WrapPanel>("Gallery").Children.Count>0,"No media returned");

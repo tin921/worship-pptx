@@ -83,6 +83,8 @@ namespace WorshipPptx
     }
     public sealed class SlideData
     {
+        public int ItemSlideNumber { get; set; } = 1;
+        public int ItemSlideCount { get; set; } = 1;
         public bool IsTitle { get; set; }
         public string Title { get; set; }
         public string FontName { get; set; } = FontCatalog.DefaultName;

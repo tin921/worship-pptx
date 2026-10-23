@@ -120,6 +120,11 @@ namespace WorshipPptx
                     }
                 }
             }
+            return NumberItemSlides(slides);
+        }
+        private static List<SlideData> NumberItemSlides(List<SlideData> slides)
+        {
+            for(var i=0;i<slides.Count;i++) { slides[i].ItemSlideNumber=i+1; slides[i].ItemSlideCount=slides.Count; }
             return slides;
         }
         private static List<SlideData> BuildAnnouncements(ServiceItem item,UserSettings settings,string fontName,double maximumSize,string alignment,string textColor,bool bold,bool fullSlide,string textPosition)
@@ -143,7 +148,7 @@ namespace WorshipPptx
                 FitBlock(slide,entry.Lines,maximumSize,item.Title+ChineseText.Ui("：公告 [")+entry.Number+ChineseText.Ui("] 內容太多，請縮短文字。"));
                 slides.Add(slide);
             }
-            return slides;
+            return NumberItemSlides(slides);
         }
         private static void FitBlock(SlideData slide,List<string> source,double maximumSize,string error,bool preserveLineBreaks=false)
         {

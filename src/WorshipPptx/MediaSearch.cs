@@ -27,16 +27,28 @@ public sealed class MediaScene
 public sealed record MediaMatch(string Theme,string Keywords,IReadOnlyList<MediaAsset> Assets);
 public sealed record MediaSearchProgress(int? Percent,string Message);
 
-// Matching starts when Edit Background is opened or the user explicitly requests a new match.
+// Preload the shared model after startup; inference still runs only on request.
 public static class MediaSearch
 {
-    private static readonly Lazy<LocalEncoder> engine=new(()=>new LocalEncoder());
+    private static readonly object modelLock=new();
+    private static Task<LocalEncoder> modelTask;
     private static readonly SemaphoreSlim gate=new(1,1);
     private sealed record CachedMatch(MediaScene Scene,IReadOnlyList<MediaAsset> Assets);
     private static readonly Dictionary<string,CachedMatch> matches=new();
     private static readonly Queue<string> matchOrder=new();
     public static int InferenceCount { get; private set; }
-    public static bool IsModelLoaded => engine.IsValueCreated;
+    public static bool IsModelLoaded { get { lock(modelLock) return modelTask?.IsCompletedSuccessfully==true; } }
+    public static Task PreloadAsync() => GetModelTask();
+    private static Task<LocalEncoder> GetModelTask()
+    {
+        lock(modelLock) {
+            // All callers join this task. A failed attempt can be retried when
+            // the picker opens; cancelling a picker never cancels model loading.
+            if(modelTask==null || modelTask.IsFaulted || modelTask.IsCanceled)
+                modelTask=Task.Run(()=>new LocalEncoder());
+            return modelTask;
+        }
+    }
     public static async Task<IReadOnlyList<MediaAsset>> SearchAsync(string title,string lyrics,CancellationToken cancellation=default) => (await MatchAsync(title,lyrics,cancellation).ConfigureAwait(false)).Assets;
     public static Task<MediaMatch> MatchAsync(string title,string lyrics,CancellationToken cancellation=default,IProgress<MediaSearchProgress> progress=null) => Match(title,lyrics,false,cancellation,progress);
     public static Task<MediaMatch> MatchTermsAsync(string terms,CancellationToken cancellation=default,IProgress<MediaSearchProgress> progress=null) => Match("",terms,true,cancellation,progress);
@@ -65,8 +77,9 @@ public static class MediaSearch
                 progress?.Report(new(100,ChineseText.Ui("已使用記憶中的主題配對")));
                 return new MediaMatch(cached.Scene.Title,ImageKeywords.ForDisplay(cached.Scene),cached.Assets);
             }
-            progress?.Report(new(null,IsModelLoaded ? ChineseText.Ui("正在準備歌詞…") : ChineseText.Ui("正在載入本機分析工具，首次開啟需稍候…")));
-            var encoder=engine.Value;
+            var loading=GetModelTask();
+            progress?.Report(new(null,loading.IsCompletedSuccessfully ? ChineseText.Ui("正在準備歌詞…") : ChineseText.Ui("正在載入本機分析工具，請稍候…")));
+            var encoder=await loading.WaitAsync(cancellation).ConfigureAwait(false);
             cancellation.ThrowIfCancellationRequested();
             var cleanTitle=encoder.Normalize(title ?? "");
             var lines=Regex.Replace(lyrics ?? "",@"\[[^\]\r\n]*\]", "").Split('\n').Select(s=>encoder.Normalize(s).Trim()).Where(s=>s.Length>0).Distinct();

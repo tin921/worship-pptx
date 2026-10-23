@@ -66,7 +66,7 @@ Sources: [Avalonia platform support](https://docs.avaloniaui.net/docs/supported-
 - `FontCatalog.cs`: bundled HK fonts, detected Windows/Mac Chinese fonts and EOT.
 - `ImageStore.cs`, `BackgroundDialog`: bundled gallery, local files, direct URLs, drop and paste.
 - `MediaLibrary.cs`: portable paths for the 270 static background images.
-- `MediaSearch.cs`: lazy local ONNX matching when Edit Background opens or a new match is requested.
+- `MediaSearch.cs`: shared background model preload after startup, with local ONNX matching only when Edit Background opens or a new match is requested.
 - `ImageKeywords.cs`, `ImageSearchLink.cs`: song-language theme/terms and escaped Google Images links.
 - `TextColors.cs`, `SingerGuide.cs`: swatch palette and a preview-only camera placement illustration.
 - `PreviewLayout.cs`, `CompositionPreview.cs`, `CompositionControls.cs`: persisted per-tab preview sources/geometry, drag/resize editor, six presets and focused numeric wheel input. The camera PiP centre selects the opposite text half; slide PiP/full-screen selects the full text area.

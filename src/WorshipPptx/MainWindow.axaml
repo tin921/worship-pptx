@@ -137,7 +137,7 @@
       </Grid>
      </Grid>
     <GridSplitter Grid.Column="3" Classes="panelsplitter" AutomationProperties.Name="{local:Tr '調整預覽與投影片清單寬度'}" ToolTip.Tip="{local:Tr '拖動以調整預覽與投影片清單寬度'}"/>
-    <DockPanel Grid.Column="4" Margin="10,20,12,16"><TextBlock DockPanel.Dock="Top" Text="{local:Tr '投影片'}" FontSize="16" FontWeight="SemiBold" Margin="3,0,0,12"/><ListBox x:Name="Thumbnails" Background="Transparent" BorderThickness="0" Padding="0" SelectionMode="Single" Classes="thumbnails" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.AllowAutoHide="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="Thumbnail_Changed" ToolTip.Tip="{local:Tr '使用 ↑ ↓ 選擇投影片'}" AutomationProperties.Name="{local:Tr '投影片清單'}"/></DockPanel>
+    <DockPanel Grid.Column="4" Margin="10,20,12,16"><TextBlock DockPanel.Dock="Top" Text="{local:Tr '投影片'}" FontSize="16" FontWeight="SemiBold" Margin="3,0,0,12"/><ListBox x:Name="Thumbnails" Background="Transparent" BorderThickness="0" Padding="0" SelectionMode="Single" Classes="thumbnails" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.AllowAutoHide="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="Thumbnail_Changed" ToolTip.Tip="{local:Tr '使用 ↑ ↓ 選擇投影片'}" AutomationProperties.Name="{local:Tr '投影片清單'}"><ListBox.Resources><x:Double x:Key="ScrollBarSize">8</x:Double><x:Double x:Key="ScrollBarButtonArrowIconFontSize">6</x:Double></ListBox.Resources></ListBox></DockPanel>
    </Grid>
    <Border Grid.Row="2" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="22,13">
     <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>

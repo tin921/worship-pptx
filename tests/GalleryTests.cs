@@ -29,7 +29,7 @@ static class GalleryTests
                 check(!full.IsVisible && picker.IsVisible && picker.ResultPath==before,"Escape did not return to unchanged picker");
             } finally {picker.Close();}
         });
-        test("Double-clicking a gallery image opens one fullscreen viewer and Escape returns to the picker",()=> {
+        test("Double-clicking opens a gallery image and double-clicking again returns to the picker",()=> {
             var picker=new BackgroundDialog(images,""); picker.Show(); Dispatcher.UIThread.RunJobs(); picker.UpdateLayout(); Dispatcher.UIThread.RunJobs();
             try {
                 var card=picker.FindControl<WrapPanel>("Gallery").Children.Cast<Button>().First();
@@ -40,8 +40,14 @@ static class GalleryTests
                 Click();
                 var full=picker.OwnedWindows.OfType<BackgroundImageWindow>().Single();
                 check(full.WindowState==WindowState.FullScreen && full.Title==ChineseText.Ui(((MediaAsset)card.Tag).Title),"Double-click did not open the clicked image fullscreen");
-                full.RaiseEvent(new KeyEventArgs { RoutedEvent=InputElement.KeyDownEvent,Key=Key.Escape }); Dispatcher.UIThread.RunJobs();
-                check(!full.IsVisible && picker.IsVisible,"Escape did not close the fullscreen image");
+                full.UpdateLayout();
+                var image=full.GetVisualDescendants().OfType<Image>().Single();
+                var imagePoint=image.TranslatePoint(new Point(image.Bounds.Width/2,image.Bounds.Height/2),full).Value;
+                void ClickImage() { full.MouseDown(imagePoint,MouseButton.Left); if(full.IsVisible) full.MouseUp(imagePoint,MouseButton.Left); Dispatcher.UIThread.RunJobs(); }
+                ClickImage();
+                check(full.IsVisible,"A single click closed the fullscreen image");
+                ClickImage();
+                check(!full.IsVisible && picker.IsVisible && picker.ResultPath==((MediaAsset)card.Tag).Key,"Double-click did not return to the picker with its selection preserved");
             } finally { picker.Close(); }
         });
         test("Gallery fits complete rows on resize and appends results on wheel scrolling",()=> {

@@ -26,6 +26,11 @@ namespace WorshipPptx
                     ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),"Library","Application Support","WorshipPptx")
                     : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"WorshipPptx");
                 var main=new MainWindow(new LocalStore(root));
+                main.Opened+=(_,_)=>Dispatcher.UIThread.Post(async ()=>
+                {
+                    try { await MediaSearch.PreloadAsync(); }
+                    catch(Exception ex) { System.Diagnostics.Trace.TraceError("Background model loading failed: {0}",ex); }
+                },DispatcherPriority.Background);
                 var primary=main.Screens.Primary;
                 if(primary!=null)
                 {

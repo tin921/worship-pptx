@@ -221,15 +221,30 @@ namespace WorshipPptx.Tests
                 Check(store.LoadHistory().Single().Items[1].Order=="v1 c","Closing did not save latest edit");
                 Check(store.LoadHistory().Single().Title=="感恩崇拜","Service title stopped being editable");
             });
-            Test("Full-service preview advances and goes back with arrow keys",()=> {
-                var preview=new PreviewWindow(slides); preview.Show(); Dispatcher.UIThread.RunJobs();
+            Test("Full-service preview tracks each tab separately and navigates with all four arrow keys",()=> {
+                var plan=new ServicePlan { Items=new() {
+                    new ServiceItem { Title="相同名稱",Lyrics="[v1]\n第一首\n[c]\n副歌",Order="v1 c" },
+                    new ServiceItem { Title="相同名稱",Lyrics="[v1]\n第二首",Order="v1" },
+                    new ServiceItem { Title="讀經",Lyrics="平安",Order="" },
+                    new ServiceItem { Title="公告",Lyrics="[1]\n第一項\n[2]\n第二項",Order="" }
+                }};
+                var pages=SlideLayout.Build(plan,settings);
+                Check(pages.Select(s=>s.ItemSlideNumber).SequenceEqual(new[]{1,2,3,1,2,1,1,2}),"Tab slide numbers did not reset");
+                Check(pages.Select(s=>s.ItemSlideCount).SequenceEqual(new[]{3,3,3,2,2,1,2,2}),"Tab slide totals are wrong");
+                var preview=new PreviewWindow(pages); preview.Show(); Dispatcher.UIThread.RunJobs();
                 try {
-                    var caption=preview.GetVisualDescendants().OfType<TextBlock>().Single(t=>t.Text?.Contains(" / "+slides.Count+"  · ")==true);
-                    Check(caption.Text.StartsWith("1 /"),"Wrong first preview page");
-                    preview.RaiseEvent(new KeyEventArgs { RoutedEvent=InputElement.KeyDownEvent, Key=Key.Right });
-                    Check(caption.Text.StartsWith("2 /"),"Right arrow did not advance full-service preview");
-                    preview.RaiseEvent(new KeyEventArgs { RoutedEvent=InputElement.KeyDownEvent, Key=Key.Left });
-                    Check(caption.Text.StartsWith("1 /"),"Left arrow did not go back");
+                    var caption=preview.GetVisualDescendants().OfType<TextBlock>().Single(t=>t.Text?.Contains(" / "+pages.Count+"  · ")==true);
+                    var itemCount=preview.GetVisualDescendants().OfType<TextBlock>().Single(t=>t.Name=="ItemSlideCount");
+                    void Press(Key key,int page,int itemPage,int itemTotal) {
+                        preview.KeyPress(key,RawInputModifiers.None,PhysicalKey.None,null);
+                        preview.KeyRelease(key,RawInputModifiers.None,PhysicalKey.None,null); Dispatcher.UIThread.RunJobs();
+                        Check(caption.Text.StartsWith(page+" /") && itemCount.Text==ChineseText.Ui("本項目")+"  "+itemPage+" / "+itemTotal,"Wrong slide/counter after "+key);
+                    }
+                    Check(caption.Text.StartsWith("1 /") && itemCount.Text.EndsWith("1 / 3"),"Wrong first preview page");
+                    preview.GetVisualDescendants().OfType<Button>().First().Focus();
+                    Press(Key.Right,2,2,3); Press(Key.Down,3,3,3); Press(Key.Down,4,1,2);
+                    Press(Key.Up,3,3,3); Press(Key.Left,2,2,3); Press(Key.Left,1,1,3);
+                    Press(Key.Up,8,2,2); Press(Key.Down,1,1,3);
                 } finally { preview.Close(); }
             });
             Test("Avalonia image and settings dialogs initialize",()=> {
