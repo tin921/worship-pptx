@@ -81,13 +81,14 @@ namespace WorshipPptx
                     // A tag is one complete lyric block. Blank lines inside it are
                     // spacing; only the blank separator around the tag is omitted.
                     var source=sections[key].SkipWhile(string.IsNullOrWhiteSpace).Reverse().SkipWhile(string.IsNullOrWhiteSpace).Reverse().ToList();
-                    var slide=new SlideData { Title=item.Title,FontName=FontCatalog.Get(fontName).Name,FontSize=requestedSize,Alignment=alignment,Section=key.ToUpperInvariant(),Footer="",Background=item.Background,TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition };
+                    var slide=new SlideData { Title=item.Title,FontName=FontCatalog.Get(fontName).Name,FontSize=requestedSize,Alignment=alignment,Section=key.ToUpperInvariant(),ShowSectionTag=true,Footer="",Background=item.Background,TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition };
                     FitBlock(slide,source,requestedSize,item.Title+ChineseText.Ui("：段落 [")+key+ChineseText.Ui("] 內容太多，請拆分段落。"),preserveLineBreaks:true);
                     slides.Add(slide);
                     continue;
                 }
                 var pending = new List<string>();
-                Action flush = () => { if (pending.Count == 0) return; slides.Add(new SlideData { Title = item.Title, FontName = FontCatalog.Get(fontName).Name, FontSize = fontSize, Alignment = alignment, Section = key == "text" ? ChineseText.Ui("經文／公告") : key.ToUpperInvariant(), Lines = new List<string>(pending), Footer = footer, Background = item.Background, TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition }); pending.Clear(); };
+                var firstSlideOfBlock=true;
+                Action flush = () => { if (pending.Count == 0) return; slides.Add(new SlideData { Title = item.Title, FontName = FontCatalog.Get(fontName).Name, FontSize = fontSize, Alignment = alignment, Section = key == "text" ? ChineseText.Ui("經文／公告") : key.ToUpperInvariant(), ShowSectionTag=tagged && firstSlideOfBlock, Lines = new List<string>(pending), Footer = footer, Background = item.Background, TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition }); pending.Clear(); firstSlideOfBlock=false; };
                 var content=tagged ? sections[key].SkipWhile(string.IsNullOrWhiteSpace).Reverse().SkipWhile(string.IsNullOrWhiteSpace).Reverse() : sections[key];
                 foreach (var line in content)
                 {

@@ -18,6 +18,36 @@ static class ProseTests
 {
     public static void Run(Action<string,Action> test,Action<bool,string> check,string root)
     {
+        test("Only the first slide of each lyric block has a plain tag, including consecutive repeats",()=> {
+            foreach(var automatic in new[]{false,true}) {
+                ServiceItem Song()=>new() { Title="詩歌",Lyrics="[c]\n"+string.Join('\n',Enumerable.Range(1,9).Select(i=>"恩典 "+i))+"\n[v1]\n平安",Order="c c v1 c",Formatting=new() { FontSize=48,AutoFontSize=automatic } };
+                var plan=new ServicePlan { Items=new() {
+                    new ServiceItem {Title="宣召",Lyrics="主是牧者\n平安"},
+                    Song(),Song(),
+                    new ServiceItem {Title="讀經",Lyrics="主的話語"},
+                    new ServiceItem {Title="公告",Lyrics="[1]\n第一項\n[2]\n第二項"}
+                } };
+                var songTags=automatic ? new[]{"","c","c","v1","c"} : new[]{"","c","","","c","","","v1","c","",""};
+                var expected=new[]{""}.Concat(songTags).Concat(songTags).Concat(new[]{"","",""}).ToArray();
+                var slides=SlideLayout.Build(plan,new UserSettings());
+                check(slides.Count==expected.Length,"The test blocks did not paginate as expected");
+                for(var i=0;i<slides.Count;i++) {
+                    var tag=SlideVisual.Create(slides[i]).Children.OfType<Border>().SingleOrDefault(b=>b.Name=="SlideTag");
+                    check((tag?.Child as TextBlock)?.Text== (expected[i]=="" ? null : expected[i]),"Preview tag differs on slide "+(i+1));
+                    check(SlideVisual.ThumbnailLabel(slides[i])=="["+slides[i].Section+"]","Navigation lost its section metadata");
+                }
+                var path=Path.Combine(root,"block-tags-"+automatic+".pptx"); PptxWriter.Write(path,slides,"Block tag rules");
+                using(var doc=PresentationDocument.Open(path,false)) check(!new OpenXmlValidator().Validate(doc).Any(),"Block-tag deck is invalid");
+                using var zip=ZipFile.OpenRead(path);
+                XNamespace p="http://schemas.openxmlformats.org/presentationml/2006/main",a="http://schemas.openxmlformats.org/drawingml/2006/main";
+                for(var i=0;i<slides.Count;i++) {
+                    using var input=zip.GetEntry($"ppt/slides/slide{i+1}.xml").Open();
+                    var tags=XDocument.Load(input).Descendants(p+"sp").Where(s=>(string)s.Element(p+"nvSpPr").Element(p+"cNvPr").Attribute("name")=="Section tag").ToArray();
+                    check(tags.Length==(expected[i]=="" ? 0 : 1),"Wrong exported tag count on slide "+(i+1));
+                    if(tags.Length==1) check(tags[0].Descendants(a+"t").Single().Value==expected[i],"Exported tag has brackets or wrong case");
+                }
+            }
+        });
         test("Untagged scripture keeps blank lines, spaces and tabs on one full slide",()=> {
             var text="   宣召: 詩篇 100:1–2\n\n普天下當向耶和華歡呼！\n\t你們當樂意事奉耶和華，  \n當來向他歌唱！";
             var item=new ServiceItem { Kind="song",Title="宣召經文",Lyrics=text,Order="v1 c v2 c c",SongId="old-song-number",Formatting=new() { FullSlide=true,FontSize=40,Alignment="Left" } };
@@ -28,7 +58,7 @@ static class ProseTests
             using(var doc=PresentationDocument.Open(path,false)) check(!new OpenXmlValidator().Validate(doc).Any(),"Spaced scripture deck is invalid");
             XNamespace a="http://schemas.openxmlformats.org/drawingml/2006/main";
             using var zip=ZipFile.OpenRead(path); using var input=zip.GetEntry("ppt/slides/slide1.xml").Open();
-            check(XDocument.Load(input).Descendants(a+"t").Select(t=>t.Value).SequenceEqual(slides[0].Lines.Append(SlideVisual.TagLabel(slides[0]))),"PowerPoint lost indentation or empty lines");
+            check(XDocument.Load(input).Descendants(a+"t").Select(t=>t.Value).SequenceEqual(slides[0].Lines),"PowerPoint lost indentation or empty lines, or added a Scripture tag");
             check(SlideVisual.Create(slides[0]).Children.OfType<TextBlock>().Select(t=>t.Text).SequenceEqual(slides[0].Lines),"Preview lost whitespace");
         });
         test("Prose pagination follows font metrics and half/full area, preserving all content",()=> {
@@ -95,7 +125,7 @@ static class ProseTests
             using var zip=ZipFile.OpenRead(path);
             for(var i=0;i<output.Count;i++) {
                 using var input=zip.GetEntry($"ppt/slides/slide{i+1}.xml").Open(); var xml=XDocument.Load(input);
-                check(xml.Descendants(a+"rPr").SkipLast(1).All(r=>(int)r.Attribute("sz")==output[i].FontSize*100),"Export did not use the fitted font size");
+                check(xml.Descendants(a+"rPr").All(r=>(int)r.Attribute("sz")==output[i].FontSize*100),"Export did not use the fitted font size");
             }
             foreach(var invalid in new[]{"[1]\n甲\n[1]\n乙","[1]\n\n[2]\n乙","前言\n[1]\n甲","[v1]\n甲\n[2]\n乙"}) {
                 var rejected=false; try { SlideLayout.BuildItem(new ServiceItem { Lyrics=invalid },new UserSettings()); } catch(FormatException) { rejected=true; }

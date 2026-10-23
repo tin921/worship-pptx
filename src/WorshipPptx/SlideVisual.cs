@@ -32,7 +32,8 @@ namespace WorshipPptx
             Canvas.SetTop(image,(720-image.Height)/2+value.Y*7.2);
             image.Opacity=value.Opacity; image.RenderTransform=new ScaleTransform(value.Flip ? -1 : 1,1);
         }
-        public static string TagLabel(SlideData slide) => "["+(slide.Section ?? "")+"]";
+        public static string TagLabel(SlideData slide) => slide.ShowSectionTag && !slide.IsTitle ? (slide.Section ?? "").ToLowerInvariant() : "";
+        public static string ThumbnailLabel(SlideData slide) => "["+(slide.Section ?? "")+"]";
         public static double TagWidth(SlideData slide) => Math.Ceiling(SlideLayout.Measure(TagLabel(slide),20,slide.FontName))+24;
         public static Canvas Create(SlideData slide,bool showCameraGuide=false,bool showTag=true)
         {
@@ -53,7 +54,7 @@ namespace WorshipPptx
                 var footer=new TextBlock { Text=credits[i], Width=SlideLayout.TextWidth, Height=SlideLayout.FooterLineSpacing(slide), FontFamily=FontCatalog.Get(slide.FontName).Family, FontSize=SlideLayout.FooterSize(slide), FontWeight=slide.Bold ? FontWeight.Bold : FontWeight.Normal, Foreground=color, TextAlignment=alignment, TextWrapping=TextWrapping.NoWrap };
                 Canvas.SetLeft(footer,SlideLayout.TextX); Canvas.SetTop(footer,SlideLayout.FooterTop(slide)+i*SlideLayout.FooterLineSpacing(slide)); canvas.Children.Add(footer);
             }
-            if(showTag && !string.IsNullOrEmpty(slide.Section)) {
+            if(showTag && !string.IsNullOrEmpty(TagLabel(slide))) {
                 var tag=new Border { Name="SlideTag",Width=TagWidth(slide),Height=32,Background=Brush.Parse("#ECEEEC"),Padding=new Thickness(12,2),Child=new TextBlock { Text=TagLabel(slide),FontSize=20,FontFamily=FontCatalog.Get(slide.FontName).Family,Foreground=Brush.Parse("#38483E"),VerticalAlignment=Avalonia.Layout.VerticalAlignment.Center,HorizontalAlignment=Avalonia.Layout.HorizontalAlignment.Center } };
                 Canvas.SetLeft(tag,1280-32-tag.Width); Canvas.SetTop(tag,656); canvas.Children.Add(tag);
             }

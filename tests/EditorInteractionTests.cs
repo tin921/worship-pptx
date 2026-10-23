@@ -219,7 +219,7 @@ static class EditorInteractionTests
             check(saved.BackgroundTransform.Zoom>1 && saved.BackgroundTransform.Flip && saved.BackgroundTransform.Opacity==.45,"Image adjustments not saved");
         });
         test("Adjusted background pixels match export and section tags are padded inside the PiP footprint",()=> {
-            var slide=new SlideData { Background="",Section="V1",BackgroundTransform=new() { Zoom=1.6,X=12,Y=-8,Flip=true,Opacity=.45 },Lines=new(){"平安"} };
+            var slide=new SlideData { Background="",Section="V1",ShowSectionTag=true,BackgroundTransform=new() { Zoom=1.6,X=12,Y=-8,Flip=true,Opacity=.45 },Lines=new(){"平安"} };
             var visual=SlideVisual.Create(slide); var tag=visual.Children.OfType<Border>().Single(b=>b.Name=="SlideTag");
             check(Canvas.GetLeft(tag)>=PreviewLayout.DefaultX*12.8 && Canvas.GetLeft(tag)+tag.Width<(PreviewLayout.DefaultX+40)*12.8 && Canvas.GetTop(tag)>=58*7.2 && Canvas.GetTop(tag)+tag.Height<98*7.2,"Slide tag lies outside default PiP");
             var bare=SlideVisual.Create(new SlideData { BackgroundTransform=slide.BackgroundTransform }); bare.Measure(new Size(1280,720)); bare.Arrange(new Rect(0,0,1280,720));
@@ -235,7 +235,7 @@ static class EditorInteractionTests
             XNamespace p="http://schemas.openxmlformats.org/presentationml/2006/main",aNs="http://schemas.openxmlformats.org/drawingml/2006/main";
             using var stream=zip.GetEntry("ppt/slides/slide1.xml").Open(); var xml=XDocument.Load(stream);
             var shape=xml.Descendants(p+"sp").Single(s=>(string)s.Element(p+"nvSpPr").Element(p+"cNvPr").Attribute("name")=="Section tag");
-            check(shape.Descendants(aNs+"t").Single().Value=="[V1]" && shape.Element(p+"spPr").Element(aNs+"solidFill").Element(aNs+"srgbClr").Attribute("val").Value=="ECEEEC","Exported section tag missing or not gray");
+            check(shape.Descendants(aNs+"t").Single().Value=="v1" && shape.Element(p+"spPr").Element(aNs+"solidFill").Element(aNs+"srgbClr").Attribute("val").Value=="ECEEEC","Exported section tag missing or not gray");
             check(xml.Descendants(p+"pic").Count()==1,"Camera illustration exported");
         });
     }

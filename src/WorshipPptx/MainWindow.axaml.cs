@@ -255,7 +255,7 @@ namespace WorshipPptx
                 for(var i=0;i<slides.Count;i++)
                 {
                     var thumb=new Grid(); thumb.Children.Add(new Viewbox { Stretch=Stretch.Uniform,Child=SlideVisual.Create(slides[i],false,false) });
-                    thumb.Children.Add(new Border { Name="ThumbnailTag",HorizontalAlignment=HorizontalAlignment.Left,VerticalAlignment=VerticalAlignment.Bottom,Margin=new Thickness(4),Padding=new Thickness(5,2),Background=Brush.Parse("#ECEEEC"),Child=new TextBlock { Text=(i+1)+" · "+SlideVisual.TagLabel(slides[i]),FontSize=12,Foreground=Brush.Parse("#38483E") } });
+                    thumb.Children.Add(new Border { Name="ThumbnailTag",HorizontalAlignment=HorizontalAlignment.Left,VerticalAlignment=VerticalAlignment.Bottom,Margin=new Thickness(4),Padding=new Thickness(5,2),Background=Brush.Parse("#ECEEEC"),Child=new TextBlock { Text=(i+1)+" · "+SlideVisual.ThumbnailLabel(slides[i]),FontSize=12,Foreground=Brush.Parse("#38483E") } });
                     var item=new ListBoxItem { Content=thumb }; ToolTip.SetTip(item,slides[i].Text);
                     AutomationProperties.SetName(item,(i+1)+" · "+slides[i].Section+" · "+slides[i].Text);
                     Thumbnails.Items.Add(item);

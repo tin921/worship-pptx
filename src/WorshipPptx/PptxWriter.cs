@@ -57,7 +57,7 @@ namespace WorshipPptx
                         for(var line=0;line<slide.Lines.Count;line++) tree.Add(Text((uint)(4+line),slide.Lines[line],SlideLayout.TextTop(slide)+line*spacing,SlideLayout.FontPixels(slide.FontSize),color,spacing,slide.FontName,slide.Alignment,slide.Bold));
                         var credits=SlideLayout.FooterLines(slide);
                         for(var line=0;line<credits.Count;line++) tree.Add(Text((uint)(20+line),credits[line],SlideLayout.FooterTop(slide)+line*SlideLayout.FooterLineSpacing(slide),SlideLayout.FooterSize(slide),color,SlideLayout.FooterLineSpacing(slide),slide.FontName,slide.Alignment,slide.Bold));
-                        if(!string.IsNullOrEmpty(slide.Section)) {
+                        if(!string.IsNullOrEmpty(SlideVisual.TagLabel(slide))) {
                             var tagWidth=SlideVisual.TagWidth(slide); var tagX=1280-32-tagWidth;
                             var tag=Text(50000,SlideVisual.TagLabel(slide),656,20,"38483E",32,slide.FontName,"Center",false,tagX,tagWidth);
                             tag.Element(P+"nvSpPr").Element(P+"cNvPr").SetAttributeValue("name","Section tag");

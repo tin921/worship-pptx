@@ -89,6 +89,7 @@ namespace WorshipPptx
         public double FontSize { get; set; } = 36;
         public string Alignment { get; set; } = "Center";
         public string Section { get; set; }
+        public bool ShowSectionTag { get; set; }
         public List<string> Lines { get; set; } = new List<string>();
         public string Footer { get; set; }
         public string Background { get; set; }
