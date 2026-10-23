@@ -7,7 +7,6 @@
      <TextBlock x:Name="AppHeading" Text="{local:Tr '敬拜簡報'}" FontSize="23" FontWeight="Bold" Margin="0,0,0,3"/>
      <TextBlock x:Name="VersionLabel" FontSize="12" Foreground="#738077" Margin="0,0,0,28"/>
      <Button Content="{local:Tr '＋ 新增崇拜'}" Click="NewService_Click" Classes="primary" Padding="8,11" Margin="0,0,0,26"/>
-     <TextBlock Text="{local:Tr '崇拜紀錄'}" FontSize="15" Foreground="#738077" Margin="5,0,0,12"/>
     </StackPanel>
     <ListBox x:Name="HistoryList" Background="Transparent" BorderThickness="0" SelectionChanged="History_Changed" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
