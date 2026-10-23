@@ -33,6 +33,6 @@ public static class StyleSymbols
                 Shape("M22,31 L34,8 L47,31 Z","#28543E");
                 Shape("M6,23 H19 V31 H6 Z","#8297A3"); break;
         }
-        return new Viewbox { Child=canvas,Height=30,Stretch=Stretch.Uniform };
+        return new Viewbox { Child=canvas,Stretch=Stretch.Uniform };
     }
 }

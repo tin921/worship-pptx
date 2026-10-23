@@ -233,14 +233,14 @@ namespace WorshipPptx.Tests
                 Check(pages.Select(s=>s.ItemSlideCount).SequenceEqual(new[]{3,3,3,2,2,1,2,2}),"Tab slide totals are wrong");
                 var preview=new PreviewWindow(pages); preview.Show(); Dispatcher.UIThread.RunJobs();
                 try {
-                    var caption=preview.GetVisualDescendants().OfType<TextBlock>().Single(t=>t.Text?.Contains(" / "+pages.Count+"  · ")==true);
+                    var caption=preview.GetVisualDescendants().OfType<TextBlock>().Single(t=>t.Name=="TotalSlideCount");
                     var itemCount=preview.GetVisualDescendants().OfType<TextBlock>().Single(t=>t.Name=="ItemSlideCount");
                     void Press(Key key,int page,int itemPage,int itemTotal) {
                         preview.KeyPress(key,RawInputModifiers.None,PhysicalKey.None,null);
                         preview.KeyRelease(key,RawInputModifiers.None,PhysicalKey.None,null); Dispatcher.UIThread.RunJobs();
-                        Check(caption.Text.StartsWith(page+" /") && itemCount.Text==ChineseText.Ui("本項目")+"  "+itemPage+" / "+itemTotal,"Wrong slide/counter after "+key);
+                        Check(caption.Text==page+" / "+pages.Count && itemCount.Text==itemPage+" / "+itemTotal,"Wrong slide/counter after "+key);
                     }
-                    Check(caption.Text.StartsWith("1 /") && itemCount.Text.EndsWith("1 / 3"),"Wrong first preview page");
+                    Check(caption.Text.EndsWith("1 / "+pages.Count) && itemCount.Text.EndsWith("1 / 3"),"Wrong first preview page");
                     preview.GetVisualDescendants().OfType<Button>().First().Focus();
                     Press(Key.Right,2,2,3); Press(Key.Down,3,3,3); Press(Key.Down,4,1,2);
                     Press(Key.Up,3,3,3); Press(Key.Left,2,2,3); Press(Key.Left,1,1,3);

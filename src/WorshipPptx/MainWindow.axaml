@@ -61,7 +61,7 @@
       <Grid x:Name="BackgroundToolbar" ColumnDefinitions="*,16,*" Margin="0,0,0,8">
        <StackPanel>
         <TextBlock Text="{local:Tr '背景圖片'}" Classes="label" Height="28" VerticalAlignment="Center" Margin="0,0,0,9"/>
-        <Border x:Name="BackgroundBox" Height="146" CornerRadius="9" ClipToBounds="True" Background="White" BorderBrush="#D5DAD5" BorderThickness="1" DragDrop.AllowDrop="True" DragDrop.Drop="Background_Drop" DragDrop.DragOver="Background_DragOver">
+        <Border x:Name="BackgroundBox" Height="146" CornerRadius="9" ClipToBounds="True" Background="White" BorderBrush="#B0B0B0" BorderThickness="1" DragDrop.AllowDrop="True" DragDrop.Drop="Background_Drop" DragDrop.DragOver="Background_DragOver">
          <Grid><Viewbox x:Name="BackgroundHost" Stretch="UniformToFill" ToolTip.Tip="{local:Tr '拖動平移 · 滾輪縮放'}"/>
           <Border x:Name="ImageControls" Margin="8" ToolTip.Tip="{local:Tr '拖動平移 · 滾輪縮放'}">
            <Grid>
@@ -102,7 +102,7 @@
         </Border>
        </StackPanel>
        <StackPanel Grid.Column="2" x:Name="FormattingPanel">
-        <TextBlock Text="{local:Tr '文字格式'}" Classes="label" Margin="0,0,0,9"/>
+        <TextBlock Text="{local:Tr '文字格式'}" Classes="label" Height="28" VerticalAlignment="Center" Margin="0,0,0,9"/>
         <ComboBox x:Name="FontPicker" MinWidth="0" Height="40" FontSize="14" Padding="8,7" SelectionChanged="Typography_Changed" ToolTip.Tip="{local:Tr '本分頁字體'}" AutomationProperties.Name="{local:Tr '投影片字體'}"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding DisplayName}" FontFamily="{Binding Family}" TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding DisplayName}"/></DataTemplate></ComboBox.ItemTemplate></ComboBox>
         <Grid x:Name="FormattingControls" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" Margin="0,8,0,0" SizeChanged="FormattingControls_SizeChanged">
         <Grid x:Name="TypographyRow" ColumnDefinitions="Auto,Auto" RowDefinitions="40,40" ColumnSpacing="6" RowSpacing="8" Margin="0,0,8,0" HorizontalAlignment="Left">
@@ -129,10 +129,10 @@
       <Grid Grid.Row="1">
        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
        <Grid x:Name="PreviewHeader" ColumnDefinitions="*,Auto" Margin="0,12,0,8">
-        <StackPanel Orientation="Horizontal" Spacing="10"><TextBlock Text="{local:Tr '畫面預覽'}" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/><TextBlock x:Name="PreviewInfo" Classes="caption" FontSize="14" VerticalAlignment="Center"/></StackPanel>
-        <StackPanel Grid.Column="1" Orientation="Horizontal"><Button x:Name="PreviousPreview" Content="‹" Width="36" Height="30" MinHeight="0" Padding="0" Click="Previous_Click" FontSize="18"/><Button x:Name="NextPreview" Content="›" Width="36" Height="30" MinHeight="0" Padding="0" Margin="7,0,0,0" Click="Next_Click" FontSize="18"/></StackPanel>
+        <TextBlock Text="{local:Tr '畫面預覽'}" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <StackPanel Grid.Column="1" Orientation="Horizontal"><TextBlock x:Name="PreviewInfo" Classes="caption" FontSize="14" VerticalAlignment="Center" Margin="0,0,12,0"/><Button x:Name="PreviousPreview" Content="‹" Width="36" Height="30" MinHeight="0" Padding="0" Click="Previous_Click" FontSize="18"/><Button x:Name="NextPreview" Content="›" Width="36" Height="30" MinHeight="0" Padding="0" Margin="7,0,0,0" Click="Next_Click" FontSize="18"/></StackPanel>
        </Grid>
-       <Border Grid.Row="1" BorderBrush="#D5DAD5" BorderThickness="1" VerticalAlignment="Top"><Viewbox x:Name="SlideHost" Stretch="Uniform" VerticalAlignment="Top"/></Border>
+       <Border Grid.Row="1" BorderBrush="#B0B0B0" BorderThickness="1" VerticalAlignment="Top"><Viewbox x:Name="SlideHost" Stretch="Uniform" VerticalAlignment="Top"/></Border>
        <TextBlock Grid.Row="4" x:Name="ValidationText" Foreground="#A34F30" FontSize="13" Margin="0,6,0,0"/>
       </Grid>
      </Grid>

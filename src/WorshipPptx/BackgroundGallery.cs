@@ -34,11 +34,11 @@ public partial class BackgroundDialog
         foreach(var style in new[]{"photo","illustration","abstract","sculpted","minimal"})
         {
             var sample=new MediaAsset { Style=style };
-            var tile=new Grid { RowDefinitions=new RowDefinitions("30,18") };
+            var tile=new Grid { ClipToBounds=true };
             tile.Children.Add(StyleSymbols.Create(style));
-            var label=new TextBlock { Text=sample.StyleLabel,FontSize=10,TextAlignment=TextAlignment.Center,VerticalAlignment=VerticalAlignment.Center };
-            var strip=new Border { Background=Brush.Parse("#F0F1EF"),Child=label }; Grid.SetRow(strip,1); tile.Children.Add(strip);
-            var button=new ToggleButton { Tag=style,Name="Style_"+style,Content=tile,IsChecked=true,Width=60,Height=54,Padding=new Thickness(2),Margin=new Thickness(4,0,0,0),CornerRadius=new CornerRadius(5),ClipToBounds=true };
+            var label=new TextBlock { Text=sample.StyleLabel,FontSize=14,FontWeight=FontWeight.SemiBold,Foreground=Brush.Parse("#20362B") };
+            tile.Children.Add(new Border { Background=Brush.Parse("#E6F0F1EF"),CornerRadius=new CornerRadius(3),Padding=new Thickness(3,0),HorizontalAlignment=HorizontalAlignment.Right,VerticalAlignment=VerticalAlignment.Bottom,Child=label });
+            var button=new ToggleButton { Tag=style,Name="Style_"+style,Content=tile,IsChecked=true,Width=60,Height=54,Padding=new Thickness(2),Margin=new Thickness(4,0,0,0),CornerRadius=new CornerRadius(5),ClipToBounds=true,HorizontalContentAlignment=HorizontalAlignment.Stretch,VerticalContentAlignment=VerticalAlignment.Stretch };
             button.Classes.Add("alignment"); ToolTip.SetTip(button,sample.StyleLabel); AutomationProperties.SetName(button,sample.StyleLabel);
             button.IsCheckedChanged+=(_,_)=> { if(ready) ResetGallery(); };
             styleButtons.Add(button); StyleFilters.Children.Add(button);
