@@ -37,7 +37,7 @@ namespace WorshipPptx.Tests
             Directory.CreateDirectory(root);
             if(args.Contains("--ui-review")) {UiReview.Run(root); return 0;}
             if(args.Contains("--drive-only")) {DriveUploadTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed.");return failed==0?0:1;}
-            if(args.Contains("--editor-only")) { EditorInteractionTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
+            if(args.Contains("--editor-only")) { EditorInteractionTests.Run(Test,Check,root); WindowLayoutTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             if(args.Contains("--gallery-only")) { GalleryTests.Run(Test,Check,new ImageStore(Path.Combine(root,"gallery-images"))); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             if(args.Contains("--language-only")) { LanguageTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             if(args.Contains("--composition-only")) { CompositionTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
@@ -95,10 +95,21 @@ namespace WorshipPptx.Tests
             Test("URL clipboard input",()=> { var path=WithHttp(bytes,"image/png",url=>BackgroundDialog.ImportData(images,Transfer(DataTransferItem.CreateText(url))).GetAwaiter().GetResult()); Check(File.Exists(path),"URL paste failed"); });
             foreach(var font in FontCatalog.Bundled)
             {
-                Test(font.Name+" loads from bundled file and covers Chinese",()=> { var face=new Typeface(font.Family,FontStyle.Normal,FontWeight.Normal,FontStretch.Normal); GlyphTypeface glyph; Check(FontManager.Current.TryGetGlyphTypeface(face,out glyph),"No physical font"); Check(glyph.FamilyName==font.Name && font.Family.Key!=null,"Font did not load from bundle"); foreach(var ch in "祢的恩典與慈愛永遠長存你的恩典与慈爱永远长存") Check(glyph.CharacterToGlyphMap.TryGetGlyph(ch,out _),"Missing glyph "+ch); });
+                Test(font.Name+" loads from bundled file and covers Chinese",()=> { var face=new Typeface(font.Family,FontStyle.Normal,FontWeight.Normal,FontStretch.Normal); GlyphTypeface glyph; Check(FontManager.Current.TryGetGlyphTypeface(face,out glyph),"No physical font"); Check(glyph.FamilyName==font.Name && font.Family.Key!=null,"Font did not load from bundle"); var sample="祢的恩典與慈愛永遠長存讚美歸於主榮耀聖名"; if(font.Name!="jf-openhuninn-2.1") sample+="你的恩典与慈爱永远长存"; foreach(var ch in sample) Check(glyph.CharacterToGlyphMap.TryGetGlyph(ch,out _),"Missing glyph "+ch); });
                 if(OperatingSystem.IsWindows()) Test(font.Name+" EOT loads in Windows embedded-font engine",()=>ValidateEmbeddedFont(FontCatalog.EmbeddedBytes(font.Name)));
             }
             demo.Items[1].Background=imported;
+            Test("Handwritten and rounded Chinese fonts export as editable embedded text",()=> {
+                var fonts=FontCatalog.Bundled.Skip(2).ToArray();
+                var pages=fonts.SelectMany(f=>SlideLayout.BuildItem(new ServiceItem { Title="字體預覽",Lyrics="[v1]\n讚美歸於主榮耀聖名\n祢的恩典與慈愛永遠長存",Order="v1" },settings,f.Name)).ToList();
+                var path=Path.Combine(root,"additional-chinese-fonts.pptx"); PptxWriter.Write(path,pages,"中文字體");
+                using var document=PresentationDocument.Open(path,false);
+                Check(!new OpenXmlValidator().Validate(document).Any(),"Invalid deck with additional fonts");
+                var embedded=document.PresentationPart.Presentation.EmbeddedFontList;
+                Check(embedded.ChildElements.Count==2 && fonts.All(f=>embedded.InnerXml.Contains(f.Name)),"New fonts were not both embedded");
+                using var zip=ZipFile.OpenRead(path);
+                for(var i=0;i<fonts.Length;i++) { using var input=zip.GetEntry("ppt/fonts/font"+(i+1)+".fntdata").Open(); using var bytes=new MemoryStream(); input.CopyTo(bytes); Check(bytes.ToArray().SequenceEqual(FontCatalog.EmbeddedBytes(fonts[i].Name)),"Embedded font differs from selected font"); }
+            });
             var slides=SlideLayout.Build(demo,settings); var output=Path.Combine(root,"sample-worship.pptx");
             Test("PPTX package schema validates",()=> { PptxWriter.Write(output,slides,demo.Title); using(var doc=PresentationDocument.Open(output,false)) { var errors=new OpenXmlValidator().Validate(doc).ToList(); Check(errors.Count==0,string.Join("\n",errors.Take(10).Select(e=>e.Description+" "+e.Path?.XPath))); Check(doc.PresentationPart.SlideParts.Count()==slides.Count,"Wrong slide count"); } });
             Test("All native text boxes confined to upper half",()=> { XNamespace p="http://schemas.openxmlformats.org/presentationml/2006/main",a="http://schemas.openxmlformats.org/drawingml/2006/main"; using(var zip=ZipFile.OpenRead(output)) foreach(var entry in zip.Entries.Where(x=>x.FullName.StartsWith("ppt/slides/slide") && x.FullName.EndsWith(".xml"))) using(var input=entry.Open()) { var xml=XDocument.Load(input); foreach(var shape in xml.Descendants(p+"sp").Where(x=>x.Element(p+"txBody")!=null && (string)x.Element(p+"nvSpPr").Element(p+"cNvPr").Attribute("name")!="Section tag")) { var transform=shape.Element(p+"spPr").Element(a+"xfrm"); var bottom=(long)transform.Element(a+"off").Attribute("y")+(long)transform.Element(a+"ext").Attribute("cy"); Check(bottom<=720*9525/2,"Text below half on "+entry.FullName); } } });
@@ -244,7 +255,10 @@ namespace WorshipPptx.Tests
                     preview.GetVisualDescendants().OfType<Button>().First().Focus();
                     Press(Key.Right,2,2,3); Press(Key.Down,3,3,3); Press(Key.Down,4,1,2);
                     Press(Key.Up,3,3,3); Press(Key.Left,2,2,3); Press(Key.Left,1,1,3);
-                    Press(Key.Up,8,2,2); Press(Key.Down,1,1,3);
+                    Press(Key.Up,1,1,3); Press(Key.Left,1,1,3); Press(Key.Down,2,2,3);
+                    Press(Key.Right,3,3,3); Press(Key.Down,4,1,2); Press(Key.Down,5,2,2);
+                    Press(Key.Down,6,1,1); Press(Key.Down,7,1,2); Press(Key.Down,8,2,2);
+                    Press(Key.Down,8,2,2); Press(Key.Right,8,2,2); Press(Key.Up,7,1,2);
                 } finally { preview.Close(); }
             });
             Test("Avalonia image and settings dialogs initialize",()=> {
@@ -256,6 +270,7 @@ namespace WorshipPptx.Tests
             LanguageTests.Run(Test,Check,root);
             FormattingTests.Run(Test,Check,root);
             EditorInteractionTests.Run(Test,Check,root);
+            WindowLayoutTests.Run(Test,Check,root);
             CompositionTests.Run(Test,Check,root);
             DriveUploadTests.Run(Test,Check,root);
             ProseTests.Run(Test,Check,root);

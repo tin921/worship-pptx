@@ -2,7 +2,7 @@
 
 Users **do not sign in to Google**. The app sends PowerPoint files to a small Apps Script web service, which writes to one fixed folder as the church account. A public folder link lets people view/download files; it is not an anonymous upload API. Only the administrator signs in during setup.
 
-The app currently has placeholders. Nothing is uploaded until the service is deployed and the local configuration is filled in. Use a dedicated church account and a dedicated folder.
+The repository includes an example configuration. Each PC needs its own local connection settings before uploading. Use a dedicated church account and a dedicated folder.
 
 ## 1. Prepare the folder
 
@@ -54,9 +54,17 @@ Uploads use the church account's storage and [Apps Script quotas](https://develo
 
 ## Reference
 
+### Google verification and authorization expiry
+
+The **Google hasn't verified this app** warning is separate from OAuth publishing status. It does not impose a one-month lifetime on an Apps Script deployment. Google permits limited personal-use apps to remain unverified, and Workspace-internal apps have a separate exception; see [verification exceptions](https://support.google.com/cloud/answer/13464323?hl=en).
+
+If the linked Google Cloud OAuth project is **External / Testing**, test-user authorizations expire after **seven days**. For ongoing use, check **Google Auth Platform → Audience → Publishing status** in that project's console and use **In production** when appropriate. Publishing and verification are separate; the warning can remain for an unverified production app. The deployment screenshot alone does not reveal this status. See [Google's publishing-status rules](https://support.google.com/cloud/answer/15549945?hl=en).
+
+With this service deployed as **Execute as me / Anyone**, the owner authorizes Google Drive access. Desktop users do not grant Google OAuth access. Re-run `checkSetup` as the owner if authorization is revoked or needs renewal.
+
 - [Apps Script web apps and execution identity](https://developers.google.com/apps-script/guides/web)
 - [Enable advanced Google services](https://developers.google.com/apps-script/guides/services/advanced)
 - [Content Service responses and redirects](https://developers.google.com/apps-script/guides/content)
 - [Drive resumable uploads](https://developers.google.com/workspace/drive/api/guides/manage-uploads)
 
-Local tests cover the upload protocol with fake HTTP/Drive responses. They do not confirm a live Google deployment; that verification waits for the administrator's setup.
+Local tests cover the upload protocol with fake HTTP/Drive responses. A live administrator deployment was also checked on 2026-10-23: an original one-slide test deck uploaded successfully, replacement preserved its file ID, and the service verified size and MD5 for both transfers. The private connection settings remain outside the repository. A new installation or deployment still needs its own live check.

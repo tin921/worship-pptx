@@ -16,7 +16,7 @@
        <TextBlock Text="{Binding DisplayDate}" FontSize="12" Foreground="#738077" Margin="0,5,0,0"/>
       </StackPanel>
       <StackPanel IsVisible="{Binding $parent[ListBoxItem].IsSelected}" Spacing="6">
-       <TextBox Name="ServiceTitle" Text="{Binding Title, Mode=OneWay}" HorizontalAlignment="Stretch" MinWidth="0" Height="38" MinHeight="0" Padding="7,5" FontSize="15" FontWeight="SemiBold" TextChanged="Metadata_Changed" AutomationProperties.Name="{local:Tr '崇拜名稱'}"/>
+       <TextBox Name="ServiceTitle" Text="{Binding Title, Mode=OneWay}" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" MinWidth="0" Height="38" MinHeight="0" Padding="7,0" FontSize="15" FontWeight="SemiBold" TextChanged="Metadata_Changed" AutomationProperties.Name="{local:Tr '崇拜名稱'}"/>
        <CalendarDatePicker Name="ServiceDate" SelectedDate="{Binding Date, Mode=OneWay}" HorizontalAlignment="Stretch" MinWidth="0" Height="38" SelectedDateFormat="Custom" CustomDateFormatString="yyyy-MM-dd" FontSize="13" SelectedDateChanged="Date_Changed" AutomationProperties.Name="{local:Tr '崇拜日期'}"/>
       </StackPanel>
       <TextBlock Text="{Binding TabNames}" FontSize="12" Foreground="#526A59" TextWrapping="Wrap" Margin="0,8,0,4"/>

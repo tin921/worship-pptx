@@ -20,6 +20,7 @@ namespace WorshipPptx
     public partial class MainWindow : Window
     {
         private readonly LocalStore store;
+        private readonly WindowLayouts windowLayouts;
         private UserSettings settings;
         private ServicePlan plan;
         private ServiceItem selected;
@@ -42,6 +43,8 @@ namespace WorshipPptx
         {
             loading=true; this.store=store; settings=store.LoadSettings();
             ChineseText.SetLanguage(settings.Language); InitializeComponent(); FontPicker.ItemsSource=FontCatalog.All;
+            windowLayouts=new WindowLayouts(store.Root);
+            windowLayouts.Remember(this,"main",columns:new Dictionary<string,ColumnDefinition> { ["editor"]=EditorColumn,["thumbnails"]=ThumbnailColumn });
             VersionLabel.Text="v"+typeof(MainWindow).Assembly.GetName().Version.ToString(3);
             UpdateLanguageButtons();
             BuildColorPalette();
@@ -285,12 +288,13 @@ namespace WorshipPptx
             if(updatingThumbnails || Thumbnails.SelectedIndex<0) return;
             page=Thumbnails.SelectedIndex; ShowPage();
         }
-        private void Previous_Click(object sender,RoutedEventArgs e) { if(slides.Count==0) return; page=(page+slides.Count-1)%slides.Count; ShowPage(); }
-        private void Next_Click(object sender,RoutedEventArgs e) { if(slides.Count==0) return; page=(page+1)%slides.Count; ShowPage(); }
+        private void Previous_Click(object sender,RoutedEventArgs e) { if(page<=0 || slides.Count==0) return; page--; ShowPage(); }
+        private void Next_Click(object sender,RoutedEventArgs e) { if(page>=slides.Count-1) return; page++; ShowPage(); }
         private async void Background_Click(object sender,RoutedEventArgs e)
         {
             Capture();
             var dialog=new BackgroundDialog(new ImageStore(store.Assets),selected.Background,selected.Title,selected.Lyrics);
+            windowLayouts.Remember(dialog,"background",this);
             if(await dialog.ShowDialog<bool>(this)) { if(selected.Background!=dialog.ResultPath) selected.BackgroundTransform=new(); selected.Background=dialog.ResultPath; SyncBackgroundControls(); SaveDraft(); RefreshPreview(); }
         }
         private void Background_DragOver(object sender,DragEventArgs e) { e.DragEffects=BackgroundDialog.CanImport(e.DataTransfer) ? DragDropEffects.Copy : DragDropEffects.None; e.Handled=true; }
@@ -308,6 +312,7 @@ namespace WorshipPptx
         private async void Settings_Click(object sender,RoutedEventArgs e)
         {
             var dialog=new SettingsDialog(settings);
+            windowLayouts.Remember(dialog,"settings",this);
             if(await dialog.ShowDialog<bool>(this)) { settings=dialog.Settings; store.SaveSettings(settings); RefreshPreview(); }
         }
         private void UpdateLanguageButtons()
@@ -399,7 +404,7 @@ namespace WorshipPptx
         private List<SlideData> ExportSlides() { Capture(); SaveDraft(); return SlideLayout.Build(plan,settings); }
         private async void Preview_Click(object sender,RoutedEventArgs e)
         {
-            try { var all=ExportSlides(); await new PreviewWindow(all).ShowDialog(this); }
+            try { var all=ExportSlides(); await windowLayouts.Remember(new PreviewWindow(all),"presentation",this).ShowDialog(this); }
             catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("請檢查內容")); }
         }
         private string FileName() => PresentationFileName.Create(plan,DateTime.Today,settings.Language);
@@ -410,7 +415,7 @@ namespace WorshipPptx
             try {
                 var all=ExportSlides();
                 var name=DriveFileName.Create(plan,Environment.MachineName,DateTime.Today,settings.Language);
-                await new DriveUploadWindow(all,plan.Title,name,store.Root).ShowDialog(this);
+                await windowLayouts.Remember(new DriveUploadWindow(all,plan.Title,name,store.Root),"upload",this).ShowDialog(this);
             } catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("請檢查內容")); }
             finally { exporting=false; LanguagePanel.IsEnabled=true; }
         }

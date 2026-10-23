@@ -45,6 +45,6 @@ namespace WorshipPptx
             totalCaption.Text=(index+1)+" / "+slides.Count;
             itemCaption.Text=slide.ItemSlideNumber+" / "+slide.ItemSlideCount;
         }
-        private void Move(int delta) { index=(index+delta+slides.Count)%slides.Count; ShowPage(); }
+        private void Move(int delta) { var next=System.Math.Clamp(index+delta,0,slides.Count-1); if(next==index) return; index=next; ShowPage(); }
     }
 }

@@ -18,6 +18,11 @@ static class UiReview
         var store=new LocalStore(Path.Combine(root,"data")); var plan=Demo.Create();
         plan.Items[1].Background="media:ocean-photo";store.Save(plan);
         var main=new MainWindow(store); main.Show(); Draw(main,Path.Combine(root,"editor.png"));
+        foreach(var font in FontCatalog.Bundled) {
+            main.FindControl<ComboBox>("FontPicker").SelectedItem=font;
+            Draw(main,Path.Combine(root,"font-"+font.Name.Replace(' ','-')+".png"));
+        }
+        main.FindControl<ComboBox>("FontPicker").SelectedItem=FontCatalog.Bundled[0];
         main.Width=1920; main.Height=760; Draw(main,Path.Combine(root,"editor-wide.png"));
         main.Width=1120; Draw(main,Path.Combine(root,"editor-compact.png"));
         main.Width=1440; main.Height=940;

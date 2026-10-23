@@ -124,13 +124,26 @@ static class EditorInteractionTests
                 title.Focus(); var text=title.Text; var index=tabs.SelectedIndex; Press(window,Key.Left);
                 check(tabs.SelectedIndex==index,"Arrow stole input focus");
                 Press(window,Key.Escape); check(ReferenceEquals(window.FocusManager.GetFocusedElement(),window) && title.Text==text,"Escape changed text or failed to focus main window");
-                Press(window,Key.Right); check(tabs.SelectedIndex==(index+1)%5,"Right did not select next real tab");
+                Press(window,Key.Right); check(tabs.SelectedIndex==index+1,"Right did not select next real tab");
                 Press(window,Key.Left); check(tabs.SelectedIndex==index,"Left did not select previous tab");
                 var slide=thumbs.SelectedIndex; Press(window,Key.Down); check(thumbs.SelectedIndex==slide+1,"Down did not change thumbnail");
                 Press(window,Key.Up); check(thumbs.SelectedIndex==slide,"Up did not change thumbnail");
                 var service=((ServicePlan)history.SelectedItem).Id; Press(window,Key.PageDown);
                 check(((ServicePlan)history.SelectedItem).Id!=service,"Page Down did not switch service");
                 Press(window,Key.PageUp); check(((ServicePlan)history.SelectedItem).Id==service,"Page Up did not switch back");
+                Press(window,Key.PageUp); check(((ServicePlan)history.SelectedItem).Id==service,"Page Up wrapped past the first service");
+                Press(window,Key.PageDown); var lastService=((ServicePlan)history.SelectedItem).Id;
+                Press(window,Key.PageDown); check(((ServicePlan)history.SelectedItem).Id==lastService,"Page Down wrapped past the last service");
+                Press(window,Key.PageUp);
+                tabs.SelectedIndex=0; Press(window,Key.Left); check(tabs.SelectedIndex==0,"Left wrapped past the first tab");
+                Press(window,Key.Right); check(tabs.SelectedIndex==1,"Right did not leave the first tab");
+                tabs.SelectedIndex=tabs.ItemCount-2; Press(window,Key.Right); check(tabs.SelectedIndex==tabs.ItemCount-2,"Right wrapped past the last real tab");
+                Press(window,Key.Left); check(tabs.SelectedIndex==tabs.ItemCount-3,"Left did not leave the last tab");
+                tabs.SelectedIndex=1; Pump(); thumbs.SelectedIndex=0;
+                Press(window,Key.Up); check(thumbs.SelectedIndex==0,"Up wrapped past the first slide");
+                Press(window,Key.Down); check(thumbs.SelectedIndex==1,"Down did not leave the first slide");
+                thumbs.SelectedIndex=thumbs.ItemCount-1; Press(window,Key.Down); check(thumbs.SelectedIndex==thumbs.ItemCount-1,"Down wrapped past the last slide");
+                Press(window,Key.Up); check(thumbs.SelectedIndex==thumbs.ItemCount-2,"Up did not leave the last slide");
                 Press(window,Key.Tab); check(title.IsFocused,"First Tab did not start at song name");
                 foreach(var name in new[]{"CopyrightText","SongId","SongOrder","Lyrics","ServiceTitle"}) {
                     Press(window,Key.Tab); check((name=="ServiceTitle" ? window.ActiveServiceField<TextBox>(name) : window.FindControl<TextBox>(name)).IsFocused,"Unexpected tab order at "+name);

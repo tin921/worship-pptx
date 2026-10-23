@@ -57,10 +57,10 @@ public partial class MainWindow
         if(InputFocus.IsField(focused) || e.KeyModifiers!=KeyModifiers.None) return;
         switch(e.Key) {
             case Key.PageUp: case Key.PageDown:
-                if(HistoryList.ItemCount>0) HistoryList.SelectedIndex=(HistoryList.SelectedIndex+(e.Key==Key.PageUp ? -1 : 1)+HistoryList.ItemCount)%HistoryList.ItemCount;
+                if(HistoryList.ItemCount>0) HistoryList.SelectedIndex=Math.Clamp(HistoryList.SelectedIndex+(e.Key==Key.PageUp ? -1 : 1),0,HistoryList.ItemCount-1);
                 HistoryList.ScrollIntoView(HistoryList.SelectedItem); break;
             case Key.Left: case Key.Right:
-                SongTabs.SelectedIndex=(SongTabs.SelectedIndex+(e.Key==Key.Left ? -1 : 1)+plan.Items.Count)%plan.Items.Count;
+                if(plan.Items.Count>0) SongTabs.SelectedIndex=Math.Clamp(SongTabs.SelectedIndex+(e.Key==Key.Left ? -1 : 1),0,plan.Items.Count-1);
                 (SongTabs.SelectedItem as TabItem)?.BringIntoView(); break;
             case Key.Up: Previous_Click(sender,e); break;
             case Key.Down: Next_Click(sender,e); break;

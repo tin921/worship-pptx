@@ -27,7 +27,9 @@ namespace WorshipPptx
         public const string DefaultName="Noto Sans CJK HK";
         public static readonly IReadOnlyList<FontChoice> Bundled=new[] {
             new FontChoice("Noto Sans CJK HK","香港黑體 · Noto Sans CJK HK","NotoSansCJKhk-Regular.ttf"),
-            new FontChoice("Noto Serif CJK HK","香港宋體 · Noto Serif CJK HK","NotoSerifCJKhk-Regular.ttf")
+            new FontChoice("Noto Serif CJK HK","香港宋體 · Noto Serif CJK HK","NotoSerifCJKhk-Regular.ttf"),
+            new FontChoice("LXGW WenKai TC","霞鶩文楷 · LXGW WenKai TC","LXGWWenKaiTC-Regular.ttf"),
+            new FontChoice("jf-openhuninn-2.1","粉圓（繁體）· jf open huninn","jf-openhuninn-2.1.ttf")
         };
         public static readonly IReadOnlyList<FontChoice> All=CreateCatalog();
         private static IReadOnlyList<FontChoice> CreateCatalog()

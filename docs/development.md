@@ -60,10 +60,11 @@ Sources: [Avalonia platform support](https://docs.avaloniaui.net/docs/supported-
 ## Structure and data
 
 - `Models.cs`, `LocalStore.cs`: existing JSON format, atomic save and backups.
+- `WindowLayouts.cs`: normal window dimensions, maximized state and editor divider widths in a separate local `window-layout.json`; dialogs remember their sizes independently.
 - `SlideLayout.cs`: section parsing, repetitions, Unicode wrapping and pagination.
 - `SlideVisual.cs`: Avalonia previews and Skia 720p background rendering.
 - `PptxWriter.cs`: editable Open XML text, embedded still images and bundled fonts.
-- `FontCatalog.cs`: bundled HK fonts, detected Windows/Mac Chinese fonts and EOT.
+- `FontCatalog.cs`: bundled HK Sans/Serif, LXGW WenKai TC and jf open huninn fonts, detected Windows/Mac Chinese fonts and EOT. Pinned sources, checksums and OFL licenses are kept in `assets/fonts` and reproduced by `scripts/prepare-fonts.py`.
 - `ImageStore.cs`, `BackgroundDialog`: bundled gallery, local files, direct URLs, drop and paste.
 - `MediaLibrary.cs`: portable paths for the 270 static background images.
 - `MediaSearch.cs`: shared background model preload after startup, with local ONNX matching only when Edit Background opens or a new match is requested.

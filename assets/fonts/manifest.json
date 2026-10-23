@@ -16,5 +16,23 @@
     "weight": 400,
     "license": "Serif-OFL.txt",
     "glyphs": 44777
+  },
+  {
+    "file": "LXGWWenKaiTC-Regular.ttf",
+    "family": "LXGW WenKai TC",
+    "source": "https://raw.githubusercontent.com/lxgw/LxgwWenkaiTC/e046996b1568dd4df1c6f9a84441ce62a3dc4b2e/fonts/TTF/LXGWWenKaiTC-Regular.ttf",
+    "sha256": "6662480a3f95b4a90c80b189c679617a48adce3a505118a6af63ce5a482b83fa",
+    "weight": 400,
+    "license": "WenKai-OFL.txt",
+    "glyphs": 25694
+  },
+  {
+    "file": "jf-openhuninn-2.1.ttf",
+    "family": "jf-openhuninn-2.1",
+    "source": "https://raw.githubusercontent.com/justfont/open-huninn-font/f240f9071a78298f379bc087cae2010df11cf477/font/jf-openhuninn-2.1.ttf",
+    "sha256": "9d5bf4932d31fe94c18cd8cfddc98bc1b14ce10f4e354c682179db290a99c825",
+    "weight": 400,
+    "license": "Huninn-OFL.txt",
+    "glyphs": 11988
   }
 ]
