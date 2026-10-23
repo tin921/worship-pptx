@@ -270,7 +270,9 @@ namespace WorshipPptx
             if(slides.Count==0) return;
             if(SlideHost.Child is CompositionPreview preview) preview.SetSlide(slides[page],selected.Preview,selected.BackgroundTransform);
             else {
-                preview=new CompositionPreview(slides[page],selected.Preview,false,selected.BackgroundTransform);
+                preview=new CompositionPreview(slides[page],selected.Preview,true,selected.BackgroundTransform);
+                preview.BackgroundChanged+=ProjectionBackgroundAdjusted;
+                preview.InteractionCompleted+=BackgroundEditCompleted;
                 SlideHost.Child=preview;
             }
             PreviewInfo.Text=(page+1)+" / "+slides.Count;

@@ -44,6 +44,7 @@ public partial class MainWindow
         if(slides.Count>0 && SlideHost.Child is CompositionPreview preview) preview.SetSlide(slides[page],selected.Preview,selected.BackgroundTransform);
     }
     private void BackgroundAdjusted() { SyncBackgroundControls(); UpdateProjection(); Changed(); }
+    private void ProjectionBackgroundAdjusted() { SyncBackgroundControls(); RefreshBackgroundEditor(); Changed(); }
     private void BackgroundEditCompleted() { SaveDraft(); RefreshPreview(); }
     private void ZoomIn_Click(object sender,RoutedEventArgs e) { if(BackgroundHost.Child is CompositionPreview preview) preview.ZoomBy(1.12); }
     private void ZoomOut_Click(object sender,RoutedEventArgs e) { if(BackgroundHost.Child is CompositionPreview preview) preview.ZoomBy(1/1.12); }

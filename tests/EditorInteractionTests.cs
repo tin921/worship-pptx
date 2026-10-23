@@ -116,7 +116,7 @@ static class EditorInteractionTests
                 check(chip.Parent is Grid && chip.HorizontalAlignment==Avalonia.Layout.HorizontalAlignment.Left && chip.VerticalAlignment==Avalonia.Layout.VerticalAlignment.Bottom && ((TextBlock)chip.Child).Text.Contains('['),"Thumbnail label is not inside the bottom left of image");
             } finally { window.Close(); }
         });
-        test("Projection stays read-only; top image controls and gestures persist separately per tab",()=> {
+        test("Both previews pan and zoom the same background while the camera stays fixed; changes persist per tab",()=> {
             var store=new LocalStore(Path.Combine(root,"editor-image-"+Guid.NewGuid().ToString("N")));
             var plan=Demo.Create(); plan.Items[1].Preview=new PreviewLayout { X=2,Y=2,BackgroundSource="Camera" }; store.Save(plan);
             var window=new MainWindow(store); window.Show(); Pump();
@@ -141,12 +141,32 @@ static class EditorInteractionTests
                 Drag(preview,new Point(1000,500),new Point(800,400));
                 check(item.Preview.X==PreviewLayout.DefaultX && item.BackgroundTransform.X==0,"Dragging camera moved camera or background");
                 window.MouseWheel(At(preview,window,500,250),new Vector(0,3)); Pump();
+                check(item.BackgroundTransform.Zoom>1,"Main preview wheel did not zoom image");
+                var beforePan=item.BackgroundTransform.X;
                 Drag(preview,new Point(500,250),new Point(580,280));
-                check(item.BackgroundTransform.Zoom==1 && item.BackgroundTransform.X==0,"Projection gestures still edit background");
+                check(item.BackgroundTransform.X>beforePan && item.Preview.X==PreviewLayout.DefaultX,"Main preview drag did not pan background independently");
+                void CheckSynced() {
+                    foreach(var target in new[]{preview,background}) {
+                        var image=(Image)((Canvas)target.Children.OfType<Viewbox>().Single(v=>v.Name=="CompositionBackground").Child).Children[0];
+                        check(Math.Abs(image.Width-1280*item.BackgroundTransform.Zoom)<.01 && Math.Abs(Canvas.GetLeft(image)-((1280-image.Width)/2+item.BackgroundTransform.X*12.8))<.01,"Preview framing is out of sync");
+                    }
+                }
+                CheckSynced();
+                var beforeCamera=item.BackgroundTransform.Key;
+                window.MouseWheel(At(preview,window,1000,500),new Vector(0,3)); Pump();
+                Drag(preview,new Point(1000,500),new Point(800,400));
+                check(item.BackgroundTransform.Key==beforeCamera,"Camera gestures changed background framing");
+                window.MouseDown(At(preview,window,500,250),MouseButton.Left); Pump();
+                window.MouseMove(At(preview,window,540,270),RawInputModifiers.LeftMouseButton); Pump();
+                Press(window,Key.Escape);
+                window.MouseUp(At(preview,window,540,270),MouseButton.Left); Pump();
+                check(!preview.IsDragging && item.BackgroundTransform.Key==beforeCamera,"Escape did not cancel the main preview pan");
+                CheckSynced();
                 var anchor=At(background,window,900,100); window.MouseWheel(anchor,new Vector(0,3)); Pump();
                 check(item.BackgroundTransform.Zoom>1,"Top image wheel did not zoom image");
                 var x=item.BackgroundTransform.X; Drag(background,new Point(900,100),new Point(1000,180));
                 check(item.BackgroundTransform.X>x && item.Preview.X==PreviewLayout.DefaultX,"Image pan did not move background independently");
+                CheckSynced();
                 void Click(string name) { window.FindControl<Button>(name).RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump(); }
                 var zoom=item.BackgroundTransform.Zoom; Click("ZoomIn"); check(item.BackgroundTransform.Zoom>zoom,"Map plus did not zoom"); Click("ZoomOut");
                 x=item.BackgroundTransform.X; var y=item.BackgroundTransform.Y;

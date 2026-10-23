@@ -39,6 +39,7 @@ public partial class MainWindow
         var focused=FocusManager?.GetFocusedElement();
         if(e.Key==Key.Escape) {
             if(BackgroundHost.Child is CompositionPreview preview) preview.CancelPan();
+            if(SlideHost.Child is CompositionPreview projection) projection.CancelPan();
             Focus(); e.Handled=true; return;
         }
         if(e.Key==Key.Tab && e.KeyModifiers==KeyModifiers.Control && Lyrics.IsFocused) {

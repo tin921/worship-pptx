@@ -29,6 +29,21 @@ static class GalleryTests
                 check(!full.IsVisible && picker.IsVisible && picker.ResultPath==before,"Escape did not return to unchanged picker");
             } finally {picker.Close();}
         });
+        test("Double-clicking a gallery image opens one fullscreen viewer and Escape returns to the picker",()=> {
+            var picker=new BackgroundDialog(images,""); picker.Show(); Dispatcher.UIThread.RunJobs(); picker.UpdateLayout(); Dispatcher.UIThread.RunJobs();
+            try {
+                var card=picker.FindControl<WrapPanel>("Gallery").Children.Cast<Button>().First();
+                var point=card.TranslatePoint(new Point(card.Bounds.Width/2,card.Bounds.Height/3),picker).Value;
+                void Click() { picker.MouseDown(point,MouseButton.Left); picker.MouseUp(point,MouseButton.Left); Dispatcher.UIThread.RunJobs(); }
+                Click();
+                check(picker.ResultPath==((MediaAsset)card.Tag).Key && !picker.OwnedWindows.Any(),"Single click should only select the result");
+                Click();
+                var full=picker.OwnedWindows.OfType<BackgroundImageWindow>().Single();
+                check(full.WindowState==WindowState.FullScreen && full.Title==ChineseText.Ui(((MediaAsset)card.Tag).Title),"Double-click did not open the clicked image fullscreen");
+                full.RaiseEvent(new KeyEventArgs { RoutedEvent=InputElement.KeyDownEvent,Key=Key.Escape }); Dispatcher.UIThread.RunJobs();
+                check(!full.IsVisible && picker.IsVisible,"Escape did not close the fullscreen image");
+            } finally { picker.Close(); }
+        });
         test("Gallery fits complete rows on resize and appends results on wheel scrolling",()=> {
             var picker=new BackgroundDialog(images,"");
             void Flush() { Dispatcher.UIThread.RunJobs(); picker.UpdateLayout(); Dispatcher.UIThread.RunJobs(); picker.UpdateLayout(); }
@@ -38,6 +53,8 @@ static class GalleryTests
                 var scroll=picker.FindControl<ScrollViewer>("GalleryScroll");
                 var styles=picker.FindControl<WrapPanel>("StyleFilters").Children.Cast<ToggleButton>().ToList();
                 var themed=MediaLibrary.All.Count(a=>a.Style!="generic");
+                var total=picker.FindControl<TextBlock>("GalleryInfo");
+                check(total.Text==themed.ToString() && gallery.Children.Count<themed,"Initial count should include unloaded results");
                 check(styles.Count==5 && styles.All(b=>b.IsChecked==true),"Image styles are not all selected by default");
                 check(picker.FindControl<Button>("ShowAllButton")==null && !picker.FindControl<TextBlock>("Message").IsVisible,"Removed gallery controls or status remain");
                 check(scroll.VerticalScrollBarVisibility==ScrollBarVisibility.Visible && !scroll.AllowAutoHide,"Gallery scrollbar is not visible");
@@ -50,6 +67,7 @@ static class GalleryTests
                     check(cards.Count>0 && cards.Count%columns==0,"Initial page has a partial row");
                     check(scroll.Extent.Height>scroll.Viewport.Height,"Initial extra row does not make scrolling discoverable");
                     check(scroll.Extent.Height-scroll.Viewport.Height<=cards[0].Bounds.Height+11,"Too much content loaded initially");
+                    check(total.Text==themed.ToString(),"Resize changed the available count");
                 }
                 check(observedColumns.Count>1,"Resizing never changed column count");
                 var initial=gallery.Children.Cast<Button>().Select(c=>((MediaAsset)c.Tag).Key).ToArray();
@@ -59,6 +77,7 @@ static class GalleryTests
                 }
                 Wheel(-10);
                 check(gallery.Children.Count>initial.Length && scroll.Offset.Y>0,"First wheel gesture did not append and scroll");
+                check(total.Text==themed.ToString(),"Loading another batch changed the available count");
                 check(gallery.Children.Cast<Button>().Take(initial.Length).Select(c=>((MediaAsset)c.Tag).Key).SequenceEqual(initial),"Appending replaced earlier results");
                 var selected=gallery.Children.Cast<Button>().Last(); var selectedKey=((MediaAsset)selected.Tag).Key;
                 var count=gallery.Children.Count; var offset=scroll.Offset.Y;
@@ -71,6 +90,7 @@ static class GalleryTests
                 check(keys.Count==themed && keys.Distinct().Count()==keys.Count,"Infinite scrolling did not reach every themed asset exactly once");
                 Wheel(30); check(scroll.Offset.Y<scroll.Extent.Height-scroll.Viewport.Height,"Cannot scroll back through appended results");
                 foreach(var button in styles) button.IsChecked=(string)button.Tag=="minimal"; Flush();
+                check(total.Text==MediaLibrary.All.Count(a=>a.Style=="minimal").ToString(),"Count did not follow the style filter");
                 check(gallery.Children.Count>0 && gallery.Children.Cast<Button>().All(c=>((MediaAsset)c.Tag).Style=="minimal") && scroll.Offset.Y==0 && picker.ResultPath==selectedKey,"Filtering did not reset paging or lost selection");
                 foreach(var button in styles) button.IsChecked=true; Flush();
                 check(scroll.Offset.Y==0 && gallery.Children.Count<MediaLibrary.All.Count,"Clearing filter did not restore first batch");
@@ -78,6 +98,7 @@ static class GalleryTests
                 check(gallery.Children.Count==0,"Deselecting all styles still shows results");
                 check(picker.FindControl<TextBlock>("GalleryInfo").Text=="0","Empty result count is stale");
                 picker.FindControl<ToggleButton>("GenericFilter").RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Flush();
+                check(total.Text==MediaLibrary.All.Count(a=>a.Style=="generic").ToString(),"Count did not follow the generic collection");
                 for(var i=0;i<20 && gallery.Children.Count<20;i++) Wheel(-20);
                 var generic=gallery.Children.Cast<Button>().Select(b=>(MediaAsset)b.Tag).ToList();
                 check(generic.Count==20 && generic.All(a=>a.Style=="generic") && generic.Select(a=>a.Lighting).Distinct().Count()==2,"Generic mode does not include both daylight and night images");

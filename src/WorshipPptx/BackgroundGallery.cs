@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Automation;
 using Avalonia.Controls;
@@ -24,6 +25,7 @@ public partial class BackgroundDialog
     private int galleryColumns=1, galleryBatch=1, galleryLoaded, galleryRevision;
     private double galleryCardWidth, galleryCardHeight;
     private bool galleryScrolled, galleryQueued, galleryRestoring;
+    private bool galleryImageOpen;
     private readonly List<ToggleButton> styleButtons=new();
     private readonly List<Bitmap> styleImages=new();
 
@@ -83,6 +85,7 @@ public partial class BackgroundDialog
             ? MediaLibrary.All.Where(a=>a.Style=="generic")
             : (results ?? MediaLibrary.All).Where(a=>a.Style!="generic" && selectedStyles.Contains(a.Style));
         galleryResults=all.ToList(); galleryLoaded=0; galleryScrolled=false;
+        GalleryInfo.Text=galleryResults.Count.ToString();
         GalleryScroll.Offset=default; ReflowGallery(true);
     }
 
@@ -172,19 +175,27 @@ public partial class BackgroundDialog
             Grid.SetColumn(expand,2); caption.Children.Add(expand);
             ToolTip.SetTip(expand,ChineseText.Ui("全螢幕檢視 · Esc 關閉"));
             AutomationProperties.SetName(expand,ChineseText.Ui("全螢幕檢視：")+ChineseText.Ui(asset.Title));
-            expand.Click+=async (_,e)=> { e.Handled=true; if(!busy) await new BackgroundImageWindow(asset).ShowDialog(this); };
+            expand.Click+=async (_,e)=> { e.Handled=true; await ShowGalleryImage(asset); };
             var strip=new Border { Background=Brush.Parse("#F0F1EF"),Child=caption }; Grid.SetRow(strip,1); content.Children.Add(strip);
             var button=new Button { Tag=asset,Content=content,Width=galleryCardWidth,Height=galleryCardHeight,Padding=new Thickness(0),BorderThickness=new Thickness(2),CornerRadius=new CornerRadius(6),ClipToBounds=true,HorizontalContentAlignment=HorizontalAlignment.Stretch,VerticalContentAlignment=VerticalAlignment.Stretch };
             var label=ChineseText.Ui(asset.Title)+" · "+asset.StyleLabel;
             ToolTip.SetTip(button,label); AutomationProperties.SetName(button,label);
             button.Click+=(_,_)=> { if(!busy) SelectBackground(asset.Key); };
+            button.DoubleTapped+=async (_,e)=> { e.Handled=true; await ShowGalleryImage(asset); };
             galleryCards.Add(button); Gallery.Children.Add(button);
         }
         for(var i=0;i<galleryCards.Count;i++)
             galleryCards[i].Margin=new Thickness(0,0,(i+1)%galleryColumns==0 ? 0 : GalleryGap,i/galleryColumns==(galleryCards.Count-1)/galleryColumns ? 0 : GalleryGap);
         HighlightSelectedBackground();
-        GalleryInfo.Text=galleryLoaded.ToString();
         ToolTip.SetTip(GalleryInfo,ChineseText.Ui(galleryLoaded<galleryResults.Count ? "向下捲動查看更多" : "已顯示全部"));
+    }
+
+    private async Task ShowGalleryImage(MediaAsset asset)
+    {
+        if(busy || galleryImageOpen) return;
+        galleryImageOpen=true;
+        try { await new BackgroundImageWindow(asset).ShowDialog(this); }
+        finally { galleryImageOpen=false; }
     }
 
     private void HighlightSelectedBackground()
