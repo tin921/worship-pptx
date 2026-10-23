@@ -14,7 +14,7 @@ public partial class MainWindow
         try {
             var automatic=selected.Formatting.AutoFontSize && SlideLayout.HasSectionTags(selected.Lyrics);
             // Show the effective, shared song size directly in the control.
-            fontSizes[0]=ChineseText.Ui("自動")+(actual.HasValue && automatic ? " · "+actual.Value : "");
+            fontSizes[0]=ChineseText.Ui("自動")+(actual.HasValue && automatic ? " "+actual.Value : "");
             FontSizePicker.SelectedItem=automatic ? fontSizes[0] : selected.Formatting.FontSize;
             ToolTip.SetTip(FontSizePicker,automatic ? ChineseText.Ui("按最長段落統一字號；選擇數字可固定字號") : ChineseText.Ui("固定字號（pt）；選擇「自動」恢復每段一頁"));
         } finally { syncingFontSize=false; }
