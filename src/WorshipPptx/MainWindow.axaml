@@ -102,7 +102,7 @@
            </StackPanel>
            <Grid ColumnDefinitions="Auto,*,Auto">
             <TextBlock Text="{local:Tr '不透明度'}" FontSize="12" VerticalAlignment="Center"/>
-            <Slider x:Name="BackgroundOpacity" Grid.Column="1" Width="82" Height="24" MinHeight="0" Margin="5,0" Minimum="0" Maximum="100" Value="100" ValueChanged="BackgroundOpacity_Changed" AutomationProperties.Name="{local:Tr '背景不透明度'}"/>
+            <Slider x:Name="BackgroundOpacity" Grid.Column="1" Width="82" Margin="5,0" Minimum="0" Maximum="100" Value="100" ValueChanged="BackgroundOpacity_Changed" AutomationProperties.Name="{local:Tr '背景不透明度'}"/>
             <TextBlock x:Name="OpacityLabel" Grid.Column="2" Text="100%" FontSize="11" VerticalAlignment="Center"/>
            </Grid>
           </StackPanel>

@@ -64,6 +64,10 @@ static class EditorInteractionTests
                 var toolbarBottom=toolbar.TranslatePoint(new Point(0,toolbar.Bounds.Height),window).Value.Y;
                 var pictureBottom=preview.TranslatePoint(new Point(0,720),window).Value.Y;
                 check(Math.Abs(toolbarBottom-(pictureBottom-10))<1,$"Image toolbar outside picture: toolbar={toolbarBottom}, picture={pictureBottom}, margin={toolbar.Margin}, host={window.FindControl<Viewbox>("SlideHost").Bounds}, parent={((Control)toolbar.Parent).Bounds}");
+                var opacityControl=window.FindControl<Slider>("BackgroundOpacity");
+                var knob=opacityControl.GetVisualDescendants().OfType<Thumb>().First();
+                var knobTop=knob.TranslatePoint(default,opacityControl).Value.Y;
+                check(knobTop>=0 && knobTop+knob.Bounds.Height<=opacityControl.Bounds.Height+1,"Opacity knob is clipped");
                 check(item.Preview.X==58 && item.Preview.Y==58 && item.Preview.BackgroundSource=="Slide" && window.FindControl<ToggleButton>("CompositionToggle")==null,"PiP did not become fixed at default corner");
                 check(!preview.Children.OfType<Border>().Any(b=>b.Name?.StartsWith("PipHandle")==true),"PiP resize handles remain");
                 void Drag(Point from,Point to) {
