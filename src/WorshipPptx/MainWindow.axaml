@@ -61,8 +61,8 @@
       <Grid x:Name="BackgroundToolbar" ColumnDefinitions="*,16,*" Margin="0,0,0,8">
        <StackPanel>
         <TextBlock Text="{local:Tr '背景圖片'}" Classes="label" Height="28" VerticalAlignment="Center" Margin="0,0,0,9"/>
-        <Border x:Name="BackgroundBox" Height="146" CornerRadius="9" ClipToBounds="True" Background="White" BorderBrush="#B0B0B0" BorderThickness="1" DragDrop.AllowDrop="True" DragDrop.Drop="Background_Drop" DragDrop.DragOver="Background_DragOver">
-         <Grid><Viewbox x:Name="BackgroundHost" Stretch="UniformToFill" ToolTip.Tip="{local:Tr '拖動平移 · 滾輪縮放'}"/>
+        <local:SlidePreviewBorder x:Name="BackgroundBox" MaxHeight="200" HorizontalAlignment="Left" CornerRadius="9" ClipToBounds="True" Background="White" BorderBrush="#B0B0B0" BorderThickness="1" DragDrop.AllowDrop="True" DragDrop.Drop="Background_Drop" DragDrop.DragOver="Background_DragOver">
+         <Grid><Viewbox x:Name="BackgroundHost" Stretch="Uniform" ToolTip.Tip="{local:Tr '拖動平移 · 滾輪縮放'}"/>
           <Border x:Name="ImageControls" Margin="8" ToolTip.Tip="{local:Tr '拖動平移 · 滾輪縮放'}">
            <Grid>
             <Grid.Styles>
@@ -99,7 +99,7 @@
            </Grid>
           </Border>
          </Grid>
-        </Border>
+        </local:SlidePreviewBorder>
        </StackPanel>
        <StackPanel Grid.Column="2" x:Name="FormattingPanel">
         <TextBlock Text="{local:Tr '文字格式'}" Classes="label" Height="28" VerticalAlignment="Center" Margin="0,0,0,9"/>
@@ -132,7 +132,7 @@
         <TextBlock Text="{local:Tr '畫面預覽'}" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/>
         <StackPanel Grid.Column="1" Orientation="Horizontal"><TextBlock x:Name="PreviewInfo" Classes="caption" FontSize="14" VerticalAlignment="Center" Margin="0,0,12,0"/><Button x:Name="PreviousPreview" Content="‹" Width="36" Height="30" MinHeight="0" Padding="0" Click="Previous_Click" FontSize="18"/><Button x:Name="NextPreview" Content="›" Width="36" Height="30" MinHeight="0" Padding="0" Margin="7,0,0,0" Click="Next_Click" FontSize="18"/></StackPanel>
        </Grid>
-       <Border Grid.Row="1" BorderBrush="#B0B0B0" BorderThickness="1" VerticalAlignment="Top"><Viewbox x:Name="SlideHost" Stretch="Uniform" VerticalAlignment="Top"/></Border>
+       <local:SlidePreviewBorder x:Name="ProjectionBox" Grid.Row="1" BorderBrush="#B0B0B0" BorderThickness="1"><Viewbox x:Name="SlideHost" Stretch="Uniform" VerticalAlignment="Top"/></local:SlidePreviewBorder>
        <TextBlock Grid.Row="4" x:Name="ValidationText" Foreground="#A34F30" FontSize="13" Margin="0,6,0,0"/>
       </Grid>
      </Grid>

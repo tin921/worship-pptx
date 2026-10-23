@@ -18,6 +18,9 @@ static class UiReview
         var store=new LocalStore(Path.Combine(root,"data")); var plan=Demo.Create();
         plan.Items[1].Background="media:ocean-photo";store.Save(plan);
         var main=new MainWindow(store); main.Show(); Draw(main,Path.Combine(root,"editor.png"));
+        main.Width=1920; main.Height=760; Draw(main,Path.Combine(root,"editor-wide.png"));
+        main.Width=1120; Draw(main,Path.Combine(root,"editor-compact.png"));
+        main.Width=1440; main.Height=940;
         main.FindControl<Slider>("BackgroundOpacity").Value=0; Draw(main,Path.Combine(root,"opacity-zero.png"));
         var gallery=new BackgroundDialog(new ImageStore(store.Assets),"media:ocean-photo");gallery.Show();Draw(gallery,Path.Combine(root,"gallery.png"));
         gallery.Width=880; gallery.Height=680; Draw(gallery,Path.Combine(root,"gallery-compact.png"));gallery.Close();

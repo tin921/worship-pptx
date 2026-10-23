@@ -150,6 +150,28 @@ static class EditorInteractionTests
                 check(scrollBar.IsVisible && thumbs.GetVisualDescendants().OfType<ListBoxItem>().All(c=>c.TranslatePoint(new Point(c.Bounds.Width,0),thumbs).Value.X+7<=barLeft),"Thumbnail cards overlap the scrollbar or lack a gap");
             } finally { window.Close(); }
         });
+        test("Preview frames show the entire 16:9 canvas without border gaps after resizing or moving dividers",()=> {
+            var store=new LocalStore(Path.Combine(root,"preview-sizing-"+Guid.NewGuid().ToString("N")));
+            store.Save(Demo.Create());
+            var window=new MainWindow(store); window.Show(); Pump();
+            try {
+                foreach(var size in new[]{new Size(1440,940),new Size(1920,760),new Size(1120,760),new Size(1920,1080)}) {
+                    window.Width=size.Width; window.Height=size.Height; Pump(); window.UpdateLayout(); Pump();
+                    foreach(var editorWidth in new[]{300.0,440.0}) {
+                        window.FindControl<Grid>("WorkArea").ColumnDefinitions[0].Width=new GridLength(editorWidth); Pump(); window.UpdateLayout(); Pump();
+                        foreach(var names in new[]{("BackgroundBox","BackgroundHost"),("ProjectionBox","SlideHost")}) {
+                            var frame=window.FindControl<Border>(names.Item1);
+                            var canvas=(CompositionPreview)window.FindControl<Viewbox>(names.Item2).Child;
+                            var topLeft=canvas.TranslatePoint(default,frame).Value;
+                            var bottomRight=canvas.TranslatePoint(new Point(1280,720),frame).Value;
+                            check(Math.Abs(topLeft.X-1)<=1.1 && Math.Abs(topLeft.Y-1)<=1.1 && Math.Abs(bottomRight.X-(frame.Bounds.Width-1))<=1.1 && Math.Abs(bottomRight.Y-(frame.Bounds.Height-1))<=1.1,"Preview is cropped or the border does not hug the image: "+names.Item1+" at "+size);
+                        }
+                        var background=window.FindControl<Border>("BackgroundBox");
+                        check(Math.Abs(background.TranslatePoint(default,window).Value.Y-window.FindControl<ComboBox>("FontPicker").TranslatePoint(default,window).Value.Y)<1,"Image and font controls lost top alignment");
+                    }
+                }
+            } finally { window.Close(); }
+        });
         test("Both previews pan and zoom the same background while the camera stays fixed; changes persist per tab",()=> {
             var store=new LocalStore(Path.Combine(root,"editor-image-"+Guid.NewGuid().ToString("N")));
             var plan=Demo.Create(); plan.Items[1].Preview=new PreviewLayout { X=2,Y=2,BackgroundSource="Camera" }; store.Save(plan);
