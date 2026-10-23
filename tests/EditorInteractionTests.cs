@@ -114,7 +114,7 @@ static class EditorInteractionTests
                 var knob=opacityControl.GetVisualDescendants().OfType<Thumb>().First();
                 var knobTop=knob.TranslatePoint(default,opacityControl).Value.Y;
                 check(knobTop>=0 && knobTop+knob.Bounds.Height<=opacityControl.Bounds.Height+1,"Opacity knob is clipped");
-                check(item.Preview.X==58 && item.Preview.Y==58 && item.Preview.BackgroundSource=="Slide" && window.FindControl<ToggleButton>("CompositionToggle")==null,"PiP did not become fixed at default corner");
+                check(Math.Abs((100-item.Preview.X-item.Preview.ScaleX)*1280-(100-item.Preview.Y-item.Preview.ScaleY)*720)<.01 && item.Preview.Y==58 && item.Preview.BackgroundSource=="Slide" && window.FindControl<ToggleButton>("CompositionToggle")==null,"Fixed PiP does not have equal right and bottom margins");
                 check(!preview.Children.OfType<Border>().Any(b=>b.Name?.StartsWith("PipHandle")==true),"PiP resize handles remain");
                 void Drag(CompositionPreview target,Point from,Point to) {
                     window.MouseDown(At(target,window,from.X,from.Y),MouseButton.Left); Pump();
@@ -122,14 +122,14 @@ static class EditorInteractionTests
                     window.MouseUp(At(target,window,to.X,to.Y),MouseButton.Left); Pump();
                 }
                 Drag(preview,new Point(1000,500),new Point(800,400));
-                check(item.Preview.X==58 && item.BackgroundTransform.X==0,"Dragging camera moved camera or background");
+                check(item.Preview.X==PreviewLayout.DefaultX && item.BackgroundTransform.X==0,"Dragging camera moved camera or background");
                 window.MouseWheel(At(preview,window,500,250),new Vector(0,3)); Pump();
                 Drag(preview,new Point(500,250),new Point(580,280));
                 check(item.BackgroundTransform.Zoom==1 && item.BackgroundTransform.X==0,"Projection gestures still edit background");
                 var anchor=At(background,window,900,100); window.MouseWheel(anchor,new Vector(0,3)); Pump();
                 check(item.BackgroundTransform.Zoom>1,"Top image wheel did not zoom image");
                 var x=item.BackgroundTransform.X; Drag(background,new Point(900,100),new Point(1000,180));
-                check(item.BackgroundTransform.X>x && item.Preview.X==58,"Image pan did not move background independently");
+                check(item.BackgroundTransform.X>x && item.Preview.X==PreviewLayout.DefaultX,"Image pan did not move background independently");
                 void Click(string name) { window.FindControl<Button>(name).RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump(); }
                 var zoom=item.BackgroundTransform.Zoom; Click("ZoomIn"); check(item.BackgroundTransform.Zoom>zoom,"Map plus did not zoom"); Click("ZoomOut");
                 x=item.BackgroundTransform.X; var y=item.BackgroundTransform.Y;
@@ -150,7 +150,7 @@ static class EditorInteractionTests
         test("Adjusted background pixels match export and section tags are padded inside the PiP footprint",()=> {
             var slide=new SlideData { Background="",Section="V1",BackgroundTransform=new() { Zoom=1.6,X=12,Y=-8,Flip=true,Opacity=.45 },Lines=new(){"平安"} };
             var visual=SlideVisual.Create(slide); var tag=visual.Children.OfType<Border>().Single(b=>b.Name=="SlideTag");
-            check(Canvas.GetLeft(tag)>=58*12.8 && Canvas.GetLeft(tag)+tag.Width<98*12.8 && Canvas.GetTop(tag)>=58*7.2 && Canvas.GetTop(tag)+tag.Height<98*7.2,"Slide tag lies outside default PiP");
+            check(Canvas.GetLeft(tag)>=PreviewLayout.DefaultX*12.8 && Canvas.GetLeft(tag)+tag.Width<(PreviewLayout.DefaultX+40)*12.8 && Canvas.GetTop(tag)>=58*7.2 && Canvas.GetTop(tag)+tag.Height<98*7.2,"Slide tag lies outside default PiP");
             var bare=SlideVisual.Create(new SlideData { BackgroundTransform=slide.BackgroundTransform }); bare.Measure(new Size(1280,720)); bare.Arrange(new Rect(0,0,1280,720));
             using var rendered=new RenderTargetBitmap(new PixelSize(1280,720),new Vector(96,96)); rendered.Render(bare);
             using var png=new MemoryStream(); rendered.Save(png,new PngBitmapEncoderOptions()); using var actual=SKBitmap.Decode(png.ToArray()); using var expected=SKBitmap.Decode(SlideVisual.BackgroundPng("",slide.BackgroundTransform));

@@ -101,7 +101,7 @@ public partial class BackgroundDialog
 
     private void ReflowGallery(bool force=false)
     {
-        var width=GalleryScroll.Viewport.Width; var height=GalleryScroll.Viewport.Height;
+        var width=GalleryScroll.Viewport.Width-Gallery.Margin.Left-Gallery.Margin.Right; var height=GalleryScroll.Viewport.Height;
         if(width<1 || height<1) return;
         var columns=Math.Max(1,(int)Math.Floor((width+GalleryGap)/(MinimumCardWidth+GalleryGap)));
         var cardWidth=Math.Floor((width-GalleryGap*(columns-1))/columns);

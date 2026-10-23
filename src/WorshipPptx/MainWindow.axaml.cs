@@ -107,7 +107,7 @@ namespace WorshipPptx
             SyncFontSizePicker();
             BoldToggle.IsChecked=selected.Formatting.Bold;
             selected.Preview ??= PreviewLayout.FromLegacy(selected.Formatting.FullSlide);
-            UpdateAlignmentButtons(); UpdatePositionButtons(); UpdateColorSwatch(); UpdateLayoutButtons(); SyncBackgroundControls();
+            UpdateAlignmentButtons(); UpdatePositionButtons(); UpdateColorSwatch(); SyncBackgroundControls();
         }
         private void UpdateContentMode()
         {
@@ -253,7 +253,7 @@ namespace WorshipPptx
                 }
                 updatingThumbnails=false; page=Math.Min(page,Math.Max(0,slides.Count-1)); ShowPage();
             }
-            catch(Exception ex) { updatingThumbnails=true; slides.Clear(); SlideHost.Child=null; Thumbnails.Items.Clear(); PreviewInfo.Text=ChineseText.Ui("請先完成內容"); ValidationText.Text=ex.Message; try { RefreshBackgroundEditor(); } catch { BackgroundHost.Child=null; } }
+            catch(Exception ex) { updatingThumbnails=true; slides.Clear(); SlideHost.Child=null; Thumbnails.Items.Clear(); PreviewInfo.Text="0 / 0"; ValidationText.Text=ex.Message; try { RefreshBackgroundEditor(); } catch { BackgroundHost.Child=null; } }
             finally { updatingThumbnails=false; }
         }
         private void ShowPage()
@@ -264,8 +264,7 @@ namespace WorshipPptx
                 preview=new CompositionPreview(slides[page],selected.Preview,false,selected.BackgroundTransform);
                 SlideHost.Child=preview;
             }
-            PreviewInfo.Text=(page+1)+" / "+slides.Count+"  ·  "+slides[page].Section;
-            if(SlideLayout.HasAnnouncementTags(selected.Lyrics) || SlideLayout.HasSectionTags(selected.Lyrics)) PreviewInfo.Text+="  ·  "+slides[page].FontSize+" pt";
+            PreviewInfo.Text=(page+1)+" / "+slides.Count;
             SyncFontSizePicker(slides[page].FontSize);
             if(Thumbnails.SelectedIndex!=page) Thumbnails.SelectedIndex=page;
             Thumbnails.ScrollIntoView(Thumbnails.SelectedItem);
@@ -386,7 +385,6 @@ namespace WorshipPptx
             selected.Formatting.Bold=BoldToggle.IsChecked==true;
             SaveDraft(); RefreshPreview();
         }
-        private void UpdateLayoutButtons() => LayoutModeLabel.Text=ChineseText.Ui("16:9 · 上半部文字");
         private List<SlideData> ExportSlides() { Capture(); SaveDraft(); return SlideLayout.Build(plan,settings); }
         private async void Preview_Click(object sender,RoutedEventArgs e)
         {

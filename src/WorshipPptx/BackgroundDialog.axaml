@@ -16,7 +16,7 @@
      </StackPanel>
      <WrapPanel x:Name="StyleFilters" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     </Grid>
-    <ScrollViewer x:Name="GalleryScroll" Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" AllowAutoHide="False" Focusable="True"><WrapPanel x:Name="Gallery" Orientation="Horizontal"/></ScrollViewer>
+    <ScrollViewer x:Name="GalleryScroll" Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" AllowAutoHide="False" Focusable="True"><WrapPanel x:Name="Gallery" Orientation="Horizontal" Margin="0,0,8,0"/></ScrollViewer>
    </Grid>
    <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Disabled"><StackPanel Spacing="10">
     <TextBlock x:Name="MatchedTheme" Text="{local:Tr '正在準備圖片關鍵字…'}" FontWeight="SemiBold" TextWrapping="Wrap"/>

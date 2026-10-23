@@ -24,7 +24,9 @@ static class CompositionTests
             var item=new ServiceItem { Title="版面測試",Lyrics="[v1]\n恩典與慈愛\n永遠跟隨我",Order="v1",Preview=new PreviewLayout() };
             foreach(var corner in new[]{"TopLeft","TopRight","BottomLeft","BottomRight"}) {
                 item.Preview.ApplyPreset(corner);
-                check(item.Preview.X==(corner.EndsWith("Left") ? 2 : 58) && item.Preview.Y==(corner.StartsWith("Top") ? 2 : 58),"Corner margin is not 2%");
+                var xMargin=corner.EndsWith("Left") ? item.Preview.X : 100-item.Preview.X-item.Preview.ScaleX;
+                var yMargin=corner.StartsWith("Top") ? item.Preview.Y : 100-item.Preview.Y-item.Preview.ScaleY;
+                check(Math.Abs(xMargin*1280-yMargin*720)<.01 && yMargin==2,"Corner margins are not visually equal");
                 var slides=SlideLayout.BuildItem(item,new UserSettings());
                 check(slides.All(s=>!s.FullSlide && s.BottomHalf==corner.StartsWith("Top")),"Camera corner did not select opposite text half");
                 foreach(var slide in slides) {

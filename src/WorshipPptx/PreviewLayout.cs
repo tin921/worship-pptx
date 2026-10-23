@@ -8,16 +8,18 @@ namespace WorshipPptx;
 public sealed class PreviewLayout
 {
     public const double CornerMargin=2, MinimumScale=10;
+    // Equal visual margins on a 16:9 canvas need different X/Y percentages.
+    public const double HorizontalCornerMargin=CornerMargin*720/1280, DefaultX=60-HorizontalCornerMargin;
     [DataMember] public bool IsPip { get; set; }=true;
     [DataMember] public string BackgroundSource { get; set; }="Slide";
-    [DataMember] public double X { get; set; }=58;
+    [DataMember] public double X { get; set; }=DefaultX;
     [DataMember] public double Y { get; set; }=58;
     [DataMember] public double ScaleX { get; set; }=40;
     [DataMember] public double ScaleY { get; set; }=40;
     public string PipSource => BackgroundSource=="Slide" ? "Camera" : "Slide";
     public string TextArea => !IsPip || BackgroundSource=="Camera" ? "Full" : Y+ScaleY/2<50 ? "Bottom" : "Top";
     public static PreviewLayout FromLegacy(bool fullSlide) => new() { IsPip=!fullSlide };
-    [OnDeserializing] private void Defaults(StreamingContext _) { IsPip=true; BackgroundSource="Slide"; X=58; Y=58; ScaleX=40; ScaleY=40; }
+    [OnDeserializing] private void Defaults(StreamingContext _) { IsPip=true; BackgroundSource="Slide"; X=DefaultX; Y=58; ScaleX=40; ScaleY=40; }
     [OnDeserialized] private void Loaded(StreamingContext _) => Normalize();
     private static double Finite(double value,double fallback) => double.IsFinite(value) ? value : fallback;
     public void Normalize()
@@ -25,7 +27,7 @@ public sealed class PreviewLayout
         if(BackgroundSource!="Camera") BackgroundSource="Slide";
         ScaleX=Math.Clamp(Finite(ScaleX,40),MinimumScale,100);
         ScaleY=Math.Clamp(Finite(ScaleY,40),MinimumScale,100);
-        X=Math.Clamp(Finite(X,58),0,100-ScaleX);
+        X=Math.Clamp(Finite(X,DefaultX),0,100-ScaleX);
         Y=Math.Clamp(Finite(Y,58),0,100-ScaleY);
     }
     public void ApplyPreset(string preset)
@@ -34,7 +36,7 @@ public sealed class PreviewLayout
             IsPip=false; BackgroundSource=preset=="FullCamera" ? "Camera" : "Slide"; return;
         }
         IsPip=true; ScaleX=ScaleY=40;
-        X=preset.EndsWith("Left",StringComparison.Ordinal) ? CornerMargin : 100-40-CornerMargin;
+        X=preset.EndsWith("Left",StringComparison.Ordinal) ? HorizontalCornerMargin : DefaultX;
         Y=preset.StartsWith("Top",StringComparison.Ordinal) ? CornerMargin : 100-40-CornerMargin;
     }
     public bool Matches(string preset)

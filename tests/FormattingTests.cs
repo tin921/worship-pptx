@@ -83,7 +83,9 @@ static class FormattingTests
             check(full.Count==2 && top.Count==2 && full[1].Lines.Count==6 && full[1].FontSize>top[1].FontSize,"Blocks do not fit one slide or full-slide space is unused");
             check(full.Skip(1).All(s=>s.Footer==""),"Credits appeared after title");
             var topPreview=SlideVisual.Create(top[1],true); var guide=topPreview.Children.OfType<Border>().Single(b=>b.Name=="PipFrame");
-            check(guide.Width==512 && guide.Height==288 && Math.Abs(Canvas.GetLeft(guide)+guide.Width-1254.4)<.01 && Math.Abs(Canvas.GetTop(guide)+guide.Height-705.6)<.01 && guide.CornerRadius==new CornerRadius(0) && guide.BorderThickness==new Thickness(2),"Singer guide is not 40%, inset 2%, with square white borders");
+            var rightMargin=1280-Canvas.GetLeft(guide)-guide.Width;
+            var bottomMargin=720-Canvas.GetTop(guide)-guide.Height;
+            check(guide.Width==512 && guide.Height==288 && Math.Abs(rightMargin-bottomMargin)<.01 && Math.Abs(bottomMargin-14.4)<.01 && guide.CornerRadius==new CornerRadius(0) && guide.BorderThickness==new Thickness(2),"Singer guide is not 40% with equal margins and square white borders");
             check(!SlideVisual.Create(full[1],true).Children.OfType<Border>().Any(b=>b.Name=="PipFrame" && b.IsVisible),"Full-slide preview has a singer guide");
             check(SlideVisual.Create(full[1]).Children.OfType<TextBlock>().All(t=>t.FontWeight==FontWeight.Bold),"Bold preview lost weight");
             check(top.All(s=>SlideLayout.TextTop(s)+s.Lines.Count*SlideLayout.LineSpacing(s.FontSize,s.FontName,s.Bold)<=360),"Top-half text spills below half");
