@@ -2081,72 +2081,82 @@
   },
   {
     "id": "legacy-01-grace-path-photo",
-    "title": "恩典之路 · 攝影",
-    "theme": "legacy-01-grace-path",
-    "style": "legacy",
+    "title": "山間步道 · 暮色",
+    "theme": "mountain_path",
+    "style": "photo",
+    "core": true,
     "still": "legacy/01-grace-path/photo.jpg"
   },
   {
     "id": "legacy-01-grace-path-graphic",
-    "title": "恩典之路 · 插畫",
-    "theme": "legacy-01-grace-path",
-    "style": "legacy",
+    "title": "山間步道 · 暮色",
+    "theme": "mountain_path",
+    "style": "abstract",
+    "core": true,
     "still": "legacy/01-grace-path/graphic.jpg"
   },
   {
     "id": "legacy-02-wheat-photo",
-    "title": "一粒麥子 · 攝影",
-    "theme": "legacy-02-wheat",
-    "style": "legacy",
+    "title": "麥田 · 暮色",
+    "theme": "wheat",
+    "style": "photo",
+    "core": false,
     "still": "legacy/02-wheat/photo.jpg"
   },
   {
     "id": "legacy-02-wheat-graphic",
-    "title": "一粒麥子 · 插畫",
-    "theme": "legacy-02-wheat",
-    "style": "legacy",
+    "title": "麥田 · 暮色",
+    "theme": "wheat",
+    "style": "abstract",
+    "core": false,
     "still": "legacy/02-wheat/graphic.jpg"
   },
   {
     "id": "legacy-03-eagle-photo",
-    "title": "如鷹展翅上騰 · 攝影",
-    "theme": "legacy-03-eagle",
-    "style": "legacy",
+    "title": "飛鷹 · 暮色",
+    "theme": "eagle",
+    "style": "photo",
+    "core": true,
     "still": "legacy/03-eagle/photo.jpg"
   },
   {
     "id": "legacy-03-eagle-graphic",
-    "title": "如鷹展翅上騰 · 插畫",
-    "theme": "legacy-03-eagle",
-    "style": "legacy",
+    "title": "飛鷹 · 暮色",
+    "theme": "eagle",
+    "style": "abstract",
+    "core": true,
     "still": "legacy/03-eagle/graphic.jpg"
   },
   {
     "id": "legacy-04-still-reigns-photo",
-    "title": "你坐著為王 · 攝影",
-    "theme": "legacy-04-still-reigns",
-    "style": "legacy",
+    "title": "海岸 · 暮色",
+    "theme": "ocean",
+    "style": "photo",
+    "core": true,
     "still": "legacy/04-still-reigns/photo.jpg"
   },
   {
     "id": "legacy-04-still-reigns-graphic",
-    "title": "你坐著為王 · 插畫",
-    "theme": "legacy-04-still-reigns",
-    "style": "legacy",
+    "title": "海岸 · 暮色",
+    "theme": "ocean",
+    "style": "abstract",
+    "core": true,
     "still": "legacy/04-still-reigns/graphic.jpg"
   },
   {
     "id": "legacy-05-be-still-photo",
-    "title": "安靜 · 攝影",
-    "theme": "legacy-05-be-still",
-    "style": "legacy",
+    "title": "靜湖 · 暮色",
+    "theme": "calm_lake",
+    "style": "photo",
+    "core": true,
     "still": "legacy/05-be-still/photo.jpg"
   },
   {
     "id": "legacy-05-be-still-graphic",
-    "title": "安靜 · 插畫",
-    "theme": "legacy-05-be-still",
-    "style": "legacy",
+    "title": "靜湖 · 暮色",
+    "theme": "calm_lake",
+    "style": "abstract",
+    "core": true,
     "still": "legacy/05-be-still/graphic.jpg"
   },
   {

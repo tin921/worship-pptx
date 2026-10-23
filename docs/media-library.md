@@ -4,7 +4,7 @@ The desktop library contains 272 choices, all at 1280 × 720:
 
 - 80 researched themes (60 core, 20 optional), each with one AI-generated photograph-style image, one painted illustration and one abstract image: 240 still images.
 - 10 original procedural graphics, each in daylight and night lighting: 20 still images. Rain has stronger, larger visible drops and ripples.
-- The original five-song pilot, two choices per song: 10 still images, resized to 720p for the application. Historical pilot files outside the app library are unchanged.
+- The original five-song pilot: 10 still images now grouped by their actual subjects (mountain paths, wheat, eagles, sea and lakes) under the regular photo and abstract styles. There is no separate sample category. Their IDs and file paths are preserved so saved backgrounds still open; historical pilot files outside the app library are unchanged.
 - Two additional style pilots: a soft watercolour prayer scene and a sculpted gold crown. The new style filters currently contain one sample each; see [style review and prompts](search-and-style-review.md).
 
 `assets/media/catalog.json` is the app manifest. Files live under `themes/`, `generic/` and `legacy/`. Installed builds preserve these folders under `Media/`. No cloud storage, image-search API, website scraping or image download is needed to browse or search this library.

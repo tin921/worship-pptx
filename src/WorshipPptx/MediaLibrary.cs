@@ -16,7 +16,7 @@ namespace WorshipPptx
         public bool Core { get; set; }
         public string Still { get; set; }
         public string Key => "media:"+Id;
-        public string StyleLabel => Style switch { "photo"=>ChineseText.Ui("攝影"), "illustration"=>ChineseText.Ui("插畫"), "abstract"=>ChineseText.Ui("抽象"), "watercolour"=>ChineseText.Ui("柔光水彩"), "sculpted"=>ChineseText.Ui("立體象徵"), "generic"=>Lighting=="daylight" ? ChineseText.Ui("通用 · 日光") : ChineseText.Ui("通用 · 夜色"), _=>ChineseText.Ui("原有素材") };
+        public string StyleLabel => Style switch { "photo"=>ChineseText.Ui("攝影"), "illustration"=>ChineseText.Ui("插畫"), "abstract"=>ChineseText.Ui("抽象"), "watercolour"=>ChineseText.Ui("柔光水彩"), "sculpted"=>ChineseText.Ui("立體象徵"), "generic"=>Lighting=="daylight" ? ChineseText.Ui("通用 · 日光") : ChineseText.Ui("通用 · 夜色"), _=>ChineseText.Ui("背景圖片") };
     }
     public static class MediaLibrary
     {

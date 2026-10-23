@@ -133,10 +133,16 @@ static class MediaTests
         });
         test("Library has 272 static 720p images including two new style samples",()=> {
             check(MediaLibrary.All.Count==272,$"Expected 272, found {MediaLibrary.All.Count}");
-            var themed=MediaLibrary.All.Where(a=>a.Style is "photo" or "illustration" or "abstract").ToList();
+            var themed=MediaLibrary.All.Where(a=>!a.Id.StartsWith("legacy-") && a.Style is "photo" or "illustration" or "abstract").ToList();
             check(themed.Count==240 && themed.Count(a=>a.Core)==180,"Wrong core/optional distribution");
             check(themed.GroupBy(a=>a.Theme).All(g=>g.Count()==3 && g.Select(a=>a.Style).Distinct().Count()==3),"Missing style variations");
             check(MediaLibrary.All.Single(a=>a.Style=="watercolour").Theme=="kneeling_prayer" && MediaLibrary.All.Single(a=>a.Style=="sculpted").Theme=="crown","Missing new style samples");
+            var originals=MediaLibrary.All.Where(a=>a.Id.StartsWith("legacy-")).ToList();
+            var scenes=JsonSerializer.Deserialize<List<MediaScene>>(File.ReadAllText(Path.Combine(MediaLibrary.Root,"scenes.json")),MediaLibrary.JsonOptions).ToDictionary(s=>s.Id);
+            check(originals.Count==10 && originals.Count(a=>a.Style=="photo")==5 && originals.Count(a=>a.Style=="abstract")==5,"Original images lost or not reclassified");
+            check(originals.All(a=>scenes.TryGetValue(a.Theme,out var scene) && scene.Core==a.Core),"Original images are outside the regular themes");
+            check(originals.All(a=>MediaLibrary.StillPath(a.Key).EndsWith(a.Still.Replace('/',Path.DirectorySeparatorChar))),"Saved original background references changed");
+            check(!MediaLibrary.All.Any(a=>a.Style=="legacy" || a.Theme.StartsWith("legacy-")),"Separate sample category remains");
             foreach(var asset in MediaLibrary.All) {
                 using var codec=SKCodec.Create(MediaLibrary.FilePath(asset.Still));
                 check(codec.Info.Width==1280 && codec.Info.Height==720,"Wrong still size: "+asset.Id);

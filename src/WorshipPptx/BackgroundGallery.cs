@@ -68,11 +68,10 @@ public partial class BackgroundDialog
         Gallery.Children.Clear(); galleryCards.Clear(); DisposeGalleryImages();
         IEnumerable<MediaAsset> all=results ?? MediaLibrary.All;
         all=CollectionFilter.SelectedIndex switch {
-            1=>all.Where(a=>a.Core && a.Style!="generic" && a.Style!="legacy"),
-            2=>all.Where(a=>!a.Core && a.Style!="generic" && a.Style!="legacy"),
+            1=>all.Where(a=>a.Core && a.Style!="generic"),
+            2=>all.Where(a=>!a.Core && a.Style!="generic"),
             3=>all.Where(a=>a.Style=="generic" && a.Lighting=="daylight"),
-            4=>all.Where(a=>a.Style=="generic" && a.Lighting=="night"),
-            5=>all.Where(a=>a.Style=="legacy"), _=>all };
+            4=>all.Where(a=>a.Style=="generic" && a.Lighting=="night"), _=>all };
         if(StyleFilter.SelectedIndex>0)
         {
             var style=new[]{"","photo","illustration","abstract","watercolour","sculpted"}[StyleFilter.SelectedIndex];

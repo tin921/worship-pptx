@@ -21,6 +21,7 @@ static class GalleryTests
             try {
                 var gallery=picker.FindControl<WrapPanel>("Gallery");
                 var scroll=picker.FindControl<ScrollViewer>("GalleryScroll");
+                check(picker.FindControl<ComboBox>("CollectionFilter").Items.Count==5,"Old sample category is still offered");
                 check(scroll.VerticalScrollBarVisibility==ScrollBarVisibility.Hidden,"Gallery shows a scrollbar");
                 var observedColumns=new System.Collections.Generic.HashSet<int>();
                 foreach(var size in new[]{new Size(880,680),new Size(1440,940),new Size(1080,800)}) {
