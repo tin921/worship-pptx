@@ -1,0 +1,15 @@
+{
+  "id": "mountain_path-photo-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-f1aef0fa-af25-4efd-9203-e835baa7831d.png",
+  "file": "assets/media/themes/mountain_path/photo-v2.jpg",
+  "theme": "mountain_path",
+  "style": "photo",
+  "variant": 2,
+  "option": "石階山徑",
+  "width": 1280,
+  "height": 720,
+  "sha256": "a6c6ce27bc70beb23073db88a525518d9cba742cf604417a8af5814605b019dc",
+  "prompt": "Use case: photorealistic-natural. Photorealistic editorial photograph, believable natural materials, nuanced real texture and soft natural light; symbolic heavenly subjects may use restrained cinematic realism. A real photographic scene, not a painting.\nAsset type: one finished background for a Chinese Christian worship slide. Landscape 16:9, intended delivery 1280 x 720.\nTheme: 山間步道、山谷、晨光 (mountain_path). Second scene option: 石階山徑.\nScene: A narrow staircase of weathered limestone climbs diagonally through lush green mountain terraces after rain, viewed from a low side angle; mist dissolves the distant ridge into a clean pearl-grey sky. No golden sunrise, no broad winding valley road.\nPalette direction: jade green, cool limestone, pearl grey, subtle lavender.\nComposition: this is a NEW visual interpretation of the same theme, with different setting, viewpoint and arrangement from a generic sunrise landscape. MANDATORY LAYOUT: the entire top 55% from left edge to right edge must contain ONLY low-contrast empty sky, plain wall or softly blurred tone; NO tree branches, rocks, heads, buildings, objects, bright rays or strong edges anywhere above the horizontal midpoint. Use a sufficiently WIDE view so every main object is fully BELOW that midpoint. Keep the main subject/meaningful details in the lower LEFT area. Leave the lower-right 40% width by 40% height free of essential objects because a camera inset covers it. Maintain a unified full-bleed image, not a split layout or empty rectangle. Atmospheric spaciousness, polished appealing detail in the subject area.\nConstraints: original Christian worship imagery, peaceful, reverent and hopeful. No words, lettering, typography, numbers, watermarks, branding, border, frames, collage, contact sheet, slide text or UI. No readable writing on objects. No graphic suffering or violence. Generate exactly ONE image.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

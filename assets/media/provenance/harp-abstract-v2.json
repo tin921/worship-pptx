@@ -1,0 +1,15 @@
+{
+  "id": "harp-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-6f86a969-c749-4afa-b748-9b72bff8db9b.png",
+  "file": "assets/media/themes/harp/abstract-v2.jpg",
+  "theme": "harp",
+  "style": "abstract",
+  "variant": 2,
+  "option": "豎琴弦光",
+  "width": 1280,
+  "height": 720,
+  "sha256": "b1494565efb90081cda3182a5e2d4f690a3ef80b9961081e5e3f9db2917e41c6",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 琴弦與樂器. New concept to evoke symbolically: 木琴弦光. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For harp, the concept is A close crop of a small wooden harp's lower curved frame and a few parallel strings occupies the lower left. Diffuse daylight and a soft plain background, intimate instrument detail rather than a full harp on a landscape. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: warm walnut, pale cream, subtle copper. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

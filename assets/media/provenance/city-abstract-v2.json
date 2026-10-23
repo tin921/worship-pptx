@@ -1,0 +1,15 @@
+{
+  "id": "city-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-06152a0d-da0c-48fd-a70d-4e3ec635fbe9.png",
+  "file": "assets/media/themes/city/abstract-v2.jpg",
+  "theme": "city",
+  "style": "abstract",
+  "variant": 2,
+  "option": "街角晨光",
+  "width": 1280,
+  "height": 720,
+  "sha256": "5998e64c2a2253dcd3cb65d16db443f772e6b40c7a95c370cd6bfe7f2a58dc5b",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 城市與家園. New concept to evoke symbolically: 街角晨光. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For city, the concept is A quiet residential street corner with simple homes and a few potted plants occupies the lower-left half. Bright diffuse morning light and pale sky above, inviting everyday community; no skyscraper skyline or crowds. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: cream walls, sage plants, muted brick. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

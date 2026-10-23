@@ -1,0 +1,15 @@
+{
+  "id": "banner-photo-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-bcaf2a6c-444d-41dd-89e3-a77acb6d6fd7.png",
+  "file": "assets/media/themes/banner/photo-v2.jpg",
+  "theme": "banner",
+  "style": "photo",
+  "variant": 2,
+  "option": "白旗微風",
+  "width": 1280,
+  "height": 720,
+  "sha256": "c1672ea35f8606fc917e9624bb935c5e0272a1fdffcd1923393ac607e8ed58d6",
+  "prompt": "Use case: photorealistic-natural. Photorealistic editorial photograph, believable natural materials, nuanced real texture and soft natural light; symbolic heavenly subjects may use restrained cinematic realism. A real photographic scene, not a painting.\nAsset type: one finished background for a Chinese Christian worship slide. Landscape 16:9, intended delivery 1280 x 720.\nTheme: 旌旗 (banner). Second scene option: 白旗微風.\nScene: A simple unlettered ivory fabric banner on a short wooden pole catches a gentle breeze at the lower left of an open pale courtyard. Fabric folds are the subject; upper half is calm cool sky, no emblems or writing.\nPalette direction: ivory, pale blue, natural wood.\nComposition: this is a NEW visual interpretation of the same theme, with different setting, viewpoint and arrangement from a generic sunrise landscape. MANDATORY LAYOUT: the entire top 55% from left edge to right edge must contain ONLY low-contrast empty sky, plain wall or softly blurred tone; NO tree branches, rocks, heads, buildings, objects, bright rays or strong edges anywhere above the horizontal midpoint. Use a sufficiently WIDE view so every main object is fully BELOW that midpoint. Keep the main subject/meaningful details in the lower LEFT area. Leave the lower-right 40% width by 40% height free of essential objects because a camera inset covers it. Maintain a unified full-bleed image, not a split layout or empty rectangle. Atmospheric spaciousness, polished appealing detail in the subject area.\nConstraints: original Christian worship imagery, peaceful, reverent and hopeful. No words, lettering, typography, numbers, watermarks, branding, border, frames, collage, contact sheet, slide text or UI. No readable writing on objects. No graphic suffering or violence. Generate exactly ONE image.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "shield-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-b3e25fa6-8b76-49de-817c-98053bb16810.png",
+  "file": "assets/media/themes/shield/abstract-v2.jpg",
+  "theme": "shield",
+  "style": "abstract",
+  "variant": 2,
+  "option": "庇護之盾",
+  "width": 1280,
+  "height": 720,
+  "sha256": "90cf91423e29d7ab073eedc30116cb0d2c8f8fb1d1725d4e244a2cbcde95d5c5",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 盾牌. New concept to evoke symbolically: 庇護之盾. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For shield, the concept is A plain weathered wooden shield with a small metal boss leans against a low pale wall in the lower left. Gentle daylight from the side, quiet protective mood, no weapon or battle scene. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: warm wood, pewter, cream plaster. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

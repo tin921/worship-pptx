@@ -1,0 +1,15 @@
+{
+  "id": "celebration-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-4547c5e9-75d8-4e79-91c9-d2972f37202e.png",
+  "file": "assets/media/themes/celebration/abstract-v2.jpg",
+  "theme": "celebration",
+  "style": "abstract",
+  "variant": 2,
+  "option": "歡欣花瓣",
+  "width": 1280,
+  "height": 720,
+  "sha256": "0dab0020aa8aba5404571f9c0aa69d5c93bf60cb254e9d3c87ae3d8579b5c251",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 歡慶、金色光點. New concept to evoke symbolically: 歡欣花瓣. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For celebration, the concept is A restrained scattering of pale rose and ivory petals rises from the lower-left edge over a bright softly lit hall background. The upper half is quiet ivory with minimal particles, joyful and airy rather than gold sparkles. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: ivory, pale rose, sage. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

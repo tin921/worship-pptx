@@ -1,0 +1,15 @@
+{
+  "id": "snow-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-aa2fa162-feac-4a97-acd6-3b7afc412805.png",
+  "file": "assets/media/themes/snow/abstract-v2.jpg",
+  "theme": "snow",
+  "style": "abstract",
+  "variant": 2,
+  "option": "雪後松枝",
+  "width": 1280,
+  "height": 720,
+  "sha256": "a44f0305cfd8d98818e7816e5639e7993d33ad8019a47c8a7cbfb59f91555ebe",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 雪花、柔和光線. New concept to evoke symbolically: 雪後松枝. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For snow, the concept is One snow-laden pine branch stretches across the lower left above a soft mound of fresh snow. Fine snow crystals catch cool winter daylight; upper half is smooth blue-white atmosphere with no busy falling particles. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: icy blue, pine green, white. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

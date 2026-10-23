@@ -1,13 +1,17 @@
 # Built-in background library
 
-The desktop library contains 272 choices, all at 1280 × 720:
+The desktop library contains 512 choices, all at 1280 × 720:
 
-- 80 researched themes (60 core, 20 optional), each with one AI-generated photograph-style image, one painted illustration and one abstract image: 240 still images.
+- 80 researched themes (60 core, 20 optional), each with two scene options in three styles: AI-generated photography, painted illustration and abstract art. This gives 480 still images (360 core, 120 optional). The second set adds a distinct subject arrangement, viewpoint or setting for the same theme, with quiet space for lyrics. Original selections are retained.
 - 10 original procedural graphics, each in daylight and night lighting: 20 still images. Rain has stronger, larger visible drops and ripples.
 - The original five-song pilot: 10 still images now grouped by their actual subjects (mountain paths, wheat, eagles, sea and lakes) under the regular photo and abstract styles. There is no separate sample category. Their IDs and file paths are preserved so saved backgrounds still open; historical pilot files outside the app library are unchanged.
 - Two additional style pilots: a soft watercolour prayer scene and a sculpted gold crown. The new style filters currently contain one sample each; see [style review and prompts](search-and-style-review.md).
 
 `assets/media/catalog.json` is the app manifest. Files live under `themes/`, `generic/` and `legacy/`. Installed builds preserve these folders under `Media/`. No cloud storage, image-search API, website scraping or image download is needed to browse or search this library.
+
+The totals by style are photography 165, illustration 160, abstract 165, watercolour 1, sculpted 1 and generic 20. Each theme has six regular images; five themes also retain two legacy images, and prayer/crown each have one additional style pilot. New scene options use `-v2` IDs and filenames, with `variant: 2` and a short Chinese `option` caption in the catalog. They share the existing theme vectors and appear in the same search results and style filters.
+
+For inventory and matching questions, read the metadata first: `catalog.json` records every selectable image, `scenes.json` records the 80 themes and embedding vectors, and `search-terms.json` holds the Chinese/English visual vocabulary. `variant-set-2.json` records the second set's scene options and exact prompts; per-image provenance records the source filename, dimensions and SHA-256. There is no need to inspect image pixels to count themes or styles.
 
 The background gallery has a visible scrollbar and a large blue, centered loaded/total count. Its initial batch includes one extra row to make scrolling discoverable. Resizing recalculates columns and the batch size. Scrolling down appends the next batch; earlier images and the selected background stay in place. Filtering starts a fresh batch. Each image has a single light-gray caption strip with its title and style; the tooltip retains the full title when space is tight. Browsing and resizing do not run the embedding model.
 
@@ -23,7 +27,7 @@ The Traditional/Simplified switch sits at the top right. Escape leaves an input 
 
 PowerPoint embeds each selected image and retains editable native text and bundled font embedding. No video relationships or animation timelines are written. No video player, FFmpeg or WebView is required.
 
-The camera-placement illustration is a separate bundled UI asset, `assets/ui/worship-leader-guitar.png`, edited with the built-in image-generation tool from the user's cartoon-stage reference. The leader plays an acoustic guitar and sings into a stand microphone on a bright white stage, wearing a visible gold cross necklace. There is no podium or wall cross. The prompt and provenance are saved alongside it. This preview artwork is embedded in the application, is not part of the 272-image background library, and never enters exported PowerPoint slides. The earlier warm-stage artwork is retained in the source folder but is no longer bundled.
+The camera-placement illustration is a separate bundled UI asset, `assets/ui/worship-leader-guitar.png`, edited with the built-in image-generation tool from the user's cartoon-stage reference. The leader plays an acoustic guitar and sings into a stand microphone on a bright white stage, wearing a visible gold cross necklace. There is no podium or wall cross. The prompt and provenance are saved alongside it. This preview artwork is embedded in the application, is not part of the 512-image background library, and never enters exported PowerPoint slides. The earlier warm-stage artwork is retained in the source folder but is no longer bundled.
 
 Package/schema checks are automated. Native PowerPoint playback and Mac rendering still require review on those applications/devices; neither is installed on the Windows development host.
 
@@ -47,7 +51,7 @@ The song title contributes 15% and lyrics 85% to the document representation. Th
 
 ## Reproduction and provenance
 
-All 240 themed images were made through the built-in OpenAI image-generation tool. Exact prompt sets are in `assets/media/generation-prompts.json`; per-image provenance and SHA-256 are in `assets/media/provenance/`. Original tool PNGs are preserved outside the repo; selected 720p JPEGs are in the workspace. No commercial worship publisher's artwork or lyrics are bundled.
+All 480 regular themed images were made through the built-in OpenAI image-generation tool. Exact prompts are in `assets/media/generation-prompts.json` (first set) and `assets/media/variant-set-2.json` (second set); per-image provenance and SHA-256 are in `assets/media/provenance/`. Original tool PNGs are preserved outside the repo; selected 720p JPEGs are in the workspace. The second set was visually reviewed and checked for complete theme/style coverage, unique IDs/paths, dimensions and file hashes. Generation metadata stays in the source repository and is excluded from the app package. No commercial worship publisher's artwork or lyrics are bundled.
 
 Local development experiments prepared the prompts, normalized selected outputs, and rendered the procedural day/night artwork. These historical experiments are not distributed with this release. The checked-in catalog, assets and tests validate the application library; no generation scripts or animation assets are required to build the app.
 

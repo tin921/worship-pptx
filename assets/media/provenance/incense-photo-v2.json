@@ -1,0 +1,15 @@
+{
+  "id": "incense-photo-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-4d5c8b71-fb7c-4645-a26a-20a92440bdb1.png",
+  "file": "assets/media/themes/incense/photo-v2.jpg",
+  "theme": "incense",
+  "style": "photo",
+  "variant": 2,
+  "option": "香煙輕升",
+  "width": 1280,
+  "height": 720,
+  "sha256": "0d9e8c888276ee5a24143642a2ed2122620841f05306f3abe022122848851fa8",
+  "prompt": "Use case: photorealistic-natural. Photorealistic editorial photograph, believable natural materials, nuanced real texture and soft natural light; symbolic heavenly subjects may use restrained cinematic realism. A real photographic scene, not a painting.\nAsset type: one finished background for a Chinese Christian worship slide. Landscape 16:9, intended delivery 1280 x 720.\nTheme: 香煙與香爐 (incense). Second scene option: 香煙輕升.\nScene: A small bronze incense bowl rests at the lower left on a pale ledge, a single delicate wisp of smoke curling only through the lower-middle area. Upper half stays a smooth slate background; close contemplative still life.\nPalette direction: aged bronze, slate blue, soft silver.\nComposition: this is a NEW visual interpretation of the same theme, with different setting, viewpoint and arrangement from a generic sunrise landscape. MANDATORY LAYOUT: the entire top 55% from left edge to right edge must contain ONLY low-contrast empty sky, plain wall or softly blurred tone; NO tree branches, rocks, heads, buildings, objects, bright rays or strong edges anywhere above the horizontal midpoint. Use a sufficiently WIDE view so every main object is fully BELOW that midpoint. Keep the main subject/meaningful details in the lower LEFT area. Leave the lower-right 40% width by 40% height free of essential objects because a camera inset covers it. Maintain a unified full-bleed image, not a split layout or empty rectangle. Atmospheric spaciousness, polished appealing detail in the subject area.\nConstraints: original Christian worship imagery, peaceful, reverent and hopeful. No words, lettering, typography, numbers, watermarks, branding, border, frames, collage, contact sheet, slide text or UI. No readable writing on objects. No graphic suffering or violence. Generate exactly ONE image.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

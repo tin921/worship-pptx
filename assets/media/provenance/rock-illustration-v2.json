@@ -1,0 +1,15 @@
+{
+  "id": "rock-illustration-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-a3dead5e-1c01-461b-a764-bc05dc9e2c9e.png",
+  "file": "assets/media/themes/rock/illustration-v2.jpg",
+  "theme": "rock",
+  "style": "illustration",
+  "variant": 2,
+  "option": "堅穩礁石",
+  "width": 1280,
+  "height": 720,
+  "sha256": "bad839a7673d40053e517ce7b3d250126634fd67f9c793f6243ff60f29584fbd",
+  "prompt": "Use case: illustration-story. Clearly hand-painted gouache and pencil editorial illustration with simplified expressive shapes, tactile paper grain and visible brushwork. Refined contemporary illustrated-book aesthetic, not photorealistic.\nAsset type: one finished background for a Chinese Christian worship slide. Landscape 16:9, intended delivery 1280 x 720.\nTheme: 磐石、海岸 (rock). Second scene option: 堅穩礁石.\nScene: A broad solid granite rock anchors a quiet shallow tidal pool in the lower left, with thin ripples around its base. Soft pale sea haze above; strength expressed through simple scale and texture.\nPalette direction: granite grey, sea glass green, ivory.\nComposition: this is a NEW visual interpretation of the same theme, with different setting, viewpoint and arrangement from a generic sunrise landscape. MANDATORY LAYOUT: the entire top 55% from left edge to right edge must contain ONLY low-contrast empty sky, plain wall or softly blurred tone; NO tree branches, rocks, heads, buildings, objects, bright rays or strong edges anywhere above the horizontal midpoint. Use a sufficiently WIDE view so every main object is fully BELOW that midpoint. Keep the main subject/meaningful details in the lower LEFT area. Leave the lower-right 40% width by 40% height free of essential objects because a camera inset covers it. Maintain a unified full-bleed image, not a split layout or empty rectangle. Atmospheric spaciousness, polished appealing detail in the subject area.\nConstraints: original Christian worship imagery, peaceful, reverent and hopeful. No words, lettering, typography, numbers, watermarks, branding, border, frames, collage, contact sheet, slide text or UI. No readable writing on objects. No graphic suffering or violence. Generate exactly ONE image.\nSTYLE CHECK: visibly hand-drawn FLAT gouache editorial art, simplified large shapes, expressive pencil outlines, limited fine detail. Not a realistic landscape painting or a photograph. Make the illustration medium unmistakable.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

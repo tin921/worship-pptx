@@ -1,0 +1,15 @@
+{
+  "id": "rainbow-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-941073cc-5fa7-4142-8725-49d8c6bde92c.png",
+  "file": "assets/media/themes/rainbow/abstract-v2.jpg",
+  "theme": "rainbow",
+  "style": "abstract",
+  "variant": 2,
+  "option": "田間虹光",
+  "width": 1280,
+  "height": 720,
+  "sha256": "5ee2b0feba53a4b4ada86fe15add7c6eda2fb0dca1c65c053424923a88d78189",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 彩虹、雨後天空. New concept to evoke symbolically: 田間虹光. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For rainbow, the concept is A delicate partial rainbow appears low beyond a rain-washed orchard, with wet leaves and a small reflective puddle in the lower left. The upper half is a calm pale sky; natural subtle colours, no giant saturated rainbow. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: pale sky blue, orchard green, soft rainbow hues. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

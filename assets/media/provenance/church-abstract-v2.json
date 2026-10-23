@@ -1,0 +1,15 @@
+{
+  "id": "church-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-9aba7fd4-d20e-49be-8f8f-02071bd7e980.png",
+  "file": "assets/media/themes/church/abstract-v2.jpg",
+  "theme": "church",
+  "style": "abstract",
+  "variant": 2,
+  "option": "白牆小堂",
+  "width": 1280,
+  "height": 720,
+  "sha256": "9f3e36e78d10ae8f0f3ce2dd5e3d5010fc13849fa9c58a24e001f3a376531e4b",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 教堂、窗光. New concept to evoke symbolically: 白牆小堂. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For church, the concept is A modest white chapel with an open wooden entrance stands low on the left among simple green shrubs. Bright diffuse daylight and generous pale sky, no ornate cathedral or golden interior. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: white plaster, sage green, soft sky blue. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

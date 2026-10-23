@@ -1,0 +1,15 @@
+{
+  "id": "eagle-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-09c2a073-7735-4a07-a9de-e2f200477791.png",
+  "file": "assets/media/themes/eagle/abstract-v2.jpg",
+  "theme": "eagle",
+  "style": "abstract",
+  "variant": 2,
+  "option": "展翅岩鷹",
+  "width": 1280,
+  "height": 720,
+  "sha256": "d8e0e7a53d6b9448d91a820dfd9f693eebe83eb17b61e27b1351d1c37cd785f1",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 飛鷹、天空. New concept to evoke symbolically: 展翅岩鷹. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For eagle, the concept is An eagle launches from a low rugged ledge at the lower left, wings opening sideways beneath a large quiet pale sky. Crisp feather texture and cool daylight; no tiny distant bird centered on sunset. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: brown feathers, slate rock, pale blue. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

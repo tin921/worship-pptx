@@ -1,0 +1,15 @@
+{
+  "id": "open_hands-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-41bc317c-9756-4f93-9a12-b97e6bc85140.png",
+  "file": "assets/media/themes/open_hands/abstract-v2.jpg",
+  "theme": "open_hands",
+  "style": "abstract",
+  "variant": 2,
+  "option": "掌心領受",
+  "width": 1280,
+  "height": 720,
+  "sha256": "d4fdb44f8e4df78de745a41c77b3b005c0743a26e9f624dc41f75665c4b2a727",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 雙手、柔光. New concept to evoke symbolically: 掌心領受. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For open_hands, the concept is Two natural open palms held gently upward appear in the lower-left quarter against a quiet, softly blurred pale blue background. Close human detail without a face; soft side daylight, no sun orb between hands. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: warm skin, pale blue, soft ivory. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

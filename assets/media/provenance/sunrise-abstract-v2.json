@@ -1,0 +1,15 @@
+{
+  "id": "sunrise-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-ca25fad5-8581-4d2d-b054-b2766cfc256a.png",
+  "file": "assets/media/themes/sunrise/abstract-v2.jpg",
+  "theme": "sunrise",
+  "style": "abstract",
+  "variant": 2,
+  "option": "海岸初曉",
+  "width": 1280,
+  "height": 720,
+  "sha256": "d05a0b5ea9abfe988ae95efd535cfd23c4596d7af9e897a4a33271af4bb7c97b",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 日出、金色晨光. New concept to evoke symbolically: 海岸初曉. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For sunrise, the concept is The first pink daylight illuminates white coastal cliffs and a small calm inlet, seen from a high oblique angle. Keep the sun itself outside the frame and the cliffs in the lower-left half; a pale blush sky fills the upper half. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: blush pink, chalk white, seafoam. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "river-illustration-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-5e4dd363-7c98-429f-8e4b-3a76764f39eb.png",
+  "file": "assets/media/themes/river/illustration-v2.jpg",
+  "theme": "river",
+  "style": "illustration",
+  "variant": 2,
+  "option": "河灣晨霧",
+  "width": 1280,
+  "height": 720,
+  "sha256": "e6d977b4106d0a21cba8b8ed3d6a171f280f62f620eb4a840e6aae213b8bbb88",
+  "prompt": "Use case: illustration-story. Clearly hand-painted gouache and pencil editorial illustration with simplified expressive shapes, tactile paper grain and visible brushwork. Refined contemporary illustrated-book aesthetic, not photorealistic.\nAsset type: one finished background for a Chinese Christian worship slide. Landscape 16:9, intended delivery 1280 x 720.\nTheme: 大河與江水 (river). Second scene option: 河灣晨霧.\nScene: A broad slow river bends around a low gravel island in the lower-left half, seen from a slightly elevated bank. Pale mist and a thin distant tree line fill the top; no orange sunrise or dramatic canyon.\nPalette direction: mist grey, muted blue, riverbank green.\nComposition: this is a NEW visual interpretation of the same theme, with different setting, viewpoint and arrangement from a generic sunrise landscape. MANDATORY LAYOUT: the entire top 55% from left edge to right edge must contain ONLY low-contrast empty sky, plain wall or softly blurred tone; NO tree branches, rocks, heads, buildings, objects, bright rays or strong edges anywhere above the horizontal midpoint. Use a sufficiently WIDE view so every main object is fully BELOW that midpoint. Keep the main subject/meaningful details in the lower LEFT area. Leave the lower-right 40% width by 40% height free of essential objects because a camera inset covers it. Maintain a unified full-bleed image, not a split layout or empty rectangle. Atmospheric spaciousness, polished appealing detail in the subject area.\nConstraints: original Christian worship imagery, peaceful, reverent and hopeful. No words, lettering, typography, numbers, watermarks, branding, border, frames, collage, contact sheet, slide text or UI. No readable writing on objects. No graphic suffering or violence. Generate exactly ONE image.\nSTYLE CHECK: visibly hand-drawn FLAT gouache editorial art, simplified large shapes, expressive pencil outlines, limited fine detail. Not a realistic landscape painting or a photograph. Make the illustration medium unmistakable.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

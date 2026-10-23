@@ -1,0 +1,15 @@
+{
+  "id": "new_jerusalem-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-4498c220-7ec1-471f-9138-7ceb55eed7e0.png",
+  "file": "assets/media/themes/new_jerusalem/abstract-v2.jpg",
+  "theme": "new_jerusalem",
+  "style": "abstract",
+  "variant": 2,
+  "option": "珍珠城門",
+  "width": 1280,
+  "height": 720,
+  "sha256": "c1492abbc022153a5861303193f8af092b133aa63513b6c7d24d61e8264dc4dd",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 新耶路撒冷. New concept to evoke symbolically: 珍珠城門. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For new_jerusalem, the concept is A symbolic pearly city gate and low luminous stone terraces occupy the lower left beyond a clear quiet river. Refined pale crystalline architecture, soft daylight and a generous pale sky; no crowded golden skyline or text. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: pearl white, pale aqua, restrained silver. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

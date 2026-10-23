@@ -1,0 +1,15 @@
+{
+  "id": "helping_neighbor-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-fb6ae54a-fadd-47f7-ac79-b94ae9b2166f.png",
+  "file": "assets/media/themes/helping_neighbor/abstract-v2.jpg",
+  "theme": "helping_neighbor",
+  "style": "abstract",
+  "variant": 2,
+  "option": "分享日常",
+  "width": 1280,
+  "height": 720,
+  "sha256": "165fbdccf62820ce9dbefccd183545e865b71c1bdd13d01cce512899ac9b6e17",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 扶助與分享. New concept to evoke symbolically: 分享日常. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For helping_neighbor, the concept is Two pairs of natural hands pass a small basket of fresh bread and fruit across a low table in the lower left. Bright gentle daylight, plain pale background above, kindness without staged crowds. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: warm bread, muted red fruit, pale linen. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

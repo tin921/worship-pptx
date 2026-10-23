@@ -1,0 +1,15 @@
+{
+  "id": "sheep-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-01b1a010-22b0-4d4b-b96d-6afeef260ed8.png",
+  "file": "assets/media/themes/sheep/abstract-v2.jpg",
+  "theme": "sheep",
+  "style": "abstract",
+  "variant": 2,
+  "option": "牧場歇息",
+  "width": 1280,
+  "height": 720,
+  "sha256": "2002861efe209773de930149aed2db3f9796122688972ad1a9f075ed8e528371",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 羊群、草原. New concept to evoke symbolically: 牧場歇息. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For sheep, the concept is A ewe and lamb rest close together in the lower-left portion of a sheltered grassy pasture. A low stone wall recedes gently; bright overcast sky and distant pale hillside stay uncluttered. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: cream wool, sage grass, light grey. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

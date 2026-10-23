@@ -1,0 +1,15 @@
+{
+  "id": "hands-photo-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-969e2d57-a7c4-439e-813d-3e306e99a358.png",
+  "file": "assets/media/themes/hands/photo-v2.jpg",
+  "theme": "hands",
+  "style": "photo",
+  "variant": 2,
+  "option": "同心敬拜",
+  "width": 1280,
+  "height": 720,
+  "sha256": "a4c688154f8d81c9bdda95bb10041ffe3e0340193ee1d6bdc701c5d6a93a210d",
+  "prompt": "Use case: photorealistic-natural. Photorealistic editorial photograph, believable natural materials, nuanced real texture and soft natural light; symbolic heavenly subjects may use restrained cinematic realism. A real photographic scene, not a painting.\nAsset type: one finished background for a Chinese Christian worship slide. Landscape 16:9, intended delivery 1280 x 720.\nTheme: 敬拜、舉手剪影 (hands). Second scene option: 同心敬拜.\nScene: Several worshippers seen from behind at the lower left lift their hands in a bright simple church interior. Keep figures small and the upper half a softly lit plain wall; no outdoor sunset crowd or concert lasers.\nPalette direction: ivory, muted navy, pale sky blue.\nComposition: this is a NEW visual interpretation of the same theme, with different setting, viewpoint and arrangement from a generic sunrise landscape. MANDATORY LAYOUT: the entire top 55% from left edge to right edge must contain ONLY low-contrast empty sky, plain wall or softly blurred tone; NO tree branches, rocks, heads, buildings, objects, bright rays or strong edges anywhere above the horizontal midpoint. Use a sufficiently WIDE view so every main object is fully BELOW that midpoint. Keep the main subject/meaningful details in the lower LEFT area. Leave the lower-right 40% width by 40% height free of essential objects because a camera inset covers it. Maintain a unified full-bleed image, not a split layout or empty rectangle. Atmospheric spaciousness, polished appealing detail in the subject area.\nConstraints: original Christian worship imagery, peaceful, reverent and hopeful. No words, lettering, typography, numbers, watermarks, branding, border, frames, collage, contact sheet, slide text or UI. No readable writing on objects. No graphic suffering or violence. Generate exactly ONE image.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

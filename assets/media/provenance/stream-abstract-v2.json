@@ -1,0 +1,15 @@
+{
+  "id": "stream-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-f3b86649-dd5f-4c44-8afc-eb04d95ba639.png",
+  "file": "assets/media/themes/stream/abstract-v2.jpg",
+  "theme": "stream",
+  "style": "abstract",
+  "variant": 2,
+  "option": "苔石清溪",
+  "width": 1280,
+  "height": 720,
+  "sha256": "2ba1b6b981d6d4b8baf4308ffbf900deb681f7eb1d2319ae77ad0a6b2fb7575b",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 清泉、溪流、陽光. New concept to evoke symbolically: 苔石清溪. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For stream, the concept is A clear woodland brook slips between mossy rounded stones in a close low view. Reflected soft white sky and a defocused pale woodland background keep the top half quiet; intimate green freshness rather than a broad landscape. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: moss green, jade water, pearl white. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

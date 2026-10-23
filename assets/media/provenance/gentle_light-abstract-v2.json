@@ -1,0 +1,15 @@
+{
+  "id": "gentle_light-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-0fe81452-ab45-4480-94da-aa0bea5d98da.png",
+  "file": "assets/media/themes/gentle_light/abstract-v2.jpg",
+  "theme": "gentle_light",
+  "style": "abstract",
+  "variant": 2,
+  "option": "窗紗柔光",
+  "width": 1280,
+  "height": 720,
+  "sha256": "51adf34a4a0dbde90552c837c5ef21a0511925d67215b26da3150442c83cf38f",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 柔和暖光、散景. New concept to evoke symbolically: 窗紗柔光. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For gentle_light, the concept is Diffuse daylight passes through sheer white linen curtains at the far lower left, casting a soft diagonal patch on a pale wall. Subtle texture and spacious quiet light, no coloured bokeh or sunset horizon. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: ivory, linen, pale warm grey. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "empty_tomb-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-1b8090b3-0ccd-4281-981a-1a2d53e844a6.png",
+  "file": "assets/media/themes/empty_tomb/abstract-v2.jpg",
+  "theme": "empty_tomb",
+  "style": "abstract",
+  "variant": 2,
+  "option": "墓中晨曦",
+  "width": 1280,
+  "height": 720,
+  "sha256": "fa265b59d762e2c5c9337d5d4166e1e630b7a5d0e7c7eb2e588823286ff2a0bd",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 空墓與復活晨光. New concept to evoke symbolically: 墓中晨曦. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For empty_tomb, the concept is View from inside an empty rock-cut tomb toward a modest opening low on the left, with neatly folded pale burial linen on a stone bench in the lower foreground. The opening brings gentle fresh daylight; upper half is smooth shadowed stone, no exterior sunrise panorama. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: cool limestone, ivory linen, pale green daylight. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

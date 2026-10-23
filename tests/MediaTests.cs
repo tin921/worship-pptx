@@ -157,11 +157,16 @@ static class MediaTests
                 check(((TabItem)tabs.SelectedItem).Tag is ServiceItem,"Plus stayed selected");
             } finally { window.Close(); }
         });
-        test("Library has 272 static 720p images including two new style samples",()=> {
-            check(MediaLibrary.All.Count==272,$"Expected 272, found {MediaLibrary.All.Count}");
+        test("Library has 512 static 720p images with two complete scene options per theme",()=> {
+            check(MediaLibrary.All.Count==512,$"Expected 512, found {MediaLibrary.All.Count}");
             var themed=MediaLibrary.All.Where(a=>!a.Id.StartsWith("legacy-") && a.Style is "photo" or "illustration" or "abstract").ToList();
-            check(themed.Count==240 && themed.Count(a=>a.Core)==180,"Wrong core/optional distribution");
-            check(themed.GroupBy(a=>a.Theme).All(g=>g.Count()==3 && g.Select(a=>a.Style).Distinct().Count()==3),"Missing style variations");
+            check(themed.Count==480 && themed.Count(a=>a.Core)==360,"Wrong core/optional distribution");
+            check(themed.Select(a=>a.Theme).Distinct().Count()==80,"Missing themes");
+            check(themed.GroupBy(a=>a.Theme).All(g=>g.Count()==6 && g.Select(a=>a.Style).Distinct().Count()==3),"Missing style variations");
+            foreach(var group in themed.GroupBy(a=>(a.Theme,a.Style))) {
+                check(group.Count()==2 && group.Any(a=>a.Id==$"{a.Theme}-{a.Style}") && group.Any(a=>a.Id==$"{a.Theme}-{a.Style}-v2"),"Missing original or second scene option: "+group.Key);
+            }
+            check(MediaLibrary.All.Select(a=>a.Id).Distinct().Count()==512 && MediaLibrary.All.Select(a=>a.Still).Distinct().Count()==512,"Duplicate image IDs or paths");
             check(MediaLibrary.All.Single(a=>a.Style=="watercolour").Theme=="kneeling_prayer" && MediaLibrary.All.Single(a=>a.Style=="sculpted").Theme=="crown","Missing new style samples");
             var originals=MediaLibrary.All.Where(a=>a.Id.StartsWith("legacy-")).ToList();
             var scenes=JsonSerializer.Deserialize<List<MediaScene>>(File.ReadAllText(Path.Combine(MediaLibrary.Root,"scenes.json")),MediaLibrary.JsonOptions).ToDictionary(s=>s.Id);

@@ -1,0 +1,15 @@
+{
+  "id": "nativity-photo-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-54772696-2146-4bfb-af35-0e4a3457ad2a.png",
+  "file": "assets/media/themes/nativity/photo-v2.jpg",
+  "theme": "nativity",
+  "style": "photo",
+  "variant": 2,
+  "option": "馬槽微光",
+  "width": 1280,
+  "height": 720,
+  "sha256": "123594b5b25ba3fb6d851c9d175a7d0ca8581a7a047d391219ec2f3772388d01",
+  "prompt": "Use case: photorealistic-natural. Photorealistic editorial photograph, believable natural materials, nuanced real texture and soft natural light; symbolic heavenly subjects may use restrained cinematic realism. A real photographic scene, not a painting.\nAsset type: one finished background for a Chinese Christian worship slide. Landscape 16:9, intended delivery 1280 x 720.\nTheme: 馬槽與伯利恆 (nativity). Second scene option: 馬槽微光.\nScene: An intimate empty wooden manger with clean folded swaddling linen and a little straw sits in the lower left inside a humble stable. Soft light enters from a small distant opening; quiet deep blue plaster above, reverent and peaceful.\nPalette direction: muted blue, natural wood, cream linen.\nComposition: this is a NEW visual interpretation of the same theme, with different setting, viewpoint and arrangement from a generic sunrise landscape. MANDATORY LAYOUT: the entire top 55% from left edge to right edge must contain ONLY low-contrast empty sky, plain wall or softly blurred tone; NO tree branches, rocks, heads, buildings, objects, bright rays or strong edges anywhere above the horizontal midpoint. Use a sufficiently WIDE view so every main object is fully BELOW that midpoint. Keep the main subject/meaningful details in the lower LEFT area. Leave the lower-right 40% width by 40% height free of essential objects because a camera inset covers it. Maintain a unified full-bleed image, not a split layout or empty rectangle. Atmospheric spaciousness, polished appealing detail in the subject area.\nConstraints: original Christian worship imagery, peaceful, reverent and hopeful. No words, lettering, typography, numbers, watermarks, branding, border, frames, collage, contact sheet, slide text or UI. No readable writing on objects. No graphic suffering or violence. Generate exactly ONE image.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

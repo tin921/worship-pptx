@@ -1,0 +1,15 @@
+{
+  "id": "grapevine-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-a65d2223-8d37-4937-8fa8-6eb0e189d800.png",
+  "file": "assets/media/themes/grapevine/abstract-v2.jpg",
+  "theme": "grapevine",
+  "style": "abstract",
+  "variant": 2,
+  "option": "枝上葡萄",
+  "width": 1280,
+  "height": 720,
+  "sha256": "b0ecb3b5ed4e09c986edf1dcb9665ee89871940b5bc440f1d11c04697a6775cb",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 葡萄樹與枝子. New concept to evoke symbolically: 枝上葡萄. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For grapevine, the concept is One grapevine branch with fresh leaves and a small bunch of purple grapes extends through the lower left against a pale plaster garden wall. Diffuse side daylight, clearly attached fruit and branch, no wide vineyard. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: grape purple, leaf green, pale cream. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

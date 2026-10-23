@@ -1,0 +1,15 @@
+{
+  "id": "seeds-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-797706dd-1271-4a8c-823a-327955b59950.png",
+  "file": "assets/media/themes/seeds/abstract-v2.jpg",
+  "theme": "seeds",
+  "style": "abstract",
+  "variant": 2,
+  "option": "石縫新芽",
+  "width": 1280,
+  "height": 720,
+  "sha256": "417e545cd62197704c4b7fc512483142999f23ea3b4433379c35fd6f531e3ce7",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 嫩芽、新生命. New concept to evoke symbolically: 石縫新芽. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For seeds, the concept is A tiny green shoot emerges between weathered pale paving stones in the lower left after rain, with a few subtle droplets. Soft bright background above, hope and resilience without a hand holding soil. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: leaf green, warm grey stone, white. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "forest_path-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-34a72d1f-7bf5-45b7-9e58-a310513d5604.png",
+  "file": "assets/media/themes/forest_path/abstract-v2.jpg",
+  "theme": "forest_path",
+  "style": "abstract",
+  "variant": 2,
+  "option": "林間木棧道",
+  "width": 1280,
+  "height": 720,
+  "sha256": "d97daf22c893bb8cd0827c6f927922503612a725dbed0999a4df061e58a95330",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 森林小徑、陽光. New concept to evoke symbolically: 林間木棧道. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For forest_path, the concept is A modest wooden boardwalk curves through a quiet birch grove, with a carpet of ferns and soft overcast light. Place the low boardwalk and slender tree bases in the lower left, fading the upper grove into pale mist; no sunbeams or golden forest tunnel. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: silver birch, fern green, soft ivory. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "dew-photo-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-376a5dad-4288-4c42-a374-9c996967cfe4.png",
+  "file": "assets/media/themes/dew/photo-v2.jpg",
+  "theme": "dew",
+  "style": "photo",
+  "variant": 2,
+  "option": "葉尖凝露",
+  "width": 1280,
+  "height": 720,
+  "sha256": "9707b8a0879f3bf6e8ab5b4f0687ef0573a58255572cd8c6eb79f2248f58d319",
+  "prompt": "Use case: photorealistic-natural. Photorealistic editorial photograph, believable natural materials, nuanced real texture and soft natural light; symbolic heavenly subjects may use restrained cinematic realism. A real photographic scene, not a painting.\nAsset type: one finished background for a Chinese Christian worship slide. Landscape 16:9, intended delivery 1280 x 720.\nTheme: 露珠 (dew). Second scene option: 葉尖凝露.\nScene: A single large dew droplet balances at the tip of a curved leaf in the lower left, reflecting a tiny patch of soft daylight. Macro view, upper half smoothly blurred pale green; no dense beads or rainbow glare.\nPalette direction: leaf green, pale mint, clear silver.\nComposition: this is a NEW visual interpretation of the same theme, with different setting, viewpoint and arrangement from a generic sunrise landscape. MANDATORY LAYOUT: the entire top 55% from left edge to right edge must contain ONLY low-contrast empty sky, plain wall or softly blurred tone; NO tree branches, rocks, heads, buildings, objects, bright rays or strong edges anywhere above the horizontal midpoint. Use a sufficiently WIDE view so every main object is fully BELOW that midpoint. Keep the main subject/meaningful details in the lower LEFT area. Leave the lower-right 40% width by 40% height free of essential objects because a camera inset covers it. Maintain a unified full-bleed image, not a split layout or empty rectangle. Atmospheric spaciousness, polished appealing detail in the subject area.\nConstraints: original Christian worship imagery, peaceful, reverent and hopeful. No words, lettering, typography, numbers, watermarks, branding, border, frames, collage, contact sheet, slide text or UI. No readable writing on objects. No graphic suffering or violence. Generate exactly ONE image.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

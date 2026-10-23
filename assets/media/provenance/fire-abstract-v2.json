@@ -1,0 +1,15 @@
+{
+  "id": "fire-abstract-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-2a3b58d6-a2d1-4ccf-a056-be5e41b7f306.png",
+  "file": "assets/media/themes/fire/abstract-v2.jpg",
+  "theme": "fire",
+  "style": "abstract",
+  "variant": 2,
+  "option": "炭火微光",
+  "width": 1280,
+  "height": 720,
+  "sha256": "32d16b09a0000b845b951407caafb751464c1bf748d346da13c79e18108b73fc",
+  "prompt": "Use case: stylized-concept.\nCreate exactly ONE PURELY ABSTRACT graphic background, landscape 16:9 for a Christian worship slide, intended delivery 1280 x 720.\nTheme: 火焰、光芒. New concept to evoke symbolically: 炭火微光. This is a new visual alternative, not the existing gold flowing-ribbon style.\nART DIRECTION IS MANDATORY: entirely nonrepresentational or radically simplified geometric design. Matte paper-cut slabs, translucent frosted polygons, circles, discrete layered arcs and embossed line forms. Express the concept only through geometry, colour, rhythm and negative space. For fire, the concept is A small living flame rises from glowing embers in a shallow stone brazier at the lower left. Deep quiet charcoal background above; restrained amber warmth, peaceful rather than dramatic or destructive. Translate that meaning into a FEW simple abstract forms; DO NOT depict the literal scenery or objects described. Absolutely NO photorealism, no detailed landscape, no naturalistic person, no rocks, leaves, trees, texture-rich painting, or detailed architecture.\nPalette: charcoal, ember red, restrained amber. Use pleasing controlled tonal contrast and intentional graphic structure.\nLAYOUT: all graphic forms entirely in the bottom 45%, mainly lower left. The whole upper 55% from edge to edge is a smooth quiet tonal field, suitable for readable lyrics. Lower-right 40% by 40% has no essential motif because of a camera overlay. One seamless full-bleed artwork, no visible panel boundary. Original, serene and polished.\nNo text, letters, logos, captions, border, frame, collage, contact sheet or UI. The result must look unmistakably ABSTRACT GRAPHIC ART rather than a painting or photograph.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

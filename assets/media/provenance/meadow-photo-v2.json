@@ -1,0 +1,15 @@
+{
+  "id": "meadow-photo-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-6da60c7f-af5d-49cb-9d21-01bb279b265d.png",
+  "file": "assets/media/themes/meadow/photo-v2.jpg",
+  "theme": "meadow",
+  "style": "photo",
+  "variant": 2,
+  "option": "晨露草坡",
+  "width": 1280,
+  "height": 720,
+  "sha256": "2a00b92a2058e58d435f334a986226f00e43634ddaba3a51f519527a1ea7c662",
+  "prompt": "Use case: photorealistic-natural. Photorealistic editorial photograph, believable natural materials, nuanced real texture and soft natural light; symbolic heavenly subjects may use restrained cinematic realism. A real photographic scene, not a painting.\nAsset type: one finished background for a Chinese Christian worship slide. Landscape 16:9, intended delivery 1280 x 720.\nTheme: 青草地、野花 (meadow). Second scene option: 晨露草坡.\nScene: A low rolling meadow with small white daisies in the foreground and soft fog beyond, viewed at grass level. Main flowers cluster lower left; broad pale morning haze above, no orange sunset.\nPalette direction: fresh grass green, ivory, pale mint.\nComposition: this is a NEW visual interpretation of the same theme, with different setting, viewpoint and arrangement from a generic sunrise landscape. MANDATORY LAYOUT: the entire top 55% from left edge to right edge must contain ONLY low-contrast empty sky, plain wall or softly blurred tone; NO tree branches, rocks, heads, buildings, objects, bright rays or strong edges anywhere above the horizontal midpoint. Use a sufficiently WIDE view so every main object is fully BELOW that midpoint. Keep the main subject/meaningful details in the lower LEFT area. Leave the lower-right 40% width by 40% height free of essential objects because a camera inset covers it. Maintain a unified full-bleed image, not a split layout or empty rectangle. Atmospheric spaciousness, polished appealing detail in the subject area.\nConstraints: original Christian worship imagery, peaceful, reverent and hopeful. No words, lettering, typography, numbers, watermarks, branding, border, frames, collage, contact sheet, slide text or UI. No readable writing on objects. No graphic suffering or violence. Generate exactly ONE image.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

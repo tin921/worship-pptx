@@ -1,0 +1,15 @@
+{
+  "id": "new_jerusalem-illustration-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-83cb7c9c-f213-4bb4-93dd-2c853541e562.png",
+  "file": "assets/media/themes/new_jerusalem/illustration-v2.jpg",
+  "theme": "new_jerusalem",
+  "style": "illustration",
+  "variant": 2,
+  "option": "珍珠城門",
+  "width": 1280,
+  "height": 720,
+  "sha256": "1aad7cdd52e85eb5fe9130abdc3e0f0c9b00fa7fb3370cc9d91c3cc2b08a8856",
+  "prompt": "Use case: illustration-story. Clearly hand-painted gouache and pencil editorial illustration with simplified expressive shapes, tactile paper grain and visible brushwork. Refined contemporary illustrated-book aesthetic, not photorealistic.\nAsset type: one finished background for a Chinese Christian worship slide. Landscape 16:9, intended delivery 1280 x 720.\nTheme: 新耶路撒冷 (new_jerusalem). Second scene option: 珍珠城門.\nScene: A symbolic pearly city gate and low luminous stone terraces occupy the lower left beyond a clear quiet river. Refined pale crystalline architecture, soft daylight and a generous pale sky; no crowded golden skyline or text.\nPalette direction: pearl white, pale aqua, restrained silver.\nComposition: this is a NEW visual interpretation of the same theme, with different setting, viewpoint and arrangement from a generic sunrise landscape. MANDATORY LAYOUT: the entire top 55% from left edge to right edge must contain ONLY low-contrast empty sky, plain wall or softly blurred tone; NO tree branches, rocks, heads, buildings, objects, bright rays or strong edges anywhere above the horizontal midpoint. Use a sufficiently WIDE view so every main object is fully BELOW that midpoint. Keep the main subject/meaningful details in the lower LEFT area. Leave the lower-right 40% width by 40% height free of essential objects because a camera inset covers it. Maintain a unified full-bleed image, not a split layout or empty rectangle. Atmospheric spaciousness, polished appealing detail in the subject area.\nConstraints: original Christian worship imagery, peaceful, reverent and hopeful. No words, lettering, typography, numbers, watermarks, branding, border, frames, collage, contact sheet, slide text or UI. No readable writing on objects. No graphic suffering or violence. Generate exactly ONE image.\nSTYLE CHECK: visibly hand-drawn FLAT gouache editorial art, simplified large shapes, expressive pencil outlines, limited fine detail. Not a realistic landscape painting or a photograph. Make the illustration medium unmistakable.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "wedding-photo-v2",
+  "source": "OpenAI built-in image generation",
+  "original_file": "exec-c4def37d-04f6-4ba8-9b75-c8eb2fc19bc8.png",
+  "file": "assets/media/themes/wedding/photo-v2.jpg",
+  "theme": "wedding",
+  "style": "photo",
+  "variant": 2,
+  "option": "盟約戒指",
+  "width": 1280,
+  "height": 720,
+  "sha256": "c1dfe2f683800bfc9eaa56d3164c7ade012646803cb62aedf0d08fb3ed4c8804",
+  "prompt": "Use case: photorealistic-natural. Photorealistic editorial photograph, believable natural materials, nuanced real texture and soft natural light; symbolic heavenly subjects may use restrained cinematic realism. A real photographic scene, not a painting.\nAsset type: one finished background for a Chinese Christian worship slide. Landscape 16:9, intended delivery 1280 x 720.\nTheme: 婚宴與戒指 (wedding). Second scene option: 盟約戒指.\nScene: Two plain wedding bands rest together on folded ivory linen beside a small olive sprig at the lower left. Soft neutral window light and a quiet pale backdrop, intimate covenant rather than a banquet landscape.\nPalette direction: ivory, understated gold, sage.\nComposition: this is a NEW visual interpretation of the same theme, with different setting, viewpoint and arrangement from a generic sunrise landscape. MANDATORY LAYOUT: the entire top 55% from left edge to right edge must contain ONLY low-contrast empty sky, plain wall or softly blurred tone; NO tree branches, rocks, heads, buildings, objects, bright rays or strong edges anywhere above the horizontal midpoint. Use a sufficiently WIDE view so every main object is fully BELOW that midpoint. Keep the main subject/meaningful details in the lower LEFT area. Leave the lower-right 40% width by 40% height free of essential objects because a camera inset covers it. Maintain a unified full-bleed image, not a split layout or empty rectangle. Atmospheric spaciousness, polished appealing detail in the subject area.\nConstraints: original Christian worship imagery, peaceful, reverent and hopeful. No words, lettering, typography, numbers, watermarks, branding, border, frames, collage, contact sheet, slide text or UI. No readable writing on objects. No graphic suffering or violence. Generate exactly ONE image.",
+  "review": "accepted; visual composition/style review and 1280x720 dimensions verified"
+}

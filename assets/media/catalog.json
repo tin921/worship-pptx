@@ -2174,5 +2174,2405 @@
     "style": "sculpted",
     "core": true,
     "still": "themes/crown/sculpted.png"
+  },
+  {
+    "id": "mountain_path-photo-v2",
+    "title": "石階山徑",
+    "theme": "mountain_path",
+    "style": "photo",
+    "core": true,
+    "still": "themes/mountain_path/photo-v2.jpg",
+    "variant": 2,
+    "option": "石階山徑"
+  },
+  {
+    "id": "mountain_path-illustration-v2",
+    "title": "石階山徑",
+    "theme": "mountain_path",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/mountain_path/illustration-v2.jpg",
+    "variant": 2,
+    "option": "石階山徑"
+  },
+  {
+    "id": "mountain_path-abstract-v2",
+    "title": "石階山徑",
+    "theme": "mountain_path",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/mountain_path/abstract-v2.jpg",
+    "variant": 2,
+    "option": "石階山徑"
+  },
+  {
+    "id": "forest_path-photo-v2",
+    "title": "林間木棧道",
+    "theme": "forest_path",
+    "style": "photo",
+    "core": true,
+    "still": "themes/forest_path/photo-v2.jpg",
+    "variant": 2,
+    "option": "林間木棧道"
+  },
+  {
+    "id": "forest_path-illustration-v2",
+    "title": "林間木棧道",
+    "theme": "forest_path",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/forest_path/illustration-v2.jpg",
+    "variant": 2,
+    "option": "林間木棧道"
+  },
+  {
+    "id": "forest_path-abstract-v2",
+    "title": "林間木棧道",
+    "theme": "forest_path",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/forest_path/abstract-v2.jpg",
+    "variant": 2,
+    "option": "林間木棧道"
+  },
+  {
+    "id": "mountains-photo-v2",
+    "title": "雪峰遠眺",
+    "theme": "mountains",
+    "style": "photo",
+    "core": true,
+    "still": "themes/mountains/photo-v2.jpg",
+    "variant": 2,
+    "option": "雪峰遠眺"
+  },
+  {
+    "id": "mountains-illustration-v2",
+    "title": "雪峰遠眺",
+    "theme": "mountains",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/mountains/illustration-v2.jpg",
+    "variant": 2,
+    "option": "雪峰遠眺"
+  },
+  {
+    "id": "mountains-abstract-v2",
+    "title": "雪峰遠眺",
+    "theme": "mountains",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/mountains/abstract-v2.jpg",
+    "variant": 2,
+    "option": "雪峰遠眺"
+  },
+  {
+    "id": "sunrise-photo-v2",
+    "title": "海岸初曉",
+    "theme": "sunrise",
+    "style": "photo",
+    "core": true,
+    "still": "themes/sunrise/photo-v2.jpg",
+    "variant": 2,
+    "option": "海岸初曉"
+  },
+  {
+    "id": "sunrise-illustration-v2",
+    "title": "海岸初曉",
+    "theme": "sunrise",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/sunrise/illustration-v2.jpg",
+    "variant": 2,
+    "option": "海岸初曉"
+  },
+  {
+    "id": "sunrise-abstract-v2",
+    "title": "海岸初曉",
+    "theme": "sunrise",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/sunrise/abstract-v2.jpg",
+    "variant": 2,
+    "option": "海岸初曉"
+  },
+  {
+    "id": "sunset-photo-v2",
+    "title": "暮色鹽湖",
+    "theme": "sunset",
+    "style": "photo",
+    "core": true,
+    "still": "themes/sunset/photo-v2.jpg",
+    "variant": 2,
+    "option": "暮色鹽湖"
+  },
+  {
+    "id": "sunset-illustration-v2",
+    "title": "暮色鹽湖",
+    "theme": "sunset",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/sunset/illustration-v2.jpg",
+    "variant": 2,
+    "option": "暮色鹽湖"
+  },
+  {
+    "id": "sunset-abstract-v2",
+    "title": "暮色鹽湖",
+    "theme": "sunset",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/sunset/abstract-v2.jpg",
+    "variant": 2,
+    "option": "暮色鹽湖"
+  },
+  {
+    "id": "stream-photo-v2",
+    "title": "苔石清溪",
+    "theme": "stream",
+    "style": "photo",
+    "core": true,
+    "still": "themes/stream/photo-v2.jpg",
+    "variant": 2,
+    "option": "苔石清溪"
+  },
+  {
+    "id": "stream-illustration-v2",
+    "title": "苔石清溪",
+    "theme": "stream",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/stream/illustration-v2.jpg",
+    "variant": 2,
+    "option": "苔石清溪"
+  },
+  {
+    "id": "stream-abstract-v2",
+    "title": "苔石清溪",
+    "theme": "stream",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/stream/abstract-v2.jpg",
+    "variant": 2,
+    "option": "苔石清溪"
+  },
+  {
+    "id": "waterfall-photo-v2",
+    "title": "岩壁飛瀑",
+    "theme": "waterfall",
+    "style": "photo",
+    "core": true,
+    "still": "themes/waterfall/photo-v2.jpg",
+    "variant": 2,
+    "option": "岩壁飛瀑"
+  },
+  {
+    "id": "waterfall-illustration-v2",
+    "title": "岩壁飛瀑",
+    "theme": "waterfall",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/waterfall/illustration-v2.jpg",
+    "variant": 2,
+    "option": "岩壁飛瀑"
+  },
+  {
+    "id": "waterfall-abstract-v2",
+    "title": "岩壁飛瀑",
+    "theme": "waterfall",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/waterfall/abstract-v2.jpg",
+    "variant": 2,
+    "option": "岩壁飛瀑"
+  },
+  {
+    "id": "spring_rain-photo-v2",
+    "title": "雨中新葉",
+    "theme": "spring_rain",
+    "style": "photo",
+    "core": true,
+    "still": "themes/spring_rain/photo-v2.jpg",
+    "variant": 2,
+    "option": "雨中新葉"
+  },
+  {
+    "id": "spring_rain-illustration-v2",
+    "title": "雨中新葉",
+    "theme": "spring_rain",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/spring_rain/illustration-v2.jpg",
+    "variant": 2,
+    "option": "雨中新葉"
+  },
+  {
+    "id": "spring_rain-abstract-v2",
+    "title": "雨中新葉",
+    "theme": "spring_rain",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/spring_rain/abstract-v2.jpg",
+    "variant": 2,
+    "option": "雨中新葉"
+  },
+  {
+    "id": "snow-photo-v2",
+    "title": "雪後松枝",
+    "theme": "snow",
+    "style": "photo",
+    "core": true,
+    "still": "themes/snow/photo-v2.jpg",
+    "variant": 2,
+    "option": "雪後松枝"
+  },
+  {
+    "id": "snow-illustration-v2",
+    "title": "雪後松枝",
+    "theme": "snow",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/snow/illustration-v2.jpg",
+    "variant": 2,
+    "option": "雪後松枝"
+  },
+  {
+    "id": "snow-abstract-v2",
+    "title": "雪後松枝",
+    "theme": "snow",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/snow/abstract-v2.jpg",
+    "variant": 2,
+    "option": "雪後松枝"
+  },
+  {
+    "id": "galaxy-photo-v2",
+    "title": "靜夜星環",
+    "theme": "galaxy",
+    "style": "photo",
+    "core": true,
+    "still": "themes/galaxy/photo-v2.jpg",
+    "variant": 2,
+    "option": "靜夜星環"
+  },
+  {
+    "id": "galaxy-illustration-v2",
+    "title": "靜夜星環",
+    "theme": "galaxy",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/galaxy/illustration-v2.jpg",
+    "variant": 2,
+    "option": "靜夜星環"
+  },
+  {
+    "id": "galaxy-abstract-v2",
+    "title": "靜夜星環",
+    "theme": "galaxy",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/galaxy/abstract-v2.jpg",
+    "variant": 2,
+    "option": "靜夜星環"
+  },
+  {
+    "id": "sky-photo-v2",
+    "title": "雲間晴空",
+    "theme": "sky",
+    "style": "photo",
+    "core": true,
+    "still": "themes/sky/photo-v2.jpg",
+    "variant": 2,
+    "option": "雲間晴空"
+  },
+  {
+    "id": "sky-illustration-v2",
+    "title": "雲間晴空",
+    "theme": "sky",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/sky/illustration-v2.jpg",
+    "variant": 2,
+    "option": "雲間晴空"
+  },
+  {
+    "id": "sky-abstract-v2",
+    "title": "雲間晴空",
+    "theme": "sky",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/sky/abstract-v2.jpg",
+    "variant": 2,
+    "option": "雲間晴空"
+  },
+  {
+    "id": "ocean-photo-v2",
+    "title": "碧海潮線",
+    "theme": "ocean",
+    "style": "photo",
+    "core": true,
+    "still": "themes/ocean/photo-v2.jpg",
+    "variant": 2,
+    "option": "碧海潮線"
+  },
+  {
+    "id": "ocean-illustration-v2",
+    "title": "碧海潮線",
+    "theme": "ocean",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/ocean/illustration-v2.jpg",
+    "variant": 2,
+    "option": "碧海潮線"
+  },
+  {
+    "id": "ocean-abstract-v2",
+    "title": "碧海潮線",
+    "theme": "ocean",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/ocean/abstract-v2.jpg",
+    "variant": 2,
+    "option": "碧海潮線"
+  },
+  {
+    "id": "calm_lake-photo-v2",
+    "title": "湖畔蘆葦",
+    "theme": "calm_lake",
+    "style": "photo",
+    "core": true,
+    "still": "themes/calm_lake/photo-v2.jpg",
+    "variant": 2,
+    "option": "湖畔蘆葦"
+  },
+  {
+    "id": "calm_lake-illustration-v2",
+    "title": "湖畔蘆葦",
+    "theme": "calm_lake",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/calm_lake/illustration-v2.jpg",
+    "variant": 2,
+    "option": "湖畔蘆葦"
+  },
+  {
+    "id": "calm_lake-abstract-v2",
+    "title": "湖畔蘆葦",
+    "theme": "calm_lake",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/calm_lake/abstract-v2.jpg",
+    "variant": 2,
+    "option": "湖畔蘆葦"
+  },
+  {
+    "id": "storm-photo-v2",
+    "title": "雨過田野",
+    "theme": "storm",
+    "style": "photo",
+    "core": true,
+    "still": "themes/storm/photo-v2.jpg",
+    "variant": 2,
+    "option": "雨過田野"
+  },
+  {
+    "id": "storm-illustration-v2",
+    "title": "雨過田野",
+    "theme": "storm",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/storm/illustration-v2.jpg",
+    "variant": 2,
+    "option": "雨過田野"
+  },
+  {
+    "id": "storm-abstract-v2",
+    "title": "雨過田野",
+    "theme": "storm",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/storm/abstract-v2.jpg",
+    "variant": 2,
+    "option": "雨過田野"
+  },
+  {
+    "id": "rainbow-photo-v2",
+    "title": "田間虹光",
+    "theme": "rainbow",
+    "style": "photo",
+    "core": true,
+    "still": "themes/rainbow/photo-v2.jpg",
+    "variant": 2,
+    "option": "田間虹光"
+  },
+  {
+    "id": "rainbow-illustration-v2",
+    "title": "田間虹光",
+    "theme": "rainbow",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/rainbow/illustration-v2.jpg",
+    "variant": 2,
+    "option": "田間虹光"
+  },
+  {
+    "id": "rainbow-abstract-v2",
+    "title": "田間虹光",
+    "theme": "rainbow",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/rainbow/abstract-v2.jpg",
+    "variant": 2,
+    "option": "田間虹光"
+  },
+  {
+    "id": "eagle-photo-v2",
+    "title": "展翅岩鷹",
+    "theme": "eagle",
+    "style": "photo",
+    "core": true,
+    "still": "themes/eagle/photo-v2.jpg",
+    "variant": 2,
+    "option": "展翅岩鷹"
+  },
+  {
+    "id": "eagle-illustration-v2",
+    "title": "展翅岩鷹",
+    "theme": "eagle",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/eagle/illustration-v2.jpg",
+    "variant": 2,
+    "option": "展翅岩鷹"
+  },
+  {
+    "id": "eagle-abstract-v2",
+    "title": "展翅岩鷹",
+    "theme": "eagle",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/eagle/abstract-v2.jpg",
+    "variant": 2,
+    "option": "展翅岩鷹"
+  },
+  {
+    "id": "dove-photo-v2",
+    "title": "窗邊白鴿",
+    "theme": "dove",
+    "style": "photo",
+    "core": true,
+    "still": "themes/dove/photo-v2.jpg",
+    "variant": 2,
+    "option": "窗邊白鴿"
+  },
+  {
+    "id": "dove-illustration-v2",
+    "title": "窗邊白鴿",
+    "theme": "dove",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/dove/illustration-v2.jpg",
+    "variant": 2,
+    "option": "窗邊白鴿"
+  },
+  {
+    "id": "dove-abstract-v2",
+    "title": "窗邊白鴿",
+    "theme": "dove",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/dove/abstract-v2.jpg",
+    "variant": 2,
+    "option": "窗邊白鴿"
+  },
+  {
+    "id": "meadow-photo-v2",
+    "title": "晨露草坡",
+    "theme": "meadow",
+    "style": "photo",
+    "core": true,
+    "still": "themes/meadow/photo-v2.jpg",
+    "variant": 2,
+    "option": "晨露草坡"
+  },
+  {
+    "id": "meadow-illustration-v2",
+    "title": "晨露草坡",
+    "theme": "meadow",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/meadow/illustration-v2.jpg",
+    "variant": 2,
+    "option": "晨露草坡"
+  },
+  {
+    "id": "meadow-abstract-v2",
+    "title": "晨露草坡",
+    "theme": "meadow",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/meadow/abstract-v2.jpg",
+    "variant": 2,
+    "option": "晨露草坡"
+  },
+  {
+    "id": "sheep-photo-v2",
+    "title": "牧場歇息",
+    "theme": "sheep",
+    "style": "photo",
+    "core": true,
+    "still": "themes/sheep/photo-v2.jpg",
+    "variant": 2,
+    "option": "牧場歇息"
+  },
+  {
+    "id": "sheep-illustration-v2",
+    "title": "牧場歇息",
+    "theme": "sheep",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/sheep/illustration-v2.jpg",
+    "variant": 2,
+    "option": "牧場歇息"
+  },
+  {
+    "id": "sheep-abstract-v2",
+    "title": "牧場歇息",
+    "theme": "sheep",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/sheep/abstract-v2.jpg",
+    "variant": 2,
+    "option": "牧場歇息"
+  },
+  {
+    "id": "oasis-photo-v2",
+    "title": "棕影泉畔",
+    "theme": "oasis",
+    "style": "photo",
+    "core": true,
+    "still": "themes/oasis/photo-v2.jpg",
+    "variant": 2,
+    "option": "棕影泉畔"
+  },
+  {
+    "id": "oasis-illustration-v2",
+    "title": "棕影泉畔",
+    "theme": "oasis",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/oasis/illustration-v2.jpg",
+    "variant": 2,
+    "option": "棕影泉畔"
+  },
+  {
+    "id": "oasis-abstract-v2",
+    "title": "棕影泉畔",
+    "theme": "oasis",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/oasis/abstract-v2.jpg",
+    "variant": 2,
+    "option": "棕影泉畔"
+  },
+  {
+    "id": "lighthouse-photo-v2",
+    "title": "海霧燈塔",
+    "theme": "lighthouse",
+    "style": "photo",
+    "core": true,
+    "still": "themes/lighthouse/photo-v2.jpg",
+    "variant": 2,
+    "option": "海霧燈塔"
+  },
+  {
+    "id": "lighthouse-illustration-v2",
+    "title": "海霧燈塔",
+    "theme": "lighthouse",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/lighthouse/illustration-v2.jpg",
+    "variant": 2,
+    "option": "海霧燈塔"
+  },
+  {
+    "id": "lighthouse-abstract-v2",
+    "title": "海霧燈塔",
+    "theme": "lighthouse",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/lighthouse/abstract-v2.jpg",
+    "variant": 2,
+    "option": "海霧燈塔"
+  },
+  {
+    "id": "rock-photo-v2",
+    "title": "堅穩礁石",
+    "theme": "rock",
+    "style": "photo",
+    "core": true,
+    "still": "themes/rock/photo-v2.jpg",
+    "variant": 2,
+    "option": "堅穩礁石"
+  },
+  {
+    "id": "rock-illustration-v2",
+    "title": "堅穩礁石",
+    "theme": "rock",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/rock/illustration-v2.jpg",
+    "variant": 2,
+    "option": "堅穩礁石"
+  },
+  {
+    "id": "rock-abstract-v2",
+    "title": "堅穩礁石",
+    "theme": "rock",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/rock/abstract-v2.jpg",
+    "variant": 2,
+    "option": "堅穩礁石"
+  },
+  {
+    "id": "cross-photo-v2",
+    "title": "窗光木十架",
+    "theme": "cross",
+    "style": "photo",
+    "core": true,
+    "still": "themes/cross/photo-v2.jpg",
+    "variant": 2,
+    "option": "窗光木十架"
+  },
+  {
+    "id": "cross-illustration-v2",
+    "title": "窗光木十架",
+    "theme": "cross",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/cross/illustration-v2.jpg",
+    "variant": 2,
+    "option": "窗光木十架"
+  },
+  {
+    "id": "cross-abstract-v2",
+    "title": "窗光木十架",
+    "theme": "cross",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/cross/abstract-v2.jpg",
+    "variant": 2,
+    "option": "窗光木十架"
+  },
+  {
+    "id": "church-photo-v2",
+    "title": "白牆小堂",
+    "theme": "church",
+    "style": "photo",
+    "core": true,
+    "still": "themes/church/photo-v2.jpg",
+    "variant": 2,
+    "option": "白牆小堂"
+  },
+  {
+    "id": "church-illustration-v2",
+    "title": "白牆小堂",
+    "theme": "church",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/church/illustration-v2.jpg",
+    "variant": 2,
+    "option": "白牆小堂"
+  },
+  {
+    "id": "church-abstract-v2",
+    "title": "白牆小堂",
+    "theme": "church",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/church/abstract-v2.jpg",
+    "variant": 2,
+    "option": "白牆小堂"
+  },
+  {
+    "id": "hands-photo-v2",
+    "title": "同心敬拜",
+    "theme": "hands",
+    "style": "photo",
+    "core": true,
+    "still": "themes/hands/photo-v2.jpg",
+    "variant": 2,
+    "option": "同心敬拜"
+  },
+  {
+    "id": "hands-illustration-v2",
+    "title": "同心敬拜",
+    "theme": "hands",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/hands/illustration-v2.jpg",
+    "variant": 2,
+    "option": "同心敬拜"
+  },
+  {
+    "id": "hands-abstract-v2",
+    "title": "同心敬拜",
+    "theme": "hands",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/hands/abstract-v2.jpg",
+    "variant": 2,
+    "option": "同心敬拜"
+  },
+  {
+    "id": "music-photo-v2",
+    "title": "琴鍵晨光",
+    "theme": "music",
+    "style": "photo",
+    "core": true,
+    "still": "themes/music/photo-v2.jpg",
+    "variant": 2,
+    "option": "琴鍵晨光"
+  },
+  {
+    "id": "music-illustration-v2",
+    "title": "琴鍵晨光",
+    "theme": "music",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/music/illustration-v2.jpg",
+    "variant": 2,
+    "option": "琴鍵晨光"
+  },
+  {
+    "id": "music-abstract-v2",
+    "title": "琴鍵晨光",
+    "theme": "music",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/music/abstract-v2.jpg",
+    "variant": 2,
+    "option": "琴鍵晨光"
+  },
+  {
+    "id": "celebration-photo-v2",
+    "title": "歡欣花瓣",
+    "theme": "celebration",
+    "style": "photo",
+    "core": true,
+    "still": "themes/celebration/photo-v2.jpg",
+    "variant": 2,
+    "option": "歡欣花瓣"
+  },
+  {
+    "id": "celebration-illustration-v2",
+    "title": "歡欣花瓣",
+    "theme": "celebration",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/celebration/illustration-v2.jpg",
+    "variant": 2,
+    "option": "歡欣花瓣"
+  },
+  {
+    "id": "celebration-abstract-v2",
+    "title": "歡欣花瓣",
+    "theme": "celebration",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/celebration/abstract-v2.jpg",
+    "variant": 2,
+    "option": "歡欣花瓣"
+  },
+  {
+    "id": "gentle_light-photo-v2",
+    "title": "窗紗柔光",
+    "theme": "gentle_light",
+    "style": "photo",
+    "core": true,
+    "still": "themes/gentle_light/photo-v2.jpg",
+    "variant": 2,
+    "option": "窗紗柔光"
+  },
+  {
+    "id": "gentle_light-illustration-v2",
+    "title": "窗紗柔光",
+    "theme": "gentle_light",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/gentle_light/illustration-v2.jpg",
+    "variant": 2,
+    "option": "窗紗柔光"
+  },
+  {
+    "id": "gentle_light-abstract-v2",
+    "title": "窗紗柔光",
+    "theme": "gentle_light",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/gentle_light/abstract-v2.jpg",
+    "variant": 2,
+    "option": "窗紗柔光"
+  },
+  {
+    "id": "open_hands-photo-v2",
+    "title": "掌心領受",
+    "theme": "open_hands",
+    "style": "photo",
+    "core": true,
+    "still": "themes/open_hands/photo-v2.jpg",
+    "variant": 2,
+    "option": "掌心領受"
+  },
+  {
+    "id": "open_hands-illustration-v2",
+    "title": "掌心領受",
+    "theme": "open_hands",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/open_hands/illustration-v2.jpg",
+    "variant": 2,
+    "option": "掌心領受"
+  },
+  {
+    "id": "open_hands-abstract-v2",
+    "title": "掌心領受",
+    "theme": "open_hands",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/open_hands/abstract-v2.jpg",
+    "variant": 2,
+    "option": "掌心領受"
+  },
+  {
+    "id": "fire-photo-v2",
+    "title": "炭火微光",
+    "theme": "fire",
+    "style": "photo",
+    "core": true,
+    "still": "themes/fire/photo-v2.jpg",
+    "variant": 2,
+    "option": "炭火微光"
+  },
+  {
+    "id": "fire-illustration-v2",
+    "title": "炭火微光",
+    "theme": "fire",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/fire/illustration-v2.jpg",
+    "variant": 2,
+    "option": "炭火微光"
+  },
+  {
+    "id": "fire-abstract-v2",
+    "title": "炭火微光",
+    "theme": "fire",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/fire/abstract-v2.jpg",
+    "variant": 2,
+    "option": "炭火微光"
+  },
+  {
+    "id": "seeds-photo-v2",
+    "title": "石縫新芽",
+    "theme": "seeds",
+    "style": "photo",
+    "core": true,
+    "still": "themes/seeds/photo-v2.jpg",
+    "variant": 2,
+    "option": "石縫新芽"
+  },
+  {
+    "id": "seeds-illustration-v2",
+    "title": "石縫新芽",
+    "theme": "seeds",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/seeds/illustration-v2.jpg",
+    "variant": 2,
+    "option": "石縫新芽"
+  },
+  {
+    "id": "seeds-abstract-v2",
+    "title": "石縫新芽",
+    "theme": "seeds",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/seeds/abstract-v2.jpg",
+    "variant": 2,
+    "option": "石縫新芽"
+  },
+  {
+    "id": "bible-photo-v2",
+    "title": "書卷靜讀",
+    "theme": "bible",
+    "style": "photo",
+    "core": true,
+    "still": "themes/bible/photo-v2.jpg",
+    "variant": 2,
+    "option": "書卷靜讀"
+  },
+  {
+    "id": "bible-illustration-v2",
+    "title": "書卷靜讀",
+    "theme": "bible",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/bible/illustration-v2.jpg",
+    "variant": 2,
+    "option": "書卷靜讀"
+  },
+  {
+    "id": "bible-abstract-v2",
+    "title": "書卷靜讀",
+    "theme": "bible",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/bible/abstract-v2.jpg",
+    "variant": 2,
+    "option": "書卷靜讀"
+  },
+  {
+    "id": "communion-photo-v2",
+    "title": "餅杯靜物",
+    "theme": "communion",
+    "style": "photo",
+    "core": true,
+    "still": "themes/communion/photo-v2.jpg",
+    "variant": 2,
+    "option": "餅杯靜物"
+  },
+  {
+    "id": "communion-illustration-v2",
+    "title": "餅杯靜物",
+    "theme": "communion",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/communion/illustration-v2.jpg",
+    "variant": 2,
+    "option": "餅杯靜物"
+  },
+  {
+    "id": "communion-abstract-v2",
+    "title": "餅杯靜物",
+    "theme": "communion",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/communion/abstract-v2.jpg",
+    "variant": 2,
+    "option": "餅杯靜物"
+  },
+  {
+    "id": "nativity-photo-v2",
+    "title": "馬槽微光",
+    "theme": "nativity",
+    "style": "photo",
+    "core": true,
+    "still": "themes/nativity/photo-v2.jpg",
+    "variant": 2,
+    "option": "馬槽微光"
+  },
+  {
+    "id": "nativity-illustration-v2",
+    "title": "馬槽微光",
+    "theme": "nativity",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/nativity/illustration-v2.jpg",
+    "variant": 2,
+    "option": "馬槽微光"
+  },
+  {
+    "id": "nativity-abstract-v2",
+    "title": "馬槽微光",
+    "theme": "nativity",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/nativity/abstract-v2.jpg",
+    "variant": 2,
+    "option": "馬槽微光"
+  },
+  {
+    "id": "empty_tomb-photo-v2",
+    "title": "墓中晨曦",
+    "theme": "empty_tomb",
+    "style": "photo",
+    "core": true,
+    "still": "themes/empty_tomb/photo-v2.jpg",
+    "variant": 2,
+    "option": "墓中晨曦"
+  },
+  {
+    "id": "empty_tomb-illustration-v2",
+    "title": "墓中晨曦",
+    "theme": "empty_tomb",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/empty_tomb/illustration-v2.jpg",
+    "variant": 2,
+    "option": "墓中晨曦"
+  },
+  {
+    "id": "empty_tomb-abstract-v2",
+    "title": "墓中晨曦",
+    "theme": "empty_tomb",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/empty_tomb/abstract-v2.jpg",
+    "variant": 2,
+    "option": "墓中晨曦"
+  },
+  {
+    "id": "crown-photo-v2",
+    "title": "紫絨冠冕",
+    "theme": "crown",
+    "style": "photo",
+    "core": true,
+    "still": "themes/crown/photo-v2.jpg",
+    "variant": 2,
+    "option": "紫絨冠冕"
+  },
+  {
+    "id": "crown-illustration-v2",
+    "title": "紫絨冠冕",
+    "theme": "crown",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/crown/illustration-v2.jpg",
+    "variant": 2,
+    "option": "紫絨冠冕"
+  },
+  {
+    "id": "crown-abstract-v2",
+    "title": "紫絨冠冕",
+    "theme": "crown",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/crown/abstract-v2.jpg",
+    "variant": 2,
+    "option": "紫絨冠冕"
+  },
+  {
+    "id": "throne-photo-v2",
+    "title": "王座長廊",
+    "theme": "throne",
+    "style": "photo",
+    "core": true,
+    "still": "themes/throne/photo-v2.jpg",
+    "variant": 2,
+    "option": "王座長廊"
+  },
+  {
+    "id": "throne-illustration-v2",
+    "title": "王座長廊",
+    "theme": "throne",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/throne/illustration-v2.jpg",
+    "variant": 2,
+    "option": "王座長廊"
+  },
+  {
+    "id": "throne-abstract-v2",
+    "title": "王座長廊",
+    "theme": "throne",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/throne/abstract-v2.jpg",
+    "variant": 2,
+    "option": "王座長廊"
+  },
+  {
+    "id": "altar-photo-v2",
+    "title": "獻上與安靜",
+    "theme": "altar",
+    "style": "photo",
+    "core": true,
+    "still": "themes/altar/photo-v2.jpg",
+    "variant": 2,
+    "option": "獻上與安靜"
+  },
+  {
+    "id": "altar-illustration-v2",
+    "title": "獻上與安靜",
+    "theme": "altar",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/altar/illustration-v2.jpg",
+    "variant": 2,
+    "option": "獻上與安靜"
+  },
+  {
+    "id": "altar-abstract-v2",
+    "title": "獻上與安靜",
+    "theme": "altar",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/altar/abstract-v2.jpg",
+    "variant": 2,
+    "option": "獻上與安靜"
+  },
+  {
+    "id": "incense-photo-v2",
+    "title": "香煙輕升",
+    "theme": "incense",
+    "style": "photo",
+    "core": true,
+    "still": "themes/incense/photo-v2.jpg",
+    "variant": 2,
+    "option": "香煙輕升"
+  },
+  {
+    "id": "incense-illustration-v2",
+    "title": "香煙輕升",
+    "theme": "incense",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/incense/illustration-v2.jpg",
+    "variant": 2,
+    "option": "香煙輕升"
+  },
+  {
+    "id": "incense-abstract-v2",
+    "title": "香煙輕升",
+    "theme": "incense",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/incense/abstract-v2.jpg",
+    "variant": 2,
+    "option": "香煙輕升"
+  },
+  {
+    "id": "trumpet-photo-v2",
+    "title": "石窗號角",
+    "theme": "trumpet",
+    "style": "photo",
+    "core": false,
+    "still": "themes/trumpet/photo-v2.jpg",
+    "variant": 2,
+    "option": "石窗號角"
+  },
+  {
+    "id": "trumpet-illustration-v2",
+    "title": "石窗號角",
+    "theme": "trumpet",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/trumpet/illustration-v2.jpg",
+    "variant": 2,
+    "option": "石窗號角"
+  },
+  {
+    "id": "trumpet-abstract-v2",
+    "title": "石窗號角",
+    "theme": "trumpet",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/trumpet/abstract-v2.jpg",
+    "variant": 2,
+    "option": "石窗號角"
+  },
+  {
+    "id": "harp-photo-v2",
+    "title": "豎琴弦光",
+    "theme": "harp",
+    "style": "photo",
+    "core": false,
+    "still": "themes/harp/photo-v2.jpg",
+    "variant": 2,
+    "option": "豎琴弦光"
+  },
+  {
+    "id": "harp-illustration-v2",
+    "title": "豎琴弦光",
+    "theme": "harp",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/harp/illustration-v2.jpg",
+    "variant": 2,
+    "option": "豎琴弦光"
+  },
+  {
+    "id": "harp-abstract-v2",
+    "title": "豎琴弦光",
+    "theme": "harp",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/harp/abstract-v2.jpg",
+    "variant": 2,
+    "option": "豎琴弦光"
+  },
+  {
+    "id": "banner-photo-v2",
+    "title": "白旗微風",
+    "theme": "banner",
+    "style": "photo",
+    "core": true,
+    "still": "themes/banner/photo-v2.jpg",
+    "variant": 2,
+    "option": "白旗微風"
+  },
+  {
+    "id": "banner-illustration-v2",
+    "title": "白旗微風",
+    "theme": "banner",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/banner/illustration-v2.jpg",
+    "variant": 2,
+    "option": "白旗微風"
+  },
+  {
+    "id": "banner-abstract-v2",
+    "title": "白旗微風",
+    "theme": "banner",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/banner/abstract-v2.jpg",
+    "variant": 2,
+    "option": "白旗微風"
+  },
+  {
+    "id": "armor-photo-v2",
+    "title": "軍裝安放",
+    "theme": "armor",
+    "style": "photo",
+    "core": false,
+    "still": "themes/armor/photo-v2.jpg",
+    "variant": 2,
+    "option": "軍裝安放"
+  },
+  {
+    "id": "armor-illustration-v2",
+    "title": "軍裝安放",
+    "theme": "armor",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/armor/illustration-v2.jpg",
+    "variant": 2,
+    "option": "軍裝安放"
+  },
+  {
+    "id": "armor-abstract-v2",
+    "title": "軍裝安放",
+    "theme": "armor",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/armor/abstract-v2.jpg",
+    "variant": 2,
+    "option": "軍裝安放"
+  },
+  {
+    "id": "shield-photo-v2",
+    "title": "庇護之盾",
+    "theme": "shield",
+    "style": "photo",
+    "core": true,
+    "still": "themes/shield/photo-v2.jpg",
+    "variant": 2,
+    "option": "庇護之盾"
+  },
+  {
+    "id": "shield-illustration-v2",
+    "title": "庇護之盾",
+    "theme": "shield",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/shield/illustration-v2.jpg",
+    "variant": 2,
+    "option": "庇護之盾"
+  },
+  {
+    "id": "shield-abstract-v2",
+    "title": "庇護之盾",
+    "theme": "shield",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/shield/abstract-v2.jpg",
+    "variant": 2,
+    "option": "庇護之盾"
+  },
+  {
+    "id": "broken_chains-photo-v2",
+    "title": "自由晨光",
+    "theme": "broken_chains",
+    "style": "photo",
+    "core": true,
+    "still": "themes/broken_chains/photo-v2.jpg",
+    "variant": 2,
+    "option": "自由晨光"
+  },
+  {
+    "id": "broken_chains-illustration-v2",
+    "title": "自由晨光",
+    "theme": "broken_chains",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/broken_chains/illustration-v2.jpg",
+    "variant": 2,
+    "option": "自由晨光"
+  },
+  {
+    "id": "broken_chains-abstract-v2",
+    "title": "自由晨光",
+    "theme": "broken_chains",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/broken_chains/abstract-v2.jpg",
+    "variant": 2,
+    "option": "自由晨光"
+  },
+  {
+    "id": "tent-photo-v2",
+    "title": "帳幕入口",
+    "theme": "tent",
+    "style": "photo",
+    "core": false,
+    "still": "themes/tent/photo-v2.jpg",
+    "variant": 2,
+    "option": "帳幕入口"
+  },
+  {
+    "id": "tent-illustration-v2",
+    "title": "帳幕入口",
+    "theme": "tent",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/tent/illustration-v2.jpg",
+    "variant": 2,
+    "option": "帳幕入口"
+  },
+  {
+    "id": "tent-abstract-v2",
+    "title": "帳幕入口",
+    "theme": "tent",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/tent/abstract-v2.jpg",
+    "variant": 2,
+    "option": "帳幕入口"
+  },
+  {
+    "id": "refuge-photo-v2",
+    "title": "石屋避風",
+    "theme": "refuge",
+    "style": "photo",
+    "core": true,
+    "still": "themes/refuge/photo-v2.jpg",
+    "variant": 2,
+    "option": "石屋避風"
+  },
+  {
+    "id": "refuge-illustration-v2",
+    "title": "石屋避風",
+    "theme": "refuge",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/refuge/illustration-v2.jpg",
+    "variant": 2,
+    "option": "石屋避風"
+  },
+  {
+    "id": "refuge-abstract-v2",
+    "title": "石屋避風",
+    "theme": "refuge",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/refuge/abstract-v2.jpg",
+    "variant": 2,
+    "option": "石屋避風"
+  },
+  {
+    "id": "sheltering_wings-photo-v2",
+    "title": "羽翼守護",
+    "theme": "sheltering_wings",
+    "style": "photo",
+    "core": false,
+    "still": "themes/sheltering_wings/photo-v2.jpg",
+    "variant": 2,
+    "option": "羽翼守護"
+  },
+  {
+    "id": "sheltering_wings-illustration-v2",
+    "title": "羽翼守護",
+    "theme": "sheltering_wings",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/sheltering_wings/illustration-v2.jpg",
+    "variant": 2,
+    "option": "羽翼守護"
+  },
+  {
+    "id": "sheltering_wings-abstract-v2",
+    "title": "羽翼守護",
+    "theme": "sheltering_wings",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/sheltering_wings/abstract-v2.jpg",
+    "variant": 2,
+    "option": "羽翼守護"
+  },
+  {
+    "id": "footprints-photo-v2",
+    "title": "濕沙足跡",
+    "theme": "footprints",
+    "style": "photo",
+    "core": false,
+    "still": "themes/footprints/photo-v2.jpg",
+    "variant": 2,
+    "option": "濕沙足跡"
+  },
+  {
+    "id": "footprints-illustration-v2",
+    "title": "濕沙足跡",
+    "theme": "footprints",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/footprints/illustration-v2.jpg",
+    "variant": 2,
+    "option": "濕沙足跡"
+  },
+  {
+    "id": "footprints-abstract-v2",
+    "title": "濕沙足跡",
+    "theme": "footprints",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/footprints/abstract-v2.jpg",
+    "variant": 2,
+    "option": "濕沙足跡"
+  },
+  {
+    "id": "door-photo-v2",
+    "title": "向光敞開",
+    "theme": "door",
+    "style": "photo",
+    "core": false,
+    "still": "themes/door/photo-v2.jpg",
+    "variant": 2,
+    "option": "向光敞開"
+  },
+  {
+    "id": "door-illustration-v2",
+    "title": "向光敞開",
+    "theme": "door",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/door/illustration-v2.jpg",
+    "variant": 2,
+    "option": "向光敞開"
+  },
+  {
+    "id": "door-abstract-v2",
+    "title": "向光敞開",
+    "theme": "door",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/door/abstract-v2.jpg",
+    "variant": 2,
+    "option": "向光敞開"
+  },
+  {
+    "id": "bridge-photo-v2",
+    "title": "林溪石橋",
+    "theme": "bridge",
+    "style": "photo",
+    "core": false,
+    "still": "themes/bridge/photo-v2.jpg",
+    "variant": 2,
+    "option": "林溪石橋"
+  },
+  {
+    "id": "bridge-illustration-v2",
+    "title": "林溪石橋",
+    "theme": "bridge",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/bridge/illustration-v2.jpg",
+    "variant": 2,
+    "option": "林溪石橋"
+  },
+  {
+    "id": "bridge-abstract-v2",
+    "title": "林溪石橋",
+    "theme": "bridge",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/bridge/abstract-v2.jpg",
+    "variant": 2,
+    "option": "林溪石橋"
+  },
+  {
+    "id": "boat-photo-v2",
+    "title": "岸邊小舟",
+    "theme": "boat",
+    "style": "photo",
+    "core": false,
+    "still": "themes/boat/photo-v2.jpg",
+    "variant": 2,
+    "option": "岸邊小舟"
+  },
+  {
+    "id": "boat-illustration-v2",
+    "title": "岸邊小舟",
+    "theme": "boat",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/boat/illustration-v2.jpg",
+    "variant": 2,
+    "option": "岸邊小舟"
+  },
+  {
+    "id": "boat-abstract-v2",
+    "title": "岸邊小舟",
+    "theme": "boat",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/boat/abstract-v2.jpg",
+    "variant": 2,
+    "option": "岸邊小舟"
+  },
+  {
+    "id": "anchor-photo-v2",
+    "title": "船錨與繩",
+    "theme": "anchor",
+    "style": "photo",
+    "core": false,
+    "still": "themes/anchor/photo-v2.jpg",
+    "variant": 2,
+    "option": "船錨與繩"
+  },
+  {
+    "id": "anchor-illustration-v2",
+    "title": "船錨與繩",
+    "theme": "anchor",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/anchor/illustration-v2.jpg",
+    "variant": 2,
+    "option": "船錨與繩"
+  },
+  {
+    "id": "anchor-abstract-v2",
+    "title": "船錨與繩",
+    "theme": "anchor",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/anchor/abstract-v2.jpg",
+    "variant": 2,
+    "option": "船錨與繩"
+  },
+  {
+    "id": "harvest-photo-v2",
+    "title": "穀倉豐收",
+    "theme": "harvest",
+    "style": "photo",
+    "core": true,
+    "still": "themes/harvest/photo-v2.jpg",
+    "variant": 2,
+    "option": "穀倉豐收"
+  },
+  {
+    "id": "harvest-illustration-v2",
+    "title": "穀倉豐收",
+    "theme": "harvest",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/harvest/illustration-v2.jpg",
+    "variant": 2,
+    "option": "穀倉豐收"
+  },
+  {
+    "id": "harvest-abstract-v2",
+    "title": "穀倉豐收",
+    "theme": "harvest",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/harvest/abstract-v2.jpg",
+    "variant": 2,
+    "option": "穀倉豐收"
+  },
+  {
+    "id": "wheat-photo-v2",
+    "title": "麥穗近景",
+    "theme": "wheat",
+    "style": "photo",
+    "core": false,
+    "still": "themes/wheat/photo-v2.jpg",
+    "variant": 2,
+    "option": "麥穗近景"
+  },
+  {
+    "id": "wheat-illustration-v2",
+    "title": "麥穗近景",
+    "theme": "wheat",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/wheat/illustration-v2.jpg",
+    "variant": 2,
+    "option": "麥穗近景"
+  },
+  {
+    "id": "wheat-abstract-v2",
+    "title": "麥穗近景",
+    "theme": "wheat",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/wheat/abstract-v2.jpg",
+    "variant": 2,
+    "option": "麥穗近景"
+  },
+  {
+    "id": "grapevine-photo-v2",
+    "title": "枝上葡萄",
+    "theme": "grapevine",
+    "style": "photo",
+    "core": true,
+    "still": "themes/grapevine/photo-v2.jpg",
+    "variant": 2,
+    "option": "枝上葡萄"
+  },
+  {
+    "id": "grapevine-illustration-v2",
+    "title": "枝上葡萄",
+    "theme": "grapevine",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/grapevine/illustration-v2.jpg",
+    "variant": 2,
+    "option": "枝上葡萄"
+  },
+  {
+    "id": "grapevine-abstract-v2",
+    "title": "枝上葡萄",
+    "theme": "grapevine",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/grapevine/abstract-v2.jpg",
+    "variant": 2,
+    "option": "枝上葡萄"
+  },
+  {
+    "id": "olive_tree-photo-v2",
+    "title": "橄欖枝影",
+    "theme": "olive_tree",
+    "style": "photo",
+    "core": false,
+    "still": "themes/olive_tree/photo-v2.jpg",
+    "variant": 2,
+    "option": "橄欖枝影"
+  },
+  {
+    "id": "olive_tree-illustration-v2",
+    "title": "橄欖枝影",
+    "theme": "olive_tree",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/olive_tree/illustration-v2.jpg",
+    "variant": 2,
+    "option": "橄欖枝影"
+  },
+  {
+    "id": "olive_tree-abstract-v2",
+    "title": "橄欖枝影",
+    "theme": "olive_tree",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/olive_tree/abstract-v2.jpg",
+    "variant": 2,
+    "option": "橄欖枝影"
+  },
+  {
+    "id": "tree-photo-v2",
+    "title": "溪岸深根",
+    "theme": "tree",
+    "style": "photo",
+    "core": false,
+    "still": "themes/tree/photo-v2.jpg",
+    "variant": 2,
+    "option": "溪岸深根"
+  },
+  {
+    "id": "tree-illustration-v2",
+    "title": "溪岸深根",
+    "theme": "tree",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/tree/illustration-v2.jpg",
+    "variant": 2,
+    "option": "溪岸深根"
+  },
+  {
+    "id": "tree-abstract-v2",
+    "title": "溪岸深根",
+    "theme": "tree",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/tree/abstract-v2.jpg",
+    "variant": 2,
+    "option": "溪岸深根"
+  },
+  {
+    "id": "garden-photo-v2",
+    "title": "花園石凳",
+    "theme": "garden",
+    "style": "photo",
+    "core": true,
+    "still": "themes/garden/photo-v2.jpg",
+    "variant": 2,
+    "option": "花園石凳"
+  },
+  {
+    "id": "garden-illustration-v2",
+    "title": "花園石凳",
+    "theme": "garden",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/garden/illustration-v2.jpg",
+    "variant": 2,
+    "option": "花園石凳"
+  },
+  {
+    "id": "garden-abstract-v2",
+    "title": "花園石凳",
+    "theme": "garden",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/garden/abstract-v2.jpg",
+    "variant": 2,
+    "option": "花園石凳"
+  },
+  {
+    "id": "flowers-photo-v2",
+    "title": "花間清風",
+    "theme": "flowers",
+    "style": "photo",
+    "core": true,
+    "still": "themes/flowers/photo-v2.jpg",
+    "variant": 2,
+    "option": "花間清風"
+  },
+  {
+    "id": "flowers-illustration-v2",
+    "title": "花間清風",
+    "theme": "flowers",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/flowers/illustration-v2.jpg",
+    "variant": 2,
+    "option": "花間清風"
+  },
+  {
+    "id": "flowers-abstract-v2",
+    "title": "花間清風",
+    "theme": "flowers",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/flowers/abstract-v2.jpg",
+    "variant": 2,
+    "option": "花間清風"
+  },
+  {
+    "id": "lily-photo-v2",
+    "title": "百合露珠",
+    "theme": "lily",
+    "style": "photo",
+    "core": false,
+    "still": "themes/lily/photo-v2.jpg",
+    "variant": 2,
+    "option": "百合露珠"
+  },
+  {
+    "id": "lily-illustration-v2",
+    "title": "百合露珠",
+    "theme": "lily",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/lily/illustration-v2.jpg",
+    "variant": 2,
+    "option": "百合露珠"
+  },
+  {
+    "id": "lily-abstract-v2",
+    "title": "百合露珠",
+    "theme": "lily",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/lily/abstract-v2.jpg",
+    "variant": 2,
+    "option": "百合露珠"
+  },
+  {
+    "id": "pottery-photo-v2",
+    "title": "陶土成器",
+    "theme": "pottery",
+    "style": "photo",
+    "core": true,
+    "still": "themes/pottery/photo-v2.jpg",
+    "variant": 2,
+    "option": "陶土成器"
+  },
+  {
+    "id": "pottery-illustration-v2",
+    "title": "陶土成器",
+    "theme": "pottery",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/pottery/illustration-v2.jpg",
+    "variant": 2,
+    "option": "陶土成器"
+  },
+  {
+    "id": "pottery-abstract-v2",
+    "title": "陶土成器",
+    "theme": "pottery",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/pottery/abstract-v2.jpg",
+    "variant": 2,
+    "option": "陶土成器"
+  },
+  {
+    "id": "dew-photo-v2",
+    "title": "葉尖凝露",
+    "theme": "dew",
+    "style": "photo",
+    "core": false,
+    "still": "themes/dew/photo-v2.jpg",
+    "variant": 2,
+    "option": "葉尖凝露"
+  },
+  {
+    "id": "dew-illustration-v2",
+    "title": "葉尖凝露",
+    "theme": "dew",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/dew/illustration-v2.jpg",
+    "variant": 2,
+    "option": "葉尖凝露"
+  },
+  {
+    "id": "dew-abstract-v2",
+    "title": "葉尖凝露",
+    "theme": "dew",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/dew/abstract-v2.jpg",
+    "variant": 2,
+    "option": "葉尖凝露"
+  },
+  {
+    "id": "river-photo-v2",
+    "title": "河灣晨霧",
+    "theme": "river",
+    "style": "photo",
+    "core": true,
+    "still": "themes/river/photo-v2.jpg",
+    "variant": 2,
+    "option": "河灣晨霧"
+  },
+  {
+    "id": "river-illustration-v2",
+    "title": "河灣晨霧",
+    "theme": "river",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/river/illustration-v2.jpg",
+    "variant": 2,
+    "option": "河灣晨霧"
+  },
+  {
+    "id": "river-abstract-v2",
+    "title": "河灣晨霧",
+    "theme": "river",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/river/abstract-v2.jpg",
+    "variant": 2,
+    "option": "河灣晨霧"
+  },
+  {
+    "id": "desert-photo-v2",
+    "title": "曠野清晨",
+    "theme": "desert",
+    "style": "photo",
+    "core": true,
+    "still": "themes/desert/photo-v2.jpg",
+    "variant": 2,
+    "option": "曠野清晨"
+  },
+  {
+    "id": "desert-illustration-v2",
+    "title": "曠野清晨",
+    "theme": "desert",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/desert/illustration-v2.jpg",
+    "variant": 2,
+    "option": "曠野清晨"
+  },
+  {
+    "id": "desert-abstract-v2",
+    "title": "曠野清晨",
+    "theme": "desert",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/desert/abstract-v2.jpg",
+    "variant": 2,
+    "option": "曠野清晨"
+  },
+  {
+    "id": "sea_parting-photo-v2",
+    "title": "海中前路",
+    "theme": "sea_parting",
+    "style": "photo",
+    "core": false,
+    "still": "themes/sea_parting/photo-v2.jpg",
+    "variant": 2,
+    "option": "海中前路"
+  },
+  {
+    "id": "sea_parting-illustration-v2",
+    "title": "海中前路",
+    "theme": "sea_parting",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/sea_parting/illustration-v2.jpg",
+    "variant": 2,
+    "option": "海中前路"
+  },
+  {
+    "id": "sea_parting-abstract-v2",
+    "title": "海中前路",
+    "theme": "sea_parting",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/sea_parting/abstract-v2.jpg",
+    "variant": 2,
+    "option": "海中前路"
+  },
+  {
+    "id": "new_jerusalem-photo-v2",
+    "title": "珍珠城門",
+    "theme": "new_jerusalem",
+    "style": "photo",
+    "core": false,
+    "still": "themes/new_jerusalem/photo-v2.jpg",
+    "variant": 2,
+    "option": "珍珠城門"
+  },
+  {
+    "id": "new_jerusalem-illustration-v2",
+    "title": "珍珠城門",
+    "theme": "new_jerusalem",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/new_jerusalem/illustration-v2.jpg",
+    "variant": 2,
+    "option": "珍珠城門"
+  },
+  {
+    "id": "new_jerusalem-abstract-v2",
+    "title": "珍珠城門",
+    "theme": "new_jerusalem",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/new_jerusalem/abstract-v2.jpg",
+    "variant": 2,
+    "option": "珍珠城門"
+  },
+  {
+    "id": "city-photo-v2",
+    "title": "街角晨光",
+    "theme": "city",
+    "style": "photo",
+    "core": true,
+    "still": "themes/city/photo-v2.jpg",
+    "variant": 2,
+    "option": "街角晨光"
+  },
+  {
+    "id": "city-illustration-v2",
+    "title": "街角晨光",
+    "theme": "city",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/city/illustration-v2.jpg",
+    "variant": 2,
+    "option": "街角晨光"
+  },
+  {
+    "id": "city-abstract-v2",
+    "title": "街角晨光",
+    "theme": "city",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/city/abstract-v2.jpg",
+    "variant": 2,
+    "option": "街角晨光"
+  },
+  {
+    "id": "nations-photo-v2",
+    "title": "同心圍桌",
+    "theme": "nations",
+    "style": "photo",
+    "core": true,
+    "still": "themes/nations/photo-v2.jpg",
+    "variant": 2,
+    "option": "同心圍桌"
+  },
+  {
+    "id": "nations-illustration-v2",
+    "title": "同心圍桌",
+    "theme": "nations",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/nations/illustration-v2.jpg",
+    "variant": 2,
+    "option": "同心圍桌"
+  },
+  {
+    "id": "nations-abstract-v2",
+    "title": "同心圍桌",
+    "theme": "nations",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/nations/abstract-v2.jpg",
+    "variant": 2,
+    "option": "同心圍桌"
+  },
+  {
+    "id": "family-photo-v2",
+    "title": "牽手同行",
+    "theme": "family",
+    "style": "photo",
+    "core": true,
+    "still": "themes/family/photo-v2.jpg",
+    "variant": 2,
+    "option": "牽手同行"
+  },
+  {
+    "id": "family-illustration-v2",
+    "title": "牽手同行",
+    "theme": "family",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/family/illustration-v2.jpg",
+    "variant": 2,
+    "option": "牽手同行"
+  },
+  {
+    "id": "family-abstract-v2",
+    "title": "牽手同行",
+    "theme": "family",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/family/abstract-v2.jpg",
+    "variant": 2,
+    "option": "牽手同行"
+  },
+  {
+    "id": "embrace-photo-v2",
+    "title": "安慰擁抱",
+    "theme": "embrace",
+    "style": "photo",
+    "core": true,
+    "still": "themes/embrace/photo-v2.jpg",
+    "variant": 2,
+    "option": "安慰擁抱"
+  },
+  {
+    "id": "embrace-illustration-v2",
+    "title": "安慰擁抱",
+    "theme": "embrace",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/embrace/illustration-v2.jpg",
+    "variant": 2,
+    "option": "安慰擁抱"
+  },
+  {
+    "id": "embrace-abstract-v2",
+    "title": "安慰擁抱",
+    "theme": "embrace",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/embrace/abstract-v2.jpg",
+    "variant": 2,
+    "option": "安慰擁抱"
+  },
+  {
+    "id": "helping_neighbor-photo-v2",
+    "title": "分享日常",
+    "theme": "helping_neighbor",
+    "style": "photo",
+    "core": true,
+    "still": "themes/helping_neighbor/photo-v2.jpg",
+    "variant": 2,
+    "option": "分享日常"
+  },
+  {
+    "id": "helping_neighbor-illustration-v2",
+    "title": "分享日常",
+    "theme": "helping_neighbor",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/helping_neighbor/illustration-v2.jpg",
+    "variant": 2,
+    "option": "分享日常"
+  },
+  {
+    "id": "helping_neighbor-abstract-v2",
+    "title": "分享日常",
+    "theme": "helping_neighbor",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/helping_neighbor/abstract-v2.jpg",
+    "variant": 2,
+    "option": "分享日常"
+  },
+  {
+    "id": "tears-photo-v2",
+    "title": "雨窗盼望",
+    "theme": "tears",
+    "style": "photo",
+    "core": true,
+    "still": "themes/tears/photo-v2.jpg",
+    "variant": 2,
+    "option": "雨窗盼望"
+  },
+  {
+    "id": "tears-illustration-v2",
+    "title": "雨窗盼望",
+    "theme": "tears",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/tears/illustration-v2.jpg",
+    "variant": 2,
+    "option": "雨窗盼望"
+  },
+  {
+    "id": "tears-abstract-v2",
+    "title": "雨窗盼望",
+    "theme": "tears",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/tears/abstract-v2.jpg",
+    "variant": 2,
+    "option": "雨窗盼望"
+  },
+  {
+    "id": "wedding-photo-v2",
+    "title": "盟約戒指",
+    "theme": "wedding",
+    "style": "photo",
+    "core": true,
+    "still": "themes/wedding/photo-v2.jpg",
+    "variant": 2,
+    "option": "盟約戒指"
+  },
+  {
+    "id": "wedding-illustration-v2",
+    "title": "盟約戒指",
+    "theme": "wedding",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/wedding/illustration-v2.jpg",
+    "variant": 2,
+    "option": "盟約戒指"
+  },
+  {
+    "id": "wedding-abstract-v2",
+    "title": "盟約戒指",
+    "theme": "wedding",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/wedding/abstract-v2.jpg",
+    "variant": 2,
+    "option": "盟約戒指"
+  },
+  {
+    "id": "angels-photo-v2",
+    "title": "天使守望",
+    "theme": "angels",
+    "style": "photo",
+    "core": true,
+    "still": "themes/angels/photo-v2.jpg",
+    "variant": 2,
+    "option": "天使守望"
+  },
+  {
+    "id": "angels-illustration-v2",
+    "title": "天使守望",
+    "theme": "angels",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/angels/illustration-v2.jpg",
+    "variant": 2,
+    "option": "天使守望"
+  },
+  {
+    "id": "angels-abstract-v2",
+    "title": "天使守望",
+    "theme": "angels",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/angels/abstract-v2.jpg",
+    "variant": 2,
+    "option": "天使守望"
+  },
+  {
+    "id": "pillar_cloud_fire-photo-v2",
+    "title": "曠野引領",
+    "theme": "pillar_cloud_fire",
+    "style": "photo",
+    "core": false,
+    "still": "themes/pillar_cloud_fire/photo-v2.jpg",
+    "variant": 2,
+    "option": "曠野引領"
+  },
+  {
+    "id": "pillar_cloud_fire-illustration-v2",
+    "title": "曠野引領",
+    "theme": "pillar_cloud_fire",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/pillar_cloud_fire/illustration-v2.jpg",
+    "variant": 2,
+    "option": "曠野引領"
+  },
+  {
+    "id": "pillar_cloud_fire-abstract-v2",
+    "title": "曠野引領",
+    "theme": "pillar_cloud_fire",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/pillar_cloud_fire/abstract-v2.jpg",
+    "variant": 2,
+    "option": "曠野引領"
+  },
+  {
+    "id": "lamp-photo-v2",
+    "title": "窗台油燈",
+    "theme": "lamp",
+    "style": "photo",
+    "core": false,
+    "still": "themes/lamp/photo-v2.jpg",
+    "variant": 2,
+    "option": "窗台油燈"
+  },
+  {
+    "id": "lamp-illustration-v2",
+    "title": "窗台油燈",
+    "theme": "lamp",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/lamp/illustration-v2.jpg",
+    "variant": 2,
+    "option": "窗台油燈"
+  },
+  {
+    "id": "lamp-abstract-v2",
+    "title": "窗台油燈",
+    "theme": "lamp",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/lamp/abstract-v2.jpg",
+    "variant": 2,
+    "option": "窗台油燈"
+  },
+  {
+    "id": "treasure-photo-v2",
+    "title": "貝中珍珠",
+    "theme": "treasure",
+    "style": "photo",
+    "core": true,
+    "still": "themes/treasure/photo-v2.jpg",
+    "variant": 2,
+    "option": "貝中珍珠"
+  },
+  {
+    "id": "treasure-illustration-v2",
+    "title": "貝中珍珠",
+    "theme": "treasure",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/treasure/illustration-v2.jpg",
+    "variant": 2,
+    "option": "貝中珍珠"
+  },
+  {
+    "id": "treasure-abstract-v2",
+    "title": "貝中珍珠",
+    "theme": "treasure",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/treasure/abstract-v2.jpg",
+    "variant": 2,
+    "option": "貝中珍珠"
+  },
+  {
+    "id": "kneeling_prayer-photo-v2",
+    "title": "靜室屈膝",
+    "theme": "kneeling_prayer",
+    "style": "photo",
+    "core": true,
+    "still": "themes/kneeling_prayer/photo-v2.jpg",
+    "variant": 2,
+    "option": "靜室屈膝"
+  },
+  {
+    "id": "kneeling_prayer-illustration-v2",
+    "title": "靜室屈膝",
+    "theme": "kneeling_prayer",
+    "style": "illustration",
+    "core": true,
+    "still": "themes/kneeling_prayer/illustration-v2.jpg",
+    "variant": 2,
+    "option": "靜室屈膝"
+  },
+  {
+    "id": "kneeling_prayer-abstract-v2",
+    "title": "靜室屈膝",
+    "theme": "kneeling_prayer",
+    "style": "abstract",
+    "core": true,
+    "still": "themes/kneeling_prayer/abstract-v2.jpg",
+    "variant": 2,
+    "option": "靜室屈膝"
+  },
+  {
+    "id": "bread_provision-photo-v2",
+    "title": "日用新餅",
+    "theme": "bread_provision",
+    "style": "photo",
+    "core": false,
+    "still": "themes/bread_provision/photo-v2.jpg",
+    "variant": 2,
+    "option": "日用新餅"
+  },
+  {
+    "id": "bread_provision-illustration-v2",
+    "title": "日用新餅",
+    "theme": "bread_provision",
+    "style": "illustration",
+    "core": false,
+    "still": "themes/bread_provision/illustration-v2.jpg",
+    "variant": 2,
+    "option": "日用新餅"
+  },
+  {
+    "id": "bread_provision-abstract-v2",
+    "title": "日用新餅",
+    "theme": "bread_provision",
+    "style": "abstract",
+    "core": false,
+    "still": "themes/bread_provision/abstract-v2.jpg",
+    "variant": 2,
+    "option": "日用新餅"
   }
 ]
