@@ -1,4 +1,4 @@
-param([string]$Version = '0.92.0', [switch]$SkipBuild)
+param([string]$Version = (& "$PSScriptRoot/version.ps1"), [switch]$SkipBuild)
 $ErrorActionPreference = 'Stop'
 if ($Version -notmatch '^\d+\.\d+\.\d+$') { throw 'Use a three-part MSI version.' }
 $root = Split-Path -Parent $PSScriptRoot

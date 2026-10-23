@@ -21,7 +21,10 @@ static class GalleryTests
             try {
                 var gallery=picker.FindControl<WrapPanel>("Gallery");
                 var scroll=picker.FindControl<ScrollViewer>("GalleryScroll");
-                check(picker.FindControl<ComboBox>("CollectionFilter").Items.Count==5,"Old sample category is still offered");
+                var styles=picker.FindControl<WrapPanel>("StyleFilters").Children.Cast<ToggleButton>().ToList();
+                var themed=MediaLibrary.All.Count(a=>a.Style!="generic");
+                check(styles.Count==5 && styles.All(b=>b.IsChecked==true),"Image styles are not all selected by default");
+                check(picker.FindControl<Button>("ShowAllButton")==null && !picker.FindControl<TextBlock>("Message").IsVisible,"Removed gallery controls or status remain");
                 check(scroll.VerticalScrollBarVisibility==ScrollBarVisibility.Visible && !scroll.AllowAutoHide,"Gallery scrollbar is not visible");
                 var observedColumns=new System.Collections.Generic.HashSet<int>();
                 foreach(var size in new[]{new Size(880,680),new Size(1440,940),new Size(1080,800)}) {
@@ -48,18 +51,24 @@ static class GalleryTests
                 check(picker.ResultPath==selectedKey && gallery.Children.Count==count && Math.Abs(scroll.Offset.Y-offset)<1,"Selecting an image reset browsing");
                 picker.Width=1320; Flush();
                 check(picker.ResultPath==selectedKey && gallery.Children.Count>=count,"Resize lost selected/loaded results");
-                for(var i=0;i<100 && gallery.Children.Count<MediaLibrary.All.Count;i++) Wheel(-20);
+                for(var i=0;i<100 && gallery.Children.Count<themed;i++) Wheel(-20);
                 var keys=gallery.Children.Cast<Button>().Select(c=>((MediaAsset)c.Tag).Key).ToList();
-                check(keys.Count==MediaLibrary.All.Count && keys.Distinct().Count()==keys.Count,"Infinite scrolling did not reach every asset exactly once");
+                check(keys.Count==themed && keys.Distinct().Count()==keys.Count,"Infinite scrolling did not reach every themed asset exactly once");
                 Wheel(30); check(scroll.Offset.Y<scroll.Extent.Height-scroll.Viewport.Height,"Cannot scroll back through appended results");
-                picker.FindControl<ComboBox>("StyleFilter").SelectedIndex=4; Flush();
+                foreach(var button in styles) button.IsChecked=(string)button.Tag=="watercolour"; Flush();
                 check(gallery.Children.Count==1 && scroll.Offset.Y==0 && picker.ResultPath==selectedKey,"Filtering did not reset paging or lost selection");
-                picker.FindControl<ComboBox>("StyleFilter").SelectedIndex=0; Flush();
+                foreach(var button in styles) button.IsChecked=true; Flush();
                 check(scroll.Offset.Y==0 && gallery.Children.Count<MediaLibrary.All.Count,"Clearing filter did not restore first batch");
-                picker.FindControl<ComboBox>("CollectionFilter").SelectedIndex=3; Flush();
-                picker.FindControl<ComboBox>("StyleFilter").SelectedIndex=1; Flush();
-                check(gallery.Children.Count==0,"Empty collection/style combination ignored the style filter");
+                foreach(var button in styles) button.IsChecked=false; Flush();
+                check(gallery.Children.Count==0,"Deselecting all styles still shows results");
                 check(picker.FindControl<TextBlock>("GalleryInfo").Text.StartsWith("0 / 0"),"Empty result count is stale");
+                picker.FindControl<ToggleButton>("GenericFilter").RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Flush();
+                for(var i=0;i<20 && gallery.Children.Count<20;i++) Wheel(-20);
+                var generic=gallery.Children.Cast<Button>().Select(b=>(MediaAsset)b.Tag).ToList();
+                check(generic.Count==20 && generic.All(a=>a.Style=="generic") && generic.Select(a=>a.Lighting).Distinct().Count()==2,"Generic mode does not include both daylight and night images");
+                check(!picker.FindControl<WrapPanel>("StyleFilters").IsEnabled && picker.ResultPath==selectedKey,"Generic mode changed selection or applies themed styles");
+                picker.FindControl<ToggleButton>("MatchedFilter").RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Flush();
+                check(styles.All(b=>b.IsChecked==false) && gallery.Children.Count==0,"Returning to matches lost style choices");
                 check(!MediaSearch.IsModelLoaded,"Resizing/scrolling/filtering initialized the embedding model");
             } finally { picker.Close(); }
         });

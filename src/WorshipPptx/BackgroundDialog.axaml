@@ -4,9 +4,12 @@
   <Grid Grid.Row="1" ColumnDefinitions="*,24,300">
    <Grid RowDefinitions="Auto,Auto,*,Auto">
     <Grid ColumnDefinitions="*,10,Auto"><TextBox x:Name="SearchText" PlaceholderText="{local:Tr '圖片主題、關鍵字 · 中文或英文'}" MaxLength="500" TextWrapping="Wrap" MaxHeight="90" TextChanged="Keywords_Changed" ToolTip.Tip="{local:Tr '第一組是主題；英文同義詞只會加入 Google 搜尋連結'}"/><Button x:Name="SearchButton" Grid.Column="2" Content="{local:Tr '搜尋'}" Click="Search_Click" Classes="primary" VerticalAlignment="Top"/></Grid>
-    <Grid Grid.Row="1" ColumnDefinitions="*,12,*" Margin="0,12,0,12">
-     <ComboBox x:Name="CollectionFilter" SelectedIndex="0" SelectionChanged="Filter_Changed" HorizontalAlignment="Stretch"><ComboBoxItem Content="{local:Tr '全部素材'}"/><ComboBoxItem Content="{local:Tr '60 個核心主題'}"/><ComboBoxItem Content="{local:Tr '20 個延伸主題'}"/><ComboBoxItem Content="{local:Tr '通用 · 日光'}"/><ComboBoxItem Content="{local:Tr '通用 · 夜色'}"/></ComboBox>
-     <ComboBox x:Name="StyleFilter" Grid.Column="2" SelectedIndex="0" SelectionChanged="Filter_Changed" HorizontalAlignment="Stretch"><ComboBoxItem Content="{local:Tr '全部風格'}"/><ComboBoxItem Content="{local:Tr '攝影'}"/><ComboBoxItem Content="{local:Tr '插畫'}"/><ComboBoxItem Content="{local:Tr '抽象'}"/><ComboBoxItem Content="{local:Tr '柔光水彩'}"/><ComboBoxItem Content="{local:Tr '立體象徵'}"/></ComboBox>
+    <Grid Grid.Row="1" ColumnDefinitions="Auto,12,*" Margin="0,12,0,12">
+     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+      <ToggleButton x:Name="MatchedFilter" Content="{local:Tr '主題配對'}" Classes="alignment" Width="80" Height="40" IsChecked="True" CornerRadius="6,0,0,6" Click="Collection_Click"/>
+      <ToggleButton x:Name="GenericFilter" Content="{local:Tr '通用背景'}" Classes="alignment" Width="80" Height="40" CornerRadius="0,6,6,0" Click="Collection_Click"/>
+     </StackPanel>
+     <WrapPanel x:Name="StyleFilters" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right"/>
     </Grid>
     <ScrollViewer x:Name="GalleryScroll" Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" AllowAutoHide="False" Focusable="True"><WrapPanel x:Name="Gallery" Orientation="Horizontal"/></ScrollViewer>
     <Border x:Name="MatchingStatus" Grid.Row="2" IsVisible="False" Background="#F4FFFFFF" CornerRadius="10" Padding="24">
@@ -17,7 +20,7 @@
       <TextBlock x:Name="MatchProgressPercent" Text="" FontSize="15" HorizontalAlignment="Right"/>
      </StackPanel>
     </Border>
-    <Grid Grid.Row="3" Margin="0,12,0,0"><TextBlock x:Name="GalleryInfo" FontSize="18" FontWeight="Bold" Foreground="#1666B3" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/><Button x:Name="ShowAllButton" HorizontalAlignment="Right" Content="{local:Tr '顯示全部'}" Click="ShowAll_Click"/></Grid>
+    <TextBlock Grid.Row="3" Margin="0,12,0,0" x:Name="GalleryInfo" FontSize="18" FontWeight="Bold" Foreground="#1666B3" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
    </Grid>
    <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Disabled"><StackPanel Spacing="10">
     <TextBlock x:Name="MatchedTheme" Text="{local:Tr '正在準備圖片關鍵字…'}" FontWeight="SemiBold" TextWrapping="Wrap"/>
@@ -32,7 +35,7 @@
     <TextBlock Text="{local:Tr '圖片會裁切填滿 16:9，並嵌入 PowerPoint。'}" Classes="caption" TextWrapping="Wrap"/>
    </StackPanel></ScrollViewer>
   </Grid>
-  <TextBlock Grid.Row="2" x:Name="Message" Foreground="#426B54" FontSize="13" TextWrapping="Wrap" Margin="0,12,0,0"/>
-  <Grid Grid.Row="3" Margin="0,16,0,0"><Button Content="{local:Tr '使用預設背景'}" Classes="link" HorizontalAlignment="Left" Click="Default_Click"/><StackPanel Orientation="Horizontal" HorizontalAlignment="Right"><Button Content="{local:Tr '取消'}" Click="Cancel_Click" Margin="0,0,10,0"/><Button x:Name="ApplyButton" Content="{local:Tr '套用背景'}" Click="Apply_Click" Classes="primary"/></StackPanel></Grid>
+  <TextBlock Grid.Row="2" x:Name="Message" IsVisible="False" Foreground="#A34F30" FontSize="13" TextWrapping="Wrap" Margin="0,12,0,0"/>
+  <StackPanel Grid.Row="3" Margin="0,16,0,0" Orientation="Horizontal" HorizontalAlignment="Right"><Button Content="{local:Tr '取消'}" Click="Cancel_Click" Margin="0,0,10,0"/><Button x:Name="ApplyButton" Content="{local:Tr '套用背景'}" Click="Apply_Click" Classes="primary"/></StackPanel>
  </Grid>
 </Window>

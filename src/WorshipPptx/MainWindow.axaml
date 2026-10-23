@@ -13,7 +13,7 @@
      <TextBlock Text="{local:Tr '專心敬拜，輕鬆預備。'}" FontSize="12" Foreground="#738077" Margin="0,10,0,16"/>
 
      <Button Content="{local:Tr '設定'}" Click="Settings_Click"/>
-     <TextBlock Text="{local:Tr 'v0.92 預覽 · 本機儲存'}" Classes="caption" Margin="4,12,0,0"/>
+     <TextBlock x:Name="VersionLabel" Classes="caption" Margin="4,12,0,0"/>
     </StackPanel>
     <ListBox x:Name="HistoryList" Background="Transparent" BorderThickness="0" SelectionChanged="History_Changed" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 

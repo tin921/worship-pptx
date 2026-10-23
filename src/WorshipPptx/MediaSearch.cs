@@ -93,18 +93,20 @@ public static class MediaSearch
             var scenes=JsonSerializer.Deserialize<List<MediaScene>>(File.ReadAllText(Path.Combine(MediaLibrary.Root,"scenes.json")),MediaLibrary.JsonOptions);
             var text=cleanTitle+" "+cleanLyrics;
             var scored=scenes.Select(s=>new { Scene=s, Hits=s.Cues.Count(c=>text.Contains(c,StringComparison.Ordinal)), TitleHit=s.Cues.Any(c=>cleanTitle.Contains(c,StringComparison.Ordinal)) })
-                .Where(s=>custom || s.Scene.Core || s.Hits>0)
-                .Select(s=>new { s.Scene, Score=.7f*Dot(s.Scene.Vector,document)+.3f*chunks.Max(c=>Dot(s.Scene.Vector,c))+Math.Min(s.Hits,2)*.18f+(s.TitleHit ? .35f : 0) }).ToList();
+                .Select(s=>new { s.Scene, Preferred=custom || s.Scene.Core || s.Hits>0, Score=.7f*Dot(s.Scene.Vector,document)+.3f*chunks.Max(c=>Dot(s.Scene.Vector,c))+Math.Min(s.Hits,2)*.18f+(s.TitleHit ? .35f : 0) }).ToList();
             var chosen=new List<MediaScene>();
-            while(chosen.Count<4 && scored.Count>0)
+            while(chosen.Count<4 && scored.Any(s=>s.Preferred))
             {
-                var next=scored.MaxBy(s=>.85*s.Score-.15*chosen.Select(c=>Dot(c.Vector,s.Scene.Vector)).DefaultIfEmpty(0).Max());
+                var next=scored.Where(s=>s.Preferred).MaxBy(s=>.85*s.Score-.15*chosen.Select(c=>Dot(c.Vector,s.Scene.Vector)).DefaultIfEmpty(0).Max());
                 chosen.Add(next.Scene); scored.Remove(next);
             }
             cancellation.ThrowIfCancellationRequested();
             var first=chosen.First();
             completed++; Report(ChineseText.Ui("正在整理圖片關鍵字…"));
-            var result=new MediaMatch(first.Title,ImageKeywords.ForDisplay(first),chosen.SelectMany(s=>MediaLibrary.All.Where(a=>a.Theme==s.Id)).ToList());
+            // Keep the strongest diverse matches first, then browse the remaining
+            // ranked themes by scrolling, without a separate "show all" action.
+            var ranked=chosen.Concat(scored.OrderByDescending(s=>s.Score).Select(s=>s.Scene));
+            var result=new MediaMatch(first.Title,ImageKeywords.ForDisplay(first),ranked.SelectMany(s=>MediaLibrary.All.Where(a=>a.Theme==s.Id)).ToList());
             cancellation.ThrowIfCancellationRequested();
             if(matches.Count>=128) matches.Remove(matchOrder.Dequeue());
             matches[key]=new(first,result.Assets); matchOrder.Enqueue(key);

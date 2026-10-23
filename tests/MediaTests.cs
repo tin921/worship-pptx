@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Xml.Linq;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using DocumentFormat.OpenXml;
@@ -45,11 +46,12 @@ static class MediaTests
             check(!MediaSearch.IsModelLoaded,"Model loaded before search");
             var picker=new BackgroundDialog(images,""); picker.Show();
             picker.FindControl<TextBox>("SearchText").Text="彩虹";
-            picker.FindControl<ComboBox>("CollectionFilter").SelectedIndex=3;
+            picker.FindControl<ToggleButton>("GenericFilter").RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
             Dispatcher.UIThread.RunJobs();
-            picker.FindControl<ComboBox>("CollectionFilter").SelectedIndex=0;
-            foreach(var style in new[]{4,5}) {
-                picker.FindControl<ComboBox>("StyleFilter").SelectedIndex=style; Dispatcher.UIThread.RunJobs();
+            picker.FindControl<ToggleButton>("MatchedFilter").RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            foreach(var style in new[]{"watercolour","sculpted"}) {
+                foreach(var filter in picker.FindControl<WrapPanel>("StyleFilters").Children.Cast<ToggleButton>()) filter.IsChecked=(string)filter.Tag==style;
+                Dispatcher.UIThread.RunJobs();
                 check(picker.FindControl<WrapPanel>("Gallery").Children.Count==1,"New style filter did not find its sample");
             }
             check(!MediaSearch.IsModelLoaded,"Typing/filtering initialized model"); picker.Close();
@@ -75,13 +77,13 @@ static class MediaTests
         test("Opening Edit Background matches the song and creates an editable Google Images link",()=> {
             var picker=new BackgroundDialog(images,"","恩典之路","[v1]\n前路穿過高山低谷\n每一步都被引領");
             check(!MediaSearch.IsModelLoaded,"Constructing an unopened picker initialized the model"); picker.Show();
-            check(picker.FindControl<Border>("MatchingStatus").IsVisible && picker.FindControl<ProgressBar>("MatchProgressBar").IsIndeterminate && picker.FindControl<TextBlock>("Message").Text.Contains("擷取主題及關鍵字"),"First match has no visible loading explanation");
+            check(picker.FindControl<Border>("MatchingStatus").IsVisible && picker.FindControl<ProgressBar>("MatchProgressBar").IsIndeterminate,"First match has no visible loading explanation");
             var button=picker.FindControl<Button>("SearchButton");
             var timer=Stopwatch.StartNew();
             while(!button.IsEnabled && timer.Elapsed.TotalSeconds<40) { Dispatcher.UIThread.RunJobs(); Thread.Sleep(10); }
             check(button.IsEnabled && MediaSearch.IsModelLoaded,"Search did not finish");
             check(!picker.FindControl<Border>("MatchingStatus").IsVisible && picker.FindControl<ProgressBar>("MatchProgressBar").Value==100,"Completed progress overlay remained visible");
-            check(picker.FindControl<TextBlock>("Message").Text.StartsWith("已按歌名及歌詞"),picker.FindControl<TextBlock>("Message").Text);
+            check(!picker.FindControl<TextBlock>("Message").IsVisible,"Successful match still shows the removed status line");
             check(picker.FindControl<WrapPanel>("Gallery").Children.Count>0,"No media returned");
             var keywords=picker.FindControl<TextBox>("SearchText"); var link=picker.FindControl<HyperlinkButton>("GoogleImageLink");
             check(!string.IsNullOrWhiteSpace(keywords.Text) && link.IsEnabled && link.NavigateUri.Host=="www.google.com","Keywords/link not populated");
@@ -101,6 +103,7 @@ static class MediaTests
             var simplified=MediaSearch.SearchAsync("","雨后彩虹带来盼望").Result;
             check(traditional.Select(a=>a.Id).SequenceEqual(simplified.Select(a=>a.Id)),"Traditional/Simplified results differ");
             check(traditional.First().Theme=="rainbow","Concrete visual cue not ranked first");
+            check(traditional.Count==MediaLibrary.All.Count(a=>a.Style!="generic") && traditional.Select(a=>a.Id).Distinct().Count()==traditional.Count,"Scrolling cannot reach all ranked themed images");
             if(OperatingSystem.IsWindows() && File.Exists(Path.Combine(AppContext.BaseDirectory,"VC-RUNTIME-MANIFEST.json"))) {
                 foreach(var name in new[]{"msvcp140.dll","msvcp140_1.dll","vcruntime140.dll","vcruntime140_1.dll"}) {
                     var loaded=Process.GetCurrentProcess().Modules.Cast<ProcessModule>().FirstOrDefault(m=>m.ModuleName.Equals(name,StringComparison.OrdinalIgnoreCase));

@@ -5,6 +5,7 @@ using System.Linq;
 using Avalonia;
 using Avalonia.Automation;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
@@ -22,10 +23,27 @@ public partial class BackgroundDialog
     private List<MediaAsset> galleryResults=new();
     private int galleryColumns=1, galleryBatch=1, galleryLoaded, galleryRevision;
     private double galleryCardWidth, galleryCardHeight;
-    private bool galleryScrolled, galleryQueued, galleryRestoring, changingFilters;
+    private bool galleryScrolled, galleryQueued, galleryRestoring;
+    private readonly List<ToggleButton> styleButtons=new();
+    private readonly List<Bitmap> styleImages=new();
 
     private void InitializeGallery()
     {
+        foreach(var style in new[]{"photo","illustration","abstract","watercolour","sculpted"})
+        {
+            var sample=MediaLibrary.All.FirstOrDefault(a=>a.Style==style);
+            if(sample==null) continue;
+            using var stream=File.OpenRead(MediaLibrary.FilePath(sample.Still));
+            var bitmap=Bitmap.DecodeToWidth(stream,120); styleImages.Add(bitmap);
+            var tile=new Grid { RowDefinitions=new RowDefinitions("30,18") };
+            tile.Children.Add(new Image { Source=bitmap,Stretch=Stretch.UniformToFill });
+            var label=new TextBlock { Text=sample.StyleLabel,FontSize=10,TextAlignment=TextAlignment.Center,VerticalAlignment=VerticalAlignment.Center };
+            var strip=new Border { Background=Brush.Parse("#F0F1EF"),Child=label }; Grid.SetRow(strip,1); tile.Children.Add(strip);
+            var button=new ToggleButton { Tag=style,Name="Style_"+style,Content=tile,IsChecked=true,Width=60,Height=54,Padding=new Thickness(2),Margin=new Thickness(4,2,0,2),CornerRadius=new CornerRadius(5),ClipToBounds=true };
+            button.Classes.Add("alignment"); ToolTip.SetTip(button,sample.StyleLabel); AutomationProperties.SetName(button,sample.StyleLabel);
+            button.IsCheckedChanged+=(_,_)=> { if(ready) ResetGallery(); };
+            styleButtons.Add(button); StyleFilters.Children.Add(button);
+        }
         GalleryScroll.SizeChanged+=(_,_)=>QueueGalleryLayout();
         GalleryScroll.ScrollChanged+=(_,e)=> {
             if(e.ViewportDelta.X!=0 || e.ViewportDelta.Y!=0) QueueGalleryLayout();
@@ -36,46 +54,27 @@ public partial class BackgroundDialog
         GalleryScroll.AddHandler(KeyDownEvent,Gallery_KeyDown,RoutingStrategies.Tunnel);
     }
 
-    private void ResetFilters()
+    private void Collection_Click(object sender,RoutedEventArgs e)
     {
-        changingFilters=true;
-        try { CollectionFilter.SelectedIndex=StyleFilter.SelectedIndex=0; }
-        finally { changingFilters=false; }
-    }
-
-    private void Filter_Changed(object sender,SelectionChangedEventArgs e)
-    {
-        if(!ready || changingFilters) return;
-        if(sender==CollectionFilter && CollectionFilter.SelectedIndex>=3)
-        {
-            results=null; changingFilters=true;
-            try { StyleFilter.SelectedIndex=0; }
-            finally { changingFilters=false; }
-        }
+        MatchedFilter.IsChecked=sender==MatchedFilter;
+        GenericFilter.IsChecked=sender==GenericFilter;
+        StyleFilters.IsEnabled=!busy && GenericFilter.IsChecked!=true;
         ResetGallery();
     }
-
-    private void ShowAll_Click(object sender,RoutedEventArgs e)
+    private void ShowMatchedGallery()
     {
-        results=null; ResetFilters(); ResetGallery();
-        Message.Text=ChineseText.Ui("瀏覽素材不會執行歌詞分析。");
+        MatchedFilter.IsChecked=true; GenericFilter.IsChecked=false;
+        ResetGallery();
     }
 
     private void ResetGallery()
     {
         if(!ready) return;
         Gallery.Children.Clear(); galleryCards.Clear(); DisposeGalleryImages();
-        IEnumerable<MediaAsset> all=results ?? MediaLibrary.All;
-        all=CollectionFilter.SelectedIndex switch {
-            1=>all.Where(a=>a.Core && a.Style!="generic"),
-            2=>all.Where(a=>!a.Core && a.Style!="generic"),
-            3=>all.Where(a=>a.Style=="generic" && a.Lighting=="daylight"),
-            4=>all.Where(a=>a.Style=="generic" && a.Lighting=="night"), _=>all };
-        if(StyleFilter.SelectedIndex>0)
-        {
-            var style=new[]{"","photo","illustration","abstract","watercolour","sculpted"}[StyleFilter.SelectedIndex];
-            all=all.Where(a=>a.Style==style);
-        }
+        var selectedStyles=styleButtons.Where(b=>b.IsChecked==true).Select(b=>(string)b.Tag).ToHashSet();
+        IEnumerable<MediaAsset> all=GenericFilter.IsChecked==true
+            ? MediaLibrary.All.Where(a=>a.Style=="generic")
+            : (results ?? MediaLibrary.All).Where(a=>a.Style!="generic" && selectedStyles.Contains(a.Style));
         galleryResults=all.ToList(); galleryLoaded=0; galleryScrolled=false;
         GalleryScroll.Offset=default; ReflowGallery(true);
     }
@@ -191,5 +190,7 @@ public partial class BackgroundDialog
     private void DisposeGallery()
     {
         Gallery.Children.Clear(); galleryCards.Clear(); DisposeGalleryImages();
+        foreach(var bitmap in styleImages) bitmap.Dispose();
+        styleImages.Clear();
     }
 }

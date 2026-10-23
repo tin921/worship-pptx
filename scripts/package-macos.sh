@@ -2,7 +2,7 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 RID="${1:-osx-arm64}"
-VERSION="${2:-0.92.0}"
+VERSION="${2:-$(sed -n 's/.*<Version>\(.*\)<\/Version>.*/\1/p' "$ROOT/src/WorshipPptx/WorshipPptx.csproj" | head -n 1)}"
 case "$RID" in osx-arm64|osx-x64) ;; *) echo 'Use osx-arm64 or osx-x64.' >&2; exit 1;; esac
 if [[ "$(uname -s)" != Darwin ]]; then echo 'Run this packaging script on macOS.' >&2; exit 1; fi
 if [[ ! -f "$ROOT/assets/models/model.onnx" ]]; then

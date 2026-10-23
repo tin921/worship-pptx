@@ -39,8 +39,8 @@ namespace WorshipPptx
         private async void Search_Click(object sender,RoutedEventArgs e) => await MatchSong(true);
         private async Task MatchSong(bool custom=false)
         {
-            if(!custom && string.IsNullOrWhiteSpace(songTitle+songLyrics)) { MatchedTheme.Text=ChineseText.Ui("可自行輸入圖片關鍵字"); Message.Text=ChineseText.Ui("填寫歌名或歌詞後，可自動配對主題。"); return; }
-            if(busy) return; busy=true; SetEnabled(false); Message.Text=ChineseText.Ui("正在擷取主題及關鍵字…");
+            if(!custom && string.IsNullOrWhiteSpace(songTitle+songLyrics)) { MatchedTheme.Text=ChineseText.Ui("可自行輸入圖片關鍵字"); return; }
+            if(busy) return; busy=true; SetEnabled(false); Message.IsVisible=false;
             MatchingStatus.IsVisible=true; ShowMatchProgress(new(null,ChineseText.Ui("正在準備分析…")));
             try
             {
@@ -48,12 +48,11 @@ namespace WorshipPptx
                 var match=custom ? await MediaSearch.MatchTermsAsync(SearchText.Text,cancellation.Token,progress) : await MediaSearch.MatchAsync(songTitle,songLyrics,cancellation.Token,progress);
                 if(cancellation.IsCancellationRequested) return;
                 results=match.Assets; if(!custom) SearchText.Text=ChineseText.Content(match.Keywords); MatchedTheme.Text=ChineseText.Ui("配對主題：")+ChineseText.Ui(match.Theme);
-                ResetFilters(); ResetGallery();
-                Message.Text=ChineseText.Ui(custom ? "已按搜尋字詞配對主題。可選擇內置圖片，或開啟右方 Google 圖片搜尋。" : "已按歌名及歌詞配對主題，並填入圖片關鍵字。可選擇內置圖片，或開啟右方 Google 圖片搜尋。");
+                ShowMatchedGallery();
                 ShowMatchProgress(new(100,ChineseText.Ui("主題及關鍵字已就緒")));
             }
             catch(OperationCanceledException) { }
-            catch(Exception ex) { if(!cancellation.IsCancellationRequested) Message.Text=ChineseText.Ui("未能完成配對：")+ex.Message; }
+            catch(Exception ex) { if(!cancellation.IsCancellationRequested) ShowError(ChineseText.Ui("未能完成配對：")+ex.Message); }
             finally { busy=false; if(!cancellation.IsCancellationRequested) { MatchingStatus.IsVisible=false; SetEnabled(true); } }
         }
         private void ShowMatchProgress(MediaSearchProgress value)
@@ -75,16 +74,18 @@ namespace WorshipPptx
         private async Task Import(Func<Task<string>> action)
         {
             if(busy) return;
-            busy=true; SetEnabled(false); Message.Text=ChineseText.Ui("正在載入圖片…");
-            try { var path=await action(); if(cancellation.IsCancellationRequested) return; SelectBackground(path); Message.Text=ChineseText.Ui("圖片已就緒，按「套用背景」儲存。"); }
-            catch(Exception ex) { if(!cancellation.IsCancellationRequested) Message.Text=ex is OperationCanceledException ? ChineseText.Ui("下載逾時，請再試一次。") : ChineseText.Ui(ex.Message); }
+            busy=true; SetEnabled(false); Message.Text=ChineseText.Ui("正在載入圖片…"); Message.IsVisible=true;
+            try { var path=await action(); if(cancellation.IsCancellationRequested) return; SelectBackground(path); Message.IsVisible=false; }
+            catch(Exception ex) { if(!cancellation.IsCancellationRequested) ShowError(ex is OperationCanceledException ? ChineseText.Ui("下載逾時，請再試一次。") : ChineseText.Ui(ex.Message)); }
             finally { busy=false; SetEnabled(true); }
         }
         private void SetEnabled(bool enabled)
         {
-            SearchText.IsEnabled=SearchButton.IsEnabled=ShowAllButton.IsEnabled=CollectionFilter.IsEnabled=StyleFilter.IsEnabled=BrowseButton.IsEnabled=PasteButton.IsEnabled=UrlButton.IsEnabled=ApplyButton.IsEnabled=enabled;
+            SearchText.IsEnabled=SearchButton.IsEnabled=MatchedFilter.IsEnabled=GenericFilter.IsEnabled=BrowseButton.IsEnabled=PasteButton.IsEnabled=UrlButton.IsEnabled=ApplyButton.IsEnabled=enabled;
+            StyleFilters.IsEnabled=enabled && GenericFilter.IsChecked!=true;
             UpdateGoogleLink();
         }
+        private void ShowError(string text) { Message.Text=text; Message.IsVisible=true; }
         private async void Browse_Click(object sender,RoutedEventArgs e)
         {
             var files=await StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions { Title=ChineseText.Ui("選擇背景圖片"), AllowMultiple=false, FileTypeFilter=new[]{FilePickerFileTypes.ImageAll} });
@@ -108,7 +109,6 @@ namespace WorshipPptx
             if(e.Key==Key.Escape) { Close(false); return; }
             if(e.Key==Key.V && (e.KeyModifiers & (KeyModifiers.Control|KeyModifiers.Meta))!=0 && e.Source is not TextBox) { e.Handled=true; await Paste(); }
         }
-        private void Default_Click(object sender,RoutedEventArgs e) { if(busy) return; SelectBackground(""); Message.Text=ChineseText.Ui("已選擇預設山景。"); }
         private void Apply_Click(object sender,RoutedEventArgs e) { if(!busy) Close(true); }
         private void Cancel_Click(object sender,RoutedEventArgs e) => Close(false);
         private void Image_DragOver(object sender,DragEventArgs e) { e.DragEffects=CanImport(e.DataTransfer) ? DragDropEffects.Copy : DragDropEffects.None; e.Handled=true; }

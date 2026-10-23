@@ -1,4 +1,4 @@
-param([string]$Version='0.92.0')
+param([string]$Version=(& "$PSScriptRoot/version.ps1"))
 $ErrorActionPreference='Stop'
 $root=Split-Path -Parent $PSScriptRoot
 $build=Join-Path $root 'artifacts/publish/win-x64'

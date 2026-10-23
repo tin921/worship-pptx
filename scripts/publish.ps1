@@ -1,7 +1,7 @@
 param(
     [ValidateSet('win-x64','win-arm64','osx-arm64','osx-x64')][string]$Runtime = 'win-x64',
     [string]$Output,
-    [string]$Version = '0.92.0'
+    [string]$Version = (& "$PSScriptRoot/version.ps1")
 )
 . (Join-Path $PSScriptRoot 'dotnet.ps1')
 & (Join-Path $PSScriptRoot 'prepare-model.ps1')

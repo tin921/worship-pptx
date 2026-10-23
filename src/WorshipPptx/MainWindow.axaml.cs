@@ -42,6 +42,7 @@ namespace WorshipPptx
         {
             loading=true; this.store=store; settings=store.LoadSettings();
             ChineseText.SetLanguage(settings.Language); InitializeComponent(); FontPicker.ItemsSource=FontCatalog.All;
+            VersionLabel.Text="v"+typeof(MainWindow).Assembly.GetName().Version.ToString(3);
             UpdateLanguageButtons();
             BuildColorPalette();
             InitializeNavigation();
