@@ -10,10 +10,12 @@ public partial class MainWindow
 {
     private bool syncingBackground;
     private void Preview_SizeChanged(object sender,SizeChangedEventArgs e)
+        => Avalonia.Threading.Dispatcher.UIThread.Post(PositionBackgroundControls,Avalonia.Threading.DispatcherPriority.Background);
+    private void PositionBackgroundControls()
     {
-        if(ImageControls==null) return;
-        var scale=Math.Min(e.NewSize.Width/1280,e.NewSize.Height/720);
-        ImageControls.Margin=new Thickness((e.NewSize.Width-1280*scale)/2+10,0,0,(e.NewSize.Height-720*scale)/2+10);
+        if(ImageControls==null || SlideHost?.Parent is not Control surface) return;
+        var picture=SlideHost.Bounds;
+        ImageControls.Margin=new Thickness(picture.Left+10,0,0,Math.Max(0,surface.Bounds.Height-picture.Bottom)+10);
     }
     private void SyncBackgroundControls()
     {

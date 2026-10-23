@@ -90,7 +90,7 @@
        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
        <DockPanel Margin="0,0,0,6"><Border DockPanel.Dock="Right" Background="#E9F0E5" CornerRadius="10" Padding="9,3"><TextBlock x:Name="LayoutModeLabel" Text="{local:Tr '16:9 · 文字只用上半部'}" FontSize="12" Foreground="#426B54"/></Border><TextBlock Text="{local:Tr '畫面預覽'}" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/></DockPanel>
        <Border Grid.Row="1" Background="#E7EBE2" CornerRadius="8" ClipToBounds="True">
-        <Grid><Viewbox x:Name="SlideHost" Stretch="Uniform" SizeChanged="Preview_SizeChanged"/>
+        <Grid SizeChanged="Preview_SizeChanged"><Viewbox x:Name="SlideHost" Stretch="Uniform"/>
          <Border x:Name="ImageControls" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Padding="8" Background="#F2FFFFFF" CornerRadius="6">
           <StackPanel Spacing="5">
            <TextBlock Text="{local:Tr '拖動平移 · 滾輪縮放'}" FontSize="12" Foreground="#426B54"/>
@@ -102,7 +102,7 @@
            </StackPanel>
            <Grid ColumnDefinitions="Auto,*,Auto">
             <TextBlock Text="{local:Tr '不透明度'}" FontSize="12" VerticalAlignment="Center"/>
-            <Slider x:Name="BackgroundOpacity" Grid.Column="1" Width="82" Margin="5,0" Minimum="0" Maximum="100" Value="100" ValueChanged="BackgroundOpacity_Changed" AutomationProperties.Name="{local:Tr '背景不透明度'}"/>
+            <Slider x:Name="BackgroundOpacity" Grid.Column="1" Width="82" Height="24" MinHeight="0" Margin="5,0" Minimum="0" Maximum="100" Value="100" ValueChanged="BackgroundOpacity_Changed" AutomationProperties.Name="{local:Tr '背景不透明度'}"/>
             <TextBlock x:Name="OpacityLabel" Grid.Column="2" Text="100%" FontSize="11" VerticalAlignment="Center"/>
            </Grid>
           </StackPanel>

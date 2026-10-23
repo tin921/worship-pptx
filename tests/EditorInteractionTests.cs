@@ -60,6 +60,10 @@ static class EditorInteractionTests
             var window=new MainWindow(store); window.Show(); Pump();
             try {
                 var item=Item(window); var preview=(CompositionPreview)window.FindControl<Viewbox>("SlideHost").Child;
+                var toolbar=window.FindControl<Border>("ImageControls");
+                var toolbarBottom=toolbar.TranslatePoint(new Point(0,toolbar.Bounds.Height),window).Value.Y;
+                var pictureBottom=preview.TranslatePoint(new Point(0,720),window).Value.Y;
+                check(Math.Abs(toolbarBottom-(pictureBottom-10))<1,$"Image toolbar outside picture: toolbar={toolbarBottom}, picture={pictureBottom}, margin={toolbar.Margin}, host={window.FindControl<Viewbox>("SlideHost").Bounds}, parent={((Control)toolbar.Parent).Bounds}");
                 check(item.Preview.X==58 && item.Preview.Y==58 && item.Preview.BackgroundSource=="Slide" && window.FindControl<ToggleButton>("CompositionToggle")==null,"PiP did not become fixed at default corner");
                 check(!preview.Children.OfType<Border>().Any(b=>b.Name?.StartsWith("PipHandle")==true),"PiP resize handles remain");
                 void Drag(Point from,Point to) {

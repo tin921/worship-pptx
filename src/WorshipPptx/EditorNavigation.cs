@@ -29,7 +29,7 @@ public partial class MainWindow
     private void InitializeNavigation()
     {
         InputFocus.Attach(this);
-        Opened+=(_,_)=>Focus();
+        Opened+=(_,_)=> { Focus(); Avalonia.Threading.Dispatcher.UIThread.Post(PositionBackgroundControls,Avalonia.Threading.DispatcherPriority.Loaded); };
         AddHandler(KeyDownEvent,Main_KeyDown,RoutingStrategies.Tunnel);
     }
     private void Main_KeyDown(object sender,KeyEventArgs e)
