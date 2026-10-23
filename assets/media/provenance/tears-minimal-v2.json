@@ -1,0 +1,15 @@
+{
+  "source": "OpenAI built-in image generation",
+  "sha256": "f6dae3f541ee944a1c10aa974b6cd92a44a74015d631f25ae5a08c5daea124d2",
+  "variant": 2,
+  "id": "tears-minimal-v2",
+  "theme": "tears",
+  "original_file": "exec-5acf8ac1-5c8d-42ff-8be9-2a970861204c.png",
+  "file": "assets/media/themes/tears/minimal-v2.jpg",
+  "style": "minimal",
+  "option": "雨窗盼望",
+  "width": 1280,
+  "height": 720,
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 淚滴與雨窗. Interpretation: 雨窗盼望. Palette: pale mint, petrol blue, white, soft peach. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear."
+}

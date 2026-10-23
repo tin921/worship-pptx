@@ -22,7 +22,7 @@ public sealed class CompositionPreview : Canvas
     public event Action InteractionCompleted;
     public CompositionPreview(SlideData slide,PreviewLayout layout,bool editable=false,BackgroundTransform adjustment=null)
     {
-        this.editable=editable; Width=1280; Height=720; Background=Brushes.Black; ClipToBounds=true; Focusable=editable;
+        this.editable=editable; Width=1280; Height=720; Background=Brushes.White; ClipToBounds=true; Focusable=editable;
         SetSlide(slide,layout,adjustment);
         LayoutUpdated+=(_,_)=> {
             var root=TopLevel.GetTopLevel(this); if(root==null) return;

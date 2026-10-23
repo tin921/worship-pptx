@@ -1,16 +1,26 @@
-<Window Icon="/Assets/app.ico" x:Class="WorshipPptx.MainWindow" xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:WorshipPptx" Title="{local:Tr '敬拜簡報 · Worship PPTX'}" Width="1440" Height="940" MinWidth="1120" MinHeight="760" WindowStartupLocation="CenterScreen">
+<Window Icon="/Assets/app.ico" x:Class="WorshipPptx.MainWindow" xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:WorshipPptx" Title="{local:Tr '敬拜工坊 · Worship PPTX'}" Width="1440" Height="940" MinWidth="1120" MinHeight="760" WindowStartupLocation="CenterScreen">
  <Grid>
-  <Grid.ColumnDefinitions><ColumnDefinition Width="178"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+  <Grid.ColumnDefinitions><ColumnDefinition Width="210"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
   <Border Background="#EBEFE7" BorderBrush="#DDE4D9" BorderThickness="0,0,1,0">
    <DockPanel Margin="16,12,16,20">
     <StackPanel DockPanel.Dock="Top">
-     <TextBlock x:Name="AppHeading" Text="{local:Tr '敬拜簡報'}" FontSize="23" FontWeight="Bold" Margin="0,0,0,3"/>
-     <TextBlock x:Name="VersionLabel" FontSize="12" Foreground="#738077" Margin="0,0,0,28"/>
-     <Button Content="{local:Tr '＋ 新增崇拜'}" Click="NewService_Click" Classes="primary" Padding="8,11" Margin="0,0,0,26"/>
+     <TextBlock x:Name="AppHeading" Text="{local:Tr '敬拜工坊'}" FontSize="23" FontWeight="Bold" Margin="0,0,0,3"/>
+     <TextBlock x:Name="VersionLabel" FontSize="12" Foreground="#738077" Margin="0,0,0,10"/>
+     <Button x:Name="NewServiceButton" Content="{local:Tr '＋ 新增崇拜'}" Click="NewService_Click" Classes="primary" HorizontalAlignment="Stretch" Height="40" Padding="8,6" Margin="0,0,0,10"/>
     </StackPanel>
-    <ListBox x:Name="HistoryList" Background="Transparent" BorderThickness="0" SelectionChanged="History_Changed" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+    <ListBox x:Name="HistoryList" Classes="history" Padding="0" Background="Transparent" BorderThickness="0" SelectionChanged="History_Changed" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
-     <ListBox.ItemTemplate><DataTemplate><StackPanel><TextBlock Text="{Binding Title}" Classes.past-service="{Binding IsPast}" FontSize="15" FontWeight="SemiBold" TextWrapping="Wrap"/><TextBlock Text="{Binding DisplayDate}" FontSize="12" Foreground="#738077" Margin="0,5,0,0"/><TextBlock Text="{Binding TabNames}" FontSize="12" Foreground="#526A59" TextWrapping="Wrap" Margin="0,8,0,4"/></StackPanel></DataTemplate></ListBox.ItemTemplate>
+     <ListBox.ItemTemplate><DataTemplate><StackPanel>
+      <StackPanel IsVisible="{Binding !$parent[ListBoxItem].IsSelected}">
+       <TextBlock Text="{Binding Title}" Classes.past-service="{Binding IsPast}" FontSize="15" FontWeight="SemiBold" TextWrapping="Wrap"/>
+       <TextBlock Text="{Binding DisplayDate}" FontSize="12" Foreground="#738077" Margin="0,5,0,0"/>
+      </StackPanel>
+      <StackPanel IsVisible="{Binding $parent[ListBoxItem].IsSelected}" Spacing="6">
+       <TextBox Name="ServiceTitle" Text="{Binding Title, Mode=OneWay}" HorizontalAlignment="Stretch" MinWidth="0" Height="38" MinHeight="0" Padding="7,5" FontSize="15" FontWeight="SemiBold" TextChanged="Metadata_Changed" AutomationProperties.Name="{local:Tr '崇拜名稱'}"/>
+       <CalendarDatePicker Name="ServiceDate" SelectedDate="{Binding Date, Mode=OneWay}" HorizontalAlignment="Stretch" MinWidth="0" Height="38" SelectedDateFormat="Custom" CustomDateFormatString="yyyy-MM-dd" FontSize="13" SelectedDateChanged="Date_Changed" AutomationProperties.Name="{local:Tr '崇拜日期'}"/>
+      </StackPanel>
+      <TextBlock Text="{Binding TabNames}" FontSize="12" Foreground="#526A59" TextWrapping="Wrap" Margin="0,8,0,4"/>
+     </StackPanel></DataTemplate></ListBox.ItemTemplate>
     </ListBox>
    </DockPanel>
   </Border>
@@ -27,10 +37,6 @@
      <StackPanel x:Name="LanguagePanel" DockPanel.Dock="Right" Orientation="Horizontal" Margin="12,0,0,0" Height="56" VerticalAlignment="Top" ToolTip.Tip="{local:Tr '切換介面及簡報文字；保留原文'}">
       <ToggleButton x:Name="TraditionalButton" Content="繁體" Tag="zh-Hant" Click="Language_Click" Classes="alignment" Width="58" Height="44" FontSize="18" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" CornerRadius="6,0,0,6" AutomationProperties.Name="繁體中文"/>
       <ToggleButton x:Name="SimplifiedButton" Content="简体" Tag="zh-Hans" Click="Language_Click" Classes="alignment" Width="58" Height="44" FontSize="18" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" CornerRadius="0,6,6,0" AutomationProperties.Name="简体中文"/>
-     </StackPanel>
-     <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Height="56" VerticalAlignment="Top" Margin="0,0,16,0" Spacing="10">
-      <TextBox x:Name="ServiceTitle" Width="124" Height="44" VerticalAlignment="Center" VerticalContentAlignment="Center" PlaceholderText="{local:Tr '崇拜名稱'}" FontSize="22" FontWeight="SemiBold" Background="Transparent" BorderThickness="0" Padding="0" TextChanged="Metadata_Changed" AutomationProperties.Name="{local:Tr '崇拜名稱'}"/>
-      <CalendarDatePicker x:Name="ServiceDate" Width="142" Height="44" VerticalAlignment="Center" VerticalContentAlignment="Center" SelectedDateChanged="Date_Changed" SelectedDateFormat="Custom" CustomDateFormatString="yyyy-MM-dd" PlaceholderText="{local:Tr '崇拜日期'}" FontSize="14" AutomationProperties.Name="{local:Tr '崇拜日期'}"/>
      </StackPanel>
      <ScrollViewer x:Name="TabScroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" AllowAutoHide="False" VerticalAlignment="Top" VerticalContentAlignment="Top"><TabControl x:Name="SongTabs" BorderThickness="0" Background="Transparent" VerticalAlignment="Top" SelectionChanged="Tab_Changed" DragDrop.AllowDrop="True"  DragDrop.DragOver="Tabs_DragOver" DragDrop.DragLeave="Tabs_DragLeave" DragDrop.Drop="Tabs_Drop" ToolTip.Tip="{local:Tr '拖動分頁以調整崇拜次序'}"><TabControl.Template><ControlTemplate TargetType="TabControl"><ItemsPresenter Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}"/></ControlTemplate></TabControl.Template><TabControl.ItemsPanel><ItemsPanelTemplate><StackPanel Orientation="Horizontal"/></ItemsPanelTemplate></TabControl.ItemsPanel></TabControl></ScrollViewer>
     </DockPanel>
@@ -55,8 +61,8 @@
       <Grid x:Name="BackgroundToolbar" ColumnDefinitions="*,16,*" Margin="0,0,0,8">
        <StackPanel>
         <TextBlock Text="{local:Tr '背景圖片'}" Classes="label" Height="28" VerticalAlignment="Center" Margin="0,0,0,9"/>
-        <Border x:Name="BackgroundBox" Height="146" CornerRadius="9" ClipToBounds="True" Background="#D5DFD1" DragDrop.AllowDrop="True" DragDrop.Drop="Background_Drop" DragDrop.DragOver="Background_DragOver">
-         <Grid><Viewbox x:Name="BackgroundHost" Stretch="Uniform" ToolTip.Tip="{local:Tr '拖動平移 · 滾輪縮放'}"/>
+        <Border x:Name="BackgroundBox" Height="146" CornerRadius="9" ClipToBounds="True" Background="White" DragDrop.AllowDrop="True" DragDrop.Drop="Background_Drop" DragDrop.DragOver="Background_DragOver">
+         <Grid><Viewbox x:Name="BackgroundHost" Stretch="UniformToFill" ToolTip.Tip="{local:Tr '拖動平移 · 滾輪縮放'}"/>
           <Border x:Name="ImageControls" Margin="8" ToolTip.Tip="{local:Tr '拖動平移 · 滾輪縮放'}">
            <Grid>
             <Grid.Styles>
@@ -65,9 +71,9 @@
              <Style Selector="Button.image-overlay:pointerover"><Setter Property="Background" Value="#BB20362B"/></Style>
              <Style Selector="Button.image-overlay:disabled /template/ ContentPresenter"><Setter Property="Opacity" Value="0.45"/></Style>
             </Grid.Styles>
-            <Button x:Name="EditBackground" Classes="image-overlay" Content="{local:Tr '編輯'}" Click="Background_Click" Height="28" Padding="9,2" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Top" ToolTip.Tip="{local:Tr '檔案 · 網址 · 拖放 · 貼上'}"/>
-            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,44" MaxWidth="172" Stretch="Uniform" StretchDirection="DownOnly">
-             <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button x:Name="EditBackground" Classes="image-overlay" Content="{local:Tr '編輯'}" Click="Background_Click" Height="36" Padding="13,5" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Top" ToolTip.Tip="{local:Tr '檔案 · 網址 · 拖放 · 貼上'}"/>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0" MaxWidth="144" Width="{Binding #BackgroundBox.Bounds.Width, Converter={x:Static local:HalfWidthConverter.Instance}}" Stretch="Uniform" StretchDirection="DownOnly">
+             <StackPanel Orientation="Horizontal" Spacing="4">
               <Border Background="#80000000" CornerRadius="33">
                <Grid x:Name="PanControls" RowDefinitions="22,22,22" ColumnDefinitions="22,22,22">
             <Grid.Styles><Style Selector="Button"><Setter Property="MinHeight" Value="0"/><Setter Property="Width" Value="22"/><Setter Property="Height" Value="22"/><Setter Property="Padding" Value="4"/><Setter Property="CornerRadius" Value="11"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Background" Value="Transparent"/><Setter Property="Foreground" Value="White"/></Style><Style Selector="Button /template/ ContentPresenter"><Setter Property="Background" Value="Transparent"/><Setter Property="Foreground" Value="White"/></Style><Style Selector="Button:pointerover /template/ ContentPresenter"><Setter Property="Background" Value="#663D6750"/></Style><Style Selector="Button:disabled /template/ ContentPresenter"><Setter Property="Opacity" Value="0.45"/></Style></Grid.Styles>
@@ -78,14 +84,15 @@
             <Button x:Name="PanDown" Grid.Row="2" Grid.Column="1" Tag="Down" Click="PanBackground_Click" ToolTip.Tip="{local:Tr '背景向下移動'}" AutomationProperties.Name="{local:Tr '背景向下移動'}"><PathIcon Data="M0,4 L6,10 L12,4 L10,2 L6,6 L2,2 Z"/></Button>
                </Grid>
               </Border>
-              <StackPanel Orientation="Horizontal" Spacing="4" VerticalAlignment="Center">
-               <Button x:Name="ZoomOut" Classes="image-overlay" Width="28" Height="28" Padding="6" CornerRadius="14" Click="ZoomOut_Click" ToolTip.Tip="{local:Tr '縮小背景'}" AutomationProperties.Name="{local:Tr '縮小背景'}"><PathIcon Data="M0,5 H12 V7 H0 Z"/></Button>
+              <StackPanel Orientation="Vertical" Spacing="4" VerticalAlignment="Center">
                <Button x:Name="ZoomIn" Classes="image-overlay" Width="28" Height="28" Padding="6" CornerRadius="14" Click="ZoomIn_Click" ToolTip.Tip="{local:Tr '放大背景'}" AutomationProperties.Name="{local:Tr '放大背景'}"><PathIcon Data="M0,5 H5 V0 H7 V5 H12 V7 H7 V12 H5 V7 H0 Z"/></Button>
-               <ToggleButton x:Name="FlipBackground" Width="28" Height="28" MinHeight="0" Padding="5" CornerRadius="14" Background="#80000000" Foreground="White" BorderThickness="0" Click="FlipBackground_Click" ToolTip.Tip="{local:Tr '水平翻轉'}" AutomationProperties.Name="{local:Tr '水平翻轉'}"><ToggleButton.Styles><Style Selector="ToggleButton /template/ ContentPresenter"><Setter Property="Background" Value="#80000000"/><Setter Property="Foreground" Value="White"/></Style><Style Selector="ToggleButton:checked /template/ ContentPresenter"><Setter Property="Background" Value="#CC28543E"/></Style></ToggleButton.Styles><PathIcon Data="M8,0 H10 V18 H8 Z M0,4 L6,9 L0,14 Z M18,4 V14 L12,9 Z"/></ToggleButton>
+               <Button x:Name="ZoomOut" Classes="image-overlay" Width="28" Height="28" Padding="6" CornerRadius="14" Click="ZoomOut_Click" ToolTip.Tip="{local:Tr '縮小背景'}" AutomationProperties.Name="{local:Tr '縮小背景'}"><PathIcon Data="M0,5 H12 V7 H0 Z"/></Button>
+               </StackPanel>
+              <StackPanel VerticalAlignment="Center"><ToggleButton x:Name="FlipBackground" Width="28" Height="28" MinHeight="0" Padding="5" CornerRadius="14" Background="#80000000" Foreground="White" BorderThickness="0" Click="FlipBackground_Click" ToolTip.Tip="{local:Tr '水平翻轉'}" AutomationProperties.Name="{local:Tr '水平翻轉'}"><ToggleButton.Styles><Style Selector="ToggleButton /template/ ContentPresenter"><Setter Property="Background" Value="#80000000"/><Setter Property="Foreground" Value="White"/></Style><Style Selector="ToggleButton:checked /template/ ContentPresenter"><Setter Property="Background" Value="#CC28543E"/></Style></ToggleButton.Styles><PathIcon Data="M8,0 H10 V18 H8 Z M0,4 L6,9 L0,14 Z M18,4 V14 L12,9 Z"/></ToggleButton>
               </StackPanel>
              </StackPanel>
             </Viewbox>
-            <Grid ColumnDefinitions="*,36" VerticalAlignment="Bottom" Height="40">
+            <Grid x:Name="OpacityControls" ColumnDefinitions="*,32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="40" Width="{Binding #BackgroundBox.Bounds.Width, Converter={x:Static local:HalfWidthConverter.Instance}}">
              <Slider x:Name="BackgroundOpacity" Margin="0" Minimum="0" Maximum="100" Value="100" ValueChanged="BackgroundOpacity_Changed" ToolTip.Tip="{local:Tr '背景不透明度'}" AutomationProperties.Name="{local:Tr '背景不透明度'}"/>
              <Border Grid.Column="1" Background="#80000000" CornerRadius="4" Padding="3,2" VerticalAlignment="Center"><TextBlock x:Name="OpacityLabel" Text="100%" FontSize="10" Foreground="White" TextAlignment="Center"/></Border>
             </Grid>
@@ -120,14 +127,11 @@
       </Grid>
       <Grid Grid.Row="1">
        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
-       <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,6">
-        <TextBlock Text="{local:Tr '畫面預覽'}" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/>
-        <TextBlock x:Name="PreviewInfo" Classes="caption" FontSize="14" VerticalAlignment="Center"/>
-       </StackPanel>
-       <Viewbox x:Name="SlideHost" Grid.Row="1" Stretch="Uniform" VerticalAlignment="Top"/>
-       <Grid Grid.Row="2" ColumnDefinitions="Auto,*,Auto" Margin="0,6,0,0">
-        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right"><Button Content="‹" Width="36" Height="30" MinHeight="0" Padding="0" Click="Previous_Click" FontSize="18"/><Button Content="›" Width="36" Height="30" MinHeight="0" Padding="0" Margin="7,0,0,0" Click="Next_Click" FontSize="18"/></StackPanel>
+       <Grid x:Name="PreviewHeader" ColumnDefinitions="*,Auto" Margin="0,12,0,8">
+        <StackPanel Orientation="Horizontal" Spacing="10"><TextBlock Text="{local:Tr '畫面預覽'}" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/><TextBlock x:Name="PreviewInfo" Classes="caption" FontSize="14" VerticalAlignment="Center"/></StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Horizontal"><Button x:Name="PreviousPreview" Content="‹" Width="36" Height="30" MinHeight="0" Padding="0" Click="Previous_Click" FontSize="18"/><Button x:Name="NextPreview" Content="›" Width="36" Height="30" MinHeight="0" Padding="0" Margin="7,0,0,0" Click="Next_Click" FontSize="18"/></StackPanel>
        </Grid>
+       <Viewbox x:Name="SlideHost" Grid.Row="1" Stretch="Uniform" VerticalAlignment="Top"/>
        <TextBlock Grid.Row="4" x:Name="ValidationText" Foreground="#A34F30" FontSize="13" Margin="0,6,0,0"/>
       </Grid>
      </Grid>
@@ -137,7 +141,7 @@
    <Border Grid.Row="2" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="22,13">
     <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
      <TextBlock x:Name="StatusText" Text="{local:Tr '已儲存'}" FontSize="13" VerticalAlignment="Center" Margin="0,0,12,0"/>
-     <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"><Button Content="{local:Tr '預覽整個崇拜'}" Click="Preview_Click" Margin="0,0,10,0"/><Button Content="{local:Tr '製作 PowerPoint'}" Click="Export_Click" Classes="primary"/></StackPanel>
+     <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"><Button Content="{local:Tr '預覽整個崇拜'}" Click="Preview_Click" Margin="0,0,10,0"/><Button Content="{local:Tr '製作 PowerPoint'}" Click="Export_Click" Classes="primary"/><Button x:Name="UploadButton" Content="{local:Tr '上傳 Google Drive'}" Click="Upload_Click" Margin="10,0,0,0"/></StackPanel>
     </Grid>
    </Border>
   </Grid>

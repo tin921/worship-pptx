@@ -14,9 +14,10 @@ namespace WorshipPptx
         public string Style { get; set; }
         public string Lighting { get; set; }
         public bool Core { get; set; }
+        public bool Hidden { get; set; }
         public string Still { get; set; }
         public string Key => "media:"+Id;
-        public string StyleLabel => Style switch { "photo"=>ChineseText.Ui("攝影"), "illustration"=>ChineseText.Ui("插畫"), "abstract"=>ChineseText.Ui("抽象"), "watercolour"=>ChineseText.Ui("柔光水彩"), "sculpted"=>ChineseText.Ui("立體象徵"), "generic"=>Lighting=="daylight" ? ChineseText.Ui("通用 · 日光") : ChineseText.Ui("通用 · 夜色"), _=>ChineseText.Ui("背景圖片") };
+        public string StyleLabel => Style switch { "photo"=>ChineseText.Ui("攝影"), "illustration"=>ChineseText.Ui("插畫"), "abstract"=>ChineseText.Ui("抽象"), "watercolour"=>ChineseText.Ui("柔光水彩"), "sculpted"=>ChineseText.Ui("立體"), "minimal"=>ChineseText.Ui("極簡"), "generic"=>Lighting=="daylight" ? ChineseText.Ui("通用 · 日光") : ChineseText.Ui("通用 · 夜色"), _=>ChineseText.Ui("背景圖片") };
     }
     public static class MediaLibrary
     {
@@ -27,8 +28,10 @@ namespace WorshipPptx
             var path=Path.Combine(Root,"catalog.json");
             return File.Exists(path) ? JsonSerializer.Deserialize<List<MediaAsset>>(File.ReadAllText(path),JsonOptions).AsReadOnly() : Array.Empty<MediaAsset>();
         });
-        public static IReadOnlyList<MediaAsset> All => assets.Value;
-        public static MediaAsset Find(string key) => key?.StartsWith("media:",StringComparison.Ordinal)==true ? All.FirstOrDefault(x=>x.Id==key.Substring(6)) : null;
+        private static readonly Lazy<IReadOnlyList<MediaAsset>> visible=new(()=>assets.Value.Where(a=>!a.Hidden).ToList().AsReadOnly());
+        public static IReadOnlyList<MediaAsset> All => visible.Value;
+        // Previously saved plans can still resolve a retired style.
+        public static MediaAsset Find(string key) => key?.StartsWith("media:",StringComparison.Ordinal)==true ? assets.Value.FirstOrDefault(x=>x.Id==key.Substring(6)) : null;
         public static string FilePath(string relative)
         {
             if(string.IsNullOrWhiteSpace(relative)) return "";

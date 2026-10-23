@@ -1,0 +1,15 @@
+{
+  "theme": "banner",
+  "file": "assets/media/themes/banner/sculpted.jpg",
+  "id": "banner-sculpted",
+  "original_file": "exec-66b794ad-e6c6-46ff-919c-f8795d706eae.png",
+  "style": "sculpted",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 image of a SMALL STUDIO SCULPTURE on a seamless solid-colour background. Unmistakably 3D: a few smooth rounded MATTE CERAMIC AND CARVED STONE forms, as a premium handcrafted miniature tabletop art object. Theme: 旌旗. Interpretation: one recognizable symbol of this theme. Represent it as a tiny symbolic diorama, NOT a real life landscape, NOT real people. Palette: ivory, sage, deep forest green, muted lilac. Soft studio illumination, visible rounded volume and gentle contact shadows. Entire sculpture fits in lower-left quarter, below 60% image height. Upper 60% and lower-right 40% are entirely empty plain seamless backdrop. No scenic vista, no sky/cloud/sunrise, no realistic trees or plants, no photography of real nature, no painting or brushwork. Do not add a cross unless theme explicitly concerns a cross. No lettering, watermark, border or collage. Polished dimensional 3D render, full-bleed 16:9 intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "height": 720,
+  "option": "Original scene",
+  "variant": 1,
+  "width": 1280,
+  "source": "OpenAI built-in image generation",
+  "sha256": "281efddf892c4fef3dd3e7e53db9709d7d0e718ac01bb4f26032fa3b1c79aae1"
+}

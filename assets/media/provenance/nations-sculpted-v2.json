@@ -1,0 +1,15 @@
+{
+  "sha256": "dcec99f19ce183b7ceca86717735d66735c247d9559d6f342b254f8b3b716c18",
+  "theme": "nations",
+  "variant": 2,
+  "file": "assets/media/themes/nations/sculpted-v2.jpg",
+  "source": "OpenAI built-in image generation",
+  "option": "同心圍桌",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 image of a SMALL STUDIO SCULPTURE on a seamless solid-colour background. Unmistakably 3D: a few smooth rounded MATTE CERAMIC AND CARVED STONE forms, as a premium handcrafted miniature tabletop art object. Theme: 萬國與世界. Interpretation: 同心圍桌. Represent it as a tiny symbolic diorama, NOT a real life landscape, NOT real people. Palette: white, dusty rose, aubergine, pale lavender. Soft studio illumination, visible rounded volume and gentle contact shadows. Entire sculpture fits in lower-left quarter, below 60% image height. Upper 60% and lower-right 40% are entirely empty plain seamless backdrop. No scenic vista, no sky/cloud/sunrise, no realistic trees or plants, no photography of real nature, no painting or brushwork. Do not add a cross unless theme explicitly concerns a cross. No lettering, watermark, border or collage. Polished dimensional 3D render, full-bleed 16:9 intended 1280x720.",
+  "id": "nations-sculpted-v2",
+  "height": 720,
+  "style": "sculpted",
+  "width": 1280,
+  "original_file": "exec-cb31c485-9bcd-47a8-ad7a-4f4e577f9555.png"
+}

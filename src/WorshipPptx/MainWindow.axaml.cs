@@ -60,7 +60,7 @@ namespace WorshipPptx
         }
         private void LoadPlan()
         {
-            loading=true; ServiceTitle.Text=plan.Title; ServiceDate.SelectedDate=plan.Date;
+            loading=true;
             foreach(var item in plan.Items) { item.Preview=new PreviewLayout(); item.Formatting ??= new(); item.Formatting.FullSlide=false; }
             SongTabs.Items.Clear(); foreach(var item in plan.Items) SongTabs.Items.Add(new TabItem { Header=item.Title, Tag=item });
             addTab=new TabItem { Header="＋", Classes={"add-tab"} };
@@ -122,7 +122,12 @@ namespace WorshipPptx
         private void Capture()
         {
             if(loading || selected==null) return;
-            plan.Title=ServiceTitle.Text; plan.Date=ServiceDate.SelectedDate ?? plan.Date;
+            // TextChanged may still be queued when the window closes or a
+            // different service is selected. Capture the active row first.
+            var serviceName=ActiveServiceField<TextBox>("ServiceTitle");
+            var serviceDate=ActiveServiceField<CalendarDatePicker>("ServiceDate");
+            if(serviceName!=null) plan.Title=serviceName.Text;
+            if(serviceDate?.SelectedDate is DateTime date) plan.Date=date;
             selected.Title=SongTitle.Text; selected.Lyrics=Lyrics.Text; selected.Order=SongOrder.Text; selected.Copyright=CopyrightText.Text; selected.SongId=SongId.Text;
             if(SongTabs.SelectedItem is TabItem tab && tab.Tag is ServiceItem) tab.Header=selected.Title;
             plan.NotifyTabsChanged();
@@ -132,8 +137,18 @@ namespace WorshipPptx
             if(loading) return; Capture(); dirty=true; StatusText.Text=ChineseText.Ui("正在儲存…"); debounce.Stop(); debounce.Start();
         }
         private void Editor_Changed(object sender,TextChangedEventArgs e) { Changed(); if(!loading && sender==Lyrics) UpdateContentMode(); }
-        private void Metadata_Changed(object sender,TextChangedEventArgs e) => Changed();
-        private void Date_Changed(object sender,SelectionChangedEventArgs e) { Changed(); if(!loading) RefreshHistory(); }
+        private void Metadata_Changed(object sender,TextChangedEventArgs e)
+        {
+            if(loading || sender is not TextBox field || !ReferenceEquals(field.DataContext,plan) || plan.Title==field.Text) return;
+            plan.Title=field.Text; Changed();
+        }
+        private void Date_Changed(object sender,SelectionChangedEventArgs e)
+        {
+            if(loading || sender is not CalendarDatePicker field || !ReferenceEquals(field.DataContext,plan) || field.SelectedDate==null || plan.Date==field.SelectedDate.Value) return;
+            plan.Date=field.SelectedDate.Value; Changed();
+            // Let the current picker finish its selection event before moving its row.
+            Dispatcher.UIThread.Post(()=> { if(!loading) { SaveDraft(); RefreshHistory(); } });
+        }
         private void SaveDraft()
         {
             if(plan==null) return;
@@ -319,7 +334,7 @@ namespace WorshipPptx
                 store.SaveSettings(next); settings=next;
                 loading=true;
                 ChineseText.SetLanguage(language); UpdateLanguageButtons();
-                plan.NotifyLanguageChanged(); ServiceTitle.Text=plan.Title;
+                plan.NotifyLanguageChanged();
                 foreach(var tab in SongTabs.Items.OfType<TabItem>()) if(tab.Tag is ServiceItem item) tab.Header=item.Title;
                 AutomationProperties.SetName(addTab,ChineseText.Ui("新增詩歌分頁")); ToolTip.SetTip(addTab,ChineseText.Ui("新增詩歌"));
                 FontPicker.ItemsSource=null; FontPicker.ItemsSource=FontCatalog.All;
@@ -395,6 +410,17 @@ namespace WorshipPptx
         {
             var name=string.Concat((plan.Title ?? ChineseText.Ui("主日崇拜")).Select(c=>Path.GetInvalidFileNameChars().Contains(c) ? '_' : c));
             if(name.Length>70) name=name.Substring(0,70); return plan.Date.ToString("yyyy-MM-dd")+" "+name+".pptx";
+        }
+        private async void Upload_Click(object sender,RoutedEventArgs e)
+        {
+            if(exporting) return;
+            exporting=true; LanguagePanel.IsEnabled=false;
+            try {
+                var all=ExportSlides();
+                var name=DriveFileName.Create(plan,Environment.MachineName,DateTime.Today,settings.Language);
+                await new DriveUploadWindow(all,plan.Title,name,store.Root).ShowDialog(this);
+            } catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("請檢查內容")); }
+            finally { exporting=false; LanguagePanel.IsEnabled=true; }
         }
         private async void Export_Click(object sender,RoutedEventArgs e)
         {

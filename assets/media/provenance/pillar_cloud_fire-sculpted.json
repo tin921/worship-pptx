@@ -1,0 +1,15 @@
+{
+  "source": "OpenAI built-in image generation",
+  "sha256": "f723f742c929938f8c0abcffc5f6160185d11aa4795177a42a44b119da448c7d",
+  "variant": 1,
+  "id": "pillar_cloud_fire-sculpted",
+  "theme": "pillar_cloud_fire",
+  "original_file": "exec-beb4e6d3-6635-4734-9cef-09913ff0e1e5.png",
+  "file": "assets/media/themes/pillar_cloud_fire/sculpted.jpg",
+  "style": "sculpted",
+  "option": "Original scene",
+  "width": 1280,
+  "height": 720,
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 image of a SMALL STUDIO SCULPTURE on a seamless solid-colour background. Unmistakably 3D: a few smooth rounded MATTE CERAMIC AND CARVED STONE forms, as a premium handcrafted miniature tabletop art object. Theme: 雲柱火柱. Interpretation: one recognizable symbol of this theme. Represent it as a tiny symbolic diorama, NOT a real life landscape, NOT real people. Palette: pearl grey, jade, seafoam, soft white. Soft studio illumination, visible rounded volume and gentle contact shadows. Entire sculpture fits in lower-left quarter, below 60% image height. Upper 60% and lower-right 40% are entirely empty plain seamless backdrop. No scenic vista, no sky/cloud/sunrise, no realistic trees or plants, no photography of real nature, no painting or brushwork. Do not add a cross unless theme explicitly concerns a cross. No lettering, watermark, border or collage. Polished dimensional 3D render, full-bleed 16:9 intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear."
+}

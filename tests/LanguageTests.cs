@@ -63,7 +63,7 @@ static class LanguageTests
                 var simplified=window.FindControl<ToggleButton>("SimplifiedButton");
                 simplified.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Dispatcher.UIThread.RunJobs();
                 check(ChineseText.IsSimplified && simplified.IsChecked==true && window.FindControl<ToggleButton>("TraditionalButton").IsChecked==false,"Switch state incorrect");
-                check(window.Title=="敬拜简报 · Worship PPTX" && window.FindControl<TextBlock>("AppHeading").Text=="敬拜简报","XAML bindings did not update");
+                check(window.Title=="敬拜工坊 · Worship PPTX" && window.FindControl<TextBlock>("AppHeading").Text=="敬拜工坊","XAML bindings did not update");
                 check(lyrics.Text=="[v1]\n头发与发光\n愿祢的爱充满我心" && tabs.SelectedIndex==1,"Draft lost or tab changed");
                 check((string)((TabItem)tabs.Items[1]).Header=="同心颂赞","Tab title stayed Traditional");
                 check(window.FindControl<ListBox>("HistoryList").Items.Cast<ServicePlan>().Any(p=>p.Title=="圣诞礼拜"),"History stayed Traditional");
@@ -74,11 +74,11 @@ static class LanguageTests
                 simplified.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 check(simplified.IsChecked==true,"Selected language can be deselected");
                 window.FindControl<ToggleButton>("TraditionalButton").RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Dispatcher.UIThread.RunJobs();
-                check(lyrics.Text.Contains("頭髮與發光") && window.Title=="敬拜簡報 · Worship PPTX","Switch back lost original or interface");
+                check(lyrics.Text.Contains("頭髮與發光") && window.Title=="敬拜工坊 · Worship PPTX","Switch back lost original or interface");
                 simplified.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Dispatcher.UIThread.RunJobs();
             } finally { window.Close(); }
             var reopened=new MainWindow(store); reopened.Show(); Dispatcher.UIThread.RunJobs();
-            try { check(reopened.FindControl<TextBlock>("AppHeading").Text=="敬拜简报" && reopened.FindControl<TextBox>("Lyrics").Text.Contains("头发与发光"),"Language did not survive restart"); }
+            try { check(reopened.FindControl<TextBlock>("AppHeading").Text=="敬拜工坊" && reopened.FindControl<TextBox>("Lyrics").Text.Contains("头发与发光"),"Language did not survive restart"); }
             finally { reopened.Close(); ChineseText.SetLanguage(ChineseText.Traditional); }
         });
         test("Both Chinese scripts export valid editable song, Scripture and announcement slides",()=> {

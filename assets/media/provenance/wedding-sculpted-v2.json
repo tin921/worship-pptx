@@ -1,0 +1,15 @@
+{
+  "source": "OpenAI built-in image generation",
+  "sha256": "3b1064bdc6a0c36b6e4f3ce3f654fe24f5e8956b2f840e6e578d13bedf0a6c6f",
+  "variant": 2,
+  "id": "wedding-sculpted-v2",
+  "theme": "wedding",
+  "original_file": "exec-7c9185fd-62e5-4f1f-bb9d-7a97e64a4778.png",
+  "file": "assets/media/themes/wedding/sculpted-v2.jpg",
+  "style": "sculpted",
+  "option": "盟約戒指",
+  "width": 1280,
+  "height": 720,
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 image of a SMALL STUDIO SCULPTURE on a seamless solid-colour background. Unmistakably 3D: a few smooth rounded MATTE CERAMIC AND CARVED STONE forms, as a premium handcrafted miniature tabletop art object. Theme: 婚宴與戒指. Interpretation: 盟約戒指. Represent it as a tiny symbolic diorama, NOT a real life landscape, NOT real people. Palette: midnight navy, cream, muted teal, pale gold. Soft studio illumination, visible rounded volume and gentle contact shadows. Entire sculpture fits in lower-left quarter, below 60% image height. Upper 60% and lower-right 40% are entirely empty plain seamless backdrop. No scenic vista, no sky/cloud/sunrise, no realistic trees or plants, no photography of real nature, no painting or brushwork. Do not add a cross unless theme explicitly concerns a cross. No lettering, watermark, border or collage. Polished dimensional 3D render, full-bleed 16:9 intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear."
+}

@@ -1,0 +1,15 @@
+{
+  "source": "OpenAI built-in image generation",
+  "sha256": "622dedbd0cfece6a2f2d7ff0fbb4f260f1e18dccb4ea25afea4871fa79420786",
+  "variant": 1,
+  "id": "wedding-minimal",
+  "theme": "wedding",
+  "original_file": "exec-b8867b13-0925-4dea-84b4-4e2dbdfe3a4e.png",
+  "file": "assets/media/themes/wedding/minimal.jpg",
+  "style": "minimal",
+  "option": "Original scene",
+  "width": 1280,
+  "height": 720,
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 婚宴與戒指. Interpretation: one recognizable symbol of this theme. Palette: pale sky blue, navy, white, muted coral. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear."
+}

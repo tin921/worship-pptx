@@ -1,0 +1,15 @@
+{
+  "theme": "refuge",
+  "file": "assets/media/themes/refuge/minimal.jpg",
+  "id": "refuge-minimal",
+  "original_file": "exec-476bec41-c747-41e2-8eef-0eb9a3b648c8.png",
+  "style": "minimal",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 避難所與城堡. Interpretation: one recognizable symbol of this theme. Palette: white, dusty rose, aubergine, pale lavender. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "height": 720,
+  "option": "Original scene",
+  "variant": 1,
+  "width": 1280,
+  "source": "OpenAI built-in image generation",
+  "sha256": "3477dff988ce8751cfbaee1939777d70f7e21496677c031f35aea1fae6c5c6ed"
+}

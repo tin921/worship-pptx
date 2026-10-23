@@ -1,0 +1,15 @@
+{
+  "theme": "dove",
+  "file": "assets/media/themes/dove/sculpted-v2.jpg",
+  "id": "dove-sculpted-v2",
+  "original_file": "exec-30b34e44-d828-4668-8388-69e9b839311c.png",
+  "style": "sculpted",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 image of a SMALL STUDIO SCULPTURE on a seamless solid-colour background. Unmistakably 3D: a few smooth rounded MATTE CERAMIC AND CARVED STONE forms, as a premium handcrafted miniature tabletop art object. Theme: 白鴿、柔光. Interpretation: 窗邊白鴿. Represent it as a tiny symbolic diorama, NOT a real life landscape, NOT real people. Palette: warm white, terracotta, pale apricot, dark plum. Soft studio illumination, visible rounded volume and gentle contact shadows. Entire sculpture fits in lower-left quarter, below 60% image height. Upper 60% and lower-right 40% are entirely empty plain seamless backdrop. No scenic vista, no sky/cloud/sunrise, no realistic trees or plants, no photography of real nature, no painting or brushwork. Do not add a cross unless theme explicitly concerns a cross. No lettering, watermark, border or collage. Polished dimensional 3D render, full-bleed 16:9 intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "height": 720,
+  "option": "窗邊白鴿",
+  "variant": 2,
+  "width": 1280,
+  "source": "OpenAI built-in image generation",
+  "sha256": "647a6f08c23b4acb0ff5f679064b62fec6e20d53082643f56035fc917242a705"
+}

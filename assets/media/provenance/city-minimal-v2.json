@@ -1,0 +1,15 @@
+{
+  "sha256": "076b3a4ecbeea6bc59c6ecf12ce9029073cf205207396a643422f30db6d23439",
+  "theme": "city",
+  "variant": 2,
+  "file": "assets/media/themes/city/minimal-v2.jpg",
+  "source": "OpenAI built-in image generation",
+  "option": "街角晨光",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 城市與家園. Interpretation: 街角晨光. Palette: ivory, sage, deep forest green, muted lilac. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "id": "city-minimal-v2",
+  "height": 720,
+  "style": "minimal",
+  "width": 1280,
+  "original_file": "exec-99258ab3-2123-4475-a403-18838ec54c77.png"
+}

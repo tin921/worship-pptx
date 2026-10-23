@@ -1,0 +1,15 @@
+{
+  "theme": "fire",
+  "file": "assets/media/themes/fire/sculpted-v2.jpg",
+  "id": "fire-sculpted-v2",
+  "original_file": "exec-ccac4637-1eaf-4b96-89e3-d7879dcc2ac0.png",
+  "style": "sculpted",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 image of a SMALL STUDIO SCULPTURE on a seamless solid-colour background. Unmistakably 3D: a few smooth rounded MATTE CERAMIC AND CARVED STONE forms, as a premium handcrafted miniature tabletop art object. Theme: 火焰、光芒. Interpretation: 炭火微光. Represent it as a tiny symbolic diorama, NOT a real life landscape, NOT real people. Palette: midnight navy, cream, muted teal, pale gold. Soft studio illumination, visible rounded volume and gentle contact shadows. Entire sculpture fits in lower-left quarter, below 60% image height. Upper 60% and lower-right 40% are entirely empty plain seamless backdrop. No scenic vista, no sky/cloud/sunrise, no realistic trees or plants, no photography of real nature, no painting or brushwork. Do not add a cross unless theme explicitly concerns a cross. No lettering, watermark, border or collage. Polished dimensional 3D render, full-bleed 16:9 intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "height": 720,
+  "option": "炭火微光",
+  "variant": 2,
+  "width": 1280,
+  "source": "OpenAI built-in image generation",
+  "sha256": "6dae6c39f1367a4ccd812b0bfa1f06bcc2d15222f7398bf7a3def8ed207b32e9"
+}

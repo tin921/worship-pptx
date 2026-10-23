@@ -1,0 +1,15 @@
+{
+  "width": 1280,
+  "variant": 1,
+  "height": 720,
+  "style": "minimal",
+  "sha256": "f7a60baa3c569185783d5c077460ec167592b571442b0170595320369d7b5213",
+  "file": "assets/media/themes/ocean/minimal.jpg",
+  "option": "Original scene",
+  "original_file": "exec-ae2db4d2-6f13-4854-95db-a5d655534e05.png",
+  "prompt": "Use case: stylized-concept. Create one finished landscape 16:9 Christian worship slide background, intended 1280 x 720. MINIMAL GRAPHIC STYLE: exceptionally simple flat vector-like colour fields, crisp clean geometric silhouettes, 4 or 5 colours only, lots of open space. Beautiful restrained contemporary graphic composition, not a realistic scene. No brush texture, paper texture, 3D, gradients, glow, glowing ribbons, ornamental detail, outlines, shadows, text, lettering, labels, watermarks, border or collage. All meaningful visual motifs entirely below 58 percent image height and primarily in the lower LEFT; lower right 40% x 40% is calm and expendable for a camera inset. Full bleed unified design. Ocean peace. Three broad smooth wave bands across the bottom third, sweeping gently from left; one very small pale circular sun near the lower-left horizon. Turquoise, seafoam, deep teal and warm ivory. Entire upper 58 percent is a uniform very pale ivory field.",
+  "id": "ocean-minimal",
+  "source": "OpenAI built-in image generation",
+  "theme": "ocean",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear."
+}

@@ -123,13 +123,16 @@ public sealed class LocalEncoder : IDisposable
     private readonly SentencePieceTokenizer tokenizer;
     private readonly InferenceSession session;
     private readonly Dictionary<string,string> normalization;
-    public LocalEncoder()
+    public static int AvailableWorkerCount => Math.Max(1,Environment.ProcessorCount-2);
+    public LocalEncoder(int? workerCount=null)
     {
         var root=Path.Combine(AppContext.BaseDirectory,"Models");
         using var input=File.OpenRead(Path.Combine(root,"sentencepiece.bpe.model"));
         tokenizer=SentencePieceTokenizer.Create(input,false,false);
         normalization=JsonSerializer.Deserialize<Dictionary<string,string>>(File.ReadAllText(Path.Combine(root,"normalization.json")));
-        using var options=new SessionOptions { IntraOpNumThreads=Math.Min(4,Environment.ProcessorCount),InterOpNumThreads=1 };
+        // Short 128-token inputs stop benefiting beyond eight workers on the
+        // measured desktop CPU. Keep at least two logical processors available.
+        using var options=new SessionOptions { IntraOpNumThreads=Math.Clamp(workerCount ?? Math.Min(8,AvailableWorkerCount),1,Math.Max(1,Environment.ProcessorCount)),InterOpNumThreads=1 };
         session=new InferenceSession(Path.Combine(root,"model.onnx"),options);
     }
     public string Normalize(string text)

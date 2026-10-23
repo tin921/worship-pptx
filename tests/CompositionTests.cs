@@ -59,9 +59,9 @@ static class CompositionTests
                 check(history.GetVisualDescendants().OfType<TextBlock>().Any(t=>t.Text?.Contains("即時更新分頁")==true),"Sidebar tab label waits for disk save");
                 var plan=(ServicePlan)history.SelectedItem; var moved=plan.Items[1]; plan.MoveItem(moved,0); Pump();
                 check(history.GetVisualDescendants().OfType<TextBlock>().Any(t=>t.Text?.StartsWith("即時更新分頁\n")==true),"Sidebar tab order did not change live");
-                window.FindControl<CalendarDatePicker>("ServiceDate").SelectedDate=DateTime.Today.AddDays(30); Pump();
+                window.ActiveServiceField<CalendarDatePicker>("ServiceDate").SelectedDate=DateTime.Today.AddDays(30); Pump();
                 check(((ServicePlan)history.Items[0]).Id==current.Id && ((ServicePlan)history.SelectedItem).Id==current.Id,"Editing date did not re-sort / preserve selected service");
-                window.FindControl<CalendarDatePicker>("ServiceDate").SelectedDate=DateTime.Today.AddDays(-1); Pump();
+                window.ActiveServiceField<CalendarDatePicker>("ServiceDate").SelectedDate=DateTime.Today.AddDays(-1); Pump();
                 check(history.GetVisualDescendants().OfType<TextBlock>().Single(t=>t.Text=="本週崇拜").Classes.Contains("past-service"),"Date editing did not grey title immediately");
             } finally { window.Close(); }
         });

@@ -85,7 +85,7 @@ static class EditorInteractionTests
                 Press(window,Key.PageUp); check(((ServicePlan)history.SelectedItem).Id==service,"Page Up did not switch back");
                 Press(window,Key.Tab); check(title.IsFocused,"First Tab did not start at song name");
                 foreach(var name in new[]{"CopyrightText","SongId","SongOrder","Lyrics","ServiceTitle"}) {
-                    Press(window,Key.Tab); check(window.FindControl<TextBox>(name).IsFocused,"Unexpected tab order at "+name);
+                    Press(window,Key.Tab); check((name=="ServiceTitle" ? window.ActiveServiceField<TextBox>(name) : window.FindControl<TextBox>(name)).IsFocused,"Unexpected tab order at "+name);
                 }
                 var language=window.FindControl<StackPanel>("LanguagePanel"); var toggle=window.FindControl<ToggleButton>("TraditionalButton");
                 check(language.TranslatePoint(default,window).Value.X>window.Bounds.Width-230 && toggle.FontSize>=18 && toggle.VerticalContentAlignment==Avalonia.Layout.VerticalAlignment.Center && toggle.HorizontalContentAlignment==Avalonia.Layout.HorizontalAlignment.Center,"Language switch is not centered at upper right");

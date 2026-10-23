@@ -1,0 +1,15 @@
+{
+  "width": 1280,
+  "variant": 1,
+  "height": 720,
+  "style": "minimal",
+  "sha256": "0fc4796c355f52702cf82e8bd05ac52a962ea53474b43581defe7578915d1032",
+  "file": "assets/media/themes/mountain_path/minimal.jpg",
+  "option": "Original scene",
+  "original_file": "exec-64e58e2f-86e5-4b4c-a9e1-0ca9a95b0961.png",
+  "prompt": "Use case: stylized-concept. Create one finished landscape 16:9 Christian worship slide background, intended 1280 x 720. MINIMAL GRAPHIC STYLE: exceptionally simple flat vector-like colour fields, crisp clean geometric silhouettes, 4 or 5 colours only, lots of open space. Beautiful restrained contemporary graphic composition, not a realistic scene. No brush texture, paper texture, 3D, gradients, glow, glowing ribbons, ornamental detail, outlines, shadows, text, lettering, labels, watermarks, border or collage. All meaningful visual motifs entirely below 58 percent image height and primarily in the lower LEFT; lower right 40% x 40% is calm and expendable for a camera inset. Full bleed unified design. Mountain guidance. Just three interlocking broad mountain silhouettes along the bottom third, with a narrow simplified path rising between them on the left. Muted sage, forest green, dusty lilac and warm white. Entire upper 58 percent is uniform warm white.",
+  "id": "mountain_path-minimal",
+  "source": "OpenAI built-in image generation",
+  "theme": "mountain_path",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear."
+}

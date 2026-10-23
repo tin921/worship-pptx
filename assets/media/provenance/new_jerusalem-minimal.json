@@ -1,0 +1,15 @@
+{
+  "sha256": "d2ee0dd9ae9413dbda3a33df59f68a0f9b59aabeab0a06dc419a93733e0792d3",
+  "theme": "new_jerusalem",
+  "variant": 1,
+  "file": "assets/media/themes/new_jerusalem/minimal.jpg",
+  "source": "OpenAI built-in image generation",
+  "option": "Original scene",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 新耶路撒冷. Interpretation: one recognizable symbol of this theme. Palette: pale sky blue, navy, white, muted coral. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "id": "new_jerusalem-minimal",
+  "height": 720,
+  "style": "minimal",
+  "width": 1280,
+  "original_file": "exec-46237559-89b3-4814-9032-63b88d074e56.png"
+}

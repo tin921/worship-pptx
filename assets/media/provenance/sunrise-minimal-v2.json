@@ -1,0 +1,15 @@
+{
+  "theme": "sunrise",
+  "file": "assets/media/themes/sunrise/minimal-v2.jpg",
+  "id": "sunrise-minimal-v2",
+  "original_file": "exec-cf793662-4588-4d97-b999-8fc8092f5bd7.png",
+  "style": "minimal",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 日出、金色晨光. Interpretation: 海岸初曉. Palette: pale mint, petrol blue, white, soft peach. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "height": 720,
+  "option": "海岸初曉",
+  "variant": 2,
+  "width": 1280,
+  "source": "OpenAI built-in image generation",
+  "sha256": "ba6ff47056d73ca8e7469889e733702f4df0ff40afcfe318ccd7828cc33f20fa"
+}

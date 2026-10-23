@@ -1,0 +1,15 @@
+{
+  "source": "OpenAI built-in image generation",
+  "sha256": "4211228f0d8352e44585bc803f4924bea21aeca259611b7a8860512f8a9fc27e",
+  "variant": 1,
+  "id": "treasure-minimal",
+  "theme": "treasure",
+  "original_file": "exec-d1e6bdc1-3e91-43b6-a0b7-ae0377b221f0.png",
+  "file": "assets/media/themes/treasure/minimal.jpg",
+  "style": "minimal",
+  "option": "Original scene",
+  "width": 1280,
+  "height": 720,
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 珍珠與寶藏. Interpretation: one recognizable symbol of this theme. Palette: pearl grey, jade, seafoam, soft white. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear."
+}

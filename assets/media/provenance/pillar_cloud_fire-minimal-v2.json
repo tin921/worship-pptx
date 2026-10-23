@@ -1,0 +1,15 @@
+{
+  "source": "OpenAI built-in image generation",
+  "sha256": "04615eb3390ae4939e80a518d6f3676cda3db31ed4a7022a4683b1a2276a9630",
+  "variant": 2,
+  "id": "pillar_cloud_fire-minimal-v2",
+  "theme": "pillar_cloud_fire",
+  "original_file": "exec-fc454205-8e9f-445e-8107-54fa52eaeeb4.png",
+  "file": "assets/media/themes/pillar_cloud_fire/minimal-v2.jpg",
+  "style": "minimal",
+  "option": "曠野引領",
+  "width": 1280,
+  "height": 720,
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 雲柱火柱. Interpretation: 曠野引領. Palette: midnight navy, cream, muted teal, pale gold. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear."
+}

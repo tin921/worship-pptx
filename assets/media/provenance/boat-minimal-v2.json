@@ -1,0 +1,15 @@
+{
+  "sha256": "08fcc6becd4addeb54a899043776c4155103ed3e7a84cace4fc055e0936364a2",
+  "theme": "boat",
+  "variant": 2,
+  "file": "assets/media/themes/boat/minimal-v2.jpg",
+  "source": "OpenAI built-in image generation",
+  "option": "岸邊小舟",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 海上小船. Interpretation: 岸邊小舟. Palette: pale mint, petrol blue, white, soft peach. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "id": "boat-minimal-v2",
+  "height": 720,
+  "style": "minimal",
+  "width": 1280,
+  "original_file": "exec-d36b701c-9224-497f-9ff9-c1310fe5c50b.png"
+}

@@ -37,7 +37,7 @@ namespace WorshipPptx
         public static Canvas Create(SlideData slide,bool showCameraGuide=false,bool showTag=true)
         {
             if(showCameraGuide) return new CompositionPreview(slide,slide.Preview ?? PreviewLayout.FromLegacy(slide.FullSlide),false);
-            var canvas=new Canvas { Width=1280, Height=720, ClipToBounds=true, Background=Brushes.Black };
+            var canvas=new Canvas { Width=1280, Height=720, ClipToBounds=true, Background=Brushes.White };
             canvas.Children.Add(CreateBackground(slide.Background,slide.BackgroundTransform));
             var color=TextColors.Get(slide.TextColor).Brush;
             var spacing=SlideLayout.LineSpacing(slide.FontSize,slide.FontName,slide.Bold);
@@ -67,7 +67,7 @@ namespace WorshipPptx
             var value=transform.Copy(); value.Normalize();
             if(value.Zoom==1 && value.X==0 && value.Y==0 && value.Opacity==1 && !value.Flip) return bytes;
             using var bitmap=SKBitmap.Decode(bytes); using var image=SKImage.FromBitmap(bitmap);
-            using var surface=SKSurface.Create(new SKImageInfo(1280,720)); var canvas=surface.Canvas; canvas.Clear(SKColors.Black);
+            using var surface=SKSurface.Create(new SKImageInfo(1280,720)); var canvas=surface.Canvas; canvas.Clear(SKColors.White);
             canvas.Translate((float)(640+value.X*12.8),(float)(360+value.Y*7.2));
             canvas.Scale((float)(value.Zoom*(value.Flip ? -1 : 1)),(float)value.Zoom);
             using var paint=new SKPaint { Color=SKColors.White.WithAlpha((byte)Math.Round(value.Opacity*255)) };

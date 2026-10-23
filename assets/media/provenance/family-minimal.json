@@ -1,0 +1,15 @@
+{
+  "sha256": "6dd0d777bd2d878ac859c8343841ed87ed40b610d8f749ccbdba89448924d338",
+  "theme": "family",
+  "variant": 1,
+  "file": "assets/media/themes/family/minimal.jpg",
+  "source": "OpenAI built-in image generation",
+  "option": "Original scene",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 家庭與孩子. Interpretation: one recognizable symbol of this theme. Palette: pale mint, petrol blue, white, soft peach. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "id": "family-minimal",
+  "height": 720,
+  "style": "minimal",
+  "width": 1280,
+  "original_file": "exec-c251374e-05e0-4e33-bc10-ae3e264e75d6.png"
+}

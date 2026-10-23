@@ -1,0 +1,15 @@
+{
+  "sha256": "6549d9af7c7dffe36681a5f0453984f80e137b4b7e0cde0afbd9abc1d18a6f36",
+  "theme": "helping_neighbor",
+  "variant": 1,
+  "file": "assets/media/themes/helping_neighbor/sculpted.jpg",
+  "source": "OpenAI built-in image generation",
+  "option": "Original scene",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 image of a SMALL STUDIO SCULPTURE on a seamless solid-colour background. Unmistakably 3D: a few smooth rounded MATTE CERAMIC AND CARVED STONE forms, as a premium handcrafted miniature tabletop art object. Theme: 扶助與分享. Interpretation: one recognizable symbol of this theme. Represent it as a tiny symbolic diorama, NOT a real life landscape, NOT real people. Palette: pale sky blue, navy, white, muted coral. Soft studio illumination, visible rounded volume and gentle contact shadows. Entire sculpture fits in lower-left quarter, below 60% image height. Upper 60% and lower-right 40% are entirely empty plain seamless backdrop. No scenic vista, no sky/cloud/sunrise, no realistic trees or plants, no photography of real nature, no painting or brushwork. Do not add a cross unless theme explicitly concerns a cross. No lettering, watermark, border or collage. Polished dimensional 3D render, full-bleed 16:9 intended 1280x720.",
+  "id": "helping_neighbor-sculpted",
+  "height": 720,
+  "style": "sculpted",
+  "width": 1280,
+  "original_file": "exec-81ed0171-520d-4723-bd56-c4b1f70b517f.png"
+}

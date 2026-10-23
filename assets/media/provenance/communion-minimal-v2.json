@@ -1,0 +1,15 @@
+{
+  "theme": "communion",
+  "file": "assets/media/themes/communion/minimal-v2.jpg",
+  "id": "communion-minimal-v2",
+  "original_file": "exec-8042495c-e158-4cf7-9b13-682e513ad8bc.png",
+  "style": "minimal",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 聖餐餅杯. Interpretation: 餅杯靜物. Palette: pale sky blue, navy, white, muted coral. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "height": 720,
+  "option": "餅杯靜物",
+  "variant": 2,
+  "width": 1280,
+  "source": "OpenAI built-in image generation",
+  "sha256": "4823ab0a5e91d69501f56b15b02fac8a0d423c37796d44c975639e367d177998"
+}

@@ -1,0 +1,15 @@
+{
+  "sha256": "4e55832b8e660482b2f1d694e462581170311ff0fbb7bc32c9be1659ee01bade",
+  "theme": "bridge",
+  "variant": 1,
+  "file": "assets/media/themes/bridge/sculpted.jpg",
+  "source": "OpenAI built-in image generation",
+  "option": "Original scene",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 image of a SMALL STUDIO SCULPTURE on a seamless solid-colour background. Unmistakably 3D: a few smooth rounded MATTE CERAMIC AND CARVED STONE forms, as a premium handcrafted miniature tabletop art object. Theme: 橋樑. Interpretation: one recognizable symbol of this theme. Represent it as a tiny symbolic diorama, NOT a real life landscape, NOT real people. Palette: pale sky blue, navy, white, muted coral. Soft studio illumination, visible rounded volume and gentle contact shadows. Entire sculpture fits in lower-left quarter, below 60% image height. Upper 60% and lower-right 40% are entirely empty plain seamless backdrop. No scenic vista, no sky/cloud/sunrise, no realistic trees or plants, no photography of real nature, no painting or brushwork. Do not add a cross unless theme explicitly concerns a cross. No lettering, watermark, border or collage. Polished dimensional 3D render, full-bleed 16:9 intended 1280x720.",
+  "id": "bridge-sculpted",
+  "height": 720,
+  "style": "sculpted",
+  "width": 1280,
+  "original_file": "exec-c12f2c0f-5905-4298-8ede-c46c39da44aa.png"
+}

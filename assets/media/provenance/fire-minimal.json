@@ -1,0 +1,15 @@
+{
+  "theme": "fire",
+  "file": "assets/media/themes/fire/minimal.jpg",
+  "id": "fire-minimal",
+  "original_file": "exec-6846244c-89ef-4fa2-b0d1-f48a29c46896.png",
+  "style": "minimal",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 火焰、光芒. Interpretation: one recognizable symbol of this theme. Palette: pale sky blue, navy, white, muted coral. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "height": 720,
+  "option": "Original scene",
+  "variant": 1,
+  "width": 1280,
+  "source": "OpenAI built-in image generation",
+  "sha256": "bf0e061c96982dab5fa5adba95f0dfb5d56b58ef6129d6d75aa9f01c9637228a"
+}

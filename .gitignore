@@ -73,3 +73,5 @@ __pycache__/
 assets/models/*.onnx
 assets/models/tokenizer.json
 assets/media/**/*.partial.*
+# Per-PC upload configuration contains the shared upload capability key.
+google-drive.json

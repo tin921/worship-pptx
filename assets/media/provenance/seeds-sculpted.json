@@ -1,0 +1,15 @@
+{
+  "theme": "seeds",
+  "file": "assets/media/themes/seeds/sculpted.jpg",
+  "id": "seeds-sculpted",
+  "original_file": "exec-ad878b15-0e43-40ac-8d7d-7287c15ff4af.png",
+  "style": "sculpted",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 image of a SMALL STUDIO SCULPTURE on a seamless solid-colour background. Unmistakably 3D: a few smooth rounded MATTE CERAMIC AND CARVED STONE forms, as a premium handcrafted miniature tabletop art object. Theme: 嫩芽、新生命. Interpretation: one recognizable symbol of this theme. Represent it as a tiny symbolic diorama, NOT a real life landscape, NOT real people. Palette: pale mint, petrol blue, white, soft peach. Soft studio illumination, visible rounded volume and gentle contact shadows. Entire sculpture fits in lower-left quarter, below 60% image height. Upper 60% and lower-right 40% are entirely empty plain seamless backdrop. No scenic vista, no sky/cloud/sunrise, no realistic trees or plants, no photography of real nature, no painting or brushwork. Do not add a cross unless theme explicitly concerns a cross. No lettering, watermark, border or collage. Polished dimensional 3D render, full-bleed 16:9 intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "height": 720,
+  "option": "Original scene",
+  "variant": 1,
+  "width": 1280,
+  "source": "OpenAI built-in image generation",
+  "sha256": "f54888430958b9ce4213c6bdc21077b64cdcc3031f874439dd3d97bd895d5673"
+}

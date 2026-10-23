@@ -1,0 +1,15 @@
+{
+  "source": "OpenAI built-in image generation",
+  "sha256": "4910cf89917e6adbe7c3aca1918943eddec3d867d36a9e2bc8e5973e9dc38e58",
+  "variant": 2,
+  "id": "kneeling_prayer-minimal-v2",
+  "theme": "kneeling_prayer",
+  "original_file": "exec-57022653-6702-4b24-87ab-91b376864297.png",
+  "file": "assets/media/themes/kneeling_prayer/minimal-v2.jpg",
+  "style": "minimal",
+  "option": "靜室屈膝",
+  "width": 1280,
+  "height": 720,
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 屈膝禱告. Interpretation: 靜室屈膝. Palette: warm white, terracotta, pale apricot, dark plum. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear."
+}

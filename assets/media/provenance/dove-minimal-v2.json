@@ -1,0 +1,15 @@
+{
+  "width": 1280,
+  "variant": 2,
+  "height": 720,
+  "style": "minimal",
+  "sha256": "fa62785a6e9021d1669e0f0c327899ff040f4826063e23a678730596740c3d8e",
+  "file": "assets/media/themes/dove/minimal-v2.jpg",
+  "option": "窗邊白鴿",
+  "original_file": "exec-5e9ca3b3-35ef-4482-b1e8-fbd6cbdf5a20.png",
+  "prompt": "One landscape 16:9 minimal geometric graphic background. The ONLY motif is a white dove perched on a small square window ledge, grouped as a SMALL flat graphic in the BOTTOM LEFT. The whole motif including the entire square window frame occupies x=5% to 23%, y=70% to 94% of the image. Do not crop the window or extend its lines. Upper 70% across ALL the width is completely plain pale sky blue. Rest of image is the same plain blue field. Four flat solid colours: pale sky blue, white, muted coral and navy. Crisp clean geometric shapes, no detail, no shadows or gradients. NOT a realistic room or landscape. No additional objects, cross, words, letters, watermark, border or collage. Intended output 1280x720; reserve the blank upper region for lyrics and the blank lower right for a camera inset.",
+  "id": "dove-minimal-v2",
+  "source": "OpenAI built-in image generation",
+  "theme": "dove",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear."
+}

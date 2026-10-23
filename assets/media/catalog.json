@@ -2165,7 +2165,8 @@
     "theme": "kneeling_prayer",
     "style": "watercolour",
     "core": true,
-    "still": "themes/kneeling_prayer/watercolour.png"
+    "still": "themes/kneeling_prayer/watercolour.png",
+    "hidden": true
   },
   {
     "id": "crown-sculpted",
@@ -4574,5 +4575,2876 @@
     "still": "themes/bread_provision/abstract-v2.jpg",
     "variant": 2,
     "option": "日用新餅"
+  },
+  {
+    "id": "mountain_path-minimal",
+    "title": "山間步道、山谷、晨光",
+    "theme": "mountain_path",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/mountain_path/minimal.jpg"
+  },
+  {
+    "id": "mountain_path-sculpted",
+    "title": "山間步道、山谷、晨光",
+    "theme": "mountain_path",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/mountain_path/sculpted.jpg"
+  },
+  {
+    "id": "mountain_path-minimal-v2",
+    "title": "山間步道、山谷、晨光 · 石階山徑",
+    "theme": "mountain_path",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/mountain_path/minimal-v2.jpg"
+  },
+  {
+    "id": "mountain_path-sculpted-v2",
+    "title": "山間步道、山谷、晨光 · 石階山徑",
+    "theme": "mountain_path",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/mountain_path/sculpted-v2.jpg"
+  },
+  {
+    "id": "forest_path-minimal",
+    "title": "森林小徑、陽光",
+    "theme": "forest_path",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/forest_path/minimal.jpg"
+  },
+  {
+    "id": "forest_path-sculpted",
+    "title": "森林小徑、陽光",
+    "theme": "forest_path",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/forest_path/sculpted.jpg"
+  },
+  {
+    "id": "forest_path-minimal-v2",
+    "title": "森林小徑、陽光 · 林間木棧道",
+    "theme": "forest_path",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/forest_path/minimal-v2.jpg"
+  },
+  {
+    "id": "forest_path-sculpted-v2",
+    "title": "森林小徑、陽光 · 林間木棧道",
+    "theme": "forest_path",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/forest_path/sculpted-v2.jpg"
+  },
+  {
+    "id": "mountains-minimal",
+    "title": "群山、雲海",
+    "theme": "mountains",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/mountains/minimal.jpg"
+  },
+  {
+    "id": "mountains-sculpted",
+    "title": "群山、雲海",
+    "theme": "mountains",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/mountains/sculpted.jpg"
+  },
+  {
+    "id": "mountains-minimal-v2",
+    "title": "群山、雲海 · 雪峰遠眺",
+    "theme": "mountains",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/mountains/minimal-v2.jpg"
+  },
+  {
+    "id": "mountains-sculpted-v2",
+    "title": "群山、雲海 · 雪峰遠眺",
+    "theme": "mountains",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/mountains/sculpted-v2.jpg"
+  },
+  {
+    "id": "sunrise-minimal",
+    "title": "日出、金色晨光",
+    "theme": "sunrise",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/sunrise/minimal.jpg"
+  },
+  {
+    "id": "sunrise-sculpted",
+    "title": "日出、金色晨光",
+    "theme": "sunrise",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/sunrise/sculpted.jpg"
+  },
+  {
+    "id": "sunrise-minimal-v2",
+    "title": "日出、金色晨光 · 海岸初曉",
+    "theme": "sunrise",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/sunrise/minimal-v2.jpg"
+  },
+  {
+    "id": "sunrise-sculpted-v2",
+    "title": "日出、金色晨光 · 海岸初曉",
+    "theme": "sunrise",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/sunrise/sculpted-v2.jpg"
+  },
+  {
+    "id": "sunset-minimal",
+    "title": "夕陽、晚霞",
+    "theme": "sunset",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/sunset/minimal.jpg"
+  },
+  {
+    "id": "sunset-sculpted",
+    "title": "夕陽、晚霞",
+    "theme": "sunset",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/sunset/sculpted.jpg"
+  },
+  {
+    "id": "sunset-minimal-v2",
+    "title": "夕陽、晚霞 · 暮色鹽湖",
+    "theme": "sunset",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/sunset/minimal-v2.jpg"
+  },
+  {
+    "id": "sunset-sculpted-v2",
+    "title": "夕陽、晚霞 · 暮色鹽湖",
+    "theme": "sunset",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/sunset/sculpted-v2.jpg"
+  },
+  {
+    "id": "stream-minimal",
+    "title": "清泉、溪流、陽光",
+    "theme": "stream",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/stream/minimal.jpg"
+  },
+  {
+    "id": "stream-sculpted",
+    "title": "清泉、溪流、陽光",
+    "theme": "stream",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/stream/sculpted.jpg"
+  },
+  {
+    "id": "stream-minimal-v2",
+    "title": "清泉、溪流、陽光 · 苔石清溪",
+    "theme": "stream",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/stream/minimal-v2.jpg"
+  },
+  {
+    "id": "stream-sculpted-v2",
+    "title": "清泉、溪流、陽光 · 苔石清溪",
+    "theme": "stream",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/stream/sculpted-v2.jpg"
+  },
+  {
+    "id": "waterfall-minimal",
+    "title": "瀑布、流水",
+    "theme": "waterfall",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/waterfall/minimal.jpg"
+  },
+  {
+    "id": "waterfall-sculpted",
+    "title": "瀑布、流水",
+    "theme": "waterfall",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/waterfall/sculpted.jpg"
+  },
+  {
+    "id": "waterfall-minimal-v2",
+    "title": "瀑布、流水 · 岩壁飛瀑",
+    "theme": "waterfall",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/waterfall/minimal-v2.jpg"
+  },
+  {
+    "id": "waterfall-sculpted-v2",
+    "title": "瀑布、流水 · 岩壁飛瀑",
+    "theme": "waterfall",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/waterfall/sculpted-v2.jpg"
+  },
+  {
+    "id": "spring_rain-minimal",
+    "title": "春雨、嫩葉",
+    "theme": "spring_rain",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/spring_rain/minimal.jpg"
+  },
+  {
+    "id": "spring_rain-sculpted",
+    "title": "春雨、嫩葉",
+    "theme": "spring_rain",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/spring_rain/sculpted.jpg"
+  },
+  {
+    "id": "spring_rain-minimal-v2",
+    "title": "春雨、嫩葉 · 雨中新葉",
+    "theme": "spring_rain",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/spring_rain/minimal-v2.jpg"
+  },
+  {
+    "id": "spring_rain-sculpted-v2",
+    "title": "春雨、嫩葉 · 雨中新葉",
+    "theme": "spring_rain",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/spring_rain/sculpted-v2.jpg"
+  },
+  {
+    "id": "snow-minimal",
+    "title": "雪花、柔和光線",
+    "theme": "snow",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/snow/minimal.jpg"
+  },
+  {
+    "id": "snow-sculpted",
+    "title": "雪花、柔和光線",
+    "theme": "snow",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/snow/sculpted.jpg"
+  },
+  {
+    "id": "snow-minimal-v2",
+    "title": "雪花、柔和光線 · 雪後松枝",
+    "theme": "snow",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/snow/minimal-v2.jpg"
+  },
+  {
+    "id": "snow-sculpted-v2",
+    "title": "雪花、柔和光線 · 雪後松枝",
+    "theme": "snow",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/snow/sculpted-v2.jpg"
+  },
+  {
+    "id": "galaxy-minimal",
+    "title": "星空、銀河、宇宙",
+    "theme": "galaxy",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/galaxy/minimal.jpg"
+  },
+  {
+    "id": "galaxy-sculpted",
+    "title": "星空、銀河、宇宙",
+    "theme": "galaxy",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/galaxy/sculpted.jpg"
+  },
+  {
+    "id": "galaxy-minimal-v2",
+    "title": "星空、銀河、宇宙 · 靜夜星環",
+    "theme": "galaxy",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/galaxy/minimal-v2.jpg"
+  },
+  {
+    "id": "galaxy-sculpted-v2",
+    "title": "星空、銀河、宇宙 · 靜夜星環",
+    "theme": "galaxy",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/galaxy/sculpted-v2.jpg"
+  },
+  {
+    "id": "sky-minimal",
+    "title": "藍天、白雲",
+    "theme": "sky",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/sky/minimal.jpg"
+  },
+  {
+    "id": "sky-sculpted",
+    "title": "藍天、白雲",
+    "theme": "sky",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/sky/sculpted.jpg"
+  },
+  {
+    "id": "sky-minimal-v2",
+    "title": "藍天、白雲 · 雲間晴空",
+    "theme": "sky",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/sky/minimal-v2.jpg"
+  },
+  {
+    "id": "sky-sculpted-v2",
+    "title": "藍天、白雲 · 雲間晴空",
+    "theme": "sky",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/sky/sculpted-v2.jpg"
+  },
+  {
+    "id": "ocean-minimal",
+    "title": "大海、海浪",
+    "theme": "ocean",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/ocean/minimal.jpg"
+  },
+  {
+    "id": "ocean-sculpted",
+    "title": "大海、海浪",
+    "theme": "ocean",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/ocean/sculpted.jpg"
+  },
+  {
+    "id": "ocean-minimal-v2",
+    "title": "大海、海浪 · 碧海潮線",
+    "theme": "ocean",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/ocean/minimal-v2.jpg"
+  },
+  {
+    "id": "ocean-sculpted-v2",
+    "title": "大海、海浪 · 碧海潮線",
+    "theme": "ocean",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/ocean/sculpted-v2.jpg"
+  },
+  {
+    "id": "calm_lake-minimal",
+    "title": "平靜湖面、倒影",
+    "theme": "calm_lake",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/calm_lake/minimal.jpg"
+  },
+  {
+    "id": "calm_lake-sculpted",
+    "title": "平靜湖面、倒影",
+    "theme": "calm_lake",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/calm_lake/sculpted.jpg"
+  },
+  {
+    "id": "calm_lake-minimal-v2",
+    "title": "平靜湖面、倒影 · 湖畔蘆葦",
+    "theme": "calm_lake",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/calm_lake/minimal-v2.jpg"
+  },
+  {
+    "id": "calm_lake-sculpted-v2",
+    "title": "平靜湖面、倒影 · 湖畔蘆葦",
+    "theme": "calm_lake",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/calm_lake/sculpted-v2.jpg"
+  },
+  {
+    "id": "storm-minimal",
+    "title": "風雨後的曙光",
+    "theme": "storm",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/storm/minimal.jpg"
+  },
+  {
+    "id": "storm-sculpted",
+    "title": "風雨後的曙光",
+    "theme": "storm",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/storm/sculpted.jpg"
+  },
+  {
+    "id": "storm-minimal-v2",
+    "title": "風雨後的曙光 · 雨過田野",
+    "theme": "storm",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/storm/minimal-v2.jpg"
+  },
+  {
+    "id": "storm-sculpted-v2",
+    "title": "風雨後的曙光 · 雨過田野",
+    "theme": "storm",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/storm/sculpted-v2.jpg"
+  },
+  {
+    "id": "rainbow-minimal",
+    "title": "彩虹、雨後天空",
+    "theme": "rainbow",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/rainbow/minimal.jpg"
+  },
+  {
+    "id": "rainbow-sculpted",
+    "title": "彩虹、雨後天空",
+    "theme": "rainbow",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/rainbow/sculpted.jpg"
+  },
+  {
+    "id": "rainbow-minimal-v2",
+    "title": "彩虹、雨後天空 · 田間虹光",
+    "theme": "rainbow",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/rainbow/minimal-v2.jpg"
+  },
+  {
+    "id": "rainbow-sculpted-v2",
+    "title": "彩虹、雨後天空 · 田間虹光",
+    "theme": "rainbow",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/rainbow/sculpted-v2.jpg"
+  },
+  {
+    "id": "eagle-minimal",
+    "title": "飛鷹、天空",
+    "theme": "eagle",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/eagle/minimal.jpg"
+  },
+  {
+    "id": "eagle-sculpted",
+    "title": "飛鷹、天空",
+    "theme": "eagle",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/eagle/sculpted.jpg"
+  },
+  {
+    "id": "eagle-minimal-v2",
+    "title": "飛鷹、天空 · 展翅岩鷹",
+    "theme": "eagle",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/eagle/minimal-v2.jpg"
+  },
+  {
+    "id": "eagle-sculpted-v2",
+    "title": "飛鷹、天空 · 展翅岩鷹",
+    "theme": "eagle",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/eagle/sculpted-v2.jpg"
+  },
+  {
+    "id": "dove-minimal",
+    "title": "白鴿、柔光",
+    "theme": "dove",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/dove/minimal.jpg"
+  },
+  {
+    "id": "dove-sculpted",
+    "title": "白鴿、柔光",
+    "theme": "dove",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/dove/sculpted.jpg"
+  },
+  {
+    "id": "dove-minimal-v2",
+    "title": "白鴿、柔光 · 窗邊白鴿",
+    "theme": "dove",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/dove/minimal-v2.jpg"
+  },
+  {
+    "id": "dove-sculpted-v2",
+    "title": "白鴿、柔光 · 窗邊白鴿",
+    "theme": "dove",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/dove/sculpted-v2.jpg"
+  },
+  {
+    "id": "meadow-minimal",
+    "title": "青草地、野花",
+    "theme": "meadow",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/meadow/minimal.jpg"
+  },
+  {
+    "id": "meadow-sculpted",
+    "title": "青草地、野花",
+    "theme": "meadow",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/meadow/sculpted.jpg"
+  },
+  {
+    "id": "meadow-minimal-v2",
+    "title": "青草地、野花 · 晨露草坡",
+    "theme": "meadow",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/meadow/minimal-v2.jpg"
+  },
+  {
+    "id": "meadow-sculpted-v2",
+    "title": "青草地、野花 · 晨露草坡",
+    "theme": "meadow",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/meadow/sculpted-v2.jpg"
+  },
+  {
+    "id": "sheep-minimal",
+    "title": "羊群、草原",
+    "theme": "sheep",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/sheep/minimal.jpg"
+  },
+  {
+    "id": "sheep-sculpted",
+    "title": "羊群、草原",
+    "theme": "sheep",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/sheep/sculpted.jpg"
+  },
+  {
+    "id": "sheep-minimal-v2",
+    "title": "羊群、草原 · 牧場歇息",
+    "theme": "sheep",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/sheep/minimal-v2.jpg"
+  },
+  {
+    "id": "sheep-sculpted-v2",
+    "title": "羊群、草原 · 牧場歇息",
+    "theme": "sheep",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/sheep/sculpted-v2.jpg"
+  },
+  {
+    "id": "oasis-minimal",
+    "title": "沙漠綠洲、泉水",
+    "theme": "oasis",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/oasis/minimal.jpg"
+  },
+  {
+    "id": "oasis-sculpted",
+    "title": "沙漠綠洲、泉水",
+    "theme": "oasis",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/oasis/sculpted.jpg"
+  },
+  {
+    "id": "oasis-minimal-v2",
+    "title": "沙漠綠洲、泉水 · 棕影泉畔",
+    "theme": "oasis",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/oasis/minimal-v2.jpg"
+  },
+  {
+    "id": "oasis-sculpted-v2",
+    "title": "沙漠綠洲、泉水 · 棕影泉畔",
+    "theme": "oasis",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/oasis/sculpted-v2.jpg"
+  },
+  {
+    "id": "lighthouse-minimal",
+    "title": "燈塔、海岸",
+    "theme": "lighthouse",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/lighthouse/minimal.jpg"
+  },
+  {
+    "id": "lighthouse-sculpted",
+    "title": "燈塔、海岸",
+    "theme": "lighthouse",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/lighthouse/sculpted.jpg"
+  },
+  {
+    "id": "lighthouse-minimal-v2",
+    "title": "燈塔、海岸 · 海霧燈塔",
+    "theme": "lighthouse",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/lighthouse/minimal-v2.jpg"
+  },
+  {
+    "id": "lighthouse-sculpted-v2",
+    "title": "燈塔、海岸 · 海霧燈塔",
+    "theme": "lighthouse",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/lighthouse/sculpted-v2.jpg"
+  },
+  {
+    "id": "rock-minimal",
+    "title": "磐石、海岸",
+    "theme": "rock",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/rock/minimal.jpg"
+  },
+  {
+    "id": "rock-sculpted",
+    "title": "磐石、海岸",
+    "theme": "rock",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/rock/sculpted.jpg"
+  },
+  {
+    "id": "rock-minimal-v2",
+    "title": "磐石、海岸 · 堅穩礁石",
+    "theme": "rock",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/rock/minimal-v2.jpg"
+  },
+  {
+    "id": "rock-sculpted-v2",
+    "title": "磐石、海岸 · 堅穩礁石",
+    "theme": "rock",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/rock/sculpted-v2.jpg"
+  },
+  {
+    "id": "cross-minimal",
+    "title": "山丘十字架、晨光",
+    "theme": "cross",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/cross/minimal.jpg"
+  },
+  {
+    "id": "cross-sculpted",
+    "title": "山丘十字架、晨光",
+    "theme": "cross",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/cross/sculpted.jpg"
+  },
+  {
+    "id": "cross-minimal-v2",
+    "title": "山丘十字架、晨光 · 窗光木十架",
+    "theme": "cross",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/cross/minimal-v2.jpg"
+  },
+  {
+    "id": "cross-sculpted-v2",
+    "title": "山丘十字架、晨光 · 窗光木十架",
+    "theme": "cross",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/cross/sculpted-v2.jpg"
+  },
+  {
+    "id": "church-minimal",
+    "title": "教堂、窗光",
+    "theme": "church",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/church/minimal.jpg"
+  },
+  {
+    "id": "church-sculpted",
+    "title": "教堂、窗光",
+    "theme": "church",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/church/sculpted.jpg"
+  },
+  {
+    "id": "church-minimal-v2",
+    "title": "教堂、窗光 · 白牆小堂",
+    "theme": "church",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/church/minimal-v2.jpg"
+  },
+  {
+    "id": "church-sculpted-v2",
+    "title": "教堂、窗光 · 白牆小堂",
+    "theme": "church",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/church/sculpted-v2.jpg"
+  },
+  {
+    "id": "hands-minimal",
+    "title": "敬拜、舉手剪影",
+    "theme": "hands",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/hands/minimal.jpg"
+  },
+  {
+    "id": "hands-sculpted",
+    "title": "敬拜、舉手剪影",
+    "theme": "hands",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/hands/sculpted.jpg"
+  },
+  {
+    "id": "hands-minimal-v2",
+    "title": "敬拜、舉手剪影 · 同心敬拜",
+    "theme": "hands",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/hands/minimal-v2.jpg"
+  },
+  {
+    "id": "hands-sculpted-v2",
+    "title": "敬拜、舉手剪影 · 同心敬拜",
+    "theme": "hands",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/hands/sculpted-v2.jpg"
+  },
+  {
+    "id": "music-minimal",
+    "title": "音符、柔光背景",
+    "theme": "music",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/music/minimal.jpg"
+  },
+  {
+    "id": "music-sculpted",
+    "title": "音符、柔光背景",
+    "theme": "music",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/music/sculpted.jpg"
+  },
+  {
+    "id": "music-minimal-v2",
+    "title": "音符、柔光背景 · 琴鍵晨光",
+    "theme": "music",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/music/minimal-v2.jpg"
+  },
+  {
+    "id": "music-sculpted-v2",
+    "title": "音符、柔光背景 · 琴鍵晨光",
+    "theme": "music",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/music/sculpted-v2.jpg"
+  },
+  {
+    "id": "celebration-minimal",
+    "title": "歡慶、金色光點",
+    "theme": "celebration",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/celebration/minimal.jpg"
+  },
+  {
+    "id": "celebration-sculpted",
+    "title": "歡慶、金色光點",
+    "theme": "celebration",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/celebration/sculpted.jpg"
+  },
+  {
+    "id": "celebration-minimal-v2",
+    "title": "歡慶、金色光點 · 歡欣花瓣",
+    "theme": "celebration",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/celebration/minimal-v2.jpg"
+  },
+  {
+    "id": "celebration-sculpted-v2",
+    "title": "歡慶、金色光點 · 歡欣花瓣",
+    "theme": "celebration",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/celebration/sculpted-v2.jpg"
+  },
+  {
+    "id": "gentle_light-minimal",
+    "title": "柔和暖光、散景",
+    "theme": "gentle_light",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/gentle_light/minimal.jpg"
+  },
+  {
+    "id": "gentle_light-sculpted",
+    "title": "柔和暖光、散景",
+    "theme": "gentle_light",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/gentle_light/sculpted.jpg"
+  },
+  {
+    "id": "gentle_light-minimal-v2",
+    "title": "柔和暖光、散景 · 窗紗柔光",
+    "theme": "gentle_light",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/gentle_light/minimal-v2.jpg"
+  },
+  {
+    "id": "gentle_light-sculpted-v2",
+    "title": "柔和暖光、散景 · 窗紗柔光",
+    "theme": "gentle_light",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/gentle_light/sculpted-v2.jpg"
+  },
+  {
+    "id": "open_hands-minimal",
+    "title": "雙手、柔光",
+    "theme": "open_hands",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/open_hands/minimal.jpg"
+  },
+  {
+    "id": "open_hands-sculpted",
+    "title": "雙手、柔光",
+    "theme": "open_hands",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/open_hands/sculpted.jpg"
+  },
+  {
+    "id": "open_hands-minimal-v2",
+    "title": "雙手、柔光 · 掌心領受",
+    "theme": "open_hands",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/open_hands/minimal-v2.jpg"
+  },
+  {
+    "id": "open_hands-sculpted-v2",
+    "title": "雙手、柔光 · 掌心領受",
+    "theme": "open_hands",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/open_hands/sculpted-v2.jpg"
+  },
+  {
+    "id": "fire-minimal",
+    "title": "火焰、光芒",
+    "theme": "fire",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/fire/minimal.jpg"
+  },
+  {
+    "id": "fire-sculpted",
+    "title": "火焰、光芒",
+    "theme": "fire",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/fire/sculpted.jpg"
+  },
+  {
+    "id": "fire-minimal-v2",
+    "title": "火焰、光芒 · 炭火微光",
+    "theme": "fire",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/fire/minimal-v2.jpg"
+  },
+  {
+    "id": "fire-sculpted-v2",
+    "title": "火焰、光芒 · 炭火微光",
+    "theme": "fire",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/fire/sculpted-v2.jpg"
+  },
+  {
+    "id": "seeds-minimal",
+    "title": "嫩芽、新生命",
+    "theme": "seeds",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/seeds/minimal.jpg"
+  },
+  {
+    "id": "seeds-sculpted",
+    "title": "嫩芽、新生命",
+    "theme": "seeds",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/seeds/sculpted.jpg"
+  },
+  {
+    "id": "seeds-minimal-v2",
+    "title": "嫩芽、新生命 · 石縫新芽",
+    "theme": "seeds",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/seeds/minimal-v2.jpg"
+  },
+  {
+    "id": "seeds-sculpted-v2",
+    "title": "嫩芽、新生命 · 石縫新芽",
+    "theme": "seeds",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/seeds/sculpted-v2.jpg"
+  },
+  {
+    "id": "bible-minimal",
+    "title": "聖經與書卷",
+    "theme": "bible",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/bible/minimal.jpg"
+  },
+  {
+    "id": "bible-sculpted",
+    "title": "聖經與書卷",
+    "theme": "bible",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/bible/sculpted.jpg"
+  },
+  {
+    "id": "bible-minimal-v2",
+    "title": "聖經與書卷 · 書卷靜讀",
+    "theme": "bible",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/bible/minimal-v2.jpg"
+  },
+  {
+    "id": "bible-sculpted-v2",
+    "title": "聖經與書卷 · 書卷靜讀",
+    "theme": "bible",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/bible/sculpted-v2.jpg"
+  },
+  {
+    "id": "communion-minimal",
+    "title": "聖餐餅杯",
+    "theme": "communion",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/communion/minimal.jpg"
+  },
+  {
+    "id": "communion-sculpted",
+    "title": "聖餐餅杯",
+    "theme": "communion",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/communion/sculpted.jpg"
+  },
+  {
+    "id": "communion-minimal-v2",
+    "title": "聖餐餅杯 · 餅杯靜物",
+    "theme": "communion",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/communion/minimal-v2.jpg"
+  },
+  {
+    "id": "communion-sculpted-v2",
+    "title": "聖餐餅杯 · 餅杯靜物",
+    "theme": "communion",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/communion/sculpted-v2.jpg"
+  },
+  {
+    "id": "nativity-minimal",
+    "title": "馬槽與伯利恆",
+    "theme": "nativity",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/nativity/minimal.jpg"
+  },
+  {
+    "id": "nativity-sculpted",
+    "title": "馬槽與伯利恆",
+    "theme": "nativity",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/nativity/sculpted.jpg"
+  },
+  {
+    "id": "nativity-minimal-v2",
+    "title": "馬槽與伯利恆 · 馬槽微光",
+    "theme": "nativity",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/nativity/minimal-v2.jpg"
+  },
+  {
+    "id": "nativity-sculpted-v2",
+    "title": "馬槽與伯利恆 · 馬槽微光",
+    "theme": "nativity",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/nativity/sculpted-v2.jpg"
+  },
+  {
+    "id": "empty_tomb-minimal",
+    "title": "空墓與復活晨光",
+    "theme": "empty_tomb",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/empty_tomb/minimal.jpg"
+  },
+  {
+    "id": "empty_tomb-sculpted",
+    "title": "空墓與復活晨光",
+    "theme": "empty_tomb",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/empty_tomb/sculpted.jpg"
+  },
+  {
+    "id": "empty_tomb-minimal-v2",
+    "title": "空墓與復活晨光 · 墓中晨曦",
+    "theme": "empty_tomb",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/empty_tomb/minimal-v2.jpg"
+  },
+  {
+    "id": "empty_tomb-sculpted-v2",
+    "title": "空墓與復活晨光 · 墓中晨曦",
+    "theme": "empty_tomb",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/empty_tomb/sculpted-v2.jpg"
+  },
+  {
+    "id": "crown-minimal",
+    "title": "冠冕",
+    "theme": "crown",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/crown/minimal.jpg"
+  },
+  {
+    "id": "crown-minimal-v2",
+    "title": "冠冕 · 紫絨冠冕",
+    "theme": "crown",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/crown/minimal-v2.jpg"
+  },
+  {
+    "id": "crown-sculpted-v2",
+    "title": "冠冕 · 紫絨冠冕",
+    "theme": "crown",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/crown/sculpted-v2.jpg"
+  },
+  {
+    "id": "throne-minimal",
+    "title": "寶座與榮光",
+    "theme": "throne",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/throne/minimal.jpg"
+  },
+  {
+    "id": "throne-sculpted",
+    "title": "寶座與榮光",
+    "theme": "throne",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/throne/sculpted.jpg"
+  },
+  {
+    "id": "throne-minimal-v2",
+    "title": "寶座與榮光 · 王座長廊",
+    "theme": "throne",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/throne/minimal-v2.jpg"
+  },
+  {
+    "id": "throne-sculpted-v2",
+    "title": "寶座與榮光 · 王座長廊",
+    "theme": "throne",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/throne/sculpted-v2.jpg"
+  },
+  {
+    "id": "altar-minimal",
+    "title": "祭壇與獻祭",
+    "theme": "altar",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/altar/minimal.jpg"
+  },
+  {
+    "id": "altar-sculpted",
+    "title": "祭壇與獻祭",
+    "theme": "altar",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/altar/sculpted.jpg"
+  },
+  {
+    "id": "altar-minimal-v2",
+    "title": "祭壇與獻祭 · 獻上與安靜",
+    "theme": "altar",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/altar/minimal-v2.jpg"
+  },
+  {
+    "id": "altar-sculpted-v2",
+    "title": "祭壇與獻祭 · 獻上與安靜",
+    "theme": "altar",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/altar/sculpted-v2.jpg"
+  },
+  {
+    "id": "incense-minimal",
+    "title": "香煙與香爐",
+    "theme": "incense",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/incense/minimal.jpg"
+  },
+  {
+    "id": "incense-sculpted",
+    "title": "香煙與香爐",
+    "theme": "incense",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/incense/sculpted.jpg"
+  },
+  {
+    "id": "incense-minimal-v2",
+    "title": "香煙與香爐 · 香煙輕升",
+    "theme": "incense",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/incense/minimal-v2.jpg"
+  },
+  {
+    "id": "incense-sculpted-v2",
+    "title": "香煙與香爐 · 香煙輕升",
+    "theme": "incense",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/incense/sculpted-v2.jpg"
+  },
+  {
+    "id": "trumpet-minimal",
+    "title": "號角",
+    "theme": "trumpet",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/trumpet/minimal.jpg"
+  },
+  {
+    "id": "trumpet-sculpted",
+    "title": "號角",
+    "theme": "trumpet",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/trumpet/sculpted.jpg"
+  },
+  {
+    "id": "trumpet-minimal-v2",
+    "title": "號角 · 石窗號角",
+    "theme": "trumpet",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/trumpet/minimal-v2.jpg"
+  },
+  {
+    "id": "trumpet-sculpted-v2",
+    "title": "號角 · 石窗號角",
+    "theme": "trumpet",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/trumpet/sculpted-v2.jpg"
+  },
+  {
+    "id": "harp-minimal",
+    "title": "琴弦與樂器",
+    "theme": "harp",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/harp/minimal.jpg"
+  },
+  {
+    "id": "harp-sculpted",
+    "title": "琴弦與樂器",
+    "theme": "harp",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/harp/sculpted.jpg"
+  },
+  {
+    "id": "harp-minimal-v2",
+    "title": "琴弦與樂器 · 豎琴弦光",
+    "theme": "harp",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/harp/minimal-v2.jpg"
+  },
+  {
+    "id": "harp-sculpted-v2",
+    "title": "琴弦與樂器 · 豎琴弦光",
+    "theme": "harp",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/harp/sculpted-v2.jpg"
+  },
+  {
+    "id": "banner-minimal",
+    "title": "旌旗",
+    "theme": "banner",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/banner/minimal.jpg"
+  },
+  {
+    "id": "banner-sculpted",
+    "title": "旌旗",
+    "theme": "banner",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/banner/sculpted.jpg"
+  },
+  {
+    "id": "banner-minimal-v2",
+    "title": "旌旗 · 白旗微風",
+    "theme": "banner",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/banner/minimal-v2.jpg"
+  },
+  {
+    "id": "banner-sculpted-v2",
+    "title": "旌旗 · 白旗微風",
+    "theme": "banner",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/banner/sculpted-v2.jpg"
+  },
+  {
+    "id": "armor-minimal",
+    "title": "盔甲與寶劍",
+    "theme": "armor",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/armor/minimal.jpg"
+  },
+  {
+    "id": "armor-sculpted",
+    "title": "盔甲與寶劍",
+    "theme": "armor",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/armor/sculpted.jpg"
+  },
+  {
+    "id": "armor-minimal-v2",
+    "title": "盔甲與寶劍 · 軍裝安放",
+    "theme": "armor",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/armor/minimal-v2.jpg"
+  },
+  {
+    "id": "armor-sculpted-v2",
+    "title": "盔甲與寶劍 · 軍裝安放",
+    "theme": "armor",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/armor/sculpted-v2.jpg"
+  },
+  {
+    "id": "shield-minimal",
+    "title": "盾牌",
+    "theme": "shield",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/shield/minimal.jpg"
+  },
+  {
+    "id": "shield-sculpted",
+    "title": "盾牌",
+    "theme": "shield",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/shield/sculpted.jpg"
+  },
+  {
+    "id": "shield-minimal-v2",
+    "title": "盾牌 · 庇護之盾",
+    "theme": "shield",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/shield/minimal-v2.jpg"
+  },
+  {
+    "id": "shield-sculpted-v2",
+    "title": "盾牌 · 庇護之盾",
+    "theme": "shield",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/shield/sculpted-v2.jpg"
+  },
+  {
+    "id": "broken_chains-minimal",
+    "title": "斷開的鎖鏈",
+    "theme": "broken_chains",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/broken_chains/minimal.jpg"
+  },
+  {
+    "id": "broken_chains-sculpted",
+    "title": "斷開的鎖鏈",
+    "theme": "broken_chains",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/broken_chains/sculpted.jpg"
+  },
+  {
+    "id": "broken_chains-minimal-v2",
+    "title": "斷開的鎖鏈 · 自由晨光",
+    "theme": "broken_chains",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/broken_chains/minimal-v2.jpg"
+  },
+  {
+    "id": "broken_chains-sculpted-v2",
+    "title": "斷開的鎖鏈 · 自由晨光",
+    "theme": "broken_chains",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/broken_chains/sculpted-v2.jpg"
+  },
+  {
+    "id": "tent-minimal",
+    "title": "帳幕",
+    "theme": "tent",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/tent/minimal.jpg"
+  },
+  {
+    "id": "tent-sculpted",
+    "title": "帳幕",
+    "theme": "tent",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/tent/sculpted.jpg"
+  },
+  {
+    "id": "tent-minimal-v2",
+    "title": "帳幕 · 帳幕入口",
+    "theme": "tent",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/tent/minimal-v2.jpg"
+  },
+  {
+    "id": "tent-sculpted-v2",
+    "title": "帳幕 · 帳幕入口",
+    "theme": "tent",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/tent/sculpted-v2.jpg"
+  },
+  {
+    "id": "refuge-minimal",
+    "title": "避難所與城堡",
+    "theme": "refuge",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/refuge/minimal.jpg"
+  },
+  {
+    "id": "refuge-sculpted",
+    "title": "避難所與城堡",
+    "theme": "refuge",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/refuge/sculpted.jpg"
+  },
+  {
+    "id": "refuge-minimal-v2",
+    "title": "避難所與城堡 · 石屋避風",
+    "theme": "refuge",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/refuge/minimal-v2.jpg"
+  },
+  {
+    "id": "refuge-sculpted-v2",
+    "title": "避難所與城堡 · 石屋避風",
+    "theme": "refuge",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/refuge/sculpted-v2.jpg"
+  },
+  {
+    "id": "sheltering_wings-minimal",
+    "title": "翅膀蔭下",
+    "theme": "sheltering_wings",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/sheltering_wings/minimal.jpg"
+  },
+  {
+    "id": "sheltering_wings-sculpted",
+    "title": "翅膀蔭下",
+    "theme": "sheltering_wings",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/sheltering_wings/sculpted.jpg"
+  },
+  {
+    "id": "sheltering_wings-minimal-v2",
+    "title": "翅膀蔭下 · 羽翼守護",
+    "theme": "sheltering_wings",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/sheltering_wings/minimal-v2.jpg"
+  },
+  {
+    "id": "sheltering_wings-sculpted-v2",
+    "title": "翅膀蔭下 · 羽翼守護",
+    "theme": "sheltering_wings",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/sheltering_wings/sculpted-v2.jpg"
+  },
+  {
+    "id": "footprints-minimal",
+    "title": "沙灘腳印",
+    "theme": "footprints",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/footprints/minimal.jpg"
+  },
+  {
+    "id": "footprints-sculpted",
+    "title": "沙灘腳印",
+    "theme": "footprints",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/footprints/sculpted.jpg"
+  },
+  {
+    "id": "footprints-minimal-v2",
+    "title": "沙灘腳印 · 濕沙足跡",
+    "theme": "footprints",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/footprints/minimal-v2.jpg"
+  },
+  {
+    "id": "footprints-sculpted-v2",
+    "title": "沙灘腳印 · 濕沙足跡",
+    "theme": "footprints",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/footprints/sculpted-v2.jpg"
+  },
+  {
+    "id": "door-minimal",
+    "title": "敞開的門",
+    "theme": "door",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/door/minimal.jpg"
+  },
+  {
+    "id": "door-sculpted",
+    "title": "敞開的門",
+    "theme": "door",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/door/sculpted.jpg"
+  },
+  {
+    "id": "door-minimal-v2",
+    "title": "敞開的門 · 向光敞開",
+    "theme": "door",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/door/minimal-v2.jpg"
+  },
+  {
+    "id": "door-sculpted-v2",
+    "title": "敞開的門 · 向光敞開",
+    "theme": "door",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/door/sculpted-v2.jpg"
+  },
+  {
+    "id": "bridge-minimal",
+    "title": "橋樑",
+    "theme": "bridge",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/bridge/minimal.jpg"
+  },
+  {
+    "id": "bridge-sculpted",
+    "title": "橋樑",
+    "theme": "bridge",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/bridge/sculpted.jpg"
+  },
+  {
+    "id": "bridge-minimal-v2",
+    "title": "橋樑 · 林溪石橋",
+    "theme": "bridge",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/bridge/minimal-v2.jpg"
+  },
+  {
+    "id": "bridge-sculpted-v2",
+    "title": "橋樑 · 林溪石橋",
+    "theme": "bridge",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/bridge/sculpted-v2.jpg"
+  },
+  {
+    "id": "boat-minimal",
+    "title": "海上小船",
+    "theme": "boat",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/boat/minimal.jpg"
+  },
+  {
+    "id": "boat-sculpted",
+    "title": "海上小船",
+    "theme": "boat",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/boat/sculpted.jpg"
+  },
+  {
+    "id": "boat-minimal-v2",
+    "title": "海上小船 · 岸邊小舟",
+    "theme": "boat",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/boat/minimal-v2.jpg"
+  },
+  {
+    "id": "boat-sculpted-v2",
+    "title": "海上小船 · 岸邊小舟",
+    "theme": "boat",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/boat/sculpted-v2.jpg"
+  },
+  {
+    "id": "anchor-minimal",
+    "title": "錨",
+    "theme": "anchor",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/anchor/minimal.jpg"
+  },
+  {
+    "id": "anchor-sculpted",
+    "title": "錨",
+    "theme": "anchor",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/anchor/sculpted.jpg"
+  },
+  {
+    "id": "anchor-minimal-v2",
+    "title": "錨 · 船錨與繩",
+    "theme": "anchor",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/anchor/minimal-v2.jpg"
+  },
+  {
+    "id": "anchor-sculpted-v2",
+    "title": "錨 · 船錨與繩",
+    "theme": "anchor",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/anchor/sculpted-v2.jpg"
+  },
+  {
+    "id": "harvest-minimal",
+    "title": "成熟莊稼",
+    "theme": "harvest",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/harvest/minimal.jpg"
+  },
+  {
+    "id": "harvest-sculpted",
+    "title": "成熟莊稼",
+    "theme": "harvest",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/harvest/sculpted.jpg"
+  },
+  {
+    "id": "harvest-minimal-v2",
+    "title": "成熟莊稼 · 穀倉豐收",
+    "theme": "harvest",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/harvest/minimal-v2.jpg"
+  },
+  {
+    "id": "harvest-sculpted-v2",
+    "title": "成熟莊稼 · 穀倉豐收",
+    "theme": "harvest",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/harvest/sculpted-v2.jpg"
+  },
+  {
+    "id": "wheat-minimal",
+    "title": "麥粒與麥穗",
+    "theme": "wheat",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/wheat/minimal.jpg"
+  },
+  {
+    "id": "wheat-sculpted",
+    "title": "麥粒與麥穗",
+    "theme": "wheat",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/wheat/sculpted.jpg"
+  },
+  {
+    "id": "wheat-minimal-v2",
+    "title": "麥粒與麥穗 · 麥穗近景",
+    "theme": "wheat",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/wheat/minimal-v2.jpg"
+  },
+  {
+    "id": "wheat-sculpted-v2",
+    "title": "麥粒與麥穗 · 麥穗近景",
+    "theme": "wheat",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/wheat/sculpted-v2.jpg"
+  },
+  {
+    "id": "grapevine-minimal",
+    "title": "葡萄樹與枝子",
+    "theme": "grapevine",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/grapevine/minimal.jpg"
+  },
+  {
+    "id": "grapevine-sculpted",
+    "title": "葡萄樹與枝子",
+    "theme": "grapevine",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/grapevine/sculpted.jpg"
+  },
+  {
+    "id": "grapevine-minimal-v2",
+    "title": "葡萄樹與枝子 · 枝上葡萄",
+    "theme": "grapevine",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/grapevine/minimal-v2.jpg"
+  },
+  {
+    "id": "grapevine-sculpted-v2",
+    "title": "葡萄樹與枝子 · 枝上葡萄",
+    "theme": "grapevine",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/grapevine/sculpted-v2.jpg"
+  },
+  {
+    "id": "olive_tree-minimal",
+    "title": "橄欖樹與橄欖枝",
+    "theme": "olive_tree",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/olive_tree/minimal.jpg"
+  },
+  {
+    "id": "olive_tree-sculpted",
+    "title": "橄欖樹與橄欖枝",
+    "theme": "olive_tree",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/olive_tree/sculpted.jpg"
+  },
+  {
+    "id": "olive_tree-minimal-v2",
+    "title": "橄欖樹與橄欖枝 · 橄欖枝影",
+    "theme": "olive_tree",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/olive_tree/minimal-v2.jpg"
+  },
+  {
+    "id": "olive_tree-sculpted-v2",
+    "title": "橄欖樹與橄欖枝 · 橄欖枝影",
+    "theme": "olive_tree",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/olive_tree/sculpted-v2.jpg"
+  },
+  {
+    "id": "tree-minimal",
+    "title": "溪邊大樹",
+    "theme": "tree",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/tree/minimal.jpg"
+  },
+  {
+    "id": "tree-sculpted",
+    "title": "溪邊大樹",
+    "theme": "tree",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/tree/sculpted.jpg"
+  },
+  {
+    "id": "tree-minimal-v2",
+    "title": "溪邊大樹 · 溪岸深根",
+    "theme": "tree",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/tree/minimal-v2.jpg"
+  },
+  {
+    "id": "tree-sculpted-v2",
+    "title": "溪邊大樹 · 溪岸深根",
+    "theme": "tree",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/tree/sculpted-v2.jpg"
+  },
+  {
+    "id": "garden-minimal",
+    "title": "花園與果園",
+    "theme": "garden",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/garden/minimal.jpg"
+  },
+  {
+    "id": "garden-sculpted",
+    "title": "花園與果園",
+    "theme": "garden",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/garden/sculpted.jpg"
+  },
+  {
+    "id": "garden-minimal-v2",
+    "title": "花園與果園 · 花園石凳",
+    "theme": "garden",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/garden/minimal-v2.jpg"
+  },
+  {
+    "id": "garden-sculpted-v2",
+    "title": "花園與果園 · 花園石凳",
+    "theme": "garden",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/garden/sculpted-v2.jpg"
+  },
+  {
+    "id": "flowers-minimal",
+    "title": "花朵盛開",
+    "theme": "flowers",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/flowers/minimal.jpg"
+  },
+  {
+    "id": "flowers-sculpted",
+    "title": "花朵盛開",
+    "theme": "flowers",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/flowers/sculpted.jpg"
+  },
+  {
+    "id": "flowers-minimal-v2",
+    "title": "花朵盛開 · 花間清風",
+    "theme": "flowers",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/flowers/minimal-v2.jpg"
+  },
+  {
+    "id": "flowers-sculpted-v2",
+    "title": "花朵盛開 · 花間清風",
+    "theme": "flowers",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/flowers/sculpted-v2.jpg"
+  },
+  {
+    "id": "lily-minimal",
+    "title": "百合花",
+    "theme": "lily",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/lily/minimal.jpg"
+  },
+  {
+    "id": "lily-sculpted",
+    "title": "百合花",
+    "theme": "lily",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/lily/sculpted.jpg"
+  },
+  {
+    "id": "lily-minimal-v2",
+    "title": "百合花 · 百合露珠",
+    "theme": "lily",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/lily/minimal-v2.jpg"
+  },
+  {
+    "id": "lily-sculpted-v2",
+    "title": "百合花 · 百合露珠",
+    "theme": "lily",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/lily/sculpted-v2.jpg"
+  },
+  {
+    "id": "pottery-minimal",
+    "title": "陶匠與陶器",
+    "theme": "pottery",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/pottery/minimal.jpg"
+  },
+  {
+    "id": "pottery-sculpted",
+    "title": "陶匠與陶器",
+    "theme": "pottery",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/pottery/sculpted.jpg"
+  },
+  {
+    "id": "pottery-minimal-v2",
+    "title": "陶匠與陶器 · 陶土成器",
+    "theme": "pottery",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/pottery/minimal-v2.jpg"
+  },
+  {
+    "id": "pottery-sculpted-v2",
+    "title": "陶匠與陶器 · 陶土成器",
+    "theme": "pottery",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/pottery/sculpted-v2.jpg"
+  },
+  {
+    "id": "dew-minimal",
+    "title": "露珠",
+    "theme": "dew",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/dew/minimal.jpg"
+  },
+  {
+    "id": "dew-sculpted",
+    "title": "露珠",
+    "theme": "dew",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/dew/sculpted.jpg"
+  },
+  {
+    "id": "dew-minimal-v2",
+    "title": "露珠 · 葉尖凝露",
+    "theme": "dew",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/dew/minimal-v2.jpg"
+  },
+  {
+    "id": "dew-sculpted-v2",
+    "title": "露珠 · 葉尖凝露",
+    "theme": "dew",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/dew/sculpted-v2.jpg"
+  },
+  {
+    "id": "river-minimal",
+    "title": "大河與江水",
+    "theme": "river",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/river/minimal.jpg"
+  },
+  {
+    "id": "river-sculpted",
+    "title": "大河與江水",
+    "theme": "river",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/river/sculpted.jpg"
+  },
+  {
+    "id": "river-minimal-v2",
+    "title": "大河與江水 · 河灣晨霧",
+    "theme": "river",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/river/minimal-v2.jpg"
+  },
+  {
+    "id": "river-sculpted-v2",
+    "title": "大河與江水 · 河灣晨霧",
+    "theme": "river",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/river/sculpted-v2.jpg"
+  },
+  {
+    "id": "desert-minimal",
+    "title": "曠野沙漠",
+    "theme": "desert",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/desert/minimal.jpg"
+  },
+  {
+    "id": "desert-sculpted",
+    "title": "曠野沙漠",
+    "theme": "desert",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/desert/sculpted.jpg"
+  },
+  {
+    "id": "desert-minimal-v2",
+    "title": "曠野沙漠 · 曠野清晨",
+    "theme": "desert",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/desert/minimal-v2.jpg"
+  },
+  {
+    "id": "desert-sculpted-v2",
+    "title": "曠野沙漠 · 曠野清晨",
+    "theme": "desert",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/desert/sculpted-v2.jpg"
+  },
+  {
+    "id": "sea_parting-minimal",
+    "title": "紅海開路",
+    "theme": "sea_parting",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/sea_parting/minimal.jpg"
+  },
+  {
+    "id": "sea_parting-sculpted",
+    "title": "紅海開路",
+    "theme": "sea_parting",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/sea_parting/sculpted.jpg"
+  },
+  {
+    "id": "sea_parting-minimal-v2",
+    "title": "紅海開路 · 海中前路",
+    "theme": "sea_parting",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/sea_parting/minimal-v2.jpg"
+  },
+  {
+    "id": "sea_parting-sculpted-v2",
+    "title": "紅海開路 · 海中前路",
+    "theme": "sea_parting",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/sea_parting/sculpted-v2.jpg"
+  },
+  {
+    "id": "new_jerusalem-minimal",
+    "title": "新耶路撒冷",
+    "theme": "new_jerusalem",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/new_jerusalem/minimal.jpg"
+  },
+  {
+    "id": "new_jerusalem-sculpted",
+    "title": "新耶路撒冷",
+    "theme": "new_jerusalem",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/new_jerusalem/sculpted.jpg"
+  },
+  {
+    "id": "new_jerusalem-minimal-v2",
+    "title": "新耶路撒冷 · 珍珠城門",
+    "theme": "new_jerusalem",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/new_jerusalem/minimal-v2.jpg"
+  },
+  {
+    "id": "new_jerusalem-sculpted-v2",
+    "title": "新耶路撒冷 · 珍珠城門",
+    "theme": "new_jerusalem",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/new_jerusalem/sculpted-v2.jpg"
+  },
+  {
+    "id": "city-minimal",
+    "title": "城市與家園",
+    "theme": "city",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/city/minimal.jpg"
+  },
+  {
+    "id": "city-sculpted",
+    "title": "城市與家園",
+    "theme": "city",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/city/sculpted.jpg"
+  },
+  {
+    "id": "city-minimal-v2",
+    "title": "城市與家園 · 街角晨光",
+    "theme": "city",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/city/minimal-v2.jpg"
+  },
+  {
+    "id": "city-sculpted-v2",
+    "title": "城市與家園 · 街角晨光",
+    "theme": "city",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/city/sculpted-v2.jpg"
+  },
+  {
+    "id": "nations-minimal",
+    "title": "萬國與世界",
+    "theme": "nations",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/nations/minimal.jpg"
+  },
+  {
+    "id": "nations-sculpted",
+    "title": "萬國與世界",
+    "theme": "nations",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/nations/sculpted.jpg"
+  },
+  {
+    "id": "nations-minimal-v2",
+    "title": "萬國與世界 · 同心圍桌",
+    "theme": "nations",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/nations/minimal-v2.jpg"
+  },
+  {
+    "id": "nations-sculpted-v2",
+    "title": "萬國與世界 · 同心圍桌",
+    "theme": "nations",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/nations/sculpted-v2.jpg"
+  },
+  {
+    "id": "family-minimal",
+    "title": "家庭與孩子",
+    "theme": "family",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/family/minimal.jpg"
+  },
+  {
+    "id": "family-sculpted",
+    "title": "家庭與孩子",
+    "theme": "family",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/family/sculpted.jpg"
+  },
+  {
+    "id": "family-minimal-v2",
+    "title": "家庭與孩子 · 牽手同行",
+    "theme": "family",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/family/minimal-v2.jpg"
+  },
+  {
+    "id": "family-sculpted-v2",
+    "title": "家庭與孩子 · 牽手同行",
+    "theme": "family",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/family/sculpted-v2.jpg"
+  },
+  {
+    "id": "embrace-minimal",
+    "title": "擁抱與懷抱",
+    "theme": "embrace",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/embrace/minimal.jpg"
+  },
+  {
+    "id": "embrace-sculpted",
+    "title": "擁抱與懷抱",
+    "theme": "embrace",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/embrace/sculpted.jpg"
+  },
+  {
+    "id": "embrace-minimal-v2",
+    "title": "擁抱與懷抱 · 安慰擁抱",
+    "theme": "embrace",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/embrace/minimal-v2.jpg"
+  },
+  {
+    "id": "embrace-sculpted-v2",
+    "title": "擁抱與懷抱 · 安慰擁抱",
+    "theme": "embrace",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/embrace/sculpted-v2.jpg"
+  },
+  {
+    "id": "helping_neighbor-minimal",
+    "title": "扶助與分享",
+    "theme": "helping_neighbor",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/helping_neighbor/minimal.jpg"
+  },
+  {
+    "id": "helping_neighbor-sculpted",
+    "title": "扶助與分享",
+    "theme": "helping_neighbor",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/helping_neighbor/sculpted.jpg"
+  },
+  {
+    "id": "helping_neighbor-minimal-v2",
+    "title": "扶助與分享 · 分享日常",
+    "theme": "helping_neighbor",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/helping_neighbor/minimal-v2.jpg"
+  },
+  {
+    "id": "helping_neighbor-sculpted-v2",
+    "title": "扶助與分享 · 分享日常",
+    "theme": "helping_neighbor",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/helping_neighbor/sculpted-v2.jpg"
+  },
+  {
+    "id": "tears-minimal",
+    "title": "淚滴與雨窗",
+    "theme": "tears",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/tears/minimal.jpg"
+  },
+  {
+    "id": "tears-sculpted",
+    "title": "淚滴與雨窗",
+    "theme": "tears",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/tears/sculpted.jpg"
+  },
+  {
+    "id": "tears-minimal-v2",
+    "title": "淚滴與雨窗 · 雨窗盼望",
+    "theme": "tears",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/tears/minimal-v2.jpg"
+  },
+  {
+    "id": "tears-sculpted-v2",
+    "title": "淚滴與雨窗 · 雨窗盼望",
+    "theme": "tears",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/tears/sculpted-v2.jpg"
+  },
+  {
+    "id": "wedding-minimal",
+    "title": "婚宴與戒指",
+    "theme": "wedding",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/wedding/minimal.jpg"
+  },
+  {
+    "id": "wedding-sculpted",
+    "title": "婚宴與戒指",
+    "theme": "wedding",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/wedding/sculpted.jpg"
+  },
+  {
+    "id": "wedding-minimal-v2",
+    "title": "婚宴與戒指 · 盟約戒指",
+    "theme": "wedding",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/wedding/minimal-v2.jpg"
+  },
+  {
+    "id": "wedding-sculpted-v2",
+    "title": "婚宴與戒指 · 盟約戒指",
+    "theme": "wedding",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/wedding/sculpted-v2.jpg"
+  },
+  {
+    "id": "angels-minimal",
+    "title": "天使與天軍",
+    "theme": "angels",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/angels/minimal.jpg"
+  },
+  {
+    "id": "angels-sculpted",
+    "title": "天使與天軍",
+    "theme": "angels",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/angels/sculpted.jpg"
+  },
+  {
+    "id": "angels-minimal-v2",
+    "title": "天使與天軍 · 天使守望",
+    "theme": "angels",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/angels/minimal-v2.jpg"
+  },
+  {
+    "id": "angels-sculpted-v2",
+    "title": "天使與天軍 · 天使守望",
+    "theme": "angels",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/angels/sculpted-v2.jpg"
+  },
+  {
+    "id": "pillar_cloud_fire-minimal",
+    "title": "雲柱火柱",
+    "theme": "pillar_cloud_fire",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/pillar_cloud_fire/minimal.jpg"
+  },
+  {
+    "id": "pillar_cloud_fire-sculpted",
+    "title": "雲柱火柱",
+    "theme": "pillar_cloud_fire",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/pillar_cloud_fire/sculpted.jpg"
+  },
+  {
+    "id": "pillar_cloud_fire-minimal-v2",
+    "title": "雲柱火柱 · 曠野引領",
+    "theme": "pillar_cloud_fire",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/pillar_cloud_fire/minimal-v2.jpg"
+  },
+  {
+    "id": "pillar_cloud_fire-sculpted-v2",
+    "title": "雲柱火柱 · 曠野引領",
+    "theme": "pillar_cloud_fire",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/pillar_cloud_fire/sculpted-v2.jpg"
+  },
+  {
+    "id": "lamp-minimal",
+    "title": "燈火與燈台",
+    "theme": "lamp",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/lamp/minimal.jpg"
+  },
+  {
+    "id": "lamp-sculpted",
+    "title": "燈火與燈台",
+    "theme": "lamp",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/lamp/sculpted.jpg"
+  },
+  {
+    "id": "lamp-minimal-v2",
+    "title": "燈火與燈台 · 窗台油燈",
+    "theme": "lamp",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/lamp/minimal-v2.jpg"
+  },
+  {
+    "id": "lamp-sculpted-v2",
+    "title": "燈火與燈台 · 窗台油燈",
+    "theme": "lamp",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/lamp/sculpted-v2.jpg"
+  },
+  {
+    "id": "treasure-minimal",
+    "title": "珍珠與寶藏",
+    "theme": "treasure",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/treasure/minimal.jpg"
+  },
+  {
+    "id": "treasure-sculpted",
+    "title": "珍珠與寶藏",
+    "theme": "treasure",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/treasure/sculpted.jpg"
+  },
+  {
+    "id": "treasure-minimal-v2",
+    "title": "珍珠與寶藏 · 貝中珍珠",
+    "theme": "treasure",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/treasure/minimal-v2.jpg"
+  },
+  {
+    "id": "treasure-sculpted-v2",
+    "title": "珍珠與寶藏 · 貝中珍珠",
+    "theme": "treasure",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/treasure/sculpted-v2.jpg"
+  },
+  {
+    "id": "kneeling_prayer-minimal",
+    "title": "屈膝禱告",
+    "theme": "kneeling_prayer",
+    "style": "minimal",
+    "core": true,
+    "variant": 1,
+    "still": "themes/kneeling_prayer/minimal.jpg"
+  },
+  {
+    "id": "kneeling_prayer-sculpted",
+    "title": "屈膝禱告",
+    "theme": "kneeling_prayer",
+    "style": "sculpted",
+    "core": true,
+    "variant": 1,
+    "still": "themes/kneeling_prayer/sculpted.jpg"
+  },
+  {
+    "id": "kneeling_prayer-minimal-v2",
+    "title": "屈膝禱告 · 靜室屈膝",
+    "theme": "kneeling_prayer",
+    "style": "minimal",
+    "core": true,
+    "variant": 2,
+    "still": "themes/kneeling_prayer/minimal-v2.jpg"
+  },
+  {
+    "id": "kneeling_prayer-sculpted-v2",
+    "title": "屈膝禱告 · 靜室屈膝",
+    "theme": "kneeling_prayer",
+    "style": "sculpted",
+    "core": true,
+    "variant": 2,
+    "still": "themes/kneeling_prayer/sculpted-v2.jpg"
+  },
+  {
+    "id": "bread_provision-minimal",
+    "title": "餅與日用飲食",
+    "theme": "bread_provision",
+    "style": "minimal",
+    "core": false,
+    "variant": 1,
+    "still": "themes/bread_provision/minimal.jpg"
+  },
+  {
+    "id": "bread_provision-sculpted",
+    "title": "餅與日用飲食",
+    "theme": "bread_provision",
+    "style": "sculpted",
+    "core": false,
+    "variant": 1,
+    "still": "themes/bread_provision/sculpted.jpg"
+  },
+  {
+    "id": "bread_provision-minimal-v2",
+    "title": "餅與日用飲食 · 日用新餅",
+    "theme": "bread_provision",
+    "style": "minimal",
+    "core": false,
+    "variant": 2,
+    "still": "themes/bread_provision/minimal-v2.jpg"
+  },
+  {
+    "id": "bread_provision-sculpted-v2",
+    "title": "餅與日用飲食 · 日用新餅",
+    "theme": "bread_provision",
+    "style": "sculpted",
+    "core": false,
+    "variant": 2,
+    "still": "themes/bread_provision/sculpted-v2.jpg"
   }
 ]

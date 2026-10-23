@@ -1,0 +1,15 @@
+{
+  "width": 1280,
+  "variant": 2,
+  "height": 720,
+  "style": "minimal",
+  "sha256": "cdfdd841b86e12f36ba1fb3f8a104c1b893ff11b3b1e59e965668ca7f50880b6",
+  "file": "assets/media/themes/lamp/minimal-v2.jpg",
+  "option": "窗台油燈",
+  "original_file": "exec-5874181d-c7d0-4712-8be9-c12cdf94290a.png",
+  "prompt": "One landscape 16:9 minimal geometric graphic background. The ONLY motif is a tiny oil lamp beside a small square window, grouped as a SMALL flat graphic in the BOTTOM LEFT. The whole motif including the entire square window frame occupies x=5% to 23%, y=70% to 94% of the image. Do not crop the window or extend its lines. Upper 70% across ALL the width is completely plain pale sky blue. Rest of image is the same plain blue field. Four flat solid colours: pale sky blue, white, muted coral and navy. Crisp clean geometric shapes, no detail, no shadows or gradients. NOT a realistic room or landscape. No additional objects, cross, words, letters, watermark, border or collage. Intended output 1280x720; reserve the blank upper region for lyrics and the blank lower right for a camera inset.",
+  "id": "lamp-minimal-v2",
+  "source": "OpenAI built-in image generation",
+  "theme": "lamp",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear."
+}

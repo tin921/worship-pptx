@@ -29,14 +29,11 @@ public partial class BackgroundDialog
 
     private void InitializeGallery()
     {
-        foreach(var style in new[]{"photo","illustration","abstract","watercolour","sculpted"})
+        foreach(var style in new[]{"photo","illustration","abstract","sculpted","minimal"})
         {
-            var sample=MediaLibrary.All.FirstOrDefault(a=>a.Style==style);
-            if(sample==null) continue;
-            using var stream=File.OpenRead(MediaLibrary.FilePath(sample.Still));
-            var bitmap=Bitmap.DecodeToWidth(stream,120); styleImages.Add(bitmap);
+            var sample=new MediaAsset { Style=style };
             var tile=new Grid { RowDefinitions=new RowDefinitions("30,18") };
-            tile.Children.Add(new Image { Source=bitmap,Stretch=Stretch.UniformToFill });
+            tile.Children.Add(StyleSymbols.Create(style));
             var label=new TextBlock { Text=sample.StyleLabel,FontSize=10,TextAlignment=TextAlignment.Center,VerticalAlignment=VerticalAlignment.Center };
             var strip=new Border { Background=Brush.Parse("#F0F1EF"),Child=label }; Grid.SetRow(strip,1); tile.Children.Add(strip);
             var button=new ToggleButton { Tag=style,Name="Style_"+style,Content=tile,IsChecked=true,Width=60,Height=54,Padding=new Thickness(2),Margin=new Thickness(4,0,0,0),CornerRadius=new CornerRadius(5),ClipToBounds=true };
@@ -167,10 +164,15 @@ public partial class BackgroundDialog
             }
             var content=new Grid { RowDefinitions=new RowDefinitions("*,28"),ClipToBounds=true };
             content.Children.Add(new Image { Source=bitmap,Stretch=Stretch.UniformToFill });
-            var caption=new Grid { ColumnDefinitions=new ColumnDefinitions("*,Auto"),Margin=new Thickness(7,0) };
+            var caption=new Grid { ColumnDefinitions=new ColumnDefinitions("*,Auto,26"),Margin=new Thickness(7,0) };
             caption.Children.Add(new TextBlock { Text=ChineseText.Ui(asset.Title),FontSize=12,VerticalAlignment=VerticalAlignment.Center,TextTrimming=TextTrimming.CharacterEllipsis });
             var style=new TextBlock { Text=asset.StyleLabel,FontSize=11,Foreground=Brush.Parse("#66716B"),Margin=new Thickness(7,0,0,0),VerticalAlignment=VerticalAlignment.Center };
             Grid.SetColumn(style,1); caption.Children.Add(style);
+            var expand=new Button { Name="Expand_"+asset.Id,Content="⛶",Width=24,Height=24,Padding=new Thickness(0),Background=Brushes.Transparent,BorderThickness=new Thickness(0),HorizontalContentAlignment=HorizontalAlignment.Center,VerticalContentAlignment=VerticalAlignment.Center,FontSize=18 };
+            Grid.SetColumn(expand,2); caption.Children.Add(expand);
+            ToolTip.SetTip(expand,ChineseText.Ui("全螢幕檢視 · Esc 關閉"));
+            AutomationProperties.SetName(expand,ChineseText.Ui("全螢幕檢視：")+ChineseText.Ui(asset.Title));
+            expand.Click+=async (_,e)=> { e.Handled=true; if(!busy) await new BackgroundImageWindow(asset).ShowDialog(this); };
             var strip=new Border { Background=Brush.Parse("#F0F1EF"),Child=caption }; Grid.SetRow(strip,1); content.Children.Add(strip);
             var button=new Button { Tag=asset,Content=content,Width=galleryCardWidth,Height=galleryCardHeight,Padding=new Thickness(0),BorderThickness=new Thickness(2),CornerRadius=new CornerRadius(6),ClipToBounds=true,HorizontalContentAlignment=HorizontalAlignment.Stretch,VerticalContentAlignment=VerticalAlignment.Stretch };
             var label=ChineseText.Ui(asset.Title)+" · "+asset.StyleLabel;

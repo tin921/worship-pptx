@@ -1,0 +1,15 @@
+{
+  "sha256": "4beda960258b630af411f81fbdd81e8692434eb1f457935138fd3ee8c1f09f19",
+  "theme": "wheat",
+  "variant": 2,
+  "file": "assets/media/themes/wheat/minimal-v2.jpg",
+  "source": "OpenAI built-in image generation",
+  "option": "麥穗近景",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 麥粒與麥穗. Interpretation: 麥穗近景. Palette: midnight navy, cream, muted teal, pale gold. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "id": "wheat-minimal-v2",
+  "height": 720,
+  "style": "minimal",
+  "width": 1280,
+  "original_file": "exec-a8d7ddeb-97b9-439a-9eed-d8d9298022b6.png"
+}

@@ -1,0 +1,15 @@
+{
+  "theme": "armor",
+  "file": "assets/media/themes/armor/minimal-v2.jpg",
+  "id": "armor-minimal-v2",
+  "original_file": "exec-95cc834c-f5dc-4c13-8e61-b5f59c56c804.png",
+  "style": "minimal",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 盔甲與寶劍. Interpretation: 軍裝安放. Palette: white, dusty rose, aubergine, pale lavender. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "height": 720,
+  "option": "軍裝安放",
+  "variant": 2,
+  "width": 1280,
+  "source": "OpenAI built-in image generation",
+  "sha256": "26f1fe6bd0d72cc9e91bdf3ad46f76c6fd2d46db29eb4b1ab8bb73499535b849"
+}

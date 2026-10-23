@@ -33,5 +33,6 @@
   <Style Selector="TabItem.drop-after"><Setter Property="BorderThickness" Value="1,1,3,0"/><Setter Property="BorderBrush" Value="#426B54"/></Style>
   <Style Selector="ListBox.thumbnails > ListBoxItem"><Setter Property="Padding" Value="8"/><Setter Property="Margin" Value="0,0,0,9"/><Setter Property="CornerRadius" Value="7"/><Setter Property="BorderBrush" Value="#DFE6DF"/><Setter Property="BorderThickness" Value="1"/><Setter Property="HorizontalContentAlignment" Value="Stretch"/></Style>
   <Style Selector="ListBox.thumbnails > ListBoxItem:selected"><Setter Property="BorderBrush" Value="#426B54"/><Setter Property="Background" Value="#EDF3EA"/></Style>
+  <Style Selector="ListBox.history > ListBoxItem"><Setter Property="Padding" Value="10,10"/><Setter Property="Margin" Value="0"/><Setter Property="HorizontalContentAlignment" Value="Stretch"/></Style>
  </Application.Styles>
 </Application>

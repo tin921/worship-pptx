@@ -7,11 +7,11 @@
     <ApplicationIcon>../../assets/app.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
-    <Version>0.93.11</Version>
+    <Version>0.93.12</Version>
     <AssemblyName>WorshipPptx</AssemblyName>
     <RootNamespace>WorshipPptx</RootNamespace>
     <Title>Worship PPTX</Title>
-    <Description>敬拜簡報 — Sunday worship slides</Description>
+    <Description>敬拜工坊 — Sunday worship slides</Description>
     <Company>worship-pptx contributors</Company>
     <Product>Worship PPTX</Product>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
@@ -34,7 +34,7 @@
     <AvaloniaResource Include="../../assets/app.ico" Link="Assets/app.ico" />
     <AvaloniaResource Include="../../assets/ui/worship-leader-guitar.png" Link="Assets/worship-leader-guitar.png" />
     <Content Include="../../assets/fonts/*" Link="Fonts/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="../../assets/media/**/*" Exclude="../../assets/media/provenance/**/*;../../assets/media/generation-prompts.json;../../assets/media/variant-set-*.json;../../assets/media/**/*.partial.*;../../assets/media/**/*.mp4;../../assets/media/**/*.webp;../../assets/media/generic/*.json" Link="Media/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="../../assets/media/**/*" Exclude="../../assets/media/provenance/**/*;../../assets/media/generation-prompts.json;../../assets/media/variant-set-*.json;../../assets/media/style-expansion.json;../../assets/media/**/*.partial.*;../../assets/media/**/*.mp4;../../assets/media/**/*.webp;../../assets/media/generic/*.json" Link="Media/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="../../assets/models/model.onnx;../../assets/models/sentencepiece.bpe.model;../../assets/models/normalization.json;../../assets/models/LICENSE.txt;../../assets/models/THIRD-PARTY-NOTICES.txt" Link="Models/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
   <Target Name="VerifyMacModelRuntime" AfterTargets="Publish" Condition="'$(RuntimeIdentifier)' == 'osx-arm64' Or '$(RuntimeIdentifier)' == 'osx-x64'">

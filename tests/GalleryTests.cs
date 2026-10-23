@@ -7,6 +7,7 @@ using Avalonia.Headless;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
+using Avalonia.VisualTree;
 
 namespace WorshipPptx.Tests;
 
@@ -14,6 +15,20 @@ static class GalleryTests
 {
     public static void Run(Action<string,Action> test,Action<bool,string> check,ImageStore images)
     {
+        test("Style symbols are legible vectors and full-screen viewing does not select a result",()=> {
+            var picker=new BackgroundDialog(images,"");picker.Show();Dispatcher.UIThread.RunJobs();picker.UpdateLayout();Dispatcher.UIThread.RunJobs();
+            try {
+                var filters=picker.FindControl<WrapPanel>("StyleFilters").Children.Cast<ToggleButton>().ToList();
+                check(filters.All(b=>b.GetVisualDescendants().OfType<Avalonia.Controls.Shapes.Path>().Any() && !b.GetVisualDescendants().OfType<Image>().Any()),"Style buttons still use entire photo thumbnails");
+                var before=picker.ResultPath;
+                var expand=picker.FindControl<WrapPanel>("Gallery").GetVisualDescendants().OfType<Button>().First(b=>b.Name?.StartsWith("Expand_")==true);
+                expand.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));Dispatcher.UIThread.RunJobs();
+                var full=picker.OwnedWindows.OfType<BackgroundImageWindow>().Single();
+                check(full.WindowState==WindowState.FullScreen && picker.ResultPath==before,"Opening an image selected it or was not fullscreen");
+                full.RaiseEvent(new KeyEventArgs {RoutedEvent=InputElement.KeyDownEvent,Key=Key.Escape});Dispatcher.UIThread.RunJobs();
+                check(!full.IsVisible && picker.IsVisible && picker.ResultPath==before,"Escape did not return to unchanged picker");
+            } finally {picker.Close();}
+        });
         test("Gallery fits complete rows on resize and appends results on wheel scrolling",()=> {
             var picker=new BackgroundDialog(images,"");
             void Flush() { Dispatcher.UIThread.RunJobs(); picker.UpdateLayout(); Dispatcher.UIThread.RunJobs(); picker.UpdateLayout(); }
@@ -55,8 +70,8 @@ static class GalleryTests
                 var keys=gallery.Children.Cast<Button>().Select(c=>((MediaAsset)c.Tag).Key).ToList();
                 check(keys.Count==themed && keys.Distinct().Count()==keys.Count,"Infinite scrolling did not reach every themed asset exactly once");
                 Wheel(30); check(scroll.Offset.Y<scroll.Extent.Height-scroll.Viewport.Height,"Cannot scroll back through appended results");
-                foreach(var button in styles) button.IsChecked=(string)button.Tag=="watercolour"; Flush();
-                check(gallery.Children.Count==1 && scroll.Offset.Y==0 && picker.ResultPath==selectedKey,"Filtering did not reset paging or lost selection");
+                foreach(var button in styles) button.IsChecked=(string)button.Tag=="minimal"; Flush();
+                check(gallery.Children.Count>0 && gallery.Children.Cast<Button>().All(c=>((MediaAsset)c.Tag).Style=="minimal") && scroll.Offset.Y==0 && picker.ResultPath==selectedKey,"Filtering did not reset paging or lost selection");
                 foreach(var button in styles) button.IsChecked=true; Flush();
                 check(scroll.Offset.Y==0 && gallery.Children.Count<MediaLibrary.All.Count,"Clearing filter did not restore first batch");
                 foreach(var button in styles) button.IsChecked=false; Flush();

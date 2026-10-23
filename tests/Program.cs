@@ -35,6 +35,8 @@ namespace WorshipPptx.Tests
             AppBuilder.Configure<App>().UseSkia().UseHeadless(new AvaloniaHeadlessPlatformOptions { UseHeadlessDrawing=false }).SetupWithoutStarting();
             root=Path.GetFullPath(args.Length>0 ? args[0] : Path.Combine(Path.GetTempPath(),"WorshipPptx-tests-"+Guid.NewGuid().ToString("N")));
             Directory.CreateDirectory(root);
+            if(args.Contains("--ui-review")) {UiReview.Run(root); return 0;}
+            if(args.Contains("--drive-only")) {DriveUploadTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed.");return failed==0?0:1;}
             if(args.Contains("--editor-only")) { EditorInteractionTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             if(args.Contains("--gallery-only")) { GalleryTests.Run(Test,Check,new ImageStore(Path.Combine(root,"gallery-images"))); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             if(args.Contains("--language-only")) { LanguageTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
@@ -181,14 +183,13 @@ namespace WorshipPptx.Tests
                     Check(grid.ColumnDefinitions.Count==5 && grid.Children.OfType<GridSplitter>().Count()==2,"Splitters missing");
                     Check(grid.ColumnDefinitions[0].ActualWidth>=260 && grid.ColumnDefinitions[2].ActualWidth>=340,"Panel content clipped");
                     Check(window.FindControl<ComboBox>("FontPicker").ItemCount==FontCatalog.All.Count,"Font choices missing");
-                    var titleField=window.FindControl<TextBox>("ServiceTitle"); var dateField=window.FindControl<CalendarDatePicker>("ServiceDate");
+                    var titleField=window.ActiveServiceField<TextBox>("ServiceTitle"); var dateField=window.ActiveServiceField<CalendarDatePicker>("ServiceDate");
                     var titleOrigin=titleField.TranslatePoint(default,window).Value; var dateOrigin=dateField.TranslatePoint(default,window).Value; var tabsOrigin=tabs.TranslatePoint(default,window).Value;
-                    Check(titleOrigin.X+titleField.Bounds.Width<=dateOrigin.X && dateOrigin.X+dateField.Bounds.Width<=tabsOrigin.X,"Service fields are not before tabs");
-                    var titleCenter=titleOrigin.Y+titleField.Bounds.Height/2; var dateCenter=dateOrigin.Y+dateField.Bounds.Height/2;
-                    Check(Math.Abs(titleField.Bounds.Height-dateField.Bounds.Height)<.1 && Math.Abs(dateCenter-titleCenter)<.1 && dateField.Bounds.Width<=150,"Service title and date do not align");
-                    var firstTab=tabs.Items.Cast<TabItem>().First();
-                    var tabCenter=firstTab.TranslatePoint(default,window).Value.Y+firstTab.Bounds.Height/2;
-                    Check(Math.Abs(tabCenter-titleCenter)<.1,"Tabs do not share the title/date vertical centre");
+                    Check(titleOrigin.X<210 && dateOrigin.X<210 && dateOrigin.Y>titleOrigin.Y,"Service fields are not stacked in the sidebar");
+                    Check(Math.Abs(titleField.Bounds.Width-dateField.Bounds.Width)<.1 && titleField.Bounds.Width>=150,"Service fields do not use full available width");
+                    Check(tabsOrigin.X<250,"Tabs did not move left after relocating service fields");
+                    var newButton=window.FindControl<Button>("NewServiceButton"); var historyList=window.FindControl<ListBox>("HistoryList");
+                    Check(Math.Abs(newButton.Bounds.Width-historyList.Bounds.Width)<.1,"New service button does not match the navigation width");
                     Check(dateField.SelectedDate==demo.Date && dateField.CustomDateFormatString=="yyyy-MM-dd","Date display changed");
                     Check(window.FindControl<TextBox>("Lyrics").Bounds.Height>300,"Lyrics did not gain vertical space");
                     var colour=window.FindControl<Button>("TextColorPicker");
@@ -241,6 +242,7 @@ namespace WorshipPptx.Tests
             FormattingTests.Run(Test,Check,root);
             EditorInteractionTests.Run(Test,Check,root);
             CompositionTests.Run(Test,Check,root);
+            DriveUploadTests.Run(Test,Check,root);
             ProseTests.Run(Test,Check,root);
             MediaTests.Run(Test,Check,root,store,images);
             Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed. Outputs: "+root); return failed==0 ? 0 : 1;

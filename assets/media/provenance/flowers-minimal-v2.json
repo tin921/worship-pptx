@@ -1,0 +1,15 @@
+{
+  "sha256": "6591412f36bf3575d149ab627206d12ae8ca0de33d001d6410b01ce08bf29db8",
+  "theme": "flowers",
+  "variant": 2,
+  "file": "assets/media/themes/flowers/minimal-v2.jpg",
+  "source": "OpenAI built-in image generation",
+  "option": "花間清風",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 花朵盛開. Interpretation: 花間清風. Palette: pearl grey, jade, seafoam, soft white. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "id": "flowers-minimal-v2",
+  "height": 720,
+  "style": "minimal",
+  "width": 1280,
+  "original_file": "exec-2a7d14a6-e28f-48e7-8c49-6a83e6405bbb.png"
+}

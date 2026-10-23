@@ -1,0 +1,15 @@
+{
+  "theme": "banner",
+  "file": "assets/media/themes/banner/minimal-v2.jpg",
+  "id": "banner-minimal-v2",
+  "original_file": "exec-71b16965-655a-4695-8626-9e9329c0c47c.png",
+  "style": "minimal",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 旌旗. Interpretation: 白旗微風. Palette: pale sky blue, navy, white, muted coral. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "height": 720,
+  "option": "白旗微風",
+  "variant": 2,
+  "width": 1280,
+  "source": "OpenAI built-in image generation",
+  "sha256": "9f5c8805aa819a49b5d7f63632a7bac57f6dac74f06514bfb9fd3374ef97f07f"
+}

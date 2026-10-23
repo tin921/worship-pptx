@@ -34,7 +34,7 @@ static class FormattingTests
             var original=Demo.Create(); store.Save(original);
             var window=new MainWindow(store); window.Show(); Dispatcher.UIThread.RunJobs();
             try {
-                window.FindControl<TextBox>("ServiceTitle").Text="asdf"; Dispatcher.UIThread.RunJobs();
+                window.ActiveServiceField<TextBox>("ServiceTitle").Text="asdf"; Dispatcher.UIThread.RunJobs();
                 var history=window.FindControl<ListBox>("HistoryList");
                 check(history.GetVisualDescendants().OfType<TextBlock>().Any(t=>t.Text=="asdf"),"History label waits for a save/reload");
                 var tabs=window.FindControl<TabControl>("SongTabs");

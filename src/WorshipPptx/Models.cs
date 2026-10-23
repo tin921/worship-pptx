@@ -15,7 +15,7 @@ namespace WorshipPptx
         [DataMember] public string Alignment { get; set; } = "Center";
         [DataMember] public string TextColor { get; set; } = "#FFFFFF";
         private DateTime date=Demo.ComingSunday(DateTime.Today);
-        [DataMember] public DateTime Date { get=>date; set { if(date==value) return; date=value; PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(DisplayDate))); PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(IsPast))); } }
+        [DataMember] public DateTime Date { get=>date; set { if(date==value) return; date=value; PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(Date))); PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(DisplayDate))); PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(IsPast))); } }
         [DataMember] public DateTime Updated { get; set; } = DateTime.Now;
         [DataMember] public List<ServiceItem> Items { get; set; } = new List<ServiceItem>();
         public string DisplayDate => Date.ToString("yyyy年M月d日");

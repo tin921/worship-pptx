@@ -9,7 +9,7 @@ namespace WorshipPptx
 {
     internal static class Dialogs
     {
-        public static Task<bool> Show(Window owner, string message, string title = "敬拜簡報", bool confirm = false)
+        public static Task<bool> Show(Window owner, string message, string title = "敬拜工坊", bool confirm = false)
         {
             var window = new Window { Title=ChineseText.Ui(title), Width=480, SizeToContent=SizeToContent.Height, CanResize=false, WindowStartupLocation=WindowStartupLocation.CenterOwner };
             var panel = new StackPanel { Margin=new Thickness(26), Spacing=24 };

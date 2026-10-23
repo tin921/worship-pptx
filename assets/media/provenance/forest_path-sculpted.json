@@ -1,0 +1,15 @@
+{
+  "theme": "forest_path",
+  "file": "assets/media/themes/forest_path/sculpted.jpg",
+  "id": "forest_path-sculpted",
+  "original_file": "exec-355372be-0dbd-4386-aad6-b175eec3644e.png",
+  "style": "sculpted",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 image of a SMALL STUDIO SCULPTURE on a seamless solid-colour background. Unmistakably 3D: a few smooth rounded MATTE CERAMIC AND CARVED STONE forms, as a premium handcrafted miniature tabletop art object. Theme: 森林小徑、陽光. Interpretation: one recognizable symbol of this theme. Represent it as a tiny symbolic diorama, NOT a real life landscape, NOT real people. Palette: midnight navy, cream, muted teal, pale gold. Soft studio illumination, visible rounded volume and gentle contact shadows. Entire sculpture fits in lower-left quarter, below 60% image height. Upper 60% and lower-right 40% are entirely empty plain seamless backdrop. No scenic vista, no sky/cloud/sunrise, no realistic trees or plants, no photography of real nature, no painting or brushwork. Do not add a cross unless theme explicitly concerns a cross. No lettering, watermark, border or collage. Polished dimensional 3D render, full-bleed 16:9 intended 1280x720.",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "height": 720,
+  "option": "Original scene",
+  "variant": 1,
+  "width": 1280,
+  "source": "OpenAI built-in image generation",
+  "sha256": "d0dd33d4eb104b76b8cd01d2e566cad0658f65f4d914d07f92b5bef38913fae0"
+}

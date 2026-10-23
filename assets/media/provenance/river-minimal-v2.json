@@ -1,0 +1,15 @@
+{
+  "sha256": "b77eca9225f38c0e92254bbb48334e043290869a38e7833906eaed7187b69539",
+  "theme": "river",
+  "variant": 2,
+  "file": "assets/media/themes/river/minimal-v2.jpg",
+  "source": "OpenAI built-in image generation",
+  "option": "河灣晨霧",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 MINIMAL GRAPHIC background. Flat vector-like design made from only 3 to 6 LARGE solid-colour geometric shapes. Clean crisp edges. Extremely simple recognizable SYMBOL of the theme, with no fine detail. Theme: 大河與江水. Interpretation: 河灣晨霧. Palette: white, dusty rose, aubergine, pale lavender. All symbolic shapes occupy only the lower-left quarter. Upper 60% is COMPLETELY PLAIN one solid colour. Lower-right 40% stays plain. Like a beautifully balanced modern geometric poster with no typography. No photograph, no realistic scenery, no painting, no brush texture, no paper grain, no gradients, no shadows, no glowing light, no 3D, no intricate foliage or ornament. Do not add a cross unless the theme is explicitly about a cross. No words, letters, border, watermark or collage. Full-bleed 16:9, intended 1280x720.",
+  "id": "river-minimal-v2",
+  "height": 720,
+  "style": "minimal",
+  "width": 1280,
+  "original_file": "exec-8160c25d-4e44-4f18-8d56-cd034d6e1fec.png"
+}

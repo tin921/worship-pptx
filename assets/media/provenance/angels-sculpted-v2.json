@@ -1,0 +1,15 @@
+{
+  "sha256": "1a5e6889df3a6a68820fde804f732d5189fbd0880ba50ffd0996031c94ae84c2",
+  "theme": "angels",
+  "variant": 2,
+  "file": "assets/media/themes/angels/sculpted-v2.jpg",
+  "source": "OpenAI built-in image generation",
+  "option": "天使守望",
+  "review": "Visually reviewed: theme, style, composition, no text; contact sheets 2026-10-23. Window motifs in dove/lamp option 2 revised to leave the upper text region clear.",
+  "prompt": "Use case: stylized-concept. ONE landscape 16:9 image of a SMALL STUDIO SCULPTURE on a seamless solid-colour background. Unmistakably 3D: a few smooth rounded MATTE CERAMIC AND CARVED STONE forms, as a premium handcrafted miniature tabletop art object. Theme: 天使與天軍. Interpretation: 天使守望. Represent it as a tiny symbolic diorama, NOT a real life landscape, NOT real people. Palette: pale sky blue, navy, white, muted coral. Soft studio illumination, visible rounded volume and gentle contact shadows. Entire sculpture fits in lower-left quarter, below 60% image height. Upper 60% and lower-right 40% are entirely empty plain seamless backdrop. No scenic vista, no sky/cloud/sunrise, no realistic trees or plants, no photography of real nature, no painting or brushwork. Do not add a cross unless theme explicitly concerns a cross. No lettering, watermark, border or collage. Polished dimensional 3D render, full-bleed 16:9 intended 1280x720.",
+  "id": "angels-sculpted-v2",
+  "height": 720,
+  "style": "sculpted",
+  "width": 1280,
+  "original_file": "exec-317cda83-5aaf-42ab-9970-737a6cf6f78e.png"
+}
