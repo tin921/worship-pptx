@@ -21,6 +21,7 @@ static class MediaTests
 {
     public static void Run(Action<string,Action> test,Action<bool,string> check,string root,LocalStore store,ImageStore images)
     {
+        GalleryTests.Run(test,check,images);
         test("All 80 themes display Chinese and add English only to the Google link",()=> {
             var scenes=JsonSerializer.Deserialize<List<MediaScene>>(File.ReadAllText(Path.Combine(MediaLibrary.Root,"scenes.json")),MediaLibrary.JsonOptions);
             try {

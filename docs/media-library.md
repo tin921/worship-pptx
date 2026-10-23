@@ -9,6 +9,8 @@ The desktop library contains 272 choices, all at 1280 × 720:
 
 `assets/media/catalog.json` is the app manifest. Files live under `themes/`, `generic/` and `legacy/`. Installed builds preserve these folders under `Media/`. No cloud storage, image-search API, website scraping or image download is needed to browse or search this library.
 
+The background gallery starts with complete rows that fit the available window, without visible scrollbars. Resizing recalculates columns and the batch size. Scrolling down appends the next batch; earlier images and the selected background stay in place. Filtering starts a fresh fitted batch. Each image has a single light-gray caption strip with its title and style; the tooltip retains the full title when space is tight. Browsing and resizing do not run the embedding model.
+
 ## Static backgrounds and PowerPoint
 
 The library, previews and exported presentations use static backgrounds. Animation controls, playback code, MP4 files and animated WebP previews have been removed from the app. Old saved animation flags are ignored while background selections are preserved. Cancelling the background picker preserves the current selection.

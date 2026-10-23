@@ -2,9 +2,6 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
-using Avalonia;
-using Avalonia.Media;
-using Avalonia.Media.Imaging;
 using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Controls;
@@ -20,52 +17,23 @@ namespace WorshipPptx
         private readonly CancellationTokenSource cancellation=new();
         private bool busy;
         private bool ready;
-        private int page;
         private readonly string songTitle,songLyrics;
         private IReadOnlyList<MediaAsset> results;
-        private readonly List<Bitmap> thumbnails=new();
-        private const int PageSize=12;
         public string ResultPath { get; private set; }
         public BackgroundDialog(ImageStore images,string current,string title="",string lyrics="")
         {
             InitializeComponent(); this.images=images; songTitle=title; songLyrics=lyrics; ResultPath=current ?? "";
             try { SelectBackground(ResultPath); }
             catch { ResultPath=""; ImagePreview.Source=SlideVisual.DefaultImage; }
-            ready=true; ShowPage();
+            ready=true; InitializeGallery(); ResetGallery();
             Opened+=async (_,_)=>await MatchSong();
-            Closed+=(_,_)=> { cancellation.Cancel(); foreach(var bitmap in thumbnails) bitmap.Dispose(); thumbnails.Clear(); };
+            Closed+=(_,_)=> { cancellation.Cancel(); DisposeGallery(); };
         }
         private void SelectBackground(string key)
         {
             ResultPath=key; ImagePreview.Source=SlideVisual.Background(key);
             var asset=MediaLibrary.Find(key); SelectedTitle.Text=asset==null ? ChineseText.Ui("目前圖片") : ChineseText.Ui(asset.Title)+" · "+asset.StyleLabel;
-        }
-        private void ShowPage()
-        {
-            if(!ready) return;
-            Gallery.Children.Clear(); foreach(var bitmap in thumbnails) bitmap.Dispose(); thumbnails.Clear();
-            IEnumerable<MediaAsset> all=results ?? MediaLibrary.All;
-            all=CollectionFilter.SelectedIndex switch {
-                1=>all.Where(a=>a.Core && a.Style!="generic" && a.Style!="legacy"),
-                2=>all.Where(a=>!a.Core && a.Style!="generic" && a.Style!="legacy"),
-                3=>all.Where(a=>a.Style=="generic" && a.Lighting=="daylight"),
-                4=>all.Where(a=>a.Style=="generic" && a.Lighting=="night"),
-                5=>all.Where(a=>a.Style=="legacy"), _=>all };
-            if(StyleFilter.SelectedIndex>0) { var style=new[]{"","photo","illustration","abstract","watercolour","sculpted"}[StyleFilter.SelectedIndex]; all=all.Where(a=>a.Style==style); }
-            var list=all.ToList(); var pages=Math.Max(1,(list.Count+PageSize-1)/PageSize); page=Math.Clamp(page,0,pages-1);
-            foreach(var asset in list.Skip(page*PageSize).Take(PageSize))
-            {
-                var stack=new StackPanel { Width=182,Spacing=7 };
-                using var stream=File.OpenRead(MediaLibrary.FilePath(asset.Still));
-                var bitmap=Bitmap.DecodeToWidth(stream,364); thumbnails.Add(bitmap);
-                stack.Children.Add(new Image { Source=bitmap,Width=182,Height=102,Stretch=Stretch.UniformToFill });
-                stack.Children.Add(new TextBlock { Text=ChineseText.Ui(asset.Title),FontSize=13,TextTrimming=TextTrimming.CharacterEllipsis });
-                stack.Children.Add(new TextBlock { Text=asset.StyleLabel,FontSize=12,Foreground=Brushes.Gray });
-                var button=new Button { Content=stack,Padding=new Thickness(7),Margin=new Thickness(0,0,8,10),BorderBrush=Brush.Parse(asset.Key==ResultPath ? "#28543E" : "#DEE4DC"),BorderThickness=new Thickness(asset.Key==ResultPath?2:1) };
-                button.Click+=(_,_)=> { if(!busy) { SelectBackground(asset.Key); ShowPage(); } }; Gallery.Children.Add(button);
-            }
-            GalleryInfo.Text=ChineseText.Ui($"{list.Count} 個素材 · {page+1} / {pages}");
-            PreviousPage.IsEnabled=page>0; NextPage.IsEnabled=page+1<pages;
+            HighlightSelectedBackground();
         }
         private async void Search_Click(object sender,RoutedEventArgs e) => await MatchSong();
         private async Task MatchSong()
@@ -79,7 +47,7 @@ namespace WorshipPptx
                 var match=await MediaSearch.MatchAsync(songTitle,songLyrics,cancellation.Token,progress);
                 if(cancellation.IsCancellationRequested) return;
                 results=match.Assets; SearchText.Text=ChineseText.Content(match.Keywords); MatchedTheme.Text=ChineseText.Ui("配對主題：")+ChineseText.Ui(match.Theme);
-                CollectionFilter.SelectedIndex=StyleFilter.SelectedIndex=0; page=0; ShowPage();
+                ResetFilters(); ResetGallery();
                 Message.Text=ChineseText.Ui("已按歌名及歌詞配對主題，並填入圖片關鍵字。可選擇內置圖片，或開啟右方 Google 圖片搜尋。");
                 ShowMatchProgress(new(100,ChineseText.Ui("主題及關鍵字已就緒")));
             }
@@ -103,14 +71,6 @@ namespace WorshipPptx
             catch(ArgumentException) { GoogleImageLink.NavigateUri=null; }
             GoogleImageLink.IsEnabled=!busy && GoogleImageLink.NavigateUri!=null;
         }
-        private void Filter_Changed(object sender,SelectionChangedEventArgs e)
-        {
-            if(ready && CollectionFilter.SelectedIndex>=3) { results=null; StyleFilter.SelectedIndex=0; }
-            page=0; ShowPage();
-        }
-        private void Previous_Click(object sender,RoutedEventArgs e) { page--; ShowPage(); GalleryScroll.Offset=new Vector(); }
-        private void Next_Click(object sender,RoutedEventArgs e) { page++; ShowPage(); GalleryScroll.Offset=new Vector(); }
-        private void ShowAll_Click(object sender,RoutedEventArgs e) { results=null; page=0; CollectionFilter.SelectedIndex=StyleFilter.SelectedIndex=0; ShowPage(); Message.Text=ChineseText.Ui("瀏覽素材不會執行歌詞分析。"); }
         private async Task Import(Func<Task<string>> action)
         {
             if(busy) return;

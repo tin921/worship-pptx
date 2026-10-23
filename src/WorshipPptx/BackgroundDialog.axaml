@@ -8,7 +8,7 @@
      <ComboBox x:Name="CollectionFilter" SelectedIndex="0" SelectionChanged="Filter_Changed" HorizontalAlignment="Stretch"><ComboBoxItem Content="{local:Tr '全部素材'}"/><ComboBoxItem Content="{local:Tr '60 個核心主題'}"/><ComboBoxItem Content="{local:Tr '20 個延伸主題'}"/><ComboBoxItem Content="{local:Tr '通用 · 日光'}"/><ComboBoxItem Content="{local:Tr '通用 · 夜色'}"/><ComboBoxItem Content="{local:Tr '最初示範素材'}"/></ComboBox>
      <ComboBox x:Name="StyleFilter" Grid.Column="2" SelectedIndex="0" SelectionChanged="Filter_Changed" HorizontalAlignment="Stretch"><ComboBoxItem Content="{local:Tr '全部風格'}"/><ComboBoxItem Content="{local:Tr '攝影'}"/><ComboBoxItem Content="{local:Tr '插畫'}"/><ComboBoxItem Content="{local:Tr '抽象'}"/><ComboBoxItem Content="{local:Tr '柔光水彩'}"/><ComboBoxItem Content="{local:Tr '立體象徵'}"/></ComboBox>
     </Grid>
-    <ScrollViewer x:Name="GalleryScroll" Grid.Row="2" HorizontalScrollBarVisibility="Disabled"><WrapPanel x:Name="Gallery" Orientation="Horizontal"/></ScrollViewer>
+    <ScrollViewer x:Name="GalleryScroll" Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden" Focusable="True"><WrapPanel x:Name="Gallery" Orientation="Horizontal"/></ScrollViewer>
     <Border x:Name="MatchingStatus" Grid.Row="2" IsVisible="False" Background="#F4FFFFFF" CornerRadius="10" Padding="24">
      <StackPanel VerticalAlignment="Center" Spacing="14">
       <TextBlock Text="{local:Tr '正在擷取主題及關鍵字…'}" FontSize="21" FontWeight="SemiBold" TextWrapping="Wrap"/>
@@ -17,7 +17,7 @@
       <TextBlock x:Name="MatchProgressPercent" Text="" FontSize="15" HorizontalAlignment="Right"/>
      </StackPanel>
     </Border>
-    <Grid Grid.Row="3" Margin="0,12,0,0"><TextBlock x:Name="GalleryInfo" Classes="caption" VerticalAlignment="Center"/><StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8"><Button x:Name="PreviousPage" Content="‹" Click="Previous_Click"/><Button x:Name="NextPage" Content="›" Click="Next_Click"/><Button x:Name="ShowAllButton" Content="{local:Tr '顯示全部'}" Click="ShowAll_Click"/></StackPanel></Grid>
+    <Grid Grid.Row="3" ColumnDefinitions="*,Auto" Margin="0,12,0,0"><TextBlock x:Name="GalleryInfo" Classes="caption" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/><Button x:Name="ShowAllButton" Grid.Column="1" Content="{local:Tr '顯示全部'}" Click="ShowAll_Click"/></Grid>
    </Grid>
    <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Disabled"><StackPanel Spacing="10">
     <TextBlock x:Name="MatchedTheme" Text="{local:Tr '正在準備圖片關鍵字…'}" FontWeight="SemiBold" TextWrapping="Wrap"/>
