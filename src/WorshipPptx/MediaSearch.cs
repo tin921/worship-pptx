@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ML.OnnxRuntime;
@@ -31,9 +32,26 @@ public static class MediaSearch
 {
     private static readonly Lazy<LocalEncoder> engine=new(()=>new LocalEncoder());
     private static readonly SemaphoreSlim gate=new(1,1);
+    private sealed record CachedMatch(MediaScene Scene,IReadOnlyList<MediaAsset> Assets);
+    private static readonly Dictionary<string,CachedMatch> matches=new();
+    private static readonly Queue<string> matchOrder=new();
+    public static int InferenceCount { get; private set; }
     public static bool IsModelLoaded => engine.IsValueCreated;
     public static async Task<IReadOnlyList<MediaAsset>> SearchAsync(string title,string lyrics,CancellationToken cancellation=default) => (await MatchAsync(title,lyrics,cancellation).ConfigureAwait(false)).Assets;
-    public static Task<MediaMatch> MatchAsync(string title,string lyrics,CancellationToken cancellation=default,IProgress<MediaSearchProgress> progress=null) => Task.Run(async ()=>
+    public static Task<MediaMatch> MatchAsync(string title,string lyrics,CancellationToken cancellation=default,IProgress<MediaSearchProgress> progress=null) => Match(title,lyrics,false,cancellation,progress);
+    public static Task<MediaMatch> MatchTermsAsync(string terms,CancellationToken cancellation=default,IProgress<MediaSearchProgress> progress=null) => Match("",terms,true,cancellation,progress);
+    // Ignore tags and spacing that only change presentation layout. Retain English
+    // word boundaries so "now here" never collides with the different word "nowhere".
+    public static string ContentHash(string title,string lyrics,bool custom=false)
+    {
+        string Clean(string text) {
+            text=ChineseText.Convert(Regex.Replace(text ?? "",@"\[[^\]\r\n]*\]",""),ChineseText.Simplified);
+            text=Regex.Replace(text.Trim(),@"\s+"," ");
+            return Regex.Replace(text,@"(?<=[\p{IsCJKUnifiedIdeographs}\p{P}])\s+|\s+(?=[\p{IsCJKUnifiedIdeographs}\p{P}])","");
+        }
+        return Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(new[]{custom ? "terms" : "song",Clean(title),Clean(lyrics)}))));
+    }
+    private static Task<MediaMatch> Match(string title,string lyrics,bool custom,CancellationToken cancellation,IProgress<MediaSearchProgress> progress) => Task.Run(async ()=>
     {
         progress?.Report(new(null,ChineseText.Ui("正在準備分析…")));
         await gate.WaitAsync(cancellation);
@@ -42,6 +60,11 @@ public static class MediaSearch
             cancellation.ThrowIfCancellationRequested();
             if(string.IsNullOrWhiteSpace(title+lyrics)) throw new ArgumentException(ChineseText.Ui("請先輸入詩歌名稱、歌詞或搜尋字詞。"));
             if((title?.Length ?? 0)+(lyrics?.Length ?? 0)>20000) throw new ArgumentException(ChineseText.Ui("搜尋內容請保持在 20,000 字以內。"));
+            var key=ContentHash(title,lyrics,custom);
+            if(matches.TryGetValue(key,out var cached)) {
+                progress?.Report(new(100,ChineseText.Ui("已使用記憶中的主題配對")));
+                return new MediaMatch(cached.Scene.Title,ImageKeywords.ForDisplay(cached.Scene),cached.Assets);
+            }
             progress?.Report(new(null,IsModelLoaded ? ChineseText.Ui("正在準備歌詞…") : ChineseText.Ui("正在載入本機分析工具，首次開啟需稍候…")));
             var encoder=engine.Value;
             cancellation.ThrowIfCancellationRequested();
@@ -56,21 +79,21 @@ public static class MediaSearch
             Report(ChineseText.Ui("正在擷取主題及關鍵字…"));
             var chunks=new List<float[]>();
             foreach(var tokens in lyricTokens) {
-                cancellation.ThrowIfCancellationRequested(); chunks.Add(encoder.Encode(tokens)); completed++;
+                cancellation.ThrowIfCancellationRequested(); chunks.Add(encoder.Encode(tokens)); InferenceCount++; completed++;
                 Report(ChineseText.Ui("正在擷取主題及關鍵字…"));
             }
             var document=LocalEncoder.Unit(Enumerable.Range(0,384).Select(i=>chunks.Average(c=>c[i])).ToArray());
             if(hasTitle)
             {
                 cancellation.ThrowIfCancellationRequested();
-                var titleVector=encoder.Encode(encoder.ChunkTokens(cleanTitle)[0]); completed++;
+                var titleVector=encoder.Encode(encoder.ChunkTokens(cleanTitle)[0]); InferenceCount++; completed++;
                 Report(ChineseText.Ui("正在配對背景主題…"));
                 document=LocalEncoder.Unit(document.Select((v,i)=>.85f*v+.15f*titleVector[i]).ToArray());
             }
             var scenes=JsonSerializer.Deserialize<List<MediaScene>>(File.ReadAllText(Path.Combine(MediaLibrary.Root,"scenes.json")),MediaLibrary.JsonOptions);
             var text=cleanTitle+" "+cleanLyrics;
             var scored=scenes.Select(s=>new { Scene=s, Hits=s.Cues.Count(c=>text.Contains(c,StringComparison.Ordinal)), TitleHit=s.Cues.Any(c=>cleanTitle.Contains(c,StringComparison.Ordinal)) })
-                .Where(s=>s.Scene.Core || s.Hits>0)
+                .Where(s=>custom || s.Scene.Core || s.Hits>0)
                 .Select(s=>new { s.Scene, Score=.7f*Dot(s.Scene.Vector,document)+.3f*chunks.Max(c=>Dot(s.Scene.Vector,c))+Math.Min(s.Hits,2)*.18f+(s.TitleHit ? .35f : 0) }).ToList();
             var chosen=new List<MediaScene>();
             while(chosen.Count<4 && scored.Count>0)
@@ -82,7 +105,10 @@ public static class MediaSearch
             var first=chosen.First();
             completed++; Report(ChineseText.Ui("正在整理圖片關鍵字…"));
             var result=new MediaMatch(first.Title,ImageKeywords.ForDisplay(first),chosen.SelectMany(s=>MediaLibrary.All.Where(a=>a.Theme==s.Id)).ToList());
-            cancellation.ThrowIfCancellationRequested(); completed++; Report(ChineseText.Ui("主題及關鍵字已就緒"));
+            cancellation.ThrowIfCancellationRequested();
+            if(matches.Count>=128) matches.Remove(matchOrder.Dequeue());
+            matches[key]=new(first,result.Assets); matchOrder.Enqueue(key);
+            completed++; Report(ChineseText.Ui("主題及關鍵字已就緒"));
             return result;
         }
         finally { gate.Release(); }

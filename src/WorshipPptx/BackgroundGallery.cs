@@ -31,8 +31,7 @@ public partial class BackgroundDialog
             if(e.ViewportDelta.X!=0 || e.ViewportDelta.Y!=0) QueueGalleryLayout();
             if(!galleryRestoring && !galleryQueued && e.OffsetDelta.Y>0 && NearGalleryEnd()) AppendGallery();
         };
-        // The first screen deliberately has no overflow; intercept the first wheel
-        // gesture too, so more results can load before there is anything to scroll.
+        // Near the end, append another batch before continuing the same gesture.
         GalleryScroll.AddHandler(PointerWheelChangedEvent,Gallery_Wheel,RoutingStrategies.Tunnel);
         GalleryScroll.AddHandler(KeyDownEvent,Gallery_KeyDown,RoutingStrategies.Tunnel);
     }
@@ -100,8 +99,10 @@ public partial class BackgroundDialog
         var cardHeight=Math.Ceiling((cardWidth-4)*9/16)+CaptionHeight+4;
         var rows=Math.Max(1,(int)Math.Floor((height+GalleryGap)/(cardHeight+GalleryGap)));
         var batch=columns*rows;
+        // One extra row makes the scrollbar visibly useful from the first batch.
+        var initial=batch+columns;
         var loaded=Math.Min(galleryResults.Count,galleryScrolled
-            ? Math.Max(batch,((galleryLoaded+columns-1)/columns)*columns) : batch);
+            ? Math.Max(initial,((galleryLoaded+columns-1)/columns)*columns) : initial);
         if(!force && columns==galleryColumns && cardWidth==galleryCardWidth && batch==galleryBatch && loaded==galleryLoaded) return;
         var firstVisible=(int)Math.Floor(GalleryScroll.Offset.Y/Math.Max(1,galleryCardHeight+GalleryGap))*galleryColumns;
         galleryColumns=columns; galleryCardWidth=cardWidth; galleryCardHeight=cardHeight; galleryBatch=batch; galleryLoaded=loaded;

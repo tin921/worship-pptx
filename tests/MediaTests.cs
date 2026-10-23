@@ -113,9 +113,26 @@ static class MediaTests
             using var cancellation=new CancellationTokenSource(); updates.Clear();
             var cancelProgress=new InlineProgress(value=> { updates.Add(value); if(value.Percent>0) cancellation.Cancel(); });
             var cancelled=false;
-            try { MediaSearch.MatchAsync("恩典之路",lyrics,cancellation.Token,cancelProgress).GetAwaiter().GetResult(); }
+            try { MediaSearch.MatchAsync("恩典之路取消測試",lyrics,cancellation.Token,cancelProgress).GetAwaiter().GetResult(); }
             catch(OperationCanceledException) { cancelled=true; }
             check(cancelled && !updates.Any(p=>p.Percent==100),"Cancelled matching claimed completion");
+        });
+        test("Theme matching reuses normalized text hashes and custom bilingual terms replace the song query",()=> {
+            var first=MediaSearch.MatchAsync("緩存測試","[v1]\n清晨的日光\n雨後彩虹").Result;
+            var count=MediaSearch.InferenceCount;
+            var same=MediaSearch.MatchAsync(" 緩存測試 ","[v1]\n  清晨 的日光\n\t雨後彩虹  ").Result;
+            check(MediaSearch.InferenceCount==count && first.Assets.SequenceEqual(same.Assets),"Spacing re-ran the embedding model");
+            ChineseText.SetLanguage(ChineseText.Simplified);
+            same=MediaSearch.MatchAsync("緩存測試","[v1]\n清晨的日光\n雨後彩虹").Result;
+            check(MediaSearch.InferenceCount==count && same.Keywords==ChineseText.Convert(first.Keywords,ChineseText.Simplified),"Cached results retained the wrong script");
+            ChineseText.SetLanguage(ChineseText.Traditional);
+            MediaSearch.MatchAsync("緩存測試","十字架上的救恩").Wait();
+            check(MediaSearch.InferenceCount>count,"Changed content reused stale match");
+            check(MediaSearch.ContentHash("","now here")!=MediaSearch.ContentHash("","nowhere"),"English word boundaries collide");
+            foreach(var terms in new[]{"rainbow after rain","雨後彩虹"}) {
+                var match=MediaSearch.MatchTermsAsync(terms).Result;
+                check(match.Assets.Any(a=>a.Theme=="rainbow"),"Custom query did not match rainbow: "+terms);
+            }
         });
         test("Old animated plans keep their background and load as static",()=> {
             var file=Path.Combine(root,"legacy-item.json"); File.WriteAllText(file,"{\"Title\":\"舊詩歌\",\"Background\":\"media:mountain_path-photo\",\"AnimateBackground\":true}");

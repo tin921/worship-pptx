@@ -35,20 +35,20 @@ namespace WorshipPptx
             var asset=MediaLibrary.Find(key); SelectedTitle.Text=asset==null ? ChineseText.Ui("目前圖片") : ChineseText.Ui(asset.Title)+" · "+asset.StyleLabel;
             HighlightSelectedBackground();
         }
-        private async void Search_Click(object sender,RoutedEventArgs e) => await MatchSong();
-        private async Task MatchSong()
+        private async void Search_Click(object sender,RoutedEventArgs e) => await MatchSong(true);
+        private async Task MatchSong(bool custom=false)
         {
-            if(string.IsNullOrWhiteSpace(songTitle+songLyrics)) { MatchedTheme.Text=ChineseText.Ui("可自行輸入圖片關鍵字"); Message.Text=ChineseText.Ui("填寫歌名或歌詞後，可自動配對主題。"); return; }
+            if(!custom && string.IsNullOrWhiteSpace(songTitle+songLyrics)) { MatchedTheme.Text=ChineseText.Ui("可自行輸入圖片關鍵字"); Message.Text=ChineseText.Ui("填寫歌名或歌詞後，可自動配對主題。"); return; }
             if(busy) return; busy=true; SetEnabled(false); Message.Text=ChineseText.Ui("正在擷取主題及關鍵字…");
             MatchingStatus.IsVisible=true; ShowMatchProgress(new(null,ChineseText.Ui("正在準備分析…")));
             try
             {
                 var progress=new Progress<MediaSearchProgress>(value=> { if(busy && !cancellation.IsCancellationRequested) ShowMatchProgress(value); });
-                var match=await MediaSearch.MatchAsync(songTitle,songLyrics,cancellation.Token,progress);
+                var match=custom ? await MediaSearch.MatchTermsAsync(SearchText.Text,cancellation.Token,progress) : await MediaSearch.MatchAsync(songTitle,songLyrics,cancellation.Token,progress);
                 if(cancellation.IsCancellationRequested) return;
-                results=match.Assets; SearchText.Text=ChineseText.Content(match.Keywords); MatchedTheme.Text=ChineseText.Ui("配對主題：")+ChineseText.Ui(match.Theme);
+                results=match.Assets; if(!custom) SearchText.Text=ChineseText.Content(match.Keywords); MatchedTheme.Text=ChineseText.Ui("配對主題：")+ChineseText.Ui(match.Theme);
                 ResetFilters(); ResetGallery();
-                Message.Text=ChineseText.Ui("已按歌名及歌詞配對主題，並填入圖片關鍵字。可選擇內置圖片，或開啟右方 Google 圖片搜尋。");
+                Message.Text=ChineseText.Ui(custom ? "已按搜尋字詞配對主題。可選擇內置圖片，或開啟右方 Google 圖片搜尋。" : "已按歌名及歌詞配對主題，並填入圖片關鍵字。可選擇內置圖片，或開啟右方 Google 圖片搜尋。");
                 ShowMatchProgress(new(100,ChineseText.Ui("主題及關鍵字已就緒")));
             }
             catch(OperationCanceledException) { }
