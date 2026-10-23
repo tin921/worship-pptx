@@ -39,7 +39,7 @@ public partial class BackgroundDialog
             tile.Children.Add(new Image { Source=bitmap,Stretch=Stretch.UniformToFill });
             var label=new TextBlock { Text=sample.StyleLabel,FontSize=10,TextAlignment=TextAlignment.Center,VerticalAlignment=VerticalAlignment.Center };
             var strip=new Border { Background=Brush.Parse("#F0F1EF"),Child=label }; Grid.SetRow(strip,1); tile.Children.Add(strip);
-            var button=new ToggleButton { Tag=style,Name="Style_"+style,Content=tile,IsChecked=true,Width=60,Height=54,Padding=new Thickness(2),Margin=new Thickness(4,2,0,2),CornerRadius=new CornerRadius(5),ClipToBounds=true };
+            var button=new ToggleButton { Tag=style,Name="Style_"+style,Content=tile,IsChecked=true,Width=60,Height=54,Padding=new Thickness(2),Margin=new Thickness(4,0,0,0),CornerRadius=new CornerRadius(5),ClipToBounds=true };
             button.Classes.Add("alignment"); ToolTip.SetTip(button,sample.StyleLabel); AutomationProperties.SetName(button,sample.StyleLabel);
             button.IsCheckedChanged+=(_,_)=> { if(ready) ResetGallery(); };
             styleButtons.Add(button); StyleFilters.Children.Add(button);
@@ -52,6 +52,16 @@ public partial class BackgroundDialog
         // Near the end, append another batch before continuing the same gesture.
         GalleryScroll.AddHandler(PointerWheelChangedEvent,Gallery_Wheel,RoutingStrategies.Tunnel);
         GalleryScroll.AddHandler(KeyDownEvent,Gallery_KeyDown,RoutingStrategies.Tunnel);
+    }
+
+    private void GalleryToolbar_SizeChanged(object sender,SizeChangedEventArgs e)
+    {
+        if(!e.WidthChanged) return;
+        var compact=e.NewSize.Width<600;
+        MatchedFilter.Width=GenericFilter.Width=compact ? 72 : 80;
+        var available=e.NewSize.Width-(compact ? 144 : 160)-104;
+        var width=Math.Clamp(Math.Floor(available/5)-4,44,60);
+        foreach(var button in styleButtons) button.Width=width;
     }
 
     private void Collection_Click(object sender,RoutedEventArgs e)
@@ -171,7 +181,8 @@ public partial class BackgroundDialog
         for(var i=0;i<galleryCards.Count;i++)
             galleryCards[i].Margin=new Thickness(0,0,(i+1)%galleryColumns==0 ? 0 : GalleryGap,i/galleryColumns==(galleryCards.Count-1)/galleryColumns ? 0 : GalleryGap);
         HighlightSelectedBackground();
-        GalleryInfo.Text=ChineseText.Ui($"{galleryLoaded} / {galleryResults.Count} 個素材");
+        GalleryInfo.Text=$"{galleryLoaded} / {galleryResults.Count}";
+        GalleryCountLabel.Text=ChineseText.Ui(GenericFilter.IsChecked==true ? "已載入 / 通用" : results==null ? "已載入 / 素材" : "已載入 / 候選");
         ToolTip.SetTip(GalleryInfo,ChineseText.Ui(galleryLoaded<galleryResults.Count ? "向下捲動查看更多" : "已顯示全部"));
     }
 

@@ -1,26 +1,22 @@
 <Window x:Class="WorshipPptx.BackgroundDialog" xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WorshipPptx" Title="{local:Tr '選擇背景'}" Width="1080" Height="800" MinWidth="880" MinHeight="680" WindowStartupLocation="CenterOwner" DragDrop.AllowDrop="True" DragDrop.Drop="Image_Drop" DragDrop.DragOver="Image_DragOver" KeyDown="Window_KeyDown">
- <Grid Margin="24" RowDefinitions="Auto,*,Auto,Auto">
+ <Grid>
+ <Grid x:Name="DialogContent" Margin="24" RowDefinitions="Auto,*,Auto,Auto">
   <StackPanel Margin="0,0,0,16"><TextBlock Text="{local:Tr '為詩歌選一張背景'}" FontSize="24" FontWeight="SemiBold"/><TextBlock Text="{local:Tr '開啟時以歌名及歌詞配對主題；亦可輸入中文或英文，按「搜尋」配對內置背景。'}" Classes="caption" Margin="0,7,0,0"/></StackPanel>
   <Grid Grid.Row="1" ColumnDefinitions="*,24,300">
-   <Grid RowDefinitions="Auto,Auto,*,Auto">
+   <Grid RowDefinitions="Auto,Auto,*">
     <Grid ColumnDefinitions="*,10,Auto"><TextBox x:Name="SearchText" PlaceholderText="{local:Tr '圖片主題、關鍵字 · 中文或英文'}" MaxLength="500" TextWrapping="Wrap" MaxHeight="90" TextChanged="Keywords_Changed" ToolTip.Tip="{local:Tr '第一組是主題；英文同義詞只會加入 Google 搜尋連結'}"/><Button x:Name="SearchButton" Grid.Column="2" Content="{local:Tr '搜尋'}" Click="Search_Click" Classes="primary" VerticalAlignment="Top"/></Grid>
-    <Grid Grid.Row="1" ColumnDefinitions="Auto,12,*" Margin="0,12,0,12">
-     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-      <ToggleButton x:Name="MatchedFilter" Content="{local:Tr '主題配對'}" Classes="alignment" Width="80" Height="40" IsChecked="True" CornerRadius="6,0,0,6" Click="Collection_Click"/>
-      <ToggleButton x:Name="GenericFilter" Content="{local:Tr '通用背景'}" Classes="alignment" Width="80" Height="40" CornerRadius="0,6,6,0" Click="Collection_Click"/>
+    <Grid x:Name="GalleryToolbar" Grid.Row="1" ColumnDefinitions="Auto,*,Auto" Margin="0,12,0,12" SizeChanged="GalleryToolbar_SizeChanged">
+     <StackPanel x:Name="CollectionButtons" Orientation="Horizontal" VerticalAlignment="Center">
+      <ToggleButton x:Name="MatchedFilter" Content="{local:Tr '主題配對'}" Classes="alignment" Width="80" Height="54" Padding="4,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsChecked="True" CornerRadius="6,0,0,6" Click="Collection_Click"/>
+      <ToggleButton x:Name="GenericFilter" Content="{local:Tr '通用背景'}" Classes="alignment" Width="80" Height="54" Padding="4,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" CornerRadius="0,6,6,0" Click="Collection_Click"/>
      </StackPanel>
-     <WrapPanel x:Name="StyleFilters" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right"/>
+     <StackPanel x:Name="GalleryCounts" Grid.Column="1" Margin="8,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+      <TextBlock x:Name="GalleryInfo" FontSize="18" FontWeight="Bold" Foreground="#1666B3" TextAlignment="Center"/>
+      <TextBlock x:Name="GalleryCountLabel" Text="{local:Tr '已載入 / 素材'}" FontSize="11" Foreground="#66716B" TextAlignment="Center"/>
+     </StackPanel>
+     <WrapPanel x:Name="StyleFilters" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     </Grid>
     <ScrollViewer x:Name="GalleryScroll" Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" AllowAutoHide="False" Focusable="True"><WrapPanel x:Name="Gallery" Orientation="Horizontal"/></ScrollViewer>
-    <Border x:Name="MatchingStatus" Grid.Row="2" IsVisible="False" Background="#F4FFFFFF" CornerRadius="10" Padding="24">
-     <StackPanel VerticalAlignment="Center" Spacing="14">
-      <TextBlock Text="{local:Tr '正在擷取主題及關鍵字…'}" FontSize="21" FontWeight="SemiBold" TextWrapping="Wrap"/>
-      <TextBlock x:Name="MatchProgressMessage" Text="{local:Tr '正在準備分析…'}" TextWrapping="Wrap"/>
-      <ProgressBar x:Name="MatchProgressBar" Minimum="0" Maximum="100" Height="8" IsIndeterminate="True"/>
-      <TextBlock x:Name="MatchProgressPercent" Text="" FontSize="15" HorizontalAlignment="Right"/>
-     </StackPanel>
-    </Border>
-    <TextBlock Grid.Row="3" Margin="0,12,0,0" x:Name="GalleryInfo" FontSize="18" FontWeight="Bold" Foreground="#1666B3" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
    </Grid>
    <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Disabled"><StackPanel Spacing="10">
     <TextBlock x:Name="MatchedTheme" Text="{local:Tr '正在準備圖片關鍵字…'}" FontWeight="SemiBold" TextWrapping="Wrap"/>
@@ -37,5 +33,17 @@
   </Grid>
   <TextBlock Grid.Row="2" x:Name="Message" IsVisible="False" Foreground="#A34F30" FontSize="13" TextWrapping="Wrap" Margin="0,12,0,0"/>
   <StackPanel Grid.Row="3" Margin="0,16,0,0" Orientation="Horizontal" HorizontalAlignment="Right"><Button Content="{local:Tr '取消'}" Click="Cancel_Click" Margin="0,0,10,0"/><Button x:Name="ApplyButton" Content="{local:Tr '套用背景'}" Click="Apply_Click" Classes="primary"/></StackPanel>
+ </Grid>
+ <Border x:Name="MatchingStatus" IsVisible="False" Background="#80000000">
+  <Border x:Name="MatchingCard" Width="420" Margin="24" Padding="28" Background="White" CornerRadius="12" HorizontalAlignment="Center" VerticalAlignment="Center">
+   <StackPanel Spacing="16">
+    <TextBlock Text="{local:Tr '正在擷取主題及關鍵字…'}" FontSize="21" FontWeight="SemiBold" TextWrapping="Wrap" TextAlignment="Center"/>
+    <TextBlock x:Name="MatchProgressMessage" Text="{local:Tr '正在準備分析…'}" TextWrapping="Wrap" TextAlignment="Center"/>
+    <ProgressBar x:Name="MatchProgressBar" Minimum="0" Maximum="100" Height="8" IsIndeterminate="True"/>
+    <TextBlock x:Name="MatchProgressPercent" Text="" FontSize="18" TextAlignment="Center"/>
+    <Button Content="{local:Tr '取消'}" Click="Cancel_Click" HorizontalAlignment="Center"/>
+   </StackPanel>
+  </Border>
+ </Border>
  </Grid>
 </Window>

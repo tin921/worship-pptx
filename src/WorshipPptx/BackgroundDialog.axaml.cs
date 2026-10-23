@@ -81,6 +81,8 @@ namespace WorshipPptx
         }
         private void SetEnabled(bool enabled)
         {
+            DialogContent.IsEnabled=enabled;
+            if(!enabled) Focus();
             SearchText.IsEnabled=SearchButton.IsEnabled=MatchedFilter.IsEnabled=GenericFilter.IsEnabled=BrowseButton.IsEnabled=PasteButton.IsEnabled=UrlButton.IsEnabled=ApplyButton.IsEnabled=enabled;
             StyleFilters.IsEnabled=enabled && GenericFilter.IsChecked!=true;
             UpdateGoogleLink();
