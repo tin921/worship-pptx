@@ -61,7 +61,7 @@ static class GalleryTests
                 check(scroll.Offset.Y==0 && gallery.Children.Count<MediaLibrary.All.Count,"Clearing filter did not restore first batch");
                 foreach(var button in styles) button.IsChecked=false; Flush();
                 check(gallery.Children.Count==0,"Deselecting all styles still shows results");
-                check(picker.FindControl<TextBlock>("GalleryInfo").Text.StartsWith("0 / 0"),"Empty result count is stale");
+                check(picker.FindControl<TextBlock>("GalleryInfo").Text=="0","Empty result count is stale");
                 picker.FindControl<ToggleButton>("GenericFilter").RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Flush();
                 for(var i=0;i<20 && gallery.Children.Count<20;i++) Wheel(-20);
                 var generic=gallery.Children.Cast<Button>().Select(b=>(MediaAsset)b.Tag).ToList();

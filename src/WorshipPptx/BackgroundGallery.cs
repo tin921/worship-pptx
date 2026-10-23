@@ -181,8 +181,7 @@ public partial class BackgroundDialog
         for(var i=0;i<galleryCards.Count;i++)
             galleryCards[i].Margin=new Thickness(0,0,(i+1)%galleryColumns==0 ? 0 : GalleryGap,i/galleryColumns==(galleryCards.Count-1)/galleryColumns ? 0 : GalleryGap);
         HighlightSelectedBackground();
-        GalleryInfo.Text=$"{galleryLoaded} / {galleryResults.Count}";
-        GalleryCountLabel.Text=ChineseText.Ui(GenericFilter.IsChecked==true ? "已載入 / 通用" : results==null ? "已載入 / 素材" : "已載入 / 候選");
+        GalleryInfo.Text=galleryLoaded.ToString();
         ToolTip.SetTip(GalleryInfo,ChineseText.Ui(galleryLoaded<galleryResults.Count ? "向下捲動查看更多" : "已顯示全部"));
     }
 
