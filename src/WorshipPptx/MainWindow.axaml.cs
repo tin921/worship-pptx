@@ -76,7 +76,7 @@ namespace WorshipPptx
             TextColorPicker.Width=compact ? 42 : 56;
             TextColorPicker.Padding=new Thickness(compact ? 4 : 7);
             TextColorPicker.Margin=new Thickness(0,0,compact ? 4 : 6,6);
-            FontSizePicker.Width=104;
+            FontSizePicker.Width=compact ? 60 : 64;
             FontSizePicker.Margin=new Thickness(0,0,compact ? 4 : 6,6);
             BoldToggle.Width=compact ? 32 : 36;
             BoldToggle.Margin=new Thickness(0,0,compact ? 0 : 6,6);
@@ -337,10 +337,6 @@ namespace WorshipPptx
             selected.Formatting.FontName=font.Name;
             if(sender==FontSizePicker) {
                 if(FontSizePicker.SelectedItem is double size) { selected.Formatting.AutoFontSize=false; selected.Formatting.FontSize=size; }
-                else if(FontSizePicker.SelectedItem is string) {
-                    selected.Formatting.AutoFontSize=true; selected.Formatting.Alignment="Center"; selected.Formatting.TextPosition="Middle";
-                    UpdateAlignmentButtons(); UpdatePositionButtons();
-                }
                 else return;
             }
             UpdateContentMode();

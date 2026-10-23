@@ -34,7 +34,8 @@ static class EditorInteractionTests
             try {
                 var item=Item(window); var picker=window.FindControl<ComboBox>("FontSizePicker"); var thumbs=window.FindControl<ListBox>("Thumbnails");
                 var lyrics=window.FindControl<TextBox>("Lyrics"); thumbs.SelectedIndex=1; Pump();
-                check(item.Formatting.AutoFontSize && picker.SelectedItem is string && picker.SelectedItem.ToString().EndsWith("72"),"New song does not start in automatic sizing");
+                check(item.Formatting.AutoFontSize && picker.SelectedItem is double initial && initial==72,"New song does not start in automatic sizing");
+                check(picker.Items.Cast<object>().All(value=>value is double) && picker.Items.Cast<double>().Distinct().Count()==picker.ItemCount,"Font-size options are not unique numbers");
                 void WaitFor(Func<bool> done) {
                     var frame=new DispatcherFrame();
                     using var timeout=new System.Threading.CancellationTokenSource(4000);
@@ -46,11 +47,11 @@ static class EditorInteractionTests
                 }
                 var longer=string.Join("\n",Enumerable.Repeat("  平安與恩典充滿心間",8));
                 lyrics.Text="[v1]\n"+longer+"\n[c]\n恩典";
-                WaitFor(()=>picker.SelectedItem is string text && !text.EndsWith("72"));
+                WaitFor(()=>picker.SelectedItem is double size && size<72);
                 var slides=SlideLayout.BuildItem(item,store.LoadSettings());
                 check(slides.Count==4 && slides.All(s=>s.FontSize==slides[1].FontSize && s.Alignment=="Center" && s.TextPosition=="Middle") && slides[1].Text==longer,"Longest block does not set a shared centered font, or whitespace was lost");
                 lyrics.Text="[v1]\n平安\n[c]\n恩典";
-                WaitFor(()=>picker.SelectedItem is string text && text.EndsWith("72"));
+                WaitFor(()=>picker.SelectedItem is double size && size==72);
                 picker.SelectedItem=48.0; Pump();
                 check(!item.Formatting.AutoFontSize && item.Formatting.FontSize==48,"Explicit size did not disable automatic sizing");
                 lyrics.Text="[v1]\n"+longer+"\n[c]\n恩典";
@@ -58,9 +59,8 @@ static class EditorInteractionTests
                 slides=SlideLayout.BuildItem(item,store.LoadSettings());
                 check(slides.Where(s=>!s.IsTitle).All(s=>s.FontSize==48) && picker.SelectedItem is double n && n==48,"Typing overwrote the manual size");
                 var tabs=window.FindControl<TabControl>("SongTabs"); tabs.SelectedIndex=2; Pump();
-                check(Item(window).Formatting.AutoFontSize && picker.SelectedItem is string,"Manual override leaked to another tab");
+                check(Item(window).Formatting.AutoFontSize && picker.SelectedItem is double,"Manual override leaked to another tab");
                 tabs.SelectedIndex=1; Pump(); check(picker.SelectedItem is double v && v==48,"Manual override lost after switching tabs");
-                picker.SelectedIndex=0; Pump(); check(item.Formatting.AutoFontSize && thumbs.ItemCount==4,"Automatic sizing cannot be restored");
                 picker.SelectedItem=40.0; Pump();
             } finally { window.Close(); }
             var saved=store.LoadHistory().Single().Items;

@@ -46,7 +46,7 @@ static class FormattingTests
                 var swatches=window.FindControl<UniformGrid>("ColorSwatches");
                 swatches.Children.OfType<Button>().Single(b=>((TextColorChoice)b.Tag).Hex=="#B83D3D").RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 tabs.SelectedIndex=2; Dispatcher.UIThread.RunJobs();
-                check(window.FindControl<ComboBox>("FontSizePicker").SelectedItem is string && bold.IsChecked==false && window.FindControl<ToggleButton>("AlignCenter").IsChecked==true && window.FindControl<ToggleButton>("PositionMiddle").IsChecked==true,"Formatting leaked into another song");
+                check(window.FindControl<ComboBox>("FontSizePicker").SelectedItem is double && bold.IsChecked==false && window.FindControl<ToggleButton>("AlignCenter").IsChecked==true && window.FindControl<ToggleButton>("PositionMiddle").IsChecked==true,"Formatting leaked into another song");
                 tabs.SelectedIndex=1; Dispatcher.UIThread.RunJobs();
                 check((double)window.FindControl<ComboBox>("FontSizePicker").SelectedItem==60 && bold.IsChecked==true && window.FindControl<ToggleButton>("AlignRight").IsChecked==true && window.FindControl<ToggleButton>("PositionBottom").IsChecked==true,"Switching tabs lost formatting");
                 var color=window.FindControl<Button>("TextColorPicker"); color.Flyout.ShowAt(color); Dispatcher.UIThread.RunJobs();

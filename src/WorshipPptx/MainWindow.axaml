@@ -91,7 +91,7 @@
           <Button.Flyout><Flyout Placement="Bottom"><UniformGrid x:Name="ColorSwatches" Columns="8" Rows="8" Margin="2"/></Flyout></Button.Flyout>
           <Grid ColumnDefinitions="18,4,8"><Border x:Name="SelectedColorSwatch" Width="18" Height="18" CornerRadius="2" BorderBrush="#94A197" BorderThickness="1"/><PathIcon Grid.Column="2" Width="8" Height="6" Data="M0,0 L5,5 L10,0"/></Grid>
          </Button>
-         <ComboBox x:Name="FontSizePicker" Width="104" MinWidth="0" Height="40" FontSize="15" Padding="5,7" Margin="0,0,6,6" SelectionChanged="Typography_Changed" ToolTip.Tip="{local:Tr '本分頁字號（pt）'}" AutomationProperties.Name="{local:Tr '投影片字號（pt）'}"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding}"/></DataTemplate></ComboBox.ItemTemplate></ComboBox>
+         <ComboBox x:Name="FontSizePicker" Width="64" MinWidth="0" Height="40" FontSize="15" Padding="5,7" Margin="0,0,6,6" SelectionChanged="Typography_Changed" ToolTip.Tip="{local:Tr '本分頁字號（pt）'}" AutomationProperties.Name="{local:Tr '投影片字號（pt）'}"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding}"/></DataTemplate></ComboBox.ItemTemplate></ComboBox>
          <ToggleButton x:Name="BoldToggle" Classes="alignment" Width="36" Margin="0,0,6,6" CornerRadius="6" Content="B" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="FormatOption_Click" ToolTip.Tip="{local:Tr '粗體'}" AutomationProperties.Name="{local:Tr '粗體'}"/>
         </WrapPanel>
         <Grid x:Name="AlignmentControls" Grid.Column="1" ColumnDefinitions="Auto,Auto,Auto" RowDefinitions="Auto,Auto" RowSpacing="8" HorizontalAlignment="Right" VerticalAlignment="Top">
