@@ -89,6 +89,12 @@ static class MediaTests
             check(!Uri.UnescapeDataString(link.NavigateUri.Query).Contains("每一步"),"Lyrics were included in the Google link");
             keywords.Text="雨後 彩虹 & 日光"; Dispatcher.UIThread.RunJobs();
             check(link.NavigateUri.AbsoluteUri.Contains(Uri.EscapeDataString(keywords.Text)) && link.NavigateUri.Query.Contains("tbm=isch"),"Edited keywords not escaped or not an image search");
+            keywords.Text="rainbow after rain"; button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); timer.Restart();
+            while(!button.IsEnabled && timer.Elapsed.TotalSeconds<40) { Dispatcher.UIThread.RunJobs(); Thread.Sleep(10); }
+            check(button.IsEnabled && keywords.Text=="rainbow after rain" && picker.FindControl<TextBlock>("MatchedTheme").Text.Contains("彩虹"),"Search button ignored custom English terms or replaced the input");
+            var inferenceCount=MediaSearch.InferenceCount; button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); timer.Restart();
+            while(!button.IsEnabled && timer.Elapsed.TotalSeconds<40) { Dispatcher.UIThread.RunJobs(); Thread.Sleep(10); }
+            check(button.IsEnabled && MediaSearch.InferenceCount==inferenceCount,"Repeated custom search re-ran inference");
             keywords.Text=""; Dispatcher.UIThread.RunJobs(); check(!link.IsEnabled,"Empty search link stays enabled");
             keywords.Text="、 / OR /"; Dispatcher.UIThread.RunJobs(); check(!link.IsEnabled,"Punctuation-only search stays enabled"); picker.Close();
             var traditional=MediaSearch.SearchAsync("","雨後彩虹帶來盼望").Result;
@@ -168,7 +174,7 @@ static class MediaTests
         });
         test("Static preview has no shaded text panel",()=> {
             var visual=SlideVisual.Create(new SlideData { Background=MediaLibrary.All.First().Key,Lines=new(){"平安"},Footer="版權" });
-            check(visual.Children.First() is Image && visual.Children.Skip(1).All(c=>c is TextBlock),"A shading or animation layer remains");
+            check(visual.Children.First() is Image && visual.Children.Skip(1).All(c=>c is TextBlock || c.Name=="SlideTag"),"A shading or animation layer remains");
         });
         test("PowerPoint exports only still images with editable coloured text",()=> {
             var asset=MediaLibrary.All.First(a=>a.Style=="generic" && a.Lighting=="daylight");

@@ -172,7 +172,8 @@ public partial class BackgroundDialog
         for(var i=0;i<galleryCards.Count;i++)
             galleryCards[i].Margin=new Thickness(0,0,(i+1)%galleryColumns==0 ? 0 : GalleryGap,i/galleryColumns==(galleryCards.Count-1)/galleryColumns ? 0 : GalleryGap);
         HighlightSelectedBackground();
-        GalleryInfo.Text=ChineseText.Ui($"{galleryLoaded} / {galleryResults.Count} 個素材 · "+(galleryLoaded<galleryResults.Count ? "向下捲動查看更多" : "已顯示全部"));
+        GalleryInfo.Text=ChineseText.Ui($"{galleryLoaded} / {galleryResults.Count} 個素材");
+        ToolTip.SetTip(GalleryInfo,ChineseText.Ui(galleryLoaded<galleryResults.Count ? "向下捲動查看更多" : "已顯示全部"));
     }
 
     private void HighlightSelectedBackground()

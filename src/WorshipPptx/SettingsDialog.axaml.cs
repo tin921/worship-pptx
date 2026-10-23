@@ -7,7 +7,7 @@ namespace WorshipPptx
     {
         public UserSettings Settings { get; private set; }
         private readonly string language;
-        public SettingsDialog(UserSettings settings) { InitializeComponent(); LicenseText.Text=settings.ChurchLicense; language=settings.Language; }
+        public SettingsDialog(UserSettings settings) { InitializeComponent(); InputFocus.Attach(this); LicenseText.Text=settings.ChurchLicense; language=settings.Language; }
         private void Cancel_Click(object sender,RoutedEventArgs e) => Close(false);
         private void Save_Click(object sender,RoutedEventArgs e)
         {

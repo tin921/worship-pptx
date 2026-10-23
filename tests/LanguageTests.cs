@@ -69,7 +69,7 @@ static class LanguageTests
                 check(window.FindControl<ListBox>("HistoryList").Items.Cast<ServicePlan>().Any(p=>p.Title=="圣诞礼拜"),"History stayed Traditional");
                 check(window.FindControl<ComboBox>("FontPicker").SelectedItem is FontChoice font && font.DisplayName.Contains("香港黑体"),"Font labels stayed Traditional");
                 check((double)window.FindControl<ComboBox>("FontSizePicker").SelectedItem==40,"Switch changed formatting");
-                check(window.FindControl<CompositionControls>("CompositionOptions").BackgroundSource.Items.Cast<string>().Contains("摄影机"),"Composition controls stayed Traditional");
+                check((string)window.FindControl<ToggleButton>("FlipBackground").Content=="水平翻转","Image controls stayed Traditional");
                 check(store.LoadSettings().Language==ChineseText.Simplified,"Language not saved");
                 simplified.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 check(simplified.IsChecked==true,"Selected language can be deselected");

@@ -52,6 +52,7 @@ namespace WorshipPptx
         public string Copyright { get=>ChineseText.Content(copyright); set { if(Copyright!=value) copyright=value; } }
         [DataMember] public string SongId { get; set; } = "";
         [DataMember] public string Background { get; set; } = "";
+        [DataMember] public BackgroundTransform BackgroundTransform { get; set; } = new();
         [DataMember] public SlideFormatting Formatting { get; set; } = new();
         [DataMember(EmitDefaultValue=false)] public PreviewLayout Preview { get; set; }
     }
@@ -83,6 +84,7 @@ namespace WorshipPptx
         public List<string> Lines { get; set; } = new List<string>();
         public string Footer { get; set; }
         public string Background { get; set; }
+        public BackgroundTransform BackgroundTransform { get; set; } = new();
         public string TextColor { get; set; } = "#FFFFFF";
         public bool Bold { get; set; }
         public bool FullSlide { get; set; }

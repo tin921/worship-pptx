@@ -11,10 +11,7 @@
     </StackPanel>
     <StackPanel DockPanel.Dock="Bottom">
      <TextBlock Text="{local:Tr '專心敬拜，輕鬆預備。'}" FontSize="12" Foreground="#738077" Margin="0,10,0,16"/>
-     <StackPanel x:Name="LanguagePanel" Orientation="Horizontal" Margin="0,0,0,12" ToolTip.Tip="{local:Tr '切換介面及簡報文字；保留原文'}">
-      <ToggleButton x:Name="TraditionalButton" Content="繁體" Tag="zh-Hant" Click="Language_Click" Classes="alignment" Width="68" Height="36" CornerRadius="6,0,0,6" AutomationProperties.Name="繁體中文"/>
-      <ToggleButton x:Name="SimplifiedButton" Content="简体" Tag="zh-Hans" Click="Language_Click" Classes="alignment" Width="68" Height="36" CornerRadius="0,6,6,0" AutomationProperties.Name="简体中文"/>
-     </StackPanel>
+
      <Button Content="{local:Tr '設定'}" Click="Settings_Click"/>
      <TextBlock Text="{local:Tr 'v0.92 預覽 · 本機儲存'}" Classes="caption" Margin="4,12,0,0"/>
     </StackPanel>
@@ -29,6 +26,10 @@
    <Grid.RowDefinitions><RowDefinition Height="Auto" MinHeight="66"/><RowDefinition Height="*"/><RowDefinition Height="74"/></Grid.RowDefinitions>
    <Border BorderBrush="#C9D3C6" BorderThickness="0,0,0,1" Background="#EEF1EA">
     <DockPanel Margin="20,12,20,0">
+     <StackPanel x:Name="LanguagePanel" DockPanel.Dock="Right" Orientation="Horizontal" Margin="12,0,0,0" Height="56" VerticalAlignment="Top" ToolTip.Tip="{local:Tr '切換介面及簡報文字；保留原文'}">
+      <ToggleButton x:Name="TraditionalButton" Content="繁體" Tag="zh-Hant" Click="Language_Click" Classes="alignment" Width="58" Height="44" FontSize="18" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" CornerRadius="6,0,0,6" AutomationProperties.Name="繁體中文"/>
+      <ToggleButton x:Name="SimplifiedButton" Content="简体" Tag="zh-Hans" Click="Language_Click" Classes="alignment" Width="58" Height="44" FontSize="18" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" CornerRadius="0,6,6,0" AutomationProperties.Name="简体中文"/>
+     </StackPanel>
      <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Height="56" VerticalAlignment="Top" Margin="0,0,16,0" Spacing="10">
       <TextBox x:Name="ServiceTitle" Width="124" Height="44" VerticalAlignment="Center" VerticalContentAlignment="Center" PlaceholderText="{local:Tr '崇拜名稱'}" FontSize="22" FontWeight="SemiBold" Background="Transparent" BorderThickness="0" Padding="0" TextChanged="Metadata_Changed" AutomationProperties.Name="{local:Tr '崇拜名稱'}"/>
       <CalendarDatePicker x:Name="ServiceDate" Width="142" Height="44" VerticalAlignment="Center" VerticalContentAlignment="Center" SelectedDateChanged="Date_Changed" SelectedDateFormat="Custom" CustomDateFormatString="yyyy-MM-dd" PlaceholderText="{local:Tr '崇拜日期'}" FontSize="14" AutomationProperties.Name="{local:Tr '崇拜日期'}"/>
@@ -46,7 +47,7 @@
        <TextBox x:Name="SongId" PlaceholderText="{local:Tr 'CCLI 詩歌編號（選填）'}" TextChanged="Editor_Changed" ToolTip.Tip="{local:Tr '個別詩歌的 Song Number；教會授權編號請在設定填寫。'}" Margin="0,0,0,16"/>
        <StackPanel x:Name="OrderPanel"><TextBox x:Name="SongOrder" AutomationProperties.Name="{local:Tr '演唱次序'}" PlaceholderText="{local:Tr '演唱次序，例如 v1 c v2 c c'}" FontSize="16" TextChanged="Editor_Changed" Margin="0,0,0,12"/></StackPanel>
       </StackPanel>
-      <TextBox x:Name="Lyrics" Grid.Row="1" AutomationProperties.Name="{local:Tr '歌詞或經文'}" PlaceholderText="{local:Tr '歌詞 · 使用 [v1]、[c] 標記段落'}" MinHeight="260" AcceptsReturn="True" AcceptsTab="True" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Auto" FontSize="16" TextWrapping="Wrap" TextChanged="Editor_Changed"/>
+      <TextBox x:Name="Lyrics" Grid.Row="1" AutomationProperties.Name="{local:Tr '歌詞或經文'}" PlaceholderText="{local:Tr '歌詞 · 使用 [v1]、[c] 標記段落'}" MinHeight="260" AcceptsReturn="True" AcceptsTab="False" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Auto" FontSize="16" TextWrapping="Wrap" TextChanged="Editor_Changed"/>
       <TextBlock x:Name="LyricsHint" Grid.Row="2" Text="{local:Tr '[v1]、[c] 標記段落；空行分頁。'}" Classes="caption" Margin="0,7,0,0"/>
      </Grid>
     </Border>
@@ -88,18 +89,35 @@
       <Grid Grid.Row="1">
        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
        <DockPanel Margin="0,0,0,6"><Border DockPanel.Dock="Right" Background="#E9F0E5" CornerRadius="10" Padding="9,3"><TextBlock x:Name="LayoutModeLabel" Text="{local:Tr '16:9 · 文字只用上半部'}" FontSize="12" Foreground="#426B54"/></Border><TextBlock Text="{local:Tr '畫面預覽'}" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/></DockPanel>
-       <Border Grid.Row="1" Background="#E7EBE2" CornerRadius="8" ClipToBounds="True"><Viewbox x:Name="SlideHost" Stretch="Uniform"/></Border>
+       <Border Grid.Row="1" Background="#E7EBE2" CornerRadius="8" ClipToBounds="True">
+        <Grid><Viewbox x:Name="SlideHost" Stretch="Uniform" SizeChanged="Preview_SizeChanged"/>
+         <Border x:Name="ImageControls" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Padding="8" Background="#F2FFFFFF" CornerRadius="6">
+          <StackPanel Spacing="5">
+           <TextBlock Text="{local:Tr '拖動平移 · 滾輪縮放'}" FontSize="12" Foreground="#426B54"/>
+           <StackPanel Orientation="Horizontal" Spacing="4">
+            <Button Content="−" Width="25" Height="28" MinHeight="0" Padding="0" Click="ZoomOut_Click" ToolTip.Tip="{local:Tr '縮小背景'}"/>
+            <Button x:Name="ZoomLabel" Content="100%" Height="28" MinHeight="0" Padding="4,0" FontSize="12" Click="ResetBackground_Click" ToolTip.Tip="{local:Tr '重設平移及縮放'}"/>
+            <Button Content="＋" Width="25" Height="28" MinHeight="0" Padding="0" Click="ZoomIn_Click" ToolTip.Tip="{local:Tr '放大背景'}"/>
+            <ToggleButton x:Name="FlipBackground" Content="{local:Tr '水平翻轉'}" Classes="alignment" Width="68" Height="28" Padding="3,0" FontSize="12" CornerRadius="5" Click="FlipBackground_Click"/>
+           </StackPanel>
+           <Grid ColumnDefinitions="Auto,*,Auto">
+            <TextBlock Text="{local:Tr '不透明度'}" FontSize="12" VerticalAlignment="Center"/>
+            <Slider x:Name="BackgroundOpacity" Grid.Column="1" Width="82" Margin="5,0" Minimum="0" Maximum="100" Value="100" ValueChanged="BackgroundOpacity_Changed" AutomationProperties.Name="{local:Tr '背景不透明度'}"/>
+            <TextBlock x:Name="OpacityLabel" Grid.Column="2" Text="100%" FontSize="11" VerticalAlignment="Center"/>
+           </Grid>
+          </StackPanel>
+         </Border>
+        </Grid>
+       </Border>
        <Grid Grid.Row="2" ColumnDefinitions="Auto,*,Auto" Margin="0,6,0,0">
-        <ToggleButton x:Name="CompositionToggle" Content="{local:Tr '畫面設定'}" Classes="alignment" IsChecked="False" Width="84" Height="30" MinHeight="0" Padding="8,3" FontSize="13" CornerRadius="6" ToolTip.Tip="{local:Tr '顯示／隱藏畫中畫設定'}" AutomationProperties.Name="{local:Tr '畫面設定'}"/>
-        <TextBlock x:Name="PreviewInfo" Grid.Column="1" Classes="caption" Margin="10,0,8,0" VerticalAlignment="Center" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"/>
+        <TextBlock x:Name="PreviewInfo" Grid.Column="1" Classes="caption" Margin="0,0,8,0" VerticalAlignment="Center" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"/>
         <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right"><Button Content="‹" Width="36" Height="30" MinHeight="0" Padding="0" Click="Previous_Click" FontSize="18"/><Button Content="›" Width="36" Height="30" MinHeight="0" Padding="0" Margin="7,0,0,0" Click="Next_Click" FontSize="18"/></StackPanel>
        </Grid>
-       <local:CompositionControls Grid.Row="3" x:Name="CompositionOptions" IsVisible="{Binding IsChecked, ElementName=CompositionToggle}" Margin="0,6,0,0"/>
        <TextBlock Grid.Row="4" x:Name="ValidationText" Foreground="#A34F30" FontSize="13" Margin="0,6,0,0"/>
       </Grid>
      </Grid>
     <GridSplitter Grid.Column="3" Classes="panelsplitter" AutomationProperties.Name="{local:Tr '調整預覽與投影片清單寬度'}" ToolTip.Tip="{local:Tr '拖動以調整預覽與投影片清單寬度'}"/>
-    <DockPanel Grid.Column="4" Margin="10,20,12,16"><TextBlock DockPanel.Dock="Top" Text="{local:Tr '投影片'}" FontSize="16" FontWeight="SemiBold" Margin="3,0,0,12"/><ListBox x:Name="Thumbnails" Background="Transparent" BorderThickness="0" Padding="0" SelectionMode="Single" Classes="thumbnails" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="Thumbnail_Changed" KeyDown="Thumbnails_KeyDown" ToolTip.Tip="{local:Tr '使用 ↑ ↓ 選擇投影片'}" AutomationProperties.Name="{local:Tr '投影片清單'}"/></DockPanel>
+    <DockPanel Grid.Column="4" Margin="10,20,12,16"><TextBlock DockPanel.Dock="Top" Text="{local:Tr '投影片'}" FontSize="16" FontWeight="SemiBold" Margin="3,0,0,12"/><ListBox x:Name="Thumbnails" Background="Transparent" BorderThickness="0" Padding="0" SelectionMode="Single" Classes="thumbnails" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="Thumbnail_Changed" ToolTip.Tip="{local:Tr '使用 ↑ ↓ 選擇投影片'}" AutomationProperties.Name="{local:Tr '投影片清單'}"/></DockPanel>
    </Grid>
    <Border Grid.Row="2" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="22,13">
     <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>

@@ -20,12 +20,25 @@ namespace WorshipPptx
             using var stream=new MemoryStream(BackgroundPng(key));
             var result=new Bitmap(stream); cache[key]=new WeakReference<Bitmap>(result); return result;
         }
-        public static Control CreateBackground(string key) => new Image { Source=Background(key),Width=1280,Height=720,Stretch=Stretch.UniformToFill };
-        public static Canvas Create(SlideData slide,bool showCameraGuide=false)
+        public static Image CreateBackground(string key,BackgroundTransform transform=null)
+        {
+            var image=new Image { Source=Background(key),Stretch=Stretch.Fill,RenderTransformOrigin=RelativePoint.Center };
+            UpdateBackground(image,transform ?? new()); return image;
+        }
+        public static void UpdateBackground(Image image,BackgroundTransform value)
+        {
+            value.Normalize(); image.Width=1280*value.Zoom; image.Height=720*value.Zoom;
+            Canvas.SetLeft(image,(1280-image.Width)/2+value.X*12.8);
+            Canvas.SetTop(image,(720-image.Height)/2+value.Y*7.2);
+            image.Opacity=value.Opacity; image.RenderTransform=new ScaleTransform(value.Flip ? -1 : 1,1);
+        }
+        public static string TagLabel(SlideData slide) => "["+(slide.Section ?? "")+"]";
+        public static double TagWidth(SlideData slide) => Math.Ceiling(SlideLayout.Measure(TagLabel(slide),20,slide.FontName))+24;
+        public static Canvas Create(SlideData slide,bool showCameraGuide=false,bool showTag=true)
         {
             if(showCameraGuide) return new CompositionPreview(slide,slide.Preview ?? PreviewLayout.FromLegacy(slide.FullSlide),false);
             var canvas=new Canvas { Width=1280, Height=720, ClipToBounds=true, Background=Brushes.Black };
-            canvas.Children.Add(CreateBackground(slide.Background));
+            canvas.Children.Add(CreateBackground(slide.Background,slide.BackgroundTransform));
             var color=TextColors.Get(slide.TextColor).Brush;
             var spacing=SlideLayout.LineSpacing(slide.FontSize,slide.FontName,slide.Bold);
             var alignment=Enum.Parse<TextAlignment>(slide.Alignment);
@@ -40,10 +53,28 @@ namespace WorshipPptx
                 var footer=new TextBlock { Text=credits[i], Width=SlideLayout.TextWidth, Height=SlideLayout.FooterLineSpacing(slide), FontFamily=FontCatalog.Get(slide.FontName).Family, FontSize=SlideLayout.FooterSize(slide), FontWeight=slide.Bold ? FontWeight.Bold : FontWeight.Normal, Foreground=color, TextAlignment=alignment, TextWrapping=TextWrapping.NoWrap };
                 Canvas.SetLeft(footer,SlideLayout.TextX); Canvas.SetTop(footer,SlideLayout.FooterTop(slide)+i*SlideLayout.FooterLineSpacing(slide)); canvas.Children.Add(footer);
             }
+            if(showTag && !string.IsNullOrEmpty(slide.Section)) {
+                var tag=new Border { Name="SlideTag",Width=TagWidth(slide),Height=32,Background=Brush.Parse("#ECEEEC"),Padding=new Thickness(12,2),Child=new TextBlock { Text=TagLabel(slide),FontSize=20,FontFamily=FontCatalog.Get(slide.FontName).Family,Foreground=Brush.Parse("#38483E"),VerticalAlignment=Avalonia.Layout.VerticalAlignment.Center,HorizontalAlignment=Avalonia.Layout.HorizontalAlignment.Center } };
+                Canvas.SetLeft(tag,1280-32-tag.Width); Canvas.SetTop(tag,656); canvas.Children.Add(tag);
+            }
             return canvas;
         }
         // Rendering and PPTX export use the same 720p background on Windows and macOS.
-        public static byte[] BackgroundPng(string path)
+        public static byte[] BackgroundPng(string path,BackgroundTransform transform=null)
+        {
+            var bytes=BaseBackgroundPng(path);
+            if(transform==null) return bytes;
+            var value=transform.Copy(); value.Normalize();
+            if(value.Zoom==1 && value.X==0 && value.Y==0 && value.Opacity==1 && !value.Flip) return bytes;
+            using var bitmap=SKBitmap.Decode(bytes); using var image=SKImage.FromBitmap(bitmap);
+            using var surface=SKSurface.Create(new SKImageInfo(1280,720)); var canvas=surface.Canvas; canvas.Clear(SKColors.Black);
+            canvas.Translate((float)(640+value.X*12.8),(float)(360+value.Y*7.2));
+            canvas.Scale((float)(value.Zoom*(value.Flip ? -1 : 1)),(float)value.Zoom);
+            using var paint=new SKPaint { Color=SKColors.White.WithAlpha((byte)Math.Round(value.Opacity*255)) };
+            canvas.DrawImage(image,new SKRect(-640,-360,640,360),new SKSamplingOptions(SKFilterMode.Linear),paint);
+            using var snapshot=surface.Snapshot(); using var data=snapshot.Encode(SKEncodedImageFormat.Png,100); return data.ToArray();
+        }
+        private static byte[] BaseBackgroundPng(string path)
         {
             path=MediaLibrary.StillPath(path);
             using var surface=SKSurface.Create(new SKImageInfo(1280,720));

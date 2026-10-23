@@ -41,24 +41,14 @@ static class FormattingTests
                 window.FindControl<ComboBox>("FontPicker").SelectedItem=FontCatalog.Get("Noto Serif CJK HK");
                 window.FindControl<ComboBox>("FontSizePicker").SelectedItem=60.0;
                 var bold=window.FindControl<ToggleButton>("BoldToggle"); bold.IsChecked=true; bold.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                window.FindControl<ToggleButton>("CompositionToggle").IsChecked=true; Dispatcher.UIThread.RunJobs();
-                var full=window.GetVisualDescendants().OfType<ToggleButton>().Single(b=>b.Name=="ViewFullSlide"); var pip=window.GetVisualDescendants().OfType<ToggleButton>().Single(b=>b.Name=="ViewBottomRight");
-                check(full.IsChecked==false && pip.IsChecked==true,"Six-view default is not bottom-right PiP");
-                full.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                check(full.IsChecked==true && pip.IsChecked==false,"Layout buttons are not exclusive");
-                full.IsChecked=false; full.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                check(full.IsChecked==true && pip.IsChecked==false,"Clicking the selected layout deselected both options");
-                pip.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                check(full.IsChecked==false && pip.IsChecked==true && ((Canvas)window.FindControl<Viewbox>("SlideHost").Child).Children.OfType<Border>().Any(b=>b.Name=="PipFrame" && b.IsVisible),"PiP selection did not update preview immediately");
-                full.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 window.FindControl<ToggleButton>("PositionBottom").RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 window.FindControl<ToggleButton>("AlignRight").RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 var swatches=window.FindControl<UniformGrid>("ColorSwatches");
                 swatches.Children.OfType<Button>().Single(b=>((TextColorChoice)b.Tag).Hex=="#B83D3D").RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 tabs.SelectedIndex=2; Dispatcher.UIThread.RunJobs();
-                check((double)window.FindControl<ComboBox>("FontSizePicker").SelectedItem==36 && bold.IsChecked==false && full.IsChecked==false && pip.IsChecked==true && window.FindControl<ToggleButton>("AlignCenter").IsChecked==true && window.FindControl<ToggleButton>("PositionTop").IsChecked==true,"Formatting leaked into another song");
+                check((double)window.FindControl<ComboBox>("FontSizePicker").SelectedItem==36 && bold.IsChecked==false && window.FindControl<ToggleButton>("AlignCenter").IsChecked==true && window.FindControl<ToggleButton>("PositionTop").IsChecked==true,"Formatting leaked into another song");
                 tabs.SelectedIndex=1; Dispatcher.UIThread.RunJobs();
-                check((double)window.FindControl<ComboBox>("FontSizePicker").SelectedItem==60 && bold.IsChecked==true && full.IsChecked==true && pip.IsChecked==false && window.FindControl<ToggleButton>("AlignRight").IsChecked==true && window.FindControl<ToggleButton>("PositionBottom").IsChecked==true,"Switching tabs lost formatting");
+                check((double)window.FindControl<ComboBox>("FontSizePicker").SelectedItem==60 && bold.IsChecked==true && window.FindControl<ToggleButton>("AlignRight").IsChecked==true && window.FindControl<ToggleButton>("PositionBottom").IsChecked==true,"Switching tabs lost formatting");
                 var color=window.FindControl<Button>("TextColorPicker"); color.Flyout.ShowAt(color); Dispatcher.UIThread.RunJobs();
                 check(swatches.Bounds.Width<=300 && swatches.Bounds.Height<=300 && TextColors.All.Select(c=>c.Hex).Distinct().Count()==64,"Palette needs scrolling or repeats colours");
                 check(!swatches.GetVisualDescendants().OfType<TextBlock>().Any(),"Colour names appear in palette");
@@ -82,7 +72,7 @@ static class FormattingTests
                 }
             } finally { window.Close(); }
             var saved=store.LoadHistory().Single();
-            check(saved.Title=="asdf" && saved.Items[1].Formatting.Bold && saved.Items[1].Formatting.FullSlide && saved.Items[1].Formatting.TextPosition=="Bottom" && saved.Items[2].Formatting.TextPosition=="Top" && saved.Items[1].Formatting.TextColor=="#B83D3D" && !saved.Items[2].Formatting.Bold,"Settings did not survive saving");
+            check(saved.Title=="asdf" && saved.Items[1].Formatting.Bold && !saved.Items[1].Formatting.FullSlide && saved.Items[1].Formatting.TextPosition=="Bottom" && saved.Items[2].Formatting.TextPosition=="Top" && saved.Items[1].Formatting.TextColor=="#B83D3D" && !saved.Items[2].Formatting.Bold,"Settings did not survive saving");
         });
         test("Full-slide bold text exports while singer guide stays preview-only",()=> {
             var item=new ServiceItem { Title="全畫面測試",Lyrics="[v1]\n第一行\n第二行\n第三行\n第四行\n第五行\n第六行",Order="v1",Copyright="版權",SongId="123" };
@@ -102,7 +92,7 @@ static class FormattingTests
             XNamespace a="http://schemas.openxmlformats.org/drawingml/2006/main",p="http://schemas.openxmlformats.org/presentationml/2006/main";
             using var zip=ZipFile.OpenRead(path);
             using var input=zip.GetEntry("ppt/slides/slide2.xml").Open(); var xml=XDocument.Load(input);
-            check(xml.Descendants(a+"rPr").All(r=>(string)r.Attribute("b")=="1"),"Bold not exported");
+            check(xml.Descendants(p+"sp").Where(s=>(string)s.Element(p+"nvSpPr").Element(p+"cNvPr").Attribute("name")!="Section tag").SelectMany(s=>s.Descendants(a+"rPr")).All(r=>(string)r.Attribute("b")=="1"),"Bold not exported");
             check(xml.Descendants(p+"pic").Count()==1 && !xml.ToString().Contains("攝影機"),"Guide entered PowerPoint");
             var bottoms=xml.Descendants(a+"xfrm").Select(t=>(long)t.Element(a+"off").Attribute("y")+(long)t.Element(a+"ext").Attribute("cy")).ToList();
             check(bottoms.Skip(1).Any(y=>y>360*9525) && bottoms.Skip(1).All(y=>y<=720*9525),"Full slide text bounds wrong");

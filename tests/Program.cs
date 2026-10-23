@@ -35,6 +35,7 @@ namespace WorshipPptx.Tests
             AppBuilder.Configure<App>().UseSkia().UseHeadless(new AvaloniaHeadlessPlatformOptions { UseHeadlessDrawing=false }).SetupWithoutStarting();
             root=Path.GetFullPath(args.Length>0 ? args[0] : Path.Combine(Path.GetTempPath(),"WorshipPptx-tests-"+Guid.NewGuid().ToString("N")));
             Directory.CreateDirectory(root);
+            if(args.Contains("--editor-only")) { EditorInteractionTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             if(args.Contains("--gallery-only")) { GalleryTests.Run(Test,Check,new ImageStore(Path.Combine(root,"gallery-images"))); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             if(args.Contains("--language-only")) { LanguageTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             if(args.Contains("--composition-only")) { CompositionTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
@@ -98,7 +99,7 @@ namespace WorshipPptx.Tests
             demo.Items[1].Background=imported;
             var slides=SlideLayout.Build(demo,settings); var output=Path.Combine(root,"sample-worship.pptx");
             Test("PPTX package schema validates",()=> { PptxWriter.Write(output,slides,demo.Title); using(var doc=PresentationDocument.Open(output,false)) { var errors=new OpenXmlValidator().Validate(doc).ToList(); Check(errors.Count==0,string.Join("\n",errors.Take(10).Select(e=>e.Description+" "+e.Path?.XPath))); Check(doc.PresentationPart.SlideParts.Count()==slides.Count,"Wrong slide count"); } });
-            Test("All native text boxes confined to upper half",()=> { XNamespace p="http://schemas.openxmlformats.org/presentationml/2006/main",a="http://schemas.openxmlformats.org/drawingml/2006/main"; using(var zip=ZipFile.OpenRead(output)) foreach(var entry in zip.Entries.Where(x=>x.FullName.StartsWith("ppt/slides/slide") && x.FullName.EndsWith(".xml"))) using(var input=entry.Open()) { var xml=XDocument.Load(input); foreach(var shape in xml.Descendants(p+"sp").Where(x=>x.Element(p+"txBody")!=null)) { var transform=shape.Element(p+"spPr").Element(a+"xfrm"); var bottom=(long)transform.Element(a+"off").Attribute("y")+(long)transform.Element(a+"ext").Attribute("cy"); Check(bottom<=720*9525/2,"Text below half on "+entry.FullName); } } });
+            Test("All native text boxes confined to upper half",()=> { XNamespace p="http://schemas.openxmlformats.org/presentationml/2006/main",a="http://schemas.openxmlformats.org/drawingml/2006/main"; using(var zip=ZipFile.OpenRead(output)) foreach(var entry in zip.Entries.Where(x=>x.FullName.StartsWith("ppt/slides/slide") && x.FullName.EndsWith(".xml"))) using(var input=entry.Open()) { var xml=XDocument.Load(input); foreach(var shape in xml.Descendants(p+"sp").Where(x=>x.Element(p+"txBody")!=null && (string)x.Element(p+"nvSpPr").Element(p+"cNvPr").Attribute("name")!="Section tag")) { var transform=shape.Element(p+"spPr").Element(a+"xfrm"); var bottom=(long)transform.Element(a+"off").Attribute("y")+(long)transform.Element(a+"ext").Attribute("cy"); Check(bottom<=720*9525/2,"Text below half on "+entry.FullName); } } });
             Test("All image references embedded, no external links",()=> { using(var zip=ZipFile.OpenRead(output)) { Check(zip.Entries.Any(x=>x.FullName.StartsWith("ppt/media/")),"No image"); foreach(var entry in zip.Entries.Where(x=>x.FullName.EndsWith(".rels"))) using(var input=new StreamReader(entry.Open())) Check(!input.ReadToEnd().Contains("TargetMode=\"External\""),"External dependency"); } });
             Test("PPTX overwrite leaves valid package",()=> { PptxWriter.Write(output,slides,demo.Title); using(var doc=PresentationDocument.Open(output,false)) Check(!new OpenXmlValidator().Validate(doc).Any(),"Overwrite corrupt"); });
             Test("PPTX embeds selected full font and uses it in native text",()=> { using(var doc=PresentationDocument.Open(output,false)) { var embedded=doc.PresentationPart.Presentation.EmbeddedFontList; Check(embedded.ChildElements.Count==1,"Font list missing"); Check(embedded.InnerXml.Contains(FontCatalog.DefaultName),"Wrong font"); } using(var zip=ZipFile.OpenRead(output)) using(var input=zip.GetEntry("ppt/fonts/font1.fntdata").Open()) using(var memory=new MemoryStream()) { input.CopyTo(memory); Check(memory.ToArray().SequenceEqual(FontCatalog.EmbeddedBytes(FontCatalog.DefaultName)),"Font payload changed"); } });
@@ -142,7 +143,7 @@ namespace WorshipPptx.Tests
                     var slide=formatted[i]; var preview=SlideVisual.Create(slide);
                     var label=preview.Children.OfType<Avalonia.Controls.TextBlock>().First();
                     Check(label.FontSize==SlideLayout.FontPixels(slide.FontSize) && label.TextAlignment.ToString()==slide.Alignment,"Preview format mismatch");
-                    using(var input=zip.GetEntry("ppt/slides/slide"+(i+1)+".xml").Open()) foreach(var shape in XDocument.Load(input).Descendants(p+"sp").Where(s=>s.Element(p+"txBody")!=null)) {
+                    using(var input=zip.GetEntry("ppt/slides/slide"+(i+1)+".xml").Open()) foreach(var shape in XDocument.Load(input).Descendants(p+"sp").Where(s=>s.Element(p+"txBody")!=null && (string)s.Element(p+"nvSpPr").Element(p+"cNvPr").Attribute("name")!="Section tag")) {
                         var transform=shape.Element(p+"spPr").Element(a+"xfrm");
                         Check((long)transform.Element(a+"off").Attribute("y")+(long)transform.Element(a+"ext").Attribute("cy")<=360*9525,"Export below upper half");
                         if((int)shape.Element(p+"nvSpPr").Element(p+"cNvPr").Attribute("id")>=20) {
@@ -210,7 +211,7 @@ namespace WorshipPptx.Tests
                     center.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                     var thumbs=window.FindControl<ListBox>("Thumbnails"); thumbs.SelectedIndex=2;
                     Check(window.FindControl<TextBlock>("PreviewInfo").Text.StartsWith("3 /"),"Thumbnail does not update preview immediately");
-                    thumbs.RaiseEvent(new KeyEventArgs { RoutedEvent=InputElement.KeyDownEvent, Key=Key.Down });
+                    thumbs.Focus(); thumbs.RaiseEvent(new KeyEventArgs { RoutedEvent=InputElement.KeyDownEvent, Key=Key.Down });
                     Check(thumbs.SelectedIndex==3 && window.FindControl<TextBlock>("PreviewInfo").Text.StartsWith("4 /"),"Arrow key does not update preview");
                     window.FindControl<TextBox>("SongOrder").Text="v1 c";
                     titleField.Text="感恩崇拜";
@@ -237,6 +238,7 @@ namespace WorshipPptx.Tests
             });
             LanguageTests.Run(Test,Check,root);
             FormattingTests.Run(Test,Check,root);
+            EditorInteractionTests.Run(Test,Check,root);
             CompositionTests.Run(Test,Check,root);
             ProseTests.Run(Test,Check,root);
             MediaTests.Run(Test,Check,root,store,images);

@@ -22,11 +22,12 @@ namespace WorshipPptx
         public string ResultPath { get; private set; }
         public BackgroundDialog(ImageStore images,string current,string title="",string lyrics="")
         {
-            InitializeComponent(); this.images=images; songTitle=title; songLyrics=lyrics; ResultPath=current ?? "";
+            InitializeComponent(); InputFocus.Attach(this); this.images=images; songTitle=title; songLyrics=lyrics; ResultPath=current ?? "";
             try { SelectBackground(ResultPath); }
             catch { ResultPath=""; ImagePreview.Source=SlideVisual.DefaultImage; }
             ready=true; InitializeGallery(); ResetGallery();
             Opened+=async (_,_)=>await MatchSong();
+            SearchText.KeyDown+=async (_,e)=> { if(e.Key==Key.Enter) { e.Handled=true; await MatchSong(true); } };
             Closed+=(_,_)=> { cancellation.Cancel(); DisposeGallery(); };
         }
         private void SelectBackground(string key)

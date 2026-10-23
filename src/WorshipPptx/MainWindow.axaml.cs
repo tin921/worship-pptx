@@ -44,7 +44,7 @@ namespace WorshipPptx
             ChineseText.SetLanguage(settings.Language); InitializeComponent(); FontPicker.ItemsSource=FontCatalog.All;
             UpdateLanguageButtons();
             BuildColorPalette();
-            CompositionOptions.LayoutChanged+=Composition_Changed;
+            InitializeNavigation();
             FontSizePicker.ItemsSource=new double[]{18,20,24,28,32,36,40,44,48,54,60,64,72};
             var history=store.LoadHistory(); plan=history.FirstOrDefault() ?? Demo.Create();
             debounce.Tick += (s,e) => { debounce.Stop(); SaveDraft(); RefreshPreview(); };
@@ -54,12 +54,13 @@ namespace WorshipPptx
             Closing += OnClosing;
             SongTabs.AddHandler(PointerPressedEvent,Tabs_MouseDown,RoutingStrategies.Tunnel,true);
             SongTabs.AddHandler(PointerMovedEvent,Tabs_MouseMove,RoutingStrategies.Tunnel,true);
-            Thumbnails.AddHandler(KeyDownEvent,Thumbnails_KeyDown,RoutingStrategies.Tunnel,true);
+
             KeyDown += (s,e) => { if(e.Key==Key.F5) { Preview_Click(s,e); e.Handled=true; } if(e.Key==Key.S && (e.KeyModifiers & (KeyModifiers.Control|KeyModifiers.Meta))!=0) { SaveDraft(); e.Handled=true; } };
         }
         private void LoadPlan()
         {
             loading=true; ServiceTitle.Text=plan.Title; ServiceDate.SelectedDate=plan.Date;
+            foreach(var item in plan.Items) { item.Preview=new PreviewLayout(); item.Formatting ??= new(); item.Formatting.FullSlide=false; }
             SongTabs.Items.Clear(); foreach(var item in plan.Items) SongTabs.Items.Add(new TabItem { Header=item.Title, Tag=item });
             addTab=new TabItem { Header="＋", Classes={"add-tab"} };
             AutomationProperties.SetName(addTab,ChineseText.Ui("新增詩歌分頁")); ToolTip.SetTip(addTab,ChineseText.Ui("新增詩歌")); SongTabs.Items.Add(addTab);
@@ -105,7 +106,7 @@ namespace WorshipPptx
             FontSizePicker.SelectedItem=selected.Formatting.FontSize;
             BoldToggle.IsChecked=selected.Formatting.Bold;
             selected.Preview ??= PreviewLayout.FromLegacy(selected.Formatting.FullSlide);
-            UpdateAlignmentButtons(); UpdatePositionButtons(); UpdateColorSwatch(); UpdateLayoutButtons();
+            UpdateAlignmentButtons(); UpdatePositionButtons(); UpdateColorSwatch(); UpdateLayoutButtons(); SyncBackgroundControls();
         }
         private void UpdateContentMode()
         {
@@ -114,7 +115,7 @@ namespace WorshipPptx
             SongTitle.PlaceholderText=song ? ChineseText.Ui("詩歌名稱") : ChineseText.Ui("經文／公告名稱");
             Lyrics.PlaceholderText=ChineseText.Ui("歌詞 [v1]、[c] · 公告 [1]、[2] · 經文直接輸入");
             OrderPanel.IsVisible=song; SongId.IsEnabled=song;
-            LyricsHint.Text=song ? ChineseText.Ui("[v1]、[c] 標記段落；空行分頁；Tab 插入縮排。") : announcement ? ChineseText.Ui("[1]、[2] 每項一頁；字號為上限，長文自動縮小；Tab 插入縮排。") : ChineseText.Ui("經文自動分頁；公告用 [1]、[2] 每項一頁。保留空行及縮排；Tab 插入縮排。");
+            LyricsHint.Text=song ? ChineseText.Ui("[v1]、[c] 標記段落；空行分頁；Ctrl+Tab 插入縮排。") : announcement ? ChineseText.Ui("[1]、[2] 每項一頁；字號為上限，長文自動縮小；Ctrl+Tab 插入縮排。") : ChineseText.Ui("經文自動分頁；公告用 [1]、[2] 每項一頁。保留空行及縮排；Ctrl+Tab 插入縮排。");
             ToolTip.SetTip(FontSizePicker,announcement ? ChineseText.Ui("本分頁公告的最大字號（pt）；長文自動縮小至一頁") : ChineseText.Ui("本分頁字號（pt）"));
         }
         private void Capture()
@@ -238,15 +239,15 @@ namespace WorshipPptx
         {
             try
             {
-                Capture(); slides=SlideLayout.BuildItem(selected,settings); ValidationText.Text="";
+                Capture(); SyncBackgroundControls(); slides=SlideLayout.BuildItem(selected,settings); ValidationText.Text="";
                 if(slides.Any(s=>s.FontSize<selected.Formatting.FontSize)) ValidationText.Text=ChineseText.Ui("為保留文字空間，較長文字已按比例縮小。");
                 BackgroundImage.Source=SlideVisual.Background(selected.Background);
                 updatingThumbnails=true; Thumbnails.Items.Clear();
                 for(var i=0;i<slides.Count;i++)
                 {
-                    var stack=new StackPanel(); stack.Children.Add(new Viewbox { Stretch=Stretch.Uniform,Child=SlideVisual.Create(slides[i]) });
-                    stack.Children.Add(new TextBlock { Text=(i+1)+" · "+slides[i].Section, FontSize=13, Margin=new Thickness(0,6,0,2), HorizontalAlignment=HorizontalAlignment.Center });
-                    var item=new ListBoxItem { Content=stack }; ToolTip.SetTip(item,slides[i].Text);
+                    var thumb=new Grid(); thumb.Children.Add(new Viewbox { Stretch=Stretch.Uniform,Child=SlideVisual.Create(slides[i],false,false) });
+                    thumb.Children.Add(new Border { Name="ThumbnailTag",HorizontalAlignment=HorizontalAlignment.Right,VerticalAlignment=VerticalAlignment.Bottom,Margin=new Thickness(4),Padding=new Thickness(5,2),Background=Brush.Parse("#ECEEEC"),Child=new TextBlock { Text=(i+1)+" · "+SlideVisual.TagLabel(slides[i]),FontSize=12,Foreground=Brush.Parse("#38483E") } });
+                    var item=new ListBoxItem { Content=thumb }; ToolTip.SetTip(item,slides[i].Text);
                     AutomationProperties.SetName(item,(i+1)+" · "+slides[i].Section+" · "+slides[i].Text);
                     Thumbnails.Items.Add(item);
                 }
@@ -258,11 +259,11 @@ namespace WorshipPptx
         private void ShowPage()
         {
             if(slides.Count==0) return;
-            if(SlideHost.Child is CompositionPreview preview) preview.SetSlide(slides[page],selected.Preview);
+            if(SlideHost.Child is CompositionPreview preview) preview.SetSlide(slides[page],selected.Preview,selected.BackgroundTransform);
             else {
-                preview=new CompositionPreview(slides[page],selected.Preview);
-                preview.LayoutChanged+=Composition_Changed;
-                preview.DragCompleted+=SaveDraft;
+                preview=new CompositionPreview(slides[page],selected.Preview,true,selected.BackgroundTransform);
+                preview.BackgroundChanged+=BackgroundAdjusted;
+                preview.InteractionCompleted+=BackgroundEditCompleted;
                 SlideHost.Child=preview;
             }
             PreviewInfo.Text=(page+1)+" / "+slides.Count+"  ·  "+slides[page].Section;
@@ -275,19 +276,13 @@ namespace WorshipPptx
             if(updatingThumbnails || Thumbnails.SelectedIndex<0) return;
             page=Thumbnails.SelectedIndex; ShowPage();
         }
-        private void Thumbnails_KeyDown(object sender,KeyEventArgs e)
-        {
-            if(slides.Count==0 || (e.Key!=Key.Up && e.Key!=Key.Down)) return;
-            page=Math.Max(0,Math.Min(slides.Count-1,page+(e.Key==Key.Up ? -1 : 1))); ShowPage();
-            ((ListBoxItem)Thumbnails.SelectedItem)?.Focus(); e.Handled=true;
-        }
         private void Previous_Click(object sender,RoutedEventArgs e) { if(slides.Count==0) return; page=(page+slides.Count-1)%slides.Count; ShowPage(); }
         private void Next_Click(object sender,RoutedEventArgs e) { if(slides.Count==0) return; page=(page+1)%slides.Count; ShowPage(); }
         private async void Background_Click(object sender,RoutedEventArgs e)
         {
             Capture();
             var dialog=new BackgroundDialog(new ImageStore(store.Assets),selected.Background,selected.Title,selected.Lyrics);
-            if(await dialog.ShowDialog<bool>(this)) { selected.Background=dialog.ResultPath; SaveDraft(); RefreshPreview(); }
+            if(await dialog.ShowDialog<bool>(this)) { if(selected.Background!=dialog.ResultPath) selected.BackgroundTransform=new(); selected.Background=dialog.ResultPath; SyncBackgroundControls(); SaveDraft(); RefreshPreview(); }
         }
         private void Background_DragOver(object sender,DragEventArgs e) { e.DragEffects=BackgroundDialog.CanImport(e.DataTransfer) ? DragDropEffects.Copy : DragDropEffects.None; e.Handled=true; }
         private async void Background_Drop(object sender,DragEventArgs e)
@@ -296,7 +291,7 @@ namespace WorshipPptx
             try
             {
                 var path=await BackgroundDialog.ImportData(new ImageStore(store.Assets),e.DataTransfer);
-                item.Background=path;
+                item.Background=path; item.BackgroundTransform=new();
                 if(plan==targetPlan) { SaveDraft(); RefreshPreview(); } else store.Save(targetPlan);
             }
             catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("圖片匯入失敗")); }
@@ -330,7 +325,7 @@ namespace WorshipPptx
                 foreach(var tab in SongTabs.Items.OfType<TabItem>()) if(tab.Tag is ServiceItem item) tab.Header=item.Title;
                 AutomationProperties.SetName(addTab,ChineseText.Ui("新增詩歌分頁")); ToolTip.SetTip(addTab,ChineseText.Ui("新增詩歌"));
                 FontPicker.ItemsSource=null; FontPicker.ItemsSource=FontCatalog.All;
-                ColorSwatches.Children.Clear(); BuildColorPalette(); CompositionOptions.RefreshLanguage();
+                ColorSwatches.Children.Clear(); BuildColorPalette();
                 FillEditor(); RefreshHistory();
             }
             catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("未能切換語言")); }
@@ -387,22 +382,7 @@ namespace WorshipPptx
             selected.Formatting.Bold=BoldToggle.IsChecked==true;
             SaveDraft(); RefreshPreview();
         }
-        private void Composition_Changed()
-        {
-            if(loading || selected==null) return;
-            selected.Formatting.FullSlide=selected.Preview.TextArea=="Full";
-            UpdateLayoutButtons();
-            // Reflow only when the available text area changes; moving the PiP keeps pointer capture.
-            var oldArea=slides.Count==0 ? "" : slides[0].FullSlide ? "Full" : slides[0].BottomHalf ? "Bottom" : "Top";
-            if(oldArea!=selected.Preview.TextArea) RefreshPreview();
-            else if(slides.Count>0 && SlideHost.Child is CompositionPreview preview) preview.SetSlide(slides[page],selected.Preview);
-            Changed();
-        }
-        private void UpdateLayoutButtons()
-        {
-            CompositionOptions.Sync(selected.Preview);
-            LayoutModeLabel.Text=selected.Preview.TextArea switch { "Full"=>ChineseText.Ui("16:9 · 全幅文字"),"Bottom"=>ChineseText.Ui("16:9 · 下半部文字"),_=>ChineseText.Ui("16:9 · 上半部文字") };
-        }
+        private void UpdateLayoutButtons() => LayoutModeLabel.Text=ChineseText.Ui("16:9 · 上半部文字");
         private List<SlideData> ExportSlides() { Capture(); SaveDraft(); return SlideLayout.Build(plan,settings); }
         private async void Preview_Click(object sender,RoutedEventArgs e)
         {

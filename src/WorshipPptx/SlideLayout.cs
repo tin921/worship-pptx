@@ -28,7 +28,7 @@ namespace WorshipPptx
             var layout=item.Preview ?? PreviewLayout.FromLegacy(f.FullSlide);
             layout.Normalize();
             var result=BuildItem(item,settings,f.FontName,f.FontSize,f.Alignment,f.TextColor,f.Bold,layout.TextArea=="Full",f.TextPosition);
-            foreach(var slide in result) { slide.BottomHalf=layout.TextArea=="Bottom"; slide.Preview=layout; }
+            foreach(var slide in result) { slide.BottomHalf=layout.TextArea=="Bottom"; slide.Preview=layout; slide.BackgroundTransform=(item.BackgroundTransform ?? new()).Copy(); }
             return result;
         }
         public static List<SlideData> BuildItem(ServiceItem item, UserSettings settings, string fontName, double fontSize = 36, string alignment = "Center",string textColor="#FFFFFF",bool bold=false,bool fullSlide=false,string textPosition="Top")

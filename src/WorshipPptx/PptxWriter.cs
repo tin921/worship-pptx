@@ -23,9 +23,9 @@ namespace WorshipPptx
         private static XElement Geometry() => E(A+"prstGeom",At("prst","rect"),E(A+"avLst"));
         private static XElement Solid(string rgb) => E(A+"solidFill",E(A+"srgbClr",At("val",rgb)));
         private static XElement Shape(uint id,string name,double x,double y,double w,double h,params object[] props) => E(P+"sp", E(P+"nvSpPr",E(P+"cNvPr",At("id",id),At("name",name)),E(P+"cNvSpPr"),E(P+"nvPr")),E(P+"spPr",Transform(x,y,w,h),Geometry(),props));
-        private static XElement Text(uint id,string text,double y,double size,string color,double height,string fontName,string alignment="Center",bool bold=false)
+        private static XElement Text(uint id,string text,double y,double size,string color,double height,string fontName,string alignment="Center",bool bold=false,double x=SlideLayout.TextX,double width=SlideLayout.TextWidth)
         {
-            var shape = Shape(id,"Text "+id,SlideLayout.TextX,y,SlideLayout.TextWidth,height,E(A+"noFill"),E(A+"ln",E(A+"noFill")));
+            var shape = Shape(id,"Text "+id,x,y,width,height,E(A+"noFill"),E(A+"ln",E(A+"noFill")));
             shape.Element(P+"nvSpPr").Element(P+"cNvSpPr").Add(At("txBox",1));
             shape.Add(E(P+"txBody",E(A+"bodyPr",At("wrap","none"),At("lIns",0),At("rIns",0),At("tIns",0),At("bIns",0),At("anchor","t"),E(A+"noAutofit")),E(A+"lstStyle"),E(A+"p",E(A+"pPr",At("algn",alignment=="Left" ? "l" : alignment=="Right" ? "r" : "ctr"),E(A+"lnSpc",E(A+"spcPct",At("val",100000))),E(A+"spcBef",E(A+"spcPts",At("val",0))),E(A+"spcAft",E(A+"spcPts",At("val",0)))),E(A+"r",E(A+"rPr",At("lang",ChineseText.CultureName),At("sz",(int)Math.Round(size*75)),At("b",bold ? 1 : 0),At("dirty",0),Solid(color),E(A+"latin",At("typeface",fontName)),E(A+"ea",At("typeface",fontName)),E(A+"cs",At("typeface",fontName))),E(A+"t",new XAttribute(XNamespace.Xml+"space","preserve"),text ?? "")),E(A+"endParaRPr",At("lang",ChineseText.CultureName)))));
             return shape;
@@ -39,7 +39,8 @@ namespace WorshipPptx
                 using (var zip=ZipFile.Open(temp,ZipArchiveMode.Create))
                 {
                     var images=new Dictionary<string,int>(StringComparer.OrdinalIgnoreCase);
-                    foreach(var slide in slides) { var key=slide.Background ?? ""; if(!images.ContainsKey(key)) { var n=images.Count+1; images.Add(key,n); Bytes(zip,"ppt/media/image"+n+".png",SlideVisual.BackgroundPng(key)); } }
+                    string ImageKey(SlideData slide) => (slide.Background ?? "")+"|"+(slide.BackgroundTransform ?? new()).Key;
+                    foreach(var slide in slides) { var key=ImageKey(slide); if(!images.ContainsKey(key)) { var n=images.Count+1; images.Add(key,n); Bytes(zip,"ppt/media/image"+n+".png",SlideVisual.BackgroundPng(slide.Background,slide.BackgroundTransform)); } }
                     var types=E(Ct+"Types",E(Ct+"Default",At("Extension","rels"),At("ContentType","application/vnd.openxmlformats-package.relationships+xml")),E(Ct+"Default",At("Extension","xml"),At("ContentType","application/xml")),E(Ct+"Default",At("Extension","png"),At("ContentType","image/png")));
                     Action<string,string> type=(part,kind)=>types.Add(E(Ct+"Override",At("PartName","/"+part),At("ContentType",kind)));
                     const string content="application/vnd.openxmlformats-officedocument.presentationml.";
@@ -48,7 +49,7 @@ namespace WorshipPptx
                     var ids=new List<XElement>(); var relations=new List<XElement> { Relation("rIdMaster","slideMaster","slideMasters/slideMaster1.xml") };
                     for(var i=0;i<slides.Count;i++)
                     {
-                        var n=i+1; var slide=slides[i]; var image=images[slide.Background ?? ""];
+                        var n=i+1; var slide=slides[i]; var image=images[ImageKey(slide)];
                         type("ppt/slides/slide"+n+".xml",content+"slide+xml"); ids.Add(E(P+"sldId",At("id",256+i),new XAttribute(R+"id","rId"+n))); relations.Add(Relation("rId"+n,"slide","slides/slide"+n+".xml"));
                         var tree=E(P+"spTree",Group(),GroupProps(),E(P+"pic",E(P+"nvPicPr",E(P+"cNvPr",At("id",2),At("name","Background")),E(P+"cNvPicPr",E(A+"picLocks",At("noChangeAspect",1))),E(P+"nvPr")),E(P+"blipFill",E(A+"blip",new XAttribute(R+"embed","rIdImage")),E(A+"stretch",E(A+"fillRect"))),E(P+"spPr",Transform(0,0,1280,720),Geometry())));
                         var color=TextColors.Get(slide.TextColor).Hex.TrimStart('#');
@@ -56,6 +57,14 @@ namespace WorshipPptx
                         for(var line=0;line<slide.Lines.Count;line++) tree.Add(Text((uint)(4+line),slide.Lines[line],SlideLayout.TextTop(slide)+line*spacing,SlideLayout.FontPixels(slide.FontSize),color,spacing,slide.FontName,slide.Alignment,slide.Bold));
                         var credits=SlideLayout.FooterLines(slide);
                         for(var line=0;line<credits.Count;line++) tree.Add(Text((uint)(20+line),credits[line],SlideLayout.FooterTop(slide)+line*SlideLayout.FooterLineSpacing(slide),SlideLayout.FooterSize(slide),color,SlideLayout.FooterLineSpacing(slide),slide.FontName,slide.Alignment,slide.Bold));
+                        if(!string.IsNullOrEmpty(slide.Section)) {
+                            var tagWidth=SlideVisual.TagWidth(slide); var tagX=1280-32-tagWidth;
+                            var tag=Text(50000,SlideVisual.TagLabel(slide),656,20,"38483E",32,slide.FontName,"Center",false,tagX,tagWidth);
+                            tag.Element(P+"nvSpPr").Element(P+"cNvPr").SetAttributeValue("name","Section tag");
+                            tag.Element(P+"spPr").Element(A+"noFill").ReplaceWith(Solid("ECEEEC"));
+                            var body=tag.Element(P+"txBody").Element(A+"bodyPr"); body.SetAttributeValue("lIns",Emu(12)); body.SetAttributeValue("rIns",Emu(12)); body.SetAttributeValue("anchor","ctr");
+                            tree.Add(tag);
+                        }
                         Xml(zip,"ppt/slides/slide"+n+".xml",E(P+"sld",new XAttribute(XNamespace.Xmlns+"a",A),new XAttribute(XNamespace.Xmlns+"r",R),E(P+"cSld",At("name",slide.Title+" — "+slide.Section),tree),E(P+"clrMapOvr",E(A+"masterClrMapping"))));
                         var slideRelations=Relationships(Relation("rIdLayout","slideLayout","../slideLayouts/slideLayout1.xml"),Relation("rIdImage","image","../media/image"+image+".png"));
                         Xml(zip,"ppt/slides/_rels/slide"+n+".xml.rels",slideRelations);

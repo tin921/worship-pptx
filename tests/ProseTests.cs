@@ -28,7 +28,7 @@ static class ProseTests
             using(var doc=PresentationDocument.Open(path,false)) check(!new OpenXmlValidator().Validate(doc).Any(),"Spaced scripture deck is invalid");
             XNamespace a="http://schemas.openxmlformats.org/drawingml/2006/main";
             using var zip=ZipFile.OpenRead(path); using var input=zip.GetEntry("ppt/slides/slide1.xml").Open();
-            check(XDocument.Load(input).Descendants(a+"t").Select(t=>t.Value).SequenceEqual(slides[0].Lines),"PowerPoint lost indentation or empty lines");
+            check(XDocument.Load(input).Descendants(a+"t").Select(t=>t.Value).SequenceEqual(slides[0].Lines.Append(SlideVisual.TagLabel(slides[0]))),"PowerPoint lost indentation or empty lines");
             check(SlideVisual.Create(slides[0]).Children.OfType<TextBlock>().Select(t=>t.Text).SequenceEqual(slides[0].Lines),"Preview lost whitespace");
         });
         test("Prose pagination follows font metrics and half/full area, preserving all content",()=> {
@@ -95,21 +95,21 @@ static class ProseTests
             using var zip=ZipFile.OpenRead(path);
             for(var i=0;i<output.Count;i++) {
                 using var input=zip.GetEntry($"ppt/slides/slide{i+1}.xml").Open(); var xml=XDocument.Load(input);
-                check(xml.Descendants(a+"rPr").All(r=>(int)r.Attribute("sz")==output[i].FontSize*100),"Export did not use the fitted font size");
+                check(xml.Descendants(a+"rPr").SkipLast(1).All(r=>(int)r.Attribute("sz")==output[i].FontSize*100),"Export did not use the fitted font size");
             }
             foreach(var invalid in new[]{"[1]\n甲\n[1]\n乙","[1]\n\n[2]\n乙","前言\n[1]\n甲","[v1]\n甲\n[2]\n乙"}) {
                 var rejected=false; try { SlideLayout.BuildItem(new ServiceItem { Lyrics=invalid },new UserSettings()); } catch(FormatException) { rejected=true; }
                 check(rejected,"Ambiguous announcement structure was accepted");
             }
         });
-        test("Tab inserts indentation and removing tags switches to prose without losing source text",()=> {
+        test("Control-Tab inserts indentation and removing tags switches to prose without losing source text",()=> {
             var store=new LocalStore(Path.Combine(root,"prose-edit-"+Guid.NewGuid().ToString("N")));
             store.Save(Demo.Create()); var window=new MainWindow(store); window.Show(); Dispatcher.UIThread.RunJobs();
             const string source="   宣召\n\n    經文  ";
             try {
                 var lyrics=window.FindControl<TextBox>("Lyrics"); lyrics.Text=source; Dispatcher.UIThread.RunJobs();
                 check(!window.FindControl<StackPanel>("OrderPanel").IsVisible && !window.FindControl<TextBox>("SongId").IsEnabled,"Untagged text remains in song mode");
-                lyrics.Focus(); lyrics.CaretIndex=0; window.KeyPress(Key.Tab,RawInputModifiers.None,PhysicalKey.Tab,null); window.KeyRelease(Key.Tab,RawInputModifiers.None,PhysicalKey.Tab,null);
+                lyrics.Focus(); lyrics.CaretIndex=0; window.KeyPress(Key.Tab,RawInputModifiers.Control,PhysicalKey.Tab,null); window.KeyRelease(Key.Tab,RawInputModifiers.Control,PhysicalKey.Tab,null);
                 check(lyrics.IsFocused && lyrics.Text=="\t"+source,"Tab moved focus or lost text");
                 lyrics.Text="[v1]\n"+lyrics.Text; Dispatcher.UIThread.RunJobs();
                 check(window.FindControl<StackPanel>("OrderPanel").IsVisible && window.FindControl<TextBox>("SongId").IsEnabled,"Adding a section tag did not restore song fields");
