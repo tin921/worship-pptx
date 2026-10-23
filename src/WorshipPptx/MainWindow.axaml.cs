@@ -402,11 +402,7 @@ namespace WorshipPptx
             try { var all=ExportSlides(); await new PreviewWindow(all).ShowDialog(this); }
             catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("請檢查內容")); }
         }
-        private string FileName()
-        {
-            var name=string.Concat((plan.Title ?? ChineseText.Ui("主日崇拜")).Select(c=>Path.GetInvalidFileNameChars().Contains(c) ? '_' : c));
-            if(name.Length>70) name=name.Substring(0,70); return plan.Date.ToString("yyyy-MM-dd")+" "+name+".pptx";
-        }
+        private string FileName() => PresentationFileName.Create(plan,DateTime.Today,settings.Language);
         private async void Upload_Click(object sender,RoutedEventArgs e)
         {
             if(exporting) return;

@@ -43,7 +43,7 @@ For this initial setup, send me the **folder URL and deployed `/exec` URL**. Put
 ## 4. Verify before Sunday
 
 1. Create a short test program. Click **Upload Google Drive**, immediately beside **Make PowerPoint**.
-2. Check the suggested name, for example `CHURCHPC-1025c-call+praise.pptx`. The date is the next Sunday (today if already Sunday). Simplified text suggests lowercase m; Traditional suggests lowercase c. The filename remains editable because script cannot reliably identify spoken language.
+2. Check the suggested name, for example `CHURCHPC-1025c-call+praise.pptx`. The date is the next Sunday (today if already Sunday). Simplified text suggests lowercase m; Traditional suggests lowercase c. The filename remains editable because script cannot reliably identify spoken language. **Make PowerPoint** suggests the same name without the PC prefix, for example `1025c-call+praise.pptx`.
 3. Upload, then follow the folder link. Open/download the PowerPoint and check it.
 4. Upload a changed version with replacement checked. It should update the existing file and preserve its Drive link. Unchecked keeps both copies. Multiple same-name files block replacement until the administrator resolves the ambiguity.
 5. Try cancellation and an invalid upload key. The log should explain the result. **Copy all logs** includes timestamps and exception details, with the upload key redacted.

@@ -31,18 +31,24 @@ static class DriveUploadTests
     private static DriveUploadSettings Settings()=>new() { ServiceUrl="https://script.google.com/macros/s/test-deployment/exec",UploadKey=new string('k',40),FolderUrl="https://drive.google.com/drive/folders/folder123" };
     public static void Run(Action<string,Action> test,Action<bool,string> check,string root)
     {
-        test("Drive names sanitize the PC, infer script and use coming Sunday with invocation",()=> {
+        test("Local and Drive filenames share Sunday, language and invocation rules; only Drive adds the PC",()=> {
             var previous=ChineseText.Current.Language;
             try {
                 ChineseText.SetLanguage(ChineseText.Traditional);
                 var plan=new ServicePlan { Items=new() { new ServiceItem { Kind="scripture",Lyrics="願榮耀歸於主" } } };
                 check(DriveFileName.Create(plan,"My PC!_01",new DateTime(2026,10,23),ChineseText.Traditional)=="MyPC01-1025c-call+praise.pptx","Traditional invocation filename failed");
+                check(PresentationFileName.Create(plan,new DateTime(2026,10,23),ChineseText.Traditional)=="1025c-call+praise.pptx","Local Traditional invocation filename failed");
                 ChineseText.SetLanguage(ChineseText.Simplified);
                 check(DriveFileName.Create(plan,"PC",new DateTime(2026,12,31),ChineseText.Simplified)=="PC-0103m-call+praise.pptx","Simplified/year boundary failed");
+                check(PresentationFileName.Create(plan,new DateTime(2026,12,31),ChineseText.Simplified)=="0103m-call+praise.pptx","Local Simplified/year boundary failed");
                 plan.Items[0].Lyrics="[v1]\n荣耀归主";
                 check(DriveFileName.Create(plan,"!",new DateTime(2026,10,25),ChineseText.Simplified)=="PC-1025m-praise.pptx","Sunday or tagged song treated as invocation");
+                check(PresentationFileName.Create(plan,new DateTime(2026,10,25),ChineseText.Simplified)=="1025m-praise.pptx","Local Sunday or tagged song treated as invocation");
                 plan.Items[0].Lyrics="[1]\n通知";
                 check(!DriveFileName.Create(plan,"PC",DateTime.Today,ChineseText.Traditional).Contains("call+"),"Announcement treated as scripture");
+                check(!PresentationFileName.Create(plan,DateTime.Today,ChineseText.Traditional).Contains("call+"),"Local announcement treated as scripture");
+                plan.Items[0].Title="Praise"; plan.Items[0].Lyrics="[v1]\nGrace and peace";
+                check(PresentationFileName.Create(plan,new DateTime(2026,10,23),ChineseText.Simplified)=="1025m-praise.pptx" && PresentationFileName.Create(plan,new DateTime(2026,10,23),ChineseText.Traditional)=="1025c-praise.pptx","Local filename ignored language preference for neutral text");
                 DriveFileName.Validate("PC-0229c-call+praise.pptx");
                 foreach(var name in new[]{"../file.pptx","PC-1330c-praise.pptx","PC-0230c-praise.pptx","PC-1025c-praise.exe","PC-1025C-praise.pptx","PC-1025M-praise.pptx"}) {
                     var rejected=false; try { DriveFileName.Validate(name); } catch(ArgumentException) { rejected=true; } check(rejected,"Unsafe or invalid filename accepted");
