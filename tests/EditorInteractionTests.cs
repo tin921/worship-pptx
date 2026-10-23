@@ -21,12 +21,39 @@ namespace WorshipPptx.Tests;
 
 static class EditorInteractionTests
 {
+    private const string LongChorus="讚美歸於主榮耀聖名，讚美歸於主榮耀聖名\n讚美祂名永不停息，直到永恆我歌唱讚美";
     private static void Pump() => Dispatcher.UIThread.RunJobs();
     private static ServiceItem Item(MainWindow window) => (ServiceItem)((TabItem)window.FindControl<TabControl>("SongTabs").SelectedItem).Tag;
     private static Point At(Control c,Window w,double x,double y) => c.TranslatePoint(new Point(x,y),w).Value;
     private static void Press(Window window,Key key) { window.KeyPress(key,RawInputModifiers.None,PhysicalKey.None,null); window.KeyRelease(key,RawInputModifiers.None,PhysicalKey.None,null); Pump(); }
     public static void Run(Action<string,Action> test,Action<bool,string> check,string root)
     {
+        test("Auto fits both lyric line width and block height without adding line breaks in preview or export",()=> {
+            var output=new System.Collections.Generic.List<SlideData>();
+            var lines=LongChorus.Split('\n');
+            foreach(var font in FontCatalog.All.Where(f=>f.IsBundled || f.Name=="Microsoft YaHei")) foreach(var bold in new[]{false,true}) foreach(var full in new[]{false,true}) {
+                var item=new ServiceItem { Title="讚美",Lyrics="[v1]\n平安\n[c]\n"+LongChorus,Order="v1 c c",Formatting=new() { FontName=font.Name,Bold=bold,FullSlide=full,AutoFontSize=true } };
+                var slides=SlideLayout.BuildItem(item,new UserSettings());
+                var chorus=slides[2];
+                check(slides.Count==4 && chorus.Lines.SequenceEqual(lines),"Auto wrapped an authored chorus line: "+font.Name+" / "+chorus.FontSize+" pt");
+                check(slides.All(s=>s.FontSize==chorus.FontSize),"The song does not use one common size");
+                check(chorus.Lines.All(l=>SlideLayout.Measure(l,SlideLayout.FontPixels(chorus.FontSize),font.Name,bold)<=SlideLayout.TextWidth-24),"An unwrapped line exceeds the safe text width");
+                check(SlideLayout.TextTop(chorus)+chorus.Lines.Count*SlideLayout.LineSpacing(chorus.FontSize,font.Name,bold)<=SlideLayout.FooterTop(chorus),"Unwrapped block overflows vertically");
+                var larger=chorus.FontSize+1;
+                check(larger>72 || lines.Any(l=>SlideLayout.Measure(l,SlideLayout.FontPixels(larger),font.Name,bold)>SlideLayout.TextWidth-24),"Auto shrank the two-line block more than needed");
+                check(SlideVisual.Create(chorus).Children.OfType<TextBlock>().Select(t=>t.Text).SequenceEqual(lines),"Preview changed the authored lines");
+                output.Add(chorus);
+                if(font.Name=="Microsoft YaHei" && !bold && !full) Console.WriteLine("  Screenshot chorus fits at "+chorus.FontSize+" pt with Microsoft YaHei");
+            }
+            var path=Path.Combine(root,"unwrapped-auto-lyrics.pptx"); PptxWriter.Write(path,output,"Auto line fitting");
+            using var zip=ZipFile.OpenRead(path); XNamespace a="http://schemas.openxmlformats.org/drawingml/2006/main";
+            for(var i=0;i<output.Count;i++) {
+                using var input=zip.GetEntry($"ppt/slides/slide{i+1}.xml").Open();
+                var xml=XDocument.Load(input);
+                check(xml.Descendants(a+"t").Select(t=>t.Value).SequenceEqual(lines.Append(SlideVisual.TagLabel(output[i]))),"PowerPoint changed the authored lines");
+                check(xml.Descendants(a+"rPr").Take(lines.Length).All(r=>(int)r.Attribute("sz")==output[i].FontSize*100),"PowerPoint font differs from the fitted preview");
+            }
+        });
         test("Typing and pasting fit the longest block with a shared centered font until a saved manual override",()=> {
             var store=new LocalStore(Path.Combine(root,"auto-size-"+Guid.NewGuid().ToString("N")));
             var plan=Demo.Create(); plan.Items[1].Lyrics="[v1]\n平安\n[c]\n恩典"; plan.Items[1].Order="v1 c v1"; store.Save(plan);
@@ -46,8 +73,12 @@ static class EditorInteractionTests
                     check(done(),"Live preview did not finish reflowing: "+picker.SelectedItem+" / "+window.FindControl<TextBlock>("ValidationText").Text);
                 }
                 var longer=string.Join("\n",Enumerable.Repeat("  平安與恩典充滿心間",8));
-                lyrics.Text="[v1]\n"+longer+"\n[c]\n恩典";
+                lyrics.Text="[v1]\n平安\n[c]\n"+LongChorus;
                 WaitFor(()=>picker.SelectedItem is double size && size<72);
+                var chorusSlides=SlideLayout.BuildItem(item,store.LoadSettings());
+                check(chorusSlides[2].Lines.SequenceEqual(LongChorus.Split('\n')) && picker.SelectedItem is double chorusSize && chorusSize==chorusSlides[2].FontSize,"Live Auto added a line break or left the size dropdown stale");
+                lyrics.Text="[v1]\n"+longer+"\n[c]\n恩典";
+                WaitFor(()=>picker.SelectedItem is double size && size<chorusSlides[2].FontSize);
                 var slides=SlideLayout.BuildItem(item,store.LoadSettings());
                 check(slides.Count==4 && slides.All(s=>s.FontSize==slides[1].FontSize && s.Alignment=="Center" && s.TextPosition=="Middle") && slides[1].Text==longer,"Longest block does not set a shared centered font, or whitespace was lost");
                 lyrics.Text="[v1]\n平安\n[c]\n恩典";
@@ -114,6 +145,9 @@ static class EditorInteractionTests
                 check(bold.Padding==new Thickness(0) && bold.HorizontalContentAlignment==Avalonia.Layout.HorizontalAlignment.Center && bold.VerticalContentAlignment==Avalonia.Layout.VerticalAlignment.Center,"Bold button is not centered");
                 var chip=thumbs.GetVisualDescendants().OfType<Border>().First(b=>b.Name=="ThumbnailTag");
                 check(chip.Parent is Grid && chip.HorizontalAlignment==Avalonia.Layout.HorizontalAlignment.Left && chip.VerticalAlignment==Avalonia.Layout.VerticalAlignment.Bottom && ((TextBlock)chip.Child).Text.Contains('['),"Thumbnail label is not inside the bottom left of image");
+                var scrollBar=thumbs.GetVisualDescendants().OfType<ScrollBar>().Single(b=>b.Orientation==Avalonia.Layout.Orientation.Vertical);
+                var barLeft=scrollBar.TranslatePoint(default,thumbs).Value.X;
+                check(scrollBar.IsVisible && thumbs.GetVisualDescendants().OfType<ListBoxItem>().All(c=>c.TranslatePoint(new Point(c.Bounds.Width,0),thumbs).Value.X+7<=barLeft),"Thumbnail cards overlap the scrollbar or lack a gap");
             } finally { window.Close(); }
         });
         test("Both previews pan and zoom the same background while the camera stays fixed; changes persist per tab",()=> {

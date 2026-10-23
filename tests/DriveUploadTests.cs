@@ -36,22 +36,22 @@ static class DriveUploadTests
             try {
                 ChineseText.SetLanguage(ChineseText.Traditional);
                 var plan=new ServicePlan { Items=new() { new ServiceItem { Kind="scripture",Lyrics="願榮耀歸於主" } } };
-                check(DriveFileName.Create(plan,"My PC!_01",new DateTime(2026,10,23),ChineseText.Traditional)=="MyPC01-1025C-call+praise.pptx","Traditional invocation filename failed");
+                check(DriveFileName.Create(plan,"My PC!_01",new DateTime(2026,10,23),ChineseText.Traditional)=="MyPC01-1025c-call+praise.pptx","Traditional invocation filename failed");
                 ChineseText.SetLanguage(ChineseText.Simplified);
-                check(DriveFileName.Create(plan,"PC",new DateTime(2026,12,31),ChineseText.Simplified)=="PC-0103M-call+praise.pptx","Simplified/year boundary failed");
+                check(DriveFileName.Create(plan,"PC",new DateTime(2026,12,31),ChineseText.Simplified)=="PC-0103m-call+praise.pptx","Simplified/year boundary failed");
                 plan.Items[0].Lyrics="[v1]\n荣耀归主";
-                check(DriveFileName.Create(plan,"!",new DateTime(2026,10,25),ChineseText.Simplified)=="PC-1025M-praise.pptx","Sunday or tagged song treated as invocation");
+                check(DriveFileName.Create(plan,"!",new DateTime(2026,10,25),ChineseText.Simplified)=="PC-1025m-praise.pptx","Sunday or tagged song treated as invocation");
                 plan.Items[0].Lyrics="[1]\n通知";
                 check(!DriveFileName.Create(plan,"PC",DateTime.Today,ChineseText.Traditional).Contains("call+"),"Announcement treated as scripture");
-                DriveFileName.Validate("PC-0229C-call+praise.pptx");
-                foreach(var name in new[]{"../file.pptx","PC-1330C-praise.pptx","PC-0230C-praise.pptx","PC-1025C-praise.exe"}) {
+                DriveFileName.Validate("PC-0229c-call+praise.pptx");
+                foreach(var name in new[]{"../file.pptx","PC-1330c-praise.pptx","PC-0230c-praise.pptx","PC-1025c-praise.exe","PC-1025C-praise.pptx","PC-1025M-praise.pptx"}) {
                     var rejected=false; try { DriveFileName.Validate(name); } catch(ArgumentException) { rejected=true; } check(rejected,"Unsafe or invalid filename accepted");
                 }
             } finally { ChineseText.SetLanguage(previous); }
         });
         test("Unconfigured Drive dialog is explicit and supplies timestamped copyable diagnostics",()=> {
             var path=Path.Combine(root,"unconfigured-drive"); Directory.CreateDirectory(path);
-            var window=new DriveUploadWindow(new List<SlideData>(),"test","PC-1025C-praise.pptx",path); window.Show(); Dispatcher.UIThread.RunJobs();
+            var window=new DriveUploadWindow(new List<SlideData>(),"test","PC-1025c-praise.pptx",path); window.Show(); Dispatcher.UIThread.RunJobs();
             try {
                 check(window.FindControl<CheckBox>("ReplaceExisting").IsChecked==true,"Replacement not checked");
                 window.FindControl<Button>("StartUpload").RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Dispatcher.UIThread.RunJobs();
@@ -71,7 +71,7 @@ static class DriveUploadTests
                     return new {ok=true,offset=received.Length,complete=received.Length==bytes.Length,fileId="file123",folderUrl=Settings().FolderUrl};
                 } };
                 using var http=new HttpClient(handler);
-                var result=await new DriveUploadClient(http,Settings()).UploadAsync(path,"PC-1025C-praise.pptx",replace,progress,CancellationToken.None);
+                var result=await new DriveUploadClient(http,Settings()).UploadAsync(path,"PC-1025c-praise.pptx",replace,progress,CancellationToken.None);
                 check(received.ToArray().SequenceEqual(bytes) && result.FileId=="file123","Upload bytes or result corrupted");
                 check(handler.Calls[0].GetProperty("replace").GetBoolean()==replace && handler.Calls.Count==3,"Wrong replacement mode / chunk count");
                 check(progress.Values.Last().Percent==100 && progress.Values.Any(p=>p.Percent>0 && p.Percent<100),"No intermediate/complete progress");
@@ -82,21 +82,21 @@ static class DriveUploadTests
             var settings=Settings();
             using(var handler=new Handler { Reply=b=> b.GetProperty("action").GetString()=="cancel" ? new {ok=true} : (object)new {ok=false,error="Bad key "+settings.UploadKey,stack="server stack"} })
             using(var http=new HttpClient(handler)) {
-                var failed=false; try { await new DriveUploadClient(http,settings).UploadAsync(path,"PC-1025C-praise.pptx",true,null,CancellationToken.None); }
+                var failed=false; try { await new DriveUploadClient(http,settings).UploadAsync(path,"PC-1025c-praise.pptx",true,null,CancellationToken.None); }
                 catch(IOException ex) {failed=true;check(ex.ToString().Contains("server stack") && !ex.ToString().Contains(settings.UploadKey),"Secret leaked / stack lost");}
                 check(failed && handler.Calls.Last().GetProperty("action").GetString()=="cancel","Failed upload not released");
             }
             using var cancellation=new CancellationTokenSource();
             using var canceledHandler=new Handler {Reply=b=> {if(b.GetProperty("action").GetString()=="start") cancellation.Cancel();return new {ok=true,offset=0,folderUrl=Settings().FolderUrl};}};
             using var canceledHttp=new HttpClient(canceledHandler);
-            var canceled=false;try { await new DriveUploadClient(canceledHttp,settings).UploadAsync(path,"PC-1025C-praise.pptx",true,null,cancellation.Token); }catch(OperationCanceledException){canceled=true;}
+            var canceled=false;try { await new DriveUploadClient(canceledHttp,settings).UploadAsync(path,"PC-1025c-praise.pptx",true,null,cancellation.Token); }catch(OperationCanceledException){canceled=true;}
             check(canceled && canceledHandler.Calls.All(b=>b.GetProperty("action").GetString()!="chunk"),"Canceled upload still sent content");
         }).GetAwaiter().GetResult());
         test("Drive destination mismatch is rejected before sending file content",()=>Task.Run(async ()=> {
             var path=Path.Combine(root,"wrong-destination.pptx");File.WriteAllBytes(path,new byte[]{80,75,3,4});
             using var handler=new Handler {Reply=_=>new {ok=true,offset=0,folderUrl="https://drive.google.com/drive/folders/otherFolder"}};
             using var http=new HttpClient(handler);var rejected=false;
-            try {await new DriveUploadClient(http,Settings()).UploadAsync(path,"PC-1025C-praise.pptx",true,null,CancellationToken.None);}catch(IOException){rejected=true;}
+            try {await new DriveUploadClient(http,Settings()).UploadAsync(path,"PC-1025c-praise.pptx",true,null,CancellationToken.None);}catch(IOException){rejected=true;}
             check(rejected && handler.Calls.All(b=>b.GetProperty("action").GetString()!="chunk"),"Content was sent to the wrong folder");
         }).GetAwaiter().GetResult());
         test("Zero opacity is white in the preview and exported background",()=> {

@@ -85,7 +85,7 @@ public partial class BackgroundDialog
             ? MediaLibrary.All.Where(a=>a.Style=="generic")
             : (results ?? MediaLibrary.All).Where(a=>a.Style!="generic" && selectedStyles.Contains(a.Style));
         galleryResults=all.ToList(); galleryLoaded=0; galleryScrolled=false;
-        GalleryInfo.Text=galleryResults.Count.ToString();
+        UpdateGalleryCount();
         GalleryScroll.Offset=default; ReflowGallery(true);
     }
 
@@ -187,8 +187,11 @@ public partial class BackgroundDialog
         for(var i=0;i<galleryCards.Count;i++)
             galleryCards[i].Margin=new Thickness(0,0,(i+1)%galleryColumns==0 ? 0 : GalleryGap,i/galleryColumns==(galleryCards.Count-1)/galleryColumns ? 0 : GalleryGap);
         HighlightSelectedBackground();
+        UpdateGalleryCount();
         ToolTip.SetTip(GalleryInfo,ChineseText.Ui(galleryLoaded<galleryResults.Count ? "向下捲動查看更多" : "已顯示全部"));
     }
+
+    private void UpdateGalleryCount() => GalleryInfo.Text=galleryLoaded+" / "+galleryResults.Count;
 
     private async Task ShowGalleryImage(MediaAsset asset)
     {

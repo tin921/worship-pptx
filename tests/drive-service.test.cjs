@@ -37,7 +37,7 @@ function service(existing=[]) {
  return {key,calls,props,get bytes(){return bytes;},loseReply:()=>{lostReply=true;},post:body=>context.doPost({postData:{contents:JSON.stringify({key,sessionId:'a'.repeat(32),...body})}})};
 }
 const data=Buffer.from('PK\x03\x04test-powerpoint-package');
-const start={action:'start',name:'PC-1025C-call+praise.pptx',size:data.length,md5:crypto.createHash('md5').update(data).digest('hex'),replace:true};
+const start={action:'start',name:'PC-1025c-call+praise.pptx',size:data.length,md5:crypto.createHash('md5').update(data).digest('hex'),replace:true};
 let count=0;
 function test(name,body){body();console.log('PASS '+name);count++;}
 test('Create, verify and repeat a completed request without another Drive write',()=>{
@@ -56,6 +56,7 @@ test('Replacement updates the existing ID; keeping both creates a new file',()=>
 test('Reject unauthorized writes, unsafe names, ambiguous replacements and wrong file types',()=>{
  const s=service();assert.equal(s.post({...start,key:'wrong'}).ok,false);assert.equal(s.calls.length,0);
  assert.equal(s.post({...start,name:'../unsafe.pptx'}).ok,false);assert.equal(s.calls.length,0);
+ for(const language of ['C','M']) {assert.equal(s.post({...start,name:'PC-1025'+language+'-praise.pptx'}).ok,false);assert.equal(s.calls.length,0);}
  const ambiguous=service([{id:'one'},{id:'two'}]);assert.equal(ambiguous.post(start).ok,false);assert(!ambiguous.calls.some(c=>c.url.includes('/upload/')));
  const folder=service([{id:'nestedfolder',mimeType:'application/vnd.google-apps.folder'}]);assert.equal(folder.post(start).ok,false);
 });

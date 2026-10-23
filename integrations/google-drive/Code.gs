@@ -33,7 +33,7 @@ function doPost(e) {
       return json_({ok:true,logs});
     }
     if (request.action === 'start') {
-      if (!/^[A-Za-z0-9]{1,64}-[0-9]{4}[MC]-(call\+)?praise\.pptx$/.test(request.name || '')) throw new Error('Invalid PowerPoint filename.');
+      if (!/^[A-Za-z0-9]{1,64}-[0-9]{4}[mc]-(call\+)?praise\.pptx$/.test(request.name || '')) throw new Error('Invalid PowerPoint filename.');
       if (!Number.isSafeInteger(request.size) || request.size < 1 || request.size > MAX_SIZE || !/^[a-f0-9]{32}$/.test(request.md5 || '') || typeof request.replace !== 'boolean') throw new Error('Invalid upload size, checksum or replacement option.');
       if (state) {
         if (state.name !== request.name || state.size !== request.size || state.md5 !== request.md5 || state.replace !== request.replace) throw new Error('Session does not match this file.');

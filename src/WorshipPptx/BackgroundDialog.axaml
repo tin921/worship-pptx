@@ -1,7 +1,7 @@
 <Window x:Class="WorshipPptx.BackgroundDialog" xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WorshipPptx" Title="{local:Tr '選擇背景'}" Width="1080" Height="800" MinWidth="880" MinHeight="680" WindowStartupLocation="CenterOwner" DragDrop.AllowDrop="True" DragDrop.Drop="Image_Drop" DragDrop.DragOver="Image_DragOver" KeyDown="Window_KeyDown">
  <Grid>
  <Grid x:Name="DialogContent" Margin="24" RowDefinitions="Auto,*,Auto,Auto">
-  <StackPanel Margin="0,0,0,16"><TextBlock Text="{local:Tr '為詩歌選一張背景'}" FontSize="24" FontWeight="SemiBold"/><TextBlock Text="{local:Tr '開啟時以歌名及歌詞配對主題；亦可輸入中文或英文，按「搜尋」配對內置背景。'}" Classes="caption" Margin="0,7,0,0"/></StackPanel>
+  <StackPanel Margin="0,0,0,16"><TextBlock Text="{local:Tr '詩歌背景'}" FontSize="24" FontWeight="SemiBold"/><TextBlock Text="{local:Tr '開啟時以歌名及歌詞配對主題；亦可輸入中文或英文，按「搜尋」配對內置背景。'}" Classes="caption" Margin="0,7,0,0"/></StackPanel>
   <Grid Grid.Row="1" ColumnDefinitions="*,24,300">
    <Grid RowDefinitions="Auto,Auto,*">
     <Grid ColumnDefinitions="*,10,Auto"><TextBox x:Name="SearchText" PlaceholderText="{local:Tr '圖片主題、關鍵字 · 中文或英文'}" MaxLength="500" TextWrapping="Wrap" MaxHeight="90" TextChanged="Keywords_Changed" ToolTip.Tip="{local:Tr 'Google 預設只搜尋英文主題；修改後最多使用三組關鍵字'}"/><Button x:Name="SearchButton" Grid.Column="2" Content="{local:Tr '搜尋'}" Click="Search_Click" Classes="primary" VerticalAlignment="Top"/></Grid>

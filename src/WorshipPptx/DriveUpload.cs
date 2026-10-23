@@ -27,15 +27,15 @@ public static class DriveFileName
             if(ChineseText.Convert(value,ChineseText.Traditional)!=value) simplified++;
             if(ChineseText.Convert(value,ChineseText.Simplified)!=value) traditional++;
         }
-        var language=simplified==traditional ? (fallbackLanguage==ChineseText.Simplified ? "M" : "C") : simplified>traditional ? "M" : "C";
+        var language=simplified==traditional ? (fallbackLanguage==ChineseText.Simplified ? "m" : "c") : simplified>traditional ? "m" : "c";
         var first=plan.Items.FirstOrDefault();
         var invocation=first!=null && !string.IsNullOrWhiteSpace(first.Lyrics) && !SlideLayout.HasSectionTags(first.Lyrics) && !SlideLayout.HasAnnouncementTags(first.Lyrics);
         return pc+"-"+Demo.ComingSunday(today).ToString("MMdd",CultureInfo.InvariantCulture)+language+"-"+(invocation ? "call+" : "")+"praise.pptx";
     }
     public static void Validate(string name)
     {
-        if(!Regex.IsMatch(name ?? "",@"\A[A-Za-z0-9]{1,64}-[0-9]{4}[MC]-(call\+)?praise\.pptx\z"))
-            throw new ArgumentException(ChineseText.Ui("檔名格式：電腦名稱-MMDDM/C-call+praise.pptx（call+ 可省略）。"));
+        if(!Regex.IsMatch(name ?? "",@"\A[A-Za-z0-9]{1,64}-[0-9]{4}[mc]-(call\+)?praise\.pptx\z"))
+            throw new ArgumentException(ChineseText.Ui("檔名格式：電腦名稱-MMDDm/c-call+praise.pptx（call+ 可省略）。"));
         var date=name.Split('-')[1].Substring(0,4);
         if(!DateTime.TryParseExact("2000"+date,"yyyyMMdd",CultureInfo.InvariantCulture,DateTimeStyles.None,out _))
             throw new ArgumentException(ChineseText.Ui("檔名中的月份或日期無效。"));

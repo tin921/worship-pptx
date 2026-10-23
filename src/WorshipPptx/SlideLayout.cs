@@ -82,7 +82,7 @@ namespace WorshipPptx
                     // spacing; only the blank separator around the tag is omitted.
                     var source=sections[key].SkipWhile(string.IsNullOrWhiteSpace).Reverse().SkipWhile(string.IsNullOrWhiteSpace).Reverse().ToList();
                     var slide=new SlideData { Title=item.Title,FontName=FontCatalog.Get(fontName).Name,FontSize=requestedSize,Alignment=alignment,Section=key.ToUpperInvariant(),Footer="",Background=item.Background,TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition };
-                    FitBlock(slide,source,requestedSize,item.Title+ChineseText.Ui("：段落 [")+key+ChineseText.Ui("] 內容太多，請拆分段落。"));
+                    FitBlock(slide,source,requestedSize,item.Title+ChineseText.Ui("：段落 [")+key+ChineseText.Ui("] 內容太多，請拆分段落。"),preserveLineBreaks:true);
                     slides.Add(slide);
                     continue;
                 }
@@ -115,7 +115,7 @@ namespace WorshipPptx
                     foreach(var slide in slides) {
                         slide.FontSize=commonSize;
                         var source=slide.IsTitle ? new[]{titleText} : sections[slide.Section].SkipWhile(string.IsNullOrWhiteSpace).Reverse().SkipWhile(string.IsNullOrWhiteSpace).Reverse();
-                        slide.Lines=source.SelectMany(line=>line.Length==0 ? new List<string>{""} : Wrap(line,slide.FontName,commonSize,bold)).ToList();
+                        slide.Lines=slide.IsTitle ? Wrap(titleText,slide.FontName,commonSize,bold) : source.Select(line=>line.Replace("\t","    ")).ToList();
                     }
                 }
             }
@@ -144,12 +144,17 @@ namespace WorshipPptx
             }
             return slides;
         }
-        private static void FitBlock(SlideData slide,List<string> source,double maximumSize,string error)
+        private static void FitBlock(SlideData slide,List<string> source,double maximumSize,string error,bool preserveLineBreaks=false)
         {
             bool Fit(double size) {
                 slide.FontSize=size;
-                slide.Lines=source.SelectMany(line=>line.Length==0 ? new List<string>{""} : Wrap(line,slide.FontName,size,slide.Bold)).ToList();
-                return slide.Lines.Count<=TextCapacity(size,slide.FontName,slide.Footer,slide.Bold,slide.FullSlide,false);
+                slide.Lines=preserveLineBreaks
+                    ? source.Select(line=>line.Replace("\t","    ")).ToList()
+                    : source.SelectMany(line=>line.Length==0 ? new List<string>{""} : Wrap(line,slide.FontName,size,slide.Bold)).ToList();
+                // Lyrics must fit their authored lines as well as the block height.
+                // Prose announcements may still wrap within their single slide.
+                return (!preserveLineBreaks || slide.Lines.All(line=>Measure(line,FontPixels(size),slide.FontName,slide.Bold)<=TextWidth-24))
+                    && slide.Lines.Count<=TextCapacity(size,slide.FontName,slide.Footer,slide.Bold,slide.FullSlide,false);
             }
             if(Fit(maximumSize)) return;
             // Measure the selected face, weight, wrapping and usable text area.
