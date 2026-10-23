@@ -18,6 +18,7 @@ namespace WorshipPptx
         private bool busy;
         private bool ready;
         private readonly string songTitle,songLyrics;
+        private string suggestedKeywords;
         private IReadOnlyList<MediaAsset> results;
         public string ResultPath { get; private set; }
         public BackgroundDialog(ImageStore images,string current,string title="",string lyrics="")
@@ -47,7 +48,9 @@ namespace WorshipPptx
                 var progress=new Progress<MediaSearchProgress>(value=> { if(busy && !cancellation.IsCancellationRequested) ShowMatchProgress(value); });
                 var match=custom ? await MediaSearch.MatchTermsAsync(SearchText.Text,cancellation.Token,progress) : await MediaSearch.MatchAsync(songTitle,songLyrics,cancellation.Token,progress);
                 if(cancellation.IsCancellationRequested) return;
-                results=match.Assets; if(!custom) SearchText.Text=ChineseText.Content(match.Keywords); MatchedTheme.Text=ChineseText.Ui("配對主題：")+ChineseText.Ui(match.Theme);
+                results=match.Assets;
+                if(!custom) { suggestedKeywords=ChineseText.Content(match.Keywords); SearchText.Text=suggestedKeywords; }
+                MatchedTheme.Text=ChineseText.Ui("配對主題：")+ChineseText.Ui(match.Theme);
                 ShowMatchedGallery();
                 ShowMatchProgress(new(100,ChineseText.Ui("主題及關鍵字已就緒")));
             }
@@ -67,7 +70,7 @@ namespace WorshipPptx
         {
             if(GoogleImageLink==null) return;
             var keywords=SearchText.Text?.Trim();
-            try { GoogleImageLink.NavigateUri=string.IsNullOrEmpty(keywords) ? null : ImageSearchLink.Create(keywords); }
+            try { GoogleImageLink.NavigateUri=string.IsNullOrEmpty(keywords) ? null : ImageSearchLink.Create(keywords,keywords==suggestedKeywords); }
             catch(ArgumentException) { GoogleImageLink.NavigateUri=null; }
             GoogleImageLink.IsEnabled=!busy && GoogleImageLink.NavigateUri!=null;
         }

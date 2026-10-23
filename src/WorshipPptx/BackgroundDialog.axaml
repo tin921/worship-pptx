@@ -4,7 +4,7 @@
   <StackPanel Margin="0,0,0,16"><TextBlock Text="{local:Tr '為詩歌選一張背景'}" FontSize="24" FontWeight="SemiBold"/><TextBlock Text="{local:Tr '開啟時以歌名及歌詞配對主題；亦可輸入中文或英文，按「搜尋」配對內置背景。'}" Classes="caption" Margin="0,7,0,0"/></StackPanel>
   <Grid Grid.Row="1" ColumnDefinitions="*,24,300">
    <Grid RowDefinitions="Auto,Auto,*">
-    <Grid ColumnDefinitions="*,10,Auto"><TextBox x:Name="SearchText" PlaceholderText="{local:Tr '圖片主題、關鍵字 · 中文或英文'}" MaxLength="500" TextWrapping="Wrap" MaxHeight="90" TextChanged="Keywords_Changed" ToolTip.Tip="{local:Tr '第一組是主題；英文同義詞只會加入 Google 搜尋連結'}"/><Button x:Name="SearchButton" Grid.Column="2" Content="{local:Tr '搜尋'}" Click="Search_Click" Classes="primary" VerticalAlignment="Top"/></Grid>
+    <Grid ColumnDefinitions="*,10,Auto"><TextBox x:Name="SearchText" PlaceholderText="{local:Tr '圖片主題、關鍵字 · 中文或英文'}" MaxLength="500" TextWrapping="Wrap" MaxHeight="90" TextChanged="Keywords_Changed" ToolTip.Tip="{local:Tr 'Google 預設只搜尋英文主題；修改後最多使用三組關鍵字'}"/><Button x:Name="SearchButton" Grid.Column="2" Content="{local:Tr '搜尋'}" Click="Search_Click" Classes="primary" VerticalAlignment="Top"/></Grid>
     <Grid x:Name="GalleryToolbar" Grid.Row="1" ColumnDefinitions="Auto,*,Auto" Margin="0,12,0,12" SizeChanged="GalleryToolbar_SizeChanged">
      <StackPanel x:Name="CollectionButtons" Orientation="Horizontal" VerticalAlignment="Center">
       <ToggleButton x:Name="MatchedFilter" Content="{local:Tr '主題配對'}" Classes="alignment" Width="80" Height="54" Padding="4,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsChecked="True" CornerRadius="6,0,0,6" Click="Collection_Click"/>
@@ -19,8 +19,8 @@
    </Grid>
    <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Disabled"><StackPanel Spacing="10">
     <TextBlock x:Name="MatchedTheme" Text="{local:Tr '正在準備圖片關鍵字…'}" FontWeight="SemiBold" TextWrapping="Wrap"/>
-    <HyperlinkButton x:Name="GoogleImageLink" Content="{local:Tr 'Google 圖片搜尋 ↗'}" Classes="link" IsEnabled="False" HorizontalAlignment="Left" ToolTip.Tip="{local:Tr '以目前關鍵字在預設瀏覽器搜尋大型橫向圖片'}"/>
-    <TextBlock Text="{local:Tr '搜尋基督教／聖經背景，保留主題，以中英文同義詞（OR）配對。偏好大型橫向圖片；下載後請確認達 1280 × 720。'}" Classes="caption" TextWrapping="Wrap"/>
+    <HyperlinkButton x:Name="GoogleImageLink" Content="{local:Tr 'Google 圖片搜尋 ↗'}" Classes="link" IsEnabled="False" HorizontalAlignment="Left" ToolTip.Tip="{local:Tr '以精簡英文主題搜尋崇拜投影片背景'}"/>
+    <TextBlock Text="{local:Tr '以英文主題尋找崇拜投影片背景，優先大型橫向圖片。下載後請確認達 1280 × 720。'}" Classes="caption" TextWrapping="Wrap"/>
     <Border Height="169" Background="#E7EEE3" CornerRadius="8" ClipToBounds="True"><Image x:Name="ImagePreview" Stretch="UniformToFill"/></Border>
     <TextBlock x:Name="SelectedTitle" Text="{local:Tr '目前背景'}" FontWeight="SemiBold" TextWrapping="Wrap"/>
     <TextBlock Text="{local:Tr '或使用自己的圖片'}" FontSize="17" Margin="0,14,0,0"/>

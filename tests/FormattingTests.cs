@@ -104,13 +104,16 @@ static class FormattingTests
                 check(string.Concat(wrapped)==text && wrapped.All(l=>SlideLayout.Measure(l,96,font.Name,true)<=SlideLayout.TextWidth),"Bold Chinese wrapping overflow");
             }
         });
-        test("Image search requires Christian scope and subject with bilingual OR alternatives",()=> {
+        test("Image search uses short English phrases with presentation scope and size filters",()=> {
             var uri=ImageSearchLink.Create("屈膝禱告 / kneeling prayer、柔和光線 / soft light、雙手合十 / praying hands、寧靜 / peaceful"); var decoded=Uri.UnescapeDataString(uri.Query);
-            check(decoded.Contains("(Christian OR Bible OR 基督教 OR 聖經 OR 圣经) (\"屈膝禱告\" OR \"屈膝祷告\" OR \"kneeling prayer\") ("),"Christian scope or required bilingual subject missing");
-            check(decoded.Contains("\"soft light\"") && decoded.Contains("(background OR 背景)") && decoded.Contains("imgsz=2mp") && decoded.Contains("imgar=w") && !decoded.Contains("1280x720") && !decoded.Contains("&lr=") && !decoded.Contains("&hl="),"Details, image filters or language scope incorrect");
-            check(Uri.UnescapeDataString(ImageSearchLink.Create("prayer, soft light OR prayer").Query).Contains("(\"prayer\") (\"soft light\")"),"Subject became optional or duplicate terms remain");
-            check(Uri.UnescapeDataString(ImageSearchLink.Create("prayer OR worship").Query).Contains("(\"prayer\" OR \"worship\")"),"Explicit subject alternatives lost");
-            check(!Uri.UnescapeDataString(ImageSearchLink.Create("crown").Query).Contains("()"),"Single subject produced empty modifier group");
+            check(decoded.Contains("q=Christian worship slide background kneeling prayer soft light praying hands&"),"Short English scope/terms incorrect or bilingual synonyms duplicated");
+            check(decoded.Contains("udm=2") && decoded.Contains("imgsz=l") && decoded.Contains("imgar=w") && decoded.Contains("tbs=isz:l,iar:w") && !decoded.Contains("720p") && !decoded.Contains("&lr="),"Image filters or language scope incorrect");
+            check(!decoded.Contains('"') && !decoded.Contains(" OR ") && !decoded.Contains("peaceful"),"Exact phrases, Boolean groups or excessive details remain");
+            check(Uri.UnescapeDataString(ImageSearchLink.Create("prayer, soft light OR prayer").Query).Contains("background prayer soft light&"),"Duplicate terms remain");
+            var suggested=Uri.UnescapeDataString(ImageSearchLink.Create("空墓與復活晨光、敞開石墓、清晨曙光、復活盼望",true).Query);
+            check(suggested.Contains("background empty tomb&") && !suggested.Contains("dawn"),"Generated search requires decorative details");
+            check(Uri.UnescapeDataString(ImageSearchLink.Create("自訂陌生詞").Query).Contains("自訂陌生詞"),"Unknown custom text was silently mistranslated");
+            try { ImageSearchLink.Create("、 / OR / \" "); throw new Exception("Empty search accepted"); } catch(ArgumentException) { }
         });
     }
 }

@@ -32,8 +32,9 @@ static class MediaTests
                         var display=ImageKeywords.ForDisplay(scene);
                         check(display.Split('、').Length==4 && !System.Text.RegularExpressions.Regex.IsMatch(display,"[A-Za-z]"),"English leaked into the app: "+scene.Id);
                         check(display.Split('、').All(term=>ImageKeywords.EnglishFor(term).Any()),"Missing English equivalent: "+scene.Id);
-                        var query=Uri.UnescapeDataString(ImageSearchLink.Create(display).Query);
-                        check(query.Contains(ImageKeywords.EnglishFor(display.Split('、')[0]).First()),"Google subject missing English: "+scene.Id);
+                        var query=Uri.UnescapeDataString(ImageSearchLink.Create(display,true).Query);
+                        check(query.Contains("background "+ImageKeywords.EnglishFor(display.Split('、')[0]).First()+"&"),"Google subject missing English or extra detail required: "+scene.Id);
+                        check(!System.Text.RegularExpressions.Regex.IsMatch(query,@"\p{IsCJKUnifiedIdeographs}"),"Chinese leaked into Google query: "+scene.Id);
                     }
                 }
                 var edited=Uri.UnescapeDataString(ImageSearchLink.Create("彩虹、雨後天空").Query);
@@ -88,10 +89,11 @@ static class MediaTests
             check(picker.FindControl<WrapPanel>("Gallery").Children.Count>0,"No media returned");
             var keywords=picker.FindControl<TextBox>("SearchText"); var link=picker.FindControl<HyperlinkButton>("GoogleImageLink");
             check(!string.IsNullOrWhiteSpace(keywords.Text) && link.IsEnabled && link.NavigateUri.Host=="www.google.com","Keywords/link not populated");
+            check(link.NavigateUri==ImageSearchLink.Create(keywords.Text,true),"Default Google link requires all generated keywords");
             check(!System.Text.RegularExpressions.Regex.IsMatch(keywords.Text,"[A-Za-z]"),"English keywords are visible in the app");
             check(!Uri.UnescapeDataString(link.NavigateUri.Query).Contains("每一步"),"Lyrics were included in the Google link");
-            keywords.Text="雨後 彩虹 & 日光"; Dispatcher.UIThread.RunJobs();
-            check(link.NavigateUri.AbsoluteUri.Contains(Uri.EscapeDataString(keywords.Text)) && link.NavigateUri.Query.Contains("tbm=isch"),"Edited keywords not escaped or not an image search");
+            keywords.Text="rainbow, sunset & light"; Dispatcher.UIThread.RunJobs();
+            check(link.NavigateUri.AbsoluteUri.Contains(Uri.EscapeDataString("background rainbow sunset light")) && link.NavigateUri.Query.Contains("udm=2"),"Edited keywords ignored, not escaped or not an image search");
             keywords.Text="rainbow after rain"; button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); timer.Restart();
             while(!button.IsEnabled && timer.Elapsed.TotalSeconds<40) { Dispatcher.UIThread.RunJobs(); Thread.Sleep(10); }
             check(button.IsEnabled && keywords.Text=="rainbow after rain" && picker.FindControl<TextBlock>("MatchedTheme").Text.Contains("彩虹"),"Search button ignored custom English terms or replaced the input");
