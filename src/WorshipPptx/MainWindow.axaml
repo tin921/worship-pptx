@@ -93,7 +93,6 @@
           </Border>
          </Grid>
         </Border>
-        <TextBlock Text="{local:Tr '檔案 · 網址 · 拖放 · 貼上'}" Classes="caption" Margin="0,7,0,0"/>
        </StackPanel>
        <StackPanel Grid.Column="2" x:Name="FormattingPanel">
         <TextBlock Text="{local:Tr '文字格式'}" Classes="label" Margin="0,0,0,9"/>
