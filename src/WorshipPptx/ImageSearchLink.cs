@@ -26,6 +26,6 @@ public static class ImageSearchLink
     private static string Any(IEnumerable<string> terms) => "("+string.Join(" OR ",terms.Select(s=>"\""+s+"\""))+")";
     private static string[] Alternatives(string group) => Regex.Split(group,@"[/／]+|\s+OR\s+",RegexOptions.IgnoreCase)
         .Select(s=>Regex.Replace(s.Replace('"',' ').Replace('“',' ').Replace('”',' '),@"\s+"," ").Trim())
-        .Where(s=>s.Length>0).SelectMany(s=>new[]{s,ChineseText.Convert(s,ChineseText.Traditional),ChineseText.Convert(s,ChineseText.Simplified)})
+        .Where(s=>s.Length>0).SelectMany(s=>new[]{s,ChineseText.Convert(s,ChineseText.Traditional),ChineseText.Convert(s,ChineseText.Simplified)}.Concat(ImageKeywords.EnglishFor(s)))
         .Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
 }

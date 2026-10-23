@@ -21,28 +21,24 @@ static class MediaTests
 {
     public static void Run(Action<string,Action> test,Action<bool,string> check,string root,LocalStore store,ImageStore images)
     {
-        test("Search keywords follow Traditional Chinese, Simplified Chinese or English lyrics",()=> {
-            var scene=new MediaScene { Id="mountain_path",Title="山間步道、山谷、晨光",Query="mountain path valley sunrise" };
-            check(ImageKeywords.ForSong(scene,"Grace","[v1]\n恩典與慈愛領我走過山間")=="山間步道、蜿蜒小徑、層疊山谷、柔和晨光","Traditional lyrics produced another language");
-            check(ImageKeywords.ForSong(scene,"恩典","[v1]\n恩典与慈爱领我走过山间")=="山间步道、蜿蜒小径、层叠山谷、柔和晨光","Simplified lyrics produced another script");
-            check(ImageKeywords.ForSong(scene,"恩典之路","[v1]\nGrace leads me along the mountain path")==scene.Query+", winding path, layered valleys, morning light","English lyrics followed the Chinese title");
-            check(ImageKeywords.ForSong(scene,"恩典與慈愛","[v1]\n[c]\n")=="山間步道、蜿蜒小徑、層疊山谷、柔和晨光","Empty lyric tags should use title language");
-            check(ImageKeywords.ForSong(scene,"Grace","[v1]\n恩典與慈愛 Amen")=="山間步道、蜿蜒小徑、層疊山谷、柔和晨光","A short English refrain changed the language");
-            var allScenes=JsonSerializer.Deserialize<List<MediaScene>>(File.ReadAllText(Path.Combine(MediaLibrary.Root,"scenes.json")),MediaLibrary.JsonOptions);
-            check(allScenes.All(s=>!System.Text.RegularExpressions.Regex.IsMatch(ImageKeywords.ForSong(s,"恩典與慈愛",""),"[A-Za-z]") && ImageKeywords.ForSong(s,"恩典與慈愛","").Split('、').Length==4),"Theme must have three Chinese terms");
-            check(!MediaSearch.IsModelLoaded,"Keyword language selection loaded the model");
-        });
-        test("All 80 themes offer editable Chinese and English concepts without loading the model",()=> {
+        test("All 80 themes display Chinese and add English only to the Google link",()=> {
             var scenes=JsonSerializer.Deserialize<List<MediaScene>>(File.ReadAllText(Path.Combine(MediaLibrary.Root,"scenes.json")),MediaLibrary.JsonOptions);
-            foreach(var scene in scenes) {
-                var groups=ImageKeywords.BilingualForSong(scene,"祢的恩典與慈愛","").Split('、');
-                check(groups.Length==4 && groups.All(g=>g.Split(" / ").Length==2),"Missing bilingual groups: "+scene.Id);
-                check(groups[0].Split(" / ")[1].Split(' ').Length<=3,"Topic is an over-specific exact phrase: "+scene.Id);
-            }
-            var prayer=scenes.Single(s=>s.Id=="kneeling_prayer");
-            check(ImageKeywords.BilingualForSong(prayer,"","祢的爱充满我的心").StartsWith("屈膝祷告 / kneeling prayer"),"Simplified input not retained");
-            check(ImageKeywords.BilingualForSong(prayer,"","I kneel and pray").StartsWith("kneeling prayer / 屈膝禱告"),"English input should put English first");
-            check(!MediaSearch.IsModelLoaded,"Bilingual terms initialized embedding model");
+            try {
+                foreach(var language in new[]{ChineseText.Traditional,ChineseText.Simplified}) {
+                    ChineseText.SetLanguage(language);
+                    foreach(var scene in scenes) {
+                        var display=ImageKeywords.ForDisplay(scene);
+                        check(display.Split('、').Length==4 && !System.Text.RegularExpressions.Regex.IsMatch(display,"[A-Za-z]"),"English leaked into the app: "+scene.Id);
+                        check(display.Split('、').All(term=>ImageKeywords.EnglishFor(term).Any()),"Missing English equivalent: "+scene.Id);
+                        var query=Uri.UnescapeDataString(ImageSearchLink.Create(display).Query);
+                        check(query.Contains(ImageKeywords.EnglishFor(display.Split('、')[0]).First()),"Google subject missing English: "+scene.Id);
+                    }
+                }
+                var edited=Uri.UnescapeDataString(ImageSearchLink.Create("彩虹、雨後天空").Query);
+                check(edited.Contains("rainbow") && !edited.Contains("kneeling prayer"),"Edited subject retained a stale English translation");
+                check(!ImageKeywords.EnglishFor("自訂陌生詞").Any(),"Unknown custom text was assigned an unrelated English term");
+                check(!MediaSearch.IsModelLoaded,"Keyword display or link creation loaded the model");
+            } finally { ChineseText.SetLanguage(ChineseText.Traditional); }
         });
         test("Editor, keyword typing and metadata filters never load the embedding model",()=> {
             check(!MediaSearch.IsModelLoaded,"Model loaded before search");
@@ -88,7 +84,7 @@ static class MediaTests
             check(picker.FindControl<WrapPanel>("Gallery").Children.Count>0,"No media returned");
             var keywords=picker.FindControl<TextBox>("SearchText"); var link=picker.FindControl<HyperlinkButton>("GoogleImageLink");
             check(!string.IsNullOrWhiteSpace(keywords.Text) && link.IsEnabled && link.NavigateUri.Host=="www.google.com","Keywords/link not populated");
-            check(System.Text.RegularExpressions.Regex.IsMatch(keywords.Text,"[A-Za-z]") && System.Text.RegularExpressions.Regex.IsMatch(keywords.Text,@"[\u3400-\u9fff]"),"Bilingual search terms missing");
+            check(!System.Text.RegularExpressions.Regex.IsMatch(keywords.Text,"[A-Za-z]"),"English keywords are visible in the app");
             check(!Uri.UnescapeDataString(link.NavigateUri.Query).Contains("每一步"),"Lyrics were included in the Google link");
             keywords.Text="雨後 彩虹 & 日光"; Dispatcher.UIThread.RunJobs();
             check(link.NavigateUri.AbsoluteUri.Contains(Uri.EscapeDataString(keywords.Text)) && link.NavigateUri.Query.Contains("tbm=isch"),"Edited keywords not escaped or not an image search");
