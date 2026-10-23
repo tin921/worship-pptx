@@ -29,7 +29,7 @@ public partial class MainWindow
     private void InitializeNavigation()
     {
         InputFocus.Attach(this);
-        Opened+=(_,_)=> { Focus(); Avalonia.Threading.Dispatcher.UIThread.Post(PositionBackgroundControls,Avalonia.Threading.DispatcherPriority.Loaded); };
+        Opened+=(_,_)=>Focus();
         AddHandler(KeyDownEvent,Main_KeyDown,RoutingStrategies.Tunnel);
     }
     private void Main_KeyDown(object sender,KeyEventArgs e)
@@ -37,7 +37,7 @@ public partial class MainWindow
         if(e.Handled) return;
         var focused=FocusManager?.GetFocusedElement();
         if(e.Key==Key.Escape) {
-            if(SlideHost.Child is CompositionPreview preview) preview.CancelPan();
+            if(BackgroundHost.Child is CompositionPreview preview) preview.CancelPan();
             Focus(); e.Handled=true; return;
         }
         if(e.Key==Key.Tab && e.KeyModifiers==KeyModifiers.Control && Lyrics.IsFocused) {

@@ -50,7 +50,7 @@ static class LanguageTests
                 check(LocalStore.Read<UserSettings>(legacy).Language==ChineseText.Traditional,"Old settings must default to Traditional");
             } finally { ChineseText.SetLanguage(ChineseText.Traditional); }
         });
-        test("Sidebar switch updates interface, history, editor and previews immediately and persists",()=> {
+        test("Language switch updates interface, history, editor and previews immediately and persists",()=> {
             var store=new LocalStore(Path.Combine(root,"language-ui-"+Guid.NewGuid().ToString("N")));
             var plan=Demo.Create(); store.Save(plan);
             var other=Demo.Create(); other.Title="聖誕禮拜"; store.Save(other); plan.Updated=DateTime.Now.AddSeconds(1); store.Save(plan);
@@ -69,7 +69,7 @@ static class LanguageTests
                 check(window.FindControl<ListBox>("HistoryList").Items.Cast<ServicePlan>().Any(p=>p.Title=="圣诞礼拜"),"History stayed Traditional");
                 check(window.FindControl<ComboBox>("FontPicker").SelectedItem is FontChoice font && font.DisplayName.Contains("香港黑体"),"Font labels stayed Traditional");
                 check((double)window.FindControl<ComboBox>("FontSizePicker").SelectedItem==40,"Switch changed formatting");
-                check((string)window.FindControl<ToggleButton>("FlipBackground").Content=="水平翻转","Image controls stayed Traditional");
+                check((string)ToolTip.GetTip(window.FindControl<ToggleButton>("FlipBackground"))=="水平翻转","Image control tooltip stayed Traditional");
                 check(store.LoadSettings().Language==ChineseText.Simplified,"Language not saved");
                 simplified.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 check(simplified.IsChecked==true,"Selected language can be deselected");

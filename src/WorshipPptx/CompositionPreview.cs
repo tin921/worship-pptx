@@ -67,6 +67,12 @@ public sealed class CompositionPreview : Canvas
         adjustment.Zoom=1; adjustment.X=adjustment.Y=0;
         UpdateBackground(); InteractionCompleted?.Invoke();
     }
+    public void PanBy(double x,double y)
+    {
+        if(!editable) return;
+        adjustment.X+=x; adjustment.Y+=y;
+        UpdateBackground(); InteractionCompleted?.Invoke();
+    }
     protected override void OnPointerPressed(PointerPressedEventArgs e)
     {
         base.OnPointerPressed(e); var point=e.GetPosition(this);

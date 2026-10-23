@@ -241,19 +241,19 @@ namespace WorshipPptx
             try
             {
                 Capture(); SyncBackgroundControls(); slides=SlideLayout.BuildItem(selected,settings); ValidationText.Text="";
-                BackgroundImage.Source=SlideVisual.Background(selected.Background);
+                RefreshBackgroundEditor();
                 updatingThumbnails=true; Thumbnails.Items.Clear();
                 for(var i=0;i<slides.Count;i++)
                 {
                     var thumb=new Grid(); thumb.Children.Add(new Viewbox { Stretch=Stretch.Uniform,Child=SlideVisual.Create(slides[i],false,false) });
-                    thumb.Children.Add(new Border { Name="ThumbnailTag",HorizontalAlignment=HorizontalAlignment.Right,VerticalAlignment=VerticalAlignment.Bottom,Margin=new Thickness(4),Padding=new Thickness(5,2),Background=Brush.Parse("#ECEEEC"),Child=new TextBlock { Text=(i+1)+" · "+SlideVisual.TagLabel(slides[i]),FontSize=12,Foreground=Brush.Parse("#38483E") } });
+                    thumb.Children.Add(new Border { Name="ThumbnailTag",HorizontalAlignment=HorizontalAlignment.Left,VerticalAlignment=VerticalAlignment.Bottom,Margin=new Thickness(4),Padding=new Thickness(5,2),Background=Brush.Parse("#ECEEEC"),Child=new TextBlock { Text=(i+1)+" · "+SlideVisual.TagLabel(slides[i]),FontSize=12,Foreground=Brush.Parse("#38483E") } });
                     var item=new ListBoxItem { Content=thumb }; ToolTip.SetTip(item,slides[i].Text);
                     AutomationProperties.SetName(item,(i+1)+" · "+slides[i].Section+" · "+slides[i].Text);
                     Thumbnails.Items.Add(item);
                 }
                 updatingThumbnails=false; page=Math.Min(page,Math.Max(0,slides.Count-1)); ShowPage();
             }
-            catch(Exception ex) { updatingThumbnails=true; slides.Clear(); SlideHost.Child=null; Thumbnails.Items.Clear(); PreviewInfo.Text=ChineseText.Ui("請先完成內容"); ValidationText.Text=ex.Message; try { BackgroundImage.Source=SlideVisual.Background(selected.Background); } catch { BackgroundImage.Source=null; } }
+            catch(Exception ex) { updatingThumbnails=true; slides.Clear(); SlideHost.Child=null; Thumbnails.Items.Clear(); PreviewInfo.Text=ChineseText.Ui("請先完成內容"); ValidationText.Text=ex.Message; try { RefreshBackgroundEditor(); } catch { BackgroundHost.Child=null; } }
             finally { updatingThumbnails=false; }
         }
         private void ShowPage()
@@ -261,9 +261,7 @@ namespace WorshipPptx
             if(slides.Count==0) return;
             if(SlideHost.Child is CompositionPreview preview) preview.SetSlide(slides[page],selected.Preview,selected.BackgroundTransform);
             else {
-                preview=new CompositionPreview(slides[page],selected.Preview,true,selected.BackgroundTransform);
-                preview.BackgroundChanged+=BackgroundAdjusted;
-                preview.InteractionCompleted+=BackgroundEditCompleted;
+                preview=new CompositionPreview(slides[page],selected.Preview,false,selected.BackgroundTransform);
                 SlideHost.Child=preview;
             }
             PreviewInfo.Text=(page+1)+" / "+slides.Count+"  ·  "+slides[page].Section;

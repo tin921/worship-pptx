@@ -49,38 +49,54 @@ static class EditorInteractionTests
                     Press(window,Key.Tab); check(window.FindControl<TextBox>(name).IsFocused,"Unexpected tab order at "+name);
                 }
                 var language=window.FindControl<StackPanel>("LanguagePanel"); var toggle=window.FindControl<ToggleButton>("TraditionalButton");
-                check(language.TranslatePoint(default,window).Value.X>window.Bounds.Width-170 && toggle.FontSize>=18 && toggle.VerticalContentAlignment==Avalonia.Layout.VerticalAlignment.Center && toggle.HorizontalContentAlignment==Avalonia.Layout.HorizontalAlignment.Center,"Language switch is not centered at upper right");
+                check(language.TranslatePoint(default,window).Value.X>window.Bounds.Width-230 && toggle.FontSize>=18 && toggle.VerticalContentAlignment==Avalonia.Layout.VerticalAlignment.Center && toggle.HorizontalContentAlignment==Avalonia.Layout.HorizontalAlignment.Center,"Language switch is not centered at upper right");
+                var settings=window.FindControl<Button>("SettingsButton");
+                check(settings.TranslatePoint(default,window).Value.X>=language.TranslatePoint(new Point(language.Bounds.Width,0),window).Value.X && settings.Content is PathIcon,"Settings is not an icon at the far right");
+                var version=window.FindControl<TextBlock>("VersionLabel");
+                check(version.Text=="v"+typeof(MainWindow).Assembly.GetName().Version.ToString(3) && version.TranslatePoint(default,window).Value.X<178 && version.TranslatePoint(default,window).Value.Y<100,"Version is not under the logo or does not match build");
+                var bold=window.FindControl<ToggleButton>("BoldToggle");
+                check(bold.Padding==new Thickness(0) && bold.HorizontalContentAlignment==Avalonia.Layout.HorizontalAlignment.Center && bold.VerticalContentAlignment==Avalonia.Layout.VerticalAlignment.Center,"Bold button is not centered");
                 var chip=thumbs.GetVisualDescendants().OfType<Border>().First(b=>b.Name=="ThumbnailTag");
-                check(chip.Parent is Grid && chip.HorizontalAlignment==Avalonia.Layout.HorizontalAlignment.Right && chip.VerticalAlignment==Avalonia.Layout.VerticalAlignment.Bottom && ((TextBlock)chip.Child).Text.Contains('['),"Thumbnail label is outside image");
+                check(chip.Parent is Grid && chip.HorizontalAlignment==Avalonia.Layout.HorizontalAlignment.Left && chip.VerticalAlignment==Avalonia.Layout.VerticalAlignment.Bottom && ((TextBlock)chip.Child).Text.Contains('['),"Thumbnail label is not inside the bottom left of image");
             } finally { window.Close(); }
         });
-        test("Fixed PiP ignores drag; image pan/zoom, opacity and flip persist separately per tab",()=> {
+        test("Projection stays read-only; top image controls and gestures persist separately per tab",()=> {
             var store=new LocalStore(Path.Combine(root,"editor-image-"+Guid.NewGuid().ToString("N")));
             var plan=Demo.Create(); plan.Items[1].Preview=new PreviewLayout { X=2,Y=2,BackgroundSource="Camera" }; store.Save(plan);
             var window=new MainWindow(store); window.Show(); Pump();
             try {
                 var item=Item(window); var preview=(CompositionPreview)window.FindControl<Viewbox>("SlideHost").Child;
                 var toolbar=window.FindControl<Border>("ImageControls");
-                var toolbarBottom=toolbar.TranslatePoint(new Point(0,toolbar.Bounds.Height),window).Value.Y;
-                var pictureBottom=preview.TranslatePoint(new Point(0,720),window).Value.Y;
-                check(Math.Abs(toolbarBottom-(pictureBottom-10))<1,$"Image toolbar outside picture: toolbar={toolbarBottom}, picture={pictureBottom}, margin={toolbar.Margin}, host={window.FindControl<Viewbox>("SlideHost").Bounds}, parent={((Control)toolbar.Parent).Bounds}");
+                var backgroundBox=window.FindControl<Border>("BackgroundBox");
+                var background=(CompositionPreview)window.FindControl<Viewbox>("BackgroundHost").Child;
+                check(toolbar.GetVisualAncestors().Contains(backgroundBox),"Image controls are not on the top background preview");
+                check(!window.FindControl<Viewbox>("SlideHost").GetVisualDescendants().OfType<Button>().Any(),"Projection contains editing controls");
                 var opacityControl=window.FindControl<Slider>("BackgroundOpacity");
                 var knob=opacityControl.GetVisualDescendants().OfType<Thumb>().First();
                 var knobTop=knob.TranslatePoint(default,opacityControl).Value.Y;
                 check(knobTop>=0 && knobTop+knob.Bounds.Height<=opacityControl.Bounds.Height+1,"Opacity knob is clipped");
                 check(item.Preview.X==58 && item.Preview.Y==58 && item.Preview.BackgroundSource=="Slide" && window.FindControl<ToggleButton>("CompositionToggle")==null,"PiP did not become fixed at default corner");
                 check(!preview.Children.OfType<Border>().Any(b=>b.Name?.StartsWith("PipHandle")==true),"PiP resize handles remain");
-                void Drag(Point from,Point to) {
-                    window.MouseDown(At(preview,window,from.X,from.Y),MouseButton.Left); Pump();
-                    window.MouseMove(At(preview,window,to.X,to.Y),RawInputModifiers.LeftMouseButton); Pump();
-                    window.MouseUp(At(preview,window,to.X,to.Y),MouseButton.Left); Pump();
+                void Drag(CompositionPreview target,Point from,Point to) {
+                    window.MouseDown(At(target,window,from.X,from.Y),MouseButton.Left); Pump();
+                    window.MouseMove(At(target,window,to.X,to.Y),RawInputModifiers.LeftMouseButton); Pump();
+                    window.MouseUp(At(target,window,to.X,to.Y),MouseButton.Left); Pump();
                 }
-                Drag(new Point(1000,500),new Point(800,400));
+                Drag(preview,new Point(1000,500),new Point(800,400));
                 check(item.Preview.X==58 && item.BackgroundTransform.X==0,"Dragging camera moved camera or background");
-                var anchor=At(preview,window,500,250); window.MouseWheel(anchor,new Vector(0,3)); Pump();
-                check(item.BackgroundTransform.Zoom>1,"Wheel did not zoom image");
-                var x=item.BackgroundTransform.X; Drag(new Point(500,250),new Point(580,280));
+                window.MouseWheel(At(preview,window,500,250),new Vector(0,3)); Pump();
+                Drag(preview,new Point(500,250),new Point(580,280));
+                check(item.BackgroundTransform.Zoom==1 && item.BackgroundTransform.X==0,"Projection gestures still edit background");
+                var anchor=At(background,window,900,100); window.MouseWheel(anchor,new Vector(0,3)); Pump();
+                check(item.BackgroundTransform.Zoom>1,"Top image wheel did not zoom image");
+                var x=item.BackgroundTransform.X; Drag(background,new Point(900,100),new Point(1000,180));
                 check(item.BackgroundTransform.X>x && item.Preview.X==58,"Image pan did not move background independently");
+                void Click(string name) { window.FindControl<Button>(name).RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump(); }
+                var zoom=item.BackgroundTransform.Zoom; Click("ZoomIn"); check(item.BackgroundTransform.Zoom>zoom,"Map plus did not zoom"); Click("ZoomOut");
+                x=item.BackgroundTransform.X; var y=item.BackgroundTransform.Y;
+                Click("PanLeft"); check(item.BackgroundTransform.X<x,"Map left did not pan"); Click("PanRight");
+                Click("PanUp"); check(item.BackgroundTransform.Y<y,"Map up did not pan"); Click("PanDown");
+                check(Math.Abs(item.BackgroundTransform.X-x)<.01 && Math.Abs(item.BackgroundTransform.Y-y)<.01,"Opposite arrows do not cancel");
                 var flip=window.FindControl<ToggleButton>("FlipBackground"); flip.IsChecked=true; flip.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 window.FindControl<Slider>("BackgroundOpacity").Value=45; Pump();
                 check(item.BackgroundTransform.Flip && item.BackgroundTransform.Opacity==.45,"Opacity/flip not captured");
