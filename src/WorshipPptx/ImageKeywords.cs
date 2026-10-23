@@ -11,12 +11,30 @@ namespace WorshipPptx;
 // Choose display/search language from the original song, before embedding normalization.
 public static class ImageKeywords
 {
-    public sealed class VisualTerms { public string[] Zh { get; set; } public string[] En { get; set; } }
+    public sealed class VisualTerms { public string TopicEn { get; set; } public string[] Zh { get; set; } public string[] En { get; set; } }
     private enum Language { TraditionalChinese,SimplifiedChinese,English }
     private static readonly Lazy<Dictionary<string,string>> characters=new(()=>
         JsonSerializer.Deserialize<Dictionary<string,string>>(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"Models","normalization.json"))));
     private static readonly Lazy<HashSet<string>> simplifiedOnly=new(()=>characters.Value.Values.Except(characters.Value.Keys).ToHashSet());
     private static readonly Lazy<Dictionary<string,VisualTerms>> themes=new(()=>JsonSerializer.Deserialize<Dictionary<string,VisualTerms>>(File.ReadAllText(Path.Combine(MediaLibrary.Root,"search-terms.json")),MediaLibrary.JsonOptions));
+
+    // Four editable groups: a required subject, then three visual alternatives.
+    // Each slash pair describes the same concept in Chinese and English.
+    public static string BilingualForSong(MediaScene scene,string title,string lyrics)
+    {
+        VisualTerms terms=null;
+        if(scene.Id!=null) themes.Value.TryGetValue(scene.Id,out terms);
+        var language=Detect(lyrics) ?? Detect(title) ?? Language.TraditionalChinese;
+        var chinese=new[]{Regex.Split(scene.Title ?? "",@"[、，,]+").First().Trim()}
+            .Concat(terms?.Zh ?? new[]{"柔和光線","寧靜氛圍","簡潔構圖"}).ToArray();
+        var english=new[]{terms?.TopicEn ?? scene.Query ?? "worship"}
+            .Concat(terms?.En ?? new[]{"soft light","peaceful mood","simple composition"}).ToArray();
+        return string.Join("、",chinese.Zip(english,(zh,en)=>
+        {
+            if(language==Language.SimplifiedChinese) zh=ChineseText.Convert(zh,ChineseText.Simplified);
+            return language==Language.English ? en+" / "+zh : zh+" / "+en;
+        }));
+    }
 
     public static string ForSong(MediaScene scene,string title,string lyrics)
     {

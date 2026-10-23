@@ -81,7 +81,7 @@ public static class MediaSearch
             cancellation.ThrowIfCancellationRequested();
             var first=chosen.First();
             completed++; Report(ChineseText.Ui("正在整理圖片關鍵字…"));
-            var result=new MediaMatch(first.Title,ImageKeywords.ForSong(first,title,lyrics),chosen.SelectMany(s=>MediaLibrary.All.Where(a=>a.Theme==s.Id)).ToList());
+            var result=new MediaMatch(first.Title,ImageKeywords.BilingualForSong(first,title,lyrics),chosen.SelectMany(s=>MediaLibrary.All.Where(a=>a.Theme==s.Id)).ToList());
             cancellation.ThrowIfCancellationRequested(); completed++; Report(ChineseText.Ui("主題及關鍵字已就緒"));
             return result;
         }

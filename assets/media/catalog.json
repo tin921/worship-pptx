@@ -2148,5 +2148,21 @@
     "theme": "legacy-05-be-still",
     "style": "legacy",
     "still": "legacy/05-be-still/graphic.jpg"
+  },
+  {
+    "id": "kneeling_prayer-watercolour",
+    "title": "屈膝禱告 · 柔光水彩",
+    "theme": "kneeling_prayer",
+    "style": "watercolour",
+    "core": true,
+    "still": "themes/kneeling_prayer/watercolour.png"
+  },
+  {
+    "id": "crown-sculpted",
+    "title": "冠冕 · 立體象徵",
+    "theme": "crown",
+    "style": "sculpted",
+    "core": true,
+    "still": "themes/crown/sculpted.png"
   }
 ]

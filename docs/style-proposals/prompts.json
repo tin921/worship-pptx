@@ -1,0 +1,17 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-22",
+  "reference": "User-provided prayer/crown screenshot",
+  "samples": [
+    {
+      "id": "kneeling_prayer-watercolour",
+      "file": "watercolour-prayer-720p.png",
+      "prompt": "Create one finished Christian worship presentation background, 1280x720 pixels, 16:9 landscape. New style proposal: soft luminous watercolour on fine white cotton paper. A small adult person kneeling in quiet Christian prayer, seen in gentle profile in the lower-left third of the frame; a restrained mountain ridge, distant lake, pale sage hills and lavender-blue morning mist in the bottom third. Respectful, uplifting, contemporary church setting in nature; no religious buildings needed. Soft peach sunrise only at the distant low horizon, overall airy ivory and cool daylight, not a saturated yellow sunset. Clearly visible watercolour pigment blooms, delicate hand-painted edges, natural organic washes, elegant and sophisticated. Top 55 percent is very pale almost-white sky with extremely subtle wash, clean uniform space reserved for dark lyrics; no subject, sun, hard edges, strong texture or bright highlights behind that text area. Keep the lower-right 40% of frame quiet and secondary, as a camera inset may cover it. The attached screenshot is a subject/composition reference only: make an original watercolour variant of its prayer scene, not a screenshot, no interface, no border, NO lettering, NO lyrics, NO watermark. Full bleed flat image."
+    },
+    {
+      "id": "crown-sculpted",
+      "file": "sculpted-crown-720p.png",
+      "prompt": "Create one finished Christian worship presentation background, 1280x720 pixels, 16:9 landscape. New style proposal: sculpted symbolic 3D still life with restrained cinematic lighting, not a painting and not fantasy concept art. An elegant realistic golden royal crown, symbolising Christ's kingship, rests on a simple pale limestone slab in the lower-left to lower-middle third. Beautiful physically plausible brushed gold, subtle engraving, realistic soft shadows, refined museum-quality sculptural rendering. Deep desaturated teal / midnight blue backdrop, a gentle soft gold rim light concentrated only near the crown, minimal atmosphere. Crown and base entirely in the bottom 42 percent; the entire top 55 percent is a uniform calm dark teal gradient with no beams, particles, stars, objects or sharp textures, reserved for white lyrics. Bottom right area remains mostly quiet dark background to allow a small camera inset. Respectful, hopeful, majestic but understated; no dramatic explosion, no glitter, no jewel clutter, no throne, no castle. The attached screenshot is only a reference for the crown subject and low composition, not a target to reproduce. Original full-bleed image, no slide UI, no border, NO lettering, NO lyrics, NO watermark."
+    }
+  ]
+}

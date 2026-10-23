@@ -32,12 +32,29 @@ static class MediaTests
             check(allScenes.All(s=>!System.Text.RegularExpressions.Regex.IsMatch(ImageKeywords.ForSong(s,"恩典與慈愛",""),"[A-Za-z]") && ImageKeywords.ForSong(s,"恩典與慈愛","").Split('、').Length==4),"Theme must have three Chinese terms");
             check(!MediaSearch.IsModelLoaded,"Keyword language selection loaded the model");
         });
+        test("All 80 themes offer editable Chinese and English concepts without loading the model",()=> {
+            var scenes=JsonSerializer.Deserialize<List<MediaScene>>(File.ReadAllText(Path.Combine(MediaLibrary.Root,"scenes.json")),MediaLibrary.JsonOptions);
+            foreach(var scene in scenes) {
+                var groups=ImageKeywords.BilingualForSong(scene,"祢的恩典與慈愛","").Split('、');
+                check(groups.Length==4 && groups.All(g=>g.Split(" / ").Length==2),"Missing bilingual groups: "+scene.Id);
+                check(groups[0].Split(" / ")[1].Split(' ').Length<=3,"Topic is an over-specific exact phrase: "+scene.Id);
+            }
+            var prayer=scenes.Single(s=>s.Id=="kneeling_prayer");
+            check(ImageKeywords.BilingualForSong(prayer,"","祢的爱充满我的心").StartsWith("屈膝祷告 / kneeling prayer"),"Simplified input not retained");
+            check(ImageKeywords.BilingualForSong(prayer,"","I kneel and pray").StartsWith("kneeling prayer / 屈膝禱告"),"English input should put English first");
+            check(!MediaSearch.IsModelLoaded,"Bilingual terms initialized embedding model");
+        });
         test("Editor, keyword typing and metadata filters never load the embedding model",()=> {
             check(!MediaSearch.IsModelLoaded,"Model loaded before search");
             var picker=new BackgroundDialog(images,""); picker.Show();
             picker.FindControl<TextBox>("SearchText").Text="彩虹";
             picker.FindControl<ComboBox>("CollectionFilter").SelectedIndex=3;
             Dispatcher.UIThread.RunJobs();
+            picker.FindControl<ComboBox>("CollectionFilter").SelectedIndex=0;
+            foreach(var style in new[]{4,5}) {
+                picker.FindControl<ComboBox>("StyleFilter").SelectedIndex=style; Dispatcher.UIThread.RunJobs();
+                check(picker.FindControl<WrapPanel>("Gallery").Children.Count==1,"New style filter did not find its sample");
+            }
             check(!MediaSearch.IsModelLoaded,"Typing/filtering initialized model"); picker.Close();
         });
         test("Local tokenizer and quantized embeddings agree with Hugging Face fixtures",()=> {
@@ -71,11 +88,12 @@ static class MediaTests
             check(picker.FindControl<WrapPanel>("Gallery").Children.Count>0,"No media returned");
             var keywords=picker.FindControl<TextBox>("SearchText"); var link=picker.FindControl<HyperlinkButton>("GoogleImageLink");
             check(!string.IsNullOrWhiteSpace(keywords.Text) && link.IsEnabled && link.NavigateUri.Host=="www.google.com","Keywords/link not populated");
-            check(!System.Text.RegularExpressions.Regex.IsMatch(keywords.Text,"[A-Za-z]"),"Chinese song received English keywords");
+            check(System.Text.RegularExpressions.Regex.IsMatch(keywords.Text,"[A-Za-z]") && System.Text.RegularExpressions.Regex.IsMatch(keywords.Text,@"[\u3400-\u9fff]"),"Bilingual search terms missing");
             check(!Uri.UnescapeDataString(link.NavigateUri.Query).Contains("每一步"),"Lyrics were included in the Google link");
             keywords.Text="雨後 彩虹 & 日光"; Dispatcher.UIThread.RunJobs();
             check(link.NavigateUri.AbsoluteUri.Contains(Uri.EscapeDataString(keywords.Text)) && link.NavigateUri.Query.Contains("tbm=isch"),"Edited keywords not escaped or not an image search");
-            keywords.Text=""; Dispatcher.UIThread.RunJobs(); check(!link.IsEnabled,"Empty search link stays enabled"); picker.Close();
+            keywords.Text=""; Dispatcher.UIThread.RunJobs(); check(!link.IsEnabled,"Empty search link stays enabled");
+            keywords.Text="、 / OR /"; Dispatcher.UIThread.RunJobs(); check(!link.IsEnabled,"Punctuation-only search stays enabled"); picker.Close();
             var traditional=MediaSearch.SearchAsync("","雨後彩虹帶來盼望").Result;
             var simplified=MediaSearch.SearchAsync("","雨后彩虹带来盼望").Result;
             check(traditional.Select(a=>a.Id).SequenceEqual(simplified.Select(a=>a.Id)),"Traditional/Simplified results differ");
@@ -116,11 +134,12 @@ static class MediaTests
                 check(((TabItem)tabs.SelectedItem).Tag is ServiceItem,"Plus stayed selected");
             } finally { window.Close(); }
         });
-        test("Library has 270 static 720p images and no animation payload",()=> {
-            check(MediaLibrary.All.Count==270,$"Expected 270, found {MediaLibrary.All.Count}");
+        test("Library has 272 static 720p images including two new style samples",()=> {
+            check(MediaLibrary.All.Count==272,$"Expected 272, found {MediaLibrary.All.Count}");
             var themed=MediaLibrary.All.Where(a=>a.Style is "photo" or "illustration" or "abstract").ToList();
             check(themed.Count==240 && themed.Count(a=>a.Core)==180,"Wrong core/optional distribution");
             check(themed.GroupBy(a=>a.Theme).All(g=>g.Count()==3 && g.Select(a=>a.Style).Distinct().Count()==3),"Missing style variations");
+            check(MediaLibrary.All.Single(a=>a.Style=="watercolour").Theme=="kneeling_prayer" && MediaLibrary.All.Single(a=>a.Style=="sculpted").Theme=="crown","Missing new style samples");
             foreach(var asset in MediaLibrary.All) {
                 using var codec=SKCodec.Create(MediaLibrary.FilePath(asset.Still));
                 check(codec.Info.Width==1280 && codec.Info.Height==720,"Wrong still size: "+asset.Id);

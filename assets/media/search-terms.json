@@ -9,7 +9,8 @@
       "winding path",
       "layered valleys",
       "morning light"
-    ]
+    ],
+    "topicEn": "mountain path"
   },
   "forest_path": {
     "zh": [
@@ -21,7 +22,8 @@
       "woodland trail",
       "leaf shadows",
       "sunbeams"
-    ]
+    ],
+    "topicEn": "forest path"
   },
   "mountains": {
     "zh": [
@@ -33,7 +35,8 @@
       "mountain peaks",
       "cloud sea",
       "open sky"
-    ]
+    ],
+    "topicEn": "mountains"
   },
   "sunrise": {
     "zh": [
@@ -45,7 +48,8 @@
       "golden light",
       "horizon",
       "peaceful sky"
-    ]
+    ],
+    "topicEn": "sunrise"
   },
   "sunset": {
     "zh": [
@@ -57,7 +61,8 @@
       "warm clouds",
       "distant hills",
       "soft sky"
-    ]
+    ],
+    "topicEn": "sunset"
   },
   "stream": {
     "zh": [
@@ -69,7 +74,8 @@
       "clear water",
       "river stones",
       "dappled light"
-    ]
+    ],
+    "topicEn": "stream"
   },
   "waterfall": {
     "zh": [
@@ -81,7 +87,8 @@
       "falling water",
       "mist",
       "green forest"
-    ]
+    ],
+    "topicEn": "waterfall"
   },
   "spring_rain": {
     "zh": [
@@ -93,7 +100,8 @@
       "gentle rain",
       "fresh leaves",
       "morning light"
-    ]
+    ],
+    "topicEn": "spring rain"
   },
   "snow": {
     "zh": [
@@ -105,7 +113,8 @@
       "snowflakes",
       "soft light",
       "quiet winter"
-    ]
+    ],
+    "topicEn": "snow"
   },
   "sky": {
     "zh": [
@@ -117,7 +126,8 @@
       "blue sky",
       "soft clouds",
       "open space"
-    ]
+    ],
+    "topicEn": "blue sky"
   },
   "galaxy": {
     "zh": [
@@ -129,7 +139,8 @@
       "starlight",
       "milky way",
       "deep blue sky"
-    ]
+    ],
+    "topicEn": "starry sky"
   },
   "ocean": {
     "zh": [
@@ -141,7 +152,8 @@
       "gentle waves",
       "open sea",
       "horizon"
-    ]
+    ],
+    "topicEn": "ocean"
   },
   "calm_lake": {
     "zh": [
@@ -153,7 +165,8 @@
       "still water",
       "mountain reflections",
       "morning mist"
-    ]
+    ],
+    "topicEn": "calm lake"
   },
   "storm": {
     "zh": [
@@ -165,7 +178,8 @@
       "sunbeams",
       "clearing clouds",
       "new dawn"
-    ]
+    ],
+    "topicEn": "storm clouds"
   },
   "rainbow": {
     "zh": [
@@ -177,7 +191,8 @@
       "clearing sky",
       "rainbow colours",
       "soft sunshine"
-    ]
+    ],
+    "topicEn": "rainbow"
   },
   "eagle": {
     "zh": [
@@ -189,7 +204,8 @@
       "soaring wings",
       "open sky",
       "mountain peaks"
-    ]
+    ],
+    "topicEn": "eagle"
   },
   "dove": {
     "zh": [
@@ -201,7 +217,8 @@
       "white wings",
       "soft light",
       "peaceful mood"
-    ]
+    ],
+    "topicEn": "dove"
   },
   "meadow": {
     "zh": [
@@ -213,7 +230,8 @@
       "green grass",
       "wildflowers",
       "soft sunshine"
-    ]
+    ],
+    "topicEn": "meadow"
   },
   "sheep": {
     "zh": [
@@ -225,7 +243,8 @@
       "quiet flock",
       "green pasture",
       "hillside"
-    ]
+    ],
+    "topicEn": "sheep"
   },
   "oasis": {
     "zh": [
@@ -237,7 +256,8 @@
       "clear spring",
       "desert oasis",
       "palm trees"
-    ]
+    ],
+    "topicEn": "oasis"
   },
   "lighthouse": {
     "zh": [
@@ -249,7 +269,8 @@
       "guiding beam",
       "distant sea",
       "night sky"
-    ]
+    ],
+    "topicEn": "lighthouse"
   },
   "rock": {
     "zh": [
@@ -261,7 +282,8 @@
       "solid rock",
       "coastal waves",
       "open sky"
-    ]
+    ],
+    "topicEn": "rock"
   },
   "cross": {
     "zh": [
@@ -273,7 +295,8 @@
       "hill silhouette",
       "wooden cross",
       "dawn light"
-    ]
+    ],
+    "topicEn": "cross"
   },
   "church": {
     "zh": [
@@ -285,7 +308,8 @@
       "window light",
       "wooden pews",
       "quiet interior"
-    ]
+    ],
+    "topicEn": "church"
   },
   "hands": {
     "zh": [
@@ -297,7 +321,8 @@
       "raised hands",
       "soft stage light",
       "worshippers"
-    ]
+    ],
+    "topicEn": "worship"
   },
   "music": {
     "zh": [
@@ -309,7 +334,8 @@
       "musical notes",
       "soft light",
       "open space"
-    ]
+    ],
+    "topicEn": "music"
   },
   "celebration": {
     "zh": [
@@ -321,7 +347,8 @@
       "golden bokeh",
       "warm glow",
       "joyful mood"
-    ]
+    ],
+    "topicEn": "celebration"
   },
   "gentle_light": {
     "zh": [
@@ -333,7 +360,8 @@
       "warm bokeh",
       "gentle beams",
       "open space"
-    ]
+    ],
+    "topicEn": "soft light"
   },
   "open_hands": {
     "zh": [
@@ -345,7 +373,8 @@
       "open palms",
       "soft light",
       "welcoming mood"
-    ]
+    ],
+    "topicEn": "open hands"
   },
   "fire": {
     "zh": [
@@ -357,7 +386,8 @@
       "warm flame",
       "gentle glow",
       "dark backdrop"
-    ]
+    ],
+    "topicEn": "fire"
   },
   "seeds": {
     "zh": [
@@ -369,7 +399,8 @@
       "green seedling",
       "rich soil",
       "morning sunshine"
-    ]
+    ],
+    "topicEn": "seedling"
   },
   "bible": {
     "zh": [
@@ -381,7 +412,8 @@
       "open pages",
       "window light",
       "wooden table"
-    ]
+    ],
+    "topicEn": "Bible"
   },
   "communion": {
     "zh": [
@@ -393,7 +425,8 @@
       "bread and wine",
       "communion cup",
       "warm table"
-    ]
+    ],
+    "topicEn": "communion"
   },
   "nativity": {
     "zh": [
@@ -405,7 +438,8 @@
       "manger",
       "Bethlehem star",
       "quiet night"
-    ]
+    ],
+    "topicEn": "nativity"
   },
   "empty_tomb": {
     "zh": [
@@ -417,7 +451,8 @@
       "open stone tomb",
       "dawn light",
       "resurrection hope"
-    ]
+    ],
+    "topicEn": "empty tomb"
   },
   "crown": {
     "zh": [
@@ -429,7 +464,8 @@
       "golden crown",
       "gentle glow",
       "dark backdrop"
-    ]
+    ],
+    "topicEn": "crown"
   },
   "throne": {
     "zh": [
@@ -441,7 +477,8 @@
       "royal throne",
       "radiant light",
       "golden atmosphere"
-    ]
+    ],
+    "topicEn": "throne"
   },
   "altar": {
     "zh": [
@@ -453,7 +490,8 @@
       "stone altar",
       "warm light",
       "quiet wilderness"
-    ]
+    ],
+    "topicEn": "altar"
   },
   "incense": {
     "zh": [
@@ -465,7 +503,8 @@
       "gentle smoke",
       "incense vessel",
       "soft light"
-    ]
+    ],
+    "topicEn": "incense"
   },
   "trumpet": {
     "zh": [
@@ -477,7 +516,8 @@
       "golden trumpet",
       "soft glow",
       "open sky"
-    ]
+    ],
+    "topicEn": "shofar"
   },
   "harp": {
     "zh": [
@@ -489,7 +529,8 @@
       "harp strings",
       "wooden instrument",
       "window light"
-    ]
+    ],
+    "topicEn": "harp"
   },
   "banner": {
     "zh": [
@@ -501,7 +542,8 @@
       "flowing banner",
       "gentle breeze",
       "blue sky"
-    ]
+    ],
+    "topicEn": "banner"
   },
   "armor": {
     "zh": [
@@ -513,7 +555,8 @@
       "ancient armour",
       "sword and shield",
       "soft gold light"
-    ]
+    ],
+    "topicEn": "armor"
   },
   "shield": {
     "zh": [
@@ -525,7 +568,8 @@
       "solid shield",
       "protection",
       "gentle glow"
-    ]
+    ],
+    "topicEn": "shield"
   },
   "broken_chains": {
     "zh": [
@@ -537,7 +581,8 @@
       "broken links",
       "emerging light",
       "freedom"
-    ]
+    ],
+    "topicEn": "broken chains"
   },
   "refuge": {
     "zh": [
@@ -549,7 +594,8 @@
       "strong fortress",
       "distant mountains",
       "sheltering mood"
-    ]
+    ],
+    "topicEn": "refuge"
   },
   "tent": {
     "zh": [
@@ -561,7 +607,8 @@
       "wilderness tent",
       "dawn light",
       "quiet sand"
-    ]
+    ],
+    "topicEn": "tabernacle"
   },
   "sheltering_wings": {
     "zh": [
@@ -573,7 +620,8 @@
       "sheltering wings",
       "safe nest",
       "soft light"
-    ]
+    ],
+    "topicEn": "sheltering wings"
   },
   "footprints": {
     "zh": [
@@ -585,7 +633,8 @@
       "sand footprints",
       "gentle surf",
       "morning light"
-    ]
+    ],
+    "topicEn": "footprints"
   },
   "door": {
     "zh": [
@@ -597,7 +646,8 @@
       "open wooden door",
       "streaming light",
       "path ahead"
-    ]
+    ],
+    "topicEn": "open door"
   },
   "bridge": {
     "zh": [
@@ -609,7 +659,8 @@
       "river bridge",
       "calm water",
       "morning mist"
-    ]
+    ],
+    "topicEn": "bridge"
   },
   "boat": {
     "zh": [
@@ -621,7 +672,8 @@
       "small boat",
       "gentle waves",
       "distant horizon"
-    ]
+    ],
+    "topicEn": "boat"
   },
   "anchor": {
     "zh": [
@@ -633,7 +685,8 @@
       "ship anchor",
       "calm sea",
       "steadfast hope"
-    ]
+    ],
+    "topicEn": "anchor"
   },
   "harvest": {
     "zh": [
@@ -645,7 +698,8 @@
       "golden fields",
       "ripe harvest",
       "warm sunshine"
-    ]
+    ],
+    "topicEn": "harvest"
   },
   "wheat": {
     "zh": [
@@ -657,7 +711,8 @@
       "wheat ears",
       "ripe grain",
       "soft sunshine"
-    ]
+    ],
+    "topicEn": "wheat"
   },
   "grapevine": {
     "zh": [
@@ -669,7 +724,8 @@
       "vine branches",
       "ripe grapes",
       "sunshine"
-    ]
+    ],
+    "topicEn": "grapevine"
   },
   "olive_tree": {
     "zh": [
@@ -681,7 +737,8 @@
       "olive branches",
       "green leaves",
       "soft sunshine"
-    ]
+    ],
+    "topicEn": "olive tree"
   },
   "tree": {
     "zh": [
@@ -693,7 +750,8 @@
       "riverside tree",
       "strong roots",
       "green canopy"
-    ]
+    ],
+    "topicEn": "tree by river"
   },
   "garden": {
     "zh": [
@@ -705,7 +763,8 @@
       "garden path",
       "blooming flowers",
       "morning light"
-    ]
+    ],
+    "topicEn": "garden"
   },
   "flowers": {
     "zh": [
@@ -717,7 +776,8 @@
       "colourful blooms",
       "soft sunshine",
       "fresh mood"
-    ]
+    ],
+    "topicEn": "flowers"
   },
   "lily": {
     "zh": [
@@ -729,7 +789,8 @@
       "white petals",
       "valley",
       "gentle dawn"
-    ]
+    ],
+    "topicEn": "lily"
   },
   "pottery": {
     "zh": [
@@ -741,7 +802,8 @@
       "potter hands",
       "clay vessel",
       "warm light"
-    ]
+    ],
+    "topicEn": "pottery"
   },
   "dew": {
     "zh": [
@@ -753,7 +815,8 @@
       "dewdrops",
       "fresh leaves",
       "morning light"
-    ]
+    ],
+    "topicEn": "dew"
   },
   "river": {
     "zh": [
@@ -765,7 +828,8 @@
       "wide river",
       "gentle ripples",
       "distant hills"
-    ]
+    ],
+    "topicEn": "river"
   },
   "desert": {
     "zh": [
@@ -777,7 +841,8 @@
       "golden dunes",
       "wilderness path",
       "open sky"
-    ]
+    ],
+    "topicEn": "wilderness"
   },
   "sea_parting": {
     "zh": [
@@ -789,7 +854,8 @@
       "parted waters",
       "dry path",
       "distant light"
-    ]
+    ],
+    "topicEn": "parting Red Sea"
   },
   "new_jerusalem": {
     "zh": [
@@ -801,7 +867,8 @@
       "golden gates",
       "radiant light",
       "hopeful mood"
-    ]
+    ],
+    "topicEn": "New Jerusalem"
   },
   "city": {
     "zh": [
@@ -813,7 +880,8 @@
       "city skyline",
       "warm homes",
       "gentle dawn"
-    ]
+    ],
+    "topicEn": "city"
   },
   "nations": {
     "zh": [
@@ -825,7 +893,8 @@
       "people of nations",
       "united silhouettes",
       "soft light"
-    ]
+    ],
+    "topicEn": "nations"
   },
   "family": {
     "zh": [
@@ -837,7 +906,8 @@
       "parent and child",
       "warm light",
       "home"
-    ]
+    ],
+    "topicEn": "family"
   },
   "embrace": {
     "zh": [
@@ -849,7 +919,8 @@
       "gentle embrace",
       "family silhouette",
       "warm light"
-    ]
+    ],
+    "topicEn": "embrace"
   },
   "helping_neighbor": {
     "zh": [
@@ -861,7 +932,8 @@
       "helping hands",
       "sharing",
       "warm light"
-    ]
+    ],
+    "topicEn": "helping hands"
   },
   "tears": {
     "zh": [
@@ -873,7 +945,8 @@
       "raindrop glass",
       "window light",
       "quiet mood"
-    ]
+    ],
+    "topicEn": "raindrops on window"
   },
   "wedding": {
     "zh": [
@@ -885,7 +958,8 @@
       "wedding rings",
       "warm banquet",
       "soft bokeh"
-    ]
+    ],
+    "topicEn": "wedding"
   },
   "angels": {
     "zh": [
@@ -897,7 +971,8 @@
       "white wings",
       "heavenly light",
       "soft clouds"
-    ]
+    ],
+    "topicEn": "angels"
   },
   "pillar_cloud_fire": {
     "zh": [
@@ -909,7 +984,8 @@
       "cloud pillar",
       "night firelight",
       "path ahead"
-    ]
+    ],
+    "topicEn": "pillar of cloud"
   },
   "lamp": {
     "zh": [
@@ -921,7 +997,8 @@
       "warm lantern",
       "dark path",
       "guiding light"
-    ]
+    ],
+    "topicEn": "lamp"
   },
   "treasure": {
     "zh": [
@@ -933,7 +1010,8 @@
       "luminous pearl",
       "treasure",
       "gentle glow"
-    ]
+    ],
+    "topicEn": "pearl"
   },
   "kneeling_prayer": {
     "zh": [
@@ -945,7 +1023,8 @@
       "kneeling silhouette",
       "praying hands",
       "soft dawn"
-    ]
+    ],
+    "topicEn": "kneeling prayer"
   },
   "bread_provision": {
     "zh": [
@@ -957,6 +1036,7 @@
       "fresh bread",
       "wooden table",
       "warm morning light"
-    ]
+    ],
+    "topicEn": "bread"
   }
 }

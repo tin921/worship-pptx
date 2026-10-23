@@ -112,10 +112,13 @@ static class FormattingTests
                 check(string.Concat(wrapped)==text && wrapped.All(l=>SlideLayout.Measure(l,96,font.Name,true)<=SlideLayout.TextWidth),"Bold Chinese wrapping overflow");
             }
         });
-        test("Image search adds background intent, wide shape and a higher-than-720p pixel filter",()=> {
-            var uri=ImageSearchLink.Create("屈膝禱告、柔和光線、雙手合十、寧靜"); var decoded=Uri.UnescapeDataString(uri.Query);
-            check(decoded.Contains("(\"屈膝禱告\" OR \"柔和光線\" OR \"雙手合十\" OR \"寧靜\") 背景") && decoded.Contains("imgsz=2mp") && decoded.Contains("imgar=w") && !decoded.Contains("1280x720"),"Search terms/filters missing");
-            check(Uri.UnescapeDataString(ImageSearchLink.Create("prayer, soft light OR prayer").Query).Contains("(\"prayer\" OR \"soft light\") background"),"English phrases split or duplicate terms remain");
+        test("Image search requires Christian scope and subject with bilingual OR alternatives",()=> {
+            var uri=ImageSearchLink.Create("屈膝禱告 / kneeling prayer、柔和光線 / soft light、雙手合十 / praying hands、寧靜 / peaceful"); var decoded=Uri.UnescapeDataString(uri.Query);
+            check(decoded.Contains("(Christian OR Bible OR 基督教 OR 聖經 OR 圣经) (\"屈膝禱告\" OR \"屈膝祷告\" OR \"kneeling prayer\") ("),"Christian scope or required bilingual subject missing");
+            check(decoded.Contains("\"soft light\"") && decoded.Contains("(background OR 背景)") && decoded.Contains("imgsz=2mp") && decoded.Contains("imgar=w") && !decoded.Contains("1280x720") && !decoded.Contains("&lr=") && !decoded.Contains("&hl="),"Details, image filters or language scope incorrect");
+            check(Uri.UnescapeDataString(ImageSearchLink.Create("prayer, soft light OR prayer").Query).Contains("(\"prayer\") (\"soft light\")"),"Subject became optional or duplicate terms remain");
+            check(Uri.UnescapeDataString(ImageSearchLink.Create("prayer OR worship").Query).Contains("(\"prayer\" OR \"worship\")"),"Explicit subject alternatives lost");
+            check(!Uri.UnescapeDataString(ImageSearchLink.Create("crown").Query).Contains("()"),"Single subject produced empty modifier group");
         });
     }
 }

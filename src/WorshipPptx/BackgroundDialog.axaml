@@ -3,10 +3,10 @@
   <StackPanel Margin="0,0,0,16"><TextBlock Text="{local:Tr '為詩歌選一張背景'}" FontSize="24" FontWeight="SemiBold"/><TextBlock Text="{local:Tr '開啟時以歌名及歌詞配對主題；可修改關鍵字，再開啟 Google 圖片搜尋。'}" Classes="caption" Margin="0,7,0,0"/></StackPanel>
   <Grid Grid.Row="1" ColumnDefinitions="*,24,300">
    <Grid RowDefinitions="Auto,Auto,*,Auto">
-    <Grid ColumnDefinitions="*,10,Auto"><TextBox x:Name="SearchText" PlaceholderText="{local:Tr '圖片關鍵字 · 配對後自動填入，可自行修改'}" MaxLength="300" TextChanged="Keywords_Changed"/><Button x:Name="SearchButton" Grid.Column="2" Content="{local:Tr '重新配對'}" Click="Search_Click" Classes="primary"/></Grid>
+    <Grid ColumnDefinitions="*,10,Auto"><TextBox x:Name="SearchText" PlaceholderText="{local:Tr '主題 / English、關鍵字 / English · 可自行修改'}" MaxLength="500" MinHeight="70" MaxHeight="110" TextWrapping="Wrap" AcceptsReturn="True" TextChanged="Keywords_Changed" ToolTip.Tip="{local:Tr '第一組是主題；／或 OR 連接同義詞，頓號分隔其他視覺關鍵字'}"/><Button x:Name="SearchButton" Grid.Column="2" Content="{local:Tr '重新配對'}" Click="Search_Click" Classes="primary" VerticalAlignment="Top"/></Grid>
     <Grid Grid.Row="1" ColumnDefinitions="*,12,*" Margin="0,12,0,12">
      <ComboBox x:Name="CollectionFilter" SelectedIndex="0" SelectionChanged="Filter_Changed" HorizontalAlignment="Stretch"><ComboBoxItem Content="{local:Tr '全部素材'}"/><ComboBoxItem Content="{local:Tr '60 個核心主題'}"/><ComboBoxItem Content="{local:Tr '20 個延伸主題'}"/><ComboBoxItem Content="{local:Tr '通用 · 日光'}"/><ComboBoxItem Content="{local:Tr '通用 · 夜色'}"/><ComboBoxItem Content="{local:Tr '最初示範素材'}"/></ComboBox>
-     <ComboBox x:Name="StyleFilter" Grid.Column="2" SelectedIndex="0" SelectionChanged="Filter_Changed" HorizontalAlignment="Stretch"><ComboBoxItem Content="{local:Tr '全部風格'}"/><ComboBoxItem Content="{local:Tr '攝影'}"/><ComboBoxItem Content="{local:Tr '插畫'}"/><ComboBoxItem Content="{local:Tr '抽象'}"/></ComboBox>
+     <ComboBox x:Name="StyleFilter" Grid.Column="2" SelectedIndex="0" SelectionChanged="Filter_Changed" HorizontalAlignment="Stretch"><ComboBoxItem Content="{local:Tr '全部風格'}"/><ComboBoxItem Content="{local:Tr '攝影'}"/><ComboBoxItem Content="{local:Tr '插畫'}"/><ComboBoxItem Content="{local:Tr '抽象'}"/><ComboBoxItem Content="{local:Tr '柔光水彩'}"/><ComboBoxItem Content="{local:Tr '立體象徵'}"/></ComboBox>
     </Grid>
     <ScrollViewer x:Name="GalleryScroll" Grid.Row="2" HorizontalScrollBarVisibility="Disabled"><WrapPanel x:Name="Gallery" Orientation="Horizontal"/></ScrollViewer>
     <Border x:Name="MatchingStatus" Grid.Row="2" IsVisible="False" Background="#F4FFFFFF" CornerRadius="10" Padding="24">
@@ -22,7 +22,7 @@
    <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Disabled"><StackPanel Spacing="10">
     <TextBlock x:Name="MatchedTheme" Text="{local:Tr '正在準備圖片關鍵字…'}" FontWeight="SemiBold" TextWrapping="Wrap"/>
     <HyperlinkButton x:Name="GoogleImageLink" Content="{local:Tr 'Google 圖片搜尋 ↗'}" Classes="link" IsEnabled="False" HorizontalAlignment="Left" ToolTip.Tip="{local:Tr '以目前關鍵字在預設瀏覽器搜尋大型橫向圖片'}"/>
-    <TextBlock Text="{local:Tr '以任一關鍵字（OR）搜尋橫向高清背景，建議 720p 或以上。找到圖片後，可貼上、拖放或輸入圖片網址。'}" Classes="caption"/>
+    <TextBlock Text="{local:Tr '搜尋基督教／聖經背景，保留主題，以中英文同義詞（OR）配對。偏好大型橫向圖片；下載後請確認達 1280 × 720。'}" Classes="caption" TextWrapping="Wrap"/>
     <Border Height="169" Background="#E7EEE3" CornerRadius="8" ClipToBounds="True"><Image x:Name="ImagePreview" Stretch="UniformToFill"/></Border>
     <TextBlock x:Name="SelectedTitle" Text="{local:Tr '目前背景'}" FontWeight="SemiBold" TextWrapping="Wrap"/>
     <TextBlock Text="{local:Tr '或使用自己的圖片'}" FontSize="17" Margin="0,14,0,0"/>

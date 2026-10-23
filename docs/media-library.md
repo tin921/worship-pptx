@@ -1,10 +1,11 @@
 # Built-in background library
 
-The desktop library contains 270 choices, all at 1280 × 720:
+The desktop library contains 272 choices, all at 1280 × 720:
 
 - 80 researched themes (60 core, 20 optional), each with one AI-generated photograph-style image, one painted illustration and one abstract image: 240 still images.
 - 10 original procedural graphics, each in daylight and night lighting: 20 still images. Rain has stronger, larger visible drops and ripples.
 - The original five-song pilot, two choices per song: 10 still images, resized to 720p for the application. Historical pilot files outside the app library are unchanged.
+- Two additional style pilots: a soft watercolour prayer scene and a sculpted gold crown. The new style filters currently contain one sample each; see [style review and prompts](search-and-style-review.md).
 
 `assets/media/catalog.json` is the app manifest. Files live under `themes/`, `generic/` and `legacy/`. Installed builds preserve these folders under `Media/`. No cloud storage, image-search API, website scraping or image download is needed to browse or search this library.
 
@@ -16,7 +17,7 @@ Users select one of 64 colours from an 8×8 swatch palette. Font, size, bold, co
 
 PowerPoint embeds each selected image and retains editable native text and bundled font embedding. No video relationships or animation timelines are written. No video player, FFmpeg or WebView is required.
 
-The camera-placement illustration is a separate bundled UI asset, `assets/ui/worship-leader-guitar.png`, edited with the built-in image-generation tool from the user's cartoon-stage reference. The leader plays an acoustic guitar and sings into a stand microphone on a bright white stage, wearing a visible gold cross necklace. There is no podium or wall cross. The prompt and provenance are saved alongside it. This preview artwork is embedded in the application, is not part of the 270-image background library, and never enters exported PowerPoint slides. The earlier warm-stage artwork is retained in the source folder but is no longer bundled.
+The camera-placement illustration is a separate bundled UI asset, `assets/ui/worship-leader-guitar.png`, edited with the built-in image-generation tool from the user's cartoon-stage reference. The leader plays an acoustic guitar and sings into a stand microphone on a bright white stage, wearing a visible gold cross necklace. There is no podium or wall cross. The prompt and provenance are saved alongside it. This preview artwork is embedded in the application, is not part of the 272-image background library, and never enters exported PowerPoint slides. The earlier warm-stage artwork is retained in the source folder but is no longer bundled.
 
 Package/schema checks are automated. Native PowerPoint playback and Mac rendering still require review on those applications/devices; neither is installed on the Windows development host.
 
@@ -26,15 +27,15 @@ Windows and Apple Silicon use ONNX Runtime 1.31.0. Intel Mac uses the matching m
 
 Opening **Edit Background** invokes `MediaSearch.MatchAsync` with the current song title and lyrics. A blank song does not trigger inference. The first match initializes the model on a worker thread; later matches reuse it. The dialog shows an extracting-themes-and-keywords overlay immediately. Model initialization uses an indeterminate bar; chunk encoding, theme ranking and keyword preparation report a percentage of completed work units, not an elapsed-time estimate. App startup, typing, switching songs and filtering metadata do not invoke it. Lyrics are never sent to an inference service or logged.
 
-The highest-ranked theme supplies its label plus three curated visual terms from `assets/media/search-terms.json`. Original lyrics determine whether to use Traditional Chinese, Simplified Chinese or English. Section tags are ignored; title language is the fallback for empty lyrics. Mixed lyrics use the predominant Chinese/English script, with Traditional Chinese as the ambiguous Chinese default. This is local script detection, not translation by the embedding model.
+The highest-ranked theme supplies its label plus three curated visual terms from `assets/media/search-terms.json`. Each group pairs Chinese with English, using short curated English subjects for the 80 themes. Original lyrics determine which language appears first and which Chinese script to use; the app's selected script also applies to the displayed field. Section tags are ignored; title language is the fallback for empty lyrics. This is local script detection and curated vocabulary, not keyword generation or translation by the embedding model.
 
-The Google Images link opens the default browser only when clicked. It groups the editable theme/terms as quoted phrases with `OR`, followed by background intent, with wide-aspect and greater-than-2MP filters. Commas, Chinese list separators, semicolons, newlines and explicit OR delimit phrases. The literal resolution is not a required search word. [Google Advanced Image Search](https://www.google.com/advanced_image_search?hl=en) provides 2MP but no exact 720p-minimum option; this exceeds 720p in pixel count, not a guarantee of each dimension. Lyrics are not sent to Google. Users import chosen images through file, URL, drop or paste; no image-search API is used.
+The Google Images link opens the default browser only when clicked. It requires Christian/Bible context, the first subject group and background intent. Chinese/English equivalents within each group use `OR`; the remaining three visual details form a separate OR group. Generic light or mood terms cannot replace the subject. Commas, Chinese list separators, semicolons and newlines separate groups; slash or explicit OR separates alternatives. Both Chinese scripts are included, with no result-language restriction. Wide-aspect and 2MP filters are requested, but Google controls their behaviour and pixel count does not guarantee each dimension. The literal resolution is not a required search word. [Google Advanced Image Search](https://www.google.com/advanced_image_search?hl=en) documents OR, size and aspect-ratio controls. Lyrics are not sent to Google. Users import chosen images through file, URL, drop or paste; no image-search API is used.
 
 The model is `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`, pinned to revision `e8f8c211226b894fcb81acc59f3b34ba3efd5f42`. The quantized ONNX weights occupy 118,453,870 bytes; the SentencePiece tokenizer is approximately 5 MB. `scripts/prepare-model.ps1` downloads and SHA-256-verifies build inputs. Installers bundle them for offline runtime use; weights are excluded from ordinary Git because they exceed GitHub's per-file limit.
 
 Matching normalizes Traditional Chinese characters to Simplified Chinese using an OpenCC-derived character table, removes section tags and repeated lines, and encodes chunks of at most 126 content tokens. This is character normalization, not full phrase-aware translation. The XLM-R token IDs and pooled vectors are tested against Hugging Face tokenizer/ONNX fixtures. Mean-pooled, normalized embeddings have 384 dimensions.
 
-The song title contributes 15% and lyrics 85% to the document representation. Theme ranking combines document/chunk similarity, explicit visual cues and a title cue bonus. Optional rare themes need an explicit cue. A diversity penalty selects four themes, displaying their three media styles. The 80 theme vectors are computed at build time; the model does not generate new pictures or claim to understand every song perfectly. Users choose the final background.
+The song title contributes 15% and lyrics 85% to the document representation. Theme ranking combines document/chunk similarity, explicit visual cues and a title cue bonus. Optional rare themes need an explicit cue. A diversity penalty selects four themes, displaying their available media styles. The 80 theme vectors are computed at build time; the model does not generate new pictures or claim to understand every song perfectly. Users choose the final background.
 
 ## Reproduction and provenance
 

@@ -51,7 +51,7 @@ namespace WorshipPptx
                 3=>all.Where(a=>a.Style=="generic" && a.Lighting=="daylight"),
                 4=>all.Where(a=>a.Style=="generic" && a.Lighting=="night"),
                 5=>all.Where(a=>a.Style=="legacy"), _=>all };
-            if(StyleFilter.SelectedIndex>0) { var style=new[]{"","photo","illustration","abstract"}[StyleFilter.SelectedIndex]; all=all.Where(a=>a.Style==style); }
+            if(StyleFilter.SelectedIndex>0) { var style=new[]{"","photo","illustration","abstract","watercolour","sculpted"}[StyleFilter.SelectedIndex]; all=all.Where(a=>a.Style==style); }
             var list=all.ToList(); var pages=Math.Max(1,(list.Count+PageSize-1)/PageSize); page=Math.Clamp(page,0,pages-1);
             foreach(var asset in list.Skip(page*PageSize).Take(PageSize))
             {
@@ -99,8 +99,9 @@ namespace WorshipPptx
         {
             if(GoogleImageLink==null) return;
             var keywords=SearchText.Text?.Trim();
-            GoogleImageLink.NavigateUri=string.IsNullOrEmpty(keywords) ? null : ImageSearchLink.Create(keywords);
-            GoogleImageLink.IsEnabled=!busy && !string.IsNullOrEmpty(keywords);
+            try { GoogleImageLink.NavigateUri=string.IsNullOrEmpty(keywords) ? null : ImageSearchLink.Create(keywords); }
+            catch(ArgumentException) { GoogleImageLink.NavigateUri=null; }
+            GoogleImageLink.IsEnabled=!busy && GoogleImageLink.NavigateUri!=null;
         }
         private void Filter_Changed(object sender,SelectionChangedEventArgs e)
         {
