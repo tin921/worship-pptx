@@ -1,4 +1,8 @@
 <Window Icon="/Assets/app.ico" x:Class="WorshipPptx.MainWindow" xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:WorshipPptx" Title="{local:Tr '敬拜工坊 · Worship PPTX'}" Width="1440" Height="940" MinWidth="1120" MinHeight="760" WindowStartupLocation="CenterScreen">
+ <Window.Styles>
+  <!-- Dismissing a font/size list must also deliver the click to its target. -->
+  <Style Selector="ComboBox /template/ Popup"><Setter Property="OverlayDismissEventPassThrough" Value="True"/></Style>
+ </Window.Styles>
  <Grid>
   <Grid.ColumnDefinitions><ColumnDefinition Width="210"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
   <Border Background="#EBEFE7" BorderBrush="#DDE4D9" BorderThickness="0,0,1,0">
@@ -109,7 +113,7 @@
          <ToggleButton x:Name="AutoFontSizeButton" Classes="alignment" Width="56" Height="40" CornerRadius="6" Content="{local:Tr '自動'}" Padding="4,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="AutoFontSize_Click" ToolTip.Tip="{local:Tr '按最長歌詞段落統一字號；持續自動調整，直至選擇固定字號'}" AutomationProperties.Name="{local:Tr '自動字號'}"/>
          <ComboBox x:Name="FontSizePicker" Grid.Column="1" Width="64" MinWidth="0" Height="40" FontSize="15" Padding="5,7" SelectionChanged="Typography_Changed" ToolTip.Tip="{local:Tr '本分頁字號（pt）'}" AutomationProperties.Name="{local:Tr '投影片字號（pt）'}"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding}"/></DataTemplate></ComboBox.ItemTemplate></ComboBox>
          <Button x:Name="TextColorPicker" Grid.Row="1" Classes="palette" Width="56" Height="40" Padding="7" ToolTip.Tip="{local:Tr '文字顏色'}" AutomationProperties.Name="{local:Tr '文字顏色'}">
-          <Button.Flyout><Flyout Placement="Bottom"><UniformGrid x:Name="ColorSwatches" Columns="8" Rows="8" Margin="2"/></Flyout></Button.Flyout>
+          <Button.Flyout><Flyout Placement="Bottom" OverlayDismissEventPassThrough="True"><UniformGrid x:Name="ColorSwatches" Columns="8" Rows="8" Margin="2"/></Flyout></Button.Flyout>
           <Grid ColumnDefinitions="18,4,8"><Border x:Name="SelectedColorSwatch" Width="18" Height="18" CornerRadius="2" BorderBrush="#94A197" BorderThickness="1"/><PathIcon Grid.Column="2" Width="8" Height="6" Data="M0,0 L5,5 L10,0"/></Grid>
          </Button>
          <ToggleButton x:Name="BoldToggle" Grid.Row="1" Grid.Column="1" Classes="alignment" Width="64" CornerRadius="6" Content="B" FontWeight="Bold" FontSize="18" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="FormatOption_Click" ToolTip.Tip="{local:Tr '粗體'}" AutomationProperties.Name="{local:Tr '粗體'}"/>
@@ -142,14 +146,14 @@
    <Border Grid.Row="2" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="22,13">
     <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
      <TextBlock x:Name="StatusText" Text="{local:Tr '已儲存'}" FontSize="13" VerticalAlignment="Center" Margin="0,0,12,0"/>
-     <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="10">
+     <StackPanel x:Name="ActionButtons" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="10">
       <StackPanel.Styles>
        <Style Selector="Button"><Setter Property="Width" Value="84"/><Setter Property="Height" Value="40"/><Setter Property="Padding" Value="0"/><Setter Property="HorizontalContentAlignment" Value="Center"/><Setter Property="VerticalContentAlignment" Value="Center"/><Setter Property="Background" Value="#A7BBAC"/><Setter Property="BorderBrush" Value="#A7BBAC"/><Setter Property="Foreground" Value="#20362B"/></Style>
        <Style Selector="Button:pointerover /template/ ContentPresenter"><Setter Property="Background" Value="#98AE9E"/><Setter Property="BorderBrush" Value="#98AE9E"/><Setter Property="Foreground" Value="#20362B"/></Style>
        <Style Selector="Button:pressed /template/ ContentPresenter"><Setter Property="Background" Value="#8BA592"/><Setter Property="BorderBrush" Value="#8BA592"/><Setter Property="Foreground" Value="#20362B"/></Style>
       </StackPanel.Styles>
-      <Button Content="{local:Tr '預覽'}" Click="Preview_Click" ToolTip.Tip="{local:Tr '預覽整個崇拜'}" AutomationProperties.Name="{local:Tr '預覽整個崇拜'}"/>
-      <Button Content="{local:Tr '製作'}" Click="Export_Click" ToolTip.Tip="{local:Tr '製作 PowerPoint'}" AutomationProperties.Name="{local:Tr '製作 PowerPoint'}"/>
+      <Button x:Name="PreviewButton" Content="{local:Tr '預覽'}" Click="Preview_Click" ToolTip.Tip="{local:Tr '預覽整個崇拜'}" AutomationProperties.Name="{local:Tr '預覽整個崇拜'}"/>
+      <Button x:Name="ExportButton" Content="{local:Tr '製作'}" Click="Export_Click" ToolTip.Tip="{local:Tr '製作 PowerPoint'}" AutomationProperties.Name="{local:Tr '製作 PowerPoint'}"/>
       <Button x:Name="UploadButton" Content="{local:Tr '上傳'}" Click="Upload_Click" ToolTip.Tip="{local:Tr '上傳 Google Drive'}" AutomationProperties.Name="{local:Tr '上傳 Google Drive'}"/>
      </StackPanel>
     </Grid>

@@ -404,31 +404,51 @@ namespace WorshipPptx
             selected.Formatting.Bold=BoldToggle.IsChecked==true;
             SaveDraft(); RefreshPreview();
         }
-        private List<SlideData> ExportSlides() { Capture(); SaveDraft(); return SlideLayout.Build(plan,settings); }
+        private string actionReadyStatus,actionPreparingStatus;
+        private bool BeginPresentationAction(string message)
+        {
+            if(exporting) return false;
+            exporting=true; ActionButtons.IsEnabled=false; LanguagePanel.IsEnabled=false;
+            debounce.Stop(); SaveDraft(); actionReadyStatus=StatusText.Text;
+            actionPreparingStatus=ChineseText.Ui(message); StatusText.Text=actionPreparingStatus;
+            return true;
+        }
+        private async Task<List<SlideData>> PrepareSlidesAsync()
+        {
+            // Let the pressed/busy state paint before measuring the entire program.
+            // Font measurement stays on the UI thread; pending preview work is stopped.
+            await Dispatcher.UIThread.InvokeAsync(()=>{},DispatcherPriority.Background);
+            Capture(); return SlideLayout.Build(plan,settings);
+        }
+        private void EndPresentationAction()
+        {
+            exporting=false; ActionButtons.IsEnabled=true; LanguagePanel.IsEnabled=true;
+            if(StatusText.Text==actionPreparingStatus) StatusText.Text=actionReadyStatus;
+        }
         private async void Preview_Click(object sender,RoutedEventArgs e)
         {
-            try { var all=ExportSlides(); await windowLayouts.Remember(new PreviewWindow(all),"presentation",this).ShowDialog(this); }
+            if(!BeginPresentationAction("正在準備預覽…")) return;
+            try { var all=await PrepareSlidesAsync(); await windowLayouts.Remember(new PreviewWindow(all),"presentation",this).ShowDialog(this); }
             catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("請檢查內容")); }
+            finally { EndPresentationAction(); }
         }
         private string FileName() => PresentationFileName.Create(plan,DateTime.Today,settings.Language);
         private async void Upload_Click(object sender,RoutedEventArgs e)
         {
-            if(exporting) return;
-            exporting=true; LanguagePanel.IsEnabled=false;
+            if(!BeginPresentationAction("正在準備上傳視窗…")) return;
             try {
-                var all=ExportSlides();
+                var all=await PrepareSlidesAsync();
                 var name=DriveFileName.Create(plan,Environment.MachineName,DateTime.Today,settings.Language);
                 await windowLayouts.Remember(new DriveUploadWindow(all,plan.Title,name,store.Root),"upload",this).ShowDialog(this);
             } catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("請檢查內容")); }
-            finally { settings=store.LoadSettings(); exporting=false; LanguagePanel.IsEnabled=true; }
+            finally { settings=store.LoadSettings(); EndPresentationAction(); }
         }
         private async void Export_Click(object sender,RoutedEventArgs e)
         {
-            if(exporting) return;
-            exporting=true; LanguagePanel.IsEnabled=false; var button=sender as Button; if(button!=null) button.IsEnabled=false;
+            if(!BeginPresentationAction("正在準備 PowerPoint…")) return;
             try
             {
-                var all=ExportSlides(); var title=plan.Title;
+                var all=await PrepareSlidesAsync(); var title=plan.Title;
                 var folder=LocalPresentationFiles.NormalizeFolder(settings.PptxSaveFolder); Directory.CreateDirectory(folder);
                 var start=await StorageProvider.TryGetFolderFromPathAsync(folder);
                 var file=await StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions { Title=ChineseText.Ui("製作 PowerPoint"), SuggestedStartLocation=start, SuggestedFileName=FileName(), DefaultExtension="pptx", ShowOverwritePrompt=true, FileTypeChoices=new[]{new FilePickerFileType(ChineseText.Ui("PowerPoint 簡報")) { Patterns=new[]{"*.pptx"} }} });
@@ -445,7 +465,7 @@ namespace WorshipPptx
                 StatusText.Text=ChineseText.Ui("已製作 ")+all.Count+ChineseText.Ui(" 張投影片：")+file.Name; RefreshHistory();
             }
             catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("製作失敗")); }
-            finally { exporting=false; LanguagePanel.IsEnabled=true; if(button!=null) button.IsEnabled=true; }
+            finally { EndPresentationAction(); }
         }
     }
 }

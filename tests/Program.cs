@@ -36,6 +36,7 @@ namespace WorshipPptx.Tests
             root=Path.GetFullPath(args.Length>0 ? args[0] : Path.Combine(Path.GetTempPath(),"WorshipPptx-tests-"+Guid.NewGuid().ToString("N")));
             Directory.CreateDirectory(root);
             if(args.Contains("--ui-review")) {UiReview.Run(root); return 0;}
+            if(args.Contains("--actions-only")) {ActionButtonTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed.");return failed==0?0:1;}
             if(args.Contains("--fonts-only")) {FontTests.Run(Test,Check,ValidateEmbeddedFont,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed.");return failed==0?0:1;}
             if(args.Contains("--drive-only")) {DriveUploadTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed.");return failed==0?0:1;}
             if(args.Contains("--editor-only")) { EditorInteractionTests.Run(Test,Check,root); WindowLayoutTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
@@ -43,6 +44,7 @@ namespace WorshipPptx.Tests
             if(args.Contains("--language-only")) { LanguageTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             if(args.Contains("--composition-only")) { CompositionTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             var settings=new UserSettings { ChurchLicense="12345" };
+            ActionButtonTests.Run(Test,Check,root);
             var demo=Demo.Create();
             Test("New services use the coming Sunday across week and year boundaries",()=> {
                 Check(Demo.ComingSunday(new DateTime(2026,10,21))==new DateTime(2026,10,25),"Midweek date is not Sunday");
