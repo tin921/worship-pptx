@@ -1,0 +1,13 @@
+{
+  "created_on": "2026-10-24",
+  "method": "Built-in image_gen",
+  "purpose": "Three sidebar header previews for user selection; not applied to the app.",
+  "reference_images": ["assets/branding/app-icon-master.png", "docs/tutorial/review-0.93.33/rendered/16-lyric-size.png"],
+  "prompt_file": "prompts.txt",
+  "variants": [
+    {"file": "01-soft-gold.png", "source": "exec-0ea31ee3-6d2b-4026-8d5e-669f38e2f9bd.png", "description": "Soft warm beam"},
+    {"file": "02-projection-cone.png", "source": "exec-6db53e47-138a-48af-88fe-0da687dadf71.png", "description": "Defined projection cone"},
+    {"file": "03-subtle-ivory.png", "source": "exec-4bb64497-e383-4815-abf3-2b34abb9f483.png", "description": "Subtle ivory glow"}
+  ],
+  "implementation_note": "Concept images only. The final app should retain live localized app-name text and a dynamic version number. Windows taskbar and title-bar icons remain unchanged."
+}

@@ -24,6 +24,15 @@ namespace WorshipPptx
             if (File.Exists(path)) File.Replace(temp, path, path + ".bak"); else File.Move(temp, path);
         }
         public void Save(ServicePlan plan) { plan.Updated = DateTime.Now; Write(Path.Combine(History, plan.Id + ".json"), plan); }
+        public void Delete(ServicePlan plan)
+        {
+            if(plan==null || !Guid.TryParse(plan.Id,out _)) throw new ArgumentException("Invalid service identifier.",nameof(plan));
+            var path=Path.Combine(History,plan.Id+".json");
+            // Remove recovery copies first so an interrupted deletion keeps the active record intact.
+            File.Delete(path+".bak");
+            File.Delete(path+".tmp");
+            File.Delete(path);
+        }
         public List<ServicePlan> LoadHistory()
         {
             var list = new List<ServicePlan>();

@@ -27,6 +27,7 @@ namespace WorshipPptx
         private bool loading;
         private bool dirty;
         private bool exporting;
+        private bool removingService;
         private readonly DispatcherTimer debounce = new DispatcherTimer { Interval=TimeSpan.FromMilliseconds(650) };
         private List<SlideData> slides = new List<SlideData>();
         private int page;
@@ -64,7 +65,12 @@ namespace WorshipPptx
         private void LoadPlan()
         {
             loading=true;
-            foreach(var item in plan.Items) { item.Preview=new PreviewLayout(); item.Formatting ??= new(); item.Formatting.FullSlide=false; }
+            foreach(var item in plan.Items) {
+                item.Formatting ??= new();
+                // Keep the chosen presentation mode while retaining the fixed camera corner.
+                item.Preview=new PreviewLayout { IsPip=item.Preview?.IsPip ?? !item.Formatting.FullSlide };
+                item.Formatting.FullSlide=!item.Preview.IsPip;
+            }
             SongTabs.Items.Clear(); foreach(var item in plan.Items) SongTabs.Items.Add(new TabItem { Header=item.Title, Tag=item });
             addTab=new TabItem { Header="＋", Classes={"add-tab"} };
             AutomationProperties.SetName(addTab,ChineseText.Ui("新增詩歌分頁")); ToolTip.SetTip(addTab,ChineseText.Ui("新增詩歌")); SongTabs.Items.Add(addTab);
@@ -104,6 +110,7 @@ namespace WorshipPptx
             SyncFontSizePicker();
             BoldToggle.IsChecked=selected.Formatting.Bold;
             selected.Preview ??= PreviewLayout.FromLegacy(selected.Formatting.FullSlide);
+            PipToggle.IsChecked=selected.Preview.IsPip;
             UpdateAlignmentButtons(); UpdatePositionButtons(); UpdateColorSwatch(); SyncBackgroundControls();
         }
         private void UpdateContentMode()
@@ -112,7 +119,7 @@ namespace WorshipPptx
             var announcement=SlideLayout.HasAnnouncementTags(Lyrics.Text);
             SongTitle.PlaceholderText=song ? ChineseText.Ui("詩歌名稱") : ChineseText.Ui("經文／公告名稱");
             Lyrics.PlaceholderText=ChineseText.Ui("歌詞 [v1]、[c] · 公告 [1]、[2] · 經文直接輸入");
-            OrderPanel.IsVisible=song; SongId.IsEnabled=song;
+            OrderPanel.IsVisible=true; SongId.IsEnabled=song;
             LyricsHint.Text=song ? ChineseText.Ui(selected.Formatting.AutoFontSize ? "[v1]、[c] 每段一頁，自動調整字號；Ctrl+Tab 插入縮排。" : "[v1]、[c] 標記段落；固定字號，自動分頁；Ctrl+Tab 插入縮排。") : announcement ? ChineseText.Ui("[1]、[2] 每項一頁；字號為上限，長文自動縮小；Ctrl+Tab 插入縮排。") : ChineseText.Ui("經文自動分頁；公告用 [1]、[2] 每項一頁。保留空行及縮排；Ctrl+Tab 插入縮排。");
             ToolTip.SetTip(FontSizePicker,song || announcement ? ChineseText.Ui("最大字號（pt）；每段文字自動縮小至一頁") : ChineseText.Ui("本分頁字號（pt）"));
         }
@@ -236,6 +243,25 @@ namespace WorshipPptx
             SaveDraft(); if(dirty) return;
             plan=Demo.Create(); LoadPlan(); SaveDraft(); RefreshHistory(); RefreshPreview();
         }
+        private async void RemoveService_Click(object sender,RoutedEventArgs e)
+        {
+            if(loading || exporting || removingService || sender is not Button button || !ReferenceEquals(button.DataContext,plan)) return;
+            removingService=true;
+            try {
+                debounce.Stop(); SaveDraft(); if(dirty) return;
+                var removed=plan;
+                if(!await Dialogs.Show(this,ChineseText.Ui("移除崇拜「")+removed.Title+"」（"+removed.Date.ToString("yyyy-MM-dd")+"）？\n"+ChineseText.Ui("這會移除此崇拜安排及其中的所有項目。"),ChineseText.Ui("移除崇拜"),true)) return;
+                store.Delete(removed);
+                var remaining=store.LoadHistory();
+                plan=remaining.Where(p=>p.Date.Date>=DateTime.Today).OrderBy(p=>p.Date.Date).ThenByDescending(p=>p.Updated).FirstOrDefault()
+                    ?? remaining.OrderByDescending(p=>p.Date.Date).ThenByDescending(p=>p.Updated).FirstOrDefault()
+                    ?? new ServicePlan { Items=new List<ServiceItem> { new ServiceItem { Title=ChineseText.Ui("未命名"),Lyrics="",Order="" } } };
+                LoadPlan(); SaveDraft(); RefreshHistory(); RefreshPreview();
+                HistoryList.ScrollIntoView(HistoryList.SelectedItem);
+            }
+            catch(Exception ex) { await Dialogs.Show(this,ChineseText.Ui("未能移除崇拜：")+ex.Message,ChineseText.Ui("移除失敗")); }
+            finally { removingService=false; }
+        }
         private void AddSong_Click(object sender,RoutedEventArgs e)
         {
             Capture(); selected=new ServiceItem(); plan.Items.Add(selected);
@@ -289,6 +315,14 @@ namespace WorshipPptx
             page=Thumbnails.SelectedIndex; ShowPage();
         }
         private void Previous_Click(object sender,RoutedEventArgs e) { if(page<=0 || slides.Count==0) return; page--; ShowPage(); }
+        private void PipToggle_Click(object sender,RoutedEventArgs e)
+        {
+            if(loading || selected==null) return;
+            selected.Preview ??= new PreviewLayout();
+            selected.Preview.IsPip=PipToggle.IsChecked==true;
+            selected.Formatting.FullSlide=!selected.Preview.IsPip;
+            SaveDraft(); RefreshPreview();
+        }
         private void Next_Click(object sender,RoutedEventArgs e) { if(page>=slides.Count-1) return; page++; ShowPage(); }
         private async void Background_Click(object sender,RoutedEventArgs e)
         {

@@ -138,7 +138,7 @@ static class ProseTests
             const string source="   宣召\n\n    經文  ";
             try {
                 var lyrics=window.FindControl<TextBox>("Lyrics"); lyrics.Text=source; Dispatcher.UIThread.RunJobs();
-                check(!window.FindControl<StackPanel>("OrderPanel").IsVisible && !window.FindControl<TextBox>("SongId").IsEnabled,"Untagged text remains in song mode");
+                check(window.FindControl<StackPanel>("OrderPanel").IsVisible && !window.FindControl<TextBox>("SongId").IsEnabled,"Reading mode must retain the order field while disabling the song identifier");
                 lyrics.Focus(); lyrics.CaretIndex=0; window.KeyPress(Key.Tab,RawInputModifiers.Control,PhysicalKey.Tab,null); window.KeyRelease(Key.Tab,RawInputModifiers.Control,PhysicalKey.Tab,null);
                 check(lyrics.IsFocused && lyrics.Text=="\t"+source,"Tab moved focus or lost text");
                 lyrics.Text="[v1]\n"+lyrics.Text; Dispatcher.UIThread.RunJobs();

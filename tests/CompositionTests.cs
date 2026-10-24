@@ -20,6 +20,32 @@ static class CompositionTests
     private static void Pump() => Dispatcher.UIThread.RunJobs();
     public static void Run(Action<string,Action> test,Action<bool,string> check,string root)
     {
+        test("PIP toggle changes the slide layout and persists independently per item",()=> {
+            var store=new LocalStore(Path.Combine(root,"pip-toggle-"+Guid.NewGuid().ToString("N")));
+            var plan=Demo.Create(); store.Save(plan);
+            var window=new MainWindow(store); window.Show(); Pump();
+            try {
+                var tabs=window.FindControl<TabControl>("SongTabs");
+                var toggle=window.FindControl<ToggleButton>("PipToggle");
+                var item=(ServiceItem)((TabItem)tabs.SelectedItem).Tag;
+                toggle.IsChecked=false; toggle.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
+                check(!item.Preview.IsPip && item.Formatting.FullSlide,"In-person mode was not applied");
+                check(SlideLayout.BuildItem(item,new UserSettings()).All(s=>s.FullSlide),"In-person export still reserves the camera area");
+                check(!window.FindControl<Viewbox>("SlideHost").GetVisualDescendants().OfType<Border>().Single(b=>b.Name=="PipFrame").IsVisible,"Camera remains visible with PIP off");
+                tabs.SelectedIndex=2; Pump();
+                check(toggle.IsChecked==true,"Another song inherited the first song's mode");
+                tabs.SelectedIndex=1; Pump();
+                check(toggle.IsChecked==false,"Mode was lost when changing tabs");
+                toggle.IsChecked=true; toggle.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
+                check(SlideLayout.BuildItem(item,new UserSettings()).All(s=>!s.FullSlide),"Streaming mode did not restore the reserved camera area");
+                toggle.IsChecked=false; toggle.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
+                tabs.SelectedIndex=0; Pump();
+                check(window.FindControl<StackPanel>("OrderPanel").IsVisible && string.IsNullOrEmpty(window.FindControl<TextBox>("SongOrder").Text),"Reading order field is not visible and empty");
+            } finally { window.Close(); }
+            var reopened=new MainWindow(store); reopened.Show(); Pump();
+            try { check(reopened.FindControl<ToggleButton>("PipToggle").IsChecked==false,"PIP choice did not survive reopening"); }
+            finally { reopened.Close(); }
+        });
         test("Camera artwork follows lyric sections, including songs with no repeat order",()=> {
             var settings=new UserSettings();
             foreach(var order in new[]{"v1 c", "", "  "}) {

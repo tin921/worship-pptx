@@ -1,0 +1,24 @@
+{
+  "created_on": "2026-10-24",
+  "method": "Built-in image_gen",
+  "purpose": "Second round of sidebar header concepts for user review; not applied to app",
+  "prompt_file": "prompts.txt",
+  "variants": [
+    {
+      "file": "A-raised-text.png",
+      "source": "exec-49f7501d-028e-4560-bbcd-517496c182e5.png",
+      "description": "Raised name and version, projector below with upward beam"
+    },
+    {
+      "file": "B-compact-horizontal.png",
+      "source": "exec-8d0c2bc7-b29b-40ad-b297-4ae69c1c0f07.png",
+      "description": "Larger type in a compact horizontal layout"
+    },
+    {
+      "file": "C-large-title.png",
+      "source": "exec-e0aa3c07-fc54-4af1-b44c-4d6fc9c5531a.png",
+      "description": "Largest title with projector tucked below left"
+    }
+  ],
+  "implementation_note": "Keep live localized app-name and dynamic version text when implementing. Existing taskbar and title-bar icons are unchanged."
+}

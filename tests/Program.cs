@@ -35,6 +35,8 @@ namespace WorshipPptx.Tests
             AppBuilder.Configure<App>().UseSkia().UseHeadless(new AvaloniaHeadlessPlatformOptions { UseHeadlessDrawing=false }).SetupWithoutStarting();
             root=Path.GetFullPath(args.Length>0 ? args[0] : Path.Combine(Path.GetTempPath(),"WorshipPptx-tests-"+Guid.NewGuid().ToString("N")));
             Directory.CreateDirectory(root);
+            if(args.Contains("--history-review")) {ServiceHistoryTests.ReviewProfile(root); return 0;}
+            if(args.Contains("--history-only")) {ServiceHistoryTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0?0:1;}
             if(args.Contains("--ui-review")) {UiReview.Run(root); return 0;}
             if(args.Contains("--actions-only")) {ActionButtonTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed.");return failed==0?0:1;}
             if(args.Contains("--fonts-only")) {FontTests.Run(Test,Check,ValidateEmbeddedFont,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed.");return failed==0?0:1;}
@@ -48,6 +50,7 @@ namespace WorshipPptx.Tests
             var mediaStore=new LocalStore(Path.Combine(root,"media-cold-start"));
             MediaTests.Run(Test,Check,root,mediaStore,new ImageStore(mediaStore.Assets));
             ActionButtonTests.Run(Test,Check,root);
+            ServiceHistoryTests.Run(Test,Check,root);
             var demo=Demo.Create();
             Test("New services use the coming Sunday across week and year boundaries",()=> {
                 Check(Demo.ComingSunday(new DateTime(2026,10,21))==new DateTime(2026,10,25),"Midweek date is not Sunday");

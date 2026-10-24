@@ -198,9 +198,11 @@ static class EditorInteractionTests
                     Press(window,Key.Tab); check((name=="ServiceTitle" ? window.ActiveServiceField<TextBox>(name) : window.FindControl<TextBox>(name)).IsFocused,"Unexpected tab order at "+name);
                 }
                 var language=window.FindControl<StackPanel>("LanguagePanel"); var toggle=window.FindControl<ToggleButton>("TraditionalButton");
-                check(language.TranslatePoint(default,window).Value.X>window.Bounds.Width-230 && toggle.FontSize>=18 && toggle.VerticalContentAlignment==Avalonia.Layout.VerticalAlignment.Center && toggle.HorizontalContentAlignment==Avalonia.Layout.HorizontalAlignment.Center,"Language switch is not centered at upper right");
+                check(toggle.FontSize>=18 && toggle.VerticalContentAlignment==Avalonia.Layout.VerticalAlignment.Center && toggle.HorizontalContentAlignment==Avalonia.Layout.HorizontalAlignment.Center,"Language switch labels are not centered");
                 var settings=window.FindControl<Button>("SettingsButton");
-                check(settings.TranslatePoint(default,window).Value.X>=language.TranslatePoint(new Point(language.Bounds.Width,0),window).Value.X && settings.Content is PathIcon,"Settings is not an icon at the far right");
+                var feedback=window.FindControl<HyperlinkButton>("FeedbackButton");
+                check(settings.TranslatePoint(default,window).Value.X>=language.TranslatePoint(new Point(language.Bounds.Width,0),window).Value.X && settings.Content is PathIcon,"Settings does not follow the language switch");
+                check(feedback.TranslatePoint(default,window).Value.X>=settings.TranslatePoint(new Point(settings.Bounds.Width,0),window).Value.X && Math.Abs(feedback.TranslatePoint(new Point(feedback.Bounds.Width,0),window).Value.X-(window.Bounds.Width-20))<1 && feedback.Content is PathIcon,"Feedback is not an icon at the far right");
                 var version=window.FindControl<TextBlock>("VersionLabel");
                 check(version.Text=="v"+typeof(MainWindow).Assembly.GetName().Version.ToString(3) && version.TranslatePoint(default,window).Value.X<178 && version.TranslatePoint(default,window).Value.Y<100,"Version is not under the logo or does not match build");
                 var bold=window.FindControl<ToggleButton>("BoldToggle");

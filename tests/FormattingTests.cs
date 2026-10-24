@@ -58,7 +58,8 @@ static class FormattingTests
                 var photo=window.FindControl<Border>("BackgroundBox"); var controls=window.FindControl<StackPanel>("FormattingPanel");
                 check(Math.Abs(photo.Bounds.Width-controls.Bounds.Width)<1,"Background does not occupy the left half");
                 var heading=window.FindControl<TextBlock>("AppHeading");
-                check(Math.Abs(heading.TranslatePoint(default,window).Value.Y-tabs.TranslatePoint(default,window).Value.Y)<1,"Sidebar heading does not align with tab row");
+                var version=window.FindControl<TextBlock>("VersionLabel");
+                check(Math.Abs(heading.TranslatePoint(new Point(heading.Bounds.Width,0),window).Value.X-version.TranslatePoint(new Point(version.Bounds.Width,0),window).Value.X)<1,"Sidebar name and version are not right aligned");
                 check(!window.GetVisualDescendants().OfType<TextBlock>().Any(t=>t.Name=="FontHint" || t.Text=="✦"),"Removed font note or star still visible");
                 var order=window.FindControl<TextBox>("SongOrder"); var lyrics=window.FindControl<TextBox>("Lyrics");
                 var orderBottom=order.TranslatePoint(default,window).Value.Y+order.Bounds.Height;

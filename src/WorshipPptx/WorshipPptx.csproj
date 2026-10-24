@@ -7,7 +7,7 @@
     <ApplicationIcon>../../assets/app.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
-    <Version>0.93.33</Version>
+    <Version>0.93.36</Version>
     <AssemblyName>WorshipPptx</AssemblyName>
     <RootNamespace>WorshipPptx</RootNamespace>
     <Title>Worship PPTX</Title>
@@ -33,6 +33,7 @@
     <AvaloniaResource Include="../../assets/fonts/*.ttf" Link="Fonts/%(Filename)%(Extension)" />
     <AvaloniaResource Include="../../assets/app.ico" Link="Assets/app.ico" />
     <AvaloniaResource Include="../../assets/ui/app-icon.png" Link="Assets/app-icon.png" />
+    <AvaloniaResource Include="../../assets/ui/app-header.png" Link="Assets/app-header.png" />
     <AvaloniaResource Include="../../assets/ui/worship-leader-guitar.png" Link="Assets/worship-leader-guitar.png" />
     <AvaloniaResource Include="../../assets/ui/worship-leader-reading.png" Link="Assets/worship-leader-reading.png" />
     <Content Include="../../assets/fonts/*" Link="Fonts/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />

@@ -1,0 +1,9 @@
+{
+  "created_on": "2026-10-24",
+  "method": "Built-in image_gen",
+  "selected_concept": "header-previews-2026-10-24/round-2/A-raised-text.png",
+  "source": "exec-21b210d0-9a02-41ff-821a-9b8bc6c2c7cb.png",
+  "asset": "assets/ui/app-header.png",
+  "prompt_file": "app-header.prompt.txt",
+  "description": "Raised projector beam on the original sage-green tile extended into a rectangle. Name and version are live app text; Windows icons are unchanged."
+}
