@@ -151,9 +151,9 @@
      <TextBlock x:Name="StatusText" Text="{local:Tr '已儲存'}" FontSize="13" VerticalAlignment="Center" Margin="0,0,12,0"/>
      <StackPanel x:Name="ActionButtons" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Spacing="10">
       <StackPanel.Styles>
-       <Style Selector="Button"><Setter Property="Width" Value="84"/><Setter Property="Height" Value="40"/><Setter Property="Padding" Value="0"/><Setter Property="HorizontalContentAlignment" Value="Center"/><Setter Property="VerticalContentAlignment" Value="Center"/><Setter Property="Background" Value="#A7BBAC"/><Setter Property="BorderBrush" Value="#A7BBAC"/><Setter Property="Foreground" Value="#20362B"/></Style>
-       <Style Selector="Button:pointerover /template/ ContentPresenter"><Setter Property="Background" Value="#98AE9E"/><Setter Property="BorderBrush" Value="#98AE9E"/><Setter Property="Foreground" Value="#20362B"/></Style>
-       <Style Selector="Button:pressed /template/ ContentPresenter"><Setter Property="Background" Value="#8BA592"/><Setter Property="BorderBrush" Value="#8BA592"/><Setter Property="Foreground" Value="#20362B"/></Style>
+       <Style Selector="Button"><Setter Property="Width" Value="84"/><Setter Property="Height" Value="40"/><Setter Property="Padding" Value="0"/><Setter Property="HorizontalContentAlignment" Value="Center"/><Setter Property="VerticalContentAlignment" Value="Center"/><Setter Property="Background" Value="{StaticResource ActiveTabBackground}"/><Setter Property="BorderBrush" Value="{StaticResource ActiveTabBackground}"/><Setter Property="Foreground" Value="White"/></Style>
+       <Style Selector="Button:pointerover /template/ ContentPresenter"><Setter Property="Background" Value="#345F48"/><Setter Property="BorderBrush" Value="#345F48"/><Setter Property="Foreground" Value="White"/></Style>
+       <Style Selector="Button:pressed /template/ ContentPresenter"><Setter Property="Background" Value="#173D2B"/><Setter Property="BorderBrush" Value="#173D2B"/><Setter Property="Foreground" Value="White"/></Style>
       </StackPanel.Styles>
       <Button x:Name="PreviewButton" Content="{local:Tr '預覽'}" Click="Preview_Click" ToolTip.Tip="{local:Tr '預覽整個崇拜'}" AutomationProperties.Name="{local:Tr '預覽整個崇拜'}"/>
       <Button x:Name="ExportButton" Content="{local:Tr '製作'}" Click="Export_Click" ToolTip.Tip="{local:Tr '製作 PowerPoint'}" AutomationProperties.Name="{local:Tr '製作 PowerPoint'}"/>
