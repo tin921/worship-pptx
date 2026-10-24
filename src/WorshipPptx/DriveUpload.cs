@@ -57,7 +57,7 @@ public sealed class DriveUploadSettings
 }
 
 public sealed record UploadProgress(string Message,int? Percent=null);
-public sealed record DriveUploadResult(string FileId,string FolderUrl);
+public sealed record DriveUploadResult(string FileId,string FolderUrl,DateTimeOffset? ExpiresAt=null);
 
 // The church-owned Apps Script service authorizes Drive access. No Google identity,
 // refresh token or account password is requested or stored on the user's computer.
@@ -95,7 +95,7 @@ public sealed class DriveUploadClient
         if(state.Offset!=file.Length || string.IsNullOrWhiteSpace(state.FileId)) throw new IOException("Upload completion could not be verified.");
         CheckFolder(state.FolderUrl);
         progress?.Report(new(ChineseText.Ui("上傳完成；檔案大小及校驗碼已確認。"),100));
-        return new(state.FileId,state.FolderUrl);
+        return new(state.FileId,state.FolderUrl,state.ExpiresAt);
         } catch {
             // Best effort release of the filename lease. Never delete completed files.
             using var cleanup=new CancellationTokenSource(TimeSpan.FromSeconds(6));
@@ -117,6 +117,7 @@ public sealed class DriveUploadClient
         public long Offset { get; set; }
         public string FileId { get; set; }
         public string FolderUrl { get; set; }
+        public DateTimeOffset? ExpiresAt { get; set; }
         public string[] Logs { get; set; }
         public string Error { get; set; }
         public string Stack { get; set; }

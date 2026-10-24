@@ -331,7 +331,7 @@ namespace WorshipPptx
             {
                 // Commit the preference before changing the view. The source strings in
                 // every service stay untouched, including the currently edited draft.
-                var next=new UserSettings { ChurchLicense=settings.ChurchLicense,Language=language };
+                var next=new UserSettings { ChurchLicense=settings.ChurchLicense,Language=language,PptxSaveFolder=settings.PptxSaveFolder };
                 store.SaveSettings(next); settings=next;
                 loading=true;
                 ChineseText.SetLanguage(language); UpdateLanguageButtons();
@@ -417,7 +417,7 @@ namespace WorshipPptx
                 var name=DriveFileName.Create(plan,Environment.MachineName,DateTime.Today,settings.Language);
                 await windowLayouts.Remember(new DriveUploadWindow(all,plan.Title,name,store.Root),"upload",this).ShowDialog(this);
             } catch(Exception ex) { await Dialogs.Show(this,ex.Message,ChineseText.Ui("請檢查內容")); }
-            finally { exporting=false; LanguagePanel.IsEnabled=true; }
+            finally { settings=store.LoadSettings(); exporting=false; LanguagePanel.IsEnabled=true; }
         }
         private async void Export_Click(object sender,RoutedEventArgs e)
         {
@@ -426,7 +426,9 @@ namespace WorshipPptx
             try
             {
                 var all=ExportSlides(); var title=plan.Title;
-                var file=await StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions { Title=ChineseText.Ui("製作 PowerPoint"), SuggestedFileName=FileName(), DefaultExtension="pptx", ShowOverwritePrompt=true, FileTypeChoices=new[]{new FilePickerFileType(ChineseText.Ui("PowerPoint 簡報")) { Patterns=new[]{"*.pptx"} }} });
+                var folder=LocalPresentationFiles.NormalizeFolder(settings.PptxSaveFolder); Directory.CreateDirectory(folder);
+                var start=await StorageProvider.TryGetFolderFromPathAsync(folder);
+                var file=await StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions { Title=ChineseText.Ui("製作 PowerPoint"), SuggestedStartLocation=start, SuggestedFileName=FileName(), DefaultExtension="pptx", ShowOverwritePrompt=true, FileTypeChoices=new[]{new FilePickerFileType(ChineseText.Ui("PowerPoint 簡報")) { Patterns=new[]{"*.pptx"} }} });
                 if(file==null) return;
                 StatusText.Text=ChineseText.Ui("正在製作 PowerPoint…");
                 var path=file.TryGetLocalPath();

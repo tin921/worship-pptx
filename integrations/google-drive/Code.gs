@@ -4,9 +4,11 @@ const PPTX = 'application/vnd.openxmlformats-officedocument.presentationml.prese
 const CHUNK = 2 * 1024 * 1024;
 const MAX_SIZE = 100 * 1024 * 1024;
 const API = 'https://www.googleapis.com/drive/v3/files';
+const RETENTION_DAYS = 10;
+const RETENTION_TAG = 'worship-pptx-v1';
 
 function doGet() {
-  return json_({ok:true, service:'Worship PPTX upload', version:1});
+  return json_({ok:true, service:'Worship PPTX upload', version:2, retentionDays:RETENTION_DAYS});
 }
 
 function doPost(e) {
@@ -37,6 +39,7 @@ function doPost(e) {
       if (!Number.isSafeInteger(request.size) || request.size < 1 || request.size > MAX_SIZE || !/^[a-f0-9]{32}$/.test(request.md5 || '') || typeof request.replace !== 'boolean') throw new Error('Invalid upload size, checksum or replacement option.');
       if (state) {
         if (state.name !== request.name || state.size !== request.size || state.md5 !== request.md5 || state.replace !== request.replace) throw new Error('Session does not match this file.');
+        if (state.complete) retain_(state,folder,props,request.sessionId,log);
         return json_(reply_(state,folder,logs));
       }
       const all = props.getProperties();
@@ -67,7 +70,7 @@ function doPost(e) {
       return json_(reply_(state,folder,logs));
     }
     if (request.action !== 'chunk' || !state) throw new Error('Upload session expired. Start the upload again.');
-    if (state.complete) return json_(reply_(state,folder,logs));
+    if (state.complete) { retain_(state,folder,props,request.sessionId,log); return json_(reply_(state,folder,logs)); }
     if (!Number.isSafeInteger(request.offset) || request.offset < 0 || request.offset % CHUNK !== 0 || typeof request.data !== 'string' || !/^[A-Za-z0-9+/]*={0,2}$/.test(request.data)) throw new Error('Invalid upload chunk.');
     // Probe Drive first: a previous request may have succeeded despite a lost reply.
     let response = fetch_(state.url,{method:'put',headers:{'Content-Range':'bytes */' + state.size},payload:[]});
@@ -82,6 +85,7 @@ function doPost(e) {
     } else if (!state.complete && state.offset < request.offset) throw new Error('An earlier chunk is missing. Restart the upload.');
     state.expires = Date.now() + (state.complete ? 24*60*60*1000 : 15*60*1000);
     props.setProperty('upload_' + request.sessionId,JSON.stringify(state));
+    if (state.complete) retain_(state,folder,props,request.sessionId,log);
     return json_(reply_(state,folder,logs));
   } catch(error) {
     const redact = value => String(value || '').split(props.getProperty('UPLOAD_KEY') || '\u0000').join('[redacted]').replace(/https:\/\/www\.googleapis\.com\/upload\/[^\s"']+/g,'[Drive upload session]');
@@ -104,7 +108,67 @@ function update_(state,response,log) {
   state.fileId=result.id; state.complete=true; state.offset=state.size; delete state.url;
   log('Drive confirmed file size and MD5 checksum. Upload complete.');
 }
-function reply_(state,folder,logs) { return {ok:true,complete:state.complete,offset:state.offset,fileId:state.fileId || '',folderUrl:'https://drive.google.com/drive/folders/'+folder,logs}; }
+function reply_(state,folder,logs) { return {ok:true,complete:state.complete,offset:state.offset,fileId:state.fileId || '',folderUrl:'https://drive.google.com/drive/folders/'+folder,expiresAt:state.retentionUntil || null,logs}; }
+function retain_(state,folder,props,sessionId,log) {
+  if (state.retentionSet) return;
+  state.retentionUntil = state.retentionUntil || new Date(Date.now()+RETENTION_DAYS*24*60*60*1000).toISOString();
+  state.expires = Date.now()+24*60*60*1000;
+  // Persist verified completion before metadata I/O so a retry cannot repeat the file upload.
+  props.setProperty('upload_'+sessionId,JSON.stringify(state));
+  const appProperties={worshipPptx:RETENTION_TAG,worshipFolder:folder,worshipExpiresAt:state.retentionUntil};
+  const result=patchFile_(state.fileId,{appProperties},'id,appProperties');
+  if(result.id!==state.fileId || !result.appProperties || result.appProperties.worshipExpiresAt!==state.retentionUntil) throw new Error('File uploaded, but its retention date could not be verified. Retry the upload.');
+  state.retentionSet=true;
+  props.setProperty('upload_'+sessionId,JSON.stringify(state));
+  log('Cloud copy expires '+state.retentionUntil+' ('+RETENTION_DAYS+' days). Daily cleanup moves it to Drive Trash; local copies are kept.');
+}
+function patchFile_(id,body,fields) {
+  const response=fetch_(API+'/'+encodeURIComponent(id)+'?supportsAllDrives=true&fields='+encodeURIComponent(fields),{method:'patch',contentType:'application/json',payload:JSON.stringify(body)});
+  requireOk_(response); return JSON.parse(response.getContentText());
+}
+
+// Install one daily time-driven trigger for cleanupExpiredUploads in the Apps Script UI.
+// Only this app's tagged PowerPoints in the configured folder are eligible. No permanent deletion.
+function cleanupExpiredUploads() { return cleanup_(false); }
+function previewExpiredUploads() { return cleanup_(true); }
+function cleanup_(dryRun) {
+  const props=PropertiesService.getScriptProperties(); const folder=props.getProperty('FOLDER_ID');
+  if(!/^[A-Za-z0-9_-]+$/.test(folder || '')) throw new Error('Set a valid FOLDER_ID first.');
+  const lock=LockService.getScriptLock();
+  if(!lock.tryLock(25000)) throw new Error('An upload is busy. Cleanup will retry on its next scheduled run.');
+  const log=text=>console.log('['+new Date().toISOString()+'] '+text);
+  try {
+    prune_(props);
+    const sessions=Object.values(props.getProperties()).flatMap(value=> {try { const s=JSON.parse(value); return s && s.name && (!s.complete || !s.retentionSet) ? [s.name] : []; } catch { return []; }});
+    const now=Date.now(); const candidates=[]; let page=''; let moved=0,failed=0;
+    const fields='id,name,mimeType,parents,trashed,appProperties,capabilities(canTrash)';
+    const q="'"+folder+"' in parents and trashed = false and mimeType = '"+PPTX+"' and appProperties has { key='worshipPptx' and value='"+RETENTION_TAG+"' }";
+    do {
+      const result=driveJson_(API+'?q='+encodeURIComponent(q)+'&fields='+encodeURIComponent('nextPageToken,files('+fields+')')+'&pageSize=100&supportsAllDrives=true&includeItemsFromAllDrives=true'+(page ? '&pageToken='+encodeURIComponent(page) : ''));
+      candidates.push(...(result.files || [])); page=result.nextPageToken || '';
+    } while(page);
+    for(const item of candidates) {
+      if(!expired_(item,folder,now) || sessions.includes(item.name)) continue;
+      try {
+        // Re-check after listing: moved files and newly replaced files must be left alone.
+        const current=driveJson_(API+'/'+encodeURIComponent(item.id)+'?fields='+encodeURIComponent(fields)+'&supportsAllDrives=true');
+        if(!expired_(current,folder,now) || sessions.includes(current.name)) continue;
+        if(!current.capabilities || !current.capabilities.canTrash) throw new Error('Owner cannot move this file to Trash.');
+        if(dryRun) { log('Would move to Trash: '+current.name+' ('+current.id+')'); continue; }
+        const result=patchFile_(current.id,{trashed:true},'id,trashed');
+        if(result.trashed!==true) throw new Error('Drive did not confirm Trash.');
+        moved++; log('Moved to Trash: '+current.name+' ('+current.id+')');
+      } catch(error) { failed++; console.error('['+new Date().toISOString()+'] Cleanup failed for '+item.id+': '+error.stack); }
+    }
+    log((dryRun ? 'Preview' : 'Cleanup')+' finished: '+moved+' moved to Trash, '+failed+' failures.');
+    if(failed) throw new Error(failed+' expired file(s) could not be cleaned up. See the execution log.');
+    return {moved,scanned:candidates.length,dryRun};
+  } finally { lock.releaseLock(); }
+}
+function expired_(file,folder,now) {
+  const meta=file.appProperties || {}; const expires=Date.parse(meta.worshipExpiresAt || '');
+  return file.mimeType===PPTX && file.trashed===false && (file.parents || []).includes(folder) && meta.worshipPptx===RETENTION_TAG && meta.worshipFolder===folder && Number.isFinite(expires) && expires<=now;
+}
 function fetch_(url,options) {
   options=options || {}; options.muteHttpExceptions=true; options.followRedirects=false;
   options.headers=Object.assign({},options.headers || {},{Authorization:'Bearer '+ScriptApp.getOAuthToken()});

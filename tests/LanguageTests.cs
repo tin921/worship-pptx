@@ -52,6 +52,7 @@ static class LanguageTests
         });
         test("Language switch updates interface, history, editor and previews immediately and persists",()=> {
             var store=new LocalStore(Path.Combine(root,"language-ui-"+Guid.NewGuid().ToString("N")));
+            var saveFolder=Path.Combine(root,"chosen-pptx-folder"); store.SaveSettings(new UserSettings {PptxSaveFolder=saveFolder});
             var plan=Demo.Create(); store.Save(plan);
             var other=Demo.Create(); other.Title="聖誕禮拜"; store.Save(other); plan.Updated=DateTime.Now.AddSeconds(1); store.Save(plan);
             var window=new MainWindow(store); window.Show(); Dispatcher.UIThread.RunJobs();
@@ -71,6 +72,7 @@ static class LanguageTests
                 check((double)window.FindControl<ComboBox>("FontSizePicker").SelectedItem==40,"Switch changed formatting");
                 check((string)ToolTip.GetTip(window.FindControl<ToggleButton>("FlipBackground"))=="水平翻转","Image control tooltip stayed Traditional");
                 check(store.LoadSettings().Language==ChineseText.Simplified,"Language not saved");
+                check(store.LoadSettings().PptxSaveFolder==saveFolder,"Language switch reset the chosen PowerPoint folder");
                 simplified.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 check(simplified.IsChecked==true,"Selected language can be deselected");
                 window.FindControl<ToggleButton>("TraditionalButton").RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Dispatcher.UIThread.RunJobs();

@@ -52,9 +52,19 @@ The service accepts `.pptx` files up to 100 MB, in 2 MB chunks, and verifies the
 
 Uploads use the church account's storage and [Apps Script quotas](https://developers.google.com/apps-script/guides/services/quotas). Deploy a new web app version after changing the server code. Rotate `UPLOAD_KEY` in Script Properties and on each PC if it is shared accidentally.
 
-## Reference
+## Ten-day retention and local copies
 
-### Google verification and authorization expiry
+The desktop app saves a complete local copy before uploading. Choose its default folder in **Settings → PowerPoint save folder**, or edit it in the upload window; the change is remembered. The default is `Documents/WorshipPptx`. **Make PowerPoint** also starts its save dialog there. When replacement is unchecked, local duplicates receive a numbered suffix. A network failure or cloud cleanup never deletes the local copy.
+
+Version 2 of `Code.gs` assigns every successfully uploaded/replaced Drive file a **10-day** deadline in private file metadata. Replacement restarts the period; retrying the same completed upload does not. The upload log and success message include the deadline. New uploads and replacements are covered; previously untagged files are left alone.
+
+After updating `Code.gs`, use **Deploy → Manage deployments → Edit → New version → Deploy** to retain the existing web-app URL. In **Triggers → Add Trigger**, choose **cleanupExpiredUploads**, **Head**, **Time-driven**, **Day timer**, and a daily time window. Create only one such trigger. It runs under the owner's account without requiring a desktop PC to be on. This does not require adding OAuth scopes to the existing manifest.
+
+Run **previewExpiredUploads** from the editor to see eligible files without moving anything. The daily **cleanupExpiredUploads** job only moves expired, app-tagged `.pptx` files still in the configured folder to **Drive Trash**. It rechecks each file and skips active replacement uploads. Errors appear in the execution log and the trigger's configured failure notifications. An expired file is removed on the next daily run, rather than at the exact deadline minute. Google normally permanently deletes items after another 30 days in Trash; downloaded/local copies are unaffected. See [Drive Trash behavior](https://developers.google.com/workspace/drive/api/guides/delete) and [time-driven triggers](https://developers.google.com/apps-script/guides/triggers/installable).
+
+The temporary `upload_…` Script Properties still expire after 24 hours for completed uploads. They are unrelated to the ten-day Drive file deadline.
+
+## Google verification and authorization expiry
 
 The **Google hasn't verified this app** warning is separate from OAuth publishing status. It does not impose a one-month lifetime on an Apps Script deployment. Google permits limited personal-use apps to remain unverified, and Workspace-internal apps have a separate exception; see [verification exceptions](https://support.google.com/cloud/answer/13464323?hl=en).
 
@@ -62,9 +72,13 @@ If the linked Google Cloud OAuth project is **External / Testing**, test-user au
 
 With this service deployed as **Execute as me / Anyone**, the owner authorizes Google Drive access. Desktop users do not grant Google OAuth access. Re-run `checkSetup` as the owner if authorization is revoked or needs renewal.
 
+The current deployment uses an Apps Script **Default** Cloud project. Google manages that project, and the usual OAuth Audience page is not accessible. The unverified warning does not establish Testing status or a seven-day expiry; a project switch is not needed for this uploader. See [default Cloud projects](https://developers.google.com/apps-script/guides/cloud-platform-projects).
+
+## Reference links
+
 - [Apps Script web apps and execution identity](https://developers.google.com/apps-script/guides/web)
 - [Enable advanced Google services](https://developers.google.com/apps-script/guides/services/advanced)
 - [Content Service responses and redirects](https://developers.google.com/apps-script/guides/content)
 - [Drive resumable uploads](https://developers.google.com/workspace/drive/api/guides/manage-uploads)
 
-Local tests cover the upload protocol with fake HTTP/Drive responses. A live administrator deployment was also checked on 2026-10-23: an original one-slide test deck uploaded successfully, replacement preserved its file ID, and the service verified size and MD5 for both transfers. The private connection settings remain outside the repository. A new installation or deployment still needs its own live check.
+Local tests cover the upload protocol, local-copy ordering, failure recovery, and scoped retention cleanup with fake HTTP/Drive responses. The live administrator deployment was updated to version 2 on 2026-10-23: an original one-slide test deck uploaded successfully, replacement preserved its file ID and renewed the ten-day deadline, and the service verified size and MD5 for both transfers. An intentionally expired synthetic test file was then moved to recoverable Trash by the cleanup function, with its local copy retained. One daily trigger runs between midnight and 1am in the project's America/New_York time zone. The private connection settings remain outside the repository. A new installation or deployment still needs its own live check.

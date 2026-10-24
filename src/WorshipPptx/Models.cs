@@ -79,7 +79,8 @@ namespace WorshipPptx
     {
         [DataMember] public string ChurchLicense { get; set; } = "";
         [DataMember] public string Language { get; set; } = ChineseText.Traditional;
-        [OnDeserializing] private void SetDefaults(StreamingContext context) { Language=ChineseText.Traditional; }
+        [DataMember] public string PptxSaveFolder { get; set; } = LocalPresentationFiles.DefaultFolder;
+        [OnDeserializing] private void SetDefaults(StreamingContext context) { Language=ChineseText.Traditional; PptxSaveFolder=LocalPresentationFiles.DefaultFolder; }
     }
     public sealed class SlideData
     {

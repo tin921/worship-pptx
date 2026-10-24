@@ -35,6 +35,7 @@ static class UiReview
         preview.Width=600; preview.Height=450; Draw(preview,Path.Combine(root,"preview-compact.png"));preview.Close();
         var upload=new DriveUploadWindow(SlideLayout.Build(plan,new UserSettings()),plan.Title,DriveFileName.Create(plan,"CHURCH PC",new DateTime(2026,10,23),ChineseText.Traditional),store.Root);
         upload.Show();Draw(upload,Path.Combine(root,"upload.png"));upload.Close();main.Close();
+        var settings=new SettingsDialog(store.LoadSettings()); settings.Show();Draw(settings,Path.Combine(root,"settings.png"));settings.Close();
         Console.WriteLine("UI screenshots: "+root);
     }
 }

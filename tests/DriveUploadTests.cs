@@ -31,6 +31,58 @@ static class DriveUploadTests
     private static DriveUploadSettings Settings()=>new() { ServiceUrl="https://script.google.com/macros/s/test-deployment/exec",UploadKey=new string('k',40),FolderUrl="https://drive.google.com/drive/folders/folder123" };
     public static void Run(Action<string,Action> test,Action<bool,string> check,string root)
     {
+        test("Local upload copies replace atomically or keep both without losing the original",()=> {
+            var folder=Path.Combine(root,"local-copies"); Directory.CreateDirectory(folder);
+            var source=Path.Combine(folder,"source.pptx"); File.WriteAllText(source,"first");
+            var one=LocalPresentationFiles.SaveCopy(source,Path.Combine(folder,"destination"),"PC-1025c-praise.pptx",true);
+            File.WriteAllText(source,"second");
+            var two=LocalPresentationFiles.SaveCopy(source,Path.GetDirectoryName(one),"PC-1025c-praise.pptx",false);
+            check(one!=two && File.ReadAllText(one)=="first" && File.ReadAllText(two)=="second","Keep both overwrote the original");
+            check(LocalPresentationFiles.SaveCopy(source,Path.GetDirectoryName(one),"PC-1025c-praise.pptx",true)==one && File.ReadAllText(one)=="second","Replace did not update the local copy");
+            var failed=false; try {LocalPresentationFiles.SaveCopy(source,source,"PC-1025c-praise.pptx",true);}catch(IOException){failed=true;}
+            check(failed && File.ReadAllText(source)=="second" && !Directory.GetFiles(Path.GetDirectoryName(one),"*.tmp").Any(),"Invalid folder damaged files or left staging files");
+        });
+        test("Upload folder edits survive closing and preserve language and church settings",()=> {
+            var store=new LocalStore(Path.Combine(root,"folder-preferences"));
+            store.SaveSettings(new UserSettings { ChurchLicense="123",Language=ChineseText.Simplified,PptxSaveFolder=Path.Combine(root,"before") });
+            var window=new DriveUploadWindow(new List<SlideData>(),"test","PC-1025c-praise.pptx",store.Root); window.Show(); Dispatcher.UIThread.RunJobs();
+            check(window.FindControl<TextBox>("UploadFolder").Text==Path.Combine(root,"before"),"Upload screen ignored the default folder");
+            window.FindControl<TextBox>("UploadFolder").Text=Path.Combine(root,"after"); window.Close();
+            var saved=store.LoadSettings(); check(saved.PptxSaveFolder==Path.Combine(root,"after") && saved.ChurchLicense=="123" && saved.Language==ChineseText.Simplified,"Folder change overwrote other settings or was not saved");
+            File.WriteAllText(Path.Combine(store.Root,"legacy.json"),"{\"Language\":\"zh-Hant\"}");
+            check(LocalStore.Read<UserSettings>(Path.Combine(store.Root,"legacy.json")).PptxSaveFolder==LocalPresentationFiles.DefaultFolder,"Legacy settings have no default save folder");
+        });
+        test("Upload saves identical local bytes before contacting Drive and keeps them after a server failure",()=> {
+            foreach(var success in new[]{true,false}) {
+                var store=new LocalStore(Path.Combine(root,"local-upload-"+Guid.NewGuid().ToString("N")));
+                var folder=Path.Combine(store.Root,"copies"); store.SaveSettings(new UserSettings {PptxSaveFolder=folder});
+                File.WriteAllText(Path.Combine(store.Root,"google-drive.json"),JsonSerializer.Serialize(Settings()));
+                var name="PC-1025c-praise.pptx"; var path=Path.Combine(folder,name); long length=0;
+                using var handler=new Handler {Reply=body=> {
+                    check(File.Exists(path),"Contacted Drive before saving a local copy");
+                    var action=body.GetProperty("action").GetString();
+                    if(action=="cancel") return new {ok=true};
+                    if(!success) return new {ok=false,error="Simulated server failure",stack="test"};
+                    if(action=="start") {length=new FileInfo(path).Length;return new {ok=true,offset=0,folderUrl=Settings().FolderUrl};}
+                    var bytes=Convert.FromBase64String(body.GetProperty("data").GetString());
+                    check(File.ReadAllBytes(path).AsSpan((int)body.GetProperty("offset").GetInt64(),bytes.Length).SequenceEqual(bytes),"Drive bytes differ from the saved copy");
+                    var offset=body.GetProperty("offset").GetInt64()+bytes.Length;
+                    return new {ok=true,offset,complete=offset==length,fileId="file123",folderUrl=Settings().FolderUrl,expiresAt=DateTimeOffset.UtcNow.AddDays(10)};
+                }};
+                var slide=new SlideData {Title="Test",Lines=new(){"Local copy test"},FontName=FontCatalog.All.FirstOrDefault(f=>!f.IsBundled)?.Name ?? FontCatalog.DefaultName};
+                var window=new DriveUploadWindow(new[]{slide},"test",name,store.Root,()=>new HttpClient(handler,false)); window.Show(); Dispatcher.UIThread.RunJobs();
+                try {
+                    var button=window.FindControl<Button>("StartUpload"); button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                    var timeout=DateTime.UtcNow.AddSeconds(45);
+                    while(!button.IsEnabled && DateTime.UtcNow<timeout) {Dispatcher.UIThread.RunJobs();Thread.Sleep(10);}
+                    check(button.IsEnabled,"Upload did not finish");
+                    check(File.Exists(path) && handler.Calls.Count>0,"Local copy missing after upload attempt");
+                    var log=window.FindControl<TextBox>("UploadLog").Text;
+                    check(log.Contains(path) && window.FindControl<HyperlinkButton>("FolderLink").IsVisible==success,"Missing local path or incorrect outcome");
+                    check(success ? window.FindControl<TextBlock>("Outcome").Text.Contains("10") || window.FindControl<TextBlock>("Outcome").Text.Contains("保留") : log.Contains("Simulated server failure"),"Missing expiry or error details");
+                } finally {window.Close();}
+            }
+        });
         test("Local and Drive filenames share Sunday, language and invocation rules; only Drive adds the PC",()=> {
             var previous=ChineseText.Current.Language;
             try {

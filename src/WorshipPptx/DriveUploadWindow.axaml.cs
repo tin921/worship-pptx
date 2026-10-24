@@ -9,6 +9,7 @@ using Avalonia.Interactivity;
 using Avalonia.Input;
 using Avalonia.Input.Platform;
 using Avalonia.Threading;
+using Avalonia.Platform.Storage;
 
 namespace WorshipPptx;
 
@@ -19,10 +20,14 @@ public partial class DriveUploadWindow : Window
     private CancellationTokenSource cancellation;
     private bool running;
     private DriveUploadClient client;
-    public DriveUploadWindow(IList<SlideData> slides,string title,string fileName,string root)
+    private readonly Func<HttpClient> createHttpClient;
+    public DriveUploadWindow(IList<SlideData> slides,string title,string fileName,string root,Func<HttpClient> createHttpClient=null)
     {
         this.slides=slides; this.title=title; this.root=root;
+        this.createHttpClient=createHttpClient ?? (()=>new HttpClient { Timeout=TimeSpan.FromSeconds(120) });
         InitializeComponent(); InputFocus.Attach(this); UploadName.Text=fileName;
+        UploadFolder.Text=new LocalStore(root).LoadSettings().PptxSaveFolder;
+        Closed+=(_,_)=> { try { LocalPresentationFiles.RememberFolder(root,UploadFolder.Text); } catch { /* An invalid, unfinished edit does not replace the saved preference. */ } };
         StepLabel.Text=ChineseText.Ui("無須登入 Google；由教會上傳服務處理。");
         Log(ChineseText.Ui("準備上傳：")+fileName);
         if(!File.Exists(Path.Combine(root,"google-drive.json"))) {
@@ -41,31 +46,38 @@ public partial class DriveUploadWindow : Window
     private async void Upload_Click(object sender,RoutedEventArgs e)
     {
         if(running) return;
-        running=true; StartUpload.IsEnabled=false; UploadName.IsEnabled=false; ReplaceExisting.IsEnabled=false;
+        running=true; StartUpload.IsEnabled=false; UploadName.IsEnabled=false; ReplaceExisting.IsEnabled=false; UploadFolder.IsEnabled=false; BrowseFolder.IsEnabled=false;
         CloseUpload.Content=ChineseText.Ui("取消上傳"); FolderLink.IsVisible=false; Outcome.Text="";
         cancellation=new CancellationTokenSource(); var token=cancellation.Token;
         var temp=Path.Combine(Path.GetTempPath(),"worship-upload-"+Guid.NewGuid().ToString("N")+".pptx");
         try {
             var settings=DriveUploadSettings.Load(root);
-            using var http=new HttpClient { Timeout=TimeSpan.FromSeconds(120) };
+            using var http=createHttpClient();
             client=new DriveUploadClient(http,settings);
+            var folder=LocalPresentationFiles.RememberFolder(root,UploadFolder.Text); UploadFolder.Text=folder;
             Log(ChineseText.Ui("步驟 1：檢查設定與檔案名稱。")); settings.Validate();
             var fileName=(UploadName.Text ?? "").Trim(); DriveFileName.Validate(fileName);
             StepLabel.Text=ChineseText.Ui("步驟 2：正在製作 PowerPoint…"); Log(StepLabel.Text);
             UploadProgressBar.IsIndeterminate=true;
             await Task.Run(()=>PptxWriter.Write(temp,slides,title)); token.ThrowIfCancellationRequested();
             Log(ChineseText.Ui("PowerPoint 已完成：")+new FileInfo(temp).Length.ToString("N0")+" bytes");
+            StepLabel.Text=ChineseText.Ui("步驟 3：儲存本機副本…"); Log(StepLabel.Text);
+            var replace=ReplaceExisting.IsChecked==true;
+            var localPath=await Task.Run(()=>LocalPresentationFiles.SaveCopy(temp,folder,fileName,replace));
+            Log(ChineseText.Ui("本機副本已儲存：")+localPath); token.ThrowIfCancellationRequested();
+            StepLabel.Text=ChineseText.Ui("步驟 4：上傳 Google Drive…"); Log(StepLabel.Text);
             var progress=new Progress<UploadProgress>(p=> {
                 StepLabel.Text=p.Message; UploadProgressBar.IsIndeterminate=!p.Percent.HasValue;
                 if(p.Percent.HasValue) UploadProgressBar.Value=p.Percent.Value;
                 Log(p.Message);
             });
-            var result=await client.UploadAsync(temp,fileName,ReplaceExisting.IsChecked==true,progress,token);
+            var result=await client.UploadAsync(localPath,fileName,replace,progress,token);
             // Drain posted progress before displaying the final outcome.
             await Dispatcher.UIThread.InvokeAsync(()=>{},DispatcherPriority.Background);
             UploadProgressBar.IsIndeterminate=false; UploadProgressBar.Value=100;
             StepLabel.Text=ChineseText.Ui("上傳完成");
             Outcome.Text=ChineseText.Ui("上傳成功。請開啟資料夾確認檔案。");
+            if(result.ExpiresAt.HasValue) Outcome.Text+="\n"+ChineseText.Ui("雲端保留至：")+result.ExpiresAt.Value.ToLocalTime().ToString("yyyy-MM-dd HH:mm")+ChineseText.Ui("；到期後移到垃圾桶。本機副本會保留。");
             FolderLink.NavigateUri=DriveUploadSettings.ValidateFolderUrl(result.FolderUrl); FolderLink.IsVisible=true;
             Log(ChineseText.Ui("資料夾：")+result.FolderUrl);
         } catch(OperationCanceledException) when(token.IsCancellationRequested) {
@@ -79,8 +91,13 @@ public partial class DriveUploadWindow : Window
             UploadProgressBar.IsIndeterminate=false;
             try { if(File.Exists(temp)) File.Delete(temp); } catch(Exception ex) { Log("Temporary file cleanup: "+ex.Message); }
             cancellation.Dispose(); cancellation=null; running=false;
-            StartUpload.IsEnabled=true; UploadName.IsEnabled=true; ReplaceExisting.IsEnabled=true; CloseUpload.Content=ChineseText.Ui("關閉");
+            StartUpload.IsEnabled=true; UploadName.IsEnabled=true; ReplaceExisting.IsEnabled=true; UploadFolder.IsEnabled=true; BrowseFolder.IsEnabled=true; CloseUpload.Content=ChineseText.Ui("關閉");
         }
+    }
+    private async void Browse_Click(object sender,RoutedEventArgs e)
+    {
+        var folders=await StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions { Title=ChineseText.Ui("選擇儲存資料夾"),AllowMultiple=false });
+        if(folders.Count>0 && folders[0].TryGetLocalPath() is string path) UploadFolder.Text=path;
     }
     private async void Copy_Click(object sender,RoutedEventArgs e)
     {
