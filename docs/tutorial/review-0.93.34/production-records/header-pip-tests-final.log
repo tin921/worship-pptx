@@ -1,0 +1,144 @@
+PASS Style symbols are legible vectors and full-screen viewing does not select a result
+PASS Double-clicking opens a gallery image and double-clicking again returns to the picker
+PASS Gallery fits complete rows on resize and appends results on wheel scrolling
+PASS All 80 themes display Chinese and add English only to the Google link
+PASS Editor, keyword typing and metadata filters never load the embedding model
+  Embedding cosine 1.000000: 山間小路走過高山低谷
+  Embedding cosine 1.000000: 山间小路走过高山低谷
+  Embedding cosine 1.000000: 恩典與慈愛 祢的手引領我
+  Embedding cosine 1.000000: calm lake sunrise
+  Embedding cosine 1.000000: 雨後有彩虹 🌈
+  Embedding cosine 1.000000: 讚美！
+希望與喜樂
+  Embedding cosine 1.000000: unknown͸letter
+PASS Local tokenizer and quantized embeddings agree with Hugging Face fixtures
+PASS Background preload is shared with the picker and cancellation preserves it
+PASS Matching reports completed stages and respects cancellation without false completion
+PASS Theme matching reuses normalized text hashes and custom bilingual terms replace the song query
+PASS Old animated plans keep their background and load as static
+PASS Plus is the last tab and adds a real song before itself
+PASS Library has 830 static 720p choices with five complete styles and two options per theme
+PASS Static preview has no shaded text panel
+PASS PowerPoint exports only still images with editable coloured text
+PASS Footer buttons receive clicks across their faces after font changes
+PASS Each footer action receives the click that dismisses a font, size or color popup
+PASS Returning from the background picker and dragging the preview leave footer clicks usable
+PASS Actions acknowledge the first click, reject duplicate requests and recover after validation errors
+  預覽整個崇拜 click 1: 190 ms, PreviewWindow
+  預覽整個崇拜 click 2: 228 ms, PreviewWindow
+  預覽整個崇拜 click 3: 203 ms, PreviewWindow
+  預覽整個崇拜 click 4: 208 ms, PreviewWindow
+  上傳 Google Drive click 1: 210 ms, DriveUploadWindow
+  上傳 Google Drive click 2: 211 ms, DriveUploadWindow
+  上傳 Google Drive click 3: 192 ms, DriveUploadWindow
+  上傳 Google Drive click 4: 205 ms, DriveUploadWindow
+PASS Preview and upload open with one click after returning from their dialogs
+PASS New services use the coming Sunday across week and year boundaries
+PASS Five items in service order, first song at index 1
+PASS Every song starts with its title, credits and separate CCLI numbers
+PASS Explicit repeat order
+PASS Unknown section rejected
+PASS Duplicate tags rejected
+PASS Missing and empty tagged lyrics rejected
+PASS Lyrics before first tag rejected
+PASS A complete lyric block fits one slide and preserves internal blank lines
+PASS Traditional and Simplified Chinese retained when wrapping
+PASS Unicode supplementary characters retained
+PASS Scripture ignores song order
+PASS CCLI song and church licence kept separate
+PASS History persists Unicode and invalid drafts
+PASS Atomic save backup is retained
+PASS Settings round-trip
+PASS Damaged history recovers backup without deleting original
+PASS Local image import is content-addressed PNG
+PASS Stored image survives original deletion
+PASS Invalid image rejected
+PASS Oversized image data rejected
+PASS Unsupported URL scheme rejected
+PASS HTTP image download and validation
+PASS HTML page rejected as image
+PASS File-drop input
+PASS Bitmap clipboard input
+PASS URL clipboard input
+PASS Near-duplicate system fonts are hidden and old selections resolve to their base families
+PASS Noto Sans CJK HK loads its actual bundled face and covers its advertised Chinese script
+PASS Noto Sans CJK HK EOT loads in Windows embedded-font engine
+PASS Noto Serif CJK HK loads its actual bundled face and covers its advertised Chinese script
+PASS Noto Serif CJK HK EOT loads in Windows embedded-font engine
+PASS LXGW WenKai TC loads its actual bundled face and covers its advertised Chinese script
+PASS LXGW WenKai TC EOT loads in Windows embedded-font engine
+PASS jf-openhuninn-2.1 loads its actual bundled face and covers its advertised Chinese script
+PASS jf-openhuninn-2.1 EOT loads in Windows embedded-font engine
+PASS Zhuque Fangsong (technical preview) loads its actual bundled face and covers its advertised Chinese script
+PASS Zhuque Fangsong (technical preview) EOT loads in Windows embedded-font engine
+PASS LXGW Marker Gothic loads its actual bundled face and covers its advertised Chinese script
+PASS LXGW Marker Gothic EOT loads in Windows embedded-font engine
+PASS Ma Shan Zheng loads its actual bundled face and covers its advertised Chinese script
+PASS Ma Shan Zheng EOT loads in Windows embedded-font engine
+PASS ZCOOL KuaiLe loads its actual bundled face and covers its advertised Chinese script
+PASS ZCOOL KuaiLe EOT loads in Windows embedded-font engine
+PASS Distinctive Chinese fonts export as editable embedded text
+PASS PPTX package schema validates
+PASS All native text boxes confined to upper half
+PASS All image references embedded, no external links
+PASS PPTX overwrite leaves valid package
+PASS PPTX embeds selected full font and uses it in native text
+PASS Serif selection persists and exports with its own font
+PASS Older saved services default to 36 pt and centered text
+PASS Reordering preserves items and persists export order with typography
+PASS Large Chinese lyric blocks shrink to one slide within the text area
+PASS Invalid font sizes rejected
+PASS Preview and PPTX agree on font size, alignment and top-half bounds
+  Installed Chinese fonts: Microsoft JhengHei, Microsoft YaHei, SimSun
+PASS Installed Chinese fonts are detected without silent font substitution
+PASS System-font deck references the selected font without bundling system files
+PASS Preview layout retains 720p dimensions without taking screenshots
+PASS Avalonia editor loads saved plans, first song and resizable columns
+PASS Full-service preview tracks each tab separately and navigates with all four arrow keys
+PASS Avalonia image and settings dialogs initialize
+PASS Chinese conversion is phrase-aware and keeps English, tags, whitespace and numbers
+PASS Switching and autosaving preserve original Traditional distinctions and old JSON format
+PASS Language switch updates interface, history, editor and previews immediately and persists
+PASS Both Chinese scripts export valid editable song, Scripture and announcement slides
+PASS Legacy formatting migrates independently to every tab
+PASS History renames live, formatting stays per tab and swatches fit without scrolling
+PASS Full-slide bold text exports while singer guide stays preview-only
+PASS Image search uses short English phrases with presentation scope and size filters
+PASS Song titles fit independently of lyrics and old saved sizing remains usable
+PASS Title and lyric sizing controls keep separate manual and Auto choices through save and export
+  Screenshot chorus fits at 43 pt with Microsoft YaHei
+PASS Auto fits both lyric line width and block height without adding line breaks in preview or export
+PASS Typing and pasting fit the longest block with a shared centered font until a saved manual override
+PASS Escape leaves fields; Page keys change services, arrows change tabs/slides and Tab follows fields
+PASS Preview frames show the entire 16:9 canvas without border gaps after resizing or moving dividers
+PASS Both previews pan and zoom the same background while the camera stays fixed; changes persist per tab
+PASS Adjusted background pixels match export and section tags are padded inside the PiP footprint
+PASS Window sizes and both editor dividers survive a restart
+PASS Dialog sizes stay separate and maximization preserves the normal size
+PASS Damaged or invalid saved window layouts fall back to usable defaults
+PASS PIP toggle changes the slide layout and persists independently per item
+PASS Camera artwork follows lyric sections, including songs with no repeat order
+PASS PiP and full camera previews switch between the musician and Bible reader
+PASS Legacy layout data still supports its recorded text regions and source selections
+PASS Sidebar sorts dates, greys past titles and updates tab names without saving
+PASS Bottom-half text and credits export without exporting the camera illustration
+PASS Upload logs use one compact local timestamp and retain multiline errors
+PASS Local upload copies replace atomically or keep both without losing the original
+PASS Upload folder edits survive closing and preserve language and church settings
+PASS Upload saves identical local bytes before contacting Drive and keeps them after a server failure
+PASS Local and Drive filenames share Sunday, language and invocation rules; only Drive adds the PC
+PASS Unconfigured Drive dialog is explicit and supplies timestamped copyable diagnostics
+PASS Drive upload sends ordered chunks, replacement flag and verifies completion
+PASS Drive failures redact the shared key and release the session; cancellation sends no chunks
+PASS Drive negotiates larger chunks without changing bytes or accepting unsupported sizes
+PASS Drive destination mismatch is rejected before sending file content
+PASS Direct upload bypasses Apps Script for file bytes and resumes a lost final reply before server verification
+PASS Direct upload rejects unsafe destinations, requires server completion, and redacts upload URLs
+PASS Zero opacity is white in the preview and exported background
+PASS Only the first slide of each lyric block has a plain tag, including consecutive repeats
+PASS Untagged scripture keeps blank lines, spaces and tabs on one full slide
+PASS Prose pagination follows font metrics and half/full area, preserving all content
+PASS Top/middle/bottom positioning agrees between preview and PowerPoint
+PASS Numbered announcements each fit one slide at the largest size up to the selected maximum
+PASS Control-Tab inserts indentation and removing tags switches to prose without losing source text
+RESULT 125 passed, 0 failed. Outputs: E:\WorshipPptx-work\header-pip-validation-final

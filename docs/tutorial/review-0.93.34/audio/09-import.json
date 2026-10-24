@@ -1,0 +1,158 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 1973750,
+    "text": "You"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 3131660,
+    "duration": 1578750,
+    "text": "can"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 4842080,
+    "duration": 3421250,
+    "text": "also"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 8394580,
+    "duration": 4342080,
+    "text": "browse"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 12868330,
+    "duration": 1578750,
+    "text": "for"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 14578750,
+    "duration": 657910,
+    "text": "a"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 15368330,
+    "duration": 3552500,
+    "text": "local"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 19052500,
+    "duration": 4868330,
+    "text": "image"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 26026250,
+    "duration": 3684160,
+    "text": "paste"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 29842080,
+    "duration": 2631660,
+    "text": "one"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 34710410,
+    "duration": 1842080,
+    "text": "use"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 36684160,
+    "duration": 789580,
+    "text": "a"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 37605410,
+    "duration": 4342080,
+    "text": "direct"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 42078750,
+    "duration": 3421250,
+    "text": "image"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 45631660,
+    "duration": 6447500,
+    "text": "URL"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 54578750,
+    "duration": 921250,
+    "text": "or"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 55631660,
+    "duration": 3289580,
+    "text": "drag"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 59052500,
+    "duration": 789580,
+    "text": "in"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 59973750,
+    "duration": 657910,
+    "text": "a"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 60763330,
+    "duration": 5131660,
+    "text": "file"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 75000000,
+    "duration": 5131660,
+    "text": "Select"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 80263330,
+    "duration": 1184160,
+    "text": "your"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 81578750,
+    "duration": 5921250,
+    "text": "background"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 87631660,
+    "duration": 1315830,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 89078750,
+    "duration": 2631660,
+    "text": "click"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 91842080,
+    "duration": 5657910,
+    "text": "Apply"
+  }
+]

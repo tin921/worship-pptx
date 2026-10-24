@@ -1,0 +1,242 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 2368330,
+    "text": "There"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 3526250,
+    "duration": 1447500,
+    "text": "are"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 5105410,
+    "duration": 3421250,
+    "text": "five"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 8657910,
+    "duration": 3947500,
+    "text": "style"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 12736660,
+    "duration": 5657910,
+    "text": "filters"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 20763330,
+    "duration": 7763330,
+    "text": "photography"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 30236660,
+    "duration": 7631660,
+    "text": "illustration"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 39447500,
+    "duration": 6842080,
+    "text": "abstract"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 48131660,
+    "duration": 2894580,
+    "text": "three"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 51157910,
+    "duration": 3947500,
+    "text": "D"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 56289580,
+    "duration": 1842080,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 58263330,
+    "duration": 7500000,
+    "text": "minimalist"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 75000000,
+    "duration": 4210410,
+    "text": "Toggle"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 79342080,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 80526250,
+    "duration": 5131660,
+    "text": "styles"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 85789580,
+    "duration": 1052500,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 86973750,
+    "duration": 3815830,
+    "text": "narrow"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 90921250,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 92105410,
+    "duration": 5921250,
+    "text": "gallery"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 107105410,
+    "duration": 4605410,
+    "text": "Scroll"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 111842080,
+    "duration": 2894580,
+    "text": "down"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 114868330,
+    "duration": 1315830,
+    "text": "for"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 116315830,
+    "duration": 1973750,
+    "text": "more"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 118421250,
+    "duration": 7236660,
+    "text": "images"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 134736660,
+    "duration": 3684160,
+    "text": "These"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 138552500,
+    "duration": 5000000,
+    "text": "filters"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 143684160,
+    "duration": 4605410,
+    "text": "reuse"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 148421250,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 149473750,
+    "duration": 4078750,
+    "text": "matching"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 153684160,
+    "duration": 5657910,
+    "text": "results"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 162368330,
+    "duration": 1052500,
+    "text": "they"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 163552500,
+    "duration": 1315830,
+    "text": "do"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 165000000,
+    "duration": 2631660,
+    "text": "not"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 167763330,
+    "duration": 1842080,
+    "text": "run"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 169736660,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 170789580,
+    "duration": 3026250,
+    "text": "same"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 173947500,
+    "duration": 4078750,
+    "text": "search"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 178157910,
+    "duration": 1710410,
+    "text": "for"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 180000000,
+    "duration": 2368330,
+    "text": "every"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 182500000,
+    "duration": 5789580,
+    "text": "picture"
+  }
+]

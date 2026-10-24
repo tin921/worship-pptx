@@ -1,0 +1,35 @@
+{
+  "duration_seconds": 278.958333,
+  "under_five_minutes": true,
+  "resolution": [
+    1600,
+    900
+  ],
+  "fps": 24,
+  "english_audio": true,
+  "subtitle_streams": 0,
+  "decoded_without_errors": true,
+  "required_features_present": true,
+  "service_structure": [
+    "invocation",
+    "song",
+    "song",
+    "song",
+    "scripture reading"
+  ],
+  "native_double_click_verified": true,
+  "full_image_demonstrations": 1,
+  "pip_on_and_off_shown": true,
+  "both_splitters_highlighted": true,
+  "whole_window_resize_shown": true,
+  "real_upload_verified": true,
+  "drive_folder_shown": true,
+  "large_orange_arrows": true,
+  "keyboard_badges": false,
+  "sha256": "0f425329484f21d46063e6991d263f3f4a31cae3d02fa5fe21141a017f2ee6fe",
+  "published": false,
+  "selected_program_removal_shown": true,
+  "removal_confirmation_shown": true,
+  "nearest_upcoming_selection_verified": true,
+  "feedback_document_shown": true
+}

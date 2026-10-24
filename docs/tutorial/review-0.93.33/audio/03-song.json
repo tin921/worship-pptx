@@ -1,0 +1,266 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 2763330,
+    "text": "Click"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 3921250,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 5105410,
+    "duration": 3157910,
+    "text": "plus"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 8394580,
+    "duration": 3421250,
+    "text": "tab"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 11947500,
+    "duration": 1315830,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 13394580,
+    "duration": 2105410,
+    "text": "add"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 15631660,
+    "duration": 526250,
+    "text": "a"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 16289580,
+    "duration": 5000000,
+    "text": "song"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 30526250,
+    "duration": 2368330,
+    "text": "Put"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 33026250,
+    "duration": 2105410,
+    "text": "V"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 35263330,
+    "duration": 2500000,
+    "text": "one"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 37894580,
+    "duration": 1315830,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 39342080,
+    "duration": 1842080,
+    "text": "C"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 41315830,
+    "duration": 1315830,
+    "text": "in"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 42763330,
+    "duration": 3421250,
+    "text": "square"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 46315830,
+    "duration": 4605410,
+    "text": "brackets"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 51052500,
+    "duration": 3421250,
+    "text": "before"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 54605410,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 55789580,
+    "duration": 2894580,
+    "text": "verse"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 58815830,
+    "duration": 1184160,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 60131660,
+    "duration": 6184160,
+    "text": "chorus"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 75526250,
+    "duration": 3289580,
+    "text": "Then"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 78947500,
+    "duration": 2631660,
+    "text": "enter"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 81710410,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 82894580,
+    "duration": 6052500,
+    "text": "performance"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 89078750,
+    "duration": 3552500,
+    "text": "order"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 94868330,
+    "duration": 2105410,
+    "text": "such"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 97105410,
+    "duration": 1184160,
+    "text": "as"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 98421250,
+    "duration": 2236660,
+    "text": "V"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 100789580,
+    "duration": 3421250,
+    "text": "one"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 106578750,
+    "duration": 2763330,
+    "text": "C"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 111842080,
+    "duration": 2105410,
+    "text": "V"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 114078750,
+    "duration": 2631660,
+    "text": "two"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 119342080,
+    "duration": 3684160,
+    "text": "C"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 125394580,
+    "duration": 6052500,
+    "text": "Copyright"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 131578750,
+    "duration": 1315830,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 133026250,
+    "duration": 2894580,
+    "text": "song"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 136052500,
+    "duration": 3026250,
+    "text": "number"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 139210410,
+    "duration": 3815830,
+    "text": "belong"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 143157910,
+    "duration": 657910,
+    "text": "in"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 143947500,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 145000000,
+    "duration": 2631660,
+    "text": "two"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 147763330,
+    "duration": 3815830,
+    "text": "fields"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 151710410,
+    "duration": 5263330,
+    "text": "above"
+  }
+]

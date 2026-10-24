@@ -1,0 +1,17 @@
+[10/23 23:10:08] 準備上傳：TutorialDemo-1025c-call+praise.pptx
+[10/23 23:10:09] 步驟 1：檢查設定與檔案名稱。
+[10/23 23:10:09] 步驟 2：正在製作 PowerPoint…
+[10/23 23:10:10] PowerPoint 已完成：13,110,084 bytes
+[10/23 23:10:10] 步驟 3：儲存本機副本…
+[10/23 23:10:10] 本機副本已儲存：D:\cemc-sr\worship-pptx\docs\tutorial\review-0.93.33\output\TutorialDemo-1025c-call+praise.pptx
+[10/23 23:10:10] 步驟 4：上傳 Google Drive…
+[10/23 23:10:11] 正在連接上傳服務及檢查同名檔案…
+[10/23 23:10:12] Destination folder is writable.
+[10/23 23:10:12] Replacing the existing file; its Drive link is preserved.
+[10/23 23:10:15] 已傳送 8,388,608 / 13,110,084 bytes
+[10/23 23:10:18] 已傳送 13,110,084 / 13,110,084 bytes
+[10/23 23:10:18] 資料已傳送，正在確認檔案及保留期限…
+[10/23 23:10:18] Drive confirmed file size and MD5 checksum. Upload complete.
+[10/23 23:10:19] Cloud copy expires 2026-11-03T03:10:19.047Z (10 days). Daily cleanup moves it to Drive Trash; local copies are kept.
+[10/23 23:10:20] 上傳完成；檔案大小及校驗碼已確認。
+[10/23 23:10:20] 資料夾：https://drive.google.com/drive/folders/1vp3CwNh8nzz8vDWhc94_Kp6SM2-tglDw

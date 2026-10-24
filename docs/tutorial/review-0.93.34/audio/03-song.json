@@ -1,0 +1,236 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 2763330,
+    "text": "Click"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 3921250,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 5105410,
+    "duration": 3157910,
+    "text": "plus"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 8394580,
+    "duration": 3421250,
+    "text": "tab"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 11947500,
+    "duration": 1315830,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 13394580,
+    "duration": 2105410,
+    "text": "add"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 15631660,
+    "duration": 526250,
+    "text": "a"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 16289580,
+    "duration": 5000000,
+    "text": "song"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 30526250,
+    "duration": 2368330,
+    "text": "Put"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 33026250,
+    "duration": 2105410,
+    "text": "V"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 35263330,
+    "duration": 2500000,
+    "text": "one"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 37894580,
+    "duration": 1315830,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 39342080,
+    "duration": 1842080,
+    "text": "C"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 41315830,
+    "duration": 1315830,
+    "text": "in"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 42763330,
+    "duration": 3421250,
+    "text": "square"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 46315830,
+    "duration": 4605410,
+    "text": "brackets"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 51052500,
+    "duration": 3421250,
+    "text": "before"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 54605410,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 55789580,
+    "duration": 2894580,
+    "text": "verse"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 58815830,
+    "duration": 1184160,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 60131660,
+    "duration": 6184160,
+    "text": "chorus"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 75526250,
+    "duration": 3421250,
+    "text": "Enter"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 79078750,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 80263330,
+    "duration": 6184160,
+    "text": "performance"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 86578750,
+    "duration": 3684160,
+    "text": "order"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 91973750,
+    "duration": 2236660,
+    "text": "such"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 94342080,
+    "duration": 1184160,
+    "text": "as"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 95657910,
+    "duration": 2105410,
+    "text": "V"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 97894580,
+    "duration": 3552500,
+    "text": "one"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 103289580,
+    "duration": 2894580,
+    "text": "C"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 108289580,
+    "duration": 2105410,
+    "text": "V"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 110526250,
+    "duration": 2368330,
+    "text": "two"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 115394580,
+    "duration": 4473750,
+    "text": "C"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 129078750,
+    "duration": 3157910,
+    "text": "Add"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 132368330,
+    "duration": 6578750,
+    "text": "copyright"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 139078750,
+    "duration": 1315830,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 140526250,
+    "duration": 3026250,
+    "text": "song"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 143684160,
+    "duration": 3026250,
+    "text": "number"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 146842080,
+    "duration": 5394580,
+    "text": "above"
+  }
+]

@@ -1,0 +1,13 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  WorshipPptx -> E:\WorshipPptx-work\tutorial34-build\bin\WorshipPptx\release\WorshipPptx.dll
+D:\cemc-sr\worship-pptx\docs\tutorial\review-0.93.34\Renderer\Program.cs(51,39): warning CS0618: 'Bitmap.Save(Stream, int?)' is obsolete: 'Use the overload accepting BitmapEncoderOptions instead.' [D:\cemc-sr\worship-pptx\docs\tutorial\review-0.93.34\Renderer\Renderer.csproj]
+  Renderer -> E:\WorshipPptx-work\tutorial34-build\bin\Renderer\release\Renderer.dll
+
+Build succeeded.
+
+D:\cemc-sr\worship-pptx\docs\tutorial\review-0.93.34\Renderer\Program.cs(51,39): warning CS0618: 'Bitmap.Save(Stream, int?)' is obsolete: 'Use the overload accepting BitmapEncoderOptions instead.' [D:\cemc-sr\worship-pptx\docs\tutorial\review-0.93.34\Renderer\Renderer.csproj]
+    1 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:06.87

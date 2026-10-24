@@ -1,0 +1,194 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 3157910,
+    "text": "Both"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 4315830,
+    "duration": 4342080,
+    "text": "preview"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 8789580,
+    "duration": 4605410,
+    "text": "areas"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 13526250,
+    "duration": 4078750,
+    "text": "control"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 17736660,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 18921250,
+    "duration": 2894580,
+    "text": "same"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 21947500,
+    "duration": 7236660,
+    "text": "background"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 38421250,
+    "duration": 3157910,
+    "text": "Use"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 41710410,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 42763330,
+    "duration": 3289580,
+    "text": "mouse"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 46184160,
+    "duration": 2500000,
+    "text": "wheel"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 48815830,
+    "duration": 1052500,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 50000000,
+    "duration": 2763330,
+    "text": "zoom"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 52894580,
+    "duration": 1842080,
+    "text": "in"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 54868330,
+    "duration": 1447500,
+    "text": "or"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 56447500,
+    "duration": 4342080,
+    "text": "out"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 70000000,
+    "duration": 3289580,
+    "text": "Then"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 73421250,
+    "duration": 3026250,
+    "text": "click"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 76578750,
+    "duration": 789580,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 77500000,
+    "duration": 3289580,
+    "text": "drag"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 80921250,
+    "duration": 921250,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 81973750,
+    "duration": 2894580,
+    "text": "pan"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 85000000,
+    "duration": 789580,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 85921250,
+    "duration": 6052500,
+    "text": "image"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 101052500,
+    "duration": 1842080,
+    "text": "The"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 103026250,
+    "duration": 3552500,
+    "text": "plus"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 106710410,
+    "duration": 921250,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 107763330,
+    "duration": 4078750,
+    "text": "minus"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 111973750,
+    "duration": 4473750,
+    "text": "buttons"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 116578750,
+    "duration": 2500000,
+    "text": "make"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 119210410,
+    "duration": 4473750,
+    "text": "smaller"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 123815830,
+    "duration": 7236660,
+    "text": "changes"
+  }
+]

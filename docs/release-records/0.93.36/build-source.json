@@ -1,0 +1,13 @@
+{
+  "tutorial_reedited": false,
+  "test_results": {
+    "passed": 128,
+    "failed": 0
+  },
+  "native_install_tested": false,
+  "tutorial_sha256": "0f425329484f21d46063e6991d263f3f4a31cae3d02fa5fe21141a017f2ee6fe",
+  "version": "0.93.36",
+  "rendered_editor_checked": true,
+  "build_location": "E:\\WorshipPptx-work\\worship-release-0.93.36",
+  "application_source_commit": "6de37e80bf81f59fbfe1954770567b2182a0a8d7"
+}

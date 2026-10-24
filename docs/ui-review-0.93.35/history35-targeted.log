@@ -1,0 +1,4 @@
+PASS Removing a program requires confirmation and only the selected row has its control
+PASS Deletion selects the nearest upcoming date, falls back to latest past, and stays deleted after closing
+PASS Deleting the final program leaves a fresh editable blank program
+RESULT 3 passed, 0 failed.

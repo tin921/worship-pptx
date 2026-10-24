@@ -1,0 +1,39 @@
+Let's build a Sunday worship presentation. Select a service, then edit its name and date. Changes save automatically. Drag these two dividers to resize the panels. The app remembers both the overall window size and your panel widths.
+
+Remove appears only on the selected program. Confirm the removal, and the nearest upcoming program is selected.
+
+Start with the invocation. Enter its title, paste the Scripture, and leave the performance order empty.
+
+Use the picture-in-picture toggle beside Preview to compare layouts. Turn it off for in-person service projection. Turn it on to reserve space for a presenter when streaming to a remote audience.
+
+Click the plus tab to add a song. Put V one and C in square brackets before the verse and chorus. Enter the performance order, such as V one, C, V two, C. Add copyright and song number above.
+
+Choose a font, color, bold, and alignment. Auto fits the text and keeps adjusting as you edit. Choosing a fixed size turns Auto off. The song title has its own size, separate from the lyrics.
+
+Click Edit to find a background that matches the song. The counter shows how many images are displayed and the total matching results.
+
+Explore five styles: photography, illustration, abstract, three D, and minimalist. Toggle the filters to narrow the gallery, and scroll for more choices.
+
+Double-click a card to see the full image, then double-click to return. The small expand box also opens it, and Escape closes it.
+
+Click Google image search for more choices in your browser. The link uses English theme keywords, which you can edit. Check an image's size and usage rights before downloading.
+
+You can also browse for a local image, paste one, use a direct image URL, or drag in a file. Select your background and click Apply.
+
+Both preview areas control the same background. Use the mouse wheel to zoom in or out. Then click and drag to pan the image. The plus and minus buttons make smaller changes.
+
+Flip mirrors the image. Adjust opacity to make the lyrics stand out. Reset returns the background to its original zoom and position.
+
+Add the second song, then the third, each with its own lyrics, performance order, and background. Finish with Scripture reading after the three songs, leaving its performance order empty. Drag tabs to rearrange the service.
+
+Press Escape to leave a text field. Left and right switch tabs; up and down move through slides. Page Down selects the next service on the left, and Page Up goes back.
+
+Press F five or click Preview to review the entire service. Use the arrow keys to navigate, and Escape to return.
+
+Click Create to save an editable PowerPoint, with backgrounds and fonts included, ready for projection.
+
+Upload saves a local copy and sends the presentation to your shared Google Drive folder. You can edit the filename and local saving path here.
+
+After confirmation, open the folder link to see the uploaded file. Your presentation is ready to share.
+
+Use the feedback icon at the top right to open our Google document for questions and suggestions.

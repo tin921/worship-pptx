@@ -1,0 +1,224 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 1842080,
+    "text": "The"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 3000000,
+    "duration": 3552500,
+    "text": "small"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 6684160,
+    "duration": 5394580,
+    "text": "background"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 12210410,
+    "duration": 4473750,
+    "text": "preview"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 16815830,
+    "duration": 1447500,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 18394580,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 19447500,
+    "duration": 2894580,
+    "text": "main"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 22473750,
+    "duration": 4473750,
+    "text": "preview"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 27078750,
+    "duration": 3947500,
+    "text": "control"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 31157910,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 32342080,
+    "duration": 2763330,
+    "text": "same"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 35236660,
+    "duration": 5526250,
+    "text": "image"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 49868330,
+    "duration": 4473750,
+    "text": "Scroll"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 54473750,
+    "duration": 1052500,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 55657910,
+    "duration": 3947500,
+    "text": "zoom"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 61578750,
+    "duration": 1842080,
+    "text": "then"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 63552500,
+    "duration": 3026250,
+    "text": "drag"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 66710410,
+    "duration": 921250,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 67763330,
+    "duration": 4868330,
+    "text": "pan"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 81842080,
+    "duration": 3157910,
+    "text": "Use"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 85131660,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 86315830,
+    "duration": 3684160,
+    "text": "plus"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 90131660,
+    "duration": 1184160,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 91447500,
+    "duration": 4078750,
+    "text": "minus"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 95657910,
+    "duration": 4210410,
+    "text": "buttons"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 100000000,
+    "duration": 1578750,
+    "text": "for"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 101710410,
+    "duration": 4210410,
+    "text": "smaller"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 106052500,
+    "duration": 7105410,
+    "text": "changes"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 122236660,
+    "duration": 1578750,
+    "text": "The"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 123947500,
+    "duration": 3947500,
+    "text": "camera"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 128026250,
+    "duration": 2894580,
+    "text": "guide"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 131052500,
+    "duration": 3684160,
+    "text": "stays"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 134868330,
+    "duration": 4736660,
+    "text": "fixed"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 139736660,
+    "duration": 1315830,
+    "text": "while"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 141184160,
+    "duration": 1184160,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 142500000,
+    "duration": 5394580,
+    "text": "background"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 148026250,
+    "duration": 5263330,
+    "text": "moves"
+  }
+]

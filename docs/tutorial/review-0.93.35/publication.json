@@ -1,0 +1,12 @@
+{
+  "release": "v0.93.36",
+  "recorded_app_version": "0.93.35",
+  "release_url": "https://github.com/tin921/worship-pptx/releases/tag/v0.93.36",
+  "video_download": "https://github.com/tin921/worship-pptx/releases/download/v0.93.36/worship-pptx-0.93.35-english-review.mp4",
+  "video_playback": "https://drive.google.com/file/d/1HADwsZCLtDVUC6DEUAEpiCDD5ToAfLJh/view",
+  "video_sha256": "0f425329484f21d46063e6991d263f3f4a31cae3d02fa5fe21141a017f2ee6fe",
+  "video_bytes": 15047839,
+  "duration_seconds": 278.958333,
+  "video_reedited": false,
+  "original_review_records_preserved": true
+}

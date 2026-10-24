@@ -1,0 +1,236 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 2236660,
+    "text": "For"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 3394580,
+    "duration": 2236660,
+    "text": "more"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 5763330,
+    "duration": 6052500,
+    "text": "choices"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 13789580,
+    "duration": 2631660,
+    "text": "click"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 16552500,
+    "duration": 3552500,
+    "text": "Google"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 20236660,
+    "duration": 3552500,
+    "text": "image"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 23921250,
+    "duration": 5263330,
+    "text": "search"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 38289580,
+    "duration": 1842080,
+    "text": "The"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 40263330,
+    "duration": 5000000,
+    "text": "browser"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 45394580,
+    "duration": 3947500,
+    "text": "opens"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 49473750,
+    "duration": 2631660,
+    "text": "real"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 52236660,
+    "duration": 4078750,
+    "text": "image"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 56447500,
+    "duration": 4605410,
+    "text": "results"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 61184160,
+    "duration": 3026250,
+    "text": "using"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 64342080,
+    "duration": 526250,
+    "text": "a"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 65000000,
+    "duration": 3684160,
+    "text": "short"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 68815830,
+    "duration": 3421250,
+    "text": "English"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 72368330,
+    "duration": 5394580,
+    "text": "subject"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 77894580,
+    "duration": 1447500,
+    "text": "from"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 79473750,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 80526250,
+    "duration": 6052500,
+    "text": "suggested"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 86710410,
+    "duration": 4473750,
+    "text": "theme"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 100263330,
+    "duration": 1710410,
+    "text": "You"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 102105410,
+    "duration": 1842080,
+    "text": "can"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 104078750,
+    "duration": 2500000,
+    "text": "edit"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 106710410,
+    "duration": 789580,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 107631660,
+    "duration": 4868330,
+    "text": "keywords"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 112631660,
+    "duration": 5657910,
+    "text": "first"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 127368330,
+    "duration": 3421250,
+    "text": "Check"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 130921250,
+    "duration": 1184160,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 132236660,
+    "duration": 4078750,
+    "text": "image"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 136447500,
+    "duration": 5131660,
+    "text": "dimensions"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 141710410,
+    "duration": 1052500,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 142894580,
+    "duration": 4210410,
+    "text": "usage"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 147236660,
+    "duration": 3552500,
+    "text": "rights"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 150921250,
+    "duration": 3684160,
+    "text": "before"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 154736660,
+    "duration": 5921250,
+    "text": "downloading"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 160789580,
+    "duration": 526250,
+    "text": "a"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 161447500,
+    "duration": 7500000,
+    "text": "background"
+  }
+]

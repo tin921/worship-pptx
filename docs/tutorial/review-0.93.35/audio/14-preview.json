@@ -1,0 +1,128 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 3552500,
+    "text": "Press"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 4710410,
+    "duration": 2105410,
+    "text": "F"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 6947500,
+    "duration": 3947500,
+    "text": "five"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 11026250,
+    "duration": 1052500,
+    "text": "or"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 12210410,
+    "duration": 3157910,
+    "text": "click"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 15500000,
+    "duration": 4342080,
+    "text": "Preview"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 19973750,
+    "duration": 1447500,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 21552500,
+    "duration": 3552500,
+    "text": "review"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 25236660,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 26289580,
+    "duration": 5000000,
+    "text": "entire"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 31421250,
+    "duration": 6052500,
+    "text": "service"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 46710410,
+    "duration": 3289580,
+    "text": "Use"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 50131660,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 51315830,
+    "duration": 3421250,
+    "text": "arrow"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 54868330,
+    "duration": 3684160,
+    "text": "keys"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 58684160,
+    "duration": 1052500,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 59868330,
+    "duration": 6710410,
+    "text": "navigate"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 68815830,
+    "duration": 1052500,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 70000000,
+    "duration": 4210410,
+    "text": "Escape"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 74342080,
+    "duration": 1184160,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 75657910,
+    "duration": 5789580,
+    "text": "return"
+  }
+]

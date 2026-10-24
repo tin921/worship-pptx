@@ -1,0 +1,1422 @@
+[
+  {
+    "t": 0,
+    "shot": "01-empty",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 5.458958,
+    "shot": "02-name",
+    "marks": [
+      [
+        26,
+        135,
+        183,
+        173
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 6.314208,
+    "shot": "02-name",
+    "marks": [
+      [
+        26,
+        179,
+        183,
+        217
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 10.866833000000002,
+    "shot": "03-panel",
+    "marks": [
+      [
+        210,
+        71,
+        1600,
+        826
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 17.003999999999998,
+    "shot": "04-invocation",
+    "marks": [
+      [
+        230,
+        91,
+        524,
+        135
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 20.489249999999995,
+    "shot": "04-invocation",
+    "marks": [
+      [
+        230,
+        263,
+        560,
+        770
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 22.265582999999996,
+    "shot": "04-invocation",
+    "marks": [
+      [
+        230,
+        91,
+        230,
+        91
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 25.726124999999996,
+    "shot": "04-invocation",
+    "marks": [
+      [
+        657,
+        387,
+        1368.111111111111,
+        787
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 35.568,
+    "shot": "04-invocation",
+    "marks": [
+      [
+        369,
+        12,
+        425,
+        68
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 36.787458,
+    "shot": "05-new-song",
+    "marks": [
+      [
+        230,
+        91,
+        524,
+        135
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 39.724333,
+    "shot": "06-song-lyrics",
+    "marks": [
+      [
+        230,
+        319,
+        560,
+        784
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 43.737458,
+    "shot": "07-order",
+    "marks": [
+      [
+        230,
+        263,
+        560,
+        307
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 47.987458,
+    "shot": "08-credits",
+    "marks": [
+      [
+        230,
+        147,
+        560,
+        191
+      ],
+      [
+        230,
+        203,
+        560,
+        247
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 53.7,
+    "shot": "10-font-list",
+    "marks": [
+      [
+        1021,
+        128,
+        1420,
+        168
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 55.472125000000005,
+    "shot": "11-color",
+    "marks": [
+      [
+        1021,
+        224,
+        1077,
+        264
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 56.78787500000001,
+    "shot": "12-align",
+    "marks": [
+      [
+        1021,
+        176,
+        1420,
+        264
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 58.369458,
+    "shot": "13-auto",
+    "marks": [
+      [
+        1021,
+        176,
+        1077,
+        216
+      ],
+      [
+        657,
+        387,
+        1368.111111111111,
+        787
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 64.487875,
+    "shot": "14-size",
+    "marks": [
+      [
+        1083,
+        176,
+        1147,
+        216
+      ],
+      [
+        1021,
+        176,
+        1077,
+        216
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 68.02737499999999,
+    "shot": "15-title-size",
+    "marks": [
+      [
+        1083,
+        176,
+        1147,
+        216
+      ],
+      [
+        657,
+        387,
+        1368.111111111111,
+        787
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 70.856333,
+    "shot": "16-lyric-size",
+    "marks": [
+      [
+        1083,
+        176,
+        1147,
+        216
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 74.04,
+    "shot": "16-lyric-size",
+    "marks": [
+      [
+        895,
+        137,
+        951,
+        173
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 77.42,
+    "shot": "17-matching",
+    "marks": [
+      [
+        590,
+        333,
+        1010,
+        567
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 81.512125,
+    "shot": "18-matched",
+    "marks": [
+      [
+        124,
+        131,
+        1080,
+        175
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 88.709458,
+    "shot": "18-matched",
+    "marks": [
+      [
+        525,
+        203,
+        591,
+        225
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 97.920333,
+    "shot": "19-photo",
+    "marks": [
+      [
+        836,
+        187,
+        896,
+        241
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 98.867666,
+    "shot": "19-illustration",
+    "marks": [
+      [
+        900,
+        187,
+        960,
+        241
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 99.78875,
+    "shot": "19-abstract",
+    "marks": [
+      [
+        964,
+        187,
+        1024,
+        241
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 100.65716599999999,
+    "shot": "19-sculpted",
+    "marks": [
+      [
+        1028,
+        187,
+        1088,
+        241
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 101.670333,
+    "shot": "19-minimal",
+    "marks": [
+      [
+        1092,
+        187,
+        1152,
+        241
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 103.344,
+    "shot": "21-gallery",
+    "marks": [
+      [
+        832,
+        187,
+        1152,
+        241
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 106.554541,
+    "shot": "20-scroll-000",
+    "marks": [
+      [
+        124,
+        253,
+        1152,
+        780
+      ],
+      [
+        525,
+        203,
+        591,
+        225
+      ]
+    ],
+    "key": null,
+    "sequence": [
+      "20-scroll-",
+      6,
+      0.8
+    ],
+    "cursor": null
+  },
+  {
+    "t": 117.716,
+    "shot": "21-gallery",
+    "marks": [
+      [
+        124,
+        253,
+        318,
+        392
+      ]
+    ],
+    "key": "Double-click",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 119.58020799999998,
+    "shot": "22-full-double",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 121.911791,
+    "shot": "23-back",
+    "marks": [],
+    "key": "Double-click",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 125.06966599999998,
+    "shot": "23-back",
+    "marks": [
+      [
+        283,
+        364,
+        307,
+        388
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 126.35916599999999,
+    "shot": "24-full-expand",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 127.95124999999999,
+    "shot": "25-google-link",
+    "marks": [],
+    "key": "Esc",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 136.588,
+    "shot": "25-google-link",
+    "marks": [
+      [
+        1176,
+        159,
+        1326,
+        190
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 140.49433299999998,
+    "shot": "59-browser-top",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 147.87587499999998,
+    "shot": "60-browser-scrolled",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 157.396,
+    "shot": "26-import",
+    "marks": [
+      [
+        1176,
+        491,
+        1322,
+        531
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 160.523375,
+    "shot": "26-import",
+    "marks": [
+      [
+        1330,
+        491,
+        1476,
+        531
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 161.99704099999997,
+    "shot": "26-import",
+    "marks": [
+      [
+        1176,
+        541,
+        1406,
+        585
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 166.43387499999997,
+    "shot": "27-apply",
+    "marks": [
+      [
+        1176,
+        239,
+        1476,
+        408
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 168.789166,
+    "shot": "27-apply",
+    "marks": [
+      [
+        1384,
+        796,
+        1476,
+        836
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 171.88,
+    "shot": "28-transform",
+    "marks": [
+      [
+        606,
+        128,
+        960,
+        328
+      ],
+      [
+        657,
+        387,
+        1368.111111111111,
+        787
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 176.74683299999998,
+    "shot": "29-zoom-000",
+    "marks": [
+      [
+        657,
+        387,
+        1368.111111111111,
+        787
+      ]
+    ],
+    "key": "Mouse wheel",
+    "sequence": [
+      "29-zoom-",
+      30,
+      0.1
+    ],
+    "cursor": null
+  },
+  {
+    "t": 178.11525,
+    "shot": "30-pan-000",
+    "marks": [
+      [
+        657,
+        387,
+        1368.111111111111,
+        787
+      ]
+    ],
+    "key": "Drag",
+    "sequence": [
+      "30-pan-",
+      30,
+      0.1
+    ],
+    "cursor": "pan"
+  },
+  {
+    "t": 180.391583,
+    "shot": "31-plus",
+    "marks": [
+      [
+        685,
+        256,
+        713,
+        284
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 180.90474999999998,
+    "shot": "32-minus",
+    "marks": [
+      [
+        685,
+        288,
+        713,
+        316
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 184.15474999999998,
+    "shot": "32-minus",
+    "marks": [
+      [
+        657,
+        387,
+        1368.111111111111,
+        787
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 190.128,
+    "shot": "33-flip",
+    "marks": [
+      [
+        717,
+        272,
+        745,
+        300
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 192.91587499999997,
+    "shot": "34-opacity-000",
+    "marks": [
+      [
+        790,
+        279,
+        919,
+        319
+      ]
+    ],
+    "key": null,
+    "sequence": [
+      "34-opacity-",
+      30,
+      0.1
+    ],
+    "cursor": null
+  },
+  {
+    "t": 198.62641599999998,
+    "shot": "35-reset",
+    "marks": [
+      [
+        637,
+        275,
+        659,
+        297
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 202.310625,
+    "shot": "35-reset",
+    "marks": [
+      [
+        657,
+        387,
+        1368.111111111111,
+        787
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 208.064,
+    "shot": "36-second-song",
+    "marks": [
+      [
+        230,
+        12,
+        1402,
+        70
+      ],
+      [
+        230,
+        319,
+        560,
+        784
+      ],
+      [
+        230,
+        263,
+        560,
+        307
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 213.746625,
+    "shot": "37-third-song",
+    "marks": [
+      [
+        230,
+        12,
+        1402,
+        70
+      ],
+      [
+        230,
+        319,
+        560,
+        784
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 220.04925,
+    "shot": "38-reading",
+    "marks": [
+      [
+        230,
+        12,
+        1402,
+        70
+      ],
+      [
+        230,
+        263,
+        560,
+        770
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 223.81241599999998,
+    "shot": "38-reading",
+    "marks": [
+      [
+        230,
+        263,
+        560,
+        307
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 226.615041,
+    "shot": "39-reorder",
+    "marks": [
+      [
+        230,
+        12,
+        1402,
+        70
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 231.64,
+    "shot": "39-field-focus",
+    "marks": [
+      [
+        230,
+        319,
+        560,
+        784
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 231.938416,
+    "shot": "40-escape",
+    "marks": [
+      [
+        230,
+        319,
+        560,
+        784
+      ]
+    ],
+    "key": "Esc",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 236.783166,
+    "shot": "41-right",
+    "marks": [
+      [
+        230,
+        12,
+        1402,
+        70
+      ]
+    ],
+    "key": "→",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 237.651583,
+    "shot": "42-left",
+    "marks": [
+      [
+        230,
+        12,
+        1402,
+        70
+      ]
+    ],
+    "key": "←",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 239.822625,
+    "shot": "43-down",
+    "marks": [
+      [
+        1456,
+        123,
+        1588,
+        810
+      ],
+      [
+        657,
+        387,
+        1368.111111111111,
+        787
+      ]
+    ],
+    "key": "↓",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 240.75683299999997,
+    "shot": "44-up",
+    "marks": [
+      [
+        1456,
+        123,
+        1588,
+        810
+      ]
+    ],
+    "key": "↑",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 243.204208,
+    "shot": "46-pagedown",
+    "marks": [
+      [
+        16,
+        125,
+        193,
+        880
+      ]
+    ],
+    "key": "Page Down",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 247.50683299999997,
+    "shot": "47-pageup",
+    "marks": [
+      [
+        16,
+        125,
+        193,
+        880
+      ]
+    ],
+    "key": "Page Up",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 250.59895799999998,
+    "shot": "45-boundary",
+    "marks": [
+      [
+        1456,
+        123,
+        1588,
+        810
+      ]
+    ],
+    "key": "↑",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 256.296,
+    "shot": "48-before-preview",
+    "marks": [
+      [
+        1306,
+        844,
+        1390,
+        884
+      ]
+    ],
+    "key": "F5",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 258.67337499999996,
+    "shot": "49-preview",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 261.333875,
+    "shot": "49-preview",
+    "marks": [
+      [
+        888,
+        760,
+        960,
+        778
+      ],
+      [
+        888,
+        786,
+        960,
+        804
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 267.162833,
+    "shot": "50-preview-next",
+    "marks": [
+      [
+        272,
+        118,
+        1328,
+        712.0
+      ]
+    ],
+    "key": "↓",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 269.28125,
+    "shot": "51-preview-right",
+    "marks": [
+      [
+        272,
+        118,
+        1328,
+        712.0
+      ]
+    ],
+    "key": "→",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 272.162833,
+    "shot": "52-preview-left",
+    "marks": [
+      [
+        272,
+        118,
+        1328,
+        712.0
+      ]
+    ],
+    "key": "←",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 274.452333,
+    "shot": "53-export",
+    "marks": [],
+    "key": "Esc",
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 279.248,
+    "shot": "53-export",
+    "marks": [
+      [
+        1400,
+        844,
+        1484,
+        884
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 280.03325,
+    "shot": "61-save-dialog",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 288.85166599999997,
+    "shot": "62-saved",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 297.496,
+    "shot": "54-upload",
+    "marks": [
+      [
+        444,
+        159,
+        1156,
+        203
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 304.94179099999997,
+    "shot": "55-upload-path",
+    "marks": [
+      [
+        444,
+        260,
+        1101,
+        304
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 310.204958,
+    "shot": "56-upload-ready",
+    "marks": [
+      [
+        444,
+        337,
+        817,
+        369
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 314.494416,
+    "shot": "56-upload-ready",
+    "marks": [
+      [
+        1094,
+        766,
+        1156,
+        806
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 320.1080697,
+    "shot": "57-upload-000",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 321.05952049999996,
+    "shot": "57-upload-001",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 321.9257178,
+    "shot": "57-upload-002",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 322.7961989,
+    "shot": "57-upload-003",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 323.8225157,
+    "shot": "57-upload-004",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 324.83962349999996,
+    "shot": "57-upload-005",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 325.701349,
+    "shot": "57-upload-006",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 326.5527438,
+    "shot": "57-upload-007",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 327.4275922,
+    "shot": "57-upload-008",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 328.2920277,
+    "shot": "57-upload-009",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 329.1543069,
+    "shot": "57-upload-010",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 330.112075,
+    "shot": "57-upload-011",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 334.312075,
+    "shot": "58-upload-complete",
+    "marks": [
+      [
+        444,
+        681,
+        1156,
+        717
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 336.57365799999997,
+    "shot": "58-upload-complete",
+    "marks": [
+      [
+        1094,
+        766,
+        1156,
+        806
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 340.757866,
+    "shot": "58-upload-complete",
+    "marks": [
+      [
+        444,
+        723,
+        727,
+        754
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": "click"
+  },
+  {
+    "t": 343.560491,
+    "shot": "63-drive-folder",
+    "marks": [
+      [
+        299.2495250158328,
+        221.05263157894737,
+        778.785940468651,
+        265.4605263157895
+      ]
+    ],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  },
+  {
+    "t": 350.942075,
+    "shot": "63-drive-folder",
+    "marks": [],
+    "key": null,
+    "sequence": null,
+    "cursor": null
+  }
+]

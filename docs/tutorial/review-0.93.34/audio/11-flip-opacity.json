@@ -1,0 +1,134 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 3552500,
+    "text": "Flip"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 4710410,
+    "duration": 4078750,
+    "text": "mirrors"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 8921250,
+    "duration": 1184160,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 10236660,
+    "duration": 5789580,
+    "text": "image"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 25131660,
+    "duration": 4868330,
+    "text": "Adjust"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 30131660,
+    "duration": 5789580,
+    "text": "opacity"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 36052500,
+    "duration": 1184160,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 37368330,
+    "duration": 2236660,
+    "text": "make"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 39736660,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 40921250,
+    "duration": 4210410,
+    "text": "lyrics"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 45263330,
+    "duration": 3421250,
+    "text": "stand"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 48815830,
+    "duration": 4078750,
+    "text": "out"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 61973750,
+    "duration": 5526250,
+    "text": "Reset"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 67631660,
+    "duration": 4736660,
+    "text": "returns"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 72500000,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 73684160,
+    "duration": 6315830,
+    "text": "background"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 80131660,
+    "duration": 1315830,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 81578750,
+    "duration": 1447500,
+    "text": "its"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 83157910,
+    "duration": 5000000,
+    "text": "original"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 88289580,
+    "duration": 3157910,
+    "text": "zoom"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 91578750,
+    "duration": 1052500,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 92763330,
+    "duration": 6578750,
+    "text": "position"
+  }
+]

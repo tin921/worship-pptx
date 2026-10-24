@@ -1,0 +1,290 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 2763330,
+    "text": "Add"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 3921250,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 4973750,
+    "duration": 3684160,
+    "text": "second"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 8789580,
+    "duration": 2894580,
+    "text": "song"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 11815830,
+    "duration": 1578750,
+    "text": "with"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 13526250,
+    "duration": 3289580,
+    "text": "verse"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 16947500,
+    "duration": 1184160,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 18263330,
+    "duration": 4342080,
+    "text": "chorus"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 22736660,
+    "duration": 4868330,
+    "text": "tags"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 27736660,
+    "duration": 1973750,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 29842080,
+    "duration": 1578750,
+    "text": "its"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 31552500,
+    "duration": 5657910,
+    "text": "performance"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 37342080,
+    "duration": 4473750,
+    "text": "order"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 51052500,
+    "duration": 3421250,
+    "text": "Then"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 54605410,
+    "duration": 2368330,
+    "text": "add"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 57105410,
+    "duration": 789580,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 58026250,
+    "duration": 3421250,
+    "text": "third"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 61578750,
+    "duration": 4605410,
+    "text": "song"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 75394580,
+    "duration": 3421250,
+    "text": "Each"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 78947500,
+    "duration": 3552500,
+    "text": "song"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 82631660,
+    "duration": 2894580,
+    "text": "keeps"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 85657910,
+    "duration": 1578750,
+    "text": "its"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 87368330,
+    "duration": 2500000,
+    "text": "own"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 90000000,
+    "duration": 5789580,
+    "text": "background"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 95921250,
+    "duration": 1052500,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 97105410,
+    "duration": 7236660,
+    "text": "formatting"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 113552500,
+    "duration": 4736660,
+    "text": "Finish"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 118421250,
+    "duration": 1447500,
+    "text": "with"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 120000000,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 121052500,
+    "duration": 5131660,
+    "text": "Scripture"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 126315830,
+    "duration": 3421250,
+    "text": "reading"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 129868330,
+    "duration": 3684160,
+    "text": "after"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 133684160,
+    "duration": 1842080,
+    "text": "all"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 135657910,
+    "duration": 2368330,
+    "text": "three"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 138157910,
+    "duration": 6447500,
+    "text": "songs"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 153684160,
+    "duration": 3289580,
+    "text": "Leave"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 157105410,
+    "duration": 1447500,
+    "text": "its"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 158684160,
+    "duration": 5789580,
+    "text": "performance"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 164605410,
+    "duration": 3684160,
+    "text": "order"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 168421250,
+    "duration": 5263330,
+    "text": "empty"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 182894580,
+    "duration": 1973750,
+    "text": "You"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 185000000,
+    "duration": 1578750,
+    "text": "can"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 186710410,
+    "duration": 3421250,
+    "text": "drag"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 190263330,
+    "duration": 4342080,
+    "text": "tabs"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 194736660,
+    "duration": 1184160,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 196052500,
+    "duration": 3815830,
+    "text": "change"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 200000000,
+    "duration": 1842080,
+    "text": "their"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 201973750,
+    "duration": 4473750,
+    "text": "order"
+  }
+]

@@ -1,0 +1,12 @@
+  Determining projects to restore...
+  Restored D:\cemc-sr\worship-pptx\src\WorshipPptx\WorshipPptx.csproj (in 1.53 sec).
+  WorshipPptx -> E:\WorshipPptx-work\worship-release-0.93.36\build\bin\WorshipPptx\release_win-x64\WorshipPptx.dll
+  WorshipPptx -> E:\WorshipPptx-work\worship-release-0.93.36\publish\
+Microsoft C++ runtime dependencies bundled beside the Windows executable.
+Product.wxs
+Files.wxs
+
+Name                                Length
+----                                ------
+WorshipPptx-0.93.36-Setup.msi    307864923
+WorshipPptx-0.93.36-Portable.zip 338639760

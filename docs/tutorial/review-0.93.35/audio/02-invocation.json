@@ -1,0 +1,98 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 4342080,
+    "text": "Start"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 5500000,
+    "duration": 1315830,
+    "text": "with"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 6947500,
+    "duration": 789580,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 7868330,
+    "duration": 8684160,
+    "text": "invocation"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 25789580,
+    "duration": 3552500,
+    "text": "Enter"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 29473750,
+    "duration": 1842080,
+    "text": "its"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 31447500,
+    "duration": 4473750,
+    "text": "title"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 37500000,
+    "duration": 3552500,
+    "text": "paste"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 41184160,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 42236660,
+    "duration": 5921250,
+    "text": "Scripture"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 50000000,
+    "duration": 1315830,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 51447500,
+    "duration": 2500000,
+    "text": "leave"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 54078750,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 55131660,
+    "duration": 5921250,
+    "text": "performance"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 61184160,
+    "duration": 3815830,
+    "text": "order"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 65131660,
+    "duration": 4868330,
+    "text": "empty"
+  }
+]

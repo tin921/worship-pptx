@@ -1,0 +1,18 @@
+{
+  "requested_on": "2026-10-24",
+  "status": "Applied in the new review-0.93.34 tutorial after the user selected raised-text concept A and requested a shared green rectangular background. The old video remains unchanged for comparison.",
+  "revisions": [
+    {"time": "00:17", "change": "Highlight both splitters. Explain overall app window size separately from internal panel sizes."},
+    {"time": "00:24", "change": "During keeping the performance order empty, point the box and arrow at the performance order field."},
+    {"time": "00:28", "change": "Remove the reader and untagged-text explanation."},
+    {"time": "00:35", "change": "Add an app toggle next to the main image preview header to show or hide PIP. No PIP is for in-person service projection; PIP is for streaming to a remote audience. Demonstrate both after implementation."},
+    {"time": "01:25", "change": "Remove the model-loading explanation."},
+    {"time": "04:13", "change": "Remove the without wrapping around explanation."}
+  ],
+  "header_preview": {
+    "count": 3,
+    "requirements": "Remove the green square and music note from the sidebar header only; retain the projector and shine its light across the right-aligned app name and version. Keep the Windows taskbar and window title-bar icons unchanged.",
+    "apply_to_app": true,
+    "final_choice": "Round 2 A; original sage-green icon background extended behind projector, live app name, and version. Windows icons unchanged."
+  }
+}

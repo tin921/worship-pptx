@@ -1,0 +1,15 @@
+{
+  "reviewed": "2026-10-24",
+  "contact_sheet_checked": true,
+  "remove_button_arrow_matches_selected_program": true,
+  "confirmation_arrow_matches_remove_button": true,
+  "feedback_arrow_matches_top_right_icon": true,
+  "feedback_document_capture_fully_loaded": true,
+  "pip_off_layout_checked_in_encoded_video": true,
+  "drive_arrow_matches_uploaded_demo_filename": true,
+  "native_export_confirmed_slide_count": 19,
+  "native_image_double_click_entry_and_exit_verified": true,
+  "cloud_video_playback_verified_at_normal_speed": true,
+  "cloud_video_duration": "4:39",
+  "notes": "Actual encoded frames were extracted with check_encoded_frames.py. New controls and representative retained scenes were visually inspected; the entire MP4 passed FFmpeg decode validation."
+}

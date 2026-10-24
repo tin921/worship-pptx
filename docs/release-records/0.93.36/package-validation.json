@@ -1,0 +1,9 @@
+{
+  "msi_payload_matches": true,
+  "windows_payload_files": 1101,
+  "version": "0.93.36",
+  "media_choices": 830,
+  "generated_utc": "2026-10-24T16:21:07.0200439Z",
+  "native_install_tested": false,
+  "portable_payload_matches": true
+}

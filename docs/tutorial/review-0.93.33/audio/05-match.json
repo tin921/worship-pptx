@@ -1,0 +1,284 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 4210410,
+    "text": "Open"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 5368330,
+    "duration": 2763330,
+    "text": "Edit"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 8263330,
+    "duration": 1052500,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 9447500,
+    "duration": 3026250,
+    "text": "choose"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 12605410,
+    "duration": 657910,
+    "text": "a"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 13394580,
+    "duration": 7368330,
+    "text": "background"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 29868330,
+    "duration": 2105410,
+    "text": "The"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 32105410,
+    "duration": 2763330,
+    "text": "app"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 35000000,
+    "duration": 4605410,
+    "text": "matches"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 39736660,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 40921250,
+    "duration": 3552500,
+    "text": "song"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 44605410,
+    "duration": 4078750,
+    "text": "against"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 48815830,
+    "duration": 1447500,
+    "text": "its"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 50394580,
+    "duration": 3947500,
+    "text": "local"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 54473750,
+    "duration": 3421250,
+    "text": "image"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 58026250,
+    "duration": 6973750,
+    "text": "library"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 74078750,
+    "duration": 1710410,
+    "text": "The"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 75921250,
+    "duration": 3552500,
+    "text": "model"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 79605410,
+    "duration": 3684160,
+    "text": "starts"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 83421250,
+    "duration": 3684160,
+    "text": "loading"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 87236660,
+    "duration": 657910,
+    "text": "in"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 88026250,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 89078750,
+    "duration": 5526250,
+    "text": "background"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 94736660,
+    "duration": 2894580,
+    "text": "after"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 97763330,
+    "duration": 4736660,
+    "text": "launch"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 105789580,
+    "duration": 1184160,
+    "text": "if"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 107105410,
+    "duration": 6973750,
+    "text": "necessary"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 116710410,
+    "duration": 1973750,
+    "text": "this"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 118815830,
+    "duration": 3421250,
+    "text": "window"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 122368330,
+    "duration": 3421250,
+    "text": "waits"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 125921250,
+    "duration": 1184160,
+    "text": "for"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 127236660,
+    "duration": 2236660,
+    "text": "that"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 129605410,
+    "duration": 2894580,
+    "text": "same"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 132631660,
+    "duration": 4473750,
+    "text": "load"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 146184160,
+    "duration": 1578750,
+    "text": "The"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 147894580,
+    "duration": 4473750,
+    "text": "counter"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 152500000,
+    "duration": 3157910,
+    "text": "shows"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 155789580,
+    "duration": 4868330,
+    "text": "images"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 160789580,
+    "duration": 3421250,
+    "text": "loaded"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 164342080,
+    "duration": 2105410,
+    "text": "so"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 166578750,
+    "duration": 4078750,
+    "text": "far"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 174210410,
+    "duration": 4078750,
+    "text": "followed"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 178421250,
+    "duration": 1315830,
+    "text": "by"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 179868330,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 181052500,
+    "duration": 3815830,
+    "text": "total"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 185000000,
+    "duration": 3026250,
+    "text": "ranked"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 188157910,
+    "duration": 6710410,
+    "text": "results"
+  }
+]

@@ -1,0 +1,13 @@
+PASS Song titles fit independently of lyrics and old saved sizing remains usable
+PASS Title and lyric sizing controls keep separate manual and Auto choices through save and export
+  Screenshot chorus fits at 43 pt with Microsoft YaHei
+PASS Auto fits both lyric line width and block height without adding line breaks in preview or export
+PASS Typing and pasting fit the longest block with a shared centered font until a saved manual override
+PASS Escape leaves fields; Page keys change services, arrows change tabs/slides and Tab follows fields
+PASS Preview frames show the entire 16:9 canvas without border gaps after resizing or moving dividers
+PASS Both previews pan and zoom the same background while the camera stays fixed; changes persist per tab
+PASS Adjusted background pixels match export and section tags are padded inside the PiP footprint
+PASS Window sizes and both editor dividers survive a restart
+PASS Dialog sizes stay separate and maximization preserves the normal size
+PASS Damaged or invalid saved window layouts fall back to usable defaults
+RESULT 11 passed, 0 failed.

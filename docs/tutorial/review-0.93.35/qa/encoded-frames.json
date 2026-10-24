@@ -1,0 +1,42 @@
+[
+  {
+    "shot": "03-remove-selected",
+    "seconds": 20.644,
+    "path": "qa/encoded-03-remove-selected.jpg"
+  },
+  {
+    "shot": "03-remove-confirm",
+    "seconds": 24.208207999999996,
+    "path": "qa/encoded-03-remove-confirm.jpg"
+  },
+  {
+    "shot": "03-removed-next",
+    "seconds": 25.879249999999995,
+    "path": "qa/encoded-03-removed-next.jpg"
+  },
+  {
+    "shot": "04-pip-off",
+    "seconds": 45.116958000000004,
+    "path": "qa/encoded-04-pip-off.jpg"
+  },
+  {
+    "shot": "22-full-double",
+    "seconds": 116.37124999999999,
+    "path": "qa/encoded-22-full-double.jpg"
+  },
+  {
+    "shot": "63-drive-folder",
+    "seconds": 263.6262066,
+    "path": "qa/encoded-63-drive-folder.jpg"
+  },
+  {
+    "shot": "64-feedback-link",
+    "seconds": 270.23324859999997,
+    "path": "qa/encoded-64-feedback-link.jpg"
+  },
+  {
+    "shot": "65-feedback-doc",
+    "seconds": 273.12378959999995,
+    "path": "qa/encoded-65-feedback-doc.jpg"
+  }
+]

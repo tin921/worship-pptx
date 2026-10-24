@@ -1,0 +1,230 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 6184160,
+    "text": "Double-click"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 7342080,
+    "duration": 526250,
+    "text": "a"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 8000000,
+    "duration": 4210410,
+    "text": "result"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 12342080,
+    "duration": 1184160,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 13657910,
+    "duration": 5000000,
+    "text": "inspect"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 18789580,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 19842080,
+    "duration": 2368330,
+    "text": "full"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 22342080,
+    "duration": 5657910,
+    "text": "image"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 37105410,
+    "duration": 5921250,
+    "text": "Double-click"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 43157910,
+    "duration": 3289580,
+    "text": "again"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 46578750,
+    "duration": 1184160,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 47894580,
+    "duration": 6184160,
+    "text": "return"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 63289580,
+    "duration": 1842080,
+    "text": "You"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 65263330,
+    "duration": 1447500,
+    "text": "can"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 66842080,
+    "duration": 3421250,
+    "text": "also"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 70394580,
+    "duration": 3026250,
+    "text": "click"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 73552500,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 74736660,
+    "duration": 3684160,
+    "text": "small"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 78552500,
+    "duration": 5394580,
+    "text": "expand"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 84078750,
+    "duration": 3421250,
+    "text": "box"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 87631660,
+    "duration": 1052500,
+    "text": "on"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 88815830,
+    "duration": 526250,
+    "text": "a"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 89473750,
+    "duration": 5000000,
+    "text": "card"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 103552500,
+    "duration": 5131660,
+    "text": "Escape"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 108815830,
+    "duration": 4473750,
+    "text": "closes"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 113421250,
+    "duration": 2105410,
+    "text": "that"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 115657910,
+    "duration": 4342080,
+    "text": "view"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 129210410,
+    "duration": 4473750,
+    "text": "Opening"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 133815830,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 135000000,
+    "duration": 2368330,
+    "text": "full"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 137500000,
+    "duration": 4605410,
+    "text": "image"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 142236660,
+    "duration": 1710410,
+    "text": "does"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 144078750,
+    "duration": 2368330,
+    "text": "not"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 146578750,
+    "duration": 3157910,
+    "text": "apply"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 149868330,
+    "duration": 1052500,
+    "text": "it"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 151052500,
+    "duration": 921250,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 152105410,
+    "duration": 1447500,
+    "text": "your"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 153684160,
+    "duration": 5657910,
+    "text": "slide"
+  }
+]
