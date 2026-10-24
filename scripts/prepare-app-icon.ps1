@@ -2,7 +2,7 @@ param()
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
 $projectRoot = Split-Path -Parent $PSScriptRoot
-$masterPath = Join-Path $projectRoot 'assets/branding/app-icon-master.png'
+$masterPath = Join-Path $projectRoot 'assets/branding/app-icon-tight.png'
 $source = [System.Drawing.Bitmap]::new($masterPath)
 
 function Convert-IconPng([int]$size) {
@@ -23,7 +23,7 @@ function Convert-IconPng([int]$size) {
 
 try {
     if ($source.Width -ne $source.Height) { throw 'The app icon master must be square.' }
-    # Package the approved artwork without changing its design or transparency.
+    # The tightly framed edition keeps the visible tile large at taskbar sizes.
     [System.IO.File]::WriteAllBytes((Join-Path $projectRoot 'assets/ui/app-icon.png'), (Convert-IconPng 256))
     $sizes = @(16, 20, 24, 32, 40, 48, 64, 128, 256)
     $frames = @($sizes | ForEach-Object { ,(Convert-IconPng $_) })

@@ -7,5 +7,6 @@
   "generatedSource": "exec-91b8edef-3d76-4dcb-9e92-b70d4aa8e889.png",
   "selectedAttachment": "codex-clipboard-194495c2-d27e-4080-90a6-206c0dd2256f.png",
   "description": "Cream projector casting a green music note on a light sage rounded square.",
-  "processing": "Approved attachment preserved byte-for-byte. prepare-app-icon.ps1 resizes with preserved alpha to package the header PNG and multi-resolution Windows ICO."
+  "processing": "Approved attachment preserved byte-for-byte as the master. The built-in image tool reframed it to reduce outer padding for taskbar visibility; see app-icon-tight.png and app-icon-tight.prompt.txt. prepare-app-icon.ps1 resizes the tightly framed edition with preserved alpha to package the header PNG and multi-resolution Windows ICO.",
+  "tightSource": "exec-243bf475-164b-41c0-bdad-6d7a187cffa8.png"
 }

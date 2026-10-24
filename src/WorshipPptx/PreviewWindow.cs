@@ -20,7 +20,7 @@ namespace WorshipPptx
         {
             this.slides=slides; Title=ChineseText.Ui("預覽整個崇拜 · 方向鍵翻頁，Esc 關閉"); Width=1100; Height=760; MinWidth=600; MinHeight=450; WindowStartupLocation=WindowStartupLocation.CenterOwner;
             var dock=new DockPanel { Margin=new Thickness(22) }; Content=dock;
-            var nav=new Grid { ColumnDefinitions=new ColumnDefinitions("104,16,*,16,160,16,104"),MaxWidth=900,Height=52,Margin=new Thickness(0,18,0,0) }; DockPanel.SetDock(nav,Dock.Bottom); dock.Children.Add(nav);
+            var nav=new Grid { ColumnDefinitions=new ColumnDefinitions("104,16,*,20,144,16,104"),MaxWidth=560,Height=52,Margin=new Thickness(0,18,0,0) }; DockPanel.SetDock(nav,Dock.Bottom); dock.Children.Add(nav);
             var prev=new Button { Content=ChineseText.Ui("← 上一頁"),HorizontalAlignment=HorizontalAlignment.Stretch,VerticalAlignment=VerticalAlignment.Center }; prev.Click+=(s,e)=>Move(-1); nav.Children.Add(prev);
             var status=new StackPanel { Spacing=4,VerticalAlignment=VerticalAlignment.Center }; status.Children.Add(caption); status.Children.Add(sectionCaption); Grid.SetColumn(status,2); nav.Children.Add(status);
             var counters=new Grid { ColumnDefinitions=new ColumnDefinitions("72,*"),RowDefinitions=new RowDefinitions("26,26") };

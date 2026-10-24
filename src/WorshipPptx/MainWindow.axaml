@@ -8,8 +8,8 @@
   <Border Background="#EBEFE7" BorderBrush="#DDE4D9" BorderThickness="0,0,1,0">
    <DockPanel Margin="16,12,16,20">
     <StackPanel DockPanel.Dock="Top">
-     <Grid ColumnDefinitions="48,10,*" RowDefinitions="Auto,Auto" Margin="0,0,0,10">
-      <Image x:Name="AppLogo" Grid.RowSpan="2" Source="/Assets/app-icon.png" Width="48" Height="48" Stretch="Uniform" VerticalAlignment="Center"/>
+     <Grid ColumnDefinitions="40,10,*" RowDefinitions="Auto,Auto" Margin="0,0,0,10">
+      <Image x:Name="AppLogo" Grid.RowSpan="2" Source="/Assets/app-icon.png" Width="40" Height="40" Stretch="Uniform" VerticalAlignment="Top" Margin="0,3,0,0"/>
       <TextBlock x:Name="AppHeading" Grid.Column="2" Text="{local:Tr '敬拜工坊'}" FontSize="23" FontWeight="Bold" Margin="0,0,0,3"/>
       <TextBlock x:Name="VersionLabel" Grid.Column="2" Grid.Row="1" FontSize="12" Foreground="#738077"/>
      </Grid>
