@@ -29,17 +29,21 @@ namespace WorshipPptx
             new FontChoice("Noto Sans CJK HK","香港黑體 · Noto Sans CJK HK","NotoSansCJKhk-Regular.ttf"),
             new FontChoice("Noto Serif CJK HK","香港宋體 · Noto Serif CJK HK","NotoSerifCJKhk-Regular.ttf"),
             new FontChoice("LXGW WenKai TC","霞鶩文楷 · LXGW WenKai TC","LXGWWenKaiTC-Regular.ttf"),
-            new FontChoice("jf-openhuninn-2.1","粉圓（繁體）· jf open huninn","jf-openhuninn-2.1.ttf")
+            new FontChoice("jf-openhuninn-2.1","粉圓（繁體）· jf open huninn","jf-openhuninn-2.1.ttf"),
+            new FontChoice("Zhuque Fangsong (technical preview)","朱雀仿宋 · 古典印刷","ZhuqueFangsong-Regular.ttf"),
+            new FontChoice("LXGW Marker Gothic","霞鶩漫黑 · 漫畫手寫","LXGWMarkerGothic-Regular.ttf"),
+            new FontChoice("Ma Shan Zheng","馬善政毛筆（簡體）· Ma Shan Zheng","MaShanZheng-Regular.ttf"),
+            new FontChoice("ZCOOL KuaiLe","站酷快樂（簡體）· ZCOOL KuaiLe","ZCOOLKuaiLe-Regular.ttf")
         };
         public static readonly IReadOnlyList<FontChoice> All=CreateCatalog();
         private static IReadOnlyList<FontChoice> CreateCatalog()
         {
             var result=Bundled.ToList(); var installed=FontManager.Current.SystemFonts.ToList();
             var common=new[,] {
-                {"Microsoft JhengHei","微軟正黑體"},{"Microsoft JhengHei UI","微軟正黑體 UI"},
-                {"Microsoft YaHei","微軟雅黑"},{"Microsoft YaHei UI","微軟雅黑 UI"},
+                {"Microsoft JhengHei","微軟正黑體"},
+                {"Microsoft YaHei","微軟雅黑"},
                 {"MingLiU","細明體"},{"PMingLiU","新細明體"},{"MingLiU_HKSCS","香港增補細明體"},
-                {"DFKai-SB","標楷體"},{"SimSun","宋體"},{"NSimSun","新宋體"},{"SimHei","黑體"},
+                {"DFKai-SB","標楷體"},{"SimSun","宋體"},{"SimHei","黑體"},
                 {"PingFang HK","蘋方－香港"},{"PingFang TC","蘋方－繁體"},{"PingFang SC","蘋方－簡體"},
                 {"Heiti TC","黑體－繁體"},{"Songti TC","宋體－繁體"},{"Kaiti TC","楷體－繁體"},{"Arial Unicode MS","Arial Unicode"},
                 {"KaiTi","楷體"},{"FangSong","仿宋"},{"DengXian","等線"}
@@ -52,7 +56,14 @@ namespace WorshipPptx
             }
             return result;
         }
-        public static FontChoice Get(string name) => All.FirstOrDefault(f=>string.Equals(f.Name,name,StringComparison.OrdinalIgnoreCase)) ?? All[0];
+        public static FontChoice Get(string name)
+        {
+            // Older services using the near-duplicates retain their base family.
+            if(string.Equals(name,"Microsoft JhengHei UI",StringComparison.OrdinalIgnoreCase)) name="Microsoft JhengHei";
+            else if(string.Equals(name,"Microsoft YaHei UI",StringComparison.OrdinalIgnoreCase)) name="Microsoft YaHei";
+            else if(string.Equals(name,"NSimSun",StringComparison.OrdinalIgnoreCase)) name="SimSun";
+            return All.FirstOrDefault(f=>string.Equals(f.Name,name,StringComparison.OrdinalIgnoreCase)) ?? All[0];
+        }
 
         // EOT 2.1 wrapping, as used by PowerPoint's application/x-fontdata parts.
         // The full static TrueType face is preserved: the resulting deck remains editable.
@@ -78,7 +89,9 @@ namespace WorshipPptx
                 }
                 return fallback;
             };
-            if(u16(os+8)!=0) throw new InvalidOperationException("Bundled font must permit unrestricted embedding.");
+            // Preserve the original permission bits in EOT. Installable (0) and
+            // editable (8) embedding both permit users to edit the exported deck.
+            if(u16(os+8)!=0 && u16(os+8)!=8) throw new InvalidOperationException("Bundled font must permit editable embedding.");
             if(!tables.ContainsKey("glyf") || tables.ContainsKey("fvar")) throw new InvalidOperationException("A static TrueType font is required.");
             using(var stream=new MemoryStream())
             using(var writer=new BinaryWriter(stream,Encoding.Unicode,true))

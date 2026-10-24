@@ -34,5 +34,41 @@
     "weight": 400,
     "license": "Huninn-OFL.txt",
     "glyphs": 11988
+  },
+  {
+    "file": "MaShanZheng-Regular.ttf",
+    "family": "Ma Shan Zheng",
+    "source": "https://raw.githubusercontent.com/google/fonts/e7db6ca603fd4862010383ff17ffd6cc4ffac1c0/ofl/mashanzheng/MaShanZheng-Regular.ttf",
+    "sha256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb",
+    "weight": 400,
+    "license": "MaShanZheng-OFL.txt",
+    "glyphs": 7015
+  },
+  {
+    "file": "ZCOOLKuaiLe-Regular.ttf",
+    "family": "ZCOOL KuaiLe",
+    "source": "https://raw.githubusercontent.com/google/fonts/e7db6ca603fd4862010383ff17ffd6cc4ffac1c0/ofl/zcoolkuaile/ZCOOLKuaiLe-Regular.ttf",
+    "sha256": "812a6fc1fe54b6d73a419245c32dfeba8aa33104d5be90d1cf6af082007cb71d",
+    "weight": 400,
+    "license": "ZCOOLKuaiLe-OFL.txt",
+    "glyphs": 7053
+  },
+  {
+    "file": "LXGWMarkerGothic-Regular.ttf",
+    "family": "LXGW Marker Gothic",
+    "source": "https://raw.githubusercontent.com/google/fonts/e7db6ca603fd4862010383ff17ffd6cc4ffac1c0/ofl/lxgwmarkergothic/LXGWMarkerGothic-Regular.ttf",
+    "sha256": "e6a55cfd5f18dc393f92670a164397a69242cb4eabe1d3feb5dc22fc4947a8ba",
+    "weight": 400,
+    "license": "MarkerGothic-OFL.txt",
+    "glyphs": 15285
+  },
+  {
+    "file": "ZhuqueFangsong-Regular.ttf",
+    "family": "Zhuque Fangsong (technical preview)",
+    "source": "https://github.com/TrionesType/zhuque/releases/download/v0.212/ZhuqueFangsong-v0.212.zip",
+    "sha256": "558c62730844fe54ba220146ed62f859d4e2880188d92d985f8921c6e3743bc4",
+    "weight": 400,
+    "license": "Zhuque-OFL.txt",
+    "glyphs": 12882
   }
 ]

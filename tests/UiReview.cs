@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Layout;
+using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Threading;
 namespace WorshipPptx.Tests;
@@ -15,6 +17,16 @@ static class UiReview
     }
     public static void Run(string root)
     {
+        var fontSheet=new StackPanel {Margin=new Thickness(28),Spacing=8};
+        fontSheet.Children.Add(new TextBlock {Text="中文字體比較",FontSize=28,FontWeight=FontWeight.SemiBold,FontFamily=FontCatalog.Get(FontCatalog.DefaultName).Family});
+        fontSheet.Children.Add(new TextBlock {Text="後四款為新增字體；標示「簡體」的字體請用於簡體內容。",FontSize=15,Margin=new Thickness(0,0,0,8),FontFamily=FontCatalog.Get(FontCatalog.DefaultName).Family});
+        foreach(var font in FontCatalog.Bundled) {
+            var row=new Grid {ColumnDefinitions=new ColumnDefinitions("330,*"),Height=78};
+            row.Children.Add(new TextBlock {Text=font.DisplayName.Split('·')[0].Trim(),FontSize=20,VerticalAlignment=VerticalAlignment.Center,FontFamily=FontCatalog.Get(FontCatalog.DefaultName).Family});
+            var sample=new TextBlock {Text=FontTests.Sample(font),FontFamily=font.Family,FontSize=46,VerticalAlignment=VerticalAlignment.Center}; Grid.SetColumn(sample,1); row.Children.Add(sample);
+            fontSheet.Children.Add(new Border {Child=row,BorderBrush=Brushes.LightGray,BorderThickness=new Thickness(0,0,0,1)});
+        }
+        var fontWindow=new Window {Width=1180,Height=850,Background=Brushes.White,Content=fontSheet}; fontWindow.Show(); Draw(fontWindow,Path.Combine(root,"font-comparison.png")); fontWindow.Close();
         var store=new LocalStore(Path.Combine(root,"data")); var plan=Demo.Create();
         plan.Items[1].Background="media:ocean-photo";store.Save(plan);
         var main=new MainWindow(store); main.Show(); Draw(main,Path.Combine(root,"editor.png"));

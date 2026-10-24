@@ -36,6 +36,7 @@ namespace WorshipPptx.Tests
             root=Path.GetFullPath(args.Length>0 ? args[0] : Path.Combine(Path.GetTempPath(),"WorshipPptx-tests-"+Guid.NewGuid().ToString("N")));
             Directory.CreateDirectory(root);
             if(args.Contains("--ui-review")) {UiReview.Run(root); return 0;}
+            if(args.Contains("--fonts-only")) {FontTests.Run(Test,Check,ValidateEmbeddedFont,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed.");return failed==0?0:1;}
             if(args.Contains("--drive-only")) {DriveUploadTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed.");return failed==0?0:1;}
             if(args.Contains("--editor-only")) { EditorInteractionTests.Run(Test,Check,root); WindowLayoutTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             if(args.Contains("--gallery-only")) { GalleryTests.Run(Test,Check,new ImageStore(Path.Combine(root,"gallery-images"))); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
@@ -93,23 +94,8 @@ namespace WorshipPptx.Tests
             Test("File-drop input",()=> { var data=Transfer(DataTransferItem.CreateFile(new Window().StorageProvider.TryGetFileFromPathAsync(imported).GetAwaiter().GetResult())); Check(BackgroundDialog.ImportData(images,data).Result==imported,"Drop failed"); });
             Test("Bitmap clipboard input",()=> { var data=Transfer(DataTransferItem.Create(DataFormat.Bitmap,ImageStore.Load(imported))); Check(File.Exists(BackgroundDialog.ImportData(images,data).Result),"Paste failed"); });
             Test("URL clipboard input",()=> { var path=WithHttp(bytes,"image/png",url=>BackgroundDialog.ImportData(images,Transfer(DataTransferItem.CreateText(url))).GetAwaiter().GetResult()); Check(File.Exists(path),"URL paste failed"); });
-            foreach(var font in FontCatalog.Bundled)
-            {
-                Test(font.Name+" loads from bundled file and covers Chinese",()=> { var face=new Typeface(font.Family,FontStyle.Normal,FontWeight.Normal,FontStretch.Normal); GlyphTypeface glyph; Check(FontManager.Current.TryGetGlyphTypeface(face,out glyph),"No physical font"); Check(glyph.FamilyName==font.Name && font.Family.Key!=null,"Font did not load from bundle"); var sample="祢的恩典與慈愛永遠長存讚美歸於主榮耀聖名"; if(font.Name!="jf-openhuninn-2.1") sample+="你的恩典与慈爱永远长存"; foreach(var ch in sample) Check(glyph.CharacterToGlyphMap.TryGetGlyph(ch,out _),"Missing glyph "+ch); });
-                if(OperatingSystem.IsWindows()) Test(font.Name+" EOT loads in Windows embedded-font engine",()=>ValidateEmbeddedFont(FontCatalog.EmbeddedBytes(font.Name)));
-            }
+            FontTests.Run(Test,Check,ValidateEmbeddedFont,root);
             demo.Items[1].Background=imported;
-            Test("Handwritten and rounded Chinese fonts export as editable embedded text",()=> {
-                var fonts=FontCatalog.Bundled.Skip(2).ToArray();
-                var pages=fonts.SelectMany(f=>SlideLayout.BuildItem(new ServiceItem { Title="字體預覽",Lyrics="[v1]\n讚美歸於主榮耀聖名\n祢的恩典與慈愛永遠長存",Order="v1" },settings,f.Name)).ToList();
-                var path=Path.Combine(root,"additional-chinese-fonts.pptx"); PptxWriter.Write(path,pages,"中文字體");
-                using var document=PresentationDocument.Open(path,false);
-                Check(!new OpenXmlValidator().Validate(document).Any(),"Invalid deck with additional fonts");
-                var embedded=document.PresentationPart.Presentation.EmbeddedFontList;
-                Check(embedded.ChildElements.Count==2 && fonts.All(f=>embedded.InnerXml.Contains(f.Name)),"New fonts were not both embedded");
-                using var zip=ZipFile.OpenRead(path);
-                for(var i=0;i<fonts.Length;i++) { using var input=zip.GetEntry("ppt/fonts/font"+(i+1)+".fntdata").Open(); using var bytes=new MemoryStream(); input.CopyTo(bytes); Check(bytes.ToArray().SequenceEqual(FontCatalog.EmbeddedBytes(fonts[i].Name)),"Embedded font differs from selected font"); }
-            });
             var slides=SlideLayout.Build(demo,settings); var output=Path.Combine(root,"sample-worship.pptx");
             Test("PPTX package schema validates",()=> { PptxWriter.Write(output,slides,demo.Title); using(var doc=PresentationDocument.Open(output,false)) { var errors=new OpenXmlValidator().Validate(doc).ToList(); Check(errors.Count==0,string.Join("\n",errors.Take(10).Select(e=>e.Description+" "+e.Path?.XPath))); Check(doc.PresentationPart.SlideParts.Count()==slides.Count,"Wrong slide count"); } });
             Test("All native text boxes confined to upper half",()=> { XNamespace p="http://schemas.openxmlformats.org/presentationml/2006/main",a="http://schemas.openxmlformats.org/drawingml/2006/main"; using(var zip=ZipFile.OpenRead(output)) foreach(var entry in zip.Entries.Where(x=>x.FullName.StartsWith("ppt/slides/slide") && x.FullName.EndsWith(".xml"))) using(var input=entry.Open()) { var xml=XDocument.Load(input); foreach(var shape in xml.Descendants(p+"sp").Where(x=>x.Element(p+"txBody")!=null && (string)x.Element(p+"nvSpPr").Element(p+"cNvPr").Attribute("name")!="Section tag")) { var transform=shape.Element(p+"spPr").Element(a+"xfrm"); var bottom=(long)transform.Element(a+"off").Attribute("y")+(long)transform.Element(a+"ext").Attribute("cy"); Check(bottom<=720*9525/2,"Text below half on "+entry.FullName); } } });

@@ -64,7 +64,7 @@ Sources: [Avalonia platform support](https://docs.avaloniaui.net/docs/supported-
 - `SlideLayout.cs`: section parsing, repetitions, Unicode wrapping and pagination.
 - `SlideVisual.cs`: Avalonia previews and Skia 720p background rendering.
 - `PptxWriter.cs`: editable Open XML text, embedded still images and bundled fonts.
-- `FontCatalog.cs`: bundled HK Sans/Serif, LXGW WenKai TC and jf open huninn fonts, detected Windows/Mac Chinese fonts and EOT. Pinned sources, checksums and OFL licenses are kept in `assets/fonts` and reproduced by `scripts/prepare-fonts.py`.
+- `FontCatalog.cs`: eight bundled OFL Chinese fonts, detected Windows/Mac fonts and EOT. Includes classical Zhuque Fangsong v0.212 (upstream technical preview), comic LXGW Marker Gothic, and Simplified-focused Ma Shan Zheng / ZCOOL KuaiLe. Duplicate system-family aliases migrate to their base families. Pinned sources, checksums and OFL licenses are kept in `assets/fonts` and reproduced by `scripts/prepare-fonts.py`.
 - `ImageStore.cs`, `BackgroundDialog`: bundled gallery, local files, direct URLs, drop and paste.
 - `MediaLibrary.cs`: portable paths for the 270 static background images.
 - `MediaSearch.cs`: shared background model preload after startup, with local ONNX matching only when Edit Background opens or a new match is requested.
@@ -80,8 +80,11 @@ folder for isolated tests. No production data is used by the automated suite.
 New tabs default to 36 pt, centered white text, normal weight, top vertical alignment and upper-half/PiP layout. Existing service-wide typography is copied into independent tab formatting objects during deserialization; explicitly saved tab settings take precedence. Obsolete animation flags are ignored. A pre-migration local
 backup was retained under ignored `.tools/migration-backup/2026-10-21`.
 
-Both bundled OFL fonts support Traditional and Simplified Chinese with Hong Kong
-glyph conventions, and are embedded in full. Installed system fonts are only
+The two bundled Noto fonts support Traditional and Simplified Chinese with Hong Kong
+glyph conventions. All bundled fonts are embedded in full, preserving their original
+installable (fsType 0) or editable (fsType 8) embedding permission. Huninn focuses on
+Traditional Chinese; Ma Shan Zheng and ZCOOL KuaiLe are labeled for Simplified Chinese.
+Installed system fonts are only
 referenced by name; they must also be available on the playback computer.
 The app uses platform file pickers and clipboard APIs, including Ctrl on Windows
 and Command on Mac. No WPF, WinForms, Office automation or WebView is required.
