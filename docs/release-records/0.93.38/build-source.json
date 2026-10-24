@@ -1,0 +1,11 @@
+{
+  "version": "0.93.38",
+  "tests_failed": 0,
+  "configuration": "Release",
+  "tests_passed": 162,
+  "runtime": "win-x64",
+  "test_log": "tests.log",
+  "self_contained": true,
+  "build_started_utc": "2026-10-24T23:46:51.9013327Z",
+  "commit": "d56d825981a3d03a49220dfc3e0365204b73ec75"
+}
