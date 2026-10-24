@@ -28,6 +28,54 @@ static class EditorInteractionTests
     private static void Press(Window window,Key key) { window.KeyPress(key,RawInputModifiers.None,PhysicalKey.None,null); window.KeyRelease(key,RawInputModifiers.None,PhysicalKey.None,null); Pump(); }
     public static void Run(Action<string,Action> test,Action<bool,string> check,string root)
     {
+        test("Song titles fit independently of lyrics and old saved sizing remains usable",()=> {
+            var path=Path.Combine(root,"legacy-title-sizing.json");
+            File.WriteAllText(path,"{\"FontSize\":40,\"AutoFontSize\":false}");
+            var old=LocalStore.Read<SlideFormatting>(path);
+            check(old.FontSize==40 && !old.AutoFontSize && old.AutoTitleFontSize && old.TitleFontSize==72,"Old formatting lost its lyric size or lacks independent title defaults");
+            var item=new ServiceItem {Title="恩典",Lyrics="[v1]\n平安",Order="v1",Formatting=new()};
+            var shortTitle=SlideLayout.BuildItem(item,new UserSettings());
+            item.Title=string.Concat(Enumerable.Repeat("恩典與慈愛",10)); item.Copyright="作者及版權資料";
+            var longTitle=SlideLayout.BuildItem(item,new UserSettings());
+            check(longTitle[0].FontSize<shortTitle[0].FontSize && longTitle[1].FontSize==shortTitle[1].FontSize,"Long title or credits changed the lyrics' font size");
+            check(SlideLayout.TextTop(longTitle[0])+longTitle[0].Lines.Count*SlideLayout.LineSpacing(longTitle[0].FontSize,longTitle[0].FontName)<=SlideLayout.FooterTop(longTitle[0]),"Independent title overlaps its credits");
+        });
+        test("Title and lyric sizing controls keep separate manual and Auto choices through save and export",()=> {
+            var store=new LocalStore(Path.Combine(root,"title-sizing-"+Guid.NewGuid().ToString("N")));
+            var plan=Demo.Create(); plan.Items[1].Title="讚美"; plan.Items[1].Copyright=""; plan.Items[1].Lyrics="[v1]\n平安\n[c]\n"+LongChorus; plan.Items[1].Order="v1 c"; store.Save(plan);
+            var window=new MainWindow(store); window.Show(); Pump();
+            try {
+                var item=Item(window); var picker=window.FindControl<ComboBox>("FontSizePicker"); var thumbs=window.FindControl<ListBox>("Thumbnails");
+                var automatic=window.FindControl<ToggleButton>("AutoFontSizeButton"); var scope=window.FindControl<TextBlock>("FontSizeScope");
+                check((double)picker.SelectedItem==72 && scope.Text=="歌名字號","Title controls are not identified or independent of long lyrics");
+                picker.SelectedItem=60.0; Pump();
+                check(!item.Formatting.AutoTitleFontSize && item.Formatting.TitleFontSize==60 && item.Formatting.AutoFontSize,"Title change disabled lyric Auto");
+                thumbs.SelectedIndex=2; Pump();
+                check(scope.Text=="歌詞字號" && automatic.IsChecked==true && (double)picker.SelectedItem<60,"Selecting lyrics did not switch the sizing context");
+                picker.SelectedItem=40.0; Pump();
+                check(!item.Formatting.AutoFontSize && item.Formatting.FontSize==40 && item.Formatting.TitleFontSize==60,"Lyrics overwrote the title size");
+                thumbs.SelectedIndex=0; Pump();
+                check((double)picker.SelectedItem==60 && automatic.IsChecked==false,"Title manual choice was lost");
+                automatic.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
+                check(item.Formatting.AutoTitleFontSize && (double)picker.SelectedItem==72 && !item.Formatting.AutoFontSize && item.Formatting.FontSize==40,"Title Auto changed lyric sizing");
+                picker.SelectedItem=54.0; Pump(); thumbs.SelectedIndex=1; Pump();
+                automatic.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
+                check(item.Formatting.AutoFontSize && !item.Formatting.AutoTitleFontSize && item.Formatting.TitleFontSize==54,"Lyric Auto changed title sizing");
+                window.FindControl<TabControl>("SongTabs").SelectedIndex=2; Pump();
+                window.FindControl<TabControl>("SongTabs").SelectedIndex=1; Pump();
+                check((double)picker.SelectedItem==54 && automatic.IsChecked==false,"Title choice did not survive changing tabs");
+            } finally {window.Close();}
+            var saved=store.LoadHistory().Single().Items[1];
+            check(saved.Formatting.TitleFontSize==54 && !saved.Formatting.AutoTitleFontSize && saved.Formatting.AutoFontSize && saved.Formatting.FontSize==40,"Independent modes or values did not persist");
+            var slides=SlideLayout.BuildItem(saved,new UserSettings());
+            check(slides[0].FontSize==54 && slides[1].FontSize<54 && slides[1].FontSize==slides[2].FontSize,"Saved title and lyric sizes are not independent");
+            var path=Path.Combine(root,"independent-title-size.pptx"); PptxWriter.Write(path,slides,"Independent title size");
+            using var zip=ZipFile.OpenRead(path); XNamespace a="http://schemas.openxmlformats.org/drawingml/2006/main";
+            for(var i=0;i<slides.Count;i++) {
+                using var input=zip.GetEntry($"ppt/slides/slide{i+1}.xml").Open();
+                check((int)XDocument.Load(input).Descendants(a+"rPr").First().Attribute("sz")==slides[i].FontSize*100,"PowerPoint did not retain the title/lyric size shown in preview");
+            }
+        });
         test("Auto fits both lyric line width and block height without adding line breaks in preview or export",()=> {
             var output=new System.Collections.Generic.List<SlideData>();
             var lines=LongChorus.Split('\n');
@@ -36,7 +84,8 @@ static class EditorInteractionTests
                 var slides=SlideLayout.BuildItem(item,new UserSettings());
                 var chorus=slides[2];
                 check(slides.Count==4 && chorus.Lines.SequenceEqual(lines),"Auto wrapped an authored chorus line: "+font.Name+" / "+chorus.FontSize+" pt");
-                check(slides.All(s=>s.FontSize==chorus.FontSize),"The song does not use one common size");
+                check(slides.Where(s=>!s.IsTitle).All(s=>s.FontSize==chorus.FontSize),"The lyrics do not use one common size");
+                check(slides[0].FontSize>chorus.FontSize,"Long lyrics shrank the short song title");
                 check(chorus.Lines.All(l=>SlideLayout.Measure(l,SlideLayout.FontPixels(chorus.FontSize),font.Name,bold)<=SlideLayout.TextWidth-24),"An unwrapped line exceeds the safe text width");
                 check(SlideLayout.TextTop(chorus)+chorus.Lines.Count*SlideLayout.LineSpacing(chorus.FontSize,font.Name,bold)<=SlideLayout.FooterTop(chorus),"Unwrapped block overflows vertically");
                 var larger=chorus.FontSize+1;
@@ -80,7 +129,7 @@ static class EditorInteractionTests
                 lyrics.Text="[v1]\n"+longer+"\n[c]\n恩典";
                 WaitFor(()=>picker.SelectedItem is double size && size<chorusSlides[2].FontSize);
                 var slides=SlideLayout.BuildItem(item,store.LoadSettings());
-                check(slides.Count==4 && slides.All(s=>s.FontSize==slides[1].FontSize && s.Alignment=="Center" && s.TextPosition=="Middle") && slides[1].Text==longer,"Longest block does not set a shared centered font, or whitespace was lost");
+                check(slides.Count==4 && slides.Where(s=>!s.IsTitle).All(s=>s.FontSize==slides[1].FontSize && s.Alignment=="Center" && s.TextPosition=="Middle") && slides[1].Text==longer,"Longest block does not set a shared centered font, or whitespace was lost");
                 lyrics.Text="[v1]\n平安\n[c]\n恩典";
                 WaitFor(()=>picker.SelectedItem is double size && size==72);
                 picker.SelectedItem=48.0; Pump();
@@ -91,19 +140,19 @@ static class EditorInteractionTests
                 check(slides.Where(s=>!s.IsTitle).All(s=>s.FontSize==48) && picker.SelectedItem is double n && n==48,"Typing overwrote the manual size");
                 var tabs=window.FindControl<TabControl>("SongTabs"); tabs.SelectedIndex=2; Pump();
                 check(Item(window).Formatting.AutoFontSize && picker.SelectedItem is double,"Manual override leaked to another tab");
-                tabs.SelectedIndex=1; Pump(); check(picker.SelectedItem is double v && v==48,"Manual override lost after switching tabs");
+                tabs.SelectedIndex=1; Pump(); thumbs.SelectedIndex=1; Pump(); check(picker.SelectedItem is double v && v==48,"Manual override lost after switching tabs");
                 var automatic=window.FindControl<ToggleButton>("AutoFontSizeButton");
                 check(automatic.IsChecked==false,"Manual size still shows Auto active");
                 automatic.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
                 slides=SlideLayout.BuildItem(item,store.LoadSettings());
-                check(item.Formatting.AutoFontSize && automatic.IsChecked==true && slides.Count==4 && slides.All(s=>s.FontSize==slides[1].FontSize) && picker.SelectedItem is double fitted && fitted==slides[1].FontSize,"Auto did not restore one shared fitted size");
+                check(item.Formatting.AutoFontSize && automatic.IsChecked==true && slides.Count==4 && slides.Where(s=>!s.IsTitle).All(s=>s.FontSize==slides[1].FontSize) && picker.SelectedItem is double fitted && fitted==slides[1].FontSize,"Auto did not restore one shared fitted size");
                 check(store.LoadHistory().Single().Items[1].Formatting.AutoFontSize,"Restored Auto mode was not saved");
                 window.FindControl<TextBox>("SongOrder").Text="";
                 lyrics.Text+="\n[v2]\n"+string.Join("\n",Enumerable.Repeat("更長的新段落",12));
                 var before=slides[1].FontSize;
                 WaitFor(()=>picker.SelectedItem is double size && size<before && thumbs.ItemCount==4);
                 slides=SlideLayout.BuildItem(item,store.LoadSettings());
-                check(slides.All(s=>s.FontSize==slides[1].FontSize),"A new block did not update the shared size");
+                check(slides.Where(s=>!s.IsTitle).All(s=>s.FontSize==slides[1].FontSize),"A new block did not update the shared size");
                 lyrics.Text="[v1]\n平安\n[c]\n恩典";
                 WaitFor(()=>picker.SelectedItem is double size && size==72);
                 automatic.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();

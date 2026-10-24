@@ -102,7 +102,7 @@
         </local:SlidePreviewBorder>
        </StackPanel>
        <StackPanel Grid.Column="2" x:Name="FormattingPanel">
-        <TextBlock Text="{local:Tr '文字格式'}" Classes="label" Height="28" VerticalAlignment="Center" Margin="0,0,0,9"/>
+        <Grid ColumnDefinitions="*,Auto" Height="28" Margin="0,0,0,9"><TextBlock Text="{local:Tr '文字格式'}" Classes="label" VerticalAlignment="Center"/><TextBlock x:Name="FontSizeScope" Grid.Column="1" Classes="caption" VerticalAlignment="Center" Margin="8,0,0,0"/></Grid>
         <ComboBox x:Name="FontPicker" MinWidth="0" Height="40" FontSize="14" Padding="8,7" SelectionChanged="Typography_Changed" ToolTip.Tip="{local:Tr '本分頁字體'}" AutomationProperties.Name="{local:Tr '投影片字體'}"><ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding DisplayName}" FontFamily="{Binding Family}" TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding DisplayName}"/></DataTemplate></ComboBox.ItemTemplate></ComboBox>
         <Grid x:Name="FormattingControls" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" Margin="0,8,0,0" SizeChanged="FormattingControls_SizeChanged">
         <Grid x:Name="TypographyRow" ColumnDefinitions="Auto,Auto" RowDefinitions="40,40" ColumnSpacing="6" RowSpacing="8" Margin="0,0,8,0" HorizontalAlignment="Left">

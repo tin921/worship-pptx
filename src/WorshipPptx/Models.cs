@@ -62,12 +62,14 @@ namespace WorshipPptx
         [DataMember] public double FontSize { get; set; } = 36;
         private bool autoFontSize=true, hasSizingMode;
         [DataMember] public bool AutoFontSize { get=>autoFontSize; set { autoFontSize=value; hasSizingMode=true; } }
+        [DataMember] public double TitleFontSize { get; set; } = 72;
+        [DataMember] public bool AutoTitleFontSize { get; set; } = true;
         [DataMember] public string Alignment { get; set; } = "Center";
         [DataMember] public string TextColor { get; set; } = "#FFFFFF";
         [DataMember] public bool Bold { get; set; }
         [DataMember] public bool FullSlide { get; set; }
         [DataMember] public string TextPosition { get; set; } = "Middle";
-        [OnDeserializing] private void SetDefaults(StreamingContext context) { FontName=FontCatalog.DefaultName; FontSize=36; autoFontSize=true; hasSizingMode=false; Alignment="Center"; TextColor="#FFFFFF"; TextPosition="Middle"; }
+        [OnDeserializing] private void SetDefaults(StreamingContext context) { FontName=FontCatalog.DefaultName; FontSize=36; autoFontSize=true; hasSizingMode=false; TitleFontSize=72; AutoTitleFontSize=true; Alignment="Center"; TextColor="#FFFFFF"; TextPosition="Middle"; }
         [OnDeserialized] private void InitializeSizing(StreamingContext context)
         {
             // Existing tabs enter the new automatic mode once; subsequent saved

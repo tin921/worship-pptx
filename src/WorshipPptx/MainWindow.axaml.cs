@@ -351,7 +351,10 @@ namespace WorshipPptx
             if(loading || syncingFontSize || selected==null || !(FontPicker.SelectedItem is FontChoice font)) return;
             selected.Formatting.FontName=font.Name;
             if(sender==FontSizePicker) {
-                if(FontSizePicker.SelectedItem is double size) { selected.Formatting.AutoFontSize=false; selected.Formatting.FontSize=size; }
+                if(FontSizePicker.SelectedItem is double size) {
+                    if(EditingSongTitle) { selected.Formatting.AutoTitleFontSize=false; selected.Formatting.TitleFontSize=size; }
+                    else { selected.Formatting.AutoFontSize=false; selected.Formatting.FontSize=size; }
+                }
                 else return;
             }
             UpdateContentMode();

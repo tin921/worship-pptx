@@ -18,7 +18,7 @@ public partial class DriveUploadWindow : Window
     private readonly IList<SlideData> slides;
     private readonly string title,root;
     private CancellationTokenSource cancellation;
-    private bool running;
+    private bool running,completed;
     private DriveUploadClient client;
     private readonly Func<HttpClient> createHttpClient;
     public DriveUploadWindow(IList<SlideData> slides,string title,string fileName,string root,Func<HttpClient> createHttpClient=null)
@@ -44,7 +44,7 @@ public partial class DriveUploadWindow : Window
     }
     private async void Upload_Click(object sender,RoutedEventArgs e)
     {
-        if(running) return;
+        if(running || completed) return;
         running=true; StartUpload.IsEnabled=false; UploadName.IsEnabled=false; ReplaceExisting.IsEnabled=false; UploadFolder.IsEnabled=false; BrowseFolder.IsEnabled=false;
         CloseUpload.Content=ChineseText.Ui("取消上傳"); FolderLink.IsVisible=false; Outcome.Text="";
         cancellation=new CancellationTokenSource(); var token=cancellation.Token;
@@ -71,6 +71,7 @@ public partial class DriveUploadWindow : Window
                 Log(p.Message);
             });
             var result=await client.UploadAsync(localPath,fileName,replace,progress,token);
+            completed=true;
             // Drain posted progress before displaying the final outcome.
             await Dispatcher.UIThread.InvokeAsync(()=>{},DispatcherPriority.Background);
             UploadProgressBar.IsIndeterminate=false; UploadProgressBar.Value=100;
@@ -90,7 +91,7 @@ public partial class DriveUploadWindow : Window
             UploadProgressBar.IsIndeterminate=false;
             try { if(File.Exists(temp)) File.Delete(temp); } catch(Exception ex) { Log("Temporary file cleanup: "+ex.Message); }
             cancellation.Dispose(); cancellation=null; running=false;
-            StartUpload.IsEnabled=true; UploadName.IsEnabled=true; ReplaceExisting.IsEnabled=true; UploadFolder.IsEnabled=true; BrowseFolder.IsEnabled=true; CloseUpload.Content=ChineseText.Ui("關閉");
+            StartUpload.IsEnabled=!completed; UploadName.IsEnabled=true; ReplaceExisting.IsEnabled=true; UploadFolder.IsEnabled=true; BrowseFolder.IsEnabled=true; CloseUpload.Content=ChineseText.Ui("關閉");
         }
     }
     private async void Browse_Click(object sender,RoutedEventArgs e)

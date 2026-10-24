@@ -28,11 +28,11 @@ namespace WorshipPptx
             var layout=item.Preview ?? PreviewLayout.FromLegacy(f.FullSlide);
             layout.Normalize();
             var automatic=f.AutoFontSize && HasSectionTags(item.Lyrics);
-            var result=BuildItem(item,settings,f.FontName,automatic ? 72 : f.FontSize,f.Alignment,f.TextColor,f.Bold,layout.TextArea=="Full",f.TextPosition,f.AutoFontSize);
+            var result=BuildItem(item,settings,f.FontName,automatic ? 72 : f.FontSize,f.Alignment,f.TextColor,f.Bold,layout.TextArea=="Full",f.TextPosition,f.AutoFontSize,f.AutoTitleFontSize ? 72 : f.TitleFontSize);
             foreach(var slide in result) { slide.BottomHalf=layout.TextArea=="Bottom"; slide.Preview=layout; slide.BackgroundTransform=(item.BackgroundTransform ?? new()).Copy(); }
             return result;
         }
-        public static List<SlideData> BuildItem(ServiceItem item, UserSettings settings, string fontName, double fontSize = 36, string alignment = "Center",string textColor="#FFFFFF",bool bold=false,bool fullSlide=false,string textPosition="Top",bool autoFit=true)
+        public static List<SlideData> BuildItem(ServiceItem item, UserSettings settings, string fontName, double fontSize = 36, string alignment = "Center",string textColor="#FFFFFF",bool bold=false,bool fullSlide=false,string textPosition="Top",bool autoFit=true,double titleFontSize=72)
         {
             if(double.IsNaN(fontSize) || double.IsInfinity(fontSize) || fontSize<18 || fontSize>72) throw new FormatException(ChineseText.Ui("字號須為 18 至 72 pt。"));
             if(alignment!="Left" && alignment!="Center" && alignment!="Right") throw new FormatException(ChineseText.Ui("請選擇靠左、置中或靠右。"));
@@ -99,7 +99,8 @@ namespace WorshipPptx
             }
             if(tagged)
             {
-                var titleSize=requestedSize;
+                if(!double.IsFinite(titleFontSize) || titleFontSize<18 || titleFontSize>72) throw new FormatException(ChineseText.Ui("歌名字號須為 18 至 72 pt。"));
+                var titleSize=titleFontSize;
                 var titleText=Regex.Replace(item.Title.Trim(),@"\s+"," ");
                 var titleLines=Wrap(titleText,fontName,titleSize,bold);
                 while(titleLines.Count>TextCapacity(titleSize,fontName,titleCredits,bold,fullSlide) && titleSize>18)
@@ -110,13 +111,14 @@ namespace WorshipPptx
                 if(titleLines.Count>TextCapacity(titleSize,fontName,titleCredits,bold,fullSlide)) throw new FormatException(ChineseText.Ui("詩歌名稱或版權資料太長，請縮短文字。"));
                 slides.Insert(0,new SlideData { IsTitle=true, Title=item.Title, Section=ChineseText.Ui("歌名"), Lines=titleLines, FontName=FontCatalog.Get(fontName).Name, FontSize=titleSize, Alignment=alignment, Footer=titleCredits, Background=item.Background, TextColor=TextColors.Get(textColor).Hex,Bold=bold,FullSlide=fullSlide,TextPosition=textPosition });
                 if(autoFit) {
-                    // One size for the song, determined by the block that needs
-                    // the most room. Include the title/credits to prevent overlap.
-                    var commonSize=slides.Min(s=>s.FontSize);
-                    foreach(var slide in slides) {
+                    // Lyrics share the size needed by their longest block.
+                    // The title and credits fit independently above.
+                    var lyricSlides=slides.Where(s=>!s.IsTitle).ToList();
+                    var commonSize=lyricSlides.Min(s=>s.FontSize);
+                    foreach(var slide in lyricSlides) {
                         slide.FontSize=commonSize;
-                        var source=slide.IsTitle ? new[]{titleText} : sections[slide.Section].SkipWhile(string.IsNullOrWhiteSpace).Reverse().SkipWhile(string.IsNullOrWhiteSpace).Reverse();
-                        slide.Lines=slide.IsTitle ? Wrap(titleText,slide.FontName,commonSize,bold) : source.Select(line=>line.Replace("\t","    ")).ToList();
+                        var source=sections[slide.Section].SkipWhile(string.IsNullOrWhiteSpace).Reverse().SkipWhile(string.IsNullOrWhiteSpace).Reverse();
+                        slide.Lines=source.Select(line=>line.Replace("\t","    ")).ToList();
                     }
                 }
             }

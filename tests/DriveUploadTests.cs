@@ -87,12 +87,18 @@ static class DriveUploadTests
                 try {
                     var button=window.FindControl<Button>("StartUpload"); button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                     var timeout=DateTime.UtcNow.AddSeconds(45);
-                    while(!button.IsEnabled && DateTime.UtcNow<timeout) {Dispatcher.UIThread.RunJobs();Thread.Sleep(10);}
-                    check(button.IsEnabled,"Upload did not finish");
+                    while(!window.FindControl<TextBox>("UploadName").IsEnabled && DateTime.UtcNow<timeout) {Dispatcher.UIThread.RunJobs();Thread.Sleep(10);}
+                    check(window.FindControl<TextBox>("UploadName").IsEnabled,"Upload did not finish");
+                    check(button.IsEnabled==!success,"Success should disable upload; failure should allow retry");
                     check(File.Exists(path) && handler.Calls.Count>0,"Local copy missing after upload attempt");
                     var log=window.FindControl<TextBox>("UploadLog").Text;
                     check(log.Contains(path) && window.FindControl<HyperlinkButton>("FolderLink").IsVisible==success,"Missing local path or incorrect outcome");
                     check(success ? window.FindControl<TextBlock>("Outcome").Text.Contains("10") || window.FindControl<TextBlock>("Outcome").Text.Contains("保留") : log.Contains("Simulated server failure"),"Missing expiry or error details");
+                    if(success) {
+                        var calls=handler.Calls.Count;
+                        button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Dispatcher.UIThread.RunJobs();
+                        check(handler.Calls.Count==calls && !button.IsEnabled && window.FindControl<HyperlinkButton>("FolderLink").IsVisible,"Completed dialog started another upload or lost its folder link");
+                    }
                 } finally {window.Close();}
             }
         });
