@@ -1,6 +1,6 @@
 # Google Drive upload — one-time administrator setup
 
-Users **do not sign in to Google**. The app sends PowerPoint files to a small Apps Script web service, which writes to one fixed folder as the church account. A public folder link lets people view/download files; it is not an anonymous upload API. Only the administrator signs in during setup.
+Users **do not sign in to Google**. A small Apps Script web service creates uploads in one fixed folder as the church account. The app sends file bytes directly to Drive using the one-file resumable upload URL that the service creates, then the service independently verifies the completed file and sets retention. The owner's OAuth token stays in Apps Script. A public folder link lets people view/download files; it is not an anonymous upload API. Only the administrator signs in during setup.
 
 The repository includes an example configuration. Each PC needs its own local connection settings before uploading. Use a dedicated church account and a dedicated folder.
 
@@ -48,7 +48,11 @@ For this initial setup, send me the **folder URL and deployed `/exec` URL**. Put
 4. Upload a changed version with replacement checked. It should update the existing file and preserve its Drive link. Unchecked keeps both copies. Multiple same-name files block replacement until the administrator resolves the ambiguity.
 5. Try cancellation and an invalid upload key. The log should explain the result. **Copy all logs** includes timestamps and exception details, with the upload key redacted.
 
-The service accepts `.pptx` files up to 100 MB, in 2 MB chunks, and verifies the completed file's size and MD5 checksum. This is a transfer-integrity check, not a malware scan. Network retries use a session ID and byte offset to avoid repeating completed chunks. A canceled final request may already have completed on Drive; check the folder before retrying.
+The service accepts `.pptx` files up to 100 MB and verifies the completed file's size and MD5 checksum. Version 4 transfers binary file data directly to the Drive resumable session, avoiding Apps Script's base64 relay overhead. If an upload reply is lost, the app checks Drive's received byte position before resuming. Apps Script verifies its own session, rather than trusting a file ID or checksum supplied by the desktop. The temporary upload URL is kept in memory and redacted from logs; no owner OAuth token is sent to the app. Older versions remain compatible through the relay protocol (negotiated 8 MiB chunks, or 2 MiB with legacy versions).
+
+This is a transfer-integrity check, not a malware scan. A canceled final request may already have completed on Drive; check the folder before retrying. Desktop logs show one local event timestamp per line, in `[MM/dd HH:mm:ss]` format, including UTC timestamps returned by the server.
+
+On 2026-10-23, the same 11,137,403-byte synthetic deck took 33.5 seconds through the original 2 MiB relay, 29.5 seconds through an 8 MiB relay, and 8.9 seconds with direct transfer, including final server verification and retention. Direct replacement took 9.8 seconds, preserved the Drive link, and renewed the ten-day expiry. These are one-run measurements on the development connection, not a guaranteed upload time.
 
 Uploads use the church account's storage and [Apps Script quotas](https://developers.google.com/apps-script/guides/services/quotas). Deploy a new web app version after changing the server code. Rotate `UPLOAD_KEY` in Script Properties and on each PC if it is shared accidentally.
 

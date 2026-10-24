@@ -39,8 +39,7 @@ public partial class DriveUploadWindow : Window
     private void Log(string message)
     {
         var safe=client?.Redact(message) ?? message;
-        var stamp=DateTimeOffset.Now.ToString("yyyy-MM-dd HH:mm:ss.fff zzz");
-        foreach(var line in safe.Replace("\r","").Split('\n')) UploadLog.Text+=(UploadLog.Text?.Length>0 ? "\n" : "")+"["+stamp+"] "+line;
+        UploadLog.Text+=(UploadLog.Text?.Length>0 ? "\n" : "")+UploadLogText.Format(safe,DateTimeOffset.Now,TimeZoneInfo.Local);
         UploadLog.CaretIndex=UploadLog.Text.Length;
     }
     private async void Upload_Click(object sender,RoutedEventArgs e)

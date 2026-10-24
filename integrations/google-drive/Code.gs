@@ -2,13 +2,14 @@
 // Set FOLDER_ID and UPLOAD_KEY in Script Properties, never in this source file.
 const PPTX = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
 const CHUNK = 2 * 1024 * 1024;
+const LARGE_CHUNK = 8 * 1024 * 1024;
 const MAX_SIZE = 100 * 1024 * 1024;
 const API = 'https://www.googleapis.com/drive/v3/files';
 const RETENTION_DAYS = 10;
 const RETENTION_TAG = 'worship-pptx-v1';
 
 function doGet() {
-  return json_({ok:true, service:'Worship PPTX upload', version:2, retentionDays:RETENTION_DAYS});
+  return json_({ok:true, service:'Worship PPTX upload', version:4, retentionDays:RETENTION_DAYS});
 }
 
 function doPost(e) {
@@ -18,7 +19,7 @@ function doPost(e) {
   let lock;
   try {
     const raw = e && e.postData && e.postData.contents;
-    if (!raw || raw.length > 3 * 1024 * 1024) throw new Error('Invalid request size.');
+    if (!raw || raw.length > 12 * 1024 * 1024) throw new Error('Invalid request size.');
     const request = JSON.parse(raw);
     const key = props.getProperty('UPLOAD_KEY');
     const folder = props.getProperty('FOLDER_ID');
@@ -30,6 +31,11 @@ function doPost(e) {
     prune_(props);
     let state = JSON.parse(props.getProperty('upload_' + request.sessionId) || 'null');
     if (request.action === 'cancel') {
+      if (state && state.direct && !state.complete) {
+        update_(state,fetch_(state.url,{method:'put',headers:{'Content-Range':'bytes */'+state.size},payload:[]}),log);
+        props.setProperty('upload_'+request.sessionId,JSON.stringify(state));
+        if(state.complete) retain_(state,folder,props,request.sessionId,log);
+      }
       if (state && !state.complete) props.deleteProperty('upload_' + request.sessionId);
       log('Pending upload released. A completed file, if any, is retained.');
       return json_({ok:true,logs});
@@ -37,6 +43,8 @@ function doPost(e) {
     if (request.action === 'start') {
       if (!/^[A-Za-z0-9]{1,64}-[0-9]{4}[mc]-(call\+)?praise\.pptx$/.test(request.name || '')) throw new Error('Invalid PowerPoint filename.');
       if (!Number.isSafeInteger(request.size) || request.size < 1 || request.size > MAX_SIZE || !/^[a-f0-9]{32}$/.test(request.md5 || '') || typeof request.replace !== 'boolean') throw new Error('Invalid upload size, checksum or replacement option.');
+      const chunkSize=request.chunkSize===undefined ? CHUNK : request.chunkSize;
+      if (chunkSize!==CHUNK && chunkSize!==LARGE_CHUNK) throw new Error('Unsupported upload chunk size.');
       if (state) {
         if (state.name !== request.name || state.size !== request.size || state.md5 !== request.md5 || state.replace !== request.replace) throw new Error('Session does not match this file.');
         if (state.complete) retain_(state,folder,props,request.sessionId,log);
@@ -65,19 +73,28 @@ function doPost(e) {
       requireOk_(response);
       const url = header_(response,'Location');
       if (!/^https:\/\/www\.googleapis\.com\/upload\/drive\//.test(url || '')) throw new Error('Drive did not issue a valid resumable upload session.');
-      state = {name:request.name,size:request.size,md5:request.md5,replace:request.replace,url,offset:0,complete:false,expires:Date.now()+15*60*1000};
+      state = {name:request.name,size:request.size,md5:request.md5,replace:request.replace,chunkSize,direct:request.direct===true,url,offset:0,complete:false,expires:Date.now()+15*60*1000};
       props.setProperty('upload_' + request.sessionId,JSON.stringify(state));
+      return json_(reply_(state,folder,logs));
+    }
+    if (request.action === 'finish' && state && state.direct) {
+      // Never trust client-supplied IDs/checksums: Drive confirms the server-created session itself.
+      if(!state.complete) update_(state,fetch_(state.url,{method:'put',headers:{'Content-Range':'bytes */'+state.size},payload:[]}),log);
+      state.expires=Date.now()+(state.complete ? 24*60*60*1000 : 15*60*1000);
+      props.setProperty('upload_'+request.sessionId,JSON.stringify(state));
+      if(state.complete) retain_(state,folder,props,request.sessionId,log);
       return json_(reply_(state,folder,logs));
     }
     if (request.action !== 'chunk' || !state) throw new Error('Upload session expired. Start the upload again.');
     if (state.complete) { retain_(state,folder,props,request.sessionId,log); return json_(reply_(state,folder,logs)); }
-    if (!Number.isSafeInteger(request.offset) || request.offset < 0 || request.offset % CHUNK !== 0 || typeof request.data !== 'string' || !/^[A-Za-z0-9+/]*={0,2}$/.test(request.data)) throw new Error('Invalid upload chunk.');
+    const chunkSize=state.chunkSize || CHUNK;
+    if (!Number.isSafeInteger(request.offset) || request.offset < 0 || request.offset % chunkSize !== 0 || typeof request.data !== 'string' || !/^[A-Za-z0-9+/]*={0,2}$/.test(request.data)) throw new Error('Invalid upload chunk.');
     // Probe Drive first: a previous request may have succeeded despite a lost reply.
     let response = fetch_(state.url,{method:'put',headers:{'Content-Range':'bytes */' + state.size},payload:[]});
     update_(state,response,log);
     if (!state.complete && state.offset === request.offset) {
       const bytes = Utilities.base64Decode(request.data);
-      const required = Math.min(CHUNK,state.size-state.offset);
+      const required = Math.min(chunkSize,state.size-state.offset);
       if (bytes.length !== required) throw new Error('Chunk size does not match the file.');
       if (state.offset === 0 && (bytes[0] !== 80 || bytes[1] !== 75)) throw new Error('Only PowerPoint ZIP packages are accepted.');
       response = fetch_(state.url,{method:'put',contentType:PPTX,headers:{'Content-Range':'bytes ' + state.offset + '-' + (state.offset+bytes.length-1) + '/' + state.size},payload:bytes});
@@ -108,7 +125,7 @@ function update_(state,response,log) {
   state.fileId=result.id; state.complete=true; state.offset=state.size; delete state.url;
   log('Drive confirmed file size and MD5 checksum. Upload complete.');
 }
-function reply_(state,folder,logs) { return {ok:true,complete:state.complete,offset:state.offset,fileId:state.fileId || '',folderUrl:'https://drive.google.com/drive/folders/'+folder,expiresAt:state.retentionUntil || null,logs}; }
+function reply_(state,folder,logs) { return {ok:true,complete:state.complete,offset:state.offset,chunkSize:state.chunkSize || CHUNK,uploadUrl:state.direct && !state.complete ? state.url : null,fileId:state.fileId || '',folderUrl:'https://drive.google.com/drive/folders/'+folder,expiresAt:state.retentionUntil || null,logs}; }
 function retain_(state,folder,props,sessionId,log) {
   if (state.retentionSet) return;
   state.retentionUntil = state.retentionUntil || new Date(Date.now()+RETENTION_DAYS*24*60*60*1000).toISOString();

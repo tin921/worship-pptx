@@ -69,11 +69,44 @@ test('A lost final reply can be retried without another file or content write',(
  const body={action:'chunk',offset:0,data:data.toString('base64')};assert.equal(s.post(body).ok,false);assert.equal(s.post(body).complete,true);assert.deepEqual(s.bytes,data);
  assert.equal(s.calls.filter(c=>c.url.includes('uploadType=resumable')).length,1);
 });
+test('Negotiated 8 MiB chunks reduce calls and recover a lost final reply; legacy sessions remain 2 MiB',()=>{
+ const s=service(),chunkSize=8*1024*1024;
+ const file=Buffer.alloc(chunkSize+73,251);file[0]=80;file[1]=75;
+ const request={...start,size:file.length,md5:crypto.createHash('md5').update(file).digest('hex'),chunkSize};
+ assert.equal(s.post(request).chunkSize,chunkSize);
+ const first=s.post({action:'chunk',offset:0,data:file.subarray(0,chunkSize).toString('base64')});
+ assert.equal(first.offset,chunkSize);assert.equal(first.complete,false);
+ s.loseReply(); const last={action:'chunk',offset:chunkSize,data:file.subarray(chunkSize).toString('base64')};
+ assert.equal(s.post(last).ok,false);assert.equal(s.post(last).complete,true);assert.deepEqual(s.bytes,file);
+ assert.equal(s.calls.filter(c=>c.url.includes('/session/') && !c.options.headers['Content-Range'].startsWith('bytes */')).length,2);
+ const old=service();assert.equal(old.post(start).chunkSize,2*1024*1024);
+ const prop='upload_'+'a'.repeat(32),state=JSON.parse(old.props[prop]);delete state.chunkSize;old.props[prop]=JSON.stringify(state);
+ assert.equal(old.post({action:'chunk',offset:0,data:data.toString('base64')}).complete,true);
+ assert.equal(service().post({...start,chunkSize:100*1024*1024}).ok,false);
+});
 test('Filename leases prevent concurrent replacement and cancellation releases the lease',()=>{
  const s=service();assert.equal(s.post(start).ok,true);
  assert.equal(s.post({...start,sessionId:'b'.repeat(32)}).ok,false);
  assert.equal(s.post({action:'cancel'}).ok,true);
  assert.equal(s.post({...start,sessionId:'b'.repeat(32)}).ok,true);
+});
+test('Direct sessions expose only a scoped upload URL and independently verify completion, checksum and retention',()=>{
+ const s=service();const result=s.post({...start,direct:true});assert.match(result.uploadUrl,/^https:\/\/www.googleapis.com\/upload\/drive\//);
+ assert(!JSON.stringify(result).includes('test-oauth-secret'));
+ assert.equal(s.post({action:'finish',fileId:'forged'}).complete,false);
+ s.context.UrlFetchApp.fetch(result.uploadUrl,{method:'put',headers:{'Content-Range':'bytes 0-'+(data.length-1)+'/'+data.length},payload:Array.from(data)});
+ const done=s.post({action:'finish',fileId:'forged'});assert.equal(done.complete,true);assert.equal(done.fileId,'file123');assert.equal(done.uploadUrl,null);assert(done.expiresAt);
+ const calls=s.calls.length;assert.equal(s.post({action:'finish'}).fileId,'file123');assert.equal(s.calls.length,calls);
+ const bad=service();const upload=bad.post({...start,direct:true,md5:'0'.repeat(32)});
+ bad.context.UrlFetchApp.fetch(upload.uploadUrl,{method:'put',headers:{'Content-Range':'bytes 0-'+(data.length-1)+'/'+data.length},payload:Array.from(data)});
+ assert.equal(bad.post({action:'finish'}).ok,false);assert.equal(bad.metadata.appProperties,undefined);
+});
+test('Cancel after direct transfer still verifies and retains the completed file',()=>{
+ const s=service();const result=s.post({...start,direct:true});
+ s.context.UrlFetchApp.fetch(result.uploadUrl,{method:'put',headers:{'Content-Range':'bytes 0-'+(data.length-1)+'/'+data.length},payload:Array.from(data)});
+ assert.equal(s.post({action:'cancel'}).ok,true);
+ const state=JSON.parse(s.props['upload_'+'a'.repeat(32)]);assert.equal(state.complete,true);assert.equal(state.retentionSet,true);assert(s.metadata.appProperties.worshipExpiresAt);
+ const pending=service();pending.post({...start,direct:true});assert.equal(pending.post({action:'cancel'}).ok,true);assert.equal(pending.props['upload_'+'a'.repeat(32)],undefined);
 });
 test('Checksum mismatch fails verification and does not claim success',()=>{
  const s=service();assert.equal(s.post({...start,md5:'0'.repeat(32)}).ok,true);

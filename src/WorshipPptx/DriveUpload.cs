@@ -4,8 +4,10 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -64,6 +66,7 @@ public sealed record DriveUploadResult(string FileId,string FolderUrl,DateTimeOf
 public sealed class DriveUploadClient
 {
     public const int ChunkSize=2*1024*1024;
+    public const int PreferredChunkSize=8*1024*1024;
     public const long MaxFileSize=100L*1024*1024;
     private readonly HttpClient http;
     private readonly DriveUploadSettings settings;
@@ -77,17 +80,27 @@ public sealed class DriveUploadClient
         var sessionId=Guid.NewGuid().ToString("N");
         progress?.Report(new(ChineseText.Ui("正在連接上傳服務及檢查同名檔案…")));
         try {
-        var state=await Send(new { action="start",key=settings.UploadKey,sessionId,name,size=file.Length,md5=hash,replace },progress,cancellation);
+        var state=await Send(new { action="start",key=settings.UploadKey,sessionId,name,size=file.Length,md5=hash,replace,chunkSize=PreferredChunkSize,direct=true },progress,cancellation);
         CheckFolder(state.FolderUrl);
-        var buffer=new byte[ChunkSize];
+        if(!state.Complete && !string.IsNullOrEmpty(state.UploadUrl)) {
+            await UploadDirect(file,state.UploadUrl,state.Offset,progress,cancellation);
+            progress?.Report(new(ChineseText.Ui("資料已傳送，正在確認檔案及保留期限…"),99));
+            state=await Send(new {action="finish",key=settings.UploadKey,sessionId},progress,cancellation);
+            if(!state.Complete) throw new IOException("Drive has not confirmed the complete file.");
+        }
+        // Older deployments omit chunkSize and continue using the original 2 MiB protocol.
+        var chunkSize=state.ChunkSize ?? ChunkSize;
+        if(chunkSize!=ChunkSize && chunkSize!=PreferredChunkSize) throw new IOException("Upload service returned an unsupported chunk size.");
+        var buffer=new byte[chunkSize];
         while(!state.Complete) {
             cancellation.ThrowIfCancellationRequested();
-            if(state.Offset<0 || state.Offset>=file.Length || state.Offset%ChunkSize!=0) throw new IOException("Upload service returned an invalid byte offset.");
+            if(state.Offset<0 || state.Offset>=file.Length || state.Offset%chunkSize!=0) throw new IOException("Upload service returned an invalid byte offset.");
             file.Position=state.Offset;
-            var length=(int)Math.Min(ChunkSize,file.Length-state.Offset);
+            var length=(int)Math.Min(chunkSize,file.Length-state.Offset);
             await file.ReadExactlyAsync(buffer.AsMemory(0,length),cancellation);
             var previous=state.Offset;
             state=await Send(new { action="chunk",key=settings.UploadKey,sessionId,offset=previous,data=Convert.ToBase64String(buffer,0,length) },progress,cancellation);
+            if(state.ChunkSize.HasValue && state.ChunkSize!=chunkSize) throw new IOException("Upload service changed the chunk size mid-upload.");
             if(!state.Complete && state.Offset<=previous) throw new IOException("Upload service did not acknowledge the chunk.");
             var percent=(int)Math.Min(100,100L*state.Offset/file.Length);
             progress?.Report(new(ChineseText.Ui("已上傳 ")+state.Offset.ToString("N0")+" / "+file.Length.ToString("N0")+" bytes",percent));
@@ -115,6 +128,8 @@ public sealed class DriveUploadClient
         public bool Ok { get; set; }
         public bool Complete { get; set; }
         public long Offset { get; set; }
+        public int? ChunkSize { get; set; }
+        public string UploadUrl { get; set; }
         public string FileId { get; set; }
         public string FolderUrl { get; set; }
         public DateTimeOffset? ExpiresAt { get; set; }
@@ -124,7 +139,8 @@ public sealed class DriveUploadClient
     }
     private async Task<Reply> Send(object body,IProgress<UploadProgress> progress,CancellationToken cancellation)
     {
-        var json=JsonSerializer.Serialize(body);
+        // This JSON is sent as application/json, never embedded in HTML. Avoid expanding base64 '+' characters.
+        var json=JsonSerializer.Serialize(body,new JsonSerializerOptions { Encoder=JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
         // start and chunk requests are idempotent by session ID / byte offset.
         for(var attempt=1;;attempt++) {
             try {
@@ -146,5 +162,62 @@ public sealed class DriveUploadClient
             }
         }
     }
-    public string Redact(string message) => string.IsNullOrEmpty(settings.UploadKey) ? message : message.Replace(settings.UploadKey,"[redacted]",StringComparison.Ordinal);
+    private async Task UploadDirect(FileStream file,string uploadUrl,long offset,IProgress<UploadProgress> progress,CancellationToken cancellation)
+    {
+        if(!Uri.TryCreate(uploadUrl,UriKind.Absolute,out var uri) || uri.Scheme!="https" || uri.Host!="www.googleapis.com" || !uri.IsDefaultPort || uri.UserInfo.Length>0 || uri.Fragment.Length>0 || !uri.AbsolutePath.StartsWith("/upload/drive/",StringComparison.Ordinal))
+            throw new IOException("The service returned an invalid Drive upload address.");
+        var buffer=new byte[PreferredChunkSize];
+        while(offset<file.Length) {
+            if(offset<0) throw new IOException("Drive returned an invalid upload position.");
+            cancellation.ThrowIfCancellationRequested(); file.Position=offset;
+            var length=(int)Math.Min(buffer.Length,file.Length-offset);
+            await file.ReadExactlyAsync(buffer.AsMemory(0,length),cancellation);
+            var reply=await DirectChunk(uri,buffer,length,offset,file.Length,progress,cancellation);
+            if(reply.Offset<=offset || reply.Offset>file.Length) throw new IOException("Drive did not acknowledge the uploaded bytes.");
+            offset=reply.Offset;
+            progress?.Report(new(ChineseText.Ui("已傳送 ")+offset.ToString("N0")+" / "+file.Length.ToString("N0")+" bytes",(int)Math.Min(99,100L*offset/file.Length)));
+        }
+        if(offset!=file.Length) throw new IOException("Drive returned an invalid upload position.");
+    }
+    private sealed record DirectReply(long Offset);
+    private async Task<DirectReply> DirectChunk(Uri uri,byte[] bytes,int length,long offset,long total,IProgress<UploadProgress> progress,CancellationToken cancellation)
+    {
+        for(var attempt=1;;attempt++) {
+            try {
+                if(attempt>1) {
+                    // A timed-out PUT may have succeeded. Ask Drive before sending those bytes again.
+                    var position=await DirectRequest(uri,Array.Empty<byte>(),0,0,total,true,cancellation);
+                    if(position.Offset!=offset) return position;
+                }
+                return await DirectRequest(uri,bytes,length,offset,total,false,cancellation);
+            } catch(Exception ex) when((ex is HttpRequestException || ex is TaskCanceledException) && !cancellation.IsCancellationRequested && attempt<3) {
+                progress?.Report(new(ChineseText.Ui("連線中斷，正在確認進度並重試… ")+attempt+"/2"));
+                await Task.Delay(TimeSpan.FromSeconds(attempt),cancellation);
+            }
+        }
+    }
+    private async Task<DirectReply> DirectRequest(Uri uri,byte[] bytes,int length,long offset,long total,bool probe,CancellationToken cancellation)
+    {
+        using var request=new HttpRequestMessage(HttpMethod.Put,uri) {Content=new ByteArrayContent(bytes,0,length)};
+        request.Content.Headers.ContentType=new MediaTypeHeaderValue("application/vnd.openxmlformats-officedocument.presentationml.presentation");
+        request.Content.Headers.ContentRange=probe ? new ContentRangeHeaderValue(total) : new ContentRangeHeaderValue(offset,offset+length-1,total);
+        // The one-file resumable URL authorizes this request; no owner OAuth token or shared upload key is sent to Drive.
+        using var response=await http.SendAsync(request,cancellation);
+        var code=(int)response.StatusCode;
+        if(code==429 || code>=500) throw new HttpRequestException("Drive upload temporarily unavailable: HTTP "+code);
+        if(code==308) {
+            var range=response.Headers.TryGetValues("Range",out var values) ? values.SingleOrDefault() : null;
+            if(string.IsNullOrEmpty(range)) return new(0);
+            var match=Regex.Match(range,@"\Abytes=0-(\d+)\z");
+            if(!match.Success || !long.TryParse(match.Groups[1].Value,out var last) || last<0 || last>=total) throw new IOException("Drive returned an invalid upload range.");
+            return new(last+1);
+        }
+        if(code==200 || code==201) return new(total);
+        throw new IOException("Drive upload failed: HTTP "+code+". "+Redact(await response.Content.ReadAsStringAsync(cancellation)));
+    }
+    public string Redact(string message)
+    {
+        var text=string.IsNullOrEmpty(settings.UploadKey) ? message : message.Replace(settings.UploadKey,"[redacted]",StringComparison.Ordinal);
+        return Regex.Replace(text ?? "",@"https://www\.googleapis\.com/upload/[^\s""'<>]+","[Drive upload session]");
+    }
 }

@@ -28,9 +28,22 @@ static class DriveUploadTests
         }
     }
     private sealed class Progress : IProgress<UploadProgress> { public readonly List<UploadProgress> Values=new(); public void Report(UploadProgress value)=>Values.Add(value); }
+    private sealed class Transport : HttpMessageHandler
+    {
+        public Func<HttpRequestMessage,Task<HttpResponseMessage>> Reply;
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,CancellationToken token)=>Reply(request);
+    }
+    private static HttpResponseMessage Json(object value)=>new(HttpStatusCode.OK) {Content=new StringContent(JsonSerializer.Serialize(value),Encoding.UTF8,"application/json")};
     private static DriveUploadSettings Settings()=>new() { ServiceUrl="https://script.google.com/macros/s/test-deployment/exec",UploadKey=new string('k',40),FolderUrl="https://drive.google.com/drive/folders/folder123" };
     public static void Run(Action<string,Action> test,Action<bool,string> check,string root)
     {
+        test("Upload logs use one compact local timestamp and retain multiline errors",()=> {
+            var zone=TimeZoneInfo.CreateCustomTimeZone("test-eastern",TimeSpan.FromHours(-4),"test-eastern","test-eastern");
+            var received=DateTimeOffset.Parse("2026-10-24T00:19:44.094Z");
+            var text=UploadLogText.Format("[2026-10-24T00:19:42.814Z] Destination folder is writable.\nIOException: failure\n   at Upload()",received,zone);
+            check(text=="[10/23 20:19:42] Destination folder is writable.\n[10/23 20:19:44] IOException: failure\n[10/23 20:19:44]    at Upload()","Duplicate timestamp, wrong local time, or lost exception details");
+            check(UploadLogText.Format("[redacted] detail",received,zone)=="[10/23 20:19:44] [redacted] detail","Removed a non-timestamp bracket prefix");
+        });
         test("Local upload copies replace atomically or keep both without losing the original",()=> {
             var folder=Path.Combine(root,"local-copies"); Directory.CreateDirectory(folder);
             var source=Path.Combine(folder,"source.pptx"); File.WriteAllText(source,"first");
@@ -150,12 +163,78 @@ static class DriveUploadTests
             var canceled=false;try { await new DriveUploadClient(canceledHttp,settings).UploadAsync(path,"PC-1025c-praise.pptx",true,null,cancellation.Token); }catch(OperationCanceledException){canceled=true;}
             check(canceled && canceledHandler.Calls.All(b=>b.GetProperty("action").GetString()!="chunk"),"Canceled upload still sent content");
         }).GetAwaiter().GetResult());
+        test("Drive negotiates larger chunks without changing bytes or accepting unsupported sizes",()=>Task.Run(async ()=> {
+            var path=Path.Combine(root,"upload-large-chunks.pptx"); var bytes=new byte[DriveUploadClient.PreferredChunkSize+73];
+            Array.Fill(bytes,(byte)251); bytes[0]=80; bytes[1]=75; File.WriteAllBytes(path,bytes);
+            var received=new MemoryStream();
+            using(var handler=new Handler {Reply=body=> {
+                if(body.GetProperty("action").GetString()=="start") {
+                    check(body.GetProperty("chunkSize").GetInt32()==DriveUploadClient.PreferredChunkSize,"Client did not request the larger chunk size");
+                    return new {ok=true,offset=0,folderUrl=Settings().FolderUrl,chunkSize=DriveUploadClient.PreferredChunkSize};
+                }
+                var chunk=Convert.FromBase64String(body.GetProperty("data").GetString());
+                check(chunk.Length==Math.Min(DriveUploadClient.PreferredChunkSize,bytes.Length-received.Length),"Wrong negotiated chunk length");
+                received.Write(chunk);
+                return new {ok=true,offset=received.Length,complete=received.Length==bytes.Length,fileId="large",folderUrl=Settings().FolderUrl,chunkSize=DriveUploadClient.PreferredChunkSize};
+            }})
+            using(var http=new HttpClient(handler)) {
+                await new DriveUploadClient(http,Settings()).UploadAsync(path,"PC-1025c-praise.pptx",true,null,CancellationToken.None);
+                check(received.ToArray().SequenceEqual(bytes) && handler.Calls.Count==3,"Larger chunks corrupted bytes or used extra requests");
+            }
+            using var bad=new Handler {Reply=_=>new {ok=true,offset=0,chunkSize=int.MaxValue,folderUrl=Settings().FolderUrl}};
+            using var badHttp=new HttpClient(bad); var rejected=false;
+            try {await new DriveUploadClient(badHttp,Settings()).UploadAsync(path,"PC-1025c-praise.pptx",true,null,CancellationToken.None);}catch(IOException){rejected=true;}
+            check(rejected && bad.Calls.All(b=>b.GetProperty("action").GetString()!="chunk"),"Unbounded server chunk size was accepted");
+        }).GetAwaiter().GetResult());
         test("Drive destination mismatch is rejected before sending file content",()=>Task.Run(async ()=> {
             var path=Path.Combine(root,"wrong-destination.pptx");File.WriteAllBytes(path,new byte[]{80,75,3,4});
             using var handler=new Handler {Reply=_=>new {ok=true,offset=0,folderUrl="https://drive.google.com/drive/folders/otherFolder"}};
             using var http=new HttpClient(handler);var rejected=false;
             try {await new DriveUploadClient(http,Settings()).UploadAsync(path,"PC-1025c-praise.pptx",true,null,CancellationToken.None);}catch(IOException){rejected=true;}
             check(rejected && handler.Calls.All(b=>b.GetProperty("action").GetString()!="chunk"),"Content was sent to the wrong folder");
+        }).GetAwaiter().GetResult());
+        test("Direct upload bypasses Apps Script for file bytes and resumes a lost final reply before server verification",()=>Task.Run(async ()=> {
+            var path=Path.Combine(root,"direct-upload.pptx"); var bytes=new byte[DriveUploadClient.PreferredChunkSize+73]; new Random(123).NextBytes(bytes); File.WriteAllBytes(path,bytes);
+            foreach(var loseReply in new[]{false,true}) {
+                var received=new MemoryStream(); var finished=false; var dataCalls=0; var probes=0; var serviceCalls=0;
+                using var handler=new Transport {Reply=async request=> {
+                    if(request.RequestUri.Host=="script.google.com") {
+                        serviceCalls++; var json=await request.Content.ReadAsStringAsync(); check(json.Length<1000,"File bytes still flow through Apps Script");
+                        var body=JsonDocument.Parse(json).RootElement; var action=body.GetProperty("action").GetString();
+                        if(action=="start") return Json(new {ok=true,offset=0,folderUrl=Settings().FolderUrl,chunkSize=DriveUploadClient.PreferredChunkSize,uploadUrl="https://www.googleapis.com/upload/drive/v3/files?upload_id=test-secret"});
+                        check(action=="finish" && received.Length==bytes.Length,"Server verification was skipped or happened before upload"); finished=true;
+                        return Json(new {ok=true,complete=true,offset=bytes.Length,fileId="direct",folderUrl=Settings().FolderUrl,expiresAt=DateTimeOffset.UtcNow.AddDays(10)});
+                    }
+                    check(request.RequestUri.Host=="www.googleapis.com" && request.Method==HttpMethod.Put && request.Headers.Authorization==null,"Unexpected direct upload destination or owner credentials");
+                    var range=request.Content.Headers.ContentRange;
+                    if(!range.HasRange) {probes++;check(received.Length==bytes.Length,"Unexpected recovery probe");return Json(new {id="direct"});}
+                    check(range.From==received.Length,"Repeated or out-of-order direct bytes");
+                    received.Write(await request.Content.ReadAsByteArrayAsync()); dataCalls++;
+                    if(received.Length==bytes.Length) {
+                        if(loseReply) throw new HttpRequestException("Lost final reply from "+request.RequestUri);
+                        return Json(new {id="direct"});
+                    }
+                    var response=new HttpResponseMessage((HttpStatusCode)308); response.Headers.TryAddWithoutValidation("Range","bytes=0-"+(received.Length-1));return response;
+                }};
+                using var http=new HttpClient(handler); var progress=new Progress();
+                var result=await new DriveUploadClient(http,Settings()).UploadAsync(path,"PC-1025c-praise.pptx",true,progress,CancellationToken.None);
+                check(finished && result.FileId=="direct" && dataCalls==2 && serviceCalls==2 && probes==(loseReply ? 1 : 0),"Unexpected direct transfer / verification request count");
+                check(received.ToArray().SequenceEqual(bytes) && progress.Values.Last().Percent==100,"Direct upload bytes or final progress incorrect");
+            }
+        }).GetAwaiter().GetResult());
+        test("Direct upload rejects unsafe destinations, requires server completion, and redacts upload URLs",()=>Task.Run(async ()=> {
+            var path=Path.Combine(root,"direct-invalid.pptx"); File.WriteAllBytes(path,new byte[]{80,75,3,4});
+            foreach(var url in new[]{"https://example.com/upload/drive/test","https://www.googleapis.com.evil.test/upload/drive/test","http://www.googleapis.com/upload/drive/test","https://www.googleapis.com/drive/v3/files"}) {
+                using var handler=new Handler {Reply=_=>new {ok=true,offset=0,folderUrl=Settings().FolderUrl,uploadUrl=url}};using var http=new HttpClient(handler);var failed=false;
+                try {await new DriveUploadClient(http,Settings()).UploadAsync(path,"PC-1025c-praise.pptx",true,null,CancellationToken.None);}catch(IOException){failed=true;}
+                check(failed && handler.Calls.Count==2,"Unsafe direct upload URL accepted");
+            }
+            using var pending=new Transport {Reply=request=>Task.FromResult(request.RequestUri.Host=="www.googleapis.com" ? Json(new {id="unverified"}) : Json(new {ok=true,offset=0,folderUrl=Settings().FolderUrl,uploadUrl="https://www.googleapis.com/upload/drive/v3/files?upload_id=secret"}))};
+            using var pendingHttp=new HttpClient(pending);var rejected=false;
+            try {await new DriveUploadClient(pendingHttp,Settings()).UploadAsync(path,"PC-1025c-praise.pptx",true,null,CancellationToken.None);}catch(IOException){rejected=true;}
+            check(rejected,"Client claimed success without server confirmation");
+            var redacted=new DriveUploadClient(pendingHttp,Settings()).Redact("Failure https://www.googleapis.com/upload/drive/v3/files?upload_id=secret "+Settings().UploadKey);
+            check(!redacted.Contains("secret") && !redacted.Contains(Settings().UploadKey),"Upload session or shared key leaked in errors");
         }).GetAwaiter().GetResult());
         test("Zero opacity is white in the preview and exported background",()=> {
             var slide=new SlideData {BackgroundTransform=new() {Opacity=0}};
