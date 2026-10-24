@@ -1,4 +1,4 @@
-<Window Icon="/Assets/app.ico" x:Class="WorshipPptx.MainWindow" xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:WorshipPptx" Title="{local:Tr '敬拜工坊 · Worship PPTX'}" Width="1440" Height="940" MinWidth="1120" MinHeight="760" WindowStartupLocation="CenterScreen">
+<Window Icon="/Assets/app.ico" x:Class="WorshipPptx.MainWindow" xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:WorshipPptx" Title="{local:Tr '敬拜工坊'}" Width="1440" Height="940" MinWidth="1120" MinHeight="760" WindowStartupLocation="CenterScreen">
  <Window.Styles>
   <!-- Dismissing a font/size list must also deliver the click to its target. -->
   <Style Selector="ComboBox /template/ Popup"><Setter Property="OverlayDismissEventPassThrough" Value="True"/></Style>
@@ -8,8 +8,11 @@
   <Border Background="#EBEFE7" BorderBrush="#DDE4D9" BorderThickness="0,0,1,0">
    <DockPanel Margin="16,12,16,20">
     <StackPanel DockPanel.Dock="Top">
-     <TextBlock x:Name="AppHeading" Text="{local:Tr '敬拜工坊'}" FontSize="23" FontWeight="Bold" Margin="0,0,0,3"/>
-     <TextBlock x:Name="VersionLabel" FontSize="12" Foreground="#738077" Margin="0,0,0,10"/>
+     <Grid ColumnDefinitions="48,10,*" RowDefinitions="Auto,Auto" Margin="0,0,0,10">
+      <Image x:Name="AppLogo" Grid.RowSpan="2" Source="/Assets/app-icon.png" Width="48" Height="48" Stretch="Uniform" VerticalAlignment="Center"/>
+      <TextBlock x:Name="AppHeading" Grid.Column="2" Text="{local:Tr '敬拜工坊'}" FontSize="23" FontWeight="Bold" Margin="0,0,0,3"/>
+      <TextBlock x:Name="VersionLabel" Grid.Column="2" Grid.Row="1" FontSize="12" Foreground="#738077"/>
+     </Grid>
      <Button x:Name="NewServiceButton" Content="{local:Tr '＋ 新增崇拜'}" Click="NewService_Click" Classes="primary" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="40" Padding="8,0" Margin="0,0,0,10"/>
     </StackPanel>
     <ListBox x:Name="HistoryList" Classes="history" Padding="0" Background="Transparent" BorderThickness="0" SelectionChanged="History_Changed" ScrollViewer.HorizontalScrollBarVisibility="Disabled">

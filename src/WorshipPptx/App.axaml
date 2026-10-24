@@ -6,7 +6,7 @@
   <FluentTheme>
    <FluentTheme.Palettes><ColorPaletteResources x:Key="Light" Accent="#426B54"/></FluentTheme.Palettes>
   </FluentTheme>
-  <Style Selector="Window"><Setter Property="Background" Value="White"/><Setter Property="Foreground" Value="#20362B"/><Setter Property="FontFamily" Value="avares://WorshipPptx/Fonts#Noto Sans CJK HK"/><Setter Property="FontSize" Value="15"/></Style>
+  <Style Selector="Window"><Setter Property="Icon" Value="avares://WorshipPptx/Assets/app.ico"/><Setter Property="Background" Value="White"/><Setter Property="Foreground" Value="#20362B"/><Setter Property="FontFamily" Value="avares://WorshipPptx/Fonts#Noto Sans CJK HK"/><Setter Property="FontSize" Value="15"/></Style>
   <Style Selector="TextBlock.caption"><Setter Property="FontSize" Value="12"/><Setter Property="Foreground" Value="#738077"/><Setter Property="TextWrapping" Value="Wrap"/></Style>
   <Style Selector="TextBlock.label"><Setter Property="FontSize" Value="17"/><Setter Property="FontWeight" Value="SemiBold"/></Style>
   <Style Selector="TextBlock.past-service"><Setter Property="Foreground" Value="#8A918C"/></Style>

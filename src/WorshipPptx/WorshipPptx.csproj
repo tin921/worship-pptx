@@ -7,7 +7,7 @@
     <ApplicationIcon>../../assets/app.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
-    <Version>0.93.30</Version>
+    <Version>0.93.31</Version>
     <AssemblyName>WorshipPptx</AssemblyName>
     <RootNamespace>WorshipPptx</RootNamespace>
     <Title>Worship PPTX</Title>
@@ -32,6 +32,7 @@
     <PackageReference Include="Microsoft.ML.Tokenizers" Version="2.0.1" />
     <AvaloniaResource Include="../../assets/fonts/*.ttf" Link="Fonts/%(Filename)%(Extension)" />
     <AvaloniaResource Include="../../assets/app.ico" Link="Assets/app.ico" />
+    <AvaloniaResource Include="../../assets/ui/app-icon.png" Link="Assets/app-icon.png" />
     <AvaloniaResource Include="../../assets/ui/worship-leader-guitar.png" Link="Assets/worship-leader-guitar.png" />
     <AvaloniaResource Include="../../assets/ui/worship-leader-reading.png" Link="Assets/worship-leader-reading.png" />
     <Content Include="../../assets/fonts/*" Link="Fonts/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
