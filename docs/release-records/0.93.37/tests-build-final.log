@@ -1,0 +1,10 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  WorshipPptx -> D:\cemc-sr\worship-pptx\src\WorshipPptx\bin\Release\net10.0\WorshipPptx.dll
+  WorshipPptx.Tests -> D:\cemc-sr\worship-pptx\tests\bin\Release\net10.0\WorshipPptx.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:07.59

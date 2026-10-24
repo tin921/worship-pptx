@@ -1,0 +1,17 @@
+{
+  "application_source_commit": "22ad3b176a70c8e2f01c1f86de40b33c7933ea4f",
+  "final_checks": {
+    "passed": 128,
+    "failed": 0
+  },
+  "application_source_still_matches_packages": true,
+  "package_payload_files": 1101,
+  "all_downloads_anonymous_http_200": true,
+  "github_inline_playback_verified": true,
+  "drive_direct_link_playback_verified": true,
+  "tutorial_seconds": 283.458333,
+  "readme_live": "https://github.com/tin921/worship-pptx#readme",
+  "verified_utc": "2026-10-24T18:01:26.3955515Z",
+  "test_source_base_commit": "37721332bfb118aba90154cc36e6a3e243ca6d7e",
+  "service_history_test_sha256": "f3ab62e69cd0f8d7290e5457914b918cf5134f9a9ffb8544bd35927fb1daf29c"
+}

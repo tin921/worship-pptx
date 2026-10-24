@@ -35,6 +35,7 @@ static class ServiceHistoryTests
             var window=new MainWindow(store); window.Show(); Pump();
             try {
                 var history=window.FindControl<ListBox>("HistoryList");
+                history.SelectedItem=history.Items.Cast<ServicePlan>().Single(p=>p.Id==current.Id); Pump();
                 check(Remove(window).DataContext==history.SelectedItem,"Remove control is on an unselected program");
                 var dialog=Ask(window);
                 check(dialog.Title=="移除崇拜" && dialog.GetVisualDescendants().OfType<TextBlock>().Any(t=>t.Text.Contains(current.Title) && t.Text.Contains(current.Date.ToString("yyyy-MM-dd"))),"Confirmation does not identify the program");
@@ -54,6 +55,7 @@ static class ServiceHistoryTests
             var window=new MainWindow(store); window.Show(); Pump();
             try {
                 var history=window.FindControl<ListBox>("HistoryList");
+                history.SelectedItem=history.Items.Cast<ServicePlan>().Single(p=>p.Id==current.Id); Pump();
                 Reply(Ask(window),"移除");
                 check(((ServicePlan)history.SelectedItem).Id==near.Id,"Selected edit recency or farthest date instead of nearest upcoming");
                 check(!File.Exists(path) && !File.Exists(path+".bak") && !File.Exists(path+".tmp"),"Deleted service or recovery files remain");
