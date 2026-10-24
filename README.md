@@ -1,22 +1,27 @@
 # Worship PPTX
 
-Create Sunday worship PowerPoint slides from song lyrics, Scripture readings, and announcements. Worship PPTX helps worship leaders spend less time formatting slides, with Traditional and Simplified Chinese interfaces and layouts that leave room for a camera view.
+Prepare clear, consistent presentations for your worship service. Spend less time formatting slides and more time leading worship.
 
-- **[Download Windows v0.93.36 installer](https://github.com/tin921/worship-pptx/releases/download/v0.93.36/WorshipPptx-0.93.36-Setup.msi)** · [Portable ZIP](https://github.com/tin921/worship-pptx/releases/download/v0.93.36/WorshipPptx-0.93.36-Portable.zip) · [Release notes and checksums](https://github.com/tin921/worship-pptx/releases/tag/v0.93.36)
-- **[Watch the English tutorial (4:39)](https://drive.google.com/file/d/1HADwsZCLtDVUC6DEUAEpiCDD5ToAfLJh/view)** · [Download MP4](https://github.com/tin921/worship-pptx/releases/download/v0.93.36/worship-pptx-0.93.35-english-review.mp4) · [Tutorial details and production files](docs/tutorial.md)
-- [Latest source code](https://github.com/tin921/worship-pptx/tree/main/src) · [Build instructions](docs/release-v0.93.36.md)
+- Work in Traditional or Simplified Chinese.
+- Arrange songs, Scripture, and announcements with automatic saving.
+- Set verse and chorus repeats with automatic slide breaks and text fitting.
+- Choose fonts, colors, alignment, and separate title and lyric sizes.
+- Find themed backgrounds in five styles or import your own images.
+- Pan, zoom, flip, and fade backgrounds with live previews.
+- Toggle the presenter guide and navigate previews with keyboard shortcuts.
+- Export editable PowerPoint files with embedded fonts and copyright details.
+- Save locally, upload to Google Drive, and send feedback from the app.
 
-- Switch between Traditional and Simplified Chinese for the interface, presentation text, and PowerPoint export; original text is preserved.
-- Reorder song tabs, set verse/chorus repeats, and keep service history with automatic saving. Remove a program with confirmation and move to the nearest upcoming program.
-- Automatically split lyrics into slides and fit each announcement onto one slide.
-- Customize fonts, colors, alignment, and image framing. Toggle the picture-in-picture guide per item for streaming or in-person projection.
-- Pan, zoom, flip, and adjust background opacity; preview the service with keyboard navigation and remembered window sizes and panel widths.
-- Find built-in backgrounds using local AI theme matching and five image styles, open images full screen, or import images from files, URLs, drag-and-drop, and the clipboard.
-- Export editable PowerPoint files with copyright and CCLI details, plus embedded Chinese fonts.
-- Save a local PowerPoint copy and upload to a configured Google Drive folder. Open the feedback document from the top-right icon.
+<table>
+  <tr>
+    <td width="50%"><img src="docs/worship-editor.png" alt="Worship service editor with lyrics and slide previews" width="100%"></td>
+    <td width="50%"><img src="docs/background-picker.png" alt="Background picker with theme matching and image import" width="100%"></td>
+  </tr>
+</table>
 
-![Worship service editor with lyrics, formatting controls, and slide previews](docs/worship-editor.png)
+- **[Download Windows installer](https://github.com/tin921/worship-pptx/releases/download/v0.93.37/WorshipPptx-0.93.37-Setup.msi)** · [Portable ZIP](https://github.com/tin921/worship-pptx/releases/download/v0.93.37/WorshipPptx-0.93.37-Portable.zip)
+- **[Watch the English tutorial](https://drive.google.com/file/d/1Zsh2Vz8K-jop2mNLPW1utBY9dR4M9saz/view)** · [Download MP4](https://github.com/tin921/worship-pptx/releases/download/v0.93.37/worship-pptx-0.93.37-english-review.mp4)
 
-![Background picker with theme matching and image import options](docs/background-picker.png)
+https://github.com/user-attachments/assets/fd146a69-5672-465d-ae14-fb3a1566e34f
 
 macOS version coming soon.

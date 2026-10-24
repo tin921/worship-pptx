@@ -1,0 +1,134 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 5657910,
+    "text": "Explore"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 6815830,
+    "duration": 3421250,
+    "text": "five"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 10368330,
+    "duration": 5526250,
+    "text": "styles"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 17868330,
+    "duration": 7631660,
+    "text": "photography"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 27078750,
+    "duration": 7368330,
+    "text": "illustration"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 36026250,
+    "duration": 6710410,
+    "text": "abstract"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 44447500,
+    "duration": 2763330,
+    "text": "three"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 47342080,
+    "duration": 3815830,
+    "text": "D"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 52473750,
+    "duration": 1842080,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 54447500,
+    "duration": 7500000,
+    "text": "minimalist"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 71052500,
+    "duration": 3947500,
+    "text": "Toggle"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 75131660,
+    "duration": 1184160,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 76447500,
+    "duration": 4868330,
+    "text": "filters"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 81447500,
+    "duration": 1052500,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 82631660,
+    "duration": 3552500,
+    "text": "narrow"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 86315830,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 87368330,
+    "duration": 5394580,
+    "text": "gallery"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 95000000,
+    "duration": 1710410,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 96842080,
+    "duration": 4078750,
+    "text": "scroll"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 101052500,
+    "duration": 1315830,
+    "text": "for"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 102500000,
+    "duration": 2105410,
+    "text": "more"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 104736660,
+    "duration": 7368330,
+    "text": "choices"
+  }
+]

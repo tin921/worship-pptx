@@ -44,7 +44,7 @@ public sealed class CompositionPreview : Canvas
     }
     private void UpdateGeometry()
     {
-        pip.IsVisible=layout.IsPip; pip.Width=layout.ScaleX*12.8; pip.Height=layout.ScaleY*7.2;
+        pip.IsVisible=layout.IsPipVisible; pip.Width=layout.ScaleX*12.8; pip.Height=layout.ScaleY*7.2;
         pip.BorderThickness=new Thickness(2/screenScale);
         SetLeft(pip,layout.X*12.8); SetTop(pip,layout.Y*7.2);
     }

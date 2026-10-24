@@ -1,0 +1,9 @@
+{
+  "generated_utc": "2026-10-24T17:34:43.2729586Z",
+  "windows_payload_files": 1101,
+  "media_choices": 830,
+  "native_install_tested": false,
+  "portable_payload_matches": true,
+  "version": "0.93.37",
+  "msi_payload_matches": true
+}

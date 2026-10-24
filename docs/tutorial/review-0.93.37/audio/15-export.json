@@ -1,0 +1,92 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 3289580,
+    "text": "Click"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 4447500,
+    "duration": 3815830,
+    "text": "Create"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 8394580,
+    "duration": 921250,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 9447500,
+    "duration": 3026250,
+    "text": "save"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 12605410,
+    "duration": 1842080,
+    "text": "an"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 14578750,
+    "duration": 4210410,
+    "text": "editable"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 18921250,
+    "duration": 7368330,
+    "text": "PowerPoint"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 28921250,
+    "duration": 1973750,
+    "text": "with"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 31026250,
+    "duration": 6973750,
+    "text": "backgrounds"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 38789580,
+    "duration": 1842080,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 40763330,
+    "duration": 3684160,
+    "text": "fonts"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 44578750,
+    "duration": 5526250,
+    "text": "included"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 51947500,
+    "duration": 2631660,
+    "text": "ready"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 54710410,
+    "duration": 1578750,
+    "text": "for"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 56421250,
+    "duration": 7500000,
+    "text": "projection"
+  }
+]

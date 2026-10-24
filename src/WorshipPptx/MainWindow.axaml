@@ -146,7 +146,7 @@
        <Grid x:Name="PreviewHeader" ColumnDefinitions="*,Auto" Margin="0,12,0,8">
         <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
          <TextBlock Text="{local:Tr '畫面預覽'}" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/>
-         <ToggleButton x:Name="PipToggle" Classes="alignment" Content="{local:Tr '畫中畫'}" FontSize="13" Width="70" Height="30" MinHeight="0" Padding="8,0" CornerRadius="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="PipToggle_Click" AutomationProperties.Name="{local:Tr '畫中畫'}" ToolTip.Tip="{local:Tr '開啟：網上直播版面；關閉：現場投影版面。每個項目分別儲存。'}"/>
+         <ToggleButton x:Name="PipToggle" Classes="alignment" Content="{local:Tr '畫中畫'}" FontSize="13" Width="70" Height="30" MinHeight="0" Padding="8,0" CornerRadius="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="PipToggle_Click" AutomationProperties.Name="{local:Tr '畫中畫'}" ToolTip.Tip="{local:Tr '顯示或隱藏畫中畫預覽，文字大小、位置及分頁保持不變。每個項目分別儲存。'}"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal"><TextBlock x:Name="PreviewInfo" Classes="caption" FontSize="14" VerticalAlignment="Center" Margin="0,0,12,0"/><Button x:Name="PreviousPreview" Content="‹" Width="36" Height="30" MinHeight="0" Padding="0" Click="Previous_Click" FontSize="18"/><Button x:Name="NextPreview" Content="›" Width="36" Height="30" MinHeight="0" Padding="0" Margin="7,0,0,0" Click="Next_Click" FontSize="18"/></StackPanel>
        </Grid>

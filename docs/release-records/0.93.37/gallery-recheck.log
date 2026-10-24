@@ -1,0 +1,4 @@
+PASS Style symbols are legible vectors and full-screen viewing does not select a result
+PASS Double-clicking opens a gallery image and double-clicking again returns to the picker
+PASS Gallery fits complete rows on resize and appends results on wheel scrolling
+RESULT 3 passed, 0 failed.

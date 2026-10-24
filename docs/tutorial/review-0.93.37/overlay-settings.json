@@ -1,0 +1,10 @@
+{
+  "keyboard_badges": false,
+  "mouse_gesture_labels": [
+    "Double-click",
+    "Drag",
+    "Mouse wheel"
+  ],
+  "highlight_arrows": true,
+  "arrow_color": "#FF8A00"
+}

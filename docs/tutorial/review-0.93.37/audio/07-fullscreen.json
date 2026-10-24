@@ -1,0 +1,140 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 6447500,
+    "text": "Double-click"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 7605410,
+    "duration": 789580,
+    "text": "a"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 8526250,
+    "duration": 3552500,
+    "text": "card"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 12210410,
+    "duration": 789580,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 13131660,
+    "duration": 1973750,
+    "text": "see"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 15236660,
+    "duration": 1184160,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 16552500,
+    "duration": 2368330,
+    "text": "full"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 19052500,
+    "duration": 4736660,
+    "text": "image"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 25894580,
+    "duration": 1973750,
+    "text": "then"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 28000000,
+    "duration": 5789580,
+    "text": "double-click"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 33921250,
+    "duration": 1052500,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 35105410,
+    "duration": 5789580,
+    "text": "return"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 50131660,
+    "duration": 1973750,
+    "text": "The"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 52236660,
+    "duration": 3552500,
+    "text": "small"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 55921250,
+    "duration": 5263330,
+    "text": "expand"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 61315830,
+    "duration": 3289580,
+    "text": "box"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 64736660,
+    "duration": 4210410,
+    "text": "also"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 69078750,
+    "duration": 4210410,
+    "text": "opens"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 73421250,
+    "duration": 1710410,
+    "text": "it"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 76973750,
+    "duration": 1052500,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 78157910,
+    "duration": 4210410,
+    "text": "Escape"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 82500000,
+    "duration": 4473750,
+    "text": "closes"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 87105410,
+    "duration": 3289580,
+    "text": "it"
+  }
+]

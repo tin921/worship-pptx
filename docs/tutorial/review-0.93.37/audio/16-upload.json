@@ -1,0 +1,146 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 5526250,
+    "text": "Upload"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 6684160,
+    "duration": 3289580,
+    "text": "saves"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 10105410,
+    "duration": 657910,
+    "text": "a"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 10894580,
+    "duration": 3552500,
+    "text": "local"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 14578750,
+    "duration": 4342080,
+    "text": "copy"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 19052500,
+    "duration": 1315830,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 20500000,
+    "duration": 3421250,
+    "text": "sends"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 24052500,
+    "duration": 921250,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 25105410,
+    "duration": 8026250,
+    "text": "presentation"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 33263330,
+    "duration": 1052500,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 34447500,
+    "duration": 1447500,
+    "text": "your"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 36026250,
+    "duration": 3815830,
+    "text": "shared"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 39973750,
+    "duration": 6447489,
+    "text": "Google Drive"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 46552500,
+    "duration": 5131660,
+    "text": "folder"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 60921250,
+    "duration": 1842080,
+    "text": "You"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 62894580,
+    "duration": 1973750,
+    "text": "can"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 65000000,
+    "duration": 2631660,
+    "text": "edit"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 67763330,
+    "duration": 1052500,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 68947500,
+    "duration": 5789580,
+    "text": "filename"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 74868330,
+    "duration": 1315830,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 76315830,
+    "duration": 3289580,
+    "text": "local"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 79736660,
+    "duration": 3815830,
+    "text": "saving"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 83684160,
+    "duration": 2763330,
+    "text": "path"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 86578750,
+    "duration": 3815830,
+    "text": "here"
+  }
+]

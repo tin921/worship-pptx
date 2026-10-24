@@ -1,0 +1,202 @@
+[
+  {
+    "id": "01-start",
+    "text": "Let's build a Sunday worship presentation. Select a service, then edit its name and date. Changes save automatically. Drag these two dividers to resize the panels. The app remembers both the overall window size and your panel widths.",
+    "pause": 1.4,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\01-start.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\01-start.json",
+    "duration": 18.744,
+    "start": 0,
+    "seconds": 20.144
+  },
+  {
+    "id": "01b-remove",
+    "text": "Remove appears only on the selected program. Confirm the removal, and the nearest upcoming program is selected.",
+    "pause": 1.4,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\01b-remove.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\01b-remove.json",
+    "duration": 8.544,
+    "start": 20.144,
+    "seconds": 9.944
+  },
+  {
+    "id": "02-invocation",
+    "text": "Start with the invocation. Enter its title, paste the Scripture, and leave the performance order empty.",
+    "pause": 1.4,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\02-invocation.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\02-invocation.json",
+    "duration": 7.92,
+    "start": 30.088,
+    "seconds": 9.32
+  },
+  {
+    "id": "02b-pip",
+    "text": "Use the picture-in-picture toggle beside Preview to show or hide the presenter. Turn it off for in-person projection, or on for streaming. Text size, position, and slide count stay the same.",
+    "pause": 1.8,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\02b-pip.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\02b-pip.json",
+    "duration": 14.256,
+    "start": 39.408,
+    "seconds": 16.056
+  },
+  {
+    "id": "03-song",
+    "text": "Click the plus tab to add a song. Put V one and C in square brackets before the verse and chorus. Enter the performance order, such as V one, C, V two, C. Add copyright and song number above.",
+    "pause": 1.4,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\03-song.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\03-song.json",
+    "duration": 16.152,
+    "start": 55.464,
+    "seconds": 17.552
+  },
+  {
+    "id": "04-font",
+    "text": "Choose a font, color, bold, and alignment. Auto fits the text and keeps adjusting as you edit. Choosing a fixed size turns Auto off. The song title has its own size, separate from the lyrics.",
+    "pause": 1.4,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\04-font.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\04-font.json",
+    "duration": 15.912,
+    "start": 73.01599999999999,
+    "seconds": 17.312
+  },
+  {
+    "id": "05-match",
+    "text": "Click Edit to find a background that matches the song. The counter shows how many images are displayed and the total matching results.",
+    "pause": 1.4,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\05-match.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\05-match.json",
+    "duration": 9.24,
+    "start": 90.32799999999999,
+    "seconds": 10.64
+  },
+  {
+    "id": "06-styles",
+    "text": "Explore five styles: photography, illustration, abstract, three D, and minimalist. Toggle the filters to narrow the gallery, and scroll for more choices.",
+    "pause": 1.8,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\06-styles.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\06-styles.json",
+    "duration": 12.12,
+    "start": 100.96799999999999,
+    "seconds": 13.92
+  },
+  {
+    "id": "07-fullscreen",
+    "text": "Double-click a card to see the full image, then double-click to return. The small expand box also opens it, and Escape closes it.",
+    "pause": 1.5,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\07-fullscreen.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\07-fullscreen.json",
+    "duration": 9.96,
+    "start": 114.88799999999999,
+    "seconds": 11.46
+  },
+  {
+    "id": "08-google",
+    "text": "Click Google image search for more choices in your browser. The link uses English theme keywords, which you can edit. Check an image's size and usage rights before downloading.",
+    "pause": 2.5,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\08-google.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\08-google.json",
+    "duration": 12.672,
+    "start": 126.34799999999998,
+    "seconds": 15.172
+  },
+  {
+    "id": "09-import",
+    "text": "You can also browse for a local image, paste one, use a direct image URL, or drag in a file. Select your background and click Apply.",
+    "pause": 1.5,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\09-import.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\09-import.json",
+    "duration": 10.68,
+    "start": 141.51999999999998,
+    "seconds": 12.18
+  },
+  {
+    "id": "10-transform",
+    "text": "Both preview areas control the same background. Use the mouse wheel to zoom in or out. Then click and drag to pan the image. The plus and minus buttons make smaller changes.",
+    "pause": 1.8,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\10-transform.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\10-transform.json",
+    "duration": 14.016,
+    "start": 153.7,
+    "seconds": 15.816
+  },
+  {
+    "id": "11-flip-opacity",
+    "text": "Flip mirrors the image. Adjust opacity to make the lyrics stand out. Reset returns the background to its original zoom and position.",
+    "pause": 1.8,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\11-flip-opacity.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\11-flip-opacity.json",
+    "duration": 10.848,
+    "start": 169.516,
+    "seconds": 12.648000000000001
+  },
+  {
+    "id": "12-reading",
+    "text": "Add the second song, then the third, each with its own lyrics, performance order, and background. Finish with Scripture reading after the three songs, leaving its performance order empty. Drag tabs to rearrange the service.",
+    "pause": 1.6,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\12-reading.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\12-reading.json",
+    "duration": 16.032,
+    "start": 182.164,
+    "seconds": 17.632
+  },
+  {
+    "id": "13-shortcuts",
+    "text": "Press Escape to leave a text field. Left and right switch tabs; up and down move through slides. Page Down selects the next service on the left, and Page Up goes back.",
+    "pause": 1.7,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\13-shortcuts.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\13-shortcuts.json",
+    "duration": 13.128,
+    "start": 199.796,
+    "seconds": 14.828
+  },
+  {
+    "id": "14-preview",
+    "text": "Press F five or click Preview to review the entire service. Use the arrow keys to navigate, and Escape to return.",
+    "pause": 1.5,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\14-preview.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\14-preview.json",
+    "duration": 9.072,
+    "start": 214.624,
+    "seconds": 10.572
+  },
+  {
+    "id": "15-export",
+    "text": "Click Create to save an editable PowerPoint, with backgrounds and fonts included, ready for projection.",
+    "pause": 2.5,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\15-export.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\15-export.json",
+    "duration": 7.32,
+    "start": 225.196,
+    "seconds": 9.82
+  },
+  {
+    "id": "16-upload",
+    "text": "Upload saves a local copy and sends the presentation to your shared Google Drive folder. You can edit the filename and local saving path here.",
+    "pause": 2,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\16-upload.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\16-upload.json",
+    "duration": 9.96,
+    "start": 235.016,
+    "seconds": 11.96
+  },
+  {
+    "id": "17-complete",
+    "text": "After confirmation, open the folder link to see the uploaded file. Your presentation is ready to share.",
+    "pause": 1.6,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\17-complete.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\17-complete.json",
+    "duration": 8.016,
+    "start": 246.976,
+    "seconds": 9.616
+  },
+  {
+    "id": "18-feedback",
+    "text": "Use the feedback icon at the top right to open our Google document for questions and suggestions.",
+    "pause": 2.5,
+    "audio": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\18-feedback.mp3",
+    "boundaries": "D:\\cemc-sr\\worship-pptx\\docs\\tutorial\\review-0.93.37\\audio\\18-feedback.json",
+    "duration": 6.696,
+    "start": 256.592,
+    "seconds": 9.196
+  }
+]

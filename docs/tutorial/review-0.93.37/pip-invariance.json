@@ -1,0 +1,231 @@
+{
+  "passed": true,
+  "before": {
+    "slides": [
+      {
+        "IsTitle": false,
+        "Lines": [
+          "\u8A69\u7BC7 100:1\u20132",
+          "",
+          "\u666E\u5929\u4E0B\u7576\u5411\u8036\u548C\u83EF\u6B61\u547C\uFF01",
+          "\u4F60\u5011\u7576\u6A02\u610F\u4E8B\u5949\u8036\u548C\u83EF\uFF0C"
+        ],
+        "FontName": "Noto Sans CJK HK",
+        "FontSize": 36,
+        "Alignment": "Center",
+        "TextColor": "#FFFFFF",
+        "Bold": false,
+        "FullSlide": false,
+        "BottomHalf": false,
+        "TextPosition": "Middle",
+        "Footer": "",
+        "ShowSectionTag": false,
+        "TextTop": 74,
+        "FooterTop": 344,
+        "Spacing": 66,
+        "Background": "media:sunrise-minimal",
+        "BackgroundTransform": {
+          "Zoom": 1,
+          "X": 0,
+          "Y": 0,
+          "Opacity": 1,
+          "Flip": false,
+          "Key": "1|0|0|1|False"
+        }
+      },
+      {
+        "IsTitle": false,
+        "Lines": [
+          "\u7576\u4F86\u5411\u4ED6\u6B4C\u5531\uFF01"
+        ],
+        "FontName": "Noto Sans CJK HK",
+        "FontSize": 36,
+        "Alignment": "Center",
+        "TextColor": "#FFFFFF",
+        "Bold": false,
+        "FullSlide": false,
+        "BottomHalf": false,
+        "TextPosition": "Middle",
+        "Footer": "",
+        "ShowSectionTag": false,
+        "TextTop": 173,
+        "FooterTop": 344,
+        "Spacing": 66,
+        "Background": "media:sunrise-minimal",
+        "BackgroundTransform": {
+          "Zoom": 1,
+          "X": 0,
+          "Y": 0,
+          "Opacity": 1,
+          "Flip": false,
+          "Key": "1|0|0|1|False"
+        }
+      }
+    ],
+    "formatting": {
+      "FontName": "Noto Sans CJK HK",
+      "FontSize": 36,
+      "AutoFontSize": true,
+      "TitleFontSize": 72,
+      "AutoTitleFontSize": true,
+      "Alignment": "Center",
+      "TextColor": "#FFFFFF",
+      "Bold": false,
+      "FullSlide": false,
+      "TextPosition": "Middle"
+    },
+    "previewCount": "1 / 2"
+  },
+  "hidden": {
+    "slides": [
+      {
+        "IsTitle": false,
+        "Lines": [
+          "\u8A69\u7BC7 100:1\u20132",
+          "",
+          "\u666E\u5929\u4E0B\u7576\u5411\u8036\u548C\u83EF\u6B61\u547C\uFF01",
+          "\u4F60\u5011\u7576\u6A02\u610F\u4E8B\u5949\u8036\u548C\u83EF\uFF0C"
+        ],
+        "FontName": "Noto Sans CJK HK",
+        "FontSize": 36,
+        "Alignment": "Center",
+        "TextColor": "#FFFFFF",
+        "Bold": false,
+        "FullSlide": false,
+        "BottomHalf": false,
+        "TextPosition": "Middle",
+        "Footer": "",
+        "ShowSectionTag": false,
+        "TextTop": 74,
+        "FooterTop": 344,
+        "Spacing": 66,
+        "Background": "media:sunrise-minimal",
+        "BackgroundTransform": {
+          "Zoom": 1,
+          "X": 0,
+          "Y": 0,
+          "Opacity": 1,
+          "Flip": false,
+          "Key": "1|0|0|1|False"
+        }
+      },
+      {
+        "IsTitle": false,
+        "Lines": [
+          "\u7576\u4F86\u5411\u4ED6\u6B4C\u5531\uFF01"
+        ],
+        "FontName": "Noto Sans CJK HK",
+        "FontSize": 36,
+        "Alignment": "Center",
+        "TextColor": "#FFFFFF",
+        "Bold": false,
+        "FullSlide": false,
+        "BottomHalf": false,
+        "TextPosition": "Middle",
+        "Footer": "",
+        "ShowSectionTag": false,
+        "TextTop": 173,
+        "FooterTop": 344,
+        "Spacing": 66,
+        "Background": "media:sunrise-minimal",
+        "BackgroundTransform": {
+          "Zoom": 1,
+          "X": 0,
+          "Y": 0,
+          "Opacity": 1,
+          "Flip": false,
+          "Key": "1|0|0|1|False"
+        }
+      }
+    ],
+    "formatting": {
+      "FontName": "Noto Sans CJK HK",
+      "FontSize": 36,
+      "AutoFontSize": true,
+      "TitleFontSize": 72,
+      "AutoTitleFontSize": true,
+      "Alignment": "Center",
+      "TextColor": "#FFFFFF",
+      "Bold": false,
+      "FullSlide": false,
+      "TextPosition": "Middle"
+    },
+    "previewCount": "1 / 2"
+  },
+  "shown": {
+    "slides": [
+      {
+        "IsTitle": false,
+        "Lines": [
+          "\u8A69\u7BC7 100:1\u20132",
+          "",
+          "\u666E\u5929\u4E0B\u7576\u5411\u8036\u548C\u83EF\u6B61\u547C\uFF01",
+          "\u4F60\u5011\u7576\u6A02\u610F\u4E8B\u5949\u8036\u548C\u83EF\uFF0C"
+        ],
+        "FontName": "Noto Sans CJK HK",
+        "FontSize": 36,
+        "Alignment": "Center",
+        "TextColor": "#FFFFFF",
+        "Bold": false,
+        "FullSlide": false,
+        "BottomHalf": false,
+        "TextPosition": "Middle",
+        "Footer": "",
+        "ShowSectionTag": false,
+        "TextTop": 74,
+        "FooterTop": 344,
+        "Spacing": 66,
+        "Background": "media:sunrise-minimal",
+        "BackgroundTransform": {
+          "Zoom": 1,
+          "X": 0,
+          "Y": 0,
+          "Opacity": 1,
+          "Flip": false,
+          "Key": "1|0|0|1|False"
+        }
+      },
+      {
+        "IsTitle": false,
+        "Lines": [
+          "\u7576\u4F86\u5411\u4ED6\u6B4C\u5531\uFF01"
+        ],
+        "FontName": "Noto Sans CJK HK",
+        "FontSize": 36,
+        "Alignment": "Center",
+        "TextColor": "#FFFFFF",
+        "Bold": false,
+        "FullSlide": false,
+        "BottomHalf": false,
+        "TextPosition": "Middle",
+        "Footer": "",
+        "ShowSectionTag": false,
+        "TextTop": 173,
+        "FooterTop": 344,
+        "Spacing": 66,
+        "Background": "media:sunrise-minimal",
+        "BackgroundTransform": {
+          "Zoom": 1,
+          "X": 0,
+          "Y": 0,
+          "Opacity": 1,
+          "Flip": false,
+          "Key": "1|0|0|1|False"
+        }
+      }
+    ],
+    "formatting": {
+      "FontName": "Noto Sans CJK HK",
+      "FontSize": 36,
+      "AutoFontSize": true,
+      "TitleFontSize": 72,
+      "AutoTitleFontSize": true,
+      "Alignment": "Center",
+      "TextColor": "#FFFFFF",
+      "Bold": false,
+      "FullSlide": false,
+      "TextPosition": "Middle"
+    },
+    "previewCount": "1 / 2"
+  }
+}

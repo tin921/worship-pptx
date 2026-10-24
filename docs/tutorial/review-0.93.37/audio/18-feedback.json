@@ -1,0 +1,104 @@
+[
+  {
+    "type": "WordBoundary",
+    "offset": 1026250,
+    "duration": 3289580,
+    "text": "Use"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 4447500,
+    "duration": 1184160,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 5763330,
+    "duration": 5394580,
+    "text": "feedback"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 11289580,
+    "duration": 4342080,
+    "text": "icon"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 15763330,
+    "duration": 657910,
+    "text": "at"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 16552500,
+    "duration": 789580,
+    "text": "the"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 17473750,
+    "duration": 3026250,
+    "text": "top"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 20631660,
+    "duration": 2894580,
+    "text": "right"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 23657910,
+    "duration": 1315830,
+    "text": "to"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 25105410,
+    "duration": 3421250,
+    "text": "open"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 28657910,
+    "duration": 1315830,
+    "text": "our"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 30105410,
+    "duration": 3157910,
+    "text": "Google"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 33394580,
+    "duration": 5657910,
+    "text": "document"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 39184160,
+    "duration": 1710410,
+    "text": "for"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 41026250,
+    "duration": 5789580,
+    "text": "questions"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 46947500,
+    "duration": 1184160,
+    "text": "and"
+  },
+  {
+    "type": "WordBoundary",
+    "offset": 48263330,
+    "duration": 9342080,
+    "text": "suggestions"
+  }
+]

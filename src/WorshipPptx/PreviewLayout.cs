@@ -11,6 +11,9 @@ public sealed class PreviewLayout
     // Equal visual margins on a 16:9 canvas need different X/Y percentages.
     public const double HorizontalCornerMargin=CornerMargin*720/1280, DefaultX=60-HorizontalCornerMargin;
     [DataMember] public bool IsPip { get; set; }=true;
+    // Visibility can change without changing the legacy composition's text area.
+    [DataMember(EmitDefaultValue=false)] public bool? PipVisibility { get; set; }
+    public bool IsPipVisible => PipVisibility ?? IsPip;
     [DataMember] public string BackgroundSource { get; set; }="Slide";
     [DataMember] public double X { get; set; }=DefaultX;
     [DataMember] public double Y { get; set; }=58;
@@ -32,6 +35,7 @@ public sealed class PreviewLayout
     }
     public void ApplyPreset(string preset)
     {
+        PipVisibility=null;
         if(preset=="FullSlide" || preset=="FullCamera") {
             IsPip=false; BackgroundSource=preset=="FullCamera" ? "Camera" : "Slide"; return;
         }

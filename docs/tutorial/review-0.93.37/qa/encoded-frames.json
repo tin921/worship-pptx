@@ -1,0 +1,52 @@
+[
+  {
+    "shot": "03-remove-selected",
+    "seconds": 20.644,
+    "path": "qa/encoded-03-remove-selected.jpg"
+  },
+  {
+    "shot": "03-remove-confirm",
+    "seconds": 24.208207999999996,
+    "path": "qa/encoded-03-remove-confirm.jpg"
+  },
+  {
+    "shot": "03-removed-next",
+    "seconds": 25.879249999999995,
+    "path": "qa/encoded-03-removed-next.jpg"
+  },
+  {
+    "shot": "04-pip-on",
+    "seconds": 39.908,
+    "path": "qa/encoded-04-pip-on.jpg"
+  },
+  {
+    "shot": "04-pip-off",
+    "seconds": 45.669583,
+    "path": "qa/encoded-04-pip-off.jpg"
+  },
+  {
+    "shot": "04-pip-streaming",
+    "seconds": 47.788000000000004,
+    "path": "qa/encoded-04-pip-streaming.jpg"
+  },
+  {
+    "shot": "22-full-double",
+    "seconds": 116.92324999999998,
+    "path": "qa/encoded-22-full-double.jpg"
+  },
+  {
+    "shot": "63-drive-folder",
+    "seconds": 268.1308285,
+    "path": "qa/encoded-63-drive-folder.jpg"
+  },
+  {
+    "shot": "64-feedback-link",
+    "seconds": 274.7378705,
+    "path": "qa/encoded-64-feedback-link.jpg"
+  },
+  {
+    "shot": "65-feedback-doc",
+    "seconds": 277.62841149999997,
+    "path": "qa/encoded-65-feedback-doc.jpg"
+  }
+]

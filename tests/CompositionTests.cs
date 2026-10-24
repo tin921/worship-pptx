@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Text.Json;
 using System.Xml.Linq;
 using Avalonia;
 using Avalonia.Controls;
@@ -18,32 +19,69 @@ namespace WorshipPptx.Tests;
 static class CompositionTests
 {
     private static void Pump() => Dispatcher.UIThread.RunJobs();
+    private static string TextLayout(ServiceItem item) => JsonSerializer.Serialize(SlideLayout.BuildItem(item,new UserSettings()).Select(s=>new {
+        s.IsTitle,s.Lines,s.FontName,s.FontSize,s.Alignment,s.TextColor,s.Bold,s.FullSlide,s.BottomHalf,s.TextPosition,s.Footer,s.ShowSectionTag,
+        TextTop=SlideLayout.TextTop(s),FooterTop=SlideLayout.FooterTop(s),Spacing=SlideLayout.LineSpacing(s.FontSize,s.FontName,s.Bold),s.Background,s.BackgroundTransform
+    }));
+    private static string SlideXml(string path)
+    {
+        using var zip=ZipFile.OpenRead(path);
+        return string.Join("\n",zip.Entries.Where(e=>e.FullName.StartsWith("ppt/slides/slide") && e.FullName.EndsWith(".xml")).OrderBy(e=>e.FullName).Select(e=> {
+            using var reader=new StreamReader(e.Open()); return reader.ReadToEnd();
+        }));
+    }
     public static void Run(Action<string,Action> test,Action<bool,string> check,string root)
     {
-        test("PIP toggle changes the slide layout and persists independently per item",()=> {
+        test("PIP visibility leaves title, lyric, Scripture and announcement layout and export unchanged, including after reopening",()=> {
             var store=new LocalStore(Path.Combine(root,"pip-toggle-"+Guid.NewGuid().ToString("N")));
-            var plan=Demo.Create(); store.Save(plan);
+            var plan=Demo.Create();
+            plan.Items[0].Lyrics="詩篇 100:1–2\n\n普天下當向耶和華歡呼！\n你們當樂意事奉耶和華，\n當來向他歌唱！";
+            plan.Items[1].Lyrics="[v1]\n"+string.Join('\n',Enumerable.Repeat("祢的恩典與慈愛永遠長存",8)); plan.Items[1].Order="v1";
+            plan.Items[1].Formatting=new() {AutoFontSize=true,AutoTitleFontSize=false,TitleFontSize=60,Bold=true,Alignment="Right",TextPosition="Bottom"};
+            plan.Items[2].Formatting=new() {AutoFontSize=false,FontSize=43,Alignment="Left",TextPosition="Top"};
+            // Existing saved full-slide layouts must also stay unchanged when the guide is shown.
+            plan.Items[3].Preview=new PreviewLayout {IsPip=false}; plan.Items[3].Formatting.FullSlide=true;
+            plan.Items.Add(new ServiceItem {Title="公告",Lyrics="[1]\n"+string.Join('\n',Enumerable.Repeat("會後請留下參加團契",9)),Order="",Formatting=new() {FontSize=60,TextPosition="Bottom"}});
+            store.Save(plan);
+            var before=Path.Combine(root,"pip-visible.pptx"); var after=Path.Combine(root,"pip-hidden.pptx");
+            string[] textLayouts=null,formats=null;
             var window=new MainWindow(store); window.Show(); Pump();
             try {
                 var tabs=window.FindControl<TabControl>("SongTabs");
                 var toggle=window.FindControl<ToggleButton>("PipToggle");
-                var item=(ServiceItem)((TabItem)tabs.SelectedItem).Tag;
-                toggle.IsChecked=false; toggle.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
-                check(!item.Preview.IsPip && item.Formatting.FullSlide,"In-person mode was not applied");
-                check(SlideLayout.BuildItem(item,new UserSettings()).All(s=>s.FullSlide),"In-person export still reserves the camera area");
-                check(!window.FindControl<Viewbox>("SlideHost").GetVisualDescendants().OfType<Border>().Single(b=>b.Name=="PipFrame").IsVisible,"Camera remains visible with PIP off");
-                tabs.SelectedIndex=2; Pump();
-                check(toggle.IsChecked==true,"Another song inherited the first song's mode");
-                tabs.SelectedIndex=1; Pump();
-                check(toggle.IsChecked==false,"Mode was lost when changing tabs");
-                toggle.IsChecked=true; toggle.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
-                check(SlideLayout.BuildItem(item,new UserSettings()).All(s=>!s.FullSlide),"Streaming mode did not restore the reserved camera area");
-                toggle.IsChecked=false; toggle.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
-                tabs.SelectedIndex=0; Pump();
-                check(window.FindControl<StackPanel>("OrderPanel").IsVisible && string.IsNullOrEmpty(window.FindControl<TextBox>("SongOrder").Text),"Reading order field is not visible and empty");
+                var loaded=(ServicePlan)window.FindControl<ListBox>("HistoryList").SelectedItem;
+                textLayouts=loaded.Items.Select(TextLayout).ToArray(); formats=loaded.Items.Select(i=>JsonSerializer.Serialize(i.Formatting)).ToArray();
+                var initiallyVisible=loaded.Items.Select(i=>i.Preview.IsPipVisible).ToArray();
+                PptxWriter.Write(before,SlideLayout.Build(loaded,new UserSettings()),"PIP visibility");
+                for(var index=0;index<loaded.Items.Count;index++) {
+                    tabs.SelectedIndex=index; Pump(); var item=loaded.Items[index];
+                    check(toggle.IsChecked==initiallyVisible[index],"Another item's PIP visibility leaked into this tab");
+                    var count=window.FindControl<ListBox>("Thumbnails").ItemCount;
+                    foreach(var visible in new[]{false,true,false}) {
+                        toggle.IsChecked=visible; toggle.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
+                        check(item.Preview.IsPipVisible==visible,"PIP visibility did not follow its toggle");
+                        check(TextLayout(item)==textLayouts[index] && JsonSerializer.Serialize(item.Formatting)==formats[index],"PIP toggle changed text, size, position, style, or pagination");
+                        check(window.FindControl<ListBox>("Thumbnails").ItemCount==count,"PIP toggle changed slide count");
+                        check(window.FindControl<Viewbox>("SlideHost").GetVisualDescendants().OfType<Border>().Single(b=>b.Name=="PipFrame").IsVisible==visible,"Editor guide visibility is incorrect");
+                        var preview=new PreviewWindow(SlideLayout.BuildItem(item,new UserSettings())); preview.Show(); Pump();
+                        try { check(preview.GetVisualDescendants().OfType<Border>().Single(b=>b.Name=="PipFrame").IsVisible==visible,"Full preview guide visibility is incorrect"); }
+                        finally { preview.Close(); }
+                    }
+                }
+                PptxWriter.Write(after,SlideLayout.Build(loaded,new UserSettings()),"PIP visibility");
+                check(SlideXml(before)==SlideXml(after),"PIP visibility changed the generated PowerPoint slides");
             } finally { window.Close(); }
             var reopened=new MainWindow(store); reopened.Show(); Pump();
-            try { check(reopened.FindControl<ToggleButton>("PipToggle").IsChecked==false,"PIP choice did not survive reopening"); }
+            try {
+                var loaded=(ServicePlan)reopened.FindControl<ListBox>("HistoryList").SelectedItem;
+                for(var index=0;index<loaded.Items.Count;index++) {
+                    reopened.FindControl<TabControl>("SongTabs").SelectedIndex=index; Pump(); var item=loaded.Items[index];
+                    check(reopened.FindControl<ToggleButton>("PipToggle").IsChecked==false,"PIP choice did not survive reopening");
+                    check(TextLayout(item)==textLayouts[index] && JsonSerializer.Serialize(item.Formatting)==formats[index],"Reopening a hidden-PIP item changed its text layout");
+                    var toggle=reopened.FindControl<ToggleButton>("PipToggle"); toggle.IsChecked=true; toggle.RaiseEvent(new RoutedEventArgs(Button.ClickEvent)); Pump();
+                    check(TextLayout(item)==textLayouts[index],"Showing PIP after reopening changed the text layout");
+                }
+            }
             finally { reopened.Close(); }
         });
         test("Camera artwork follows lyric sections, including songs with no repeat order",()=> {

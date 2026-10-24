@@ -67,9 +67,8 @@ namespace WorshipPptx
             loading=true;
             foreach(var item in plan.Items) {
                 item.Formatting ??= new();
-                // Keep the chosen presentation mode while retaining the fixed camera corner.
-                item.Preview=new PreviewLayout { IsPip=item.Preview?.IsPip ?? !item.Formatting.FullSlide };
-                item.Formatting.FullSlide=!item.Preview.IsPip;
+                // Restore visibility and the fixed camera corner without changing text formatting.
+                item.Preview=new PreviewLayout { IsPip=item.Preview?.IsPip ?? !item.Formatting.FullSlide,PipVisibility=item.Preview?.PipVisibility };
             }
             SongTabs.Items.Clear(); foreach(var item in plan.Items) SongTabs.Items.Add(new TabItem { Header=item.Title, Tag=item });
             addTab=new TabItem { Header="＋", Classes={"add-tab"} };
@@ -110,7 +109,7 @@ namespace WorshipPptx
             SyncFontSizePicker();
             BoldToggle.IsChecked=selected.Formatting.Bold;
             selected.Preview ??= PreviewLayout.FromLegacy(selected.Formatting.FullSlide);
-            PipToggle.IsChecked=selected.Preview.IsPip;
+            PipToggle.IsChecked=selected.Preview.IsPipVisible;
             UpdateAlignmentButtons(); UpdatePositionButtons(); UpdateColorSwatch(); SyncBackgroundControls();
         }
         private void UpdateContentMode()
@@ -319,8 +318,7 @@ namespace WorshipPptx
         {
             if(loading || selected==null) return;
             selected.Preview ??= new PreviewLayout();
-            selected.Preview.IsPip=PipToggle.IsChecked==true;
-            selected.Formatting.FullSlide=!selected.Preview.IsPip;
+            selected.Preview.PipVisibility=PipToggle.IsChecked==true;
             SaveDraft(); RefreshPreview();
         }
         private void Next_Click(object sender,RoutedEventArgs e) { if(page>=slides.Count-1) return; page++; ShowPage(); }

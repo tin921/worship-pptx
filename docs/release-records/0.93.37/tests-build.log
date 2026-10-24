@@ -1,0 +1,11 @@
+  Determining projects to restore...
+  Restored D:\cemc-sr\worship-pptx\src\WorshipPptx\WorshipPptx.csproj (in 464 ms).
+  Restored D:\cemc-sr\worship-pptx\tests\WorshipPptx.Tests.csproj (in 464 ms).
+  WorshipPptx -> E:\WorshipPptx-work\verify-0.93.37\build\bin\WorshipPptx\release\WorshipPptx.dll
+  WorshipPptx.Tests -> E:\WorshipPptx-work\verify-0.93.37\build\bin\WorshipPptx.Tests\release\WorshipPptx.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:14.15
