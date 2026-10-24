@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "songs": 5,
+  "cards_per_song": 4,
+  "checks": [
+    "All 10 MP4 videos decode in Edge",
+    "Gallery autoplay, pause and reduced-motion behavior",
+    "Chinese text and upper-half overlay toggles",
+    "Keyboard song navigation",
+    "390px layout has no horizontal overflow"
+  ],
+  "screenshots_taken": 0
+}

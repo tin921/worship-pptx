@@ -1,0 +1,76 @@
+{
+  "created": "2026-10-21",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration_seconds": 5,
+  "selection": "Curated familiar-song pilot; not a verified current top-five ranking.",
+  "photo_loop_type": "Animated AI still with periodic camera drift; not generated natural scene motion.",
+  "songs": [
+    {
+      "id": "01-grace-path",
+      "title": "恩典之路",
+      "theme": "恩典與引領",
+      "motifs": "山間步道、層疊山谷、晨光",
+      "graphic_motion": "低處霧帶輕移，山徑保持穩定。",
+      "files": {
+        "graphic": "01-grace-path/graphic.png",
+        "graphic_loop": "01-grace-path/graphic-loop.mp4",
+        "photo": "01-grace-path/photo.png",
+        "photo_loop": "01-grace-path/photo-loop.mp4"
+      }
+    },
+    {
+      "id": "02-wheat",
+      "title": "一粒麥子",
+      "theme": "委身與新生命",
+      "motifs": "麥穗、種子、柔和金光",
+      "graphic_motion": "麥穗輕微擺動，沒有落粒或快速生長。",
+      "files": {
+        "graphic": "02-wheat/graphic.png",
+        "graphic_loop": "02-wheat/graphic-loop.mp4",
+        "photo": "02-wheat/photo.png",
+        "photo_loop": "02-wheat/photo-loop.mp4"
+      }
+    },
+    {
+      "id": "03-eagle",
+      "title": "如鷹展翅上騰",
+      "theme": "重新得力與自由",
+      "motifs": "飛鷹、山巒、開闊天空",
+      "graphic_motion": "遠處飛鷹微微滑翔，低處霧帶緩動。",
+      "files": {
+        "graphic": "03-eagle/graphic.png",
+        "graphic_loop": "03-eagle/graphic-loop.mp4",
+        "photo": "03-eagle/photo.png",
+        "photo_loop": "03-eagle/photo-loop.mp4"
+      }
+    },
+    {
+      "id": "04-still-reigns",
+      "title": "你坐著為王",
+      "theme": "掌權與安穩",
+      "motifs": "平靜海面、雨後微光",
+      "graphic_motion": "海面曲線緩緩起伏，光度保持穩定。",
+      "files": {
+        "graphic": "04-still-reigns/graphic.png",
+        "graphic_loop": "04-still-reigns/graphic-loop.mp4",
+        "photo": "04-still-reigns/photo.png",
+        "photo_loop": "04-still-reigns/photo-loop.mp4"
+      }
+    },
+    {
+      "id": "05-be-still",
+      "title": "安靜",
+      "theme": "安息與親近",
+      "motifs": "湖面、漣漪、靜謐暮色",
+      "graphic_motion": "細小漣漪輕動，沒有閃爍或跳動。",
+      "files": {
+        "graphic": "05-be-still/graphic.png",
+        "graphic_loop": "05-be-still/graphic-loop.mp4",
+        "photo": "05-be-still/photo.png",
+        "photo_loop": "05-be-still/photo-loop.mp4"
+      }
+    }
+  ]
+}

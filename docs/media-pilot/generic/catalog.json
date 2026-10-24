@@ -1,0 +1,197 @@
+{
+  "schema_version": 2,
+  "created": "2026-10-21",
+  "collection": "generic-moods",
+  "song_mapping": null,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration_seconds": 5,
+  "frames": 150,
+  "audio": false,
+  "provenance": "Original procedural Canvas graphics; no external images, music, model or image-search API.",
+  "safe_text_region": {
+    "x": 0.08,
+    "y": 0.06,
+    "width": 0.84,
+    "height": 0.4
+  },
+  "moods": [
+    {
+      "id": "01-soft-snow",
+      "title": "輕雪",
+      "english": "Soft snow",
+      "moods": [
+        "安靜",
+        "清新"
+      ],
+      "energy": 1,
+      "palette": "霧藍・銀白",
+      "description": "細雪緩緩飄落，帶一點柔和的景深。",
+      "motion": "Small layered snow particles fall diagonally, fading gently near their wrap boundary.",
+      "seed": 114,
+      "files": {
+        "still": "01-soft-snow/graphic.png",
+        "loop": "01-soft-snow/loop.mp4"
+      },
+      "variants": {
+        "daylight": {
+          "palette": "冰藍・雪白",
+          "files": {
+            "still": "01-soft-snow/graphic-daylight.png",
+            "loop": "01-soft-snow/loop-daylight.mp4"
+          }
+        }
+      }
+    },
+    {
+      "id": "02-gentle-rain",
+      "title": "微雨",
+      "english": "Gentle rain",
+      "moods": [
+        "安靜",
+        "清新"
+      ],
+      "energy": 2,
+      "palette": "深綠・青藍",
+      "description": "細雨與小漣漪，清新而不陰沉。",
+      "motion": "Fine rain falls across the lower area with slowly expanding, fading ripples.",
+      "seed": 214,
+      "files": {
+        "still": "02-gentle-rain/graphic.png",
+        "loop": "02-gentle-rain/loop.mp4"
+      },
+      "variants": {
+        "daylight": {
+          "palette": "晨霧・薄荷綠",
+          "files": {
+            "still": "02-gentle-rain/graphic-daylight.png",
+            "loop": "02-gentle-rain/loop-daylight.mp4"
+          }
+        }
+      }
+    },
+    {
+      "id": "03-golden-lights",
+      "title": "暖光浮游",
+      "english": "Golden lights",
+      "moods": [
+        "溫暖",
+        "喜樂"
+      ],
+      "energy": 2,
+      "palette": "莓紫・香檳金",
+      "description": "暖色光點輕輕升起，溫暖、有生命力。",
+      "motion": "Soft gold bokeh drifts upward with smooth opacity envelopes; no blinking.",
+      "seed": 314,
+      "files": {
+        "still": "03-golden-lights/graphic.png",
+        "loop": "03-golden-lights/loop.mp4"
+      },
+      "variants": {
+        "daylight": {
+          "palette": "奶油白・蜂蜜金",
+          "files": {
+            "still": "03-golden-lights/graphic-daylight.png",
+            "loop": "03-golden-lights/loop-daylight.mp4"
+          }
+        }
+      }
+    },
+    {
+      "id": "04-paper-flight",
+      "title": "自在飛翔",
+      "english": "Paper flight",
+      "moods": [
+        "盼望",
+        "喜樂"
+      ],
+      "energy": 3,
+      "palette": "靛藍・珊瑚金",
+      "description": "幾隻紙鳥乘風滑翔，輕盈而有盼望。",
+      "motion": "Small paper birds glide slowly through shallow closed paths, with subtle banking.",
+      "seed": 414,
+      "files": {
+        "still": "04-paper-flight/graphic.png",
+        "loop": "04-paper-flight/loop.mp4"
+      },
+      "variants": {
+        "daylight": {
+          "palette": "晴空藍・暖金",
+          "files": {
+            "still": "04-paper-flight/graphic-daylight.png",
+            "loop": "04-paper-flight/loop-daylight.mp4"
+          }
+        }
+      }
+    },
+    {
+      "id": "05-petal-breeze",
+      "title": "花瓣微風",
+      "english": "Petal breeze",
+      "moods": [
+        "喜樂",
+        "清新"
+      ],
+      "energy": 3,
+      "palette": "梅紫・柔粉",
+      "description": "花瓣隨微風飄動，輕快但不喧鬧。",
+      "motion": "Petals float sideways with gentle vertical drift and slow tumbling.",
+      "seed": 514,
+      "files": {
+        "still": "05-petal-breeze/graphic.png",
+        "loop": "05-petal-breeze/loop.mp4"
+      },
+      "variants": {
+        "daylight": {
+          "palette": "淡粉・薰衣草紫",
+          "files": {
+            "still": "05-petal-breeze/graphic-daylight.png",
+            "loop": "05-petal-breeze/loop-daylight.mp4"
+          }
+        }
+      }
+    },
+    {
+      "id": "06-living-ribbons",
+      "title": "流光",
+      "english": "Living ribbons",
+      "moods": [
+        "活力",
+        "喜樂"
+      ],
+      "energy": 4,
+      "palette": "深藍・青綠・柔金",
+      "description": "柔和光帶緩緩流動，適合較有活力的敬拜。",
+      "motion": "Layered luminous ribbons travel in smooth waves, without brightness pulses.",
+      "seed": 614,
+      "files": {
+        "still": "06-living-ribbons/graphic.png",
+        "loop": "06-living-ribbons/loop.mp4"
+      },
+      "variants": {
+        "daylight": {
+          "palette": "海鹽綠・柔金",
+          "files": {
+            "still": "06-living-ribbons/graphic-daylight.png",
+            "loop": "06-living-ribbons/loop-daylight.mp4"
+          }
+        }
+      }
+    }
+  ],
+  "lighting_modes": {
+    "night": {
+      "title": "夜色",
+      "width": 1920,
+      "height": 1080,
+      "lyric_color": "#ffffff"
+    },
+    "daylight": {
+      "title": "日光",
+      "width": 1280,
+      "height": 720,
+      "lyric_color": "#22374b"
+    }
+  }
+}

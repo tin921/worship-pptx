@@ -1,0 +1,81 @@
+﻿id,label,query,cues,in_original_31,in_selected_60,literal_discovery_songs,literal_holdout_songs,literal_all_songs,top1_80_songs,top3_80_songs,example_titles
+mountain_path,山間步道、山谷、晨光,mountain path valley sunrise,道路；路途；路上；天路；人生路；高山；低谷；脚步,True,True,106,25,131,3,7,都將過去；我向祢呼求(粵)；救主愛疼的聲(台)；鼓舞
+forest_path,森林小徑、陽光,forest path sunlight,道路；路途；路上；天路；人生路；树林；脚步,True,True,84,21,105,0,4,都將過去；我向祢呼求(粵)；救主愛疼的聲(台)；鼓舞
+mountains,群山、雲海,mountains sea of clouds,高山；山峰；山谷,True,True,29,4,33,1,3,詩篇二十三篇(台)；天路歷程；我要向高山舉目；雲上太陽
+sunrise,日出、金色晨光,sunrise golden light horizon,日出；清晨；黎明；晨光,True,True,25,6,31,7,30,祢是我神；聲合為一；聖善夜；施行拯救
+sunset,夕陽、晚霞,sunset warm sky,日落；黄昏,True,True,9,3,12,3,12,亙古的愛；祢是我神；聲合為一；主的喜樂是我力量
+stream,清泉、溪流、陽光,clear stream sunlight,泉；溪；川流；水流；流入,True,True,38,9,47,2,9,造物的主(粵)；進入祢的聖所；來；祢話如甘霖
+waterfall,瀑布、流水,waterfall flowing water,瀑布；涌流,True,True,22,3,25,0,3,恩膏；工人的禱告；施行拯救；錫安大道
+spring_rain,春雨、嫩葉,spring rain fresh leaves,春雨；雨水；恩雨；雨露；下雨；沐浴,True,True,20,3,23,2,5,點燃；我向祢呼求(粵)；神掌權(男聲)；天父的小花
+snow,雪花、柔和光線,snowflakes soft light,雪花；白雪；洁白如雪；洁白,True,True,5,2,7,0,0,放晴了；全然向祢；唯有主耶穌的寶血；十架的愛
+galaxy,星空、銀河、宇宙,starry sky milky way,宇宙；星辰；星空；银河,True,True,29,9,38,10,26,當祂輕聲呼喚你的名字；亙古的愛；祢比這一切更美麗；全心全意敬拜祢
+sky,藍天、白雲,blue sky white clouds,天空；蓝天；白云；云彩,True,True,34,5,39,8,17,鼓舞；Don't Worry[別擔心]；小小的夢想；晚安曲
+ocean,大海、海浪,ocean waves horizon,海洋；大海；海浪；海边；海水；沧海；波涛,True,True,25,11,36,2,13,祢的恩典夠我用；聲合為一；與祢一起飛翔；小小的夢想
+calm_lake,平靜湖面、倒影,calm lake mountain reflection,湖水；湖面；倒影,True,True,0,0,0,0,1,
+storm,風雨後的曙光,sunlight breaking storm clouds,风雨；风浪；暴风；狂风；黑暗,True,True,145,21,166,4,20,"都將過去；Faith Over Fear；看哪,田裡莊稼成熟了；來充滿我(粵)"
+rainbow,彩虹、雨後天空,rainbow after rain sky,彩虹,True,True,4,3,7,5,8,彩虹下的約定；與祢同行；尋著你的那天；生趣
+eagle,飛鷹、天空,eagle soaring sky,鹰；翅膀；展翅,True,True,23,9,32,8,13,祢是我的神；抬頭仰望；與祢一起飛翔；最愛的地方
+dove,白鴿、柔光,white dove soft light,鸽,True,True,4,0,4,1,5,與我同往；天父的孩子；住在你的愛；立志擺上
+meadow,青草地、野花,green meadow wildflowers,青草；草地；花朵；鲜花；野花；花开,True,True,14,1,15,2,4,詩篇二十三篇；一路靠著祂(耶穌祢的名)；與我同往；主的小羊
+sheep,羊群、草原,sheep flock green pasture,牧人；牧者；牧场；羊群；羔羊；小羊；羊；草场,True,True,61,21,82,8,17,"亙古的愛；哈利路亞,祢真實奇妙；活著為要榮耀祢；雞叫的時候"
+oasis,沙漠綠洲、泉水,desert oasis spring water,沙漠；干渴；泉,True,True,29,7,36,0,4,進入祢的聖所；來；祢話如甘霖；泉源地
+lighthouse,燈塔、海岸,lighthouse coast night light,灯塔；航行；船,True,True,7,0,7,0,0,新造的人；生命的舵手；激起生命的浪花；定睛在耶穌身上
+rock,磐石、海岸,rock coast waves,磐石；坚固,True,True,42,6,48,0,2,Faith Over Fear；跟隨到底；雞叫的時候；祢名
+cross,山丘十字架、晨光,cross hill sunrise,十架；十字架,True,True,99,26,125,25,67,Arise；點燃；救主愛疼的聲(台)；祢是我的神
+church,教堂、窗光,church window sunlight,圣殿；殿中；圣所,True,True,51,13,64,4,5,"父啊,我向祢呼求；祭壇；進入祢的聖所；祢歡喜的祭(台)"
+hands,敬拜、舉手剪影,worship raised hands silhouette,举手；举起手；举起双手,True,True,20,11,31,10,43,祢歡喜的祭(台)；可喜悅的祭；是耶穌的名；禱告！禱告！天父都知道
+music,音符、柔光背景,music notes warm light background,音符；旋律；歌声；音乐,True,True,34,7,41,11,37,祢是配得；幸福；讓讚美飛揚；我們是光明之子
+celebration,歡慶、金色光點,celebration golden light background,喜乐；欢呼；跳舞,True,True,155,32,187,41,76,"唱響錫安；盡力地頌揚祢(粵)；來吧,我們讚美；來充滿我(粵)"
+gentle_light,柔和暖光、散景,warm soft light bokeh,光芒；暖流；温暖,True,True,37,15,52,93,252,萬王之王；Don't Worry[別擔心]；差遣我；讓愛走動
+open_hands,雙手、柔光,open hands gentle light,双手；伸手；牵手；扶持；牵引；保护,True,True,124,37,161,69,179,我向祢呼求(粵)；何等美妙認識祢；陪我走過春夏秋冬；為我造清潔的心
+fire,火焰、光芒,flame glowing fire,火焰；火燃；圣火；烈火；燃烧,True,True,31,7,38,14,17,點燃；復興的號角；即或不然；祭壇
+seeds,嫩芽、新生命,seedling new life sunlight,新造；种子；发芽；嫩芽,True,True,8,3,11,1,6,"祢比這一切更美麗；我是如此美麗；耶穌,我的救主；我們是光明之子"
+bible,聖經與書卷,open Bible soft light,圣经；经文；话语；真理；律法；书卷,False,True,87,19,106,36,111,都將過去；恩膏；Faith Over Fear；活著為要榮耀祢
+communion,聖餐餅杯,communion bread wine cup,圣餐；擘饼；杯；新约,False,True,8,1,9,2,10,詩篇二十三篇(台)；詩篇二十三篇；幸福；耶和華是我牧者
+nativity,馬槽與伯利恆,Bethlehem nativity manger night,马槽；伯利恒；圣婴；降生；圣诞,False,True,10,4,14,22,118,祢是配得；聖善夜；再次將我更新；一同齊聲宣揚
+empty_tomb,空墓與復活晨光,empty tomb resurrection dawn,空坟；空墓；坟墓；复活；墓门,False,True,31,4,35,24,84,Arise；萬民同來敬拜；我是個得勝者；耶穌基督是主(童聲)
+crown,冠冕,gold crown dark background,冠冕；王冠,False,True,25,5,30,104,454,她的新郎；天路歷程；萬民同來敬拜；再次將我更新
+throne,寶座與榮光,royal throne glorious light,宝座；王位,False,True,65,25,90,170,392,"哈利路亞,祢真實奇妙；雞叫的時候；進入祢的聖所；上好的福分"
+altar,祭壇與獻祭,stone altar warm light,祭坛；活祭；献祭；祭物,False,True,34,10,44,25,65,點燃；祭壇；獻上一生(粵)；祢的居所何等可愛
+incense,香煙與香爐,incense smoke soft light,馨香；香炉；香气；香烟,False,True,18,2,20,19,105,復興的號角；那日花會開；新婦的祈禱；謝謝祢揀選
+trumpet,號角,trumpet shofar light,号角；吹角；号筒；号声,False,False,7,2,9,3,18,復興的號角；亙古的愛；盡力地頌揚祢(粵)；她的新郎
+harp,琴弦與樂器,harp strings gentle light,琴弦；弹琴；竖琴；琴瑟,False,False,8,0,8,1,8,"來吧,我們讚美；我的靈要醒起；彈琴歌唱讚美祢；歌頌"
+banner,旌旗,banner flag wind sky,旌旗；旗帜；旗号,False,True,11,3,14,3,12,一路靠著祂(耶穌祢的名)；爭戰中的讚美；和散那！讚美耶穌；獻上自己為祭
+armor,盔甲與寶劍,ancient armor sword shield,军装；盔甲；头盔；宝剑；利剑,False,False,5,1,6,4,4,救主身邊我們再見；爭戰中的讚美；新的一天；耶和華大能的軍隊
+shield,盾牌,shield protection light,盾牌,False,True,15,6,21,1,4,Faith Over Fear；耶和華我的山寨；何等有福；歡呼
+broken_chains,斷開的鎖鏈,broken chains freedom light,锁链；铁链；捆锁；囚牢；囚禁,False,True,11,2,13,3,10,泉源地；施行拯救；當祢走進我們當中；敬拜耶穌
+tent,帳幕,tabernacle tent desert light,帐幕；会幕；帐棚,False,False,6,2,8,36,173,神的帳幕在人間；我的神真偉大；獻上自己為祭；新耶路撒冷
+refuge,避難所與城堡,fortress refuge mountain,避难所；山寨；堡垒；城堡；藏身,False,True,30,3,33,5,8,"藏身祢的懷裏；祢是我的神；我的神真偉大；謝謝祢,耶穌"
+sheltering_wings,翅膀蔭下,bird sheltering wings nest,翅膀荫；羽翼；翅膀下；翅膀底,False,False,6,3,9,0,2,祢是我的神；抬頭仰望；藏身之處；求你轉臉
+footprints,沙灘腳印,footprints sand beach,脚印；足迹；脚踪,False,False,3,5,8,1,6,祝；你眼中有我；空空的墳墓
+door,敞開的門,open door light,开门；敞开门；门户；门口；窄门,False,False,2,1,3,2,5,上好的福分；開你心門
+bridge,橋樑,bridge river morning light,桥梁；桥,False,False,1,0,1,0,0,上帝的愛真奇妙
+boat,海上小船,small boat sea horizon,船；航行；航海,False,False,7,0,7,6,14,新造的人；生命的舵手；激起生命的浪花；定睛在耶穌身上
+anchor,錨,ship anchor sea,船锚；锚,False,False,1,0,1,0,5,祢是我神
+harvest,成熟莊稼,golden harvest field,庄稼；收割；丰收；收成,False,True,10,1,11,1,2,"看哪,田裡莊稼成熟了；常常喜樂；在乎耶和華；雨過會天晴 (耶穌耶穌我呼求祢)"
+wheat,麥粒與麥穗,wheat grain ears field,麦子；麦粒；麦穗,False,False,3,1,4,3,4,為我留一個位子；充滿我聖靈；誰造
+grapevine,葡萄樹與枝子,grapevine branches fruit,葡萄；枝子,False,True,10,2,12,3,3,工人的禱告；與我同往；在基督裡；主的喜樂是我力量
+olive_tree,橄欖樹與橄欖枝,olive tree branches sunlight,橄榄,False,False,1,0,1,0,2,主的喜樂是我力量
+tree,溪邊大樹,tree by river roots,树根；树木；大树；生命树；树栽；结果子,False,False,4,1,5,0,0,在基督裡；聖靈的果子；平安的七月夜 [演奏版]；這是天父世界
+garden,花園與果園,peaceful garden orchard,花园；园中；果园；伊甸,False,True,9,2,11,7,14,亙古的愛；天父的小花；新婦的祈禱；天父的花園
+flowers,花朵盛開,flowers blooming sunlight,花朵；花开；花瓣；玫瑰,False,True,9,1,10,2,9,錫安大道；一路靠著祂(耶穌祢的名)；與我同往；Don't Worry[別擔心]
+lily,百合花,white lily valley,百合,False,False,5,0,5,1,4,我的最愛；與我同往；耶和華祝福滿滿 [閩南語]；沙崙的玫瑰
+pottery,陶匠與陶器,potter hands clay vessel,陶匠；陶器；瓦器；泥土；器皿,False,True,13,4,17,1,4,"器皿；神的傑作；在基督裡；主耶穌,我愛祢"
+dew,露珠,morning dew leaves,露水；甘露；露珠,False,False,1,0,1,0,0,弟兄和睦同居
+river,大河與江水,wide river flowing water,江河；江水；河流；生命河；河水,False,True,18,5,23,3,9,恩膏；祢比這一切更美麗；聲合為一；施行拯救
+desert,曠野沙漠,desert wilderness dunes,旷野；沙漠；荒漠；荒地,False,True,15,7,22,2,6,祢話如甘霖；親愛主!聽我禱告；錫安大道；一路靠著祂(耶穌祢的名)
+sea_parting,紅海開路,Red Sea parted path,红海；分开海；分海；海中开路,False,False,2,0,2,0,0,因著信；從歲首到年終
+new_jerusalem,新耶路撒冷,new Jerusalem golden city,新耶路撒冷；圣城；金街；珍珠门,False,False,3,0,3,26,128,祢比這一切更美麗；新耶路撒冷；主你本為大
+city,城市與家園,city skyline peaceful light,城市；这城；香港；街道；家乡；这地,False,True,71,19,90,7,18,唱響錫安；工人的禱告；全心全意敬拜祢；醫治這地
+nations,萬國與世界,world nations people unity,万国；万国万民；列邦；地极；万国列邦,False,True,39,15,54,8,29,"藏身祢的懷裏；復興的號角；看哪,田裡莊稼成熟了；神的帳幕在人間"
+family,家庭與孩子,family parent child warm light,父母；孩子；家庭；儿女；母亲；父亲,False,True,39,14,53,4,15,祢的恩典夠我用；奇妙的預備；神的帳幕在人間；我願意
+embrace,擁抱與懷抱,gentle embrace warm light,拥抱；怀抱；怀中,False,True,63,15,78,26,85,"唱響錫安；多愛祢一點；陪我走過春夏秋冬(粵)；神啊,我的神"
+helping_neighbor,扶助與分享,helping hands sharing kindness,邻舍；穷人；饥饿；贫穷；施舍；关怀,False,True,14,3,17,0,4,"工人的禱告；誰能使我與神的愛隔絕；幸福；主啊,誰人親像祢(台)"
+tears,淚滴與雨窗,raindrops window quiet sorrow,眼泪；泪水；哭泣；哀哭；泪,False,True,97,20,117,63,124,"帶我飛；亙古的愛；哈利路亞,祢真實奇妙；救主身邊我們再見"
+wedding,婚宴與戒指,wedding rings banquet light,婚宴；婚礼；新郎；新妇；新娘,False,True,11,2,13,32,139,亙古的愛；來；那一天；她的新郎
+angels,天使與天軍,angels heavenly light,天使；天军,False,True,33,12,45,36,102,神的羔羊；萬民同來敬拜；爭戰中的讚美；眾神之中有誰能像祢
+pillar_cloud_fire,雲柱火柱,pillar cloud fire wilderness,云柱；火柱,False,False,2,2,4,5,9,美好的命定；主啊，我們敬畏祢
+lamp,燈火與燈台,lamp lantern dark path,灯台；灯火；明灯；灯盏；脚前的灯,False,False,6,2,8,1,8,漁家傲.新婦；發現愛；萬國得知祢的救恩；就是你
+treasure,珍珠與寶藏,pearl treasure gentle light,珍珠；宝藏；财宝；宝贝,False,True,14,6,20,1,9,祢比這一切更美麗；器皿；我是如此美麗；晚安曲
+kneeling_prayer,屈膝禱告,kneeling prayer silhouette,屈膝；跪下；俯伏,False,True,66,21,87,284,732,祭壇；彌賽亞；那一天；上好的福分
+bread_provision,餅與日用飲食,bread table warm light,粮食；食物；日用；饮食；生命粮；五饼；二鱼,False,False,3,1,4,1,2,Don't Worry[別擔心]；主禱文；主禱文(請教導我們禱告)

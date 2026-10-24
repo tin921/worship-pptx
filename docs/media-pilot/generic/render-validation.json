@@ -1,0 +1,42 @@
+{
+  "source_loop_matches": true,
+  "rendered_videos": true,
+  "checks": [
+    {
+      "id": "01-soft-snow",
+      "phase0_sha256": "bddea9e51f9fd9024991eb78e22392c16e12f4457fb88b020ed1757c07fd5767",
+      "phase5_sha256": "bddea9e51f9fd9024991eb78e22392c16e12f4457fb88b020ed1757c07fd5767",
+      "phase2_5_sha256": "60d1dc1c35e5c1b4d629a4921a2e77aa4b3d87c4b3d8827d4321555ea857576d"
+    },
+    {
+      "id": "02-gentle-rain",
+      "phase0_sha256": "52883eabd8a072a6fe9473b5275b59598dde754759e9da6bc8a5b8117aa0e587",
+      "phase5_sha256": "52883eabd8a072a6fe9473b5275b59598dde754759e9da6bc8a5b8117aa0e587",
+      "phase2_5_sha256": "98e7826f021de0f1dd6a63a2d2f60a522cd4d9b234c9ab867f565f00485179ab"
+    },
+    {
+      "id": "03-golden-lights",
+      "phase0_sha256": "dfc078f34b9110dee794c28dee2919d6eb120e1c6f638e8768014cc41a899f7c",
+      "phase5_sha256": "dfc078f34b9110dee794c28dee2919d6eb120e1c6f638e8768014cc41a899f7c",
+      "phase2_5_sha256": "6fc1cdd1ee39fb504df64f893cf83e2faeff2a62d96d287e7bc04ebbd39828bf"
+    },
+    {
+      "id": "04-paper-flight",
+      "phase0_sha256": "e5fe6a4b091caeebe6f5f74d7683b1b7eb25bf7c861595ad52433ee8c17d8214",
+      "phase5_sha256": "e5fe6a4b091caeebe6f5f74d7683b1b7eb25bf7c861595ad52433ee8c17d8214",
+      "phase2_5_sha256": "f762416ffa49a46ce10b106a110f6eb6b051fc93b582b753614c35a7c6a21192"
+    },
+    {
+      "id": "05-petal-breeze",
+      "phase0_sha256": "44bfeeb2a09db967b6ce4337ca127f5269c9360c4d831b4fc0fce46953cfbbd8",
+      "phase5_sha256": "44bfeeb2a09db967b6ce4337ca127f5269c9360c4d831b4fc0fce46953cfbbd8",
+      "phase2_5_sha256": "959756a7169cfa16b082882e4b3c5fa4523859291939df5cbcd5596650120227"
+    },
+    {
+      "id": "06-living-ribbons",
+      "phase0_sha256": "f65c43bdc8de10ec3340fbeb26e74f2136e30306a43854be717997502607fa06",
+      "phase5_sha256": "f65c43bdc8de10ec3340fbeb26e74f2136e30306a43854be717997502607fa06",
+      "phase2_5_sha256": "54c7cbe755160d935772acba70a4cd5c1e5f7650a0a04ac63f54e4ffa37348ec"
+    }
+  ]
+}

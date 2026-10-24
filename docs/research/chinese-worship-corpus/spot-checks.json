@@ -1,0 +1,194 @@
+[
+  {
+    "id": "song-018e2de9ec2c",
+    "title": "感恩有祢",
+    "provider": "小羊詩歌",
+    "note": "感恩與同行相符；一般暖光屬氣氛聯想，非明確景物。",
+    "source": "https://w247.net/songs/gan-en-you-ni/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-01745fde874c",
+    "title": "祢歡喜的祭(台)",
+    "provider": "小羊詩歌",
+    "note": "感恩、禱告、舉手敬拜相符；台語用字的召回率未經系統驗證。",
+    "source": "https://w247.net/songs/ke-xi-yue-de-ji-taiwanese/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-c73d7626294b",
+    "title": "盟約",
+    "provider": "小羊詩歌",
+    "note": "婚約、神愛與救恩互相交織；可以多標籤，單一類別會失真。",
+    "source": "https://w247.net/songs/meng-yue/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-c5efba526e76",
+    "title": "祢名",
+    "provider": "小羊詩歌",
+    "note": "原頁演唱次序中的橋段不可當作橋樑；已清除段落標頭及演唱指示。",
+    "source": "https://w247.net/songs/ni-ming/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-5126e442f1df",
+    "title": "片刻的安寧",
+    "provider": "小羊詩歌",
+    "note": "自動主題過度偏向引導和更新；依全文修正為平安安息與生命反思。",
+    "source": "https://w247.net/songs/pian-ke-de-an-ming/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-00fbbc3221e4",
+    "title": "為我造清潔的心",
+    "provider": "小羊詩歌",
+    "note": "悔改潔淨、聖靈與救恩相符；比雪更白應加入雪景的同義詞，現有詞表不完整。",
+    "source": "https://w247.net/songs/wei-wo-zao-qing-jie-de-xin/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-2165041c63e1",
+    "title": "一粒麥子",
+    "provider": "小羊詩歌",
+    "note": "舍己委身是核心；麥粒雖低頻，仍應在歌名匹配時啟用。",
+    "source": "https://w247.net/songs/yi-li-mai-zi/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-5a039534a660",
+    "title": "願祢的國降臨",
+    "provider": "小羊詩歌",
+    "note": "神國、禱告和順服明確；沒有具體景物，使用者應能選擇象徵背景。",
+    "source": "https://w247.net/songs/yuan-ni-de-guo-jiang-lin/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-1a7913bdd7cc",
+    "title": "讚美之泉",
+    "provider": "讚美之泉",
+    "note": "清泉適合；來源的活水標籤屬意象，不能取代敬拜與感恩的內容主題。",
+    "source": "https://sop.org/songs/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-fd08f4e1a473",
+    "title": "有一位神",
+    "provider": "讚美之泉",
+    "note": "創造、救贖與掌權均有內容依據；寶座和十架有明確文字支持。",
+    "source": "https://sop.org/songs/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-c79b9ca8a4f3",
+    "title": "讓愛走動",
+    "provider": "讚美之泉",
+    "note": "淚滴雖有字面依據，歌曲重點卻是愛帶來希望；背景應優先考慮擁抱、暖光或種子。",
+    "source": "https://sop.org/songs/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-dba61bd83a05",
+    "title": "恩典之路",
+    "provider": "讚美之泉",
+    "note": "恩典、保護與引導相符；山路比無字面依據的冠冕更貼切。",
+    "source": "https://sop.org/songs/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-cf750e423bd9",
+    "title": "全然向祢",
+    "provider": "讚美之泉",
+    "note": "讚美、聖靈、委身相符；音樂、清泉、春雨等均有文字支持。",
+    "source": "https://sop.org/songs/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-b4fb3c42dff8",
+    "title": "展開清晨的翅膀",
+    "provider": "讚美之泉",
+    "note": "晨光與翅膀有支持；飛鷹是視覺比喻，並非歌詞明言的鳥種。",
+    "source": "https://sop.org/songs/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-77048d03d175",
+    "title": "我要全心讚美",
+    "provider": "讚美之泉",
+    "note": "喜樂讚美及聖殿意象有支持；沒有理由自動加入婚宴。",
+    "source": "https://sop.org/songs/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-0094dd0c20f4",
+    "title": "能不能",
+    "provider": "讚美之泉",
+    "note": "同在、愛與敬拜是合適主題；聖殿背景有明確支持。",
+    "source": "https://sop.org/songs/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-65cfe31d73bf",
+    "title": "不破的約誓",
+    "provider": "Simply Worship",
+    "note": "十架、犧牲、救贖是重點；寶座雖有文字支持，不一定應排第一。",
+    "source": "https://simplyworship.hk/lyrics/%e4%b8%8d%e7%a0%b4%e7%9a%84%e7%b4%84%e8%aa%93/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-01ca6198b175",
+    "title": "我全心相信",
+    "provider": "Simply Worship",
+    "note": "信靠、呼求及恢復生命相符；伸手的意象有文字依據。",
+    "source": "https://simplyworship.hk/lyrics/%e6%88%91%e5%85%a8%e5%bf%83%e7%9b%b8%e4%bf%a1/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-003baea94e44",
+    "title": "我只想去讚美你",
+    "provider": "Simply Worship",
+    "note": "敬拜、愛慕和舉手意象直接，屬較容易處理的例子。",
+    "source": "https://simplyworship.hk/lyrics/%e6%88%91%e5%8f%aa%e6%83%b3%e5%8e%bb%e8%ae%9a%e7%be%8e%e4%bd%a0/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-017ab777b0d6",
+    "title": "我在這",
+    "provider": "Simply Worship",
+    "note": "感恩恩典相符；沒有明確景物，背景應標示為一般氣氛聯想。",
+    "source": "https://simplyworship.hk/lyrics/%e6%88%91%e5%9c%a8%e9%80%99/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-3ddd8ff9f060",
+    "title": "我算甚麼",
+    "provider": "Simply Worship",
+    "note": "來源的創造、恩典、生命比基準模型的永恆再來更貼近內容。",
+    "source": "https://simplyworship.hk/lyrics/%e6%88%91%e7%ae%97%e7%94%9a%e9%ba%bc/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-00237564cbeb",
+    "title": "永不止息",
+    "provider": "Simply Worship",
+    "note": "神愛與同在相符；山嶺、高峰、深洋等同義詞仍需擴充，無須新增同義主題。",
+    "source": "https://simplyworship.hk/lyrics/%e6%b0%b8%e4%b8%8d%e6%ad%a2%e6%81%af/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-00b349ccf578",
+    "title": "無價至寶",
+    "provider": "Simply Worship",
+    "note": "恩典、愛與十架相符；不可只因歌名含至寶便強推珠寶圖片。",
+    "source": "https://simplyworship.hk/lyrics/%e7%84%a1%e5%83%b9%e8%87%b3%e5%af%b6/",
+    "selection": "deliberate diagnostic example; not random"
+  },
+  {
+    "id": "song-c85dc689adfc",
+    "title": "當你走到無力",
+    "provider": "Simply Worship",
+    "note": "疲乏中得到扶助與信靠；雙手和展翅均有文字依據。",
+    "source": "https://simplyworship.hk/lyrics/%e7%95%b6%e4%bd%a0%e8%b5%b0%e5%88%b0%e7%84%a1%e5%8a%9b/",
+    "selection": "deliberate diagnostic example; not random"
+  }
+]

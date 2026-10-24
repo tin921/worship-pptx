@@ -1,0 +1,1969 @@
+[
+  {
+    "id": "mountain_path",
+    "label": "山間步道、山谷、晨光",
+    "description": "山间小路穿过高山和低谷，向远方延伸，向前走过崎岖的道路",
+    "query": "mountain path valley sunrise",
+    "cues": [
+      "道路",
+      "路途",
+      "路上",
+      "天路",
+      "人生路",
+      "高山",
+      "低谷",
+      "脚步"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 106,
+    "literal_holdout_songs": 25,
+    "literal_all_songs": 131,
+    "top1_80_songs": 3,
+    "top3_80_songs": 7,
+    "example_titles": [
+      "都將過去",
+      "我向祢呼求(粵)",
+      "救主愛疼的聲(台)",
+      "鼓舞"
+    ]
+  },
+  {
+    "id": "forest_path",
+    "label": "森林小徑、陽光",
+    "description": "树林之间安静的小径，道路在树影和阳光之间延伸",
+    "query": "forest path sunlight",
+    "cues": [
+      "道路",
+      "路途",
+      "路上",
+      "天路",
+      "人生路",
+      "树林",
+      "脚步"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 84,
+    "literal_holdout_songs": 21,
+    "literal_all_songs": 105,
+    "top1_80_songs": 0,
+    "top3_80_songs": 4,
+    "example_titles": [
+      "都將過去",
+      "我向祢呼求(粵)",
+      "救主愛疼的聲(台)",
+      "鼓舞"
+    ]
+  },
+  {
+    "id": "mountains",
+    "label": "群山、雲海",
+    "description": "辽阔的群山，层层山峰与山谷，被云雾环绕",
+    "query": "mountains sea of clouds",
+    "cues": [
+      "高山",
+      "山峰",
+      "山谷"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 29,
+    "literal_holdout_songs": 4,
+    "literal_all_songs": 33,
+    "top1_80_songs": 1,
+    "top3_80_songs": 3,
+    "example_titles": [
+      "詩篇二十三篇(台)",
+      "天路歷程",
+      "我要向高山舉目",
+      "雲上太陽"
+    ]
+  },
+  {
+    "id": "sunrise",
+    "label": "日出、金色晨光",
+    "description": "黑夜过去，黎明和温暖晨光照亮天空，新的开始与盼望",
+    "query": "sunrise golden light horizon",
+    "cues": [
+      "日出",
+      "清晨",
+      "黎明",
+      "晨光"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 25,
+    "literal_holdout_songs": 6,
+    "literal_all_songs": 31,
+    "top1_80_songs": 7,
+    "top3_80_songs": 30,
+    "example_titles": [
+      "祢是我神",
+      "聲合為一",
+      "聖善夜",
+      "施行拯救"
+    ]
+  },
+  {
+    "id": "sunset",
+    "label": "夕陽、晚霞",
+    "description": "日落黄昏的晚霞，暖色夕阳映照天空，安静的一天结束",
+    "query": "sunset warm sky",
+    "cues": [
+      "日落",
+      "黄昏"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 9,
+    "literal_holdout_songs": 3,
+    "literal_all_songs": 12,
+    "top1_80_songs": 3,
+    "top3_80_songs": 12,
+    "example_titles": [
+      "亙古的愛",
+      "祢是我神",
+      "聲合為一",
+      "主的喜樂是我力量"
+    ]
+  },
+  {
+    "id": "stream",
+    "label": "清泉、溪流、陽光",
+    "description": "清澈的泉水和溪流不断流淌，水面闪烁，清新而充满活力",
+    "query": "clear stream sunlight",
+    "cues": [
+      "泉",
+      "溪",
+      "川流",
+      "水流",
+      "流入"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 38,
+    "literal_holdout_songs": 9,
+    "literal_all_songs": 47,
+    "top1_80_songs": 2,
+    "top3_80_songs": 9,
+    "example_titles": [
+      "造物的主(粵)",
+      "進入祢的聖所",
+      "來",
+      "祢話如甘霖"
+    ]
+  },
+  {
+    "id": "waterfall",
+    "label": "瀑布、流水",
+    "description": "瀑布从高处倾泻而下，大量的水流奔腾，充满力量",
+    "query": "waterfall flowing water",
+    "cues": [
+      "瀑布",
+      "涌流"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 22,
+    "literal_holdout_songs": 3,
+    "literal_all_songs": 25,
+    "top1_80_songs": 0,
+    "top3_80_songs": 3,
+    "example_titles": [
+      "恩膏",
+      "工人的禱告",
+      "施行拯救",
+      "錫安大道"
+    ]
+  },
+  {
+    "id": "spring_rain",
+    "label": "春雨、嫩葉",
+    "description": "春天柔和的雨水滋润绿色嫩叶，雨滴带来清新与生机",
+    "query": "spring rain fresh leaves",
+    "cues": [
+      "春雨",
+      "雨水",
+      "恩雨",
+      "雨露",
+      "下雨",
+      "沐浴"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 20,
+    "literal_holdout_songs": 3,
+    "literal_all_songs": 23,
+    "top1_80_songs": 2,
+    "top3_80_songs": 5,
+    "example_titles": [
+      "點燃",
+      "我向祢呼求(粵)",
+      "神掌權(男聲)",
+      "天父的小花"
+    ]
+  },
+  {
+    "id": "snow",
+    "label": "雪花、柔和光線",
+    "description": "洁白的雪花轻轻飘落，在柔和光线中闪烁，纯净而轻盈",
+    "query": "snowflakes soft light",
+    "cues": [
+      "雪花",
+      "白雪",
+      "洁白如雪",
+      "洁白"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 5,
+    "literal_holdout_songs": 2,
+    "literal_all_songs": 7,
+    "top1_80_songs": 0,
+    "top3_80_songs": 0,
+    "example_titles": [
+      "放晴了",
+      "全然向祢",
+      "唯有主耶穌的寶血",
+      "十架的愛"
+    ]
+  },
+  {
+    "id": "galaxy",
+    "label": "星空、銀河、宇宙",
+    "description": "浩瀚的宇宙与银河，无数星辰遍布深邃夜空，辽阔壮丽",
+    "query": "starry sky milky way",
+    "cues": [
+      "宇宙",
+      "星辰",
+      "星空",
+      "银河"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 29,
+    "literal_holdout_songs": 9,
+    "literal_all_songs": 38,
+    "top1_80_songs": 10,
+    "top3_80_songs": 26,
+    "example_titles": [
+      "當祂輕聲呼喚你的名字",
+      "亙古的愛",
+      "祢比這一切更美麗",
+      "全心全意敬拜祢"
+    ]
+  },
+  {
+    "id": "sky",
+    "label": "藍天、白雲",
+    "description": "开阔蓝天中飘着白云，阳光明亮，晴朗辽阔的天空",
+    "query": "blue sky white clouds",
+    "cues": [
+      "天空",
+      "蓝天",
+      "白云",
+      "云彩"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 34,
+    "literal_holdout_songs": 5,
+    "literal_all_songs": 39,
+    "top1_80_songs": 8,
+    "top3_80_songs": 17,
+    "example_titles": [
+      "鼓舞",
+      "Don't Worry[別擔心]",
+      "小小的夢想",
+      "晚安曲"
+    ]
+  },
+  {
+    "id": "ocean",
+    "label": "大海、海浪",
+    "description": "辽阔的大海，海浪拍岸，海水不断起伏，远方地平线",
+    "query": "ocean waves horizon",
+    "cues": [
+      "海洋",
+      "大海",
+      "海浪",
+      "海边",
+      "海水",
+      "沧海",
+      "波涛"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 25,
+    "literal_holdout_songs": 11,
+    "literal_all_songs": 36,
+    "top1_80_songs": 2,
+    "top3_80_songs": 13,
+    "example_titles": [
+      "祢的恩典夠我用",
+      "聲合為一",
+      "與祢一起飛翔",
+      "小小的夢想"
+    ]
+  },
+  {
+    "id": "calm_lake",
+    "label": "平靜湖面、倒影",
+    "description": "安静的湖水如镜面，映照群山和天空，带来平安与安息",
+    "query": "calm lake mountain reflection",
+    "cues": [
+      "湖水",
+      "湖面",
+      "倒影"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 0,
+    "literal_holdout_songs": 0,
+    "literal_all_songs": 0,
+    "top1_80_songs": 0,
+    "top3_80_songs": 1,
+    "example_titles": []
+  },
+  {
+    "id": "storm",
+    "label": "風雨後的曙光",
+    "description": "暴风雨和黑暗乌云散开，阳光穿过云层，风浪过后恢复平静",
+    "query": "sunlight breaking storm clouds",
+    "cues": [
+      "风雨",
+      "风浪",
+      "暴风",
+      "狂风",
+      "黑暗"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 145,
+    "literal_holdout_songs": 21,
+    "literal_all_songs": 166,
+    "top1_80_songs": 4,
+    "top3_80_songs": 20,
+    "example_titles": [
+      "都將過去",
+      "Faith Over Fear",
+      "看哪,田裡莊稼成熟了",
+      "來充滿我(粵)"
+    ]
+  },
+  {
+    "id": "rainbow",
+    "label": "彩虹、雨後天空",
+    "description": "雨后天空出现彩虹，色彩明亮，充满希望",
+    "query": "rainbow after rain sky",
+    "cues": [
+      "彩虹"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 4,
+    "literal_holdout_songs": 3,
+    "literal_all_songs": 7,
+    "top1_80_songs": 5,
+    "top3_80_songs": 8,
+    "example_titles": [
+      "彩虹下的約定",
+      "與祢同行",
+      "尋著你的那天",
+      "生趣"
+    ]
+  },
+  {
+    "id": "eagle",
+    "label": "飛鷹、天空",
+    "description": "雄鹰张开双翼在天空高处飞翔，越过风雨，展翅上腾",
+    "query": "eagle soaring sky",
+    "cues": [
+      "鹰",
+      "翅膀",
+      "展翅"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 23,
+    "literal_holdout_songs": 9,
+    "literal_all_songs": 32,
+    "top1_80_songs": 8,
+    "top3_80_songs": 13,
+    "example_titles": [
+      "祢是我的神",
+      "抬頭仰望",
+      "與祢一起飛翔",
+      "最愛的地方"
+    ]
+  },
+  {
+    "id": "dove",
+    "label": "白鴿、柔光",
+    "description": "白鸽张开翅膀飞翔，象征温柔与平安",
+    "query": "white dove soft light",
+    "cues": [
+      "鸽"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 4,
+    "literal_holdout_songs": 0,
+    "literal_all_songs": 4,
+    "top1_80_songs": 1,
+    "top3_80_songs": 5,
+    "example_titles": [
+      "與我同往",
+      "天父的孩子",
+      "住在你的愛",
+      "立志擺上"
+    ]
+  },
+  {
+    "id": "meadow",
+    "label": "青草地、野花",
+    "description": "绿色草地和野花在阳光下摇曳，生命生长，宁静美丽",
+    "query": "green meadow wildflowers",
+    "cues": [
+      "青草",
+      "草地",
+      "花朵",
+      "鲜花",
+      "野花",
+      "花开"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 14,
+    "literal_holdout_songs": 1,
+    "literal_all_songs": 15,
+    "top1_80_songs": 2,
+    "top3_80_songs": 4,
+    "example_titles": [
+      "詩篇二十三篇",
+      "一路靠著祂(耶穌祢的名)",
+      "與我同往",
+      "主的小羊"
+    ]
+  },
+  {
+    "id": "sheep",
+    "label": "羊群、草原",
+    "description": "牧羊人带领羊群走向草原，在牧场寻找食物和安歇",
+    "query": "sheep flock green pasture",
+    "cues": [
+      "牧人",
+      "牧者",
+      "牧场",
+      "羊群",
+      "羔羊",
+      "小羊",
+      "羊",
+      "草场"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 61,
+    "literal_holdout_songs": 21,
+    "literal_all_songs": 82,
+    "top1_80_songs": 8,
+    "top3_80_songs": 17,
+    "example_titles": [
+      "亙古的愛",
+      "哈利路亞,祢真實奇妙",
+      "活著為要榮耀祢",
+      "雞叫的時候"
+    ]
+  },
+  {
+    "id": "oasis",
+    "label": "沙漠綠洲、泉水",
+    "description": "干旱沙漠中出现绿洲和泉水，为干渴的人带来水与生命",
+    "query": "desert oasis spring water",
+    "cues": [
+      "沙漠",
+      "干渴",
+      "泉"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 29,
+    "literal_holdout_songs": 7,
+    "literal_all_songs": 36,
+    "top1_80_songs": 0,
+    "top3_80_songs": 4,
+    "example_titles": [
+      "進入祢的聖所",
+      "來",
+      "祢話如甘霖",
+      "泉源地"
+    ]
+  },
+  {
+    "id": "lighthouse",
+    "label": "燈塔、海岸",
+    "description": "海岸灯塔在黑夜发出光芒，为航行中的船带来指引和方向",
+    "query": "lighthouse coast night light",
+    "cues": [
+      "灯塔",
+      "航行",
+      "船"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 7,
+    "literal_holdout_songs": 0,
+    "literal_all_songs": 7,
+    "top1_80_songs": 0,
+    "top3_80_songs": 0,
+    "example_titles": [
+      "新造的人",
+      "生命的舵手",
+      "激起生命的浪花",
+      "定睛在耶穌身上"
+    ]
+  },
+  {
+    "id": "rock",
+    "label": "磐石、海岸",
+    "description": "坚固巨大的岩石屹立在海岸和风雨中，稳定不动摇",
+    "query": "rock coast waves",
+    "cues": [
+      "磐石",
+      "坚固"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 42,
+    "literal_holdout_songs": 6,
+    "literal_all_songs": 48,
+    "top1_80_songs": 0,
+    "top3_80_songs": 2,
+    "example_titles": [
+      "Faith Over Fear",
+      "跟隨到底",
+      "雞叫的時候",
+      "祢名"
+    ]
+  },
+  {
+    "id": "cross",
+    "label": "山丘十字架、晨光",
+    "description": "十字架立在山丘，晨光照亮天空，象征牺牲与拯救",
+    "query": "cross hill sunrise",
+    "cues": [
+      "十架",
+      "十字架"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 99,
+    "literal_holdout_songs": 26,
+    "literal_all_songs": 125,
+    "top1_80_songs": 25,
+    "top3_80_songs": 67,
+    "example_titles": [
+      "Arise",
+      "點燃",
+      "救主愛疼的聲(台)",
+      "祢是我的神"
+    ]
+  },
+  {
+    "id": "church",
+    "label": "教堂、窗光",
+    "description": "教堂窗户透进柔和阳光，安静的圣所，神圣的空间",
+    "query": "church window sunlight",
+    "cues": [
+      "圣殿",
+      "殿中",
+      "圣所"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 51,
+    "literal_holdout_songs": 13,
+    "literal_all_songs": 64,
+    "top1_80_songs": 4,
+    "top3_80_songs": 5,
+    "example_titles": [
+      "父啊,我向祢呼求",
+      "祭壇",
+      "進入祢的聖所",
+      "祢歡喜的祭(台)"
+    ]
+  },
+  {
+    "id": "hands",
+    "label": "敬拜、舉手剪影",
+    "description": "人群举起双手敬拜，以喜乐和感恩歌唱，赞美的聚会",
+    "query": "worship raised hands silhouette",
+    "cues": [
+      "举手",
+      "举起手",
+      "举起双手"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 20,
+    "literal_holdout_songs": 11,
+    "literal_all_songs": 31,
+    "top1_80_songs": 10,
+    "top3_80_songs": 43,
+    "example_titles": [
+      "祢歡喜的祭(台)",
+      "可喜悅的祭",
+      "是耶穌的名",
+      "禱告！禱告！天父都知道"
+    ]
+  },
+  {
+    "id": "music",
+    "label": "音符、柔光背景",
+    "description": "音符与音乐旋律的抽象背景，歌唱和赞美的喜乐，温暖的光点",
+    "query": "music notes warm light background",
+    "cues": [
+      "音符",
+      "旋律",
+      "歌声",
+      "音乐"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 34,
+    "literal_holdout_songs": 7,
+    "literal_all_songs": 41,
+    "top1_80_songs": 11,
+    "top3_80_songs": 37,
+    "example_titles": [
+      "祢是配得",
+      "幸福",
+      "讓讚美飛揚",
+      "我們是光明之子"
+    ]
+  },
+  {
+    "id": "celebration",
+    "label": "歡慶、金色光點",
+    "description": "欢乐庆祝，人们欢呼跳舞，充满喜乐与活力，明亮的光",
+    "query": "celebration golden light background",
+    "cues": [
+      "喜乐",
+      "欢呼",
+      "跳舞"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 155,
+    "literal_holdout_songs": 32,
+    "literal_all_songs": 187,
+    "top1_80_songs": 41,
+    "top3_80_songs": 76,
+    "example_titles": [
+      "唱響錫安",
+      "盡力地頌揚祢(粵)",
+      "來吧,我們讚美",
+      "來充滿我(粵)"
+    ]
+  },
+  {
+    "id": "gentle_light",
+    "label": "柔和暖光、散景",
+    "description": "柔和温暖的光芒，安慰悲伤的人，温柔关爱与盼望",
+    "query": "warm soft light bokeh",
+    "cues": [
+      "光芒",
+      "暖流",
+      "温暖"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 37,
+    "literal_holdout_songs": 15,
+    "literal_all_songs": 52,
+    "top1_80_songs": 93,
+    "top3_80_songs": 252,
+    "example_titles": [
+      "萬王之王",
+      "Don't Worry[別擔心]",
+      "差遣我",
+      "讓愛走動"
+    ]
+  },
+  {
+    "id": "open_hands",
+    "label": "雙手、柔光",
+    "description": "伸出的双手轻轻托住，牵引、扶持和保护，温柔的关爱",
+    "query": "open hands gentle light",
+    "cues": [
+      "双手",
+      "伸手",
+      "牵手",
+      "扶持",
+      "牵引",
+      "保护"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 124,
+    "literal_holdout_songs": 37,
+    "literal_all_songs": 161,
+    "top1_80_songs": 69,
+    "top3_80_songs": 179,
+    "example_titles": [
+      "我向祢呼求(粵)",
+      "何等美妙認識祢",
+      "陪我走過春夏秋冬",
+      "為我造清潔的心"
+    ]
+  },
+  {
+    "id": "fire",
+    "label": "火焰、光芒",
+    "description": "燃烧的火焰发出光和热，熊熊火光，充满力量",
+    "query": "flame glowing fire",
+    "cues": [
+      "火焰",
+      "火燃",
+      "圣火",
+      "烈火",
+      "燃烧"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 31,
+    "literal_holdout_songs": 7,
+    "literal_all_songs": 38,
+    "top1_80_songs": 14,
+    "top3_80_songs": 17,
+    "example_titles": [
+      "點燃",
+      "復興的號角",
+      "即或不然",
+      "祭壇"
+    ]
+  },
+  {
+    "id": "seeds",
+    "label": "嫩芽、新生命",
+    "description": "小种子发芽，嫩绿植物破土生长，生命更新",
+    "query": "seedling new life sunlight",
+    "cues": [
+      "新造",
+      "种子",
+      "发芽",
+      "嫩芽"
+    ],
+    "in_original_31": true,
+    "in_selected_60": true,
+    "literal_discovery_songs": 8,
+    "literal_holdout_songs": 3,
+    "literal_all_songs": 11,
+    "top1_80_songs": 1,
+    "top3_80_songs": 6,
+    "example_titles": [
+      "祢比這一切更美麗",
+      "我是如此美麗",
+      "耶穌,我的救主",
+      "我們是光明之子"
+    ]
+  },
+  {
+    "id": "bible",
+    "label": "聖經與書卷",
+    "description": "敞开的圣经书卷，神的话语真理照亮生命，阅读默想经文",
+    "query": "open Bible soft light",
+    "cues": [
+      "圣经",
+      "经文",
+      "话语",
+      "真理",
+      "律法",
+      "书卷"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 87,
+    "literal_holdout_songs": 19,
+    "literal_all_songs": 106,
+    "top1_80_songs": 36,
+    "top3_80_songs": 111,
+    "example_titles": [
+      "都將過去",
+      "恩膏",
+      "Faith Over Fear",
+      "活著為要榮耀祢"
+    ]
+  },
+  {
+    "id": "communion",
+    "label": "聖餐餅杯",
+    "description": "桌上的圣餐饼与葡萄酒杯，记念耶稣舍身流血，立下新约",
+    "query": "communion bread wine cup",
+    "cues": [
+      "圣餐",
+      "擘饼",
+      "杯",
+      "新约"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 8,
+    "literal_holdout_songs": 1,
+    "literal_all_songs": 9,
+    "top1_80_songs": 2,
+    "top3_80_songs": 10,
+    "example_titles": [
+      "詩篇二十三篇(台)",
+      "詩篇二十三篇",
+      "幸福",
+      "耶和華是我牧者"
+    ]
+  },
+  {
+    "id": "nativity",
+    "label": "馬槽與伯利恆",
+    "description": "伯利恒夜晚的马槽，婴孩耶稣降生，牧人来到圣婴面前",
+    "query": "Bethlehem nativity manger night",
+    "cues": [
+      "马槽",
+      "伯利恒",
+      "圣婴",
+      "降生",
+      "圣诞"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 10,
+    "literal_holdout_songs": 4,
+    "literal_all_songs": 14,
+    "top1_80_songs": 22,
+    "top3_80_songs": 118,
+    "example_titles": [
+      "祢是配得",
+      "聖善夜",
+      "再次將我更新",
+      "一同齊聲宣揚"
+    ]
+  },
+  {
+    "id": "empty_tomb",
+    "label": "空墓與復活晨光",
+    "description": "清晨空的坟墓，墓门石头滚开，耶稣复活战胜死亡",
+    "query": "empty tomb resurrection dawn",
+    "cues": [
+      "空坟",
+      "空墓",
+      "坟墓",
+      "复活",
+      "墓门"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 31,
+    "literal_holdout_songs": 4,
+    "literal_all_songs": 35,
+    "top1_80_songs": 24,
+    "top3_80_songs": 84,
+    "example_titles": [
+      "Arise",
+      "萬民同來敬拜",
+      "我是個得勝者",
+      "耶穌基督是主(童聲)"
+    ]
+  },
+  {
+    "id": "crown",
+    "label": "冠冕",
+    "description": "荣耀的金色冠冕，君王的尊贵与得胜，生命的冠冕",
+    "query": "gold crown dark background",
+    "cues": [
+      "冠冕",
+      "王冠"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 25,
+    "literal_holdout_songs": 5,
+    "literal_all_songs": 30,
+    "top1_80_songs": 104,
+    "top3_80_songs": 454,
+    "example_titles": [
+      "她的新郎",
+      "天路歷程",
+      "萬民同來敬拜",
+      "再次將我更新"
+    ]
+  },
+  {
+    "id": "throne",
+    "label": "寶座與榮光",
+    "description": "宏伟荣耀的宝座，万王之王掌权，威严圣洁的光辉",
+    "query": "royal throne glorious light",
+    "cues": [
+      "宝座",
+      "王位"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 65,
+    "literal_holdout_songs": 25,
+    "literal_all_songs": 90,
+    "top1_80_songs": 170,
+    "top3_80_songs": 392,
+    "example_titles": [
+      "哈利路亞,祢真實奇妙",
+      "雞叫的時候",
+      "進入祢的聖所",
+      "上好的福分"
+    ]
+  },
+  {
+    "id": "altar",
+    "label": "祭壇與獻祭",
+    "description": "石头祭坛上的祭物，向神献上自己成为圣洁活祭",
+    "query": "stone altar warm light",
+    "cues": [
+      "祭坛",
+      "活祭",
+      "献祭",
+      "祭物"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 34,
+    "literal_holdout_songs": 10,
+    "literal_all_songs": 44,
+    "top1_80_songs": 25,
+    "top3_80_songs": 65,
+    "example_titles": [
+      "點燃",
+      "祭壇",
+      "獻上一生(粵)",
+      "祢的居所何等可愛"
+    ]
+  },
+  {
+    "id": "incense",
+    "label": "香煙與香爐",
+    "description": "香炉与升起的馨香烟雾，祷告如香升到神面前",
+    "query": "incense smoke soft light",
+    "cues": [
+      "馨香",
+      "香炉",
+      "香气",
+      "香烟"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 18,
+    "literal_holdout_songs": 2,
+    "literal_all_songs": 20,
+    "top1_80_songs": 19,
+    "top3_80_songs": 105,
+    "example_titles": [
+      "復興的號角",
+      "那日花會開",
+      "新婦的祈禱",
+      "謝謝祢揀選"
+    ]
+  },
+  {
+    "id": "trumpet",
+    "label": "號角",
+    "description": "金色号角吹响，宣告得胜与君王来临，众人聚集",
+    "query": "trumpet shofar light",
+    "cues": [
+      "号角",
+      "吹角",
+      "号筒",
+      "号声"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 7,
+    "literal_holdout_songs": 2,
+    "literal_all_songs": 9,
+    "top1_80_songs": 3,
+    "top3_80_songs": 18,
+    "example_titles": [
+      "復興的號角",
+      "亙古的愛",
+      "盡力地頌揚祢(粵)",
+      "她的新郎"
+    ]
+  },
+  {
+    "id": "harp",
+    "label": "琴弦與樂器",
+    "description": "琴弦与竖琴在光中，以乐器弹奏称颂神",
+    "query": "harp strings gentle light",
+    "cues": [
+      "琴弦",
+      "弹琴",
+      "竖琴",
+      "琴瑟"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 8,
+    "literal_holdout_songs": 0,
+    "literal_all_songs": 8,
+    "top1_80_songs": 1,
+    "top3_80_songs": 8,
+    "example_titles": [
+      "來吧,我們讚美",
+      "我的靈要醒起",
+      "彈琴歌唱讚美祢",
+      "歌頌"
+    ]
+  },
+  {
+    "id": "banner",
+    "label": "旌旗",
+    "description": "高举的旗帜和旌旗，在风中飘扬宣告得胜",
+    "query": "banner flag wind sky",
+    "cues": [
+      "旌旗",
+      "旗帜",
+      "旗号"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 11,
+    "literal_holdout_songs": 3,
+    "literal_all_songs": 14,
+    "top1_80_songs": 3,
+    "top3_80_songs": 12,
+    "example_titles": [
+      "一路靠著祂(耶穌祢的名)",
+      "爭戰中的讚美",
+      "和散那！讚美耶穌",
+      "獻上自己為祭"
+    ]
+  },
+  {
+    "id": "armor",
+    "label": "盔甲與寶劍",
+    "description": "穿戴全副军装，佩戴头盔拿起宝剑，在争战中站立",
+    "query": "ancient armor sword shield",
+    "cues": [
+      "军装",
+      "盔甲",
+      "头盔",
+      "宝剑",
+      "利剑"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 5,
+    "literal_holdout_songs": 1,
+    "literal_all_songs": 6,
+    "top1_80_songs": 4,
+    "top3_80_songs": 4,
+    "example_titles": [
+      "救主身邊我們再見",
+      "爭戰中的讚美",
+      "新的一天",
+      "耶和華大能的軍隊"
+    ]
+  },
+  {
+    "id": "shield",
+    "label": "盾牌",
+    "description": "坚固盾牌抵挡攻击，保护信靠的人免于危险",
+    "query": "shield protection light",
+    "cues": [
+      "盾牌"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 15,
+    "literal_holdout_songs": 6,
+    "literal_all_songs": 21,
+    "top1_80_songs": 1,
+    "top3_80_songs": 4,
+    "example_titles": [
+      "Faith Over Fear",
+      "耶和華我的山寨",
+      "何等有福",
+      "歡呼"
+    ]
+  },
+  {
+    "id": "broken_chains",
+    "label": "斷開的鎖鏈",
+    "description": "铁链锁链断开，牢门打开，囚禁的人得释放和自由",
+    "query": "broken chains freedom light",
+    "cues": [
+      "锁链",
+      "铁链",
+      "捆锁",
+      "囚牢",
+      "囚禁"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 11,
+    "literal_holdout_songs": 2,
+    "literal_all_songs": 13,
+    "top1_80_songs": 3,
+    "top3_80_songs": 10,
+    "example_titles": [
+      "泉源地",
+      "施行拯救",
+      "當祢走進我們當中",
+      "敬拜耶穌"
+    ]
+  },
+  {
+    "id": "tent",
+    "label": "帳幕",
+    "description": "旷野中的帐幕与会幕，神住在人中间，停留亲近神",
+    "query": "tabernacle tent desert light",
+    "cues": [
+      "帐幕",
+      "会幕",
+      "帐棚"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 6,
+    "literal_holdout_songs": 2,
+    "literal_all_songs": 8,
+    "top1_80_songs": 36,
+    "top3_80_songs": 173,
+    "example_titles": [
+      "神的帳幕在人間",
+      "我的神真偉大",
+      "獻上自己為祭",
+      "新耶路撒冷"
+    ]
+  },
+  {
+    "id": "refuge",
+    "label": "避難所與城堡",
+    "description": "坚固的避难所堡垒城堡，风雨中有安全保护和藏身之处",
+    "query": "fortress refuge mountain",
+    "cues": [
+      "避难所",
+      "山寨",
+      "堡垒",
+      "城堡",
+      "藏身"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 30,
+    "literal_holdout_songs": 3,
+    "literal_all_songs": 33,
+    "top1_80_songs": 5,
+    "top3_80_songs": 8,
+    "example_titles": [
+      "藏身祢的懷裏",
+      "祢是我的神",
+      "我的神真偉大",
+      "謝謝祢,耶穌"
+    ]
+  },
+  {
+    "id": "sheltering_wings",
+    "label": "翅膀蔭下",
+    "description": "展开的羽翼遮盖小鸟，在翅膀荫下安歇并得到保护",
+    "query": "bird sheltering wings nest",
+    "cues": [
+      "翅膀荫",
+      "羽翼",
+      "翅膀下",
+      "翅膀底"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 6,
+    "literal_holdout_songs": 3,
+    "literal_all_songs": 9,
+    "top1_80_songs": 0,
+    "top3_80_songs": 2,
+    "example_titles": [
+      "祢是我的神",
+      "抬頭仰望",
+      "藏身之處",
+      "求你轉臉"
+    ]
+  },
+  {
+    "id": "footprints",
+    "label": "沙灘腳印",
+    "description": "脚印一步一步留在沙滩或路上，同行陪伴跟随带领",
+    "query": "footprints sand beach",
+    "cues": [
+      "脚印",
+      "足迹",
+      "脚踪"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 3,
+    "literal_holdout_songs": 5,
+    "literal_all_songs": 8,
+    "top1_80_songs": 1,
+    "top3_80_songs": 6,
+    "example_titles": [
+      "祝",
+      "你眼中有我",
+      "空空的墳墓"
+    ]
+  },
+  {
+    "id": "door",
+    "label": "敞開的門",
+    "description": "光从敞开的门透进来，开门迎接，通往新的道路",
+    "query": "open door light",
+    "cues": [
+      "开门",
+      "敞开门",
+      "门户",
+      "门口",
+      "窄门"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 2,
+    "literal_holdout_songs": 1,
+    "literal_all_songs": 3,
+    "top1_80_songs": 2,
+    "top3_80_songs": 5,
+    "example_titles": [
+      "上好的福分",
+      "開你心門"
+    ]
+  },
+  {
+    "id": "bridge",
+    "label": "橋樑",
+    "description": "桥梁跨越河流与隔阂，连接两岸，让人重新相遇",
+    "query": "bridge river morning light",
+    "cues": [
+      "桥梁",
+      "桥"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 1,
+    "literal_holdout_songs": 0,
+    "literal_all_songs": 1,
+    "top1_80_songs": 0,
+    "top3_80_songs": 0,
+    "example_titles": [
+      "上帝的愛真奇妙"
+    ]
+  },
+  {
+    "id": "boat",
+    "label": "海上小船",
+    "description": "小船行过海面与风浪，耶稣同在船上，航行靠岸",
+    "query": "small boat sea horizon",
+    "cues": [
+      "船",
+      "航行",
+      "航海"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 7,
+    "literal_holdout_songs": 0,
+    "literal_all_songs": 7,
+    "top1_80_songs": 6,
+    "top3_80_songs": 14,
+    "example_titles": [
+      "新造的人",
+      "生命的舵手",
+      "激起生命的浪花",
+      "定睛在耶穌身上"
+    ]
+  },
+  {
+    "id": "anchor",
+    "label": "錨",
+    "description": "船锚牢牢抓住海底，在风浪中坚定稳妥，灵魂的锚",
+    "query": "ship anchor sea",
+    "cues": [
+      "船锚",
+      "锚"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 1,
+    "literal_holdout_songs": 0,
+    "literal_all_songs": 1,
+    "top1_80_songs": 0,
+    "top3_80_songs": 5,
+    "example_titles": [
+      "祢是我神"
+    ]
+  },
+  {
+    "id": "harvest",
+    "label": "成熟莊稼",
+    "description": "金黄成熟的庄稼和农田，工人收割，丰盛收成",
+    "query": "golden harvest field",
+    "cues": [
+      "庄稼",
+      "收割",
+      "丰收",
+      "收成"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 10,
+    "literal_holdout_songs": 1,
+    "literal_all_songs": 11,
+    "top1_80_songs": 1,
+    "top3_80_songs": 2,
+    "example_titles": [
+      "看哪,田裡莊稼成熟了",
+      "常常喜樂",
+      "在乎耶和華",
+      "雨過會天晴 (耶穌耶穌我呼求祢)"
+    ]
+  },
+  {
+    "id": "wheat",
+    "label": "麥粒與麥穗",
+    "description": "一粒麦子落入土地，结出麦穗和许多果实，舍己与新生命",
+    "query": "wheat grain ears field",
+    "cues": [
+      "麦子",
+      "麦粒",
+      "麦穗"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 3,
+    "literal_holdout_songs": 1,
+    "literal_all_songs": 4,
+    "top1_80_songs": 3,
+    "top3_80_songs": 4,
+    "example_titles": [
+      "為我留一個位子",
+      "充滿我聖靈",
+      "誰造"
+    ]
+  },
+  {
+    "id": "grapevine",
+    "label": "葡萄樹與枝子",
+    "description": "葡萄树枝子连接树干，结果累累，常在主里面",
+    "query": "grapevine branches fruit",
+    "cues": [
+      "葡萄",
+      "枝子"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 10,
+    "literal_holdout_songs": 2,
+    "literal_all_songs": 12,
+    "top1_80_songs": 3,
+    "top3_80_songs": 3,
+    "example_titles": [
+      "工人的禱告",
+      "與我同往",
+      "在基督裡",
+      "主的喜樂是我力量"
+    ]
+  },
+  {
+    "id": "olive_tree",
+    "label": "橄欖樹與橄欖枝",
+    "description": "橄榄树和绿色橄榄枝，扎根生长，和平与忠信",
+    "query": "olive tree branches sunlight",
+    "cues": [
+      "橄榄"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 1,
+    "literal_holdout_songs": 0,
+    "literal_all_songs": 1,
+    "top1_80_songs": 0,
+    "top3_80_songs": 2,
+    "example_titles": [
+      "主的喜樂是我力量"
+    ]
+  },
+  {
+    "id": "tree",
+    "label": "溪邊大樹",
+    "description": "树栽在溪水旁，树根深入土地，叶子常青，成长结果",
+    "query": "tree by river roots",
+    "cues": [
+      "树根",
+      "树木",
+      "大树",
+      "生命树",
+      "树栽",
+      "结果子"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 4,
+    "literal_holdout_songs": 1,
+    "literal_all_songs": 5,
+    "top1_80_songs": 0,
+    "top3_80_songs": 0,
+    "example_titles": [
+      "在基督裡",
+      "聖靈的果子",
+      "平安的七月夜 [演奏版]",
+      "這是天父世界"
+    ]
+  },
+  {
+    "id": "garden",
+    "label": "花園與果園",
+    "description": "宁静花园果园，花香与果实，走入园中与所爱者相遇",
+    "query": "peaceful garden orchard",
+    "cues": [
+      "花园",
+      "园中",
+      "果园",
+      "伊甸"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 9,
+    "literal_holdout_songs": 2,
+    "literal_all_songs": 11,
+    "top1_80_songs": 7,
+    "top3_80_songs": 14,
+    "example_titles": [
+      "亙古的愛",
+      "天父的小花",
+      "新婦的祈禱",
+      "天父的花園"
+    ]
+  },
+  {
+    "id": "flowers",
+    "label": "花朵盛開",
+    "description": "鲜花盛开在阳光中，花瓣与花香，生命美丽短暂",
+    "query": "flowers blooming sunlight",
+    "cues": [
+      "花朵",
+      "花开",
+      "花瓣",
+      "玫瑰"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 9,
+    "literal_holdout_songs": 1,
+    "literal_all_songs": 10,
+    "top1_80_songs": 2,
+    "top3_80_songs": 9,
+    "example_titles": [
+      "錫安大道",
+      "一路靠著祂(耶穌祢的名)",
+      "與我同往",
+      "Don't Worry[別擔心]"
+    ]
+  },
+  {
+    "id": "lily",
+    "label": "百合花",
+    "description": "山谷中纯洁的百合花，野地百合被看顾，细致美丽",
+    "query": "white lily valley",
+    "cues": [
+      "百合"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 5,
+    "literal_holdout_songs": 0,
+    "literal_all_songs": 5,
+    "top1_80_songs": 1,
+    "top3_80_songs": 4,
+    "example_titles": [
+      "我的最愛",
+      "與我同往",
+      "耶和華祝福滿滿 [閩南語]",
+      "沙崙的玫瑰"
+    ]
+  },
+  {
+    "id": "pottery",
+    "label": "陶匠與陶器",
+    "description": "陶匠的手塑造泥土和陶器，重新修补器皿，生命被塑造",
+    "query": "potter hands clay vessel",
+    "cues": [
+      "陶匠",
+      "陶器",
+      "瓦器",
+      "泥土",
+      "器皿"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 13,
+    "literal_holdout_songs": 4,
+    "literal_all_songs": 17,
+    "top1_80_songs": 1,
+    "top3_80_songs": 4,
+    "example_titles": [
+      "器皿",
+      "神的傑作",
+      "在基督裡",
+      "主耶穌,我愛祢"
+    ]
+  },
+  {
+    "id": "dew",
+    "label": "露珠",
+    "description": "清晨露水落在叶片和花草上，晶莹滋润，安静清新",
+    "query": "morning dew leaves",
+    "cues": [
+      "露水",
+      "甘露",
+      "露珠"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 1,
+    "literal_holdout_songs": 0,
+    "literal_all_songs": 1,
+    "top1_80_songs": 0,
+    "top3_80_songs": 0,
+    "example_titles": [
+      "弟兄和睦同居"
+    ]
+  },
+  {
+    "id": "river",
+    "label": "大河與江水",
+    "description": "宽阔大河江水流淌，河岸与远方，生命河流带来丰盛",
+    "query": "wide river flowing water",
+    "cues": [
+      "江河",
+      "江水",
+      "河流",
+      "生命河",
+      "河水"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 18,
+    "literal_holdout_songs": 5,
+    "literal_all_songs": 23,
+    "top1_80_songs": 3,
+    "top3_80_songs": 9,
+    "example_titles": [
+      "恩膏",
+      "祢比這一切更美麗",
+      "聲合為一",
+      "施行拯救"
+    ]
+  },
+  {
+    "id": "desert",
+    "label": "曠野沙漠",
+    "description": "广阔旷野沙漠，干旱土地上仍然行走，在荒凉中寻找出路",
+    "query": "desert wilderness dunes",
+    "cues": [
+      "旷野",
+      "沙漠",
+      "荒漠",
+      "荒地"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 15,
+    "literal_holdout_songs": 7,
+    "literal_all_songs": 22,
+    "top1_80_songs": 2,
+    "top3_80_songs": 6,
+    "example_titles": [
+      "祢話如甘霖",
+      "親愛主!聽我禱告",
+      "錫安大道",
+      "一路靠著祂(耶穌祢的名)"
+    ]
+  },
+  {
+    "id": "sea_parting",
+    "label": "紅海開路",
+    "description": "红海分开成为干地，道路穿过海水，两侧水墙，出埃及得拯救",
+    "query": "Red Sea parted path",
+    "cues": [
+      "红海",
+      "分开海",
+      "分海",
+      "海中开路"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 2,
+    "literal_holdout_songs": 0,
+    "literal_all_songs": 2,
+    "top1_80_songs": 0,
+    "top3_80_songs": 0,
+    "example_titles": [
+      "因著信",
+      "從歲首到年終"
+    ]
+  },
+  {
+    "id": "new_jerusalem",
+    "label": "新耶路撒冷",
+    "description": "光明圣城新耶路撒冷，珍珠城门和金街，神与人永远同住",
+    "query": "new Jerusalem golden city",
+    "cues": [
+      "新耶路撒冷",
+      "圣城",
+      "金街",
+      "珍珠门"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 3,
+    "literal_holdout_songs": 0,
+    "literal_all_songs": 3,
+    "top1_80_songs": 26,
+    "top3_80_songs": 128,
+    "example_titles": [
+      "祢比這一切更美麗",
+      "新耶路撒冷",
+      "主你本為大"
+    ]
+  },
+  {
+    "id": "city",
+    "label": "城市與家園",
+    "description": "城市街道和家乡，愿平安公义临到城市，关心身边的邻舍",
+    "query": "city skyline peaceful light",
+    "cues": [
+      "城市",
+      "这城",
+      "香港",
+      "街道",
+      "家乡",
+      "这地"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 71,
+    "literal_holdout_songs": 19,
+    "literal_all_songs": 90,
+    "top1_80_songs": 7,
+    "top3_80_songs": 18,
+    "example_titles": [
+      "唱響錫安",
+      "工人的禱告",
+      "全心全意敬拜祢",
+      "醫治這地"
+    ]
+  },
+  {
+    "id": "nations",
+    "label": "萬國與世界",
+    "description": "世界各地不同民族聚集，跨越疆界，将福音带到万国万民",
+    "query": "world nations people unity",
+    "cues": [
+      "万国",
+      "万国万民",
+      "列邦",
+      "地极",
+      "万国列邦"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 39,
+    "literal_holdout_songs": 15,
+    "literal_all_songs": 54,
+    "top1_80_songs": 8,
+    "top3_80_songs": 29,
+    "example_titles": [
+      "藏身祢的懷裏",
+      "復興的號角",
+      "看哪,田裡莊稼成熟了",
+      "神的帳幕在人間"
+    ]
+  },
+  {
+    "id": "family",
+    "label": "家庭與孩子",
+    "description": "父母与孩子在家中相伴，家庭的爱与照顾，儿女的信任",
+    "query": "family parent child warm light",
+    "cues": [
+      "父母",
+      "孩子",
+      "家庭",
+      "儿女",
+      "母亲",
+      "父亲"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 39,
+    "literal_holdout_songs": 14,
+    "literal_all_songs": 53,
+    "top1_80_songs": 4,
+    "top3_80_songs": 15,
+    "example_titles": [
+      "祢的恩典夠我用",
+      "奇妙的預備",
+      "神的帳幕在人間",
+      "我願意"
+    ]
+  },
+  {
+    "id": "embrace",
+    "label": "擁抱與懷抱",
+    "description": "温柔拥抱疲惫忧伤的人，回到父亲怀中，被接纳与安慰",
+    "query": "gentle embrace warm light",
+    "cues": [
+      "拥抱",
+      "怀抱",
+      "怀中"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 63,
+    "literal_holdout_songs": 15,
+    "literal_all_songs": 78,
+    "top1_80_songs": 26,
+    "top3_80_songs": 85,
+    "example_titles": [
+      "唱響錫安",
+      "多愛祢一點",
+      "陪我走過春夏秋冬(粵)",
+      "神啊,我的神"
+    ]
+  },
+  {
+    "id": "helping_neighbor",
+    "label": "扶助與分享",
+    "description": "伸手扶助有需要的人，分享食物和关怀，以行动服侍邻舍",
+    "query": "helping hands sharing kindness",
+    "cues": [
+      "邻舍",
+      "穷人",
+      "饥饿",
+      "贫穷",
+      "施舍",
+      "关怀"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 14,
+    "literal_holdout_songs": 3,
+    "literal_all_songs": 17,
+    "top1_80_songs": 0,
+    "top3_80_songs": 4,
+    "example_titles": [
+      "工人的禱告",
+      "誰能使我與神的愛隔絕",
+      "幸福",
+      "主啊,誰人親像祢(台)"
+    ]
+  },
+  {
+    "id": "tears",
+    "label": "淚滴與雨窗",
+    "description": "眼泪和窗上雨滴，伤心哀哭与思念，在忧伤中寻求安慰",
+    "query": "raindrops window quiet sorrow",
+    "cues": [
+      "眼泪",
+      "泪水",
+      "哭泣",
+      "哀哭",
+      "泪"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 97,
+    "literal_holdout_songs": 20,
+    "literal_all_songs": 117,
+    "top1_80_songs": 63,
+    "top3_80_songs": 124,
+    "example_titles": [
+      "帶我飛",
+      "亙古的愛",
+      "哈利路亞,祢真實奇妙",
+      "救主身邊我們再見"
+    ]
+  },
+  {
+    "id": "wedding",
+    "label": "婚宴與戒指",
+    "description": "婚宴与婚礼，爱人立约，等候新郎迎接新妇，忠贞的爱",
+    "query": "wedding rings banquet light",
+    "cues": [
+      "婚宴",
+      "婚礼",
+      "新郎",
+      "新妇",
+      "新娘"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 11,
+    "literal_holdout_songs": 2,
+    "literal_all_songs": 13,
+    "top1_80_songs": 32,
+    "top3_80_songs": 139,
+    "example_titles": [
+      "亙古的愛",
+      "來",
+      "那一天",
+      "她的新郎"
+    ]
+  },
+  {
+    "id": "angels",
+    "label": "天使與天軍",
+    "description": "天使和天军在光中歌唱赞美，传递佳音与荣耀",
+    "query": "angels heavenly light",
+    "cues": [
+      "天使",
+      "天军"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 33,
+    "literal_holdout_songs": 12,
+    "literal_all_songs": 45,
+    "top1_80_songs": 36,
+    "top3_80_songs": 102,
+    "example_titles": [
+      "神的羔羊",
+      "萬民同來敬拜",
+      "爭戰中的讚美",
+      "眾神之中有誰能像祢"
+    ]
+  },
+  {
+    "id": "pillar_cloud_fire",
+    "label": "雲柱火柱",
+    "description": "旷野中的云柱火柱，白天黑夜带领前方道路，神的指引",
+    "query": "pillar cloud fire wilderness",
+    "cues": [
+      "云柱",
+      "火柱"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 2,
+    "literal_holdout_songs": 2,
+    "literal_all_songs": 4,
+    "top1_80_songs": 5,
+    "top3_80_songs": 9,
+    "example_titles": [
+      "美好的命定",
+      "主啊，我們敬畏祢"
+    ]
+  },
+  {
+    "id": "lamp",
+    "label": "燈火與燈台",
+    "description": "灯台灯火照亮黑暗，一盏灯照亮脚前的路",
+    "query": "lamp lantern dark path",
+    "cues": [
+      "灯台",
+      "灯火",
+      "明灯",
+      "灯盏",
+      "脚前的灯"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 6,
+    "literal_holdout_songs": 2,
+    "literal_all_songs": 8,
+    "top1_80_songs": 1,
+    "top3_80_songs": 8,
+    "example_titles": [
+      "漁家傲.新婦",
+      "發現愛",
+      "萬國得知祢的救恩",
+      "就是你"
+    ]
+  },
+  {
+    "id": "treasure",
+    "label": "珍珠與寶藏",
+    "description": "珍贵的珍珠宝石与宝藏，将最宝贵的献上，寻找永恒价值",
+    "query": "pearl treasure gentle light",
+    "cues": [
+      "珍珠",
+      "宝藏",
+      "财宝",
+      "宝贝"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 14,
+    "literal_holdout_songs": 6,
+    "literal_all_songs": 20,
+    "top1_80_songs": 1,
+    "top3_80_songs": 9,
+    "example_titles": [
+      "祢比這一切更美麗",
+      "器皿",
+      "我是如此美麗",
+      "晚安曲"
+    ]
+  },
+  {
+    "id": "kneeling_prayer",
+    "label": "屈膝禱告",
+    "description": "跪下祷告，俯伏在神面前，谦卑安静交托寻求神",
+    "query": "kneeling prayer silhouette",
+    "cues": [
+      "屈膝",
+      "跪下",
+      "俯伏"
+    ],
+    "in_original_31": false,
+    "in_selected_60": true,
+    "literal_discovery_songs": 66,
+    "literal_holdout_songs": 21,
+    "literal_all_songs": 87,
+    "top1_80_songs": 284,
+    "top3_80_songs": 732,
+    "example_titles": [
+      "祭壇",
+      "彌賽亞",
+      "那一天",
+      "上好的福分"
+    ]
+  },
+  {
+    "id": "bread_provision",
+    "label": "餅與日用飲食",
+    "description": "桌上的面包和粮食，饥饿的人得到供应，每日所需被满足",
+    "query": "bread table warm light",
+    "cues": [
+      "粮食",
+      "食物",
+      "日用",
+      "饮食",
+      "生命粮",
+      "五饼",
+      "二鱼"
+    ],
+    "in_original_31": false,
+    "in_selected_60": false,
+    "literal_discovery_songs": 3,
+    "literal_holdout_songs": 1,
+    "literal_all_songs": 4,
+    "top1_80_songs": 1,
+    "top3_80_songs": 2,
+    "example_titles": [
+      "Don't Worry[別擔心]",
+      "主禱文",
+      "主禱文(請教導我們禱告)"
+    ]
+  }
+]

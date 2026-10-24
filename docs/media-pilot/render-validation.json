@@ -1,0 +1,47 @@
+[
+  {
+    "id": "01-grace-path",
+    "graphic_phase0_sha256": "a125264911771ff811d8116ec65bcccc45c6a63c5ed5d09603a00bf8f62c6fd4",
+    "graphic_phase5_sha256": "a125264911771ff811d8116ec65bcccc45c6a63c5ed5d09603a00bf8f62c6fd4",
+    "photo_phase0_sha256": "13f4aee16cfd4090ed672cd1f2fb60cf9ba4edecb549b3c3052995d72851b6a2",
+    "photo_phase5_sha256": "13f4aee16cfd4090ed672cd1f2fb60cf9ba4edecb549b3c3052995d72851b6a2",
+    "period_seconds": 5,
+    "rendered_frames": 150
+  },
+  {
+    "id": "02-wheat",
+    "graphic_phase0_sha256": "5a9479e48609252c4fae78b6a1f814cf11902fd0850eac3f95aadc35cdf2ba16",
+    "graphic_phase5_sha256": "5a9479e48609252c4fae78b6a1f814cf11902fd0850eac3f95aadc35cdf2ba16",
+    "photo_phase0_sha256": "223d8427423ba16aff6826d0772120cae81059fe84eac17f80a5d1d3da586ed0",
+    "photo_phase5_sha256": "223d8427423ba16aff6826d0772120cae81059fe84eac17f80a5d1d3da586ed0",
+    "period_seconds": 5,
+    "rendered_frames": 150
+  },
+  {
+    "id": "03-eagle",
+    "graphic_phase0_sha256": "cb60f8c0f1ce25cdb510e71e9c45608b4dd7ce37181c4af71994a32b805882f2",
+    "graphic_phase5_sha256": "cb60f8c0f1ce25cdb510e71e9c45608b4dd7ce37181c4af71994a32b805882f2",
+    "photo_phase0_sha256": "c6ef32345b2db3787bdd12603b7c2bac6e89b23571d1adf524e53d8b40015bed",
+    "photo_phase5_sha256": "c6ef32345b2db3787bdd12603b7c2bac6e89b23571d1adf524e53d8b40015bed",
+    "period_seconds": 5,
+    "rendered_frames": 150
+  },
+  {
+    "id": "04-still-reigns",
+    "graphic_phase0_sha256": "5cf3ec9d37f3deaf54b625e0097387e9ac14d73bd518cb93bf15ab15f25b509f",
+    "graphic_phase5_sha256": "5cf3ec9d37f3deaf54b625e0097387e9ac14d73bd518cb93bf15ab15f25b509f",
+    "photo_phase0_sha256": "5c4c0af8556d7cb1a013224cb41318ba025fa10496f472042194e55d82eb9691",
+    "photo_phase5_sha256": "5c4c0af8556d7cb1a013224cb41318ba025fa10496f472042194e55d82eb9691",
+    "period_seconds": 5,
+    "rendered_frames": 150
+  },
+  {
+    "id": "05-be-still",
+    "graphic_phase0_sha256": "7a0e282e966e2256e2b70a7ce86f9994876144053a11c164a9fda00ea8d067eb",
+    "graphic_phase5_sha256": "7a0e282e966e2256e2b70a7ce86f9994876144053a11c164a9fda00ea8d067eb",
+    "photo_phase0_sha256": "21e5c790eb866af64cf2cb022053157d008bdadcbbff8edd967f715e37294e8a",
+    "photo_phase5_sha256": "21e5c790eb866af64cf2cb022053157d008bdadcbbff8edd967f715e37294e8a",
+    "period_seconds": 5,
+    "rendered_frames": 150
+  }
+]

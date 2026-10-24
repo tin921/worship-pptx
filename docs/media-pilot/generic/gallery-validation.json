@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "All 12 videos decode and loop in Edge",
+    "All 12 PNG images load at their expected resolution",
+    "Daylight/night selection changes assets, lyric color, resolution label and download files",
+    "Mood filters, pause, still mode, sample text and guide survive lighting changes",
+    "Lighting buttons work with keyboard",
+    "390px layout has no horizontal overflow in either lighting mode",
+    "Reduced-motion preference displays stills in both modes"
+  ],
+  "screenshots_taken": 0
+}

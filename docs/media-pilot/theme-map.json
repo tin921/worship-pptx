@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "purpose": "Reusable theme assets, with songs used as examples rather than exclusive owners of a background",
+  "taxonomy": "../research/chinese-worship-corpus/master-scenes.json",
+  "lyric_safe_region_normalized": {"x": 0.08, "y": 0.06, "width": 0.84, "height": 0.40},
+  "text_color": "#FFFFFF",
+  "audio": false,
+  "natural_scene_video_generated": false,
+  "variants": ["graphic.png", "graphic-loop.mp4", "photo.png", "photo-loop.mp4"],
+  "groups": [
+    {"folder": "01-grace-path", "primary_scene_id": "mountain_path", "related_scene_ids": ["mountains", "sunrise"], "song_example": "恩典之路", "mood": ["hopeful", "reassuring"], "palette": "sage and deep teal"},
+    {"folder": "02-wheat", "primary_scene_id": "wheat", "related_scene_ids": ["seeds"], "song_example": "一粒麥子", "mood": ["reflective", "willing"], "palette": "muted plum and straw gold"},
+    {"folder": "03-eagle", "primary_scene_id": "eagle", "related_scene_ids": ["mountains", "sky"], "song_example": "如鷹展翅上騰", "mood": ["renewed", "spacious"], "palette": "slate blue and muted lavender"},
+    {"folder": "04-still-reigns", "primary_scene_id": "ocean", "related_scene_ids": ["storm", "rock"], "song_example": "你坐著為王", "mood": ["steadfast", "peaceful"], "palette": "deep teal and restrained gold"},
+    {"folder": "05-be-still", "primary_scene_id": "calm_lake", "related_scene_ids": ["gentle_light", "sunset"], "song_example": "安靜", "mood": ["restful", "intimate"], "palette": "slate green and dusk blue"}
+  ]
+}

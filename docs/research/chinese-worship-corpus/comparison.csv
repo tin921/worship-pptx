@@ -1,0 +1,10 @@
+﻿split,scene_count,songs,literal_catalogue_coverage_percent,scene_cue_event_coverage_percent,top3_contains_literal_cue_percent,top3_no_literal_cue_count,top3_distinct_scenes_used,largest_top1_scene,largest_top1_scene_percent
+all,31,1318,66.08,57.54,55.39,588,31,gentle_light,36.95
+all,60,1318,82.78,96.58,65.25,458,59,kneeling_prayer,23.37
+all,80,1318,83.23,100.0,65.33,457,74,kneeling_prayer,21.55
+discovery,31,1039,66.7,57.99,55.34,464,31,gentle_light,37.15
+discovery,60,1039,82.96,96.65,64.87,365,59,kneeling_prayer,23.0
+discovery,80,1039,83.54,100.0,64.87,365,74,kneeling_prayer,21.37
+holdout,31,279,63.8,55.75,55.56,124,28,gentle_light,36.2
+holdout,60,279,82.08,96.34,66.67,93,51,kneeling_prayer,24.73
+holdout,80,279,82.08,100.0,67.03,92,63,kneeling_prayer,22.22
