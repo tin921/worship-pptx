@@ -1,0 +1,11 @@
+{
+  "asset": "worship-leader-reading.png",
+  "generator": "OpenAI built-in image generation",
+  "generated_date": "2026-10-23",
+  "reference": "worship-leader-guitar.png",
+  "final_edit": "Same person, blue blazer, dark shirt and gold cross necklace reading an open Bible at a transparent acrylic lectern; remove the guitar and strap; preserve the bright church interior and illustration style",
+  "original_file": "exec-8c717b65-6203-4af2-9b39-94eb9a71d205.png",
+  "sha256": "28448dce1f7cfe24f5c2b65979e9e4fadaff38ad8767b95a9bacae92edab0835",
+  "prompt": "worship-leader-reading.prompt.txt",
+  "usage": "Bundled preview-only camera artwork for scripture, invocation and announcements; excluded from PowerPoint export"
+}

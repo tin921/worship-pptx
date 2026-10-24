@@ -69,7 +69,7 @@ Sources: [Avalonia platform support](https://docs.avaloniaui.net/docs/supported-
 - `MediaLibrary.cs`: portable paths for the 270 static background images.
 - `MediaSearch.cs`: shared background model preload after startup, with local ONNX matching only when Edit Background opens or a new match is requested.
 - `ImageKeywords.cs`, `ImageSearchLink.cs`: song-language theme/terms and escaped Google Images links.
-- `TextColors.cs`, `SingerGuide.cs`: swatch palette and a preview-only camera placement illustration.
+- `TextColors.cs`, `PresenterGuide.cs`: swatch palette and preview-only camera illustrations. Song sections use the guitar player; scripture, invocation and announcements use the matching Bible reader. `SlideData.IsSong` comes from parsed lyric section tags, independent of an empty repeat order.
 - `PreviewLayout.cs`, `CompositionPreview.cs`, `CompositionControls.cs`: persisted per-tab preview sources/geometry, drag/resize editor, six presets and focused numeric wheel input. The camera PiP centre selects the opposite text half; slide PiP/full-screen selects the full text area.
 - `MainWindow.axaml`: three resizable panels, draggable tabs and placeholder fields.
 - `tests`: Avalonia headless UI checks with real Skia/font rendering and Open XML validation.

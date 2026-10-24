@@ -87,6 +87,7 @@ namespace WorshipPptx
         public int ItemSlideNumber { get; set; } = 1;
         public int ItemSlideCount { get; set; } = 1;
         public bool IsTitle { get; set; }
+        public bool IsSong { get; set; }
         public string Title { get; set; }
         public string FontName { get; set; } = FontCatalog.DefaultName;
         public double FontSize { get; set; } = 36;

@@ -37,9 +37,9 @@ public sealed class CompositionPreview : Canvas
         layout=value; layout.Normalize(); adjustment=transform ?? slide.BackgroundTransform ?? new();
         slide.BackgroundTransform=adjustment;
         Children.Clear(); var raw=SlideVisual.Create(slide); backgroundImage=(Image)raw.Children[0];
-        Children.Add(new Viewbox { Name="CompositionBackground",Tag=layout.BackgroundSource,Width=1280,Height=720,Stretch=Stretch.Fill,Child=layout.BackgroundSource=="Camera" ? SingerGuide.Create() : raw,IsHitTestVisible=false });
+        Children.Add(new Viewbox { Name="CompositionBackground",Tag=layout.BackgroundSource,Width=1280,Height=720,Stretch=Stretch.Fill,Child=layout.BackgroundSource=="Camera" ? PresenterGuide.Create(slide.IsSong) : raw,IsHitTestVisible=false });
         pip.Tag=layout.PipSource;
-        pip.Child=new Viewbox { Stretch=Stretch.Fill,Child=layout.PipSource=="Camera" ? SingerGuide.Create() : SlideVisual.Create(slide) };
+        pip.Child=new Viewbox { Stretch=Stretch.Fill,Child=layout.PipSource=="Camera" ? PresenterGuide.Create(slide.IsSong) : SlideVisual.Create(slide) };
         Children.Add(pip); UpdateGeometry();
     }
     private void UpdateGeometry()

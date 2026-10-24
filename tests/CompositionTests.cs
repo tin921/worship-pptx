@@ -20,6 +20,41 @@ static class CompositionTests
     private static void Pump() => Dispatcher.UIThread.RunJobs();
     public static void Run(Action<string,Action> test,Action<bool,string> check,string root)
     {
+        test("Camera artwork follows lyric sections, including songs with no repeat order",()=> {
+            var settings=new UserSettings();
+            foreach(var order in new[]{"v1 c", "", "  "}) {
+                var song=new ServiceItem { Title="詩歌",Lyrics="[v1]\n恩典長存\n[c]\n讚美主",Order=order };
+                var slides=SlideLayout.BuildItem(song,settings);
+                check(slides[0].IsTitle && slides.All(s=>s.IsSong),"Song title or lyrics switched to reading because the order was empty");
+                check(SlideLayout.BuildItem(song,settings,FontCatalog.DefaultName).All(s=>s.IsSong),"Explicit formatting overload lost song classification");
+            }
+            foreach(var item in new[]{
+                new ServiceItem {Kind="scripture",Title="讀經",Lyrics="耶和華是我的牧者",Order=""},
+                new ServiceItem {Title="宣召經文",Lyrics="普天下當向耶和華歡呼",Order="v1 c"},
+                new ServiceItem {Title="公告",Lyrics="[1]\n會後團契\n[2]\n下週聚會",Order="v1 c"},
+                new ServiceItem {Title="Announcement",Lyrics="Please meet [team] after the service.",Order=""}
+            }) check(SlideLayout.BuildItem(item,settings).All(s=>!s.IsSong),"Spoken item selected the musician from stale order or inline brackets");
+        });
+        test("PiP and full camera previews switch between the musician and Bible reader",()=> {
+            var settings=new UserSettings();
+            var song=SlideLayout.BuildItem(new ServiceItem {Title="詩歌",Lyrics="[v1]\n讚美主",Order=""},settings)[0];
+            var reading=SlideLayout.BuildItem(new ServiceItem {Title="讀經",Lyrics="耶和華是我的牧者",Order=""},settings)[0];
+            var layout=new PreviewLayout(); var preview=new CompositionPreview(song,layout);
+            var window=new Window {Width=640,Height=360,Content=new Viewbox {Child=preview}}; window.Show(); Pump();
+            try {
+                object music=null,reader=null;
+                foreach(var background in new[]{"Slide","Camera"}) foreach(var slide in new[]{song,reading,song}) {
+                    layout.BackgroundSource=background; preview.SetSlide(slide,layout); Pump();
+                    var guide=preview.GetVisualDescendants().OfType<Border>().Single(b=>b.Name=="PresenterGuide");
+                    check((string)guide.Tag==(slide.IsSong ? "Music" : "Reading"),"Camera artwork did not switch with the item/source");
+                    var source=guide.GetVisualDescendants().OfType<Image>().Single().Source;
+                    if(slide.IsSong) music=source; else reader=source;
+                }
+                check(music!=null && reader!=null && !ReferenceEquals(music,reader),"Both modes display the same image asset");
+                layout.ApplyPreset("FullCamera"); preview.SetSlide(reading,layout); Pump();
+                check((string)preview.GetVisualDescendants().OfType<Border>().Single(b=>b.Name=="PresenterGuide").Tag=="Reading","Full-screen camera uses the musician for scripture");
+            } finally {window.Close();}
+        });
         test("Legacy layout data still supports its recorded text regions and source selections",()=> {
             var item=new ServiceItem { Title="版面測試",Lyrics="[v1]\n恩典與慈愛\n永遠跟隨我",Order="v1",Preview=new PreviewLayout() };
             foreach(var corner in new[]{"TopLeft","TopRight","BottomLeft","BottomRight"}) {
@@ -68,6 +103,7 @@ static class CompositionTests
         test("Bottom-half text and credits export without exporting the camera illustration",()=> {
             var item=new ServiceItem { Title="下半部",Lyrics="[v1]\n平安喜樂",Order="v1",Copyright="作者",SongId="123",Preview=new PreviewLayout() };
             item.Preview.ApplyPreset("TopLeft"); var slides=SlideLayout.BuildItem(item,new UserSettings());
+            slides.AddRange(SlideLayout.BuildItem(new ServiceItem {Title="讀經",Lyrics="耶和華是我的牧者",Order="",Preview=item.Preview},new UserSettings()));
             var path=Path.Combine(root,"bottom-half-composition.pptx"); PptxWriter.Write(path,slides,"版面測試");
             using var zip=ZipFile.OpenRead(path); XNamespace p="http://schemas.openxmlformats.org/presentationml/2006/main",a="http://schemas.openxmlformats.org/drawingml/2006/main";
             foreach(var entry in zip.Entries.Where(e=>e.FullName.StartsWith("ppt/slides/slide") && e.FullName.EndsWith(".xml"))) {

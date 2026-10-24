@@ -120,6 +120,7 @@ namespace WorshipPptx
                     }
                 }
             }
+            foreach(var slide in slides) slide.IsSong=tagged;
             return NumberItemSlides(slides);
         }
         private static List<SlideData> NumberItemSlides(List<SlideData> slides)
