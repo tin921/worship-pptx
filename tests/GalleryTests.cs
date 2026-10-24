@@ -33,10 +33,14 @@ static class GalleryTests
             var picker=new BackgroundDialog(images,""); picker.Show(); Dispatcher.UIThread.RunJobs(); picker.UpdateLayout(); Dispatcher.UIThread.RunJobs();
             try {
                 var card=picker.FindControl<WrapPanel>("Gallery").Children.Cast<Button>().First();
+                // Decode before timing the two synthetic clicks, as hardware timestamps
+                // are retained by the OS but headless input timestamps follow this thread.
+                _=SlideVisual.Background(((MediaAsset)card.Tag).Key);
                 var point=card.TranslatePoint(new Point(card.Bounds.Width/2,card.Bounds.Height/3),picker).Value;
                 void Click() { picker.MouseDown(point,MouseButton.Left); picker.MouseUp(point,MouseButton.Left); Dispatcher.UIThread.RunJobs(); }
                 Click();
                 check(picker.ResultPath==((MediaAsset)card.Tag).Key && !picker.OwnedWindows.Any(),"Single click should only select the result");
+                System.Threading.Thread.Sleep(30);
                 Click();
                 var full=picker.OwnedWindows.OfType<BackgroundImageWindow>().Single();
                 check(full.WindowState==WindowState.FullScreen && full.Title==ChineseText.Ui(((MediaAsset)card.Tag).Title),"Double-click did not open the clicked image fullscreen");

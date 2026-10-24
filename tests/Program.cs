@@ -44,6 +44,9 @@ namespace WorshipPptx.Tests
             if(args.Contains("--language-only")) { LanguageTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             if(args.Contains("--composition-only")) { CompositionTests.Run(Test,Check,root); Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed."); return failed==0 ? 0 : 1; }
             var settings=new UserSettings { ChurchLicense="12345" };
+            // These checks require a cold model; editor/action tests may perform a search.
+            var mediaStore=new LocalStore(Path.Combine(root,"media-cold-start"));
+            MediaTests.Run(Test,Check,root,mediaStore,new ImageStore(mediaStore.Assets));
             ActionButtonTests.Run(Test,Check,root);
             var demo=Demo.Create();
             Test("New services use the coming Sunday across week and year boundaries",()=> {
@@ -262,7 +265,6 @@ namespace WorshipPptx.Tests
             CompositionTests.Run(Test,Check,root);
             DriveUploadTests.Run(Test,Check,root);
             ProseTests.Run(Test,Check,root);
-            MediaTests.Run(Test,Check,root,store,images);
             Console.WriteLine("RESULT "+passed+" passed, "+failed+" failed. Outputs: "+root); return failed==0 ? 0 : 1;
         }
         static DataTransfer Transfer(DataTransferItem item) { var data=new DataTransfer(); data.Add(item); return data; }
