@@ -21,8 +21,6 @@ public partial class MainWindow
             var automatic=song && (title ? selected.Formatting.AutoTitleFontSize : selected.Formatting.AutoFontSize);
             AutoFontSizeButton.IsChecked=automatic;
             AutoFontSizeButton.IsEnabled=song;
-            FontSizeScope.IsVisible=song;
-            FontSizeScope.Text=ChineseText.Ui(title ? "歌名字號" : "歌詞字號");
             var size=automatic && actual.HasValue ? actual.Value : title ? selected.Formatting.TitleFontSize : selected.Formatting.FontSize;
             var choices=presetFontSizes.Append(size).Distinct().OrderBy(value=>value).ToArray();
             // Automatic sizing is state, not a dropdown option. Keep one numeric

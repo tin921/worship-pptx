@@ -46,12 +46,12 @@ static class EditorInteractionTests
             var window=new MainWindow(store); window.Show(); Pump();
             try {
                 var item=Item(window); var picker=window.FindControl<ComboBox>("FontSizePicker"); var thumbs=window.FindControl<ListBox>("Thumbnails");
-                var automatic=window.FindControl<ToggleButton>("AutoFontSizeButton"); var scope=window.FindControl<TextBlock>("FontSizeScope");
-                check((double)picker.SelectedItem==72 && scope.Text=="歌名字號","Title controls are not identified or independent of long lyrics");
+                var automatic=window.FindControl<ToggleButton>("AutoFontSizeButton");
+                check((double)picker.SelectedItem==72,"Title sizing is not independent of long lyrics");
                 picker.SelectedItem=60.0; Pump();
                 check(!item.Formatting.AutoTitleFontSize && item.Formatting.TitleFontSize==60 && item.Formatting.AutoFontSize,"Title change disabled lyric Auto");
                 thumbs.SelectedIndex=2; Pump();
-                check(scope.Text=="歌詞字號" && automatic.IsChecked==true && (double)picker.SelectedItem<60,"Selecting lyrics did not switch the sizing context");
+                check(automatic.IsChecked==true && (double)picker.SelectedItem<60,"Selecting lyrics did not switch the sizing context");
                 picker.SelectedItem=40.0; Pump();
                 check(!item.Formatting.AutoFontSize && item.Formatting.FontSize==40 && item.Formatting.TitleFontSize==60,"Lyrics overwrote the title size");
                 thumbs.SelectedIndex=0; Pump();
