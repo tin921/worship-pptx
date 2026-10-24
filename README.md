@@ -14,8 +14,8 @@ Prepare clear, consistent presentations for your worship service. Spend less tim
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/worship-editor.png" alt="Worship service editor with lyrics and slide previews" width="100%"></td>
-    <td width="50%"><img src="docs/background-picker.png" alt="Background picker with theme matching and image import" width="100%"></td>
+    <td valign="top"><img src="docs/worship-editor.png" alt="Worship service editor with lyrics and slide previews" width="721"></td>
+    <td valign="top"><img src="docs/background-picker.png" alt="Background picker with theme matching and image import" width="632"></td>
   </tr>
 </table>
 
