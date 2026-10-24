@@ -168,8 +168,12 @@ static class EditorInteractionTests
             var first=Demo.Create(); store.Save(first); var second=Demo.Create(); second.Date=first.Date.AddDays(7); store.Save(second);
             var window=new MainWindow(store); window.Show(); Pump();
             try {
+                // This navigation test starts at the top of the date-sorted list;
+                // fast saves can share the same serialized Updated timestamp.
+                var history=window.FindControl<ListBox>("HistoryList");
+                history.SelectedItem=history.Items.Cast<ServicePlan>().Single(p=>p.Id==second.Id); Pump();
                 var title=window.FindControl<TextBox>("SongTitle"); var tabs=window.FindControl<TabControl>("SongTabs");
-                var thumbs=window.FindControl<ListBox>("Thumbnails"); var history=window.FindControl<ListBox>("HistoryList");
+                var thumbs=window.FindControl<ListBox>("Thumbnails");
                 title.Focus(); var text=title.Text; var index=tabs.SelectedIndex; Press(window,Key.Left);
                 check(tabs.SelectedIndex==index,"Arrow stole input focus");
                 Press(window,Key.Escape); check(ReferenceEquals(window.FocusManager.GetFocusedElement(),window) && title.Text==text,"Escape changed text or failed to focus main window");

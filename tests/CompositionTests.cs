@@ -152,6 +152,8 @@ static class CompositionTests
             try {
                 var history=window.FindControl<ListBox>("HistoryList");
                 check(history.Items.Cast<ServicePlan>().Select(p=>p.Id).SequenceEqual(new[]{future.Id,current.Id,past.Id}),"History is sorted by edit time instead of service date");
+                // Select the fixture this test edits, independent of save-clock ties.
+                history.SelectedItem=history.Items.Cast<ServicePlan>().Single(p=>p.Id==current.Id); Pump();
                 var pastTitle=history.GetVisualDescendants().OfType<TextBlock>().Single(t=>t.Text=="過去崇拜");
                 check(pastTitle.Classes.Contains("past-service") && ((ISolidColorBrush)pastTitle.Foreground).Color==Color.Parse("#8A918C"),"Past title is not grey");
                 window.FindControl<TextBox>("SongTitle").Text="即時更新分頁"; Pump();

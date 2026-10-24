@@ -65,6 +65,10 @@ def main():
         result = session.patch(API + '/releases/' + str(release['id']),
             json={'draft': False, 'make_latest': 'true'}, timeout=30)
         result.raise_for_status()
+        # Publishing replaces draft-only untagged download URLs with tag URLs.
+        final_assets = {a['name']: a for a in result.json()['assets']}
+        for asset in records:
+            asset['url'] = final_assets[asset['name']]['browser_download_url']
     for asset in records:
         # Verify anonymous availability without sending the GitHub credential.
         result = requests.head(asset['url'], allow_redirects=True, timeout=60)
@@ -75,7 +79,7 @@ def main():
     latest.raise_for_status()
     assert latest.json()['tag_name'] == TAG
     (RECORDS / 'publication.json').write_text(json.dumps({'tag': TAG,
-        'release_commit': head, 'assets': records, 'anonymous_downloads_verified': True,
+        'release_commit': release['target_commitish'], 'assets': records, 'anonymous_downloads_verified': True,
         'latest': True, 'release_url': release['html_url']}, indent=2) + '\n', encoding='utf-8')
     print('Published and verified ' + release['html_url'], flush=True)
 

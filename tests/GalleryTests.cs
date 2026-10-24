@@ -33,24 +33,30 @@ static class GalleryTests
             var picker=new BackgroundDialog(images,""); picker.Show(); Dispatcher.UIThread.RunJobs(); picker.UpdateLayout(); Dispatcher.UIThread.RunJobs();
             try {
                 var card=picker.FindControl<WrapPanel>("Gallery").Children.Cast<Button>().First();
-                // Decode before timing the two synthetic clicks, as hardware timestamps
-                // are retained by the OS but headless input timestamps follow this thread.
-                _=SlideVisual.Background(((MediaAsset)card.Tag).Key);
+                // Preserve hardware-style timestamps and click counts even if rendering
+                // is slow on CI. Exercise routed pointer input and gesture recognition.
+                ulong timestamp=1000;
+                var mouse=new Pointer(10001,PointerType.Mouse,true);
+                void Click(Window root,Control target,IPointer pointer,Point position,int count) {
+                    target.RaiseEvent(new PointerPressedEventArgs(target,pointer,root,position,timestamp,new PointerPointProperties(RawInputModifiers.LeftMouseButton,PointerUpdateKind.LeftButtonPressed),KeyModifiers.None,count));
+                    timestamp+=10;
+                    if(root.IsVisible) target.RaiseEvent(new PointerReleasedEventArgs(target,pointer,root,position,timestamp,new PointerPointProperties(RawInputModifiers.None,PointerUpdateKind.LeftButtonReleased),KeyModifiers.None,MouseButton.Left));
+                    timestamp+=20; Dispatcher.UIThread.RunJobs();
+                }
                 var point=card.TranslatePoint(new Point(card.Bounds.Width/2,card.Bounds.Height/3),picker).Value;
-                void Click() { picker.MouseDown(point,MouseButton.Left); picker.MouseUp(point,MouseButton.Left); Dispatcher.UIThread.RunJobs(); }
-                Click();
+                picker.MouseMove(point);
+                Click(picker,card,mouse,point,1);
                 check(picker.ResultPath==((MediaAsset)card.Tag).Key && !picker.OwnedWindows.Any(),"Single click should only select the result");
-                System.Threading.Thread.Sleep(30);
-                Click();
+                Click(picker,card,mouse,point,2);
                 var full=picker.OwnedWindows.OfType<BackgroundImageWindow>().Single();
                 check(full.WindowState==WindowState.FullScreen && full.Title==ChineseText.Ui(((MediaAsset)card.Tag).Title),"Double-click did not open the clicked image fullscreen");
                 full.UpdateLayout();
                 var image=full.GetVisualDescendants().OfType<Image>().Single();
                 var imagePoint=image.TranslatePoint(new Point(image.Bounds.Width/2,image.Bounds.Height/2),full).Value;
-                void ClickImage() { full.MouseDown(imagePoint,MouseButton.Left); if(full.IsVisible) full.MouseUp(imagePoint,MouseButton.Left); Dispatcher.UIThread.RunJobs(); }
-                ClickImage();
+                var fullMouse=new Pointer(10002,PointerType.Mouse,true);
+                Click(full,image,fullMouse,imagePoint,1);
                 check(full.IsVisible,"A single click closed the fullscreen image");
-                ClickImage();
+                Click(full,image,fullMouse,imagePoint,2);
                 check(!full.IsVisible && picker.IsVisible && picker.ResultPath==((MediaAsset)card.Tag).Key,"Double-click did not return to the picker with its selection preserved");
             } finally { picker.Close(); }
         });
