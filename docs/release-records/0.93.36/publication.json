@@ -1,0 +1,40 @@
+{
+  "tag": "v0.93.36",
+  "assets": [
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 304,
+      "http_status": 200,
+      "sha256": "30820728fa708815891039637f5835612ffb38fdbc9233458a4ab87c172d7376",
+      "url": "https://github.com/tin921/worship-pptx/releases/download/v0.93.36/SHA256SUMS.txt"
+    },
+    {
+      "name": "worship-pptx-0.93.35-english-review.mp4",
+      "bytes": 15047839,
+      "http_status": 200,
+      "sha256": "0f425329484f21d46063e6991d263f3f4a31cae3d02fa5fe21141a017f2ee6fe",
+      "url": "https://github.com/tin921/worship-pptx/releases/download/v0.93.36/worship-pptx-0.93.35-english-review.mp4"
+    },
+    {
+      "name": "WorshipPptx-0.93.36-Portable.zip",
+      "bytes": 338639760,
+      "http_status": 200,
+      "sha256": "367ff3a7e25693bccf488c500732d727c07920d2b44634fde4ffbc18ff0888e9",
+      "url": "https://github.com/tin921/worship-pptx/releases/download/v0.93.36/WorshipPptx-0.93.36-Portable.zip"
+    },
+    {
+      "name": "WorshipPptx-0.93.36-Setup.msi",
+      "bytes": 307864923,
+      "http_status": 200,
+      "sha256": "276d9344bb454574d7594cca2bbfe2b0a568411d666bec03be73289e0d059ae7",
+      "url": "https://github.com/tin921/worship-pptx/releases/download/v0.93.36/WorshipPptx-0.93.36-Setup.msi"
+    }
+  ],
+  "release_commit": "577cd776f3e2858b20d530ec5ff22abb21bb244f",
+  "anonymous_downloads_verified": true,
+  "verified_utc": "2026-10-24T16:30:35.6454242Z",
+  "latest": true,
+  "application_source_commit": "6de37e80bf81f59fbfe1954770567b2182a0a8d7",
+  "release_url": "https://github.com/tin921/worship-pptx/releases/tag/v0.93.36",
+  "tutorial_watch_link_anonymous_access_verified": true
+}
