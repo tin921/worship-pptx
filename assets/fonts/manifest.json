@@ -70,5 +70,187 @@
     "weight": 400,
     "license": "Zhuque-OFL.txt",
     "glyphs": 12882
+  },
+  {
+    "file": "Bakudai-Regular.ttf",
+    "family": "Bakudai",
+    "label": "莫大毛筆",
+    "source": "https://raw.githubusercontent.com/max32002/bakudaifont/f1eb195cfd665d95311f2fd720068ef5b1cf6115/tw/Bakudai-Regular.ttf",
+    "source_sha256": "19fad0c294f3d3013bdee7471cd5e79015ee7a03acb2c47d9955937fc3dc8e4e",
+    "license": "Bakudai-Regular-LICENSE.txt",
+    "sha256": "19fad0c294f3d3013bdee7471cd5e79015ee7a03acb2c47d9955937fc3dc8e4e",
+    "glyphs": 24495,
+    "weight": 400
+  },
+  {
+    "file": "JasonHandwriting6p.ttf",
+    "family": "JasonHandwriting6p",
+    "label": "清松手寫 6",
+    "source": "https://raw.githubusercontent.com/jasonhandwriting/JasonHandwriting/e488583c07077850aa4a2a6280baa20374cccde2/JasonHandwriting6p.ttf",
+    "source_sha256": "761cced23f78f56c8254ecfc7d0f8566d53eded61dcb0a7b7936bdde747dedee",
+    "license": "JasonHandwriting6p-LICENSE.txt",
+    "sha256": "761cced23f78f56c8254ecfc7d0f8566d53eded61dcb0a7b7936bdde747dedee",
+    "glyphs": 8555,
+    "weight": 400
+  },
+  {
+    "file": "NaikaiFont-Regular.ttf",
+    "family": "NaikaiFont",
+    "label": "內海字體",
+    "source": "https://raw.githubusercontent.com/max32002/naikaifont/7baa43a6adad4a82eab6fd27c9612b316f69d7c9/tw/NaikaiFont-Regular.ttf",
+    "source_sha256": "d3320b822131540d5e3cc9737f7b458aeb1c0ca76fe89aeaa1b76001f54e503e",
+    "license": "NaikaiFont-Regular-LICENSE.txt",
+    "sha256": "d3320b822131540d5e3cc9737f7b458aeb1c0ca76fe89aeaa1b76001f54e503e",
+    "glyphs": 49611,
+    "weight": 400
+  },
+  {
+    "file": "GenWanMin2TC-R.ttf",
+    "family": "GenWanMin2 TC R",
+    "label": "源雲明體（丹版）",
+    "source": "https://raw.githubusercontent.com/ButTaiwan/genwan-font/25e718615173a3b51099ecc9a6bf4fa558c03fbc/otf/TC/GenWanMin2TC-R.otf",
+    "source_sha256": "028e19001e7d580f44e145eda751674528b8bb5e421887804469ae3c74fa66a6",
+    "license": "GenWanMin2TC-R-LICENSE.txt",
+    "convert_cff": true,
+    "sha256": "4f8c304ff666cd88da983935b2fddbfff710b464ff0702dee7b4c80f077a0178",
+    "glyphs": 35349,
+    "weight": 400
+  },
+  {
+    "file": "MasaFont-Regular.ttf",
+    "family": "MasaFont",
+    "label": "正風毛筆",
+    "source": "https://raw.githubusercontent.com/max32002/masafont/8fa528cc22be3294af172634fc6ef70288d5f776/tw/MasaFont-Regular.ttf",
+    "source_sha256": "f5a449d3a9ce2170e404050cc2b44bfa16ae48ef8fb06aa5968383ed74e5ed4d",
+    "license": "MasaFont-Regular-LICENSE.txt",
+    "sha256": "f5a449d3a9ce2170e404050cc2b44bfa16ae48ef8fb06aa5968383ed74e5ed4d",
+    "glyphs": 23700,
+    "weight": 400
+  },
+  {
+    "file": "NaniFont-Regular.ttf",
+    "family": "NaniFont Regular",
+    "label": "何某手寫體",
+    "source": "https://raw.githubusercontent.com/max32002/nanifont/90df131fa7c30363f4ab8be5af450d06c128ca49/ttf/NaniFont-Regular.ttf",
+    "source_sha256": "3fb7b030f853f2efc4d97dd28fae08a6fa93a565fc91a8f585897e0d53716c1c",
+    "license": "NaniFont-Regular-LICENSE.txt",
+    "sha256": "3fb7b030f853f2efc4d97dd28fae08a6fa93a565fc91a8f585897e0d53716c1c",
+    "glyphs": 24038,
+    "weight": 400
+  },
+  {
+    "file": "KurewaGothicCjkTc-Regular.ttf",
+    "family": "Kurewa Gothic CJK TC Regular",
+    "label": "苦累蛙圓體",
+    "source": "https://raw.githubusercontent.com/max32002/kurewa-gothic/10730fdd17094aa0be9af1f6054fbcab0306bb99/CJK%20TC/KurewaGothicCjkTc-Regular.ttf",
+    "source_sha256": "da6d76a895ac0a8ba80edeb5b99dec0b0e8e205040244e37ba0a39054fa5289e",
+    "license": "KurewaGothicCjkTc-Regular-LICENSE.txt",
+    "sha256": "da6d76a895ac0a8ba80edeb5b99dec0b0e8e205040244e37ba0a39054fa5289e",
+    "glyphs": 32105,
+    "weight": 400
+  },
+  {
+    "file": "MaokenAssortedSans-TC.ttf",
+    "family": "MaokenAssortedSans-TC",
+    "label": "貓啃什錦黑（繁體）",
+    "source": "https://raw.githubusercontent.com/Skr-ZERO/MaokenAssortedSans-TC/01b14a646a08fd8b8cf200c6bba5a5706b7562c0/MaokenAssortedSans-TC.ttf",
+    "source_sha256": "f095fc9c7f8eb7d57abe565067bba154a42d143eaa3f5b627de3eab1f870beee",
+    "license": "MaokenAssortedSans-TC-LICENSE.txt",
+    "sha256": "f095fc9c7f8eb7d57abe565067bba154a42d143eaa3f5b627de3eab1f870beee",
+    "glyphs": 31680,
+    "weight": 500
+  },
+  {
+    "file": "MantouSans-Regular.ttf",
+    "family": "Mantou Sans",
+    "label": "饅頭黑體",
+    "source": "https://raw.githubusercontent.com/mant0u0/MantouSans/826e7a941f3b722033bad786db364287dee55780/Font/MantouSans-Regular.ttf",
+    "source_sha256": "9ffe52b861b1b5f175c4aadf25dfcb95aff949e956f658b3072b1e2c6ff714bc",
+    "license": "MantouSans-Regular-LICENSE.txt",
+    "sha256": "9ffe52b861b1b5f175c4aadf25dfcb95aff949e956f658b3072b1e2c6ff714bc",
+    "glyphs": 10058,
+    "weight": 400
+  },
+  {
+    "file": "Cubic_11.ttf",
+    "family": "Cubic 11",
+    "label": "俐方體 11 號",
+    "source": "https://raw.githubusercontent.com/ACh-K/Cubic-11/4c566f7d6cc5c05ee360fe9cff56b5da1fcafd4d/fonts/ttf/Cubic_11.ttf",
+    "source_sha256": "0193f5f033612496df6b45ee92ac3b335bc6a5a24ff95da55ca87b33e57dcf62",
+    "license": "Cubic_11-LICENSE.txt",
+    "sha256": "0193f5f033612496df6b45ee92ac3b335bc6a5a24ff95da55ca87b33e57dcf62",
+    "glyphs": 10268,
+    "weight": 400
+  },
+  {
+    "file": "ChuanQu-Regular.ttf",
+    "family": "Chuan Qu",
+    "label": "傳趣體",
+    "source": "https://github.com/Steve-Yuu/Chuanqu/releases/download/v0.500/ChuanQu-Regular.ttf",
+    "source_sha256": "2ed7e4a53de771b2d46d86f4479d40d88d5419ec14c8986ce729cdb3fcc87be2",
+    "license": "ChuanQu-Regular-LICENSE.txt",
+    "sha256": "2ed7e4a53de771b2d46d86f4479d40d88d5419ec14c8986ce729cdb3fcc87be2",
+    "glyphs": 17744,
+    "weight": 400
+  },
+  {
+    "file": "SweiSpringSugarCJKtc-Regular.ttf",
+    "family": "Swei Spring Sugar CJK TC Regular",
+    "label": "獅尾四季春（加糖版）",
+    "source": "https://raw.githubusercontent.com/max32002/swei-spring/365dde98b93b82fa809acb91587b63b0fbde1c0a/CJK%20TC/SweiSpringSugarCJKtc-Regular.ttf",
+    "source_sha256": "b13dfb16f40e9ec62f5da67827c2eb0df060c5cb616e0da3af7223accb9acd57",
+    "license": "SweiSpringSugarCJKtc-Regular-LICENSE.txt",
+    "sha256": "b13dfb16f40e9ec62f5da67827c2eb0df060c5cb616e0da3af7223accb9acd57",
+    "glyphs": 42864,
+    "weight": 200
+  },
+  {
+    "file": "GenSenRounded2TW-M.ttf",
+    "family": "GenSenRounded2 TW M",
+    "label": "源泉圓體（月版 Medium）",
+    "source": "https://raw.githubusercontent.com/ButTaiwan/gensen-font/d347d3fffcb45e08857052433a0b432ed4f7ace8/otf/TW/GenSenRounded2TW-M.otf",
+    "source_sha256": "b8286a42c534d31ca136c377ab3a3add7cf63058c67de8fec78e784ab26ec077",
+    "license": "GenSenRounded2TW-M-LICENSE.txt",
+    "convert_cff": true,
+    "sha256": "5a4b9ba88d0d870b96c3a22da454de6d49d6c9354ee780781df44f43ef57dc67",
+    "glyphs": 35382,
+    "weight": 500
+  },
+  {
+    "file": "JasonHandwriting4.ttf",
+    "family": "JasonHandwriting4",
+    "label": "清松手寫 4",
+    "source": "https://raw.githubusercontent.com/jasonhandwriting/JasonHandwriting/e488583c07077850aa4a2a6280baa20374cccde2/JasonHandwriting4.ttf",
+    "source_sha256": "1db91107a80c78e6d04b6d78f86a4b8946f083cb0b41ff5864009c4e1698ee4b",
+    "license": "JasonHandwriting4-LICENSE.txt",
+    "sha256": "1db91107a80c78e6d04b6d78f86a4b8946f083cb0b41ff5864009c4e1698ee4b",
+    "glyphs": 5291,
+    "weight": 400
+  },
+  {
+    "file": "qiji-combo.ttf",
+    "family": "QIJIC",
+    "label": "齊伋體（合併版）",
+    "source": "https://github.com/LingDong-/qiji-font/releases/download/0.0.4/qiji-combo.ttf",
+    "source_sha256": "f842291b039e9c5ae69edfe924edbe28b3cfba91bcac95791bf1fbc11db330cf",
+    "license": "qiji-combo-LICENSE.txt",
+    "sha256": "f842291b039e9c5ae69edfe924edbe28b3cfba91bcac95791bf1fbc11db330cf",
+    "glyphs": 21068,
+    "weight": 400
+  },
+  {
+    "file": "TW-MOE-Li.ttf",
+    "family": "TW-MOE-Li",
+    "label": "教育部隸書",
+    "source": "https://language.moe.gov.tw/uploads/files/17694976091079.zip",
+    "source_sha256": "f0ba5eda31727ad89cc0b1f6b9a7dfda02f061fa101c18548b6f8ea0145c108b",
+    "license": "TW-MOE-Li-LICENSE.txt",
+    "archive_member": "MoeLI(隸書3.0版1080724上網).ttf",
+    "sha256": "f0ba5eda31727ad89cc0b1f6b9a7dfda02f061fa101c18548b6f8ea0145c108b",
+    "glyphs": 5593,
+    "weight": 400,
+    "license_files": [
+      "TW-MOE-Li-CC-BY-ND-3.0-TW.html"
+    ]
   }
 ]

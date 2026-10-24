@@ -33,7 +33,23 @@ namespace WorshipPptx
             new FontChoice("Zhuque Fangsong (technical preview)","朱雀仿宋 · 古典印刷","ZhuqueFangsong-Regular.ttf"),
             new FontChoice("LXGW Marker Gothic","霞鶩漫黑 · 漫畫手寫","LXGWMarkerGothic-Regular.ttf"),
             new FontChoice("Ma Shan Zheng","馬善政毛筆（簡體）· Ma Shan Zheng","MaShanZheng-Regular.ttf"),
-            new FontChoice("ZCOOL KuaiLe","站酷快樂（簡體）· ZCOOL KuaiLe","ZCOOLKuaiLe-Regular.ttf")
+            new FontChoice("ZCOOL KuaiLe","站酷快樂（簡體）· ZCOOL KuaiLe","ZCOOLKuaiLe-Regular.ttf"),
+            new FontChoice("Bakudai","莫大毛筆 · Bakudai","Bakudai-Regular.ttf"),
+            new FontChoice("MasaFont","正風毛筆 · MasaFont","MasaFont-Regular.ttf"),
+            new FontChoice("GenWanMin2 TC R","源雲明體 · 丹版","GenWanMin2TC-R.ttf"),
+            new FontChoice("Swei Spring Sugar CJK TC Regular","獅尾四季春 · 加糖版","SweiSpringSugarCJKtc-Regular.ttf"),
+            new FontChoice("QIJIC","齊伋體（部分標點）· 古籍刻本","qiji-combo.ttf"),
+            new FontChoice("TW-MOE-Li","教育部隸書（部分字）","TW-MOE-Li.ttf"),
+            new FontChoice("JasonHandwriting6p","清松手寫 6（部分字）","JasonHandwriting6p.ttf"),
+            new FontChoice("JasonHandwriting4","清松手寫 4（部分字）","JasonHandwriting4.ttf"),
+            new FontChoice("NaikaiFont","內海字體 · NaikaiFont","NaikaiFont-Regular.ttf"),
+            new FontChoice("NaniFont Regular","何某手寫體 · NaniFont","NaniFont-Regular.ttf"),
+            new FontChoice("MaokenAssortedSans-TC","貓啃什錦黑（繁體・部分字）","MaokenAssortedSans-TC.ttf"),
+            new FontChoice("Kurewa Gothic CJK TC Regular","苦累蛙圓體 · Kurewa Gothic","KurewaGothicCjkTc-Regular.ttf"),
+            new FontChoice("GenSenRounded2 TW M","源泉圓體 · 月版","GenSenRounded2TW-M.ttf"),
+            new FontChoice("Mantou Sans","饅頭黑體 · Mantou Sans","MantouSans-Regular.ttf"),
+            new FontChoice("Chuan Qu","傳趣體 · Chuan Qu","ChuanQu-Regular.ttf"),
+            new FontChoice("Cubic 11","俐方體 11 號 · 像素字","Cubic_11.ttf")
         };
         public static readonly IReadOnlyList<FontChoice> All=CreateCatalog();
         private static IReadOnlyList<FontChoice> CreateCatalog()
@@ -67,7 +83,9 @@ namespace WorshipPptx
 
         // EOT 2.1 wrapping, as used by PowerPoint's application/x-fontdata parts.
         // The full static TrueType face is preserved: the resulting deck remains editable.
-        // Only our bundled OFL fonts enter here; arbitrary installed fonts are never redistributed.
+        // Only our licensed bundled fonts enter here; installed fonts are never redistributed.
+        // Original TrueType bytes (including the CC BY-ND Ministry of Education font)
+        // are wrapped unchanged, with their original names and embedding permissions.
         public static byte[] EmbeddedBytes(string name)
         {
             var font=Get(name);

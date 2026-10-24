@@ -12,12 +12,64 @@ smaller Google Fonts Hong Kong subsets.
 - Copyright: Adobe and the font contributors, as stated in the included licences.
 - Licence: SIL Open Font License 1.1, in `assets/fonts/Sans-OFL.txt` and
   `assets/fonts/Serif-OFL.txt` (installed as `Fonts/*-OFL.txt`).
-- Reproduction: `scripts/prepare-fonts.py`, using fonttools 4.60.1.
+- Reproduction: `scripts/prepare-fonts.py`, using fonttools 4.67.0.
 - Provenance, filenames and SHA-256 hashes: `assets/fonts/manifest.json`.
 
 Font redistribution and document embedding are permitted by these licences.
 The application loads its own copies without installing fonts system-wide.
 The selected font is embedded in each presentation as a full EOT font part.
+
+## Additional Chinese fonts
+
+The app also bundles LXGW WenKai TC, jf open huninn, Zhuque Fangsong, LXGW
+Marker Gothic, Ma Shan Zheng and ZCOOL KuaiLe under SIL OFL 1.1. Their original
+copyright and licence notices are in `assets/fonts/*-OFL.txt`.
+
+The following additions are distributed under SIL OFL 1.1, with the publishers'
+copyright, licence and source information in each corresponding
+`assets/fonts/*-LICENSE.txt` file (also installed in `Fonts/`):
+
+- Bakudai / 莫大毛筆, MasaFont / 正風毛筆, NaikaiFont / 內海字體,
+  NaniFont / 何某手寫體, Kurewa Gothic / 苦累蛙圓體 and Swei Spring Sugar /
+  獅尾四季春, from https://github.com/max32002 and the original creators
+  identified in the accompanying notices.
+- JasonHandwriting 4 and 6 / 清松手寫, Jason (Yu Ching Sung),
+  https://github.com/jasonhandwriting/JasonHandwriting.
+- GenWanMin2 / 源雲明體 and GenSenRounded2 / 源泉圓體, But Ko / ButTaiwan and
+  Adobe contributors, https://github.com/ButTaiwan.
+- MaokenAssortedSans-TC / 貓啃什錦黑, Skr-ZERO and the contributors credited
+  in the publisher's notice, https://github.com/Skr-ZERO/MaokenAssortedSans-TC.
+- Mantou Sans / 饅頭黑體, Mant0u and the Dela Gothic Project,
+  https://github.com/mant0u0/MantouSans.
+- Cubic 11 / 俐方體11號, ACh and the contributors listed in the font notice,
+  https://github.com/ACh-K/Cubic-11.
+- Chuan Qu / 傳趣體, SteveYuu and the Stick Project,
+  https://github.com/Steve-Yuu/Chuanqu.
+- QIJIC / 齊伋體, Lingdong Huang, https://github.com/LingDong-/qiji-font.
+  This is the publisher's combined edition, which also contains distressed
+  Source Han Serif glyphs. Both notices accompany the unchanged font.
+
+教育部隸書 / TW-MOE-Li 3.00 is attributed to **中華民國教育部** and distributed
+unchanged under Creative Commons Attribution-NoDerivs 3.0 Taiwan. The original
+file is copied byte for byte, never renamed internally or subsetted. Its notice
+and full terms are in `assets/fonts/TW-MOE-Li-LICENSE.txt` and
+`TW-MOE-Li-CC-BY-ND-3.0-TW.html`. Presentations embedding it also carry its
+attribution and licence link in document properties.
+Publisher: https://language.moe.gov.tw/material/info?m=9fe3fb11-c3d5-41f2-b029-6d18a2c2fd0d.
+
+Pinned download URLs, original and bundled SHA-256 hashes, and conversion flags
+are recorded in `assets/fonts/manifest.json` and `scripts/additional-fonts.json`.
+`scripts/prepare-additional-fonts.py --cache <directory>` reproduces the new
+fonts using fonttools 4.67.0. GenWanMin2 and GenSenRounded2 are converted from
+CFF to static TrueType with a maximum curve error of one font unit, retaining
+their character sets, layout tables, names and embedding permissions. All other
+new font binaries are unchanged originals. No system font installation is needed.
+
+Coverage varies by font. The picker marks the known limited character or
+punctuation coverage of JasonHandwriting 4/6, MaokenAssortedSans-TC, QIJIC and
+TW-MOE-Li. Our 248-character worship-text fixture is a regression sample, not a
+claim of complete Traditional Chinese coverage. Missing characters may use a
+fallback font in the preview or PowerPoint.
 
 ## Desktop runtime
 
@@ -60,7 +112,7 @@ Worship pronouns 祢 and 祂 are preserved in both scripts.
 - Microsoft Open XML SDK 3.3.0 (MIT): test-only schema validation; not shipped in the app.
 - WiX Toolset 3.14.1 (Microsoft Reciprocal License): MSI build tool; downloaded with
   a pinned SHA-256 hash. The WiX UI and standard actions are included in the MSI.
-- fonttools 4.60.1 (MIT): optional font preparation tool, not required to build
+- fonttools 4.67.0 (MIT): optional font preparation tool, not required to build
   the app from the committed fonts and not shipped in the installer.
 
 The sample song lyrics and vector mountain background were created for this

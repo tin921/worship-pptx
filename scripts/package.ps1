@@ -28,7 +28,7 @@ Copy-Item -LiteralPath (Join-Path $root 'LICENSE') -Destination $build
 Copy-Item -LiteralPath (Join-Path $root 'THIRD-PARTY-NOTICES.md') -Destination $build
 # Enumerate only the intended distributable files, never developer settings or test data.
 $fontManifest = Get-Content -LiteralPath (Join-Path $root 'assets\fonts\manifest.json') -Raw | ConvertFrom-Json
-$fontNames = @('manifest.json') + @($fontManifest | ForEach-Object { $_.file; $_.license })
+$fontNames = @('manifest.json') + @($fontManifest | ForEach-Object { $_.file; $_.license; if ($_.license_files) { $_.license_files } })
 $files = @(Get-ChildItem -LiteralPath $build -File | Where-Object { $_.Extension -ne '.pdb' }) + @($fontNames | Sort-Object -Unique | ForEach-Object { Get-Item -LiteralPath (Join-Path (Join-Path $build 'Fonts') $_) }) + @(Get-ChildItem -LiteralPath (Join-Path $build 'Models'),(Join-Path $build 'Media') -File -Recurse)
 $directories = [System.Collections.Generic.Dictionary[string,string]]::new([System.StringComparer]::OrdinalIgnoreCase)
 $directories['']='INSTALLFOLDER'; $directories['Fonts']='FONTSFOLDER'

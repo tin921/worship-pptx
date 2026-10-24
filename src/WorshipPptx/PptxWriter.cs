@@ -81,7 +81,9 @@ namespace WorshipPptx
                     if(fontIndex>0) types.Add(E(Ct+"Default",At("Extension","fntdata"),At("ContentType","application/x-fontdata")));
                     Xml(zip,"[Content_Types].xml",types);
                     XNamespace cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties", dc="http://purl.org/dc/elements/1.1/";
-                    Xml(zip,"docProps/core.xml",E(cp+"coreProperties",new XAttribute(XNamespace.Xmlns+"dc",dc),E(dc+"title",title),E(dc+"creator","Worship PPTX")));
+                    var fontAttribution=slides.Any(s=>s.FontName=="TW-MOE-Li")
+                        ? E(dc+"description","教育部隸書 TW-MOE-Li 3.00 — 中華民國教育部. Original font embedded unchanged under CC BY-ND 3.0 Taiwan: https://creativecommons.org/licenses/by-nd/3.0/tw/ . Source: https://language.moe.gov.tw/material/info?m=9fe3fb11-c3d5-41f2-b029-6d18a2c2fd0d") : null;
+                    Xml(zip,"docProps/core.xml",E(cp+"coreProperties",new XAttribute(XNamespace.Xmlns+"dc",dc),E(dc+"title",title),E(dc+"creator","Worship PPTX"),fontAttribution));
                     XNamespace ep="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties";
                     Xml(zip,"docProps/app.xml",E(ep+"Properties",E(ep+"Application","Worship PPTX"),E(ep+"PresentationFormat","On-screen Show (16:9)"),E(ep+"Slides",slides.Count)));
                     Xml(zip,"_rels/.rels",Relationships(Relation("rId1","officeDocument","ppt/presentation.xml"),E(Rel+"Relationship",At("Id","rId2"),At("Type","http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties"),At("Target","docProps/core.xml")),Relation("rId3","extended-properties","docProps/app.xml")));

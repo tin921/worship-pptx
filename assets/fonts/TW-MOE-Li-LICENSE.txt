@@ -1,0 +1,11 @@
+Font: 教育部隸書 / TW-MOE-Li
+Source: https://language.moe.gov.tw/uploads/files/17694976091079.zip
+
+Attribution / 姓名標示：中華民國教育部
+Education Ministry Li font, Version 3.00. Original font file is unchanged.
+Licence: Creative Commons Attribution-NoDerivs 3.0 Taiwan (CC BY-ND 3.0 TW).
+https://creativecommons.org/licenses/by-nd/3.0/tw/
+Full terms: TW-MOE-Li-CC-BY-ND-3.0-TW.html
+Publisher: https://language.moe.gov.tw/material/info?m=9fe3fb11-c3d5-41f2-b029-6d18a2c2fd0d
+
+(c) This license allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to MOE.

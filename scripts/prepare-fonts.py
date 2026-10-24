@@ -1,5 +1,5 @@
 """Reproduce the bundled static fonts (optional; binaries are checked in).
-Requires Python 3 and fonttools==4.60.1. No font installation is performed.
+Requires Python 3 and fonttools==4.67.0. No font installation is performed.
 """
 from pathlib import Path
 from urllib.request import urlopen
@@ -77,6 +77,10 @@ def main():
                      "license": "Zhuque-OFL.txt", "glyphs": len(font.getBestCmap())})
     print(output.name, output.stat().st_size, manifest[-1]["family"])
     (dest / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
+    # Add the later calligraphy/handwriting/display families using their pinned
+    # sources. This helper also runs independently without rebuilding Noto.
+    import runpy
+    runpy.run_path(str(ROOT / "scripts" / "prepare-additional-fonts.py"))["main"]()
 
 if __name__ == "__main__":
     main()

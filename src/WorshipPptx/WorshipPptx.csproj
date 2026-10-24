@@ -7,7 +7,7 @@
     <ApplicationIcon>../../assets/app.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
-    <Version>0.93.37</Version>
+    <Version>0.93.38</Version>
     <AssemblyName>WorshipPptx</AssemblyName>
     <RootNamespace>WorshipPptx</RootNamespace>
     <Title>Worship PPTX</Title>

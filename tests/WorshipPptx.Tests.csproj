@@ -2,6 +2,7 @@
   <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>disable</ImplicitUsings><Nullable>disable</Nullable></PropertyGroup>
   <ItemGroup>
     <Content Include="embedding-fixtures.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="font-coverage.json" CopyToOutputDirectory="PreserveNewest" />
     <PackageReference Include="DocumentFormat.OpenXml" Version="3.3.0" />
     <PackageReference Include="Avalonia.Headless" Version="12.1.4" />
     <ProjectReference Include="../src/WorshipPptx/WorshipPptx.csproj" />
