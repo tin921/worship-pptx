@@ -1,0 +1,30 @@
+{
+  "tag": "v0.93.38",
+  "release_commit": "d56d825981a3d03a49220dfc3e0365204b73ec75",
+  "assets": [
+    {
+      "name": "WorshipPptx-0.93.38-Setup.msi",
+      "bytes": 578669427,
+      "sha256": "640eee01499da3248c2579f4a6c390c4157d511190e22ecc9b6fce5bce13a93f",
+      "url": "https://github.com/tin921/worship-pptx/releases/download/v0.93.38/WorshipPptx-0.93.38-Setup.msi",
+      "http_status": 200
+    },
+    {
+      "name": "WorshipPptx-0.93.38-Portable.zip",
+      "bytes": 646546839,
+      "sha256": "2bb0dddb6d7fe4c59204df2aa8eefebd4fb6c2dace56b9b3594cb2da5bcc7691",
+      "url": "https://github.com/tin921/worship-pptx/releases/download/v0.93.38/WorshipPptx-0.93.38-Portable.zip",
+      "http_status": 200
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 197,
+      "sha256": "875e21fb770b3ebc167186c7944b18b76b3553d8116804ece5af6ad6cc944c2b",
+      "url": "https://github.com/tin921/worship-pptx/releases/download/v0.93.38/SHA256SUMS.txt",
+      "http_status": 200
+    }
+  ],
+  "anonymous_downloads_verified": true,
+  "latest": true,
+  "release_url": "https://github.com/tin921/worship-pptx/releases/tag/v0.93.38"
+}

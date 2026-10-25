@@ -70,7 +70,8 @@ def main():
             json={'draft': False, 'make_latest': 'true'}, timeout=30)
         result.raise_for_status()
         # Publishing replaces draft-only untagged download URLs with tag URLs.
-        final_assets = {a['name']: a for a in result.json()['assets']}
+        release = result.json()
+        final_assets = {a['name']: a for a in release['assets']}
         for asset in records:
             asset['url'] = final_assets[asset['name']]['browser_download_url']
     for asset in records:
